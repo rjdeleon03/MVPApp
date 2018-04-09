@@ -14,6 +14,6 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void handleNewDncaClick(View view) {
-
+        this.mView.navigateToNewDnca();
     }
 }

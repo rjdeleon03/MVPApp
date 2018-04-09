@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MVP_App</string>
+    <string name="title_activity_dncalist">DNCAListActivity</string>
 </resources>

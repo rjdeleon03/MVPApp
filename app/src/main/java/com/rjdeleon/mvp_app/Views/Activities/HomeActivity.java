@@ -1,6 +1,6 @@
 package com.rjdeleon.mvp_app.Views.Activities;
 
-import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,5 +29,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToNewDnca() { // Start New DNCA Activity
         Toast.makeText(this, "Loading new DNCA form...", Toast.LENGTH_SHORT).show();
 
+        Intent dncaFormIntent = new Intent(this, DNCAListActivity.class);
+        startActivity(dncaFormIntent);
     }
 }

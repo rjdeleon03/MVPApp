@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Views.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -26,7 +27,10 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
 
         mRecyclerView = findViewById(R.id.dncaList);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
 
         mRecyclerView.setAdapter(mAdapter);
     }

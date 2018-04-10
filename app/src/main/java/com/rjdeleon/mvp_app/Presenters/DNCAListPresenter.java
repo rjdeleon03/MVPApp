@@ -1,8 +1,5 @@
 package com.rjdeleon.mvp_app.Presenters;
 
-import android.content.Context;
-
-import com.rjdeleon.mvp_app.Contracts.DNCAListContract;
 import com.rjdeleon.mvp_app.Contracts.DNCAListItemContract;
 import com.rjdeleon.mvp_app.Models.DNCAListItem;
 

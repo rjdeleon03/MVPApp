@@ -6,11 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.rjdeleon.mvp_app.Contracts.DNCAListContract;
-import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.Presenters.DNCAListPresenter;
 import com.rjdeleon.mvp_app.R;
-
-import java.util.ArrayList;
 
 public class DNCAListActivity extends AppCompatActivity implements DNCAListContract.View {
 
@@ -22,17 +19,10 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new DNCAListPresenter(this);
+        mPresenter = new DNCAListPresenter();
         setContentView(R.layout.dnca_list_activity);
 
-        ArrayList<DNCAListItem> listItems = new ArrayList<>();
-
-        for (int i = 1; i <= 15; i++) {
-            DNCAListItem dummy = new DNCAListItem("Barangay " + i, "Ilocos", "Jan. 1, 2018");
-            listItems.add(dummy);
-        }
-
-        mAdapter = new DNCAListAdapter(listItems, this);
+        mAdapter = new DNCAListAdapter(mPresenter);
 
         mRecyclerView = findViewById(R.id.dncaList);
         mRecyclerView.setHasFixedSize(true);

@@ -32,4 +32,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         Intent dncaFormIntent = new Intent(this, DNCAListActivity.class);
         startActivity(dncaFormIntent);
     }
+
+    @Override
+    public void displayShortToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

@@ -3,6 +3,8 @@ package com.rjdeleon.mvp_app.Contracts;
 public interface HomeContract {
     interface View {
         void navigateToNewDnca();
+
+        void displayShortToast(String message);
     }
 
     interface Presenter {

@@ -29,7 +29,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToNewDnca() { // Start New DNCA Activity
         Toast.makeText(this, "Loading new DNCA form...", Toast.LENGTH_SHORT).show();
 
-        Intent dncaFormIntent = new Intent(this, DNCAListActivity.class);
-        startActivity(dncaFormIntent);
+        DNCAListActivity.startActivity(this);
     }
 }

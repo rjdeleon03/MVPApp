@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Views.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void displayShortToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        final String fMessage = message;
+        final Context fContext = this;
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(fContext, fMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

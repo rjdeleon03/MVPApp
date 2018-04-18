@@ -5,14 +5,67 @@ import android.view.View;
 
 import com.rjdeleon.mvp_app.Contracts.HomeContract;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class HomePresenter implements HomeContract.Presenter {
 
     public class GetDncaTask extends AsyncTask<String, Void, String> {
 
+        public static final String REQUEST_METHOD = "GET";
+        public static final int READ_TIMEOUT = 15000;
+        public static final int CONNECTION_TIMEOUT = 15000;
+
         @Override
         protected String doInBackground(String... strings) {
             mView.displayShortToast("Performing background task...");
-            return "Done";
+
+            String urlString = strings[0];
+            String result = new String();
+            String inputLine;
+
+            try {
+                // Create URL object
+                URL url = new URL(urlString);
+
+                //Create a connection
+                HttpURLConnection connection =(HttpURLConnection) url.openConnection();
+
+                //Set methods and timeouts
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+
+                //Connect to our url
+                connection.connect();
+
+                //Create a new InputStreamReader
+                InputStreamReader streamReader = new
+                        InputStreamReader(connection.getInputStream());
+
+                //Create a new buffered reader and String Builder
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+
+                //Check if the line we are reading is not null
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+
+                //Close our InputStream and Buffered reader
+                reader.close();
+                streamReader.close();
+
+                //Set our result equal to our stringBuilder
+                result = stringBuilder.toString();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            return result;
         }
     }
 

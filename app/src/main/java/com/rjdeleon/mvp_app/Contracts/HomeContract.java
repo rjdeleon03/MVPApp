@@ -7,5 +7,7 @@ public interface HomeContract {
 
     interface Presenter {
         void handleNewDncaClick(android.view.View view);
+
+        void handleTestApiClick(android.view.View view);
     }
 }

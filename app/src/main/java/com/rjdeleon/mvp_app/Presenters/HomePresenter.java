@@ -16,4 +16,9 @@ public class HomePresenter implements HomeContract.Presenter {
     public void handleNewDncaClick(View view) {
         this.mView.navigateToNewDnca();
     }
+
+    @Override
+    public void handleTestApiClick(View view) {
+        // Access GET API at localhost:3000/dnca
+    }
 }

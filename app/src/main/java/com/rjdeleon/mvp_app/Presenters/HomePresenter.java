@@ -3,7 +3,9 @@ package com.rjdeleon.mvp_app.Presenters;
 import android.os.AsyncTask;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.rjdeleon.mvp_app.Contracts.HomeContract;
+import com.rjdeleon.mvp_app.Models.FormInfo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,6 +22,11 @@ public class HomePresenter implements HomeContract.Presenter {
 
         @Override
         protected String doInBackground(String... strings) {
+            FormInfo formInfo = new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh");
+            Gson formJson = new Gson();
+            String x  = formJson.toJson(formInfo);
+
+
             mView.displayShortToast("Performing background task...");
 
             String urlString = strings[0];

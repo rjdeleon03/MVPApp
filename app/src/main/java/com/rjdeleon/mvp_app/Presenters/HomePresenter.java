@@ -8,15 +8,17 @@ import com.rjdeleon.mvp_app.Contracts.HomeContract;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class HomePresenter implements HomeContract.Presenter {
 
     public class GetDncaTask extends AsyncTask<String, Void, String> {
 
-        public static final String REQUEST_METHOD = "GET";
+        public static final String REQUEST_METHOD = "POST";
         public static final int READ_TIMEOUT = 15000;
         public static final int CONNECTION_TIMEOUT = 15000;
 
@@ -44,9 +46,20 @@ public class HomePresenter implements HomeContract.Presenter {
                 connection.setRequestMethod(REQUEST_METHOD);
                 connection.setReadTimeout(READ_TIMEOUT);
                 connection.setConnectTimeout(CONNECTION_TIMEOUT);
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestProperty("Accept","application/json");
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
 
                 //Connect to our url
-                connection.connect();
+//                connection.connect();
+
+                // Fill post request with necessary JSON data
+                DataOutputStream os = new DataOutputStream(connection.getOutputStream());
+                os.writeBytes(x);
+
+                os.flush();
+                os.close();
 
                 //Create a new InputStreamReader
                 InputStreamReader streamReader = new

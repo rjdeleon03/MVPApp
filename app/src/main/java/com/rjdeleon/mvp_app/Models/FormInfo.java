@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Models;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
+
 public class FormInfo {
     private String orgName;
     private String assessmentDate;

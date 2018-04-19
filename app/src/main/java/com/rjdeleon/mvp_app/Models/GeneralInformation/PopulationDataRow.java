@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Models;
+package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
 public class PopulationDataRow {
     private PopulationData.AgeGroup ageGroup;

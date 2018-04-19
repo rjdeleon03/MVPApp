@@ -4,12 +4,18 @@ import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 import com.rjdeleon.mvp_app.Models.FormInfo;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PostNewDncaTask extends AsyncTask<String, Void, String> {
     public static final String REQUEST_METHOD = "POST";
@@ -18,7 +24,39 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        FormInfo formInfo = new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh");
+
+        List<PopulationDataRow> rows = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            PopulationData.AgeGroup ageGroup;
+            switch(i) {
+                case 0:
+                    ageGroup = PopulationData.AgeGroup.AGE_0_5;
+                    break;
+                case 1:
+                    ageGroup = PopulationData.AgeGroup.AGE_6_9;
+                    break;
+                case 2:
+                    ageGroup = PopulationData.AgeGroup.AGE_10_12;
+                    break;
+                case 3:
+                    ageGroup = PopulationData.AgeGroup.AGE_13_17;
+                    break;
+                case 4:
+                    ageGroup = PopulationData.AgeGroup.AGE_18_59;
+                    break;
+                default:
+                    ageGroup = PopulationData.AgeGroup.AGE_60_PLUS;
+                    break;
+            }
+            PopulationDataRow row = new PopulationDataRow(ageGroup,1,2,3,4,5,6);
+            rows.add(row);
+        }
+
+        PopulationData populationData = new PopulationData(rows);
+        CalamityDesc calamityDesc = new CalamityDesc("xxx", "yyy", "zzz");
+        GenInfo genInfo = new GenInfo(calamityDesc, "123", populationData);
+        FormInfo formInfo = new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", genInfo);
+
         Gson formJson = new Gson();
         String x = formJson.toJson(formInfo);
 

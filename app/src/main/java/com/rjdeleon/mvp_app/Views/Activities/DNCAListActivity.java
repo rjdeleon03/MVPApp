@@ -20,7 +20,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter = new DNCAListPresenter();
+        mPresenter = new DNCAListPresenter(this);
         setContentView(R.layout.dnca_list_activity);
 
         mAdapter = new DNCAListAdapter(mPresenter);
@@ -32,6 +32,12 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
 
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void refreshAdapter() {
+        mAdapter = new DNCAListAdapter(mPresenter);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

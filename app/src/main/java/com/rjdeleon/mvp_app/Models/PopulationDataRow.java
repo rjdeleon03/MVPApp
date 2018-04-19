@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Models;
 
 public class PopulationDataRow {
+    private PopulationData.AgeGroup ageGroup;
     private int totalMale;
     private int totalFemale;
     private int affectedMale;
@@ -8,13 +9,18 @@ public class PopulationDataRow {
     private int displacedMale;
     private int displacedFemale;
 
-    public PopulationDataRow(int totalMale, int totalFemale, int affectedMale, int affectedFemale, int displacedMale, int displacedFemale) {
+    public PopulationDataRow(PopulationData.AgeGroup ageGroup, int totalMale, int totalFemale, int affectedMale, int affectedFemale, int displacedMale, int displacedFemale) {
+        this.ageGroup = ageGroup;
         this.totalMale = totalMale;
         this.totalFemale = totalFemale;
         this.affectedMale = affectedMale;
         this.affectedFemale = affectedFemale;
         this.displacedMale = displacedMale;
         this.displacedFemale = displacedFemale;
+    }
+
+    public PopulationData.AgeGroup getAgeGroup() {
+        return ageGroup;
     }
 
     public int getTotalMale() {

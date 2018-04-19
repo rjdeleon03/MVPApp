@@ -4,8 +4,10 @@ import android.os.AsyncTask;
 import android.view.View;
 
 import com.google.gson.Gson;
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Contracts.HomeContract;
 import com.rjdeleon.mvp_app.Models.FormInfo;
+import com.rjdeleon.mvp_app.Tasks.PostNewDncaTask;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -15,79 +17,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class HomePresenter implements HomeContract.Presenter {
-
-    public class GetDncaTask extends AsyncTask<String, Void, String> {
-
-        public static final String REQUEST_METHOD = "POST";
-        public static final int READ_TIMEOUT = 15000;
-        public static final int CONNECTION_TIMEOUT = 15000;
-
-        @Override
-        protected String doInBackground(String... strings) {
-            FormInfo formInfo = new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh");
-            Gson formJson = new Gson();
-            String x  = formJson.toJson(formInfo);
-
-
-            mView.displayShortToast("Performing background task...");
-
-            String urlString = strings[0];
-            String result = new String();
-            String inputLine;
-
-            try {
-                // Create URL object
-                URL url = new URL(urlString);
-
-                //Create a connection
-                HttpURLConnection connection =(HttpURLConnection) url.openConnection();
-
-                //Set methods and timeouts
-                connection.setRequestMethod(REQUEST_METHOD);
-                connection.setReadTimeout(READ_TIMEOUT);
-                connection.setConnectTimeout(CONNECTION_TIMEOUT);
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestProperty("Accept","application/json");
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-
-                //Connect to our url
-//                connection.connect();
-
-                // Fill post request with necessary JSON data
-                DataOutputStream os = new DataOutputStream(connection.getOutputStream());
-                os.writeBytes(x);
-
-                os.flush();
-                os.close();
-
-                //Create a new InputStreamReader
-                InputStreamReader streamReader = new
-                        InputStreamReader(connection.getInputStream());
-
-                //Create a new buffered reader and String Builder
-                BufferedReader reader = new BufferedReader(streamReader);
-                StringBuilder stringBuilder = new StringBuilder();
-
-                //Check if the line we are reading is not null
-                while((inputLine = reader.readLine()) != null){
-                    stringBuilder.append(inputLine);
-                }
-
-                //Close our InputStream and Buffered reader
-                reader.close();
-                streamReader.close();
-
-                //Set our result equal to our stringBuilder
-                result = stringBuilder.toString();
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-
-            return result;
-        }
-    }
 
     private HomeContract.View mView;
 
@@ -103,8 +32,8 @@ public class HomePresenter implements HomeContract.Presenter {
     @Override
     public void handleTestApiClick(View view) {
 
-        // Access GET API at localhost:3000/dnca
-        GetDncaTask task = new GetDncaTask();
-        task.execute("http://10.0.2.2:3000/dnca");
+        // Submit new DNCA form using POST API at localhost:3000/dnca
+        PostNewDncaTask task = new PostNewDncaTask();
+        task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 }

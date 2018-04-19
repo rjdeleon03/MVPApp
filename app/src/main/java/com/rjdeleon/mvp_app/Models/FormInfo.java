@@ -9,11 +9,9 @@ public class FormInfo {
     private String province;
     private String interviewer;
     private String interviewerNo;
+    private GenInfo genInfo;
 
-    public FormInfo(String orgName, String assessmentDate, String sitio,
-                    String barangay, String city, String province,
-                    String interviewer, String interviewerNo) {
-
+    public FormInfo(String orgName, String assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo, GenInfo genInfo) {
         this.orgName = orgName;
         this.assessmentDate = assessmentDate;
         this.sitio = sitio;
@@ -22,6 +20,7 @@ public class FormInfo {
         this.province = province;
         this.interviewer = interviewer;
         this.interviewerNo = interviewerNo;
+        this.genInfo = genInfo;
     }
 
     public String getOrgName() {
@@ -54,5 +53,9 @@ public class FormInfo {
 
     public String getInterviewerNo() {
         return interviewerNo;
+    }
+
+    public GenInfo getGenInfo() {
+        return genInfo;
     }
 }

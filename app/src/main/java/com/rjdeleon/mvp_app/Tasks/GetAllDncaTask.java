@@ -9,9 +9,18 @@ import java.net.URL;
 
 public class GetAllDncaTask extends AsyncTask<String, Void, String> {
 
+    public interface GetAllDncaResult {
+        void resultsRetrieved(String result);
+    }
+
     public static final String REQUEST_METHOD = "GET";
     public static final int READ_TIMEOUT = 15000;
     public static final int CONNECTION_TIMEOUT = 15000;
+    private GetAllDncaResult mDelegate;
+
+    public GetAllDncaTask (GetAllDncaResult delegate) {
+        this.mDelegate = delegate;
+    };
 
     @Override
     protected String doInBackground(String... strings) {
@@ -57,5 +66,12 @@ public class GetAllDncaTask extends AsyncTask<String, Void, String> {
         }
 
         return result;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        if (mDelegate != null) {
+            mDelegate.resultsRetrieved(result);
+        }
     }
 }

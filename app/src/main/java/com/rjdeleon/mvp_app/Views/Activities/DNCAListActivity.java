@@ -36,8 +36,13 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.getAllDncaForms();
+    }
+
+    @Override
     public void refreshAdapter() {
-        mAdapter = new DNCAListAdapter(mPresenter);
-        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

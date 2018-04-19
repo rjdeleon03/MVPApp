@@ -9,32 +9,24 @@ import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Tasks.GetAllDncaTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DNCAListPresenter {
+public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
 
     private List<DNCAListItem> listItems;
     private DNCAListContract.View mView;
 
     public DNCAListPresenter(DNCAListContract.View view) {
-
+        this.listItems = new ArrayList<>();
         this.mView = view;
+    }
+
+    public void getAllDncaForms() {
 
         // Obtain DNCA list
-        GetAllDncaTask getAllDncaTask = new GetAllDncaTask();
-        try {
-            String ret = getAllDncaTask.execute(AppConstants.URL + AppConstants.ROUTE_DNCA).get();
-
-            // Deserialize JSON here
-            Gson gson = new Gson();
-            listItems = gson.fromJson(ret, new TypeToken<List<DNCAListItem>>(){}.getType());
-
-            // Refresh adapter
-            this.mView.refreshAdapter();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        GetAllDncaTask getAllDncaTask = new GetAllDncaTask(this);
+        getAllDncaTask.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 
     public void onBindItemViewAtPosition(DNCAListItemContract.View itemView, int position) {
@@ -46,5 +38,20 @@ public class DNCAListPresenter {
 
     public int getItemsCount() {
         return listItems.size();
+    }
+
+    @Override
+    public void resultsRetrieved(String result) {
+        if (result.isEmpty()) {
+            listItems = new ArrayList<>();
+            return;
+        }
+
+        // Deserialize JSON here
+        Gson gson = new Gson();
+        listItems = gson.fromJson(result, new TypeToken<List<DNCAListItem>>(){}.getType());
+
+        // Refresh adapter
+        this.mView.refreshAdapter();
     }
 }

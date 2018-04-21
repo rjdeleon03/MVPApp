@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 import com.rjdeleon.mvp_app.Models.FormInfo;
+import com.rjdeleon.mvp_app.Models.GenderTuple;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
@@ -48,13 +49,16 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
                     ageGroup = PopulationData.AgeGroup.AGE_60_PLUS;
                     break;
             }
-            PopulationDataRow row = new PopulationDataRow(ageGroup,1,2,3,4,5,6);
+            PopulationDataRow row = new PopulationDataRow(ageGroup,
+                    new GenderTuple(1,2),
+                    new GenderTuple(3,4),
+                    new GenderTuple(5,6));
             rows.add(row);
         }
 
         PopulationData populationData = new PopulationData(rows);
         CalamityDesc calamityDesc = new CalamityDesc("xxx", "yyy", "zzz");
-        GenInfo genInfo = new GenInfo(calamityDesc, "123", populationData);
+        GenInfo genInfo = new GenInfo(calamityDesc);
         FormInfo formInfo = new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", genInfo);
 
         Gson formJson = new Gson();

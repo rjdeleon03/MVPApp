@@ -1,49 +1,33 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
+import com.rjdeleon.mvp_app.Models.GenderTuple;
+
 public class PopulationDataRow {
     private PopulationData.AgeGroup ageGroup;
-    private int totalMale;
-    private int totalFemale;
-    private int affectedMale;
-    private int affectedFemale;
-    private int displacedMale;
-    private int displacedFemale;
+    private GenderTuple total;
+    private GenderTuple affected;
+    private GenderTuple displaced;
 
-    public PopulationDataRow(PopulationData.AgeGroup ageGroup, int totalMale, int totalFemale, int affectedMale, int affectedFemale, int displacedMale, int displacedFemale) {
+    public PopulationDataRow(PopulationData.AgeGroup ageGroup, GenderTuple total, GenderTuple affected, GenderTuple displaced) {
         this.ageGroup = ageGroup;
-        this.totalMale = totalMale;
-        this.totalFemale = totalFemale;
-        this.affectedMale = affectedMale;
-        this.affectedFemale = affectedFemale;
-        this.displacedMale = displacedMale;
-        this.displacedFemale = displacedFemale;
+        this.total = total;
+        this.affected = affected;
+        this.displaced = displaced;
     }
 
     public PopulationData.AgeGroup getAgeGroup() {
         return ageGroup;
     }
 
-    public int getTotalMale() {
-        return totalMale;
+    public GenderTuple getTotal() {
+        return total;
     }
 
-    public int getTotalFemale() {
-        return totalFemale;
+    public GenderTuple getAffected() {
+        return affected;
     }
 
-    public int getAffectedMale() {
-        return affectedMale;
-    }
-
-    public int getAffectedFemale() {
-        return affectedFemale;
-    }
-
-    public int getDisplacedMale() {
-        return displacedMale;
-    }
-
-    public int getDisplacedFemale() {
-        return displacedFemale;
+    public GenderTuple getDisplaced() {
+        return displaced;
     }
 }

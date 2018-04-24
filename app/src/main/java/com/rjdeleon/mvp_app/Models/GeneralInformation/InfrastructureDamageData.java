@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
+import java.util.List;
+
 public class InfrastructureDamageData {
     public enum InfraType {
         SCHOOL,
@@ -18,5 +20,15 @@ public class InfrastructureDamageData {
         COMMUNICATION_LINES,
         LIVELIHOOD_FACILITIES,
         OTHERS
+    }
+
+    private List<InfrastructureDamageDataRow> infrastructureDamageDataRows;
+
+    public InfrastructureDamageData(List<InfrastructureDamageDataRow> infrastructureDamageDataRows) {
+        this.infrastructureDamageDataRows = infrastructureDamageDataRows;
+    }
+
+    public List<InfrastructureDamageDataRow> getInfrastructureDamageDataRows() {
+        return infrastructureDamageDataRows;
     }
 }

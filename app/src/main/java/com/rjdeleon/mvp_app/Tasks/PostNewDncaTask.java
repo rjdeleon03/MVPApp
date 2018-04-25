@@ -99,7 +99,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         List<DeathCauseDataRow> dcdRows = new ArrayList<>();
         List<InfrastructureDamageDataRow> iddRows = new ArrayList<>();
 
-        for (int i = 0; i < PopulationData.AgeGroup.values().length; i++) {
+        for (int i = 0; i < PopulationData.AgeGroup.values().length - 1; i++) {
             PopulationData.AgeGroup ageGroup = PopulationData.AgeGroup.values()[i];
             PopulationDataRow row = new PopulationDataRow(ageGroup,
                     new GenderTuple(1,2),

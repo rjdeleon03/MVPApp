@@ -33,28 +33,19 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/imageButton5"
-                android:layout_width="30dp"
-                android:layout_height="36dp"
-                android:layout_margin="8dp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton7"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/i_home"/>
-
-            <ImageButton
                 android:id="@+id/imageButton7"
                 android:layout_width="30dp"
                 android:layout_height="36dp"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton9"
-                app:layout_constraintStart_toEndOf="@+id/imageButton5"
+                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/i_list"/>
 
@@ -63,26 +54,35 @@
                 android:layout_width="30dp"
                 android:layout_height="36dp"
                 android:layout_margin="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageButton9"
+                app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19999999"
                 app:srcCompat="@drawable/i_settings"/>
 
-            <ImageButton
-                android:id="@+id/imageButton9"
-                android:layout_width="30dp"
-                android:layout_height="36dp"
-                android:layout_margin="8dp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginStart="32dp"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:typeface="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton8"
                 app:layout_constraintStart_toEndOf="@+id/imageButton7"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/i_user"/>
+                app:layout_constraintTop_toTopOf="parent"/>
+
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.Toolbar>

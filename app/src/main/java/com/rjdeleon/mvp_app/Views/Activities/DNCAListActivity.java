@@ -33,6 +33,9 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
 
         mRecyclerView.setAdapter(mAdapter);
+
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.custom_nav_toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override

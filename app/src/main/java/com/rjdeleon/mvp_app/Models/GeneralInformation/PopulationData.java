@@ -23,6 +23,7 @@ public class PopulationData {
         GenderTuple total = new GenderTuple();
         GenderTuple affected = new GenderTuple();
         GenderTuple displaced = new GenderTuple();
+
         for(PopulationDataRow row : populationDataRows) {
             total.male += row.getTotal().male;
             total.female += row.getTotal().female;

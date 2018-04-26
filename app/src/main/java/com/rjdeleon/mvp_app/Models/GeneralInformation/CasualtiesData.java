@@ -19,8 +19,8 @@ public class CasualtiesData {
             dead.female += row.getDead().female;
             missing.male += row.getMissing().male;
             missing.female += row.getMissing().female;
-            injured.male += row.getMissing().male;
-            injured.female += row.getMissing().female;
+            injured.male += row.getInjured().male;
+            injured.female += row.getInjured().female;
         }
         this.casualtiesDataRows.add(new CasualtiesDataRow(PopulationData.AgeGroup.ALL, dead, missing, injured));
     }

@@ -43,9 +43,8 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
 
     public void onBindItemViewAtPosition(DNCAListItemContract.View itemView, int position) {
         DNCAListItem listItem = listItems.get(position);
-        FormInfo info = listItem.getFormInfo();
-        itemView.setHead(info.getSitio());
-        itemView.setDesc(info.getBarangay() + ", " + info.getCity());
+        itemView.setHead(listItem.getSitio());
+        itemView.setDesc(listItem.getBarangay() + ", " + listItem.getCity());
 
         DNCAListItemPresenter dncaListPresenter = new DNCAListItemPresenter(itemView, listItem.getId());
         itemView.bind(dncaListPresenter);

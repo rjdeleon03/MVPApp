@@ -3,18 +3,42 @@ package com.rjdeleon.mvp_app.Models;
 public class DNCAListItem {
 
     private int id;
-    private FormInfo info;
+    private String sitio;
+    private String barangay;
+    private String city;
+    private String province;
+    private String assessment;
 
-    public DNCAListItem(int id, FormInfo info) {
+    public DNCAListItem(int id, String sitio, String barangay, String city, String province, String assessment) {
         this.id = id;
-        this.info = info;
+        this.sitio = sitio;
+        this.barangay = barangay;
+        this.city = city;
+        this.province = province;
+        this.assessment = assessment;
     }
 
     public int getId() {
         return id;
     }
 
-    public FormInfo getFormInfo() {
-        return info;
+    public String getSitio() {
+        return sitio;
+    }
+
+    public String getBarangay() {
+        return barangay;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public String getAssessment() {
+        return assessment;
     }
 }

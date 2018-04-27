@@ -18,6 +18,7 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
 
     private List<DNCAListItem> listItems;
     private DNCAListContract.View mView;
+    private GetAllDncaTask getAllDncaTask;
 
     public DNCAListPresenter(DNCAListContract.View view) {
         this.listItems = new ArrayList<>();
@@ -26,6 +27,9 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
 
     public void handleBackButtonClick(View view) {
         // Cancel all async tasks except download
+        if (getAllDncaTask != null) {
+            getAllDncaTask.cancel(true);
+        }
 
         mView.onBackButtonClick();
     }
@@ -33,7 +37,7 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
     public void getAllDncaForms() {
 
         // Obtain DNCA list
-        GetAllDncaTask getAllDncaTask = new GetAllDncaTask(this);
+        getAllDncaTask = new GetAllDncaTask(this);
         getAllDncaTask.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 

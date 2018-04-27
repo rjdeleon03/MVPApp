@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -52,11 +53,15 @@ public class GetAllDncaTask extends AsyncTask<String, Void, String> {
             //Check if the line we are reading is not null
             while ((inputLine = reader.readLine()) != null) {
                 stringBuilder.append(inputLine);
+
+                if (isCancelled()) return result;
             }
 
             //Close our InputStream and Buffered reader
             reader.close();
             streamReader.close();
+
+            if (isCancelled()) return result;
 
             //Set our result equal to our stringBuilder
             result = stringBuilder.toString();

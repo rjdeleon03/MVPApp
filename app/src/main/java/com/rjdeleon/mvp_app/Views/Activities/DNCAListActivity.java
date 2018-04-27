@@ -42,6 +42,12 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
     public void refreshAdapter() {
         mAdapter.notifyDataSetChanged();
     }

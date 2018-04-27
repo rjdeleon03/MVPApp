@@ -34,6 +34,9 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
         FormInfo info = listItem.getFormInfo();
         itemView.setHead(info.getSitio());
         itemView.setDesc(info.getBarangay() + ", " + info.getCity());
+
+        DNCAListItemPresenter dncaListPresenter = new DNCAListItemPresenter(itemView, listItem.getId());
+        itemView.bind(dncaListPresenter);
     }
 
     public int getItemsCount() {
@@ -44,6 +47,7 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
     public void resultsRetrieved(String result) {
         if (result.isEmpty()) {
             listItems = new ArrayList<>();
+            mView.displayShortToast("No DNCA form was found.");
             return;
         }
 

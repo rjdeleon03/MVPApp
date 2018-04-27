@@ -1,10 +1,12 @@
 package com.rjdeleon.mvp_app.Views.Activities;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Contracts.DNCAListContract;
 import com.rjdeleon.mvp_app.Presenters.DNCAListPresenter;
@@ -42,7 +44,25 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
     public void refreshAdapter() {
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void displayShortToast(String message) {
+        final String fMessage = message;
+        final Context fContext = this;
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(fContext, fMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

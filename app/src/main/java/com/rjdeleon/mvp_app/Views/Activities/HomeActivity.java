@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Contracts.HomeContract;
@@ -24,6 +25,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         this.mPresenter = new HomePresenter(this);
         HomeActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.home_activity);
         binding.setPresenter(this.mPresenter);
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.custom_nav_toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -32,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         Intent dncaFormIntent = new Intent(this, DNCAListActivity.class);
         startActivity(dncaFormIntent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     @Override

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MVP_App</string>
+    <string name="app_name">QuikData</string>
     <string name="title_activity_dncalist">DNCAListActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->

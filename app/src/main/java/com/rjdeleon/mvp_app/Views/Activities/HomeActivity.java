@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
         Intent dncaFormIntent = new Intent(this, DNCAListActivity.class);
         startActivity(dncaFormIntent);
-        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     @Override

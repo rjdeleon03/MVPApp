@@ -44,6 +44,7 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
     public void resultsRetrieved(String result) {
         if (result.isEmpty()) {
             listItems = new ArrayList<>();
+            mView.displayShortToast("No DNCA form was found.");
             return;
         }
 

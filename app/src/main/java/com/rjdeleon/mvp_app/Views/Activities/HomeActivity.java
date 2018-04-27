@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         HomeActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.home_activity);
         binding.setPresenter(this.mPresenter);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.custom_nav_toolbar);
+        Toolbar toolbar = findViewById(R.id.custom_nav_toolbar);
         setSupportActionBar(toolbar);
     }
 

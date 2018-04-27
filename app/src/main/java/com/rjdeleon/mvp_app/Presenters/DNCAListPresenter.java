@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Presenters;
 
+import android.view.View;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rjdeleon.mvp_app.AppConstants;
@@ -20,6 +22,12 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
     public DNCAListPresenter(DNCAListContract.View view) {
         this.listItems = new ArrayList<>();
         this.mView = view;
+    }
+
+    public void handleBackButtonClick(View view) {
+        // Cancel all async tasks except download
+
+        mView.onBackButtonClick();
     }
 
     public void getAllDncaForms() {

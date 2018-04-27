@@ -1,16 +1,20 @@
 package com.rjdeleon.mvp_app.Views.Activities;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Contracts.DNCAListContract;
 import com.rjdeleon.mvp_app.Presenters.DNCAListPresenter;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.DncaListActivityBinding;
 
 public class DNCAListActivity extends AppCompatActivity implements DNCAListContract.View {
 
@@ -23,13 +27,22 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = new DNCAListPresenter(this);
-        setContentView(R.layout.dnca_list_activity);
+        DncaListActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.dnca_list_activity);
+//        binding.
+        binding.setPresenter(this.mPresenter);
 
+
+        Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_list);
+        setSupportActionBar(toolbar);
+
+        // Initialize adapter
         mAdapter = new DNCAListAdapter(mPresenter);
 
+        // Initialize RecyclerView
         mRecyclerView = findViewById(R.id.dncaList);
         mRecyclerView.setHasFixedSize(true);
 
+        // Add horizontal dividers in Recycler view
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
@@ -47,6 +60,11 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
+    public void onBackButtonClick() {
+        onBackPressed();
     }
 
     @Override

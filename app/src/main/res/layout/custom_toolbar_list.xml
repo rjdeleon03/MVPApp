@@ -3,6 +3,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="presenter"
+            type="com.rjdeleon.mvp_app.Presenters.DNCAListPresenter" />
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,7 +41,6 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="left|center_vertical"
                     android:layout_margin="0dp"
-                    android:layout_marginStart="8dp"
                     android:background="@android:color/transparent"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
@@ -74,6 +79,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:scaleType="fitCenter"
+                    android:onClick="@{presenter::handleBackButtonClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

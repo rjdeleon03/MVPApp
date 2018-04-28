@@ -2,12 +2,13 @@ package com.rjdeleon.mvp_app.Contracts;
 
 import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
-public interface NewFormContract {
+public interface FragmentNavigationContract {
     interface View {
-        void onSwitchToFragment(BaseFragment fragment);
+        void attachPresenter(Presenter presenter);
+
     }
 
     interface Presenter {
-
+        void switchToFragment(BaseFragment fragment);
     }
 }

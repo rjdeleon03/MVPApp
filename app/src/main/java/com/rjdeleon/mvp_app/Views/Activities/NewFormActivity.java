@@ -1,22 +1,19 @@
 package com.rjdeleon.mvp_app.Views.Activities;
 
-import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Presenters.NewFormDetailsPresenter;
 import com.rjdeleon.mvp_app.Presenters.NewFormPresenter;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 import com.rjdeleon.mvp_app.Views.Fragments.NewFormDetailsFragment;
 import com.rjdeleon.mvp_app.Views.Fragments.NewFormMenuFragment;
-import com.rjdeleon.mvp_app.databinding.NewFormMenuFragmentBinding;
 
-public class NewFormActivity extends AppCompatActivity {
+public class NewFormActivity extends AppCompatActivity implements NewFormContract.View {
 
+    NewFormPresenter mPresenter;
     NewFormMenuFragment mMenuFragment;
 
     NewFormDetailsPresenter mDetailsPresenter;
@@ -30,6 +27,8 @@ public class NewFormActivity extends AppCompatActivity {
         setContentView(R.layout.new_form_activity);
 
         this.mMenuFragment = new NewFormMenuFragment();
+        this.mPresenter = new NewFormPresenter(this);
+        mMenuFragment.attachPresenter(mPresenter);
 
         if(findViewById(R.id.new_form_fragment_container) != null) {
             getSupportFragmentManager().beginTransaction().add(R.id.new_form_fragment_container, mMenuFragment).commit();
@@ -40,5 +39,14 @@ public class NewFormActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onSwitchToFragment(BaseFragment fragment) {
+
+        if(findViewById(R.id.new_form_fragment_container) != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.new_form_fragment_container, fragment).commit();
+        }
+
     }
 }

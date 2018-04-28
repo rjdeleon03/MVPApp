@@ -9,7 +9,7 @@
 
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormPresenter" />
+            type="com.rjdeleon.mvp_app.Presenters.NewFormMenuPresenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="General Information"
-            android:onClick="@{presenter::handleNewFormDetailsButtonClick}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Basic Information"
+            android:onClick="@{presenter::handleNewFormDetailsButtonClick}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

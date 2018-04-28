@@ -1,19 +1,19 @@
 package com.rjdeleon.mvp_app.Presenters;
 
-import android.view.View;
-
+import com.rjdeleon.mvp_app.Contracts.FragmentNavigationContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
+import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
-public class NewFormPresenter implements NewFormContract.Presenter {
+public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavigationContract.Presenter {
 
-    NewFormContract.View mView;
+    private NewFormContract.View mView;
 
     public NewFormPresenter(NewFormContract.View view) {
-        this.mView = view;
+        mView = view;
     }
 
     @Override
-    public void handleNewFormDetailsButtonClick(View view) {
-        this.mView.onShowNewFormDetails(view);
+    public void switchToFragment(BaseFragment fragment) {
+        mView.onSwitchToFragment(fragment);
     }
 }

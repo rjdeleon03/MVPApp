@@ -19,8 +19,8 @@ public class DNCAListItemViewHolder extends RecyclerView.ViewHolder implements D
 
     public DNCAListItemViewHolder(DncaListItemBinding binding) {
         super(binding.getRoot());
-        this.textViewHead = itemView.findViewById(R.id.textViewHead);
-        this.textViewDesc = itemView.findViewById(R.id.textViewDesc);
+        this.textViewHead = itemView.findViewById(R.id.dnca_item_head);
+        this.textViewDesc = itemView.findViewById(R.id.dnca_item_desc);
         this.binding = binding;
     }
 

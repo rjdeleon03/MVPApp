@@ -39,7 +39,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
         mAdapter = new DNCAListAdapter(mPresenter);
 
         // Initialize RecyclerView
-        mRecyclerView = findViewById(R.id.dncaList);
+        mRecyclerView = findViewById(R.id.dnca_list_view);
         mRecyclerView.setHasFixedSize(true);
 
         // Add horizontal dividers in Recycler view
@@ -60,11 +60,19 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        finish();
     }
 
     @Override
     public void onBackButtonClick() {
         onBackPressed();
+    }
+
+    @Override
+    public void onNewFormButtonClick() {
+        // Start New Form Activity
+        Intent newFormIntent = new Intent(this, NewFormActivity.class);
+        startActivity(newFormIntent);
     }
 
     @Override

@@ -31,7 +31,12 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
             getAllDncaTask.cancel(true);
         }
 
+        // Update view
         mView.onBackButtonClick();
+    }
+
+    public void handleNewFormButtonClick(View view) {
+        mView.onNewFormButtonClick();
     }
 
     public void getAllDncaForms() {

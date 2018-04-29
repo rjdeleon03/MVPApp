@@ -9,28 +9,9 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormDetailsContract;
-import com.rjdeleon.mvp_app.Models.FormInfo;
-import com.rjdeleon.mvp_app.Models.GenderTuple;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Presenters.NewFormDetailsPresenter;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.NewFormDetailsFragmentBinding;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 public class NewFormDetailsFragment extends BaseFragment implements NewFormDetailsContract.View {
 
@@ -63,13 +44,10 @@ public class NewFormDetailsFragment extends BaseFragment implements NewFormDetai
     }
 
     @Override
-    public void onSetDateButtonClick(View view) {
-        Calendar calendar = Calendar.getInstance();
+    public void onSetDateButtonClick(View view, int year, int month, int day) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                 mPresenter.getDatePickerListener(),
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH));
+                year, month, day);
         datePickerDialog.show();
     }
 }

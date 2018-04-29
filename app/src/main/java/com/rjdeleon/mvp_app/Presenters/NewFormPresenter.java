@@ -14,14 +14,7 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
 
     public NewFormPresenter(NewFormContract.View view) {
         mView = view;
-        mFormInfo = new FormInfo("orgName",
-                "2018/04/29",
-                "sitio",
-                "barangay",
-                "city",
-                "province",
-                "interviewer",
-                "interviewerNo");
+        mFormInfo = new FormInfo();
     }
 
     @Override

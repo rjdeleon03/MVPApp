@@ -8,6 +8,7 @@ import android.widget.DatePicker;
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormDetailsContract;
 import com.rjdeleon.mvp_app.Models.FormInfo;
+import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 
 public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter {
 
@@ -42,7 +43,7 @@ public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter
 
         mFormInfo = mParentPresenter.getFormInfo();
         orgName.set(mFormInfo.getOrgName());
-        assessmentDate.set(mFormInfo.getAssessmentDate());
+        assessmentDate.set(mFormInfo.getAssessmentDate().toString());
         sitio.set(mFormInfo.getSitio());
         barangay.set(mFormInfo.getBarangay());
         city.set(mFormInfo.getCity());
@@ -54,7 +55,7 @@ public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter
     @Override
     public void handleSaveButtonClick(View view) {
         mFormInfo.setOrgName(orgName.get());
-        mFormInfo.setAssessmentDate(assessmentDate.get());
+        mFormInfo.getAssessmentDate().setFromString(assessmentDate.get());
         mFormInfo.setSitio(sitio.get());
         mFormInfo.setBarangay(barangay.get());
         mFormInfo.setCity(city.get());
@@ -68,14 +69,18 @@ public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter
 
     @Override
     public void handleSetDateButtonClick(View view) {
-        mView.onSetDateButtonClick(view);
+        SimpleDate formDate = mFormInfo.getAssessmentDate();
+        mView.onSetDateButtonClick(view, formDate.getYear(), formDate.getMonth(), formDate.getDayOfMonth());
     }
 
     @Override
     public void handleDatePickerOkButtonClick(View view, int year, int month, int day) {
+        mFormInfo.getAssessmentDate().setYear(year);
+        mFormInfo.getAssessmentDate().setMonth(month);
+        mFormInfo.getAssessmentDate().setDayOfMonth(day);
+
         // Month int starts at 0, so we add 1
         String selectedDate = year + "/" + (month+1) + "/" + day;
-        mFormInfo.setAssessmentDate(selectedDate);
         assessmentDate.set(selectedDate);
     }
 

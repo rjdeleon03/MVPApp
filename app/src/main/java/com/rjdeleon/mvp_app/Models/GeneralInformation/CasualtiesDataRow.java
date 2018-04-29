@@ -1,6 +1,6 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
-import com.rjdeleon.mvp_app.Models.GenderTuple;
+import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
 public class CasualtiesDataRow {
     private PopulationData.AgeGroup ageGroup;

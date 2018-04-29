@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Models;
+package com.rjdeleon.mvp_app.Models.Generics;
 
 public class GenderTuple {
     public int male;

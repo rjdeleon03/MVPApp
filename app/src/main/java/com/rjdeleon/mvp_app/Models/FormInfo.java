@@ -1,13 +1,12 @@
 package com.rjdeleon.mvp_app.Models;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
+import java.util.Calendar;
 
 public class FormInfo {
     private String orgName;
-    private String assessmentDate;
+    private SimpleDate assessmentDate;
     private String sitio;
     private String barangay;
     private String city;
@@ -15,7 +14,7 @@ public class FormInfo {
     private String interviewer;
     private String interviewerNo;
 
-    public FormInfo(String orgName, String assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo) {
+    public FormInfo(String orgName, SimpleDate assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo) {
         this.orgName = orgName;
         this.assessmentDate = assessmentDate;
         this.sitio = sitio;
@@ -26,6 +25,20 @@ public class FormInfo {
         this.interviewerNo = interviewerNo;
     }
 
+    public FormInfo() {
+        this.orgName = "";
+        this.sitio = "";
+        this.barangay = "";
+        this.city = "";
+        this.province = "";
+        this.interviewer = "";
+        this.interviewerNo = "";
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDate current = new SimpleDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        this.assessmentDate = current;
+    }
+
     public String getOrgName() {
         return orgName;
     }
@@ -34,11 +47,11 @@ public class FormInfo {
         this.orgName = orgName;
     }
 
-    public String getAssessmentDate() {
+    public SimpleDate getAssessmentDate() {
         return assessmentDate;
     }
 
-    public void setAssessmentDate(String assessmentDate) {
+    public void setAssessmentDate(SimpleDate assessmentDate) {
         this.assessmentDate = assessmentDate;
     }
 

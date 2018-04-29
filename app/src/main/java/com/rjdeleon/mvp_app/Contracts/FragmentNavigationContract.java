@@ -10,5 +10,7 @@ public interface FragmentNavigationContract {
 
     interface Presenter {
         void switchToFragment(BaseFragment fragment);
+
+        void closeFragment(BaseFragment fragment);
     }
 }

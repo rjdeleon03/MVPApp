@@ -6,6 +6,8 @@ public interface NewFormContract {
     interface View {
         void onSwitchToFragment(BaseFragment fragment);
 
+        void onCloseFragment(BaseFragment fragment);
+
         void onBackButtonClicked(android.view.View view);
     }
 

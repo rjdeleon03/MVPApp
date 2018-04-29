@@ -5,10 +5,12 @@
     tools:context=".Views.Fragments.NewFormDetailsFragment">
 
     <data>
-
         <variable
             name="formInfo"
             type="com.rjdeleon.mvp_app.Models.FormInfo" />
+        <variable
+            name="presenter"
+            type="com.rjdeleon.mvp_app.Presenters.NewFormDetailsPresenter" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -106,7 +108,8 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="@={formInfo.assessmentDate}"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            tools:text="2018/04/29" />
 
                         <Button
                             android:id="@+id/nf_details_date_button"
@@ -277,7 +280,8 @@
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_check"
             app:backgroundTint="@android:color/holo_green_light"
-            app:elevation="0dp" />
+            app:elevation="0dp"
+            android:onClick="@{presenter::handleSaveButtonClick}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

@@ -42,6 +42,8 @@ public class NewFormMenuFragment extends BaseFragment implements NewFormMenuCont
 
     @Override
     public void onShowNewFormDetails(View view) {
-        navigationPresenter.switchToFragment(new NewFormDetailsFragment());
+        NewFormDetailsFragment formDetailsFragment = new NewFormDetailsFragment();
+        formDetailsFragment.attachPresenter(navigationPresenter);
+        navigationPresenter.switchToFragment(formDetailsFragment);
     }
 }

@@ -20,6 +20,11 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
     }
 
     @Override
+    public void closeFragment(BaseFragment fragment) {
+        mView.onCloseFragment(fragment);
+    }
+
+    @Override
     public void handleBackButtonClick(View view) {
         mView.onBackButtonClicked(view);
     }

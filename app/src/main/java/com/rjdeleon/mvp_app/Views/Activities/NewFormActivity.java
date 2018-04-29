@@ -40,10 +40,7 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
             // If back stack is not empty, go back to previous frame
-            getSupportFragmentManager().popBackStack();
-
-            // Hide keyboard
-            AppUtil.hideSoftKeyboard(this);
+            closeFragment();
 
         } else {
             // Else, revert to previous activity
@@ -62,7 +59,22 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
     }
 
     @Override
+    public void onCloseFragment(BaseFragment fragment) {
+        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        closeFragment();
+    }
+
+    @Override
     public void onBackButtonClicked(View view) {
         onBackPressed();
+    }
+
+    private void closeFragment() {
+
+        // Pop topmost fragment from stackcloseFragment
+        getSupportFragmentManager().popBackStackImmediate();
+
+        // Hide keyboard
+        AppUtil.hideSoftKeyboard(this);
     }
 }

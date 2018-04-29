@@ -4,14 +4,24 @@ import android.view.View;
 
 import com.rjdeleon.mvp_app.Contracts.FragmentNavigationContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
+import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
 public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavigationContract.Presenter {
 
     private NewFormContract.View mView;
+    private FormInfo mFormInfo;
 
     public NewFormPresenter(NewFormContract.View view) {
         mView = view;
+        mFormInfo = new FormInfo("orgName",
+                "2018/04/29",
+                "sitio",
+                "barangay",
+                "city",
+                "province",
+                "interviewer",
+                "interviewerNo");
     }
 
     @Override
@@ -27,5 +37,15 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
     @Override
     public void handleBackButtonClick(View view) {
         mView.onBackButtonClicked(view);
+    }
+
+    @Override
+    public FormInfo getFormInfo() {
+        return mFormInfo;
+    }
+
+    @Override
+    public void setFormInfo(FormInfo formInfo) {
+        this.mFormInfo = formInfo;
     }
 }

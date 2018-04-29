@@ -6,9 +6,6 @@
 
     <data>
         <variable
-            name="formInfo"
-            type="com.rjdeleon.mvp_app.Models.FormInfo" />
-        <variable
             name="presenter"
             type="com.rjdeleon.mvp_app.Presenters.NewFormDetailsPresenter" />
     </data>
@@ -67,7 +64,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:hint="Organization Name"
                         android:inputType="text"
-                        android:text="@={formInfo.orgName}"/>
+                        android:text="@={presenter.orgName}"/>
 
                     <!--Assessment Date-->
                     <TextView
@@ -107,7 +104,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="@={formInfo.assessmentDate}"
+                            android:text="@={presenter.assessmentDate}"
                             android:textSize="20sp"
                             tools:text="2018/04/29" />
 
@@ -162,7 +159,7 @@
                                 android:fontFamily="@font/lato_reg"
                                 android:hint="Sitio/ Purok/ Zone"
                                 android:inputType="text"
-                                android:text="@={formInfo.sitio}" />
+                                android:text="@={presenter.sitio}" />
 
                             <EditText
                                 android:id="@+id/nf_details_barangay"
@@ -174,7 +171,7 @@
                                 android:fontFamily="@font/lato_reg"
                                 android:hint="Barangay"
                                 android:inputType="text"
-                                android:text="@={formInfo.barangay}" />
+                                android:text="@={presenter.barangay}" />
 
                             <EditText
                                 android:id="@+id/nf_details_city"
@@ -186,7 +183,7 @@
                                 android:fontFamily="@font/lato_reg"
                                 android:hint="Municipality/ City"
                                 android:inputType="text"
-                                android:text="@={formInfo.city}" />
+                                android:text="@={presenter.city}" />
 
                             <EditText
                                 android:id="@+id/nf_details_province"
@@ -198,7 +195,7 @@
                                 android:fontFamily="@font/lato_reg"
                                 android:hint="Province"
                                 android:inputType="text"
-                                android:text="@={formInfo.province}" />
+                                android:text="@={presenter.province}" />
 
                         </LinearLayout>
 
@@ -248,7 +245,7 @@
                                 android:fontFamily="@font/lato_reg"
                                 android:hint="Name"
                                 android:inputType="text"
-                                android:text="@={formInfo.interviewer}"/>
+                                android:text="@={presenter.interviewer}"/>
 
                             <EditText
                                 android:id="@+id/nf_details_interviewer_phone"
@@ -260,7 +257,7 @@
                                 android:fontFamily="@font/lato_reg"
                                 android:hint="Contact Number"
                                 android:inputType="phone"
-                                android:text="@={formInfo.interviewerNo}" />
+                                android:text="@={presenter.interviewerNo}" />
 
                         </LinearLayout>
 

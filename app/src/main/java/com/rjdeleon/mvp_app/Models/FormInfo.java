@@ -5,7 +5,7 @@ import android.databinding.Bindable;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 
-public class FormInfo extends BaseObservable {
+public class FormInfo {
     private String orgName;
     private String assessmentDate;
     private String sitio;
@@ -26,18 +26,6 @@ public class FormInfo extends BaseObservable {
         this.interviewerNo = interviewerNo;
     }
 
-    public FormInfo() {
-        this.orgName = "";
-        this.assessmentDate = "";
-        this.sitio = "";
-        this.barangay = "";
-        this.city = "";
-        this.province = "";
-        this.interviewer = "";
-        this.interviewerNo = "";
-    }
-
-    @Bindable
     public String getOrgName() {
         return orgName;
     }
@@ -46,7 +34,6 @@ public class FormInfo extends BaseObservable {
         this.orgName = orgName;
     }
 
-    @Bindable
     public String getAssessmentDate() {
         return assessmentDate;
     }
@@ -55,7 +42,6 @@ public class FormInfo extends BaseObservable {
         this.assessmentDate = assessmentDate;
     }
 
-    @Bindable
     public String getSitio() {
         return sitio;
     }
@@ -64,7 +50,6 @@ public class FormInfo extends BaseObservable {
         this.sitio = sitio;
     }
 
-    @Bindable
     public String getBarangay() {
         return barangay;
     }
@@ -73,7 +58,6 @@ public class FormInfo extends BaseObservable {
         this.barangay = barangay;
     }
 
-    @Bindable
     public String getCity() {
         return city;
     }
@@ -82,7 +66,6 @@ public class FormInfo extends BaseObservable {
         this.city = city;
     }
 
-    @Bindable
     public String getProvince() {
         return province;
     }
@@ -91,7 +74,6 @@ public class FormInfo extends BaseObservable {
         this.province = province;
     }
 
-    @Bindable
     public String getInterviewer() {
         return interviewer;
     }
@@ -100,7 +82,6 @@ public class FormInfo extends BaseObservable {
         this.interviewer = interviewer;
     }
 
-    @Bindable
     public String getInterviewerNo() {
         return interviewerNo;
     }

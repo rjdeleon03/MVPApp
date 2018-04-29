@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormDetailsContract;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GenderTuple;
@@ -31,7 +32,6 @@ import java.util.List;
 
 public class NewFormDetailsFragment extends BaseFragment implements NewFormDetailsContract.View {
 
-    private FormInfo mFormInfo;
     private NewFormDetailsPresenter mPresenter;
 
     public NewFormDetailsFragment() {
@@ -47,9 +47,8 @@ public class NewFormDetailsFragment extends BaseFragment implements NewFormDetai
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mPresenter = new NewFormDetailsPresenter(this);
+        mPresenter = new NewFormDetailsPresenter(this, (NewFormContract.Presenter)navigationPresenter);
         NewFormDetailsFragmentBinding binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.new_form_details_fragment, container, false);
-//        binding.setFormInfo(mFormInfo);
         binding.setPresenter(mPresenter);
 
         // Inflate the layout for this fragment

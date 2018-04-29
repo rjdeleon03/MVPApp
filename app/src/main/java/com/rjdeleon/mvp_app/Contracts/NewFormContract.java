@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Contracts;
 
+import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
 public interface NewFormContract {
@@ -13,5 +14,9 @@ public interface NewFormContract {
 
     interface Presenter {
         void handleBackButtonClick(android.view.View view);
+
+        FormInfo getFormInfo();
+
+        void setFormInfo(FormInfo formInfo);
     }
 }

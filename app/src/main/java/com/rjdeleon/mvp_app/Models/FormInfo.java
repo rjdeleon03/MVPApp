@@ -14,9 +14,8 @@ public class FormInfo extends BaseObservable {
     private String province;
     private String interviewer;
     private String interviewerNo;
-    private GenInfo genInfo;
 
-    public FormInfo(String orgName, String assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo, GenInfo genInfo) {
+    public FormInfo(String orgName, String assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo) {
         this.orgName = orgName;
         this.assessmentDate = assessmentDate;
         this.sitio = sitio;
@@ -25,7 +24,17 @@ public class FormInfo extends BaseObservable {
         this.province = province;
         this.interviewer = interviewer;
         this.interviewerNo = interviewerNo;
-        this.genInfo = genInfo;
+    }
+
+    public FormInfo() {
+        this.orgName = "";
+        this.assessmentDate = "";
+        this.sitio = "";
+        this.barangay = "";
+        this.city = "";
+        this.province = "";
+        this.interviewer = "";
+        this.interviewerNo = "";
     }
 
     @Bindable
@@ -98,14 +107,5 @@ public class FormInfo extends BaseObservable {
 
     public void setInterviewerNo(String interviewerNo) {
         this.interviewerNo = interviewerNo;
-    }
-
-    @Bindable
-    public GenInfo getGenInfo() {
-        return genInfo;
-    }
-
-    public void setGenInfo(GenInfo genInfo) {
-        this.genInfo = genInfo;
     }
 }

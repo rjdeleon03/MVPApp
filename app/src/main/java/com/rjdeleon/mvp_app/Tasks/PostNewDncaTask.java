@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Tasks;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
+import com.rjdeleon.mvp_app.Models.DNCAForm;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GenderTuple;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
@@ -91,7 +92,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         return result;
     }
 
-    private FormInfo seedData() {
+    private DNCAForm seedData() {
 
         List<PopulationDataRow> rows = new ArrayList<>();
         List<VulnerablePopulationDataRow> vpRows = new ArrayList<>();
@@ -132,7 +133,8 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         DeathCauseData deathCauseData = new DeathCauseData(dcdRows);
         InfrastructureDamageData infrastructureDamageData = new InfrastructureDamageData(iddRows);
 
+        FormInfo formInfo = new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh");
         GenInfo genInfo = new GenInfo(calamityDesc, "affectedArea", populationData, familyData, vulnerablePopulationData, casualtiesData, deathCauseData, infrastructureDamageData);
-        return new FormInfo("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", genInfo);
+        return new DNCAForm(formInfo, genInfo);
     }
 }

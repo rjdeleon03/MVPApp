@@ -6,12 +6,13 @@
     <color name="lightGray">#ededed</color>
     <color name="deepPurple">#7c4dff</color>
     <color name="yellow">#ffb300</color>
-    <color name="yellowOrange">#FFC107</color>
-    <color name="yellowOrangeDark">#FFA000</color>
-    <color name="green">#00bfa5</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="yellowOrange">#ffc107</color>
+    <color name="colorAccent">#ffa000</color>
+    <color name="green">#006416</color>
+    <color name="blueGreen">#00bfa5</color>
     <color name="darkBlue">#23283a</color>
     <color name="hotPink">#fe104d</color>
+    <color name="lightYellow">#cff5cc64</color>
 
     <color name="blackOverlay">#66000000</color>
 </resources>

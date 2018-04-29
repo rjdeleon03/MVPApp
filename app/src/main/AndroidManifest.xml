@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Views.Activities.DNCAListActivity" />
-        <activity android:name=".Views.Activities.NewFormActivity"></activity>
+        <activity android:name=".Views.Activities.NewFormActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

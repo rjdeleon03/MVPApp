@@ -1,7 +1,9 @@
 package com.rjdeleon.mvp_app.Presenters;
 
+import android.app.DatePickerDialog;
 import android.databinding.ObservableField;
 import android.view.View;
+import android.widget.DatePicker;
 
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormDetailsContract;
@@ -62,5 +64,27 @@ public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter
         mParentPresenter.setFormInfo(mFormInfo);
 
         mView.onSaveButtonClick(view);
+    }
+
+    @Override
+    public void handleSetDateButtonClick(View view) {
+        mView.onSetDateButtonClick(view);
+    }
+
+    @Override
+    public void handleDatePickerOkButtonClick(View view, int year, int month, int day) {
+        // Month int starts at 0, so we add 1
+        String selectedDate = year + "/" + (month+1) + "/" + day;
+        mFormInfo.setAssessmentDate(selectedDate);
+        assessmentDate.set(selectedDate);
+    }
+
+    public DatePickerDialog.OnDateSetListener getDatePickerListener() {
+        return new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                handleDatePickerOkButtonClick(view, year, month, dayOfMonth);
+            }
+        };
     }
 }

@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Views.Fragments;
 
+import android.app.DatePickerDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.NewFormDetailsFragmentBinding;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class NewFormDetailsFragment extends BaseFragment implements NewFormDetailsContract.View {
@@ -58,5 +60,16 @@ public class NewFormDetailsFragment extends BaseFragment implements NewFormDetai
     @Override
     public void onSaveButtonClick(View view) {
         navigationPresenter.closeFragment(this);
+    }
+
+    @Override
+    public void onSetDateButtonClick(View view) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                mPresenter.getDatePickerListener(),
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 }

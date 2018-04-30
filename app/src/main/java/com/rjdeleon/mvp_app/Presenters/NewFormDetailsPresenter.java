@@ -75,9 +75,6 @@ public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter
 
     @Override
     public void handleDatePickerOkButtonClick(View view, int year, int month, int day) {
-        mFormInfo.getAssessmentDate().setYear(year);
-        mFormInfo.getAssessmentDate().setMonth(month);
-        mFormInfo.getAssessmentDate().setDayOfMonth(day);
 
         // Month int starts at 0, so we add 1
         String selectedDate = year + "/" + (month+1) + "/" + day;

@@ -16,4 +16,9 @@ public class NewFormMenuPresenter implements NewFormMenuContract.Presenter {
     public void handleNewFormDetailsButtonClick(View view) {
         this.mView.onShowNewFormDetails(view);
     }
+
+    @Override
+    public void handleNewFormGenInfoButtonClick(View view) {
+        this.mView.onShowNewFormGenInfo(view);
+    }
 }

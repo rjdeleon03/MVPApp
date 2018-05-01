@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,10 +36,11 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
     private GenInfoFragmentAdapter mAdapter;
     private ViewPager mPager;
 
-    private List<Fragment> mFragmentList;
+    private List<BaseFragment> mFragmentList;
 
     public NewFormGenInfoFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "General Information";
     }
 
     @Override
@@ -65,19 +67,39 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
         mFragmentList.add(new DeathCauseFragment());
         mFragmentList.add(new InfraDamageFragment());
 
+        // Set subtitle in toolbar
+        navigationPresenter.updateSubtitle(mFragmentList.get(0).getFragmentTitle());
+
         mAdapter = new GenInfoFragmentAdapter(getActivity().getSupportFragmentManager(), mFragmentList);
         mPager = view.findViewById(R.id.nf_gen_info_pager);
         mPager.setAdapter(mAdapter);
 
-//        Context context = getContext();
-//        TabLayout tabLayout = view.findViewById(R.id.nf_gen_info_tabs);
-//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_calamity", "drawable", context.getPackageName())));
-//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_population", "drawable", context.getPackageName())));
-//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_injuries", "drawable", context.getPackageName())));
-//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_building", "drawable", context.getPackageName())));
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
-        // Inflate the layout for this fragment
+            @Override
+            public void onPageSelected(int position) {
+                NewFormGenInfoFragment.this.fragmentTitle = (
+                        mFragmentList.get(position)).getFragmentTitle();
+                navigationPresenter.updateSubtitle(NewFormGenInfoFragment.this.fragmentTitle);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
+
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        for (Fragment fragment : mFragmentList) {
+            transaction.remove(fragment);
+        }
+        transaction.commit();
+        super.onDestroyView();
     }
 }

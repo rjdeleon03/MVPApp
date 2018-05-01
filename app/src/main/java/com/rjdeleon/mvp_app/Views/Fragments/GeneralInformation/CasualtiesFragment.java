@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
-public class CasualtiesFragment extends Fragment {
+public class CasualtiesFragment extends BaseFragment {
 
 
     public CasualtiesFragment() {

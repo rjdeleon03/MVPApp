@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Presenters;
 
+import android.databinding.ObservableField;
 import android.view.View;
 
 import com.rjdeleon.mvp_app.Contracts.FragmentNavigationContract;
@@ -12,14 +13,34 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
     private NewFormContract.View mView;
     private FormInfo mFormInfo;
 
+    public ObservableField<String> title;
+    public ObservableField<String> subtitle;
+
     public NewFormPresenter(NewFormContract.View view) {
-        mView = view;
-        mFormInfo = new FormInfo();
+        this.mView = view;
+        this.mFormInfo = new FormInfo();
+        this.title = new ObservableField<>();
+        this.subtitle = new ObservableField<>();
+    }
+
+    public void updateTitle(String title) {
+        this.title.set(title);
+    }
+
+    public void updateSubtitle(String subtitle) {
+        this.subtitle.set(subtitle);
+        if (subtitle.isEmpty()) {
+            mView.showSubtitle(false);
+        } else {
+            mView.showSubtitle(true);
+        }
     }
 
     @Override
     public void switchToFragment(BaseFragment fragment) {
         mView.onSwitchToFragment(fragment);
+        updateTitle(fragment.getFragmentTitle());
+        updateSubtitle(fragment.getFragmentSubtitle());
     }
 
     @Override

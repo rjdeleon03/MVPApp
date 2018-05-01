@@ -8,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
-public class FamilyDataFragment extends Fragment {
+public class FamilyDataFragment extends BaseFragment {
 
 
     public FamilyDataFragment() {

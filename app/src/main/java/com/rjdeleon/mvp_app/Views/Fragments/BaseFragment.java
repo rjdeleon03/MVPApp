@@ -8,8 +8,19 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
 
     protected FragmentNavigationContract.Presenter navigationPresenter;
 
+    protected String fragmentTitle = "";
+    protected String fragmentSubtitle = "";
+
     @Override
     public void attachPresenter(FragmentNavigationContract.Presenter presenter) {
         navigationPresenter = presenter;
+    }
+
+    public String getFragmentTitle() {
+        return fragmentTitle;
+    }
+
+    public String getFragmentSubtitle() {
+        return fragmentSubtitle;
     }
 }

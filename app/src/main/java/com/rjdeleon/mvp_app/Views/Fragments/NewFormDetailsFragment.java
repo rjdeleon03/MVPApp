@@ -19,6 +19,7 @@ public class NewFormDetailsFragment extends BaseFragment implements NewFormDetai
 
     public NewFormDetailsFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "Form Details";
     }
 
     @Override

@@ -36,20 +36,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/lato_bold"
-                        android:text="Main Details"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                    android:orientation="vertical"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="72dp">
 
                     <EditText
                         android:id="@+id/nf_details_org_name"
@@ -223,7 +212,6 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="72dp"
                         android:orientation="horizontal">
 
                         <ImageView

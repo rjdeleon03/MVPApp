@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.AppUtil;
 import com.rjdeleon.mvp_app.R;
@@ -17,6 +18,7 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
 
     NewFormPresenter mPresenter;
     NewFormMenuFragment mMenuFragment;
+    TextView mSubtitleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
         this.mMenuFragment = new NewFormMenuFragment();
         mMenuFragment.attachPresenter(mPresenter);
 
+        this.mSubtitleView = findViewById(R.id.nf_subtitle);
+
         if(findViewById(R.id.new_form_fragment_container) != null) {
             getSupportFragmentManager().beginTransaction().add(R.id.new_form_fragment_container, mMenuFragment).commit();
         }
@@ -41,6 +45,16 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
             // If back stack is not empty, go back to previous frame
             closeFragment();
+
+            int backStackCount = getSupportFragmentManager().getBackStackEntryCount();
+            if (backStackCount == 0) {
+                mPresenter.updateTitle("New DNCA Form");
+                mPresenter.updateSubtitle("");
+                return;
+            }
+            BaseFragment newTopFragment = (BaseFragment) getSupportFragmentManager().getBackStackEntryAt(backStackCount - 1);
+            mPresenter.updateTitle(newTopFragment.getFragmentTitle());
+            mPresenter.updateSubtitle(newTopFragment.getFragmentTitle());
 
         } else {
             // Else, revert to previous activity
@@ -67,6 +81,19 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
     @Override
     public void onBackButtonClicked(View view) {
         onBackPressed();
+    }
+
+    @Override
+    public void showSubtitle(boolean willShow) {
+        if (willShow) {
+            if (mSubtitleView.getVisibility() == View.GONE) {
+                mSubtitleView.setVisibility(View.VISIBLE);
+            }
+        } else {
+            if (mSubtitleView.getVisibility() == View.VISIBLE) {
+                mSubtitleView.setVisibility(View.GONE);
+            }
+        }
     }
 
     private void closeFragment() {

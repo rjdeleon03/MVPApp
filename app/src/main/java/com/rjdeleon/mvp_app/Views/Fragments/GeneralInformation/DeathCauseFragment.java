@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class DeathCauseFragment extends Fragment {
+public class DeathCauseFragment extends BaseFragment {
 
 
     public DeathCauseFragment() {

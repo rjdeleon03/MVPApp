@@ -10,6 +10,8 @@ public interface NewFormContract {
         void onCloseFragment(BaseFragment fragment);
 
         void onBackButtonClicked(android.view.View view);
+
+        void showSubtitle(boolean willShow);
     }
 
     interface Presenter {

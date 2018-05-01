@@ -1,7 +1,6 @@
 package com.rjdeleon.mvp_app.Presenters.GeneralInformation;
 
 import android.databinding.ObservableBoolean;
-import android.databinding.ObservableField;
 import android.view.View;
 
 import com.rjdeleon.mvp_app.AppUtil;
@@ -12,6 +11,7 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.PopulationDataFragmentViewHolder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PopulationDataPresenter implements PopulationDataContract.Presenter {
@@ -50,9 +50,21 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
 
     @Override
     public void onBindItemViewAtPosition(PopulationDataFragmentViewHolder holder, int position) {
-        PopulationDataRowPresenter populationDataRowPresenter = new PopulationDataRowPresenter(mPopulationDataRows.get(position));
+        PopulationDataRowPresenter populationDataRowPresenter = new PopulationDataRowPresenter(this, position);
         holder.bind(populationDataRowPresenter);
         mPopulationDataRowPresenters.add(populationDataRowPresenter);
+    }
+
+    @Override
+    public PopulationDataRow getPopulationDataRow(int position) {
+        return mPopulationDataRows.get(position);
+    }
+
+    @Override
+    public void handleRowDeleteButtonClick(int position) {
+        mAgeGroupsList.add(AppUtil.ageGroupToString(mPopulationDataRows.get(position).getAgeGroup()));
+        mPopulationDataRows.remove(position);
+        mView.onRowDeleteButtonClick();
     }
 
     public int getPopulationDataRowsCount() {

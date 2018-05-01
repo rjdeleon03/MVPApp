@@ -67,13 +67,17 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
 
     @Override
     public void onAddButtonClick(View view) {
-        mSpinnerAdapter.notifyDataSetChanged();
-        mAdapter.notifyDataSetChanged();
+        refreshAdapters();
     }
 
     @Override
     public int getAgeGroupSpinnerValue() {
         return (int) mSpinner.getSelectedItemId();
+    }
+
+    @Override
+    public void onRowDeleteButtonClick() {
+        refreshAdapters();
     }
 
     @Override
@@ -84,5 +88,10 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
         } else {
             mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         }
+    }
+
+    private void refreshAdapters() {
+        mSpinnerAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
     }
 }

@@ -76,6 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:text="Add"
+                        android:enabled="@{presenter.isAddButtonEnabled}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -92,7 +93,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
-                    app:stackFromEnd="true"/>
+                    app:stackFromEnd="true"
+                    app:reverseLayout="true"/>
 
             </LinearLayout>
 

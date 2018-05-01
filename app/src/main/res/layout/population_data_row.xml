@@ -33,7 +33,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="AGE GROUP"
+                    android:text="@={presenter.ageGroup}"
                     android:textColor="@color/backgroundColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -7,6 +7,8 @@ public interface PopulationDataRowContract {
     }
 
     interface Presenter {
+        void onItemClick(android.view.View view);
 
+        void onDeleteButtonClick(android.view.View view);
     }
 }

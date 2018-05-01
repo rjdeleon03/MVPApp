@@ -7,6 +7,8 @@ public interface PopulationDataContract {
     interface View {
 
         void onAddButtonClick(android.view.View view);
+
+        int getAgeGroupSpinnerValue();
     }
 
     interface Presenter {

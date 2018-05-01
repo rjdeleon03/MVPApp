@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
 import com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter;
@@ -17,11 +19,16 @@ import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 public class PopulationDataFragment extends BaseFragment implements PopulationDataContract.View {
 
     private PopulationDataPresenter mPresenter;
     private RecyclerView mGrid;
     private PopulationDataFragmentAdapter mAdapter;
+    private Spinner mSpinner;
+    private ArrayAdapter<String> mSpinnerAdapter;
 
     public PopulationDataFragment() {
         // Required empty public constructor
@@ -37,10 +44,18 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
         this.mPresenter = new PopulationDataPresenter(this, navigationPresenter);
         PopulationDataFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_fragment, container, false);
         binding.setPresenter(mPresenter);
+        View view = binding.getRoot();
 
+        // Initialize spinner
+        List<String> spinnerList = mPresenter.getAgeGroupsList();
+        this.mSpinner = view.findViewById(R.id.nf_population_age_spinner);
+        mSpinnerAdapter = new ArrayAdapter<>(
+                getContext(), android.R.layout.simple_spinner_item, spinnerList
+        );
+        mSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        mSpinner.setAdapter(mSpinnerAdapter);
 
         // Initialize adapter
-        View view = binding.getRoot();
         this.mGrid = view.findViewById(R.id.nf_population_grid);
         mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
@@ -52,7 +67,13 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
 
     @Override
     public void onAddButtonClick(View view) {
+        mSpinnerAdapter.notifyDataSetChanged();
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getAgeGroupSpinnerValue() {
+        return (int) mSpinner.getSelectedItemId();
     }
 
     @Override

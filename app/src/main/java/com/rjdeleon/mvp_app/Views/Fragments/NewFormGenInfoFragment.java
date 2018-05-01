@@ -1,12 +1,7 @@
 package com.rjdeleon.mvp_app.Views.Fragments;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormGenInfoContract;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
 import com.rjdeleon.mvp_app.Presenters.NewFormGenInfoPresenter;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.CalamityDetailsFragment;
@@ -26,9 +20,6 @@ import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.InfraDamageFragme
 import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.PopulationDataFragment;
 import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.VulnerablePopulationFragment;
 import com.rjdeleon.mvp_app.databinding.NewFormGenInfoFragmentBinding;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenInfoContract.View {
 

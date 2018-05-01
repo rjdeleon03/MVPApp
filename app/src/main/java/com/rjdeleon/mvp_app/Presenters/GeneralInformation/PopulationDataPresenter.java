@@ -20,7 +20,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
     private FragmentNavigationContract.Presenter mParentPresenter;
     private List<PopulationDataRow> mPopulationDataRows;
     private List<PopulationDataRowPresenter> mPopulationDataRowPresenters;
-    private List<String> mAgeGroupsList;
+    private List<PopulationData.AgeGroup> mAgeGroupsList;
     public ObservableBoolean isAddButtonEnabled;
 
     public PopulationDataPresenter(PopulationDataContract.View view, FragmentNavigationContract.Presenter parentPresenter) {
@@ -34,7 +34,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         this.mAgeGroupsList = new ArrayList<>();
         for (PopulationData.AgeGroup ag : PopulationData.AgeGroup.values()) {
             if (ag != PopulationData.AgeGroup.ALL) {
-                mAgeGroupsList.add(AppUtil.ageGroupToString(ag));
+                mAgeGroupsList.add(ag);
             }
         }
     }
@@ -42,10 +42,48 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
     @Override
     public void handleAddButtonClick(View view) {
         int spinnerValue = mView.getAgeGroupSpinnerValue();
-        mPopulationDataRows.add(new PopulationDataRow(AppUtil.stringToAgeGroup(mAgeGroupsList.get(spinnerValue))));
+
+        // Insert AgeGroup into correct position in rows list
+        PopulationData.AgeGroup rowAgeGroupToAdd = mAgeGroupsList.get(spinnerValue);
+        int rowsCount = getPopulationDataRowsCount();
+        if (rowsCount == 0) {
+            mPopulationDataRows.add(new PopulationDataRow(rowAgeGroupToAdd));
+        } else {
+            for (int i = 1; i <= rowsCount; i++) {
+                if (mPopulationDataRows.size() > i + 1) {
+                    if (mPopulationDataRows.get(i).getAgeGroup().ordinal() > rowAgeGroupToAdd.ordinal()) {
+                        mPopulationDataRows.add(i, new PopulationDataRow(rowAgeGroupToAdd));
+                        break;
+                    }
+                } else {
+                    mPopulationDataRows.add(i, new PopulationDataRow(rowAgeGroupToAdd));
+                    break;
+                }
+            }
+        }
         mAgeGroupsList.remove(spinnerValue);
         mView.onAddButtonClick(view);
         isAddButtonEnabled.set((mAgeGroupsList.size() > 0));
+    }
+
+    @Override
+    public void handleRowDeleteButtonClick(int position) {
+
+        // Insert AgeGroup into correct position in list
+        PopulationData.AgeGroup ageGroupToAdd = mPopulationDataRows.get(position).getAgeGroup();
+        for (int i = 0; i < mAgeGroupsList.size(); i++) {
+            if (mAgeGroupsList.size() > i+1) {
+                if (mAgeGroupsList.get(i).ordinal() > ageGroupToAdd.ordinal()) {
+                    mAgeGroupsList.add(i, ageGroupToAdd);
+                    break;
+                }
+            } else {
+                mAgeGroupsList.add(i, ageGroupToAdd);
+                break;
+            }
+        }
+        mPopulationDataRows.remove(position);
+        mView.onRowDeleteButtonClick();
     }
 
     @Override
@@ -60,18 +98,11 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         return mPopulationDataRows.get(position);
     }
 
-    @Override
-    public void handleRowDeleteButtonClick(int position) {
-        mAgeGroupsList.add(AppUtil.ageGroupToString(mPopulationDataRows.get(position).getAgeGroup()));
-        mPopulationDataRows.remove(position);
-        mView.onRowDeleteButtonClick();
-    }
-
     public int getPopulationDataRowsCount() {
         return mPopulationDataRows.size();
     }
 
-    public List<String> getAgeGroupsList() {
+    public List<PopulationData.AgeGroup> getAgeGroupsList() {
         return mAgeGroupsList;
     }
 }

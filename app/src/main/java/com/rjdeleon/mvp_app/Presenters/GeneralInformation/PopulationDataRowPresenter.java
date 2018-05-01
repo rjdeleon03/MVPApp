@@ -21,7 +21,7 @@ public class PopulationDataRowPresenter implements PopulationDataRowContract.Pre
         this.mPopulationDataRow = mParentPresenter.getPopulationDataRow(position);
         this.mPosition = position;
 
-        this.ageGroup = new ObservableField<>(AppUtil.ageGroupToString(mPopulationDataRow.getAgeGroup()));
+        this.ageGroup = new ObservableField<>(mPopulationDataRow.getAgeGroup().toString());
     }
 
     @Override

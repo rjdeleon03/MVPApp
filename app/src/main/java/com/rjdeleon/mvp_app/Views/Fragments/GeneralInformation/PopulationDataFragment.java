@@ -4,7 +4,6 @@ package com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 public class PopulationDataFragment extends BaseFragment implements PopulationDataContract.View {
@@ -28,7 +27,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     private RecyclerView mGrid;
     private PopulationDataFragmentAdapter mAdapter;
     private Spinner mSpinner;
-    private ArrayAdapter<String> mSpinnerAdapter;
+    private ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
 
     public PopulationDataFragment() {
         // Required empty public constructor
@@ -47,7 +46,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
         View view = binding.getRoot();
 
         // Initialize spinner
-        List<String> spinnerList = mPresenter.getAgeGroupsList();
+        List<PopulationData.AgeGroup> spinnerList = mPresenter.getAgeGroupsList();
         this.mSpinner = view.findViewById(R.id.nf_population_age_spinner);
         mSpinnerAdapter = new ArrayAdapter<>(
                 getContext(), android.R.layout.simple_spinner_item, spinnerList
@@ -93,5 +92,8 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     private void refreshAdapters() {
         mSpinnerAdapter.notifyDataSetChanged();
         mAdapter.notifyDataSetChanged();
+        if (mSpinner.getCount() > 0) {
+            mSpinner.setSelection(0);
+        }
     }
 }

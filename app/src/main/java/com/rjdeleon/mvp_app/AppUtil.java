@@ -16,25 +16,6 @@ public class AppUtil {
         }
     }
 
-    public static String ageGroupToString(PopulationData.AgeGroup ageGroup) {
-        String str = "Ages ";
-        switch(ageGroup) {
-            case AGE_0_5:
-                return str + "0-5";
-            case AGE_6_9:
-                return str + "6-9";
-            case AGE_10_12:
-                return str + "10-12";
-            case AGE_13_17:
-                return str + "13-17";
-            case AGE_18_59:
-                return str + "18-59";
-            case AGE_60_PLUS:
-                return str + "60+";
-        }
-        return null;
-    }
-
     public static PopulationData.AgeGroup stringToAgeGroup(String str) {
         if (str.endsWith("0-5")) {
             return PopulationData.AgeGroup.AGE_0_5;

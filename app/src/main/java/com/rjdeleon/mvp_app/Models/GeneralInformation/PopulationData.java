@@ -13,7 +13,27 @@ public class PopulationData {
         AGE_13_17,
         AGE_18_59,
         AGE_60_PLUS,
-        ALL
+        ALL;
+
+        @Override
+        public String toString() {
+            String str = "Ages ";
+            switch(this) {
+                case AGE_0_5:
+                    return str + "0-5";
+                case AGE_6_9:
+                    return str + "6-9";
+                case AGE_10_12:
+                    return str + "10-12";
+                case AGE_13_17:
+                    return str + "13-17";
+                case AGE_18_59:
+                    return str + "18-59";
+                case AGE_60_PLUS:
+                    return str + "60+";
+            }
+            return null;
+        }
     };
 
     private List<PopulationDataRow> populationDataRows;

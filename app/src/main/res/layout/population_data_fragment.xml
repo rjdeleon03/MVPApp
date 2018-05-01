@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Views.Fragments.GeneralInformation.PopulationDataFragment">
 
-    <!--
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormDetailsPresenter" />
+            type="com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter" />
     </data>
-    -->
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -59,6 +57,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/nf_population_age_spinner"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginEnd="16dp"
@@ -66,22 +65,29 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginStart="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/nf_details_date_button"
+                        app:layout_constraintEnd_toStartOf="@+id/nf_population_add_button"
                         app:layout_constraintStart_toEndOf="@+id/imageView3"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </android.support.v7.widget.AppCompatSpinner>
 
                     <Button
-                        android:id="@+id/nf_details_date_button"
+                        android:id="@+id/nf_population_add_button"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:text="Add"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:onClick="@{presenter::handleAddButtonClick}"/>
 
                 </android.support.constraint.ConstraintLayout>
+
+                <GridLayout
+                    android:id="@+id/nf_population_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"></GridLayout>
 
             </LinearLayout>
 

@@ -83,12 +83,15 @@
 
                 </android.support.constraint.ConstraintLayout>
 
-                <android.support.v7.widget.GridLayout
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/nf_population_grid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:columnCount="2"></android.support.v7.widget.GridLayout>
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp" />
 
             </LinearLayout>
 

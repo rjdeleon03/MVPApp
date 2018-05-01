@@ -4,6 +4,8 @@ package com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,8 @@ import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
 public class PopulationDataFragment extends BaseFragment implements PopulationDataContract.View {
 
     private PopulationDataPresenter mPresenter;
-    private GridLayout mGrid;
+    private RecyclerView mGrid;
+    private PopulationDataFragmentAdapter mAdapter;
 
     public PopulationDataFragment() {
         // Required empty public constructor
@@ -29,22 +32,25 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        this.mPresenter = new PopulationDataPresenter(this);
+        // Initialize presenter
+        this.mPresenter = new PopulationDataPresenter(this, navigationPresenter);
         PopulationDataFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_fragment, container, false);
         binding.setPresenter(mPresenter);
 
+
+        // Initialize adapter
         View view = binding.getRoot();
         this.mGrid = view.findViewById(R.id.nf_population_grid);
+        mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
-        // Inflate the layout for this fragment
+        this.mAdapter = new PopulationDataFragmentAdapter(mPresenter);
+        mGrid.setAdapter(mAdapter);
+
         return view;
     }
 
     @Override
     public void onAddButtonClick(View view) {
-
-        getLayoutInflater().inflate(R.layout.age_group_card, mGrid);
-        View newCard = mGrid.getChildAt(mGrid.getChildCount() - 1);
-        ((GridLayout.LayoutParams) newCard.getLayoutParams()).columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+        mAdapter.notifyDataSetChanged();
     }
 }

@@ -31,7 +31,7 @@ public class NewFormDetailsFragment extends BaseFragment implements NewFormDetai
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mPresenter = new NewFormDetailsPresenter(this, (NewFormContract.Presenter)navigationPresenter);
+        mPresenter = new NewFormDetailsPresenter(this, navigationPresenter);
         NewFormDetailsFragmentBinding binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.new_form_details_fragment, container, false);
         binding.setPresenter(mPresenter);
 

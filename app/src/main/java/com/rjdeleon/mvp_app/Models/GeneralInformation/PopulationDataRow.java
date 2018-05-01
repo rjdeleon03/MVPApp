@@ -15,6 +15,13 @@ public class PopulationDataRow {
         this.displaced = displaced;
     }
 
+    public PopulationDataRow() {
+        this.ageGroup = PopulationData.AgeGroup.AGE_0_5;
+        this.total = new GenderTuple();
+        this.affected = new GenderTuple();
+        this.displaced = new GenderTuple();
+    }
+
     public PopulationData.AgeGroup getAgeGroup() {
         return ageGroup;
     }

@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Contracts;
 
+import com.rjdeleon.mvp_app.Models.FormInfo;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Views.Fragments.BaseFragment;
 
 public interface FragmentNavigationContract {
@@ -15,5 +17,13 @@ public interface FragmentNavigationContract {
         void updateTitle(String title);
 
         void updateSubtitle(String subtitle);
+
+        FormInfo getFormInfo();
+
+        void setFormInfo(FormInfo formInfo);
+
+        PopulationData getPopulationData();
+
+        void setPopulationData(PopulationData populationData);
     }
 }

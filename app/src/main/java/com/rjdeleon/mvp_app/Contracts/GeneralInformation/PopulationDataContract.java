@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Contracts.GeneralInformation;
 
+import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.PopulationDataFragmentViewHolder;
+
 public interface PopulationDataContract {
 
     interface View {
@@ -10,5 +12,7 @@ public interface PopulationDataContract {
     interface Presenter {
 
         void handleAddButtonClick(android.view.View view);
+
+        void onBindItemViewAtPosition(PopulationDataFragmentViewHolder holder, int position);
     }
 }

@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation;
 
 
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayout;
@@ -41,7 +42,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
         // Initialize adapter
         View view = binding.getRoot();
         this.mGrid = view.findViewById(R.id.nf_population_grid);
-        mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
         this.mAdapter = new PopulationDataFragmentAdapter(mPresenter);
         mGrid.setAdapter(mAdapter);
@@ -52,5 +53,15 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     @Override
     public void onAddButtonClick(View view) {
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        } else {
+            mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        }
     }
 }

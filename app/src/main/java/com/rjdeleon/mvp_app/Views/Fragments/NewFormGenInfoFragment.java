@@ -38,13 +38,13 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
         binding.setPresenter(mPresenter);
         View view = binding.getRoot();
 
-        Context context = getContext();
-        TabLayout tabLayout = view.findViewById(R.id.nf_gen_info_tabs);
-        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_calamity", "drawable", context.getPackageName())));
-        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_population", "drawable", context.getPackageName())));
-        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_injuries", "drawable", context.getPackageName())));
-        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_building", "drawable", context.getPackageName())));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+//        Context context = getContext();
+//        TabLayout tabLayout = view.findViewById(R.id.nf_gen_info_tabs);
+//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_calamity", "drawable", context.getPackageName())));
+//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_population", "drawable", context.getPackageName())));
+//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_injuries", "drawable", context.getPackageName())));
+//        tabLayout.addTab(tabLayout.newTab().setIcon(getResources().getIdentifier("ic_building", "drawable", context.getPackageName())));
+//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         // Inflate the layout for this fragment
         return view;

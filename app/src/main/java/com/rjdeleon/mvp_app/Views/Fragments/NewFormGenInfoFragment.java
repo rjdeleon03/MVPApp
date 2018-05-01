@@ -36,8 +36,6 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
     private GenInfoFragmentAdapter mAdapter;
     private ViewPager mPager;
 
-    private List<BaseFragment> mFragmentList;
-
     public NewFormGenInfoFragment() {
         // Required empty public constructor
         this.fragmentTitle = "General Information";
@@ -57,22 +55,19 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
         binding.setPresenter(mPresenter);
         View view = binding.getRoot();
 
-        // Create fragment list for pager
-        mFragmentList = new ArrayList<>();
-        mFragmentList.add(new CalamityDetailsFragment());
-        mFragmentList.add(new PopulationDataFragment());
-        mFragmentList.add(new FamilyDataFragment());
-        mFragmentList.add(new VulnerablePopulationFragment());
-        mFragmentList.add(new CasualtiesFragment());
-        mFragmentList.add(new DeathCauseFragment());
-        mFragmentList.add(new InfraDamageFragment());
-
-        // Set subtitle in toolbar
-        navigationPresenter.updateSubtitle(mFragmentList.get(0).getFragmentTitle());
-
-        mAdapter = new GenInfoFragmentAdapter(getActivity().getSupportFragmentManager(), mFragmentList);
+        mAdapter = new GenInfoFragmentAdapter(getActivity().getSupportFragmentManager());
+        mAdapter.addFragment(new CalamityDetailsFragment());
+        mAdapter.addFragment(new PopulationDataFragment());
+        mAdapter.addFragment(new FamilyDataFragment());
+        mAdapter.addFragment(new VulnerablePopulationFragment());
+        mAdapter.addFragment(new CasualtiesFragment());
+        mAdapter.addFragment(new DeathCauseFragment());
+        mAdapter.addFragment(new InfraDamageFragment());
         mPager = view.findViewById(R.id.nf_gen_info_pager);
         mPager.setAdapter(mAdapter);
+
+        // Set subtitle in toolbar
+        navigationPresenter.updateSubtitle(mAdapter.getItem(0).getFragmentTitle());
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -81,8 +76,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
 
             @Override
             public void onPageSelected(int position) {
-                NewFormGenInfoFragment.this.fragmentTitle = (
-                        mFragmentList.get(position)).getFragmentTitle();
+                NewFormGenInfoFragment.this.fragmentTitle = (mAdapter.getItem(position)).getFragmentTitle();
                 navigationPresenter.updateSubtitle(NewFormGenInfoFragment.this.fragmentTitle);
             }
 
@@ -95,11 +89,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
 
     @Override
     public void onDestroyView() {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        for (Fragment fragment : mFragmentList) {
-            transaction.remove(fragment);
-        }
-        transaction.commit();
+        mAdapter.cleanup(getActivity().getSupportFragmentManager());
         super.onDestroyView();
     }
 }

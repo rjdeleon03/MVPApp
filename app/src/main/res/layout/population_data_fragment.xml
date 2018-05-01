@@ -83,11 +83,12 @@
 
                 </android.support.constraint.ConstraintLayout>
 
-                <GridLayout
+                <android.support.v7.widget.GridLayout
                     android:id="@+id/nf_population_grid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="3"></GridLayout>
+                    android:layout_gravity="center"
+                    app:columnCount="2"></android.support.v7.widget.GridLayout>
 
             </LinearLayout>
 

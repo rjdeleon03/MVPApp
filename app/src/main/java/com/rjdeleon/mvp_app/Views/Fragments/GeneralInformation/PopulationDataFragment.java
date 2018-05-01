@@ -3,11 +3,10 @@ package com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
 import com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter;
@@ -44,6 +43,8 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     @Override
     public void onAddButtonClick(View view) {
 
-        View newCard = getLayoutInflater().inflate(R.layout.age_group_card, mGrid);
+        getLayoutInflater().inflate(R.layout.age_group_card, mGrid);
+        View newCard = mGrid.getChildAt(mGrid.getChildCount() - 1);
+        ((GridLayout.LayoutParams) newCard.getLayoutParams()).columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
     }
 }

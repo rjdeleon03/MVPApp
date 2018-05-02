@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.badoualy.stepperindicator.StepperIndicator;
 import com.rd.PageIndicatorView;
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormGenInfoContract;

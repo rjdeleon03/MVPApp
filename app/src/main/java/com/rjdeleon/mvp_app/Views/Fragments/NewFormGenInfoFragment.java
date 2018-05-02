@@ -2,11 +2,14 @@ package com.rjdeleon.mvp_app.Views.Fragments;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.badoualy.stepperindicator.StepperIndicator;
+import com.rd.PageIndicatorView;
 import com.rjdeleon.mvp_app.Contracts.NewFormContract;
 import com.rjdeleon.mvp_app.Contracts.NewFormGenInfoContract;
 import com.rjdeleon.mvp_app.Presenters.NewFormGenInfoPresenter;
@@ -26,6 +29,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
     private NewFormGenInfoPresenter mPresenter;
     private GenInfoFragmentAdapter mAdapter;
     private ViewPager mPager;
+    private PageIndicatorView mPageIndicator;
 
     public NewFormGenInfoFragment() {
         // Required empty public constructor
@@ -46,6 +50,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
         binding.setPresenter(mPresenter);
         View view = binding.getRoot();
 
+        // Initialize pager and adapter
         mAdapter = new GenInfoFragmentAdapter(getActivity().getSupportFragmentManager());
         mAdapter.addFragment(new CalamityDetailsFragment());
         mAdapter.addFragment(new PopulationDataFragment());
@@ -56,6 +61,9 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
         mAdapter.addFragment(new InfraDamageFragment());
         mPager = view.findViewById(R.id.nf_gen_info_pager);
         mPager.setAdapter(mAdapter);
+
+        // Initialize page indicator
+        mPageIndicator = view.findViewById(R.id.nf_gen_info_stepper);
 
         // Set subtitle in toolbar
         navigationPresenter.updateSubtitle(mAdapter.getItem(0).getFragmentTitle());
@@ -69,6 +77,10 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
             public void onPageSelected(int position) {
                 NewFormGenInfoFragment.this.fragmentTitle = (mAdapter.getItem(position)).getFragmentTitle();
                 navigationPresenter.updateSubtitle(NewFormGenInfoFragment.this.fragmentTitle);
+                // TODO: If fragment is filled out completely, set color to green
+                    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), android.R.color.holo_green_dark));
+                // TODO: Else set color to default (yellow)
+                    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), R.color.yellow));
             }
 
             @Override

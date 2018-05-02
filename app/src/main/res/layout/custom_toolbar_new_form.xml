@@ -69,10 +69,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
-                    android:paddingTop="4dp"
-                    android:text="@={presenter.title}"
+                    android:text="@{presenter.title}"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/comfortaa_reg" />
 
@@ -86,9 +85,9 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
                     android:paddingTop="4dp"
-                    android:text="@={presenter.subtitle}"
+                    android:text="@{presenter.subtitle}"
                     android:textColor="@android:color/white"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:visibility="visible"
                     app:fontFamily="@font/comfortaa_reg" />

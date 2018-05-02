@@ -56,7 +56,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
 
         // Initialize adapter
         this.mGrid = view.findViewById(R.id.nf_population_grid);
-        mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        setCardGridLayout(getResources().getConfiguration().orientation);
 
         this.mAdapter = new PopulationDataFragmentAdapter(mPresenter);
         mGrid.setAdapter(mAdapter);
@@ -82,11 +82,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        } else {
-            mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        }
+        setCardGridLayout(newConfig.orientation);
     }
 
     private void refreshAdapters() {
@@ -94,6 +90,14 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
         mAdapter.notifyDataSetChanged();
         if (mSpinner.getCount() > 0) {
             mSpinner.setSelection(0);
+        }
+    }
+
+    private void setCardGridLayout(int orientation) {
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        } else {
+            mGrid.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         }
     }
 }

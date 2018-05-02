@@ -46,19 +46,15 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         // Insert AgeGroup into correct position in rows list
         PopulationData.AgeGroup rowAgeGroupToAdd = mAgeGroupsList.get(spinnerValue);
         int rowsCount = getPopulationDataRowsCount();
-        if (rowsCount == 0) {
-            mPopulationDataRows.add(new PopulationDataRow(rowAgeGroupToAdd));
-        } else {
-            for (int i = 1; i <= rowsCount; i++) {
-                if (mPopulationDataRows.size() > i + 1) {
-                    if (mPopulationDataRows.get(i).getAgeGroup().ordinal() > rowAgeGroupToAdd.ordinal()) {
-                        mPopulationDataRows.add(i, new PopulationDataRow(rowAgeGroupToAdd));
-                        break;
-                    }
-                } else {
+        for (int i = 0; i <= rowsCount; i++) {
+            if (rowsCount >= i+1) {
+                if (mPopulationDataRows.get(i).getAgeGroup().ordinal() > rowAgeGroupToAdd.ordinal()) {
                     mPopulationDataRows.add(i, new PopulationDataRow(rowAgeGroupToAdd));
                     break;
                 }
+            } else {
+                mPopulationDataRows.add(i, new PopulationDataRow(rowAgeGroupToAdd));
+                break;
             }
         }
         mAgeGroupsList.remove(spinnerValue);
@@ -71,8 +67,9 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
 
         // Insert AgeGroup into correct position in list
         PopulationData.AgeGroup ageGroupToAdd = mPopulationDataRows.get(position).getAgeGroup();
-        for (int i = 0; i < mAgeGroupsList.size(); i++) {
-            if (mAgeGroupsList.size() > i+1) {
+        int listCount = mAgeGroupsList.size();
+        for (int i = 0; i <= listCount; i++) {
+            if (listCount >= i+1) {
                 if (mAgeGroupsList.get(i).ordinal() > ageGroupToAdd.ordinal()) {
                     mAgeGroupsList.add(i, ageGroupToAdd);
                     break;
@@ -84,6 +81,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         }
         mPopulationDataRows.remove(position);
         mView.onRowDeleteButtonClick();
+        isAddButtonEnabled.set((mAgeGroupsList.size() > 0));
     }
 
     @Override

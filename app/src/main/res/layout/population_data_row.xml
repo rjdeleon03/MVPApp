@@ -13,6 +13,8 @@
         android:id="@+id/nf_population_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_gravity="fill">
         
         <LinearLayout
@@ -22,18 +24,19 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:background="@color/hotPink">
 
                 <TextView
                     android:id="@+id/nf_population_age_group"
                     android:layout_width="wrap_content"
-                    android:layout_height="18dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="@={presenter.ageGroup}"
+                    android:text="@{presenter.ageGroup}"
+                    android:textSize="18sp"
                     android:textColor="@color/backgroundColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +59,7 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <!-- Total -->
                 <ImageView
@@ -85,11 +88,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="100"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
 
                 <TextView
                     android:id="@+id/nf_population_total"
@@ -97,12 +100,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="TOTAL"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
 
                 <TextView
                     android:id="@+id/nf_population_total_female"
@@ -110,11 +113,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="200"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
 
                 <!-- Affected -->
 
@@ -124,11 +127,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:text="100"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total_male" />
+                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total_male"/>
 
                 <TextView
                     android:id="@+id/nf_population_affected"
@@ -136,12 +139,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:text="AFFECTED"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total" />
+                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total"/>
 
                 <TextView
                     android:id="@+id/nf_population_affected_female"
@@ -149,11 +152,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:text="200"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total_female" />
+                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total_female"/>
 
                 <!-- Displaced -->
 
@@ -163,12 +166,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:text="DISPLACED"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected" />
+                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected"/>
 
                 <TextView
                     android:id="@+id/nf_population_displaced_male"
@@ -176,11 +179,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:text="100"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_male" />
+                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_male"/>
 
                 <TextView
                     android:id="@+id/nf_population_displaced_female"
@@ -188,11 +191,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:text="200"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_female" />
+                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_female"/>
 
 
             </android.support.constraint.ConstraintLayout>

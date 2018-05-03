@@ -6,7 +6,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataRowPresenter" />
+            type="com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataRowContract.Presenter" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -84,13 +84,14 @@
 
                 <TextView
                     android:id="@+id/nf_population_total_male"
-                    android:layout_width="26dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginTop="4dp"
-                    android:text="100"
+                    android:text="@{Integer.toString(presenter.totalMale)}"
                     android:textSize="15sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
 
@@ -114,8 +115,9 @@
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="4dp"
-                    android:text="200"
+                    android:text="@{Integer.toString(presenter.totalFemale)}"
                     android:textSize="15sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
 
@@ -123,13 +125,14 @@
 
                 <TextView
                     android:id="@+id/nf_population_affected_male"
-                    android:layout_width="26dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginTop="4dp"
-                    android:text="100"
+                    android:text="@{Integer.toString(presenter.affectedMale)}"
                     android:textSize="15sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nf_population_total_male"/>
 
@@ -153,8 +156,9 @@
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="4dp"
-                    android:text="200"
+                    android:text="@{Integer.toString(presenter.affectedFemale)}"
                     android:textSize="15sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nf_population_total_female"/>
 
@@ -175,13 +179,14 @@
 
                 <TextView
                     android:id="@+id/nf_population_displaced_male"
-                    android:layout_width="26dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginTop="4dp"
-                    android:text="100"
+                    android:text="@{Integer.toString(presenter.displacedMale)}"
                     android:textSize="15sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_male"/>
 
@@ -192,8 +197,9 @@
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="4dp"
-                    android:text="200"
+                    android:text="@{Integer.toString(presenter.displacedMale)}"
                     android:textSize="15sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_female"/>
 

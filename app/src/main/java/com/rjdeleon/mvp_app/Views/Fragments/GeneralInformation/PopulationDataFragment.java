@@ -91,6 +91,11 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     }
 
     @Override
+    public void onAgeGroupAdd() {
+        refreshAdapters();
+    }
+
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setCardGridLayout(newConfig.orientation);

@@ -12,11 +12,11 @@ public interface PopulationDataContract {
         int getAgeGroupSpinnerValue();
 
         void onRowDeleteButtonClick();
+
+        void onAgeGroupAdd();
     }
 
     interface Presenter {
-
-        void handleAddButtonClick(android.view.View view);
 
         void onBindItemViewAtPosition(PopulationDataFragmentViewHolder holder, int position);
 
@@ -24,6 +24,10 @@ public interface PopulationDataContract {
 
         PopulationDataRow getPopulationDataRow(int position);
 
+        void handleAddButtonClick(android.view.View view);
+
         void handleRowDeleteButtonClick(int position);
+
+        void handleAgeGroupAdd(PopulationDataRow row);
     }
 }

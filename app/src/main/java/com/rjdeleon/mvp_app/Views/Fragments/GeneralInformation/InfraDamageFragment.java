@@ -15,6 +15,7 @@ public class InfraDamageFragment extends BaseFragment {
 
     public InfraDamageFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "Damage to Infrastructures";
     }
 
 

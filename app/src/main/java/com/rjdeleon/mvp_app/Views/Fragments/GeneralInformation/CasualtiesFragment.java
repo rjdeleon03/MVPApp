@@ -16,6 +16,7 @@ public class CasualtiesFragment extends BaseFragment {
 
     public CasualtiesFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "Casualties";
     }
 
     @Override

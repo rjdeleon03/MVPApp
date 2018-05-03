@@ -15,6 +15,7 @@ public class VulnerablePopulationFragment extends BaseFragment {
 
     public VulnerablePopulationFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "Vulnerable Population";
     }
 
 

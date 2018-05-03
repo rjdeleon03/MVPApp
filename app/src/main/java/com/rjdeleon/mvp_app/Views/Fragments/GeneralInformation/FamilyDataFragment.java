@@ -15,8 +15,8 @@ public class FamilyDataFragment extends BaseFragment {
 
     public FamilyDataFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "Family and Household Data";
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

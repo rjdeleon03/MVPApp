@@ -15,6 +15,7 @@ public class DeathCauseFragment extends BaseFragment {
 
     public DeathCauseFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "Cause of Death";
     }
 
 

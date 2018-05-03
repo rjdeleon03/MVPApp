@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
+import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataDialogContract;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter;
 import com.rjdeleon.mvp_app.R;
@@ -65,10 +66,10 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
     }
 
     @Override
-    public void onAddButtonClick(View view) {
+    public PopulationDataDialogContract.View onAddButtonClick(View view) {
         PopulationDataDialogFragment fragment = new PopulationDataDialogFragment();
-        fragment.show(getFragmentManager(), "");
-        mPresenter.onBindDialog(fragment);
+        fragment.show(getFragmentManager(), "population_dialog");
+        return fragment;
     }
 
     @Override

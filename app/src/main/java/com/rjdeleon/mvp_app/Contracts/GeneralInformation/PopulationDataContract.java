@@ -7,9 +7,9 @@ public interface PopulationDataContract {
 
     interface View {
 
-        void onAddButtonClick(android.view.View view);
-
         int getAgeGroupSpinnerValue();
+
+        PopulationDataDialogContract.View onAddButtonClick(android.view.View view);
 
         void onRowDeleteButtonClick();
 
@@ -20,11 +20,11 @@ public interface PopulationDataContract {
 
         void onBindItemViewAtPosition(PopulationDataFragmentViewHolder holder, int position);
 
-        void onBindDialog(PopulationDataDialogContract.View view);
-
         PopulationDataRow getPopulationDataRow(int position);
 
         void handleAddButtonClick(android.view.View view);
+
+        void handleRowCardClick(android.view.View view, int position);
 
         void handleRowDeleteButtonClick(int position);
 

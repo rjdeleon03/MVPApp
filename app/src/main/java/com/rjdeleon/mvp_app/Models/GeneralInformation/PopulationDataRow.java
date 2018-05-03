@@ -26,15 +26,31 @@ public class PopulationDataRow {
         return ageGroup;
     }
 
+    public void setAgeGroup(PopulationData.AgeGroup ageGroup) {
+        this.ageGroup = ageGroup;
+    }
+
     public GenderTuple getTotal() {
         return total;
+    }
+
+    public void setTotal(GenderTuple total) {
+        this.total = total;
     }
 
     public GenderTuple getAffected() {
         return affected;
     }
 
+    public void setAffected(GenderTuple affected) {
+        this.affected = affected;
+    }
+
     public GenderTuple getDisplaced() {
         return displaced;
+    }
+
+    public void setDisplaced(GenderTuple displaced) {
+        this.displaced = displaced;
     }
 }

@@ -6,6 +6,7 @@ import android.databinding.BindingConversion;
 import android.databinding.InverseBindingAdapter;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 
@@ -37,12 +38,12 @@ public class AppUtil {
     }
 
     @BindingAdapter("android:text")
-    public static void bindIntegerInText(EditText tv, int value)
+    public static void bindIntegerInText(EditText view, int value)
     {
-        tv.setText(String.valueOf(value));
+        view.setText(String.valueOf(value));
 
         // Set the cursor to the end of the text
-        tv.setSelection(tv.getText().length());
+        view.setSelection(view.getText().length());
     }
 
     @InverseBindingAdapter(attribute = "android:text")
@@ -56,4 +57,20 @@ public class AppUtil {
         return value;
     }
 
+    @BindingAdapter("android:text")
+    public static void bindIntegerInText(TextView view, int value)
+    {
+        view.setText(String.valueOf(value));
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static Integer parseViewInt(TextView view) {
+        Integer value = 0;
+        try {
+            value = Integer.parseInt(view.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
 }

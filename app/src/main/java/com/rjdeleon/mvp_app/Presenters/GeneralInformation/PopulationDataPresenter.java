@@ -9,6 +9,7 @@ import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataDialogContract;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.PopulationDataFragmentViewHolder;
 
 import java.util.ArrayList;
@@ -20,8 +21,6 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
     private PopulationDataContract.View mView;
     private FragmentNavigationContract.Presenter mParentPresenter;
     private List<PopulationDataRow> mPopulationDataRows;
-    private List<PopulationDataRowPresenter> mPopulationDataRowPresenters;
-    private List<PopulationDataDialogPresenter> mPopulationDataDialogPresenters;
     private List<PopulationData.AgeGroup> mAgeGroupsList;
     public ObservableBoolean isAddButtonEnabled;
 
@@ -29,8 +28,6 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         this.mView = view;
         this.mParentPresenter = parentPresenter;
         this.mPopulationDataRows = new ArrayList<>();
-        this.mPopulationDataRowPresenters = new ArrayList<>();
-        this.mPopulationDataDialogPresenters = new ArrayList<>();
         this.isAddButtonEnabled = new ObservableBoolean(true);
 
         // Fill age groups list
@@ -46,15 +43,6 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
     public void onBindItemViewAtPosition(PopulationDataFragmentViewHolder holder, int position) {
         PopulationDataRowPresenter populationDataRowPresenter = new PopulationDataRowPresenter(this, position);
         holder.bind(populationDataRowPresenter);
-        mPopulationDataRowPresenters.add(populationDataRowPresenter);
-    }
-
-    @Override
-    public void onBindDialog(PopulationDataDialogContract.View view) {
-        int spinnerValue = mView.getAgeGroupSpinnerValue();
-        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(
-                view,this, new PopulationDataRow(mAgeGroupsList.get(spinnerValue)));
-        view.bind(populationDataDialogPresenter);
     }
 
     @Override
@@ -64,7 +52,26 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
 
     @Override
     public void handleAddButtonClick(View view) {
-        mView.onAddButtonClick(view);
+        PopulationDataDialogContract.View dialog = mView.onAddButtonClick(view);
+        int spinnerValue = mView.getAgeGroupSpinnerValue();
+        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(
+                dialog,this, new PopulationDataRow(mAgeGroupsList.get(spinnerValue)));
+        dialog.bind(populationDataDialogPresenter);
+    }
+
+    @Override
+    public void handleRowCardClick(android.view.View view, int position) {
+        PopulationDataDialogContract.View dialog = mView.onAddButtonClick(view);
+        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(
+                dialog,this, mPopulationDataRows.get(position));
+        dialog.bind(populationDataDialogPresenter);
+
+        PopulationDataRow testRow = mPopulationDataRows.get(position);
+        GenderTuple testGt = testRow.getTotal();
+        testGt.male += 3;
+        testGt.female += 5;
+        testRow.setTotal(testGt);
+        mView.onAgeGroupAdd();
     }
 
     @Override

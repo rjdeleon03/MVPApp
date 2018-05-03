@@ -29,7 +29,7 @@ public class PopulationDataRowPresenter implements PopulationDataRowContract.Pre
 
     @Override
     public void onItemClick(View view) {
-
+        mParentPresenter.handleRowCardClick(view, mPosition);
     }
 
     @Override

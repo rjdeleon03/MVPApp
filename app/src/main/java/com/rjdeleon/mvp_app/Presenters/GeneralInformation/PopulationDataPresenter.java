@@ -6,6 +6,7 @@ import android.view.View;
 import com.rjdeleon.mvp_app.AppUtil;
 import com.rjdeleon.mvp_app.Contracts.FragmentNavigationContract;
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
+import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataDialogContract;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Views.Fragments.GeneralInformation.PopulationDataFragmentViewHolder;
@@ -20,6 +21,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
     private FragmentNavigationContract.Presenter mParentPresenter;
     private List<PopulationDataRow> mPopulationDataRows;
     private List<PopulationDataRowPresenter> mPopulationDataRowPresenters;
+    private List<PopulationDataDialogPresenter> mPopulationDataDialogPresenters;
     private List<PopulationData.AgeGroup> mAgeGroupsList;
     public ObservableBoolean isAddButtonEnabled;
 
@@ -28,6 +30,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         this.mParentPresenter = parentPresenter;
         this.mPopulationDataRows = new ArrayList<>();
         this.mPopulationDataRowPresenters = new ArrayList<>();
+        this.mPopulationDataDialogPresenters = new ArrayList<>();
         this.isAddButtonEnabled = new ObservableBoolean(true);
 
         // Fill age groups list
@@ -42,7 +45,9 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
     @Override
     public void handleAddButtonClick(View view) {
         int spinnerValue = mView.getAgeGroupSpinnerValue();
+        mView.onAddButtonClick(view);
 
+        /*
         // Insert AgeGroup into correct position in rows list
         PopulationData.AgeGroup rowAgeGroupToAdd = mAgeGroupsList.get(spinnerValue);
         int rowsCount = getPopulationDataRowsCount();
@@ -58,8 +63,8 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
             }
         }
         mAgeGroupsList.remove(spinnerValue);
-        mView.onAddButtonClick(view);
         isAddButtonEnabled.set((mAgeGroupsList.size() > 0));
+        */
     }
 
     @Override
@@ -89,6 +94,12 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         PopulationDataRowPresenter populationDataRowPresenter = new PopulationDataRowPresenter(this, position);
         holder.bind(populationDataRowPresenter);
         mPopulationDataRowPresenters.add(populationDataRowPresenter);
+    }
+
+    @Override
+    public void onBindDialog(PopulationDataDialogContract.View view) {
+        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(this);
+        view.bind(populationDataDialogPresenter);
     }
 
     @Override

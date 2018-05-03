@@ -66,7 +66,18 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
 
     @Override
     public void onAddButtonClick(View view) {
-        refreshAdapters();
+        /*
+         * TODO:
+         * Show dialog
+         * If user clicks OK, add to rows list
+         * If user clicks cancel, hide dialog and do nothing
+         * */
+
+        PopulationDataDialogFragment fragment = new PopulationDataDialogFragment();
+        fragment.show(getFragmentManager(), "");
+        mPresenter.onBindDialog(fragment);
+
+//        refreshAdapters();
     }
 
     @Override

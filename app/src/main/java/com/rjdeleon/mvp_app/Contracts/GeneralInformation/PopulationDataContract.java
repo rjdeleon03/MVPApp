@@ -20,6 +20,8 @@ public interface PopulationDataContract {
 
         void onBindItemViewAtPosition(PopulationDataFragmentViewHolder holder, int position);
 
+        void onBindDialog(PopulationDataDialogContract.View view);
+
         PopulationDataRow getPopulationDataRow(int position);
 
         void handleRowDeleteButtonClick(int position);

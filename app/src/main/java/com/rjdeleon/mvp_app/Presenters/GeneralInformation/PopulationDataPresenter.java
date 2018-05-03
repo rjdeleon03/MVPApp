@@ -65,13 +65,6 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(
                 dialog,this, mPopulationDataRows.get(position));
         dialog.bind(populationDataDialogPresenter);
-
-        PopulationDataRow testRow = mPopulationDataRows.get(position);
-        GenderTuple testGt = testRow.getTotal();
-        testGt.male += 3;
-        testGt.female += 5;
-        testRow.setTotal(testGt);
-        mView.onAgeGroupAdd();
     }
 
     @Override
@@ -103,7 +96,10 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         PopulationData.AgeGroup rowAgeGroupToAdd = row.getAgeGroup();
         int rowsCount = getPopulationDataRowsCount();
         for (int i = 0; i <= rowsCount; i++) {
-            if (rowsCount >= i+1) {
+            if (rowsCount > 0 && i < rowsCount && mPopulationDataRows.get(i) == row) {
+                mView.onAgeGroupAdd();
+                return;
+            } else if (rowsCount >= i+1) {
                 if (mPopulationDataRows.get(i).getAgeGroup().ordinal() > rowAgeGroupToAdd.ordinal()) {
                     mPopulationDataRows.add(i, row);
                     break;

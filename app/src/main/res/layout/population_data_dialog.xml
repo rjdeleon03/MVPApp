@@ -7,7 +7,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataDialogContract.Presenter" />
+            type="com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataDialogPresenter" />
     </data>
 
     <LinearLayout

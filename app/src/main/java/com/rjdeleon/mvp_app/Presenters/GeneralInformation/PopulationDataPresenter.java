@@ -118,6 +118,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
         mView.onAgeGroupAdd();
     }
 
+    @Override
     public int getPopulationDataRowsCount() {
         return mPopulationDataRows.size();
     }

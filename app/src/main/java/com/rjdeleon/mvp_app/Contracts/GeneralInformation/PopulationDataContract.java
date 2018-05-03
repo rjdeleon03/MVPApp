@@ -22,6 +22,8 @@ public interface PopulationDataContract {
 
         PopulationDataRow getPopulationDataRow(int position);
 
+        int getPopulationDataRowsCount();
+
         void handleAddButtonClick(android.view.View view);
 
         void handleRowCardClick(android.view.View view, int position);

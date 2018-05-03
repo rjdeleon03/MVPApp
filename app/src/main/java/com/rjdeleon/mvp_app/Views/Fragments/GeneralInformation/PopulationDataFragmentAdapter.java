@@ -6,13 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
 import com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.PopulationDataRowBinding;
 
 public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<PopulationDataFragmentViewHolder> {
 
-    private PopulationDataPresenter mPresenter;
+    private PopulationDataContract.Presenter mPresenter;
 
     public PopulationDataFragmentAdapter(PopulationDataPresenter presenter) {
         this.mPresenter = presenter;

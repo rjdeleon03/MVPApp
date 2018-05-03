@@ -10,6 +10,8 @@ public interface PopulationDataDialogContract {
     interface View {
 
         void bind(PopulationDataDialogContract.Presenter presenter);
+
+        void onDialogCancelButtonClick(android.view.View view);
     }
 
     interface Presenter {
@@ -20,5 +22,9 @@ public interface PopulationDataDialogContract {
         ObservableInt affectedFemale = new ObservableInt(0);
         ObservableInt displacedMale = new ObservableInt(0);
         ObservableInt displacedFemale = new ObservableInt(0);
+
+        void handleDialogOkButtonClick(android.view.View view);
+
+        void handleDialogCancelButtonClick(android.view.View view);
     }
 }

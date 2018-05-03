@@ -39,4 +39,9 @@ public class PopulationDataDialogFragment extends DialogFragment implements Popu
     public void bind(PopulationDataDialogContract.Presenter presenter) {
         this.mPresenter = presenter;
     }
+
+    @Override
+    public void onDialogCancelButtonClick(View view) {
+        dismiss();
+    }
 }

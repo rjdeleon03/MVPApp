@@ -98,7 +98,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
 
     @Override
     public void onBindDialog(PopulationDataDialogContract.View view) {
-        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(this);
+        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(view,this);
         view.bind(populationDataDialogPresenter);
     }
 

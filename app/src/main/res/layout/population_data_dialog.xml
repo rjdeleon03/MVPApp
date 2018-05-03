@@ -255,9 +255,10 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
+                android:onClick="@{presenter::handleDialogCancelButtonClick}"
                 android:backgroundTint="@android:color/holo_red_light"
-                app:borderWidth="0dp"
                 android:src="@drawable/ic_close_card"
+                app:borderWidth="0dp"
                 app:fabSize="mini"/>
 
             <android.support.design.widget.FloatingActionButton
@@ -265,9 +266,10 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
+                android:onClick="@{presenter::handleDialogOkButtonClick}"
                 android:backgroundTint="@android:color/holo_green_light"
-                app:borderWidth="0dp"
                 android:src="@drawable/ic_check"
+                app:borderWidth="0dp"
                 app:fabSize="mini"/>
 
         </LinearLayout>

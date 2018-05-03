@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataDialogContract;
+import com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataDialogPresenter;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.PopulationDataDialogBinding;
 
@@ -24,7 +25,7 @@ public class PopulationDataDialogFragment extends DialogFragment implements Popu
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         mBinding = DataBindingUtil.inflate(inflater, R.layout.population_data_dialog, null, false);
-        mBinding.setPresenter(mPresenter);
+        mBinding.setPresenter((PopulationDataDialogPresenter) mPresenter);
         View view = mBinding.getRoot();
 
         // Use builder for dialog construction

@@ -1,14 +1,10 @@
 package com.rjdeleon.mvp_app.Presenters.GeneralInformation;
 
-import android.databinding.ObservableInt;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.AppUtil;
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataContract;
 import com.rjdeleon.mvp_app.Contracts.GeneralInformation.PopulationDataDialogContract;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
 public class PopulationDataDialogPresenter implements PopulationDataDialogContract.Presenter {
 
@@ -16,20 +12,29 @@ public class PopulationDataDialogPresenter implements PopulationDataDialogContra
     private PopulationDataDialogContract.View mView;
     private PopulationDataRow mPopulationDataRow;
 
-    public PopulationDataDialogPresenter(PopulationDataDialogContract.View view, PopulationDataContract.Presenter parentPresenter) {
-
+    public PopulationDataDialogPresenter(PopulationDataDialogContract.View view, PopulationDataContract.Presenter parentPresenter, PopulationDataRow row) {
         this.mView = view;
         this.mParentPresenter = parentPresenter;
+        this.mPopulationDataRow = row;
+
+        ageGroup.set(mPopulationDataRow.getAgeGroup().toString());
+        totalMale.set(mPopulationDataRow.getTotal().male);
+        totalFemale.set(mPopulationDataRow.getTotal().female);
+        affectedMale.set(mPopulationDataRow.getAffected().male);
+        affectedFemale.set(mPopulationDataRow.getAffected().female);
+        displacedMale.set(mPopulationDataRow.getDisplaced().male);
+        displacedFemale.set(mPopulationDataRow.getDisplaced().female);
     }
 
     @Override
     public void handleDialogOkButtonClick(View view) {
-        GenderTuple total = new GenderTuple(totalMale.get(), totalFemale.get());
-        GenderTuple affected = new GenderTuple(affectedMale.get(), affectedFemale.get());
-        GenderTuple displaced = new GenderTuple(displacedMale.get(), displacedFemale.get());
-        PopulationData.AgeGroup ag = AppUtil.stringToAgeGroup(ageGroup.get());
-        PopulationDataRow newRow = new PopulationDataRow(ag, total, affected, displaced);
-        mParentPresenter.handleAgeGroupAdd(newRow);
+        mPopulationDataRow.getTotal().male = totalMale.get();
+        mPopulationDataRow.getTotal().female = totalFemale.get();
+        mPopulationDataRow.getAffected().male = affectedMale.get();
+        mPopulationDataRow.getAffected().female = affectedFemale.get();
+        mPopulationDataRow.getDisplaced().male = displacedMale.get();
+        mPopulationDataRow.getDisplaced().female = displacedFemale.get();;
+        mParentPresenter.handleAgeGroupAdd(mPopulationDataRow);
         mView.onDialogCancelButtonClick(view);
     }
 

@@ -51,7 +51,9 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
 
     @Override
     public void onBindDialog(PopulationDataDialogContract.View view) {
-        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(view,this);
+        int spinnerValue = mView.getAgeGroupSpinnerValue();
+        PopulationDataDialogPresenter populationDataDialogPresenter = new PopulationDataDialogPresenter(
+                view,this, new PopulationDataRow(mAgeGroupsList.get(spinnerValue)));
         view.bind(populationDataDialogPresenter);
     }
 
@@ -62,7 +64,6 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
 
     @Override
     public void handleAddButtonClick(View view) {
-        int spinnerValue = mView.getAgeGroupSpinnerValue();
         mView.onAddButtonClick(view);
     }
 
@@ -105,7 +106,7 @@ public class PopulationDataPresenter implements PopulationDataContract.Presenter
                 break;
             }
         }
-        mAgeGroupsList.remove(rowAgeGroupToAdd.toString());
+        mAgeGroupsList.remove(mView.getAgeGroupSpinnerValue());
         isAddButtonEnabled.set((mAgeGroupsList.size() > 0));
         mView.onAgeGroupAdd();
     }

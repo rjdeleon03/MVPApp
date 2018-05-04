@@ -35,7 +35,6 @@ public class NewDncaFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setupToolbar();
     }
 
     @Override
@@ -43,17 +42,6 @@ public class NewDncaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.new_dnca_fragment, container, false);
-    }
-
-    private void setupToolbar() {
-        ImageButton backButton = getActivity().findViewById(R.id.nf_menu_up_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                mViewModel.navigateOnBackButtonPressed();
-            }
-        });
     }
 
 }

@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca;
 
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
+import com.rjdeleon.mvp_app.databinding.NewDncaActivityBinding;
 
 public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
 
@@ -15,13 +17,15 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
     private NewDncaViewModel mViewModel;
 
+    private NewDncaActivityBinding mBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_dnca_activity);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.new_dnca_activity);
 
         // Setup the toolbar
-        Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_new_form);
+        Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_new_dnca);
         setSupportActionBar(toolbar);
 
         // Setup view and viewModel
@@ -31,6 +35,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         // Link view and viewModel
         newDncaFragment.setViewModel(mViewModel);
         mViewModel.setNavigator(this);
+
+        // Bind viewModel to view
+        mBinding.setViewModel(mViewModel);
     }
 
     @Override

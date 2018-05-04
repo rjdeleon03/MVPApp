@@ -14,8 +14,8 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
     private FormInfo mFormInfo;
     private PopulationData mPopulationData;
 
-    public ObservableField<String> title;
-    public ObservableField<String> subtitle;
+    public final ObservableField<String> title;
+    public final ObservableField<String> subtitle;
 
     public NewFormPresenter(NewFormContract.View view) {
         this.mView = view;
@@ -23,6 +23,11 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
         this.mPopulationData = new PopulationData();
         this.title = new ObservableField<>();
         this.subtitle = new ObservableField<>();
+    }
+
+    @Override
+    public void onBackButtonClick(View view) {
+        mView.navigateBack(view);
     }
 
     @Override
@@ -35,11 +40,6 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
     @Override
     public void closeFragment(BaseFragment fragment) {
         mView.closeFragment(fragment);
-    }
-
-    @Override
-    public void onBackButtonClick(View view) {
-        mView.navigateBack(view);
     }
 
     @Override

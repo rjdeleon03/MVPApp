@@ -2,18 +2,16 @@ package com.rjdeleon.mvp_app.Base;
 
 import android.support.v4.app.Fragment;
 
-import com.rjdeleon.mvp_app.Base.FragmentNavigationContract;
-
 public abstract class BaseFragment extends Fragment implements FragmentNavigationContract.View {
 
-    protected FragmentNavigationContract.Presenter navigationPresenter;
+    protected FragmentNavigationContract.Presenter mNavigationPresenter;
 
     protected String fragmentTitle = "";
     protected String fragmentSubtitle = "";
 
     @Override
     public void attachPresenter(FragmentNavigationContract.Presenter presenter) {
-        navigationPresenter = presenter;
+        mNavigationPresenter = presenter;
     }
 
     public String getFragmentTitle() {

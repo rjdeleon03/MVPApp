@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.AppUtil;
+import com.rjdeleon.mvp_app.Modules.NewForm.Menu.NewFormMenuPresenter;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Base.BaseFragment;
 import com.rjdeleon.mvp_app.Modules.NewForm.Menu.NewFormMenuFragment;
@@ -16,6 +17,7 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
 
     NewFormPresenter mPresenter;
     NewFormMenuFragment mMenuFragment;
+    NewFormMenuPresenter mMenuPresenter;
     TextView mSubtitleView;
 
     @Override
@@ -28,14 +30,16 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
         NewFormActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.new_form_activity);
         binding.setPresenter(mPresenter);
 
+        // Initialize menu fragment and presenter
         this.mMenuFragment = new NewFormMenuFragment();
-        mMenuFragment.attachPresenter(mPresenter);
-
         this.mSubtitleView = findViewById(R.id.nf_subtitle);
-
         if(findViewById(R.id.new_form_fragment_container) != null) {
             getSupportFragmentManager().beginTransaction().add(R.id.new_form_fragment_container, mMenuFragment).commit();
         }
+        mMenuPresenter = new NewFormMenuPresenter(mMenuFragment);
+
+        // Set toolbar title
+        mPresenter.updateTitle(mMenuFragment.getFragmentTitle());
     }
 
     @Override
@@ -96,7 +100,7 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
 
     private void closeFragment() {
 
-        // Pop topmost fragment from stackcloseFragment
+        // Pop topmost fragment from stack, closeFragment
         getSupportFragmentManager().popBackStackImmediate();
 
         // Hide keyboard

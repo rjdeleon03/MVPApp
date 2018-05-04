@@ -40,7 +40,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
                              Bundle savedInstanceState) {
 
         // Initialize presenter
-        this.mPresenter = new PopulationDataPresenter(this, navigationPresenter);
+        this.mPresenter = new PopulationDataPresenter(this, mNavigationPresenter);
         PopulationDataFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_fragment, container, false);
         binding.setPresenter(mPresenter);
         View view = binding.getRoot();

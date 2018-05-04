@@ -2,7 +2,6 @@ package com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +41,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mPresenter = new NewFormGenInfoPresenter(this, (NewFormContract.Presenter)navigationPresenter);
+        mPresenter = new NewFormGenInfoPresenter(this, (NewFormContract.Presenter) mNavigationPresenter);
         NewFormGenInfoFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.new_form_gen_info_fragment, container, false);
         binding.setPresenter(mPresenter);
         View view = binding.getRoot();
@@ -63,7 +62,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
         mPageIndicator = view.findViewById(R.id.nf_gen_info_stepper);
 
         // Set subtitle in toolbar
-        navigationPresenter.updateSubtitle(mAdapter.getItem(0).getFragmentTitle());
+        mNavigationPresenter.updateSubtitle(mAdapter.getItem(0).getFragmentTitle());
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -73,7 +72,7 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
             @Override
             public void onPageSelected(int position) {
                 NewFormGenInfoFragment.this.fragmentTitle = (mAdapter.getItem(position)).getFragmentTitle();
-                navigationPresenter.updateSubtitle(NewFormGenInfoFragment.this.fragmentTitle);
+                mNavigationPresenter.updateSubtitle(NewFormGenInfoFragment.this.fragmentTitle);
                 // TODO: If fragment is filled out completely, set color to green
                 //    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), android.R.color.holo_green_dark));
                 // TODO: Else set color to default (yellow)

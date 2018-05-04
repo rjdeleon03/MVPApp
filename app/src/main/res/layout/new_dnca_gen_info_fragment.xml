@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Modules.NewDnca.GeneralInformation.NewDncaGenInfoFragment">
+    tools:context=".Modules.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/nd_gen_info_stepper_container"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <com.rd.PageIndicatorView
+                android:id="@+id/nd_gen_info_stepper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:piv_animationType="scale"
+                app:piv_dynamicCount="true"
+                app:piv_interactiveAnimation="true"
+                app:piv_selectedColor="@color/yellow"
+                app:piv_unselectedColor="@color/lightYellow"
+                app:piv_viewPager="@+id/nd_gen_info_pager"
+                app:piv_padding="12dp"
+                app:piv_radius="8dp"
+                />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/nd_calamity_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/lightYellow"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/nd_gen_info_stepper_container"  />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/nd_gen_info_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nd_calamity_progress" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

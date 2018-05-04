@@ -16,38 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<android.support.design.widget.TabLayout-->
-        <!--android:id="@+id/nf_gen_info_tabs"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="?attr/colorPrimary"-->
-        <!--android:elevation="6dp"-->
-        <!--android:minHeight="?attr/actionBarSize"-->
-        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
-
         <android.support.constraint.ConstraintLayout
             android:id="@+id/nf_gen_info_stepper_container"
             android:layout_width="match_parent"
             android:layout_height="44dp">
-
-            <!--
-            <com.badoualy.stepperindicator.StepperIndicator
-                android:id="@+id/nf_gen_info_stepper"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginStart="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:stpi_circleRadius="8dp"
-                app:stpi_indicatorColor="@color/yellow"
-                app:stpi_lineDoneColor="@color/colorAccent"
-                app:stpi_stepCount="7" />
-                -->
 
             <com.rd.PageIndicatorView
                 android:id="@+id/nf_gen_info_stepper"

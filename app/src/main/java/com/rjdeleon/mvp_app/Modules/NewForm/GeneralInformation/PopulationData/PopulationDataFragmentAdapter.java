@@ -24,7 +24,7 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
     @Override
     public PopulationDataFragmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        PopulationDataRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_row, parent, false);
+        PopulationDataRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_row_v1, parent, false);
         return new PopulationDataFragmentViewHolder(binding);
     }
 

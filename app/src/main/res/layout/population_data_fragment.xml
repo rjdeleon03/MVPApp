@@ -1,98 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Modules.NewForm.GeneralInformation.PopulationData.PopulationDataFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment">
 
-    <data>
-        <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.PopulationDataPresenter" />
-    </data>
-
-    <LinearLayout
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="8dp" >
+        android:text="@string/hello_blank_fragment" />
 
-        <!--Occurrence Date-->
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp">
-
-            <TextView
-                android:id="@+id/nf_population_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
-                android:text="Age Group:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/nf_population_age_spinner"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/nf_population_add_button"
-                app:layout_constraintStart_toEndOf="@+id/nf_population_label"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </android.support.v7.widget.AppCompatSpinner>
-
-            <Button
-                android:id="@+id/nf_population_add_button"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:enabled="@{presenter.isAddButtonEnabled}"
-                android:onClick="@{presenter::handleAddButtonClick}"
-                android:text="Add"
-                android:fontFamily="@font/lato_bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/nf_population_grid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingStart="8dp"
-                    android:clipToPadding="false"
-                    app:stackFromEnd="true"
-                    app:reverseLayout="true"/>
-
-            </ScrollView>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</layout>
+</FrameLayout>

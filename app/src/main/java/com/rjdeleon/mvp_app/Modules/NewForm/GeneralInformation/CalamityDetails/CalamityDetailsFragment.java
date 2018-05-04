@@ -24,6 +24,6 @@ public class CalamityDetailsFragment extends BaseFragment implements CalamityDet
         // Inflate the layout for this fragment
         mPresenter = new CalamityDetailsPresenter(this);
 
-        return inflater.inflate(R.layout.calamity_details_fragment, container, false);
+        return inflater.inflate(R.layout.calamity_details_fragment_v1, container, false);
     }
 }

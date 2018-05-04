@@ -24,7 +24,7 @@ public class PopulationDataDialogFragment extends DialogFragment implements Popu
 
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.population_data_dialog, null, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.population_data_dialog_v1, null, false);
         mBinding.setPresenter((PopulationDataDialogPresenter) mPresenter);
         View view = mBinding.getRoot();
 

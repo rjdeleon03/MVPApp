@@ -22,7 +22,7 @@ public class InfraDamageFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.infra_damage_fragment, container, false);
+        return inflater.inflate(R.layout.infra_damage_fragment_v1, container, false);
     }
 
 }

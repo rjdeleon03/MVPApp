@@ -23,7 +23,9 @@
             android:name=".Modules.NewForm.NewFormActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".Modules.NewDnca.NewDncaActivity"></activity>
+        <activity
+            android:name=".Modules.NewDnca.NewDncaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>

@@ -19,9 +19,11 @@ public class ActivityUtils {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(frameId, fragment);
         if (addToBackstack) {
+            transaction.replace(frameId, fragment);
             transaction.addToBackStack(null);
+        } else {
+            transaction.add(frameId, fragment);
         }
         transaction.commit();
     }

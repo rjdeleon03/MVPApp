@@ -75,9 +75,9 @@ public class NewFormGenInfoFragment extends BaseFragment implements NewFormGenIn
                 NewFormGenInfoFragment.this.fragmentTitle = (mAdapter.getItem(position)).getFragmentTitle();
                 navigationPresenter.updateSubtitle(NewFormGenInfoFragment.this.fragmentTitle);
                 // TODO: If fragment is filled out completely, set color to green
-                    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), android.R.color.holo_green_dark));
+                //    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), android.R.color.holo_green_dark));
                 // TODO: Else set color to default (yellow)
-                    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), R.color.yellow));
+                //    mPageIndicator.setSelectedColor(ContextCompat.getColor(getContext(), R.color.yellow));
             }
 
             @Override

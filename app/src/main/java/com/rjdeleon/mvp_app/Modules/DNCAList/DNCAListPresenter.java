@@ -13,7 +13,7 @@ import com.rjdeleon.mvp_app.Tasks.GetAllDncaTask;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
+public class DNCAListPresenter implements DNCAListContract.Presenter, GetAllDncaTask.GetAllDncaResult {
 
     private List<DNCAListItem> listItems;
     private DNCAListContract.View mView;
@@ -24,7 +24,8 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
         this.mView = view;
     }
 
-    public void handleBackButtonClick(View view) {
+    @Override
+    public void onBackButtonClick(View view) {
         // Cancel all async tasks except download
         if (getAllDncaTask != null) {
             getAllDncaTask.cancel(true);
@@ -34,8 +35,25 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
         mView.onBackButtonClick();
     }
 
-    public void handleNewFormButtonClick(View view) {
+    @Override
+    public void onNewFormButtonClick(View view) {
         mView.onNewFormButtonClick();
+    }
+
+    @Override
+    public void resultsRetrieved(String result) {
+        if (result.isEmpty()) {
+            listItems = new ArrayList<>();
+            mView.displayShortToast("No DNCA form was found.");
+            return;
+        }
+
+        // Deserialize JSON here
+        Gson gson = new Gson();
+        listItems = gson.fromJson(result, new TypeToken<List<DNCAListItem>>(){}.getType());
+
+        // Refresh adapter
+        this.mView.refreshAdapter();
     }
 
     public void getAllDncaForms() {
@@ -56,21 +74,5 @@ public class DNCAListPresenter implements GetAllDncaTask.GetAllDncaResult {
 
     public int getItemsCount() {
         return listItems.size();
-    }
-
-    @Override
-    public void resultsRetrieved(String result) {
-        if (result.isEmpty()) {
-            listItems = new ArrayList<>();
-            mView.displayShortToast("No DNCA form was found.");
-            return;
-        }
-
-        // Deserialize JSON here
-        Gson gson = new Gson();
-        listItems = gson.fromJson(result, new TypeToken<List<DNCAListItem>>(){}.getType());
-
-        // Refresh adapter
-        this.mView.refreshAdapter();
     }
 }

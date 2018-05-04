@@ -33,7 +33,7 @@ public class HomePresenterTest {
 
     @Test
     public void handleNewDncaClick() {
-        this.mPresenter.handleNewDncaClick(mNewDncaButton);
+        this.mPresenter.onNewDncaButtonClick(mNewDncaButton);
         verify(mView).navigateToNewDnca();
     }
 }

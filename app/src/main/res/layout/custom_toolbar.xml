@@ -44,7 +44,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:background="@android:color/transparent"
-                    android:onClick="@{presenter::handleNewDncaClick}"
+                    android:onClick="@{presenter::onNewDncaButtonClick}"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:scaleType="fitCenter"

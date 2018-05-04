@@ -25,34 +25,21 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
         this.subtitle = new ObservableField<>();
     }
 
-    public void updateTitle(String title) {
-        this.title.set(title);
-    }
-
-    public void updateSubtitle(String subtitle) {
-        this.subtitle.set(subtitle);
-        if (subtitle.isEmpty()) {
-            mView.showSubtitle(false);
-        } else {
-            mView.showSubtitle(true);
-        }
-    }
-
     @Override
     public void switchToFragment(BaseFragment fragment) {
-        mView.onSwitchToFragment(fragment);
+        mView.switchToFragment(fragment);
         updateTitle(fragment.getFragmentTitle());
         updateSubtitle(fragment.getFragmentSubtitle());
     }
 
     @Override
     public void closeFragment(BaseFragment fragment) {
-        mView.onCloseFragment(fragment);
+        mView.closeFragment(fragment);
     }
 
     @Override
-    public void handleBackButtonClick(View view) {
-        mView.onBackButtonClicked(view);
+    public void onBackButtonClick(View view) {
+        mView.navigateBack(view);
     }
 
     @Override
@@ -73,5 +60,18 @@ public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavi
     @Override
     public void setPopulationData(PopulationData populationData) {
         this.mPopulationData = populationData;
+    }
+
+    public void updateTitle(String title) {
+        this.title.set(title);
+    }
+
+    public void updateSubtitle(String subtitle) {
+        this.subtitle.set(subtitle);
+        if (subtitle.isEmpty()) {
+            mView.showSubtitle(false);
+        } else {
+            mView.showSubtitle(true);
+        }
     }
 }

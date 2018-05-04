@@ -12,5 +12,9 @@ public interface DNCAListContract {
     }
 
     interface Presenter {
+
+        void onBackButtonClick(android.view.View view);
+
+        void onNewFormButtonClick(android.view.View view);
     }
 }

@@ -18,6 +18,7 @@ public class NewFormMenuFragment extends BaseFragment implements NewFormMenuCont
 
     public NewFormMenuFragment() {
         // Required empty public constructor
+        this.fragmentTitle = "New DNCA Form";
     }
 
     @Override

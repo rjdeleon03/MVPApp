@@ -15,12 +15,12 @@ public class HomePresenter implements HomeContract.Presenter {
     }
 
     @Override
-    public void handleNewDncaClick(View view) {
+    public void onNewDncaButtonClick(View view) {
         this.mView.navigateToNewDnca();
     }
 
     @Override
-    public void handleTestApiClick(View view) {
+    public void onTestApiButtonClick(View view) {
 
         // Submit new DNCA form using POST API at localhost:3000/dnca
         PostNewDncaTask task = new PostNewDncaTask();

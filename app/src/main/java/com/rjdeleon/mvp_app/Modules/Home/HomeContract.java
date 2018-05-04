@@ -8,8 +8,8 @@ public interface HomeContract {
     }
 
     interface Presenter {
-        void handleNewDncaClick(android.view.View view);
+        void onNewDncaButtonClick(android.view.View view);
 
-        void handleTestApiClick(android.view.View view);
+        void onTestApiButtonClick(android.view.View view);
     }
 }

@@ -62,7 +62,7 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
     }
 
     @Override
-    public void onSwitchToFragment(BaseFragment fragment) {
+    public void switchToFragment(BaseFragment fragment) {
 
         if(findViewById(R.id.new_form_fragment_container) != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.new_form_fragment_container, fragment).addToBackStack(null).commit();
@@ -71,13 +71,13 @@ public class NewFormActivity extends AppCompatActivity implements NewFormContrac
     }
 
     @Override
-    public void onCloseFragment(BaseFragment fragment) {
+    public void closeFragment(BaseFragment fragment) {
         getSupportFragmentManager().beginTransaction().remove(fragment).commit();
         closeFragment();
     }
 
     @Override
-    public void onBackButtonClicked(View view) {
+    public void navigateBack(View view) {
         onBackPressed();
     }
 

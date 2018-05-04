@@ -4,16 +4,16 @@ import com.rjdeleon.mvp_app.Base.BaseFragment;
 
 public interface NewFormContract {
     interface View {
-        void onSwitchToFragment(BaseFragment fragment);
+        void switchToFragment(BaseFragment fragment);
 
-        void onCloseFragment(BaseFragment fragment);
+        void closeFragment(BaseFragment fragment);
 
-        void onBackButtonClicked(android.view.View view);
+        void navigateBack(android.view.View view);
 
         void showSubtitle(boolean willShow);
     }
 
     interface Presenter {
-        void handleBackButtonClick(android.view.View view);
+        void onBackButtonClick(android.view.View view);
     }
 }

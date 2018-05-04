@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListActivity;
 import com.rjdeleon.mvp_app.Modules.NewForm.NewFormActivity;
+import com.rjdeleon.mvp_app.Modules.NewFormV2.NewDncaActivity;
 
 public class ViewFactory {
 
@@ -15,6 +16,11 @@ public class ViewFactory {
 
     public static void startNewFormActivity(Context context) {
         Intent intent = new Intent(context, NewFormActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startNewDncaActivity(Context context) {
+        Intent intent = new Intent(context, NewDncaActivity.class);
         context.startActivity(intent);
     }
 

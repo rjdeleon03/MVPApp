@@ -6,7 +6,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.NewForm.NewFormPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewFormV2.NewDncaPresenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/custom_nav_toolbar_list"
+            android:id="@+id/custom_nav_toolbar_new_form"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/holo_blue_dark"
@@ -60,6 +60,7 @@
                     app:layout_constraintStart_toEndOf="@+id/nf_menu_up_button"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <!--@{presenter.title}-->
                 <TextView
                     android:id="@+id/nf_title"
                     android:layout_width="wrap_content"
@@ -69,28 +70,29 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
-                    android:text="@{presenter.title}"
+                    android:text="TITLE"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/comfortaa_reg" />
 
-                    <TextView
-                        android:id="@+id/nf_subtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginStart="8dp"
-                        android:paddingTop="4dp"
-                        android:text="@{presenter.subtitle}"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        app:fontFamily="@font/comfortaa_reg"/>
+                    <!--@{presenter.subtitle}-->
+                <TextView
+                    android:id="@+id/nf_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingTop="4dp"
+                    android:text="Subtitle"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:fontFamily="@font/comfortaa_reg"/>
 
                 </LinearLayout>
 

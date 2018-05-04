@@ -69,7 +69,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     @Override
     public void onNewFormButtonClick() {
         // Start New Form Activity
-        ViewFactory.startNewFormActivity(this);
+        ViewFactory.startNewDncaActivity(this);
     }
 
     @Override

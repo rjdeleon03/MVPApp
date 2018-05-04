@@ -19,9 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Modules.DNCAList.DNCAListActivity" />
-        <activity android:name=".Modules.NewForm.NewFormActivity"
+        <activity
+            android:name=".Modules.NewForm.NewFormActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Modules.NewDnca.NewDncaActivity"></activity>
     </application>
 
 </manifest>

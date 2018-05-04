@@ -17,7 +17,7 @@ import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Di
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Base.BaseFragment;
-import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
+import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentV1Binding;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class PopulationDataFragment extends BaseFragment implements PopulationDa
 
         // Initialize presenter
         this.mPresenter = new PopulationDataPresenter(this, mNavigationPresenter);
-        PopulationDataFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_fragment_v1, container, false);
+        PopulationDataFragmentV1Binding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_fragment_v1, container, false);
         binding.setPresenter(mPresenter);
         View view = binding.getRoot();
 

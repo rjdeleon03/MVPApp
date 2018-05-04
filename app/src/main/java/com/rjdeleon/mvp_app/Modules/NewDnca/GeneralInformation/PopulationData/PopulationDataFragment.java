@@ -14,11 +14,19 @@ import com.rjdeleon.mvp_app.R;
  */
 public class PopulationDataFragment extends Fragment {
 
+    private PopulationDataViewModel mViewModel;
+
+    public static PopulationDataFragment newInstance() {
+        return new PopulationDataFragment();
+    }
 
     public PopulationDataFragment() {
         // Required empty public constructor
     }
 
+    public void setViewModel(PopulationDataViewModel viewModel) {
+        mViewModel = viewModel;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

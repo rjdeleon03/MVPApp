@@ -2,15 +2,13 @@ package com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.R
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Row.PopulationDataRowContract;
-import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Row.PopulationDataRowPresenter;
-import com.rjdeleon.mvp_app.databinding.PopulationDataRowBinding;
+import com.rjdeleon.mvp_app.databinding.PopulationDataRowV1Binding;
 
 public class PopulationDataFragmentViewHolder extends RecyclerView.ViewHolder implements PopulationDataRowContract.View {
 
-    private final PopulationDataRowBinding mBinding;
+    private final PopulationDataRowV1Binding mBinding;
 
-    public PopulationDataFragmentViewHolder(PopulationDataRowBinding binding) {
+    public PopulationDataFragmentViewHolder(PopulationDataRowV1Binding binding) {
         super(binding.getRoot());
         this.mBinding = binding;
     }

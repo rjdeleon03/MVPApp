@@ -9,14 +9,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Dialog.PopulationDataDialogContract;
-import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Dialog.PopulationDataDialogPresenter;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.PopulationDataDialogBinding;
+import com.rjdeleon.mvp_app.databinding.PopulationDataDialogV1Binding;
 
 public class PopulationDataDialogFragment extends DialogFragment implements PopulationDataDialogContract.View {
 
-    private PopulationDataDialogBinding mBinding;
+    private PopulationDataDialogV1Binding mBinding;
     private PopulationDataDialogContract.Presenter mPresenter;
 
     @Override

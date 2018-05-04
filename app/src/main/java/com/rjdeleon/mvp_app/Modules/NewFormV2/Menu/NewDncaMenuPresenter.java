@@ -11,8 +11,27 @@ public class NewDncaMenuPresenter implements NewDncaMenuContract.Presenter {
         mView.setPresenter(this);
     }
 
+    /**
+     * Handle when user clicks on form details button
+     * */
     @Override
     public void onFormDetailsButtonClick(View view) {
 
+    }
+
+    /**
+     * Handle when user clicks on general information button
+     * */
+    @Override
+    public void onGenInfoButtonClick(View view) {
+
+    }
+
+    /**
+     * Unbind view so it does not get retained
+     * */
+    @Override
+    public void unbind() {
+        this.mView = null;
     }
 }

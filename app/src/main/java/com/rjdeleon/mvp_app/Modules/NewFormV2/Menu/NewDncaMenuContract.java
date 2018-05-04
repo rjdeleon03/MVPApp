@@ -8,5 +8,9 @@ public interface NewDncaMenuContract {
 
     interface Presenter {
         void onFormDetailsButtonClick(android.view.View view);
+
+        void onGenInfoButtonClick(android.view.View view);
+
+        void unbind();
     }
 }

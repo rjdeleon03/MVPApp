@@ -17,12 +17,14 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Setup presenter and binding for this view
         mPresenter = new NewDncaPresenter(this);
         NewDncaActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.new_dnca_activity);
-
-//        Toolbar toolbar = findViewById(R.id.custom);
-//        setSupportActionBar(toolbar);
         binding.setPresenter(mPresenter);
+
+        // Initialize toolbar
+        Toolbar toolbar = findViewById(R.id.custom);
+        setSupportActionBar(toolbar);
     }
 
     @Override

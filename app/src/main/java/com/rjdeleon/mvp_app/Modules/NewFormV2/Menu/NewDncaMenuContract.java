@@ -7,6 +7,6 @@ public interface NewDncaMenuContract {
     }
 
     interface Presenter {
-
+        void onFormDetailsButtonClick(android.view.View view);
     }
 }

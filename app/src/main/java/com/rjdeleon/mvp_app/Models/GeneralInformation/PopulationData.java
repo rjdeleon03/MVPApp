@@ -34,6 +34,17 @@ public class PopulationData {
             }
             return null;
         }
+
+        public static List<AgeGroup> asList() {
+            List<AgeGroup> ageGroupList = new ArrayList<>();
+            ageGroupList.add(AGE_0_5);
+            ageGroupList.add(AGE_6_9);
+            ageGroupList.add(AGE_10_12);
+            ageGroupList.add(AGE_13_17);
+            ageGroupList.add(AGE_18_59);
+            ageGroupList.add(AGE_60_PLUS);
+            return ageGroupList;
+        }
     };
 
     private List<PopulationDataRow> populationDataRows;

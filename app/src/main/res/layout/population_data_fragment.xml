@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.PopulationDataPresenter" />
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel" />
     </data>
 
     <LinearLayout
@@ -55,13 +55,13 @@
 
 
             <!--android:enabled="@{presenter.isAddButtonEnabled}"-->
-            <!--android:onClick="@{presenter::handleAddButtonClick}"-->
             <Button
                 android:id="@+id/nd_population_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Add"
                 android:fontFamily="@font/lato_bold"
+                android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

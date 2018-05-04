@@ -10,10 +10,10 @@ import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListActivity;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.ViewFactory;
 import com.rjdeleon.mvp_app.databinding.HomeActivityBinding;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View {
-
 
     private HomePresenter mPresenter;
 
@@ -33,8 +33,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToNewDnca() {
         // Start New DNCA Activity
         Toast.makeText(this, "Loading new DNCA form...", Toast.LENGTH_SHORT).show();
-        Intent dncaFormIntent = new Intent(this, DNCAListActivity.class);
-        startActivity(dncaFormIntent);
+        ViewFactory.startDNCAListActivity(this);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

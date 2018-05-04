@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Modules.NewForm.NewFormActivity;
+import com.rjdeleon.mvp_app.ViewFactory;
 import com.rjdeleon.mvp_app.databinding.DncaListActivityBinding;
 
 public class DNCAListActivity extends AppCompatActivity implements DNCAListContract.View {
@@ -70,8 +71,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     @Override
     public void onNewFormButtonClick() {
         // Start New Form Activity
-        Intent newFormIntent = new Intent(this, NewFormActivity.class);
-        startActivity(newFormIntent);
+        ViewFactory.startNewFormActivity(this);
     }
 
     @Override

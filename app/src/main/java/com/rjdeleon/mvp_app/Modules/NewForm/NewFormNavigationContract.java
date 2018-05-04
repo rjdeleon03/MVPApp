@@ -1,9 +1,10 @@
-package com.rjdeleon.mvp_app.Base;
+package com.rjdeleon.mvp_app.Modules.NewForm;
 
+import com.rjdeleon.mvp_app.Base.BaseFragment;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 
-public interface FragmentNavigationContract {
+public interface NewFormNavigationContract {
     interface View {
         void attachPresenter(Presenter presenter);
     }

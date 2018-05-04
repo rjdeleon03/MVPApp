@@ -28,9 +28,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
         super.onCreate(savedInstanceState);
         mPresenter = new DNCAListPresenter(this);
         DncaListActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.dnca_list_activity);
-//        binding.
         binding.setPresenter(this.mPresenter);
-
 
         Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_list);
         setSupportActionBar(toolbar);

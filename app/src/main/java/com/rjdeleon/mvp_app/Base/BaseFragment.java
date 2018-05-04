@@ -2,15 +2,17 @@ package com.rjdeleon.mvp_app.Base;
 
 import android.support.v4.app.Fragment;
 
-public abstract class BaseFragment extends Fragment implements FragmentNavigationContract.View {
+import com.rjdeleon.mvp_app.Modules.NewForm.NewFormNavigationContract;
 
-    protected FragmentNavigationContract.Presenter mNavigationPresenter;
+public abstract class BaseFragment extends Fragment implements NewFormNavigationContract.View {
+
+    protected NewFormNavigationContract.Presenter mNavigationPresenter;
 
     protected String fragmentTitle = "";
     protected String fragmentSubtitle = "";
 
     @Override
-    public void attachPresenter(FragmentNavigationContract.Presenter presenter) {
+    public void attachPresenter(NewFormNavigationContract.Presenter presenter) {
         mNavigationPresenter = presenter;
     }
 

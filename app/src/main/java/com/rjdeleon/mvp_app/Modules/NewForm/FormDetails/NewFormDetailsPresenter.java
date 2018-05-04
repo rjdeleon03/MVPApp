@@ -5,14 +5,14 @@ import android.databinding.ObservableField;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.rjdeleon.mvp_app.Base.FragmentNavigationContract;
+import com.rjdeleon.mvp_app.Modules.NewForm.NewFormNavigationContract;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 
 public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter {
 
     private NewFormDetailsContract.View mView;
-    private FragmentNavigationContract.Presenter mParentPresenter;
+    private NewFormNavigationContract.Presenter mParentPresenter;
     private FormInfo mFormInfo;
 
     public ObservableField<String> orgName;
@@ -24,7 +24,7 @@ public class NewFormDetailsPresenter implements NewFormDetailsContract.Presenter
     public ObservableField<String> interviewer;
     public ObservableField<String> interviewerNo;
 
-    public NewFormDetailsPresenter(NewFormDetailsContract.View view, FragmentNavigationContract.Presenter parentPresenter) {
+    public NewFormDetailsPresenter(NewFormDetailsContract.View view, NewFormNavigationContract.Presenter parentPresenter) {
         this.mView = view;
         this.mParentPresenter = parentPresenter;
         initFields();

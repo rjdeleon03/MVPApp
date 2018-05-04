@@ -3,7 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData;
 import android.databinding.ObservableBoolean;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Base.FragmentNavigationContract;
+import com.rjdeleon.mvp_app.Modules.NewForm.NewFormNavigationContract;
 import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Dialog.PopulationDataDialogPresenter;
 import com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Dialog.PopulationDataDialogContract;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
@@ -17,12 +17,12 @@ import java.util.List;
 public class PopulationDataPresenter implements PopulationDataContract.Presenter {
 
     private PopulationDataContract.View mView;
-    private FragmentNavigationContract.Presenter mParentPresenter;
+    private NewFormNavigationContract.Presenter mParentPresenter;
     private List<PopulationDataRow> mPopulationDataRows;
     private List<PopulationData.AgeGroup> mAgeGroupsList;
     public ObservableBoolean isAddButtonEnabled;
 
-    public PopulationDataPresenter(PopulationDataContract.View view, FragmentNavigationContract.Presenter parentPresenter) {
+    public PopulationDataPresenter(PopulationDataContract.View view, NewFormNavigationContract.Presenter parentPresenter) {
         this.mView = view;
         this.mParentPresenter = parentPresenter;
         this.mPopulationDataRows = new ArrayList<>();

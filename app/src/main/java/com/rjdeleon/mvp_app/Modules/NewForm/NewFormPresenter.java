@@ -3,12 +3,11 @@ package com.rjdeleon.mvp_app.Modules.NewForm;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Base.FragmentNavigationContract;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Base.BaseFragment;
 
-public class NewFormPresenter implements NewFormContract.Presenter, FragmentNavigationContract.Presenter {
+public class NewFormPresenter implements NewFormContract.Presenter, NewFormNavigationContract.Presenter {
 
     private NewFormContract.View mView;
     private FormInfo mFormInfo;

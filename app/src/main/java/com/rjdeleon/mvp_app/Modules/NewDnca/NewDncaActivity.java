@@ -45,6 +45,22 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         onBackPressed();
     }
 
+    /**
+     * Show Form Details fragment
+     */
+    @Override
+    public void onFormDetailsButtonPressed() {
+
+    }
+
+    /**
+     * Show General Information fragment
+     */
+    @Override
+    public void onGenInfoButtonPressed() {
+
+    }
+
     @NonNull
     private NewDncaFragment findOrCreateViewFragment() {
 

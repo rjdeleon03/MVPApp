@@ -24,10 +24,27 @@ public class NewDncaViewModel {
         mNewDncaNavigator = null;
     }
 
+    /**
+     * For the activity's use on navigating back
+      */
     public void navigateOnBackButtonPressed() {
 
         // Navigate when back button is pressed
         mNewDncaNavigator.onBackButtonPressed();
+    }
+
+    /**
+     * Navigate to Form Details view
+     */
+    public void navigateOnFormDetailsButtonPressed() {
+        mNewDncaNavigator.onFormDetailsButtonPressed();
+    }
+
+    /**
+     * Navigate to General Information view
+     */
+    public void navigateOnGenInfoButtonPressed() {
+        mNewDncaNavigator.onFormDetailsButtonPressed();
     }
 
 }

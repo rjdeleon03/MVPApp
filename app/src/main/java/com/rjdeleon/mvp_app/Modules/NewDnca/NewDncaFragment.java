@@ -8,10 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.NewDncaFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +18,8 @@ import com.rjdeleon.mvp_app.R;
 public class NewDncaFragment extends Fragment {
 
     private NewDncaViewModel mViewModel;
+
+    private NewDncaFragmentBinding mBinding;
 
     public static NewDncaFragment newInstance() {
         return new NewDncaFragment();
@@ -41,7 +42,13 @@ public class NewDncaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.new_dnca_fragment, container, false);
+        final View root = inflater.inflate(R.layout.new_dnca_fragment, container, false);
+        if (mBinding == null) {
+            mBinding = NewDncaFragmentBinding.bind(root);
+        }
+        mBinding.setViewModel(mViewModel);
+
+        return mBinding.getRoot();
     }
 
 }

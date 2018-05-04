@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment">
+    tools:context=".Modules.NewForm.GeneralInformation.PopulationData.PopulationDataFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="presenter"
+            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.PopulationDataPresenter" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:paddingTop="8dp" >
 
-</FrameLayout>
+        <!--Occurrence Date-->
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/nd_population_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="Age Group:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/nd_population_age_spinner"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/nd_population_add_button"
+                app:layout_constraintStart_toEndOf="@+id/nd_population_label"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </android.support.v7.widget.AppCompatSpinner>
+
+
+            <!--android:enabled="@{presenter.isAddButtonEnabled}"-->
+            <!--android:onClick="@{presenter::handleAddButtonClick}"-->
+            <Button
+                android:id="@+id/nd_population_add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Add"
+                android:fontFamily="@font/lato_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/nd_population_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingStart="8dp"
+                    android:clipToPadding="false"
+                    app:stackFromEnd="true"
+                    app:reverseLayout="true"/>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

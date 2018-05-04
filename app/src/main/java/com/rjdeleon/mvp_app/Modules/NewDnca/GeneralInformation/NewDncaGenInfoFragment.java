@@ -45,7 +45,7 @@ public class NewDncaGenInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.new_dnca_gen_info_fragment, container, false);
 
-        mAdapter = new NewDncaGenInfoFragmentAdapter(getActivity().getSupportFragmentManager());
+        mAdapter = new NewDncaGenInfoFragmentAdapter(getChildFragmentManager());
 
         // Setup calamity details fragment
         CalamityDetailsFragment calamityDetailsFragment = CalamityDetailsFragment.newInstance();

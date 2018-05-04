@@ -15,11 +15,14 @@ public class ActivityUtils {
      *
      */
     public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                              @NonNull Fragment fragment, int frameId) {
+                                              @NonNull Fragment fragment, int frameId, boolean addToBackstack) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(frameId, fragment);
+        if (addToBackstack) {
+            transaction.addToBackStack(null);
+        }
         transaction.commit();
     }
 

@@ -2,16 +2,12 @@ package com.rjdeleon.mvp_app.Modules.NewDnca;
 
 import android.content.Context;
 
-public class NewDncaViewModel {
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
-    private final Context mContext; // Application context
-
-    private NewDncaNavigator mNewDncaNavigator;
+public class NewDncaViewModel extends NewDncaBaseViewModel {
 
     public NewDncaViewModel(Context context) {
-
-        // Force use of application context
-        mContext = context.getApplicationContext();
+        super(context);
     }
 
     public void setNavigator(NewDncaNavigator navigator) {
@@ -44,7 +40,7 @@ public class NewDncaViewModel {
      * Navigate to General Information view
      */
     public void navigateOnGenInfoButtonPressed() {
-        mNewDncaNavigator.onFormDetailsButtonPressed();
+        mNewDncaNavigator.onGenInfoButtonPressed();
     }
 
 }

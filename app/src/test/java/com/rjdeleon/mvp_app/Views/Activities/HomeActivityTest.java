@@ -1,8 +1,6 @@
 package com.rjdeleon.mvp_app.Views.Activities;
 
-import android.widget.Button;
-
-import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Modules.Home.HomeActivity;
 
 import org.junit.After;
 import org.junit.Before;

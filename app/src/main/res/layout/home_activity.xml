@@ -7,7 +7,7 @@
 
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.HomePresenter" />
+            type="com.rjdeleon.mvp_app.Modules.Home.HomePresenter" />
     </data>
 
     <LinearLayout
@@ -21,7 +21,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".Views.Activities.HomeActivity">
+            tools:context=".Modules.Home.HomeActivity">
 
             <Button
                 android:id="@+id/button"

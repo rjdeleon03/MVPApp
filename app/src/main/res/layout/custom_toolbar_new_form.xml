@@ -6,7 +6,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.NewFormPresenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout

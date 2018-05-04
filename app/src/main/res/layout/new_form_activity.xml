@@ -3,13 +3,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Views.Activities.NewFormActivity">
+    tools:context=".Modules.NewForm.NewFormActivity">
 
     <data>
 
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.NewFormPresenter" />
     </data>
 
     <LinearLayout

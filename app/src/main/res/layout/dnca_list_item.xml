@@ -8,7 +8,7 @@
 
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.DNCAListItemPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemPresenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout

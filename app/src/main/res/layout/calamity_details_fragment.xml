@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
-             tools:context=".Views.Fragments.GeneralInformation.CalamityDetailsFragment">
+             tools:context=".Modules.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment">
 
     <!--
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormDetailsPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.FormDetails.NewFormDetailsPresenter" />
     </data>
     -->
 

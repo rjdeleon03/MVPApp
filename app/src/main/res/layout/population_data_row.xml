@@ -6,7 +6,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataRowPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Row.PopulationDataRowPresenter" />
     </data>
 
     <android.support.v7.widget.CardView

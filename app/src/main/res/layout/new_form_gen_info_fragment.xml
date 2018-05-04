@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Views.Fragments.GeneralInformation.CalamityDetailsFragment">
+    tools:context=".Modules.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment">
 
     <data>
 
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormGenInfoPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.NewFormGenInfoPresenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout

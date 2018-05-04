@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Fragments.GeneralInformation.FamilyDataFragment">
+    tools:context=".Modules.NewForm.GeneralInformation.FamilyData.FamilyDataFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

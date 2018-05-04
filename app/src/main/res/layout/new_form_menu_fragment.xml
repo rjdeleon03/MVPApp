@@ -3,13 +3,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Views.Fragments.NewFormMenuFragment">
+    tools:context=".Modules.NewForm.Menu.NewFormMenuFragment">
 
     <data>
 
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.NewFormMenuPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.Menu.NewFormMenuPresenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout

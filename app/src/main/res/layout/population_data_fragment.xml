@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Views.Fragments.GeneralInformation.PopulationDataFragment">
+    tools:context=".Modules.NewForm.GeneralInformation.PopulationData.PopulationDataFragment">
 
     <data>
         <variable
             name="presenter"
-            type="com.rjdeleon.mvp_app.Presenters.GeneralInformation.PopulationDataPresenter" />
+            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.PopulationDataPresenter" />
     </data>
 
     <LinearLayout

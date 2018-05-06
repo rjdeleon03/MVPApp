@@ -64,6 +64,14 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     }
 
     /**
+     * Delete card for selected age group when its delete button is pressed
+     */
+    @Override
+    public void onDeleteCardButtonPressed() {
+
+    }
+
+    /**
      * Initialize AgeGroup spinner
      */
     private void setupSpinner(View view) {

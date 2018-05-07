@@ -11,6 +11,12 @@ public class CalamityDesc {
         this.description = description;
     }
 
+    public CalamityDesc() {
+        this.calamityType = "";
+        this.dateOccurred = "";
+        this.description = "";
+    }
+
     public String getCalamityType() {
         return calamityType;
     }

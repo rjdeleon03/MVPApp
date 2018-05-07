@@ -17,6 +17,15 @@ public class FamilyData {
         this.displacedHouseholds = displacedHouseholds;
     }
 
+    public FamilyData() {
+        this.totalFamilies = 0;
+        this.affectedFamilies = 0;
+        this.displacedFamilies = 0;
+        this.totalHouseholds = 0;
+        this.affectedHouseholds = 0;
+        this.displacedHouseholds = 0;
+    }
+
     public int getTotalFamilies() {
         return totalFamilies;
     }

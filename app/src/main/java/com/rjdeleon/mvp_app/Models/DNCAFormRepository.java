@@ -41,8 +41,8 @@ public class DNCAFormRepository implements DNCAFormDataSource {
      * @param callback
      */
     @Override
-    public void createNewDncaForm(@NonNull LoadDncaFormsCallback callback) {
+    public void createNewDncaForm(@NonNull GetDncaFormCallback callback) {
         checkNotNull(callback);
-
+        callback.onDncaFormLoaded(new DNCAForm());
     }
 }

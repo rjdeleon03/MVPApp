@@ -12,6 +12,11 @@ public class DNCAForm {
         this.genInfo = genInfo;
     }
 
+    public DNCAForm() {
+        this.formInfo = new FormInfo();
+        this.genInfo = new GenInfo();
+    }
+
     public FormInfo getFormInfo() {
         return formInfo;
     }

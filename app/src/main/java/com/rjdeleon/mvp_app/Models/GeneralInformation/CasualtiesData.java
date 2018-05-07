@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CasualtiesData {
@@ -23,6 +24,10 @@ public class CasualtiesData {
             injured.female += row.getInjured().female;
         }
         this.casualtiesDataRows.add(new CasualtiesDataRow(PopulationData.AgeGroup.ALL, dead, missing, injured));
+    }
+
+    public CasualtiesData() {
+        casualtiesDataRows = new ArrayList<>();
     }
 
     public List<CasualtiesDataRow> getCasualtiesDataRows() {

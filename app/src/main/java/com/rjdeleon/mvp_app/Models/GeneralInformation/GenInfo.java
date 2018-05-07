@@ -21,6 +21,17 @@ public class GenInfo {
         this.infrastructureDamageData = infrastructureDamageData;
     }
 
+    public GenInfo() {
+        this.calamityDesc = new CalamityDesc();
+        this.affectedAreaDesc = "";
+        this.populationData = new PopulationData();
+        this.familyData = new FamilyData();
+        this.vulnerablePopulationData = new VulnerablePopulationData();
+        this.casualtiesData = new CasualtiesData();
+        this.deathCauseData = new DeathCauseData();
+        this.infrastructureDamageData = new InfrastructureDamageData();
+    }
+
     public CalamityDesc getCalamityDesc() {
         return calamityDesc;
     }

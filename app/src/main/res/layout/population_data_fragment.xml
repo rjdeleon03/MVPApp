@@ -40,6 +40,7 @@
 
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/nd_population_age_spinner"
+                android:selectedItemPosition="@={viewModel.spinnerValue}"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"

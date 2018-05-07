@@ -66,6 +66,10 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
         return mBinding.getRoot();
     }
 
+    /**
+     * Handle configuration changes
+     * @param newConfig
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

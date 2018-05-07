@@ -25,6 +25,7 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
 
     private Spinner mAgeGroupSpinner;
     private ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
+    private PopulationDataDialogFragment mDialogFragment;
 
     public static PopulationDataFragment newInstance() {
         return new PopulationDataFragment();
@@ -63,9 +64,10 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     @Override
     public void onAddButtonPressed() {
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(getContext());
-        PopulationDataDialogFragment dialogFragment = PopulationDataDialogFragment.newInstance();
-        dialogFragment.setViewModel(dialogViewModel);
-        dialogFragment.show(getChildFragmentManager(), "");
+        dialogViewModel.setPopulationDataNavigator(this);
+        mDialogFragment = PopulationDataDialogFragment.newInstance();
+        mDialogFragment.setViewModel(dialogViewModel);
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**
@@ -74,6 +76,15 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     @Override
     public void onDeleteCardButtonPressed() {
 
+    }
+
+    /**
+     * Dismiss dialog when close button is pressed
+     */
+    @Override
+    public void onDialogCloseButtonPressed() {
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
     }
 
     /**

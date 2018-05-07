@@ -5,4 +5,6 @@ public interface PopulationDataNavigator {
     void onAddButtonPressed();
 
     void onDeleteCardButtonPressed();
+
+    void onDialogCloseButtonPressed();
 }

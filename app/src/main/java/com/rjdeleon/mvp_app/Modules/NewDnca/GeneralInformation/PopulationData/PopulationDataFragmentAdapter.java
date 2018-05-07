@@ -14,9 +14,11 @@ import com.rjdeleon.mvp_app.R;
 public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<PopulationDataRowViewHolder> {
 
     private PopulationDataNavigator mPopulationDataNavigator;
+    private PopulationDataViewModel mViewModel;
 
-    public PopulationDataFragmentAdapter(PopulationDataNavigator populationDataNavigator) {
+    public PopulationDataFragmentAdapter(PopulationDataNavigator populationDataNavigator, PopulationDataViewModel viewModel) {
         mPopulationDataNavigator = populationDataNavigator;
+        mViewModel = viewModel;
     }
 
     @NonNull

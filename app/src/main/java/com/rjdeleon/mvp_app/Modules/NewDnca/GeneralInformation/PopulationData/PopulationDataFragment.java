@@ -28,8 +28,9 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
 
     private Spinner mAgeGroupSpinner;
     private ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
-    private RecyclerView mRowRecycler;
     private PopulationDataDialogFragment mDialogFragment;
+    private RecyclerView mRowRecycler;
+    private PopulationDataFragmentAdapter mPopulationDataAdapter;
 
     public static PopulationDataFragment newInstance() {
         return new PopulationDataFragment();
@@ -121,6 +122,8 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
      */
     private void setupRecyclerGrid(View view) {
         mRowRecycler = view.findViewById(R.id.nd_population_grid);
+        mPopulationDataAdapter = new PopulationDataFragmentAdapter(this, mViewModel);
+        mRowRecycler.setAdapter(mPopulationDataAdapter);
     }
 
     /**

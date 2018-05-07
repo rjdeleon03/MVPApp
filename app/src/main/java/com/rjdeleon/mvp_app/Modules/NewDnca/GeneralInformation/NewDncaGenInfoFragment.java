@@ -15,11 +15,17 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Utils.ActivityUtils;
+import com.rjdeleon.mvp_app.ViewModelHolder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NewDncaGenInfoFragment extends Fragment {
+
+    public static final String NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG";
+
+    public static final String NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG";
 
     private NewDncaGenInfoViewModel mViewModel;
     private NewDncaGenInfoFragmentAdapter mAdapter;
@@ -48,17 +54,31 @@ public class NewDncaGenInfoFragment extends Fragment {
 
         mAdapter = new NewDncaGenInfoFragmentAdapter(getChildFragmentManager());
 
-        // Setup calamity details fragment
-        CalamityDetailsFragment calamityDetailsFragment = CalamityDetailsFragment.newInstance();
-        mCalamityDetailsViewModel = new CalamityDetailsViewModel(getContext());
-        calamityDetailsFragment.setViewModel(mCalamityDetailsViewModel);
-        mAdapter.addFragment(calamityDetailsFragment);
+        {
+            // Setup calamity details fragment
+            CalamityDetailsFragment calamityDetailsFragment = CalamityDetailsFragment.newInstance();
+            mCalamityDetailsViewModel = new CalamityDetailsViewModel(getContext());
+            calamityDetailsFragment.setViewModel(mCalamityDetailsViewModel);
+            mAdapter.addFragment(calamityDetailsFragment);
 
-        // Setup calamity population data fragment
-        PopulationDataFragment populationDataFragment = PopulationDataFragment.newInstance();
-        mPopulationDataViewModel = new PopulationDataViewModel(getContext());
-        populationDataFragment.setViewModel(mPopulationDataViewModel);
-        mAdapter.addFragment(populationDataFragment);
+            // Bind calamity details viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(mCalamityDetailsViewModel),
+                    NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup calamity population data fragment
+            PopulationDataFragment populationDataFragment = PopulationDataFragment.newInstance();
+            mPopulationDataViewModel = new PopulationDataViewModel(getContext());
+            populationDataFragment.setViewModel(mPopulationDataViewModel);
+            mAdapter.addFragment(populationDataFragment);
+
+            // Bind population data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(mPopulationDataViewModel),
+                    NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG);
+        }
 
         // Initialize viewPager
         mPager = root.findViewById(R.id.nd_gen_info_pager);

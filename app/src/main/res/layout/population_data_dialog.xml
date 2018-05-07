@@ -263,6 +263,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:backgroundTint="@android:color/holo_red_light"
+                android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
                 android:src="@drawable/ic_close_card"
                 app:borderWidth="0dp"
                 app:fabSize="mini"/>
@@ -273,6 +274,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:backgroundTint="@android:color/holo_green_light"
+                android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
                 android:src="@drawable/ic_check"
                 app:borderWidth="0dp"
                 app:fabSize="mini"/>

@@ -1,8 +1,11 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,7 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
 
     private Spinner mAgeGroupSpinner;
     private ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
+    private RecyclerView mRowRecycler;
     private PopulationDataDialogFragment mDialogFragment;
 
     public static PopulationDataFragment newInstance() {
@@ -55,7 +59,16 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
         // Initialize spinner
         setupSpinner(root);
 
+        // Initialize row view
+        setupRecyclerGrid(root);
+
         return mBinding.getRoot();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setRecyclerGridLayout(newConfig.orientation);
     }
 
     /**
@@ -89,6 +102,7 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
 
     /**
      * Initialize AgeGroup spinner
+     * @param view
      */
     private void setupSpinner(View view) {
         mAgeGroupSpinner = view.findViewById(R.id.nd_population_age_spinner);
@@ -99,5 +113,25 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
         );
         mSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mAgeGroupSpinner.setAdapter(mSpinnerAdapter);
+    }
+
+    /**
+     * Initialize RecyclerView grid for displaying population data rows
+     * @param view
+     */
+    private void setupRecyclerGrid(View view) {
+        mRowRecycler = view.findViewById(R.id.nd_population_grid);
+    }
+
+    /**
+     * Sets column count of RecyclerView depending on device orientation
+     * @param orientation
+     */
+    private void setRecyclerGridLayout(int orientation) {
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mRowRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        } else {
+            mRowRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        }
     }
 }

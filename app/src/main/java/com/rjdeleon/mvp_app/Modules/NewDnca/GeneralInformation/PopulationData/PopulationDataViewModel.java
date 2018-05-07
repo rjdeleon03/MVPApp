@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewHolder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,5 +36,9 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel {
      */
     public void navigateOnAddButtonPressed() {
         mPopulationDataNavigator.onAddButtonPressed();
+    }
+
+    public void onBindPopulationDataRowViewAtPosition(PopulationDataRowViewHolder holder, int position) {
+
     }
 }

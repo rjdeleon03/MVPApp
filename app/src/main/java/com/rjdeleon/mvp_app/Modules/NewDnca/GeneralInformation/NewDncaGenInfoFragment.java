@@ -13,9 +13,9 @@ import com.rjdeleon.mvp_app.Injection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.NewDncaGenInfoFragmentBinding;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
@@ -29,6 +29,8 @@ public class NewDncaGenInfoFragment extends Fragment {
     public static final String NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG";
 
     private NewDncaGenInfoViewModel mViewModel;
+    private NewDncaGenInfoFragmentBinding mBinding;
+
     private NewDncaGenInfoFragmentAdapter mAdapter;
     private ViewPager mPager;
 
@@ -43,15 +45,32 @@ public class NewDncaGenInfoFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Sets the view model
+     * @param viewModel
+     */
     public void setViewModel(@NonNull NewDncaGenInfoViewModel viewModel) {
         mViewModel = viewModel;
     }
 
+    /**
+     * Creates the view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.new_dnca_gen_info_fragment, container, false);
+
+        // Bind viewModel to view
+        if (mBinding == null) {
+            mBinding = NewDncaGenInfoFragmentBinding.bind(root);
+        }
+        mBinding.setViewModel(mViewModel);
 
         mAdapter = new NewDncaGenInfoFragmentAdapter(getChildFragmentManager());
 

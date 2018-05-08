@@ -40,7 +40,6 @@
                     android:paddingTop="16dp"
                     android:paddingBottom="72dp">
 
-                    <!--android:text="@={presenter.orgName}"-->
                     <EditText
                         android:id="@+id/nd_details_org_name"
                         android:layout_width="match_parent"
@@ -84,7 +83,6 @@
                             android:layout_height="40dp"
                             android:src="@drawable/ic_calendar" />
 
-                        <!--android:text="@={presenter.assessmentDate}"-->
                         <TextView
                             android:id="@+id/nd_details_assessment_date"
                             android:layout_width="wrap_content"
@@ -99,7 +97,6 @@
                             android:textSize="20sp"
                             tools:text="2018/04/29" />
 
-                        <!--android:onClick="@{presenter::handleSetDateButtonClick}"-->
                         <Button
                             android:id="@+id/nd_details_date_button"
                             android:layout_width="wrap_content"

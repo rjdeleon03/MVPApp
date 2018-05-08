@@ -17,7 +17,7 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
 
     public ObservableField<String> orgName;
 //    private SimpleDate assessmentDate;
-    public ObservableField<String> assessmentDate;
+    public ObservableField<SimpleDate> assessmentDate;
     public ObservableField<String> sitio;
     public ObservableField<String> barangay;
     public ObservableField<String> city;
@@ -33,7 +33,7 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     public NewDncaFormDetailsViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context);
         orgName = new ObservableField<>("");
-        assessmentDate = new ObservableField<>("");
+        assessmentDate = new ObservableField<>(new SimpleDate(2000, 1, 1));
         sitio = new ObservableField<>("");
         barangay = new ObservableField<>("");
         city = new ObservableField<>("");
@@ -50,7 +50,7 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     public void navigateOnSaveButtonPressed() {
         FormInfo formInfo = new FormInfo(
                 orgName.get(),
-                new SimpleDate(2018, 5, 8),
+                assessmentDate.get(),
                 sitio.get(),
                 barangay.get(),
                 city.get(),
@@ -65,6 +65,16 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     }
 
     /**
+     * Sets the assessment date
+     * @param year
+     * @param month
+     * @param day
+     */
+    public void onAssessmentDateSet(int year, int month, int day) {
+        assessmentDate.set(new SimpleDate(year, month, day));
+    }
+
+    /**
      * Callback for when form has been created
      * @param form
      */
@@ -72,6 +82,7 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     public void onDncaFormLoaded(DNCAForm form) {
         FormInfo formInfo = form.getFormInfo();
         orgName.set(formInfo.getOrgName());
+        assessmentDate.set(formInfo.getAssessmentDate());
         sitio.set(formInfo.getSitio());
         barangay.set(formInfo.getBarangay());
         city.set(formInfo.getCity());

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 
 public class AppUtil {
 
@@ -58,8 +59,7 @@ public class AppUtil {
     }
 
     @BindingAdapter("android:text")
-    public static void bindIntegerInText(TextView view, int value)
-    {
+    public static void bindIntegerInText(TextView view, int value) {
         view.setText(String.valueOf(value));
     }
 
@@ -72,5 +72,10 @@ public class AppUtil {
             e.printStackTrace();
         }
         return value;
+    }
+
+    @BindingAdapter("android:text")
+    public static void bindSimpleDateInText(TextView view, SimpleDate date) {
+        view.setText(date.toString());
     }
 }

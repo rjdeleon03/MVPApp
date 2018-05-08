@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Injection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment;
@@ -57,7 +58,7 @@ public class NewDncaGenInfoFragment extends Fragment {
         {
             // Setup calamity details fragment
             CalamityDetailsFragment calamityDetailsFragment = CalamityDetailsFragment.newInstance();
-            mCalamityDetailsViewModel = new CalamityDetailsViewModel(getContext());
+            mCalamityDetailsViewModel = new CalamityDetailsViewModel(getContext(), Injection.provideDncaRepository(getContext().getApplicationContext()));
             calamityDetailsFragment.setViewModel(mCalamityDetailsViewModel);
             mAdapter.addFragment(calamityDetailsFragment);
 

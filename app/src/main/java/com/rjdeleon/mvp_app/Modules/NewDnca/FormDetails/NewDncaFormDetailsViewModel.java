@@ -16,7 +16,6 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     private DNCAFormRepository mDncaFormRepository;
 
     public ObservableField<String> orgName;
-//    private SimpleDate assessmentDate;
     public ObservableField<SimpleDate> assessmentDate;
     public ObservableField<String> sitio;
     public ObservableField<String> barangay;

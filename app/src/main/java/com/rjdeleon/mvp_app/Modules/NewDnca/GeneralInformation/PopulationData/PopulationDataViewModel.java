@@ -17,6 +17,10 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel {
 
     public ObservableInt spinnerValue;
 
+    /**
+     * Constructor
+     * @param context
+     */
     public PopulationDataViewModel(Context context) {
         super(context);
         spinnerValue = new ObservableInt(0);

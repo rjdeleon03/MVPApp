@@ -101,6 +101,16 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     }
 
     /**
+     * Refresh recycler view adapter and dismiss dialog when OK button is pressed
+     */
+    @Override
+    public void onDialogOkButtonPressed() {
+        mPopulationDataAdapter.notifyDataSetChanged();
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
+    }
+
+    /**
      * Dismiss dialog when close button is pressed
      */
     @Override
@@ -130,7 +140,8 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
      */
     private void setupRecyclerGrid(View view) {
         mRowRecycler = view.findViewById(R.id.nd_population_grid);
-        mPopulationDataAdapter = new PopulationDataFragmentAdapter(this, mViewModel);
+        mPopulationDataAdapter = new PopulationDataFragmentAdapter(getContext().getApplicationContext(), this, mViewModel);
+        setRecyclerGridLayout(getResources().getConfiguration().orientation);
         mRowRecycler.setAdapter(mPopulationDataAdapter);
     }
 

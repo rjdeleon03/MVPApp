@@ -90,7 +90,7 @@ public class NewDncaGenInfoFragment extends Fragment {
         {
             // Setup calamity population data fragment
             PopulationDataFragment populationDataFragment = PopulationDataFragment.newInstance();
-            mPopulationDataViewModel = new PopulationDataViewModel(getContext());
+            mPopulationDataViewModel = new PopulationDataViewModel(getContext(), Injection.provideDncaRepository(getContext().getApplicationContext()));
             populationDataFragment.setViewModel(mPopulationDataViewModel);
             mAdapter.addFragment(populationDataFragment);
 

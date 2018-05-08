@@ -32,6 +32,7 @@ public class CalamityDetailsViewModel extends NewDncaBaseViewModel implements DN
         eventDescription = new ObservableField<>("");
         areaDescription = new ObservableField<>("");
         mDncaFormRepository = dncaFormRepository;
+        mDncaFormRepository.retrieveNewDncaForm(this);
     }
 
     /**

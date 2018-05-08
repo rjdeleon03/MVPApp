@@ -1,11 +1,13 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Injection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel;
 import com.rjdeleon.mvp_app.databinding.PopulationDataRowBinding;
@@ -15,9 +17,11 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
 
     private PopulationDataNavigator mPopulationDataNavigator;
     private PopulationDataViewModel mViewModel;
+    private Context mContext;
 
-    public PopulationDataFragmentAdapter(PopulationDataNavigator populationDataNavigator, PopulationDataViewModel viewModel) {
+    public PopulationDataFragmentAdapter(Context context, PopulationDataNavigator populationDataNavigator, PopulationDataViewModel viewModel) {
         mPopulationDataNavigator = populationDataNavigator;
+        mContext = context;
         mViewModel = viewModel;
     }
 
@@ -31,13 +35,16 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
 
     @Override
     public void onBindViewHolder(@NonNull PopulationDataRowViewHolder holder, int position) {
-        PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel();
-        populationDataRowViewModel.setPopulationDataNavigator(mPopulationDataNavigator);
+        PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
+                mContext,
+                Injection.provideDncaRepository(mContext),
+                position
+        );
         holder.bind(populationDataRowViewModel);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mViewModel.getPopulationDataRowsCount();
     }
 }

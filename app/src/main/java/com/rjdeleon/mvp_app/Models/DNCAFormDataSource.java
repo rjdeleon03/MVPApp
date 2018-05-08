@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 
 import java.util.List;
 
@@ -30,5 +31,5 @@ public interface DNCAFormDataSource {
 
     void saveGenInfoCalamityDetails(CalamityDesc calamityDesc);
 
-    void saveGenInfoPopulationData(PopulationData populationData);
+    void saveGenInfoPopulationDataRow(PopulationDataRow populationDataRow);
 }

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -72,11 +73,13 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     /**
-     * Saves population data to new DNCA form
-     * @param populationData
+     * Saves a population data row to new DNCA form
+     * @param populationDataRow
      */
     @Override
-    public void saveGenInfoPopulationData(PopulationData populationData) {
+    public void saveGenInfoPopulationDataRow(PopulationDataRow populationDataRow) {
+        PopulationData populationData = mForm.getGenInfo().getPopulationData();
+        populationData.getPopulationDataRows().add(populationDataRow);
         mForm.getGenInfo().setPopulationData(populationData);
     }
 }

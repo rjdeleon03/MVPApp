@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 
 public class DNCAFormLocalDataSource implements DNCAFormDataSource {
 
@@ -36,7 +37,7 @@ public class DNCAFormLocalDataSource implements DNCAFormDataSource {
     }
 
     @Override
-    public void saveGenInfoPopulationData(PopulationData populationData) {
+    public void saveGenInfoPopulationDataRow(PopulationDataRow populationDataRow) {
 
     }
 }

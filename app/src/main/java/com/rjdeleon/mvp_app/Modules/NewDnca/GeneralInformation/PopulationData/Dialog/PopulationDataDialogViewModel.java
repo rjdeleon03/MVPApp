@@ -8,6 +8,8 @@ import com.rjdeleon.mvp_app.Models.DNCAForm;
 import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
 
@@ -39,6 +41,7 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
         displacedMale = new ObservableInt(0);
         displacedFemale = new ObservableInt(0);
         mDncaFormRepository = dncaFormRepository;
+        mDncaFormRepository.retrieveNewDncaForm(this);
     }
 
     /**
@@ -62,8 +65,15 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
      * Handles navigation when OK button is pressed
      */
     public void navigateOnOkButtonPressed() {
+        PopulationDataRow populationDataRow = new PopulationDataRow(
+                ageGroup.get(),
+                new GenderTuple(totalMale.get(), totalFemale.get()),
+                new GenderTuple(affectedMale.get(), affectedFemale.get()),
+                new GenderTuple(displacedMale.get(), displacedFemale.get())
+        );
+        mDncaFormRepository.saveGenInfoPopulationDataRow(populationDataRow);
         if (mPopulationDataNavigator != null) {
-            mPopulationDataNavigator.onDialogCloseButtonPressed();
+            mPopulationDataNavigator.onDialogOkButtonPressed();
         }
     }
 

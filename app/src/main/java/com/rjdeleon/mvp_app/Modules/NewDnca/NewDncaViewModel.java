@@ -18,6 +18,7 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     public NewDncaViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context);
         mDncaFormRepository = dncaFormRepository;
+        mDncaFormRepository.retrieveNewDncaForm(this);
     }
 
     /**

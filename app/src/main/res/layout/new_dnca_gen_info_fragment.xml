@@ -67,7 +67,8 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/nd_gen_info_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                currentItem="@{viewModel.viewPagerIndex}"/>
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/nd_details_save_button"
@@ -76,7 +77,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@drawable/ic_check"
-                android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
+                android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed(ndGenInfoPager.getAdapter().getCount())}"
                 app:backgroundTint="@android:color/holo_green_light"
                 app:elevation="0dp"/>
 

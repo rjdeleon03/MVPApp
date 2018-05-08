@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.InverseBindingAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -77,5 +78,15 @@ public class AppUtil {
     @BindingAdapter("android:text")
     public static void bindSimpleDateInText(TextView view, SimpleDate date) {
         view.setText(date.toString());
+    }
+
+    @BindingAdapter("currentItem")
+    public static void setCurrentItem(ViewPager viewPager, int item) {
+        viewPager.setCurrentItem(item);
+    }
+
+    @InverseBindingAdapter(attribute = "currentItem")
+    public static int getCurrentItem(ViewPager viewPager) {
+        return viewPager.getCurrentItem();
     }
 }

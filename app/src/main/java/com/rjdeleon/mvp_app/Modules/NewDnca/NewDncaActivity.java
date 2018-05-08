@@ -1,6 +1,5 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca;
 
-import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;

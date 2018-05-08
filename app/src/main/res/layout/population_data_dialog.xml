@@ -89,14 +89,13 @@
                     android:paddingTop="16dp"
                     android:paddingBottom="32dp">
 
-                    <!--TODO:
-                    android:text="@{presenter.ageGroup}"-->
                     <TextView
                         android:id="@+id/nd_population_dlg_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/lato_reg"
+                        android:text="@{viewModel.ageGroup.toString()}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -164,8 +163,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_female"/>
 
-                    <!--TODO:
-                    android:text="@{presenter.affectedMale}"-->
                     <EditText
                         android:id="@+id/nd_population_dlg_affected_male_field"
                         android:layout_width="0dp"
@@ -178,13 +175,12 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.affectedMale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male"/>
 
-                    <!--TODO:
-                    android:text="@{presenter.displacedMale}"-->
                     <EditText
                         android:id="@+id/nd_population_dlg_displaced_male_field"
                         android:layout_width="0dp"
@@ -197,13 +193,12 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.displacedMale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male_field"/>
 
-                    <!--TODO:
-                    android:text="@{presenter.totalMale}"-->
                     <EditText
                         android:id="@+id/nd_population_dlg_total_male"
                         android:layout_width="0dp"
@@ -216,13 +211,12 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.totalMale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_male"/>
 
-                    <!--TODO:
-                    android:text="@{presenter.totalFemale}"-->
                     <EditText
                         android:id="@+id/nd_population_dlg_total_female_field"
                         android:layout_width="0dp"
@@ -235,13 +229,12 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.totalFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
                         app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_female"/>
 
-                    <!--TODO:
-                    android:text="@{presenter.affectedFemale}"-->
                     <EditText
                         android:id="@+id/nd_population_dlg_affected_female_field"
                         android:layout_width="0dp"
@@ -254,13 +247,12 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.affectedFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
                         app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_female_field"/>
 
-                    <!--TODO:
-                    android:text="@{presenter.displacedFemale}"-->
                     <EditText
                         android:id="@+id/nd_population_dlg_displaced_female_field"
                         android:layout_width="0dp"
@@ -273,6 +265,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.displacedFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"

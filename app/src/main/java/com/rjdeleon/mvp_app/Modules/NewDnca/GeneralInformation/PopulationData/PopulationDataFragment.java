@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.rjdeleon.mvp_app.Injection;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
@@ -81,7 +82,10 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
      */
     @Override
     public void onAddButtonPressed() {
-        PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(getContext());
+        PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
+                getContext(),
+                Injection.provideDncaRepository(getContext().getApplicationContext()),
+                mAgeGroupSpinner.getSelectedItemPosition());
         dialogViewModel.setPopulationDataNavigator(this);
         mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);

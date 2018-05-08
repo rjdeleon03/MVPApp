@@ -2,6 +2,9 @@ package com.rjdeleon.mvp_app.Models;
 
 import android.support.annotation.NonNull;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+
 import java.util.List;
 
 /**
@@ -24,4 +27,8 @@ public interface DNCAFormDataSource {
     void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback);
 
     void saveFormInfo(FormInfo formInfo);
+
+    void saveGenInfoCalamityDetails(CalamityDesc calamityDesc);
+
+    void saveGenInfoPopulationData(PopulationData populationData);
 }

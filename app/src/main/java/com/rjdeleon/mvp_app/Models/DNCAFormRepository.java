@@ -2,6 +2,9 @@ package com.rjdeleon.mvp_app.Models;
 
 import android.support.annotation.NonNull;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class DNCAFormRepository implements DNCAFormDataSource {
@@ -57,5 +60,23 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     @Override
     public void saveFormInfo(FormInfo formInfo) {
         mForm.setFormInfo(formInfo);
+    }
+
+    /**
+     * Saves calamity details to new DNCA form
+     * @param calamityDesc
+     */
+    @Override
+    public void saveGenInfoCalamityDetails(CalamityDesc calamityDesc) {
+        mForm.getGenInfo().setCalamityDesc(calamityDesc);
+    }
+
+    /**
+     * Saves population data to new DNCA form
+     * @param populationData
+     */
+    @Override
+    public void saveGenInfoPopulationData(PopulationData populationData) {
+        mForm.getGenInfo().setPopulationData(populationData);
     }
 }

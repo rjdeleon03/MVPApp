@@ -2,6 +2,9 @@ package com.rjdeleon.mvp_app.Models;
 
 import android.support.annotation.NonNull;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+
 public class DNCAFormLocalDataSource implements DNCAFormDataSource {
 
     private static volatile DNCAFormLocalDataSource INSTANCE;
@@ -24,6 +27,16 @@ public class DNCAFormLocalDataSource implements DNCAFormDataSource {
 
     @Override
     public void saveFormInfo(FormInfo formInfo) {
+
+    }
+
+    @Override
+    public void saveGenInfoCalamityDetails(CalamityDesc calamityDesc) {
+
+    }
+
+    @Override
+    public void saveGenInfoPopulationData(PopulationData populationData) {
 
     }
 }

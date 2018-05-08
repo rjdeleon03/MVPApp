@@ -7,8 +7,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class DNCAFormRepository implements DNCAFormDataSource {
 
     private static DNCAFormRepository INSTANCE = null;
-
     private final DNCAFormDataSource mDncaFormLocalDataSource;
+    private DNCAForm mForm;
 
     /**
      * Private constructor
@@ -41,8 +41,21 @@ public class DNCAFormRepository implements DNCAFormDataSource {
      * @param callback
      */
     @Override
-    public void createNewDncaForm(@NonNull GetDncaFormCallback callback) {
+    public void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback) {
         checkNotNull(callback);
-        callback.onDncaFormLoaded(new DNCAForm());
+
+        if (mForm == null) {
+            mForm = new DNCAForm();
+        }
+        callback.onDncaFormLoaded(mForm);
+    }
+
+    /**
+     * Saves form info to new DNCA form
+     * @param formInfo
+     */
+    @Override
+    public void saveFormInfo(FormInfo formInfo) {
+        mForm.setFormInfo(formInfo);
     }
 }

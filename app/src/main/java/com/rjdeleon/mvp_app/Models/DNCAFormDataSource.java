@@ -21,5 +21,7 @@ public interface DNCAFormDataSource {
         void onDataNotAvailable();
     }
 
-    void createNewDncaForm(@NonNull GetDncaFormCallback callback);
+    void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback);
+
+    void saveFormInfo(FormInfo formInfo);
 }

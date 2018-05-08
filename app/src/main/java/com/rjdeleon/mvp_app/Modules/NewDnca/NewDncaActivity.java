@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.rjdeleon.mvp_app.Injection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel;
@@ -53,7 +54,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
         // Link view and viewModel
         newDncaFragment.setViewModel(mMainViewModel);
-        mMainViewModel.setNavigator(this);
+        mMainViewModel.setNewDncaNavigator(this);
 
         // Bind viewModel to view
         mMainBinding.setViewModel(mMainViewModel);
@@ -124,17 +125,20 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             case MENU:
                 // TODO: Restore view model for config change
                 // Create viewModel
-                viewModel = new NewDncaViewModel(getApplicationContext());
+                viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_VIEWMODEL_TAG;
                 break;
 
             case FORM_DETAILS:
-                viewModel = new NewDncaFormDetailsViewModel(getApplicationContext());
+                viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG;
                 break;
 
             case GEN_INFO:
                 viewModel = new NewDncaGenInfoViewModel(getApplicationContext());
+                viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_GEN_INFO_VIEWMODEL_TAG;
         }
 

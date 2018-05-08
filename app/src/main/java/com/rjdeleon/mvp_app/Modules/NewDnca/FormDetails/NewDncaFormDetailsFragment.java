@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.NewDncaFormDetailsFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +17,7 @@ import com.rjdeleon.mvp_app.R;
 public class NewDncaFormDetailsFragment extends Fragment {
 
     private NewDncaFormDetailsViewModel mViewModel;
+    private NewDncaFormDetailsFragmentBinding mBinding;
 
     public static NewDncaFormDetailsFragment newInstance() {
         return new NewDncaFormDetailsFragment();
@@ -33,7 +35,12 @@ public class NewDncaFormDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.new_dnca_form_details_fragment, container, false);
+        View root = inflater.inflate(R.layout.new_dnca_form_details_fragment, container, false);
+        if (mBinding == null) {
+            mBinding = NewDncaFormDetailsFragmentBinding.bind(root);
+        }
+        mBinding.setViewModel(mViewModel);
+        return root;
     }
 
 }

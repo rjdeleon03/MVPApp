@@ -15,4 +15,8 @@ public abstract class NewDncaBaseViewModel {
         // Force use of application context
         mContext = context.getApplicationContext();
     }
+
+    public void setNewDncaNavigator(NewDncaNavigator newDncaNavigator) {
+        mNewDncaNavigator = newDncaNavigator;
+    }
 }

@@ -127,7 +127,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         }
 
         PopulationData populationData = new PopulationData(rows);
-        CalamityDesc calamityDesc = new CalamityDesc("xxx", "yyy", "zzz");
+        CalamityDesc calamityDesc = new CalamityDesc("xxx", new SimpleDate(), "zzz", "affectedArea");
         FamilyData familyData = new FamilyData(11, 22, 33, 44, 55, 66);
         VulnerablePopulationData vulnerablePopulationData = new VulnerablePopulationData(vpRows);
         CasualtiesData casualtiesData = new CasualtiesData(cdRows);
@@ -136,7 +136,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
 
         SimpleDate assessmentDate = new SimpleDate(2018, 3, 30);
         FormInfo formInfo = new FormInfo("aa", assessmentDate, "cc", "dd", "ee", "ff", "gg", "hh");
-        GenInfo genInfo = new GenInfo(calamityDesc, "affectedArea", populationData, familyData, vulnerablePopulationData, casualtiesData, deathCauseData, infrastructureDamageData);
+        GenInfo genInfo = new GenInfo(calamityDesc, populationData, familyData, vulnerablePopulationData, casualtiesData, deathCauseData, infrastructureDamageData);
         return new DNCAForm(formInfo, genInfo);
     }
 }

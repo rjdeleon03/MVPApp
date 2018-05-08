@@ -1,20 +1,25 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
+import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
+
 public class CalamityDesc {
     private String calamityType;
-    private String dateOccurred;
-    private String description;
+    private SimpleDate dateOccurred;
+    private String eventDescription;
+    private String areaDescription;
 
-    public CalamityDesc(String calamityType, String dateOccurred, String description) {
+    public CalamityDesc(String calamityType, SimpleDate dateOccurred, String eventDescription, String areaDescription) {
         this.calamityType = calamityType;
         this.dateOccurred = dateOccurred;
-        this.description = description;
+        this.eventDescription = eventDescription;
+        this.areaDescription = areaDescription;
     }
 
     public CalamityDesc() {
         this.calamityType = "";
-        this.dateOccurred = "";
-        this.description = "";
+        this.dateOccurred = new SimpleDate();
+        this.eventDescription = "";
+        this.areaDescription = "";
     }
 
     public String getCalamityType() {
@@ -25,19 +30,27 @@ public class CalamityDesc {
         this.calamityType = calamityType;
     }
 
-    public String getDateOccurred() {
+    public SimpleDate getDateOccurred() {
         return dateOccurred;
     }
 
-    public void setDateOccurred(String dateOccurred) {
+    public void setDateOccurred(SimpleDate dateOccurred) {
         this.dateOccurred = dateOccurred;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEventDescription() {
+        return eventDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
+    public String getAreaDescription() {
+        return areaDescription;
+    }
+
+    public void setAreaDescription(String areaDescription) {
+        this.areaDescription = areaDescription;
     }
 }

@@ -3,13 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Modules.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment">
 
-    <!--
     <data>
         <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.NewForm.FormDetails.NewFormDetailsPresenter" />
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel" />
     </data>
-    -->
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -36,6 +34,7 @@
                     android:layout_marginStart="16dp"
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
+                    android:text="@={viewModel.calamityType}"
                     android:hint="Calamity Type"
                     android:inputType="text"/>
 
@@ -111,6 +110,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
                     android:ems="10"
+                    android:text="@={viewModel.eventDescription}"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
@@ -136,6 +136,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
                     android:ems="10"
+                    android:text="@={viewModel.areaDescription}"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 

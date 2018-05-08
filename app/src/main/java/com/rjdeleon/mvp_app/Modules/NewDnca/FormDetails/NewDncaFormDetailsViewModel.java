@@ -32,7 +32,7 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     public NewDncaFormDetailsViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context);
         orgName = new ObservableField<>("");
-        assessmentDate = new ObservableField<>(new SimpleDate(2000, 1, 1));
+        assessmentDate = new ObservableField<>(new SimpleDate());
         sitio = new ObservableField<>("");
         barangay = new ObservableField<>("");
         city = new ObservableField<>("");

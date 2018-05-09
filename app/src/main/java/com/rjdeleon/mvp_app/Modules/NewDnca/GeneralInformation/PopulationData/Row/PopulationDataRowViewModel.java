@@ -12,10 +12,9 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
 
-public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
+public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
 
     private PopulationDataRootViewModel mPopulationDataRootViewModel;
-    private DNCAFormRepository mDncaFormRepository;
     private int mRowIndex;
 
     public final ObservableField<PopulationData.AgeGroup> ageGroup;
@@ -29,17 +28,14 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements 
     /**
      * Constructor
      * @param context
-     * @param dncaFormRepository
      * @param rowIndex
      */
     public PopulationDataRowViewModel(Context context,
-                                      DNCAFormRepository dncaFormRepository,
                                       PopulationDataRootViewModel populationDataRootViewModel,
                                       int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
         mPopulationDataRootViewModel = populationDataRootViewModel;
-        mDncaFormRepository = dncaFormRepository;
         ageGroup = new ObservableField<>(PopulationData.AgeGroup.AGE_0_5);
         totalMale = new ObservableInt(0);
         totalFemale = new ObservableInt(0);
@@ -47,12 +43,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements 
         affectedFemale = new ObservableInt(0);
         displacedMale = new ObservableInt(0);
         displacedFemale = new ObservableInt(0);
-        mDncaFormRepository = dncaFormRepository;
-        mDncaFormRepository.retrieveNewDncaForm(this);
-    }
 
-    @Override
-    public void onDncaFormLoaded(DNCAForm form) {
         PopulationDataRow populationDataRow = mPopulationDataRootViewModel.getPopulationDataRow(mRowIndex);
         ageGroup.set(populationDataRow.getAgeGroup());
         totalMale.set(populationDataRow.getTotal().male);
@@ -61,10 +52,5 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements 
         affectedFemale.set(populationDataRow.getAffected().female);
         displacedMale.set(populationDataRow.getDisplaced().male);
         displacedFemale.set(populationDataRow.getDisplaced().female);
-    }
-
-    @Override
-    public void onDataNotAvailable() {
-
     }
 }

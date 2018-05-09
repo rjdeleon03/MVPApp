@@ -14,11 +14,10 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
 
-public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
+public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
 
     private PopulationDataRootViewModel mPopulationDataRootViewModel;
     private PopulationDataNavigator mPopulationDataNavigator;
-    private DNCAFormRepository mDncaFormRepository;
 
     public final ObservableField<PopulationData.AgeGroup> ageGroup;
     public final ObservableInt totalMale;
@@ -31,12 +30,10 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
     /**
      * Constructor
      * @param context
-     * @param dncaFormRepository
      * @param populationDataRootViewModel
      * @param ageGroupIndex
      */
     public PopulationDataDialogViewModel(Context context,
-                                         DNCAFormRepository dncaFormRepository,
                                          PopulationDataRootViewModel populationDataRootViewModel,
                                          int ageGroupIndex) {
         super(context);
@@ -48,8 +45,6 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
         affectedFemale = new ObservableInt(0);
         displacedMale = new ObservableInt(0);
         displacedFemale = new ObservableInt(0);
-        mDncaFormRepository = dncaFormRepository;
-        mDncaFormRepository.retrieveNewDncaForm(this);
     }
 
     /**
@@ -81,22 +76,5 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
         );
         mPopulationDataRootViewModel.addPopulationDataRow(populationDataRow);
         mPopulationDataNavigator.onDialogOkButtonPressed();
-    }
-
-    /**
-     * Callback for when form has been created
-     * @param form
-     */
-    @Override
-    public void onDncaFormLoaded(DNCAForm form) {
-
-    }
-
-    /**
-     * Callback for when form has not been created due to failure or data is not available
-     */
-    @Override
-    public void onDataNotAvailable() {
-
     }
 }

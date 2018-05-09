@@ -84,7 +84,6 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     public void onAddButtonPressed() {
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
-                Injection.provideDncaRepository(getContext().getApplicationContext()),
                 mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition());
         dialogViewModel.setPopulationDataNavigator(this);

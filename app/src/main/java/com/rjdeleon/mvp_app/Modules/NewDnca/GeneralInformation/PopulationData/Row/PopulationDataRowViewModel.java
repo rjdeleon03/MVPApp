@@ -4,18 +4,15 @@ import android.content.Context;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.DNCAForm;
-import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
-import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
 public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
 
-    private PopulationDataRootViewModel mPopulationDataRootViewModel;
+    private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
     private PopulationDataNavigator mPopulationDataNavigator;
     private int mRowIndex;
 
@@ -30,19 +27,19 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param populationDataRootViewModel
+     * @param populationDataRepositoryManager
      * @param rowIndex
      */
     public PopulationDataRowViewModel(Context context,
-                                      PopulationDataRootViewModel populationDataRootViewModel,
+                                      PopulationDataRepositoryManager populationDataRepositoryManager,
                                       PopulationDataNavigator populationDataNavigator,
                                       int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
-        mPopulationDataRootViewModel = populationDataRootViewModel;
+        mPopulationDataRepositoryManager = populationDataRepositoryManager;
         mPopulationDataNavigator = populationDataNavigator;
 
-        PopulationDataRow populationDataRow = mPopulationDataRootViewModel.getPopulationDataRow(mRowIndex);
+        PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
         ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
         totalMale = new ObservableInt(populationDataRow.getTotal().male);
         totalFemale = new ObservableInt(populationDataRow.getTotal().female);
@@ -63,7 +60,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      * Handle navigation when card is deleted
      */
     public void navigateOnDeleteCardButtonPressed() {
-        mPopulationDataRootViewModel.deletePopulationDataRow(mRowIndex);
+        mPopulationDataRepositoryManager.deletePopulationDataRow(mRowIndex);
         mPopulationDataNavigator.onDeleteCardButtonPressed();
     }
 

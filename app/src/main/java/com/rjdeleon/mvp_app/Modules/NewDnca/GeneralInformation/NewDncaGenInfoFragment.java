@@ -77,7 +77,7 @@ public class NewDncaGenInfoFragment extends Fragment {
         {
             // Setup calamity details fragment
             CalamityDetailsFragment calamityDetailsFragment = CalamityDetailsFragment.newInstance();
-            mCalamityDetailsViewModel = new CalamityDetailsViewModel(getContext(), Injection.provideDncaRepository(getContext().getApplicationContext()));
+            mCalamityDetailsViewModel = new CalamityDetailsViewModel(getContext(), mViewModel);
             calamityDetailsFragment.setViewModel(mCalamityDetailsViewModel);
             mAdapter.addFragment(calamityDetailsFragment);
 

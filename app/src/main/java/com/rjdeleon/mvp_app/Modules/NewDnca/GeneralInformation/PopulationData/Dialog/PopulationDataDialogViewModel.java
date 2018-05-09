@@ -4,19 +4,16 @@ import android.content.Context;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.DNCAForm;
-import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
-import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
 public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
 
-    private PopulationDataRootViewModel mPopulationDataRootViewModel;
+    private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
     private PopulationDataNavigator mPopulationDataNavigator;
 
     public final ObservableField<PopulationData.AgeGroup> ageGroup;
@@ -30,19 +27,19 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param populationDataRootViewModel
+     * @param populationDataRepositoryManager
      * @param ageGroupIndex
      * @param isNewRow
      */
     public PopulationDataDialogViewModel(Context context,
-                                         PopulationDataRootViewModel populationDataRootViewModel,
+                                         PopulationDataRepositoryManager populationDataRepositoryManager,
                                          int ageGroupIndex,
                                          boolean isNewRow) {
         super(context);
-        mPopulationDataRootViewModel = populationDataRootViewModel;
+        mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         if (isNewRow) {
-            ageGroup = new ObservableField<>(populationDataRootViewModel.getPopulationDataAgeGroup(ageGroupIndex));
+            ageGroup = new ObservableField<>(populationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
             totalMale = new ObservableInt(0);
             totalFemale = new ObservableInt(0);
             affectedMale = new ObservableInt(0);
@@ -50,7 +47,7 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
             displacedMale = new ObservableInt(0);
             displacedFemale = new ObservableInt(0);
         } else {
-            PopulationDataRow populationDataRow = mPopulationDataRootViewModel.getPopulationDataRow(ageGroupIndex);
+            PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
             ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
             totalMale = new ObservableInt(populationDataRow.getTotal().male);
             totalFemale = new ObservableInt(populationDataRow.getTotal().female);
@@ -88,7 +85,7 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
                 new GenderTuple(affectedMale.get(), affectedFemale.get()),
                 new GenderTuple(displacedMale.get(), displacedFemale.get())
         );
-        mPopulationDataRootViewModel.addPopulationDataRow(populationDataRow);
+        mPopulationDataRepositoryManager.addPopulationDataRow(populationDataRow);
         mPopulationDataNavigator.onDialogOkButtonPressed();
     }
 }

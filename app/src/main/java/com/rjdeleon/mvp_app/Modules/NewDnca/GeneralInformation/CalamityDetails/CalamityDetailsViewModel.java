@@ -10,10 +10,11 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
-public class CalamityDetailsViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
+public class CalamityDetailsViewModel extends NewDncaBaseViewModel {
 
-    private DNCAFormRepository mDncaFormRepository;
+    private NewDncaGenInfoRepositoryManager mNewDncaGenInfoRepositoryManager;
 
     public ObservableField<String> calamityType;
     public ObservableField<SimpleDate> dateOccurred;
@@ -23,36 +24,21 @@ public class CalamityDetailsViewModel extends NewDncaBaseViewModel implements DN
     /**
      * Constructor
      * @param context
-     * @param dncaFormRepository
+     * @param newDncaGenInfoRepositoryManager
      */
-    public CalamityDetailsViewModel(Context context, DNCAFormRepository dncaFormRepository) {
+    public CalamityDetailsViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context);
-        calamityType = new ObservableField<>("");
-        dateOccurred = new ObservableField<>(new SimpleDate());
-        eventDescription = new ObservableField<>("");
-        areaDescription = new ObservableField<>("");
-        mDncaFormRepository = dncaFormRepository;
-        mDncaFormRepository.retrieveNewDncaForm(this);
-    }
+        mNewDncaGenInfoRepositoryManager = newDncaGenInfoRepositoryManager;
 
-    /**
-     * Callback for when form has been created
-     * @param form
-     */
-    @Override
-    public void onDncaFormLoaded(DNCAForm form) {
-        CalamityDesc calamityDesc = form.getGenInfo().getCalamityDesc();
-        calamityType.set(calamityDesc.getCalamityType());
-        dateOccurred.set(calamityDesc.getDateOccurred());
-        eventDescription.set(calamityDesc.getEventDescription());
-        areaDescription.set(calamityDesc.getAreaDescription());
-    }
+        CalamityDesc calamityDesc = mNewDncaGenInfoRepositoryManager.getCalamityDetails();
+        calamityType = new ObservableField<>(calamityDesc.getCalamityType());
+        dateOccurred = new ObservableField<>(calamityDesc.getDateOccurred());
+        eventDescription = new ObservableField<>(calamityDesc.getEventDescription());
+        areaDescription = new ObservableField<>(calamityDesc.getAreaDescription());
 
-    /**
-     * Callback for when form has not been created due to failure or data is not available
-     */
-    @Override
-    public void onDataNotAvailable() {
-
+        calamityDesc.setCalamityType(calamityType.get());
+        calamityDesc.setDateOccurred(dateOccurred.get());
+        calamityDesc.setEventDescription(eventDescription.get());
+        calamityDesc.setAreaDescription(areaDescription.get());
     }
 }

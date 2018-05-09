@@ -3,20 +3,14 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.content.Context;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.DNCAForm;
-import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
-import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewHolder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class PopulationDataViewModel extends NewDncaBaseViewModel implements PopulationDataRootViewModel {
+public class PopulationDataViewModel extends NewDncaBaseViewModel implements PopulationDataRepositoryManager {
 
     private NewDncaGenInfoRepositoryManager mNewDncaGenInfoRepositoryManager;
     private PopulationDataNavigator mPopulationDataNavigator;

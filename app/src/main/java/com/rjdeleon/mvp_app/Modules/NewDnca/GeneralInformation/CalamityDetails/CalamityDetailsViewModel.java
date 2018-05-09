@@ -37,6 +37,9 @@ public class CalamityDetailsViewModel extends NewDncaBaseViewModel {
         areaDescription = new ObservableField<>(calamityDesc.getAreaDescription());
     }
 
+    /**
+     * Handles navigation when save button is pressed
+     */
     public void navigateOnSaveButtonPressed() {
         CalamityDesc calamityDesc = new CalamityDesc();
         calamityDesc.setCalamityType(calamityType.get());
@@ -44,5 +47,16 @@ public class CalamityDetailsViewModel extends NewDncaBaseViewModel {
         calamityDesc.setEventDescription(eventDescription.get());
         calamityDesc.setAreaDescription(areaDescription.get());
         mNewDncaGenInfoRepositoryManager.saveCalamityDetails(calamityDesc);
+    }
+
+
+    /**
+     * Sets the assessment date
+     * @param year
+     * @param month
+     * @param day
+     */
+    public void onDateOccurredSet(int year, int month, int day) {
+        dateOccurred.set(new SimpleDate(year, month, day));
     }
 }

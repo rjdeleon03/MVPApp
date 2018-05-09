@@ -85,7 +85,25 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
                 mViewModel,
-                mAgeGroupSpinner.getSelectedItemPosition());
+                mAgeGroupSpinner.getSelectedItemPosition(),
+                true);
+        dialogViewModel.setPopulationDataNavigator(this);
+        mDialogFragment = PopulationDataDialogFragment.newInstance();
+        mDialogFragment.setViewModel(dialogViewModel);
+        mDialogFragment.show(getChildFragmentManager(), "");
+    }
+
+    /**
+     * Handle when card is selected
+     * @param rowIndex
+     */
+    @Override
+    public void onCardSelected(int rowIndex) {
+        PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
+                getContext(),
+                mViewModel,
+                rowIndex,
+                false);
         dialogViewModel.setPopulationDataNavigator(this);
         mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);

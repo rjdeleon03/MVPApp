@@ -32,19 +32,33 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
      * @param context
      * @param populationDataRootViewModel
      * @param ageGroupIndex
+     * @param isNewRow
      */
     public PopulationDataDialogViewModel(Context context,
                                          PopulationDataRootViewModel populationDataRootViewModel,
-                                         int ageGroupIndex) {
+                                         int ageGroupIndex,
+                                         boolean isNewRow) {
         super(context);
         mPopulationDataRootViewModel = populationDataRootViewModel;
-        ageGroup = new ObservableField<>(PopulationData.AgeGroup.values()[ageGroupIndex]);
-        totalMale = new ObservableInt(0);
-        totalFemale = new ObservableInt(0);
-        affectedMale = new ObservableInt(0);
-        affectedFemale = new ObservableInt(0);
-        displacedMale = new ObservableInt(0);
-        displacedFemale = new ObservableInt(0);
+
+        if (isNewRow) {
+            ageGroup = new ObservableField<>(PopulationData.AgeGroup.values()[ageGroupIndex]);
+            totalMale = new ObservableInt(0);
+            totalFemale = new ObservableInt(0);
+            affectedMale = new ObservableInt(0);
+            affectedFemale = new ObservableInt(0);
+            displacedMale = new ObservableInt(0);
+            displacedFemale = new ObservableInt(0);
+        } else {
+            PopulationDataRow populationDataRow = mPopulationDataRootViewModel.getPopulationDataRow(ageGroupIndex);
+            ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
+            totalMale = new ObservableInt(populationDataRow.getTotal().male);
+            totalFemale = new ObservableInt(populationDataRow.getTotal().female);
+            affectedMale = new ObservableInt(populationDataRow.getAffected().male);
+            affectedFemale = new ObservableInt(populationDataRow.getAffected().female);
+            displacedMale = new ObservableInt(populationDataRow.getDisplaced().male);
+            displacedFemale = new ObservableInt(populationDataRow.getDisplaced().female);
+        }
     }
 
     /**

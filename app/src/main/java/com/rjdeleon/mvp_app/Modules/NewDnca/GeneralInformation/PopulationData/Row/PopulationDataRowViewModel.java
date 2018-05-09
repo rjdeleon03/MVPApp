@@ -10,11 +10,13 @@ import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
 
 public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
 
     private PopulationDataRootViewModel mPopulationDataRootViewModel;
+    private PopulationDataNavigator mPopulationDataNavigator;
     private int mRowIndex;
 
     public final ObservableField<PopulationData.AgeGroup> ageGroup;
@@ -28,29 +30,33 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
     /**
      * Constructor
      * @param context
+     * @param populationDataRootViewModel
      * @param rowIndex
      */
     public PopulationDataRowViewModel(Context context,
                                       PopulationDataRootViewModel populationDataRootViewModel,
+                                      PopulationDataNavigator populationDataNavigator,
                                       int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
         mPopulationDataRootViewModel = populationDataRootViewModel;
-        ageGroup = new ObservableField<>(PopulationData.AgeGroup.AGE_0_5);
-        totalMale = new ObservableInt(0);
-        totalFemale = new ObservableInt(0);
-        affectedMale = new ObservableInt(0);
-        affectedFemale = new ObservableInt(0);
-        displacedMale = new ObservableInt(0);
-        displacedFemale = new ObservableInt(0);
+        mPopulationDataNavigator = populationDataNavigator;
 
         PopulationDataRow populationDataRow = mPopulationDataRootViewModel.getPopulationDataRow(mRowIndex);
-        ageGroup.set(populationDataRow.getAgeGroup());
-        totalMale.set(populationDataRow.getTotal().male);
-        totalFemale.set(populationDataRow.getTotal().female);
-        affectedMale.set(populationDataRow.getAffected().male);
-        affectedFemale.set(populationDataRow.getAffected().female);
-        displacedMale.set(populationDataRow.getDisplaced().male);
-        displacedFemale.set(populationDataRow.getDisplaced().female);
+        ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
+        totalMale = new ObservableInt(populationDataRow.getTotal().male);
+        totalFemale = new ObservableInt(populationDataRow.getTotal().female);
+        affectedMale = new ObservableInt(populationDataRow.getAffected().male);
+        affectedFemale = new ObservableInt(populationDataRow.getAffected().female);
+        displacedMale = new ObservableInt(populationDataRow.getDisplaced().male);
+        displacedFemale = new ObservableInt(populationDataRow.getDisplaced().female);
     }
+
+    /**
+     * Handle navigation when card is selected
+     */
+    public void navigateOnCardSelected() {
+        mPopulationDataNavigator.onCardSelected(mRowIndex);
+    }
+
 }

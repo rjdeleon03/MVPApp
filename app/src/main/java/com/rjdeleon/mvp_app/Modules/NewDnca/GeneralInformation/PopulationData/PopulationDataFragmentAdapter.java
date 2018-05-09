@@ -38,8 +38,8 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
                 mContext,
                 mViewModel,
-                position
-        );
+                mPopulationDataNavigator,
+                position);
         holder.bind(populationDataRowViewModel);
     }
 

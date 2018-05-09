@@ -4,6 +4,8 @@ public interface PopulationDataNavigator {
 
     void onAddButtonPressed();
 
+    void onCardSelected(int rowIndex);
+
     void onDeleteCardButtonPressed();
 
     void onDialogOkButtonPressed();

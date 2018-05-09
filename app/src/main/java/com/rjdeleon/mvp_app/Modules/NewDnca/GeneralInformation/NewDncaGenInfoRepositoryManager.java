@@ -8,4 +8,8 @@ public interface NewDncaGenInfoRepositoryManager {
     CalamityDesc getCalamityDetails();
 
     PopulationData getPopulationData();
+
+    void saveCalamityDetails(CalamityDesc calamityDesc);
+
+    void savePopulationData(PopulationData populationData);
 }

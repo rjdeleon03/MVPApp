@@ -38,6 +38,7 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     /**
      * Navigate when save button is pressed
      */
+    /*
     public void navigateOnSaveButtonPressed(int pageCount) {
 
         // Save data from current general information component
@@ -60,6 +61,7 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
             viewPagerIndex.set(viewPagerIndex.get() + 1);
         }
     }
+    */
 
     /**
      * Get calamity details
@@ -80,19 +82,22 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     }
 
     @Override
+    public void saveCalamityDetails(CalamityDesc calamityDesc) {
+        mCalamityDesc = calamityDesc;
+        mDncaForm.getGenInfo().setCalamityDesc(mCalamityDesc);
+    }
+
+    @Override
+    public void savePopulationData(PopulationData populationData) {
+        mPopulationData = populationData;
+        mDncaForm.getGenInfo().setPopulationData(mPopulationData);
+    }
+
+    @Override
     public void onDncaFormLoaded(DNCAForm form) {
         mDncaForm = form;
-
-        CalamityDesc tempCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
-        mCalamityDesc = new CalamityDesc(
-                tempCalamityDesc.getCalamityType(),
-                tempCalamityDesc.getDateOccurred(),
-                tempCalamityDesc.getEventDescription(),
-                tempCalamityDesc.getAreaDescription());
-
-        PopulationData tempPopulationData = mDncaForm.getGenInfo().getPopulationData();
-        mPopulationData = new PopulationData();
-        mPopulationData.getPopulationDataRows().addAll(tempPopulationData.getPopulationDataRows());
+        mCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
+        mPopulationData = mDncaForm.getGenInfo().getPopulationData();
     }
 
     @Override

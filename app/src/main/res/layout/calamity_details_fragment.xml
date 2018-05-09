@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Modules.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment">
 
     <data>
         <variable
@@ -144,6 +145,17 @@
             </LinearLayout>
 
         </ScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/nd_calamity_save_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_check"
+            android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
+            app:backgroundTint="@android:color/holo_green_light"
+            app:elevation="0dp"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

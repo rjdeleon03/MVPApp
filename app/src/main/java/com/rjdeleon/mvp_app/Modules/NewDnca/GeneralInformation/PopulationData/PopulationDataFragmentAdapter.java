@@ -38,6 +38,7 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
                 mContext,
                 Injection.provideDncaRepository(mContext),
+                mViewModel,
                 position
         );
         holder.bind(populationDataRowViewModel);

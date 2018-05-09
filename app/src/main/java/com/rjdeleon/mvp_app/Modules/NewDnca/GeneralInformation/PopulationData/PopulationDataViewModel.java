@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
+public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, PopulationDataRootViewModel {
 
     private PopulationDataNavigator mPopulationDataNavigator;
     private List<PopulationData.AgeGroup> mAgeGroupList;
@@ -67,9 +67,30 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
         mPopulationDataNavigator.onAddButtonPressed();
     }
 
+    /**
+     * Add population data row
+     * @param populationDataRow
+     */
+    @Override
+    public void addPopulationDataRow(PopulationDataRow populationDataRow) {
+        mPopulationDataRows.add(populationDataRow);
+    }
+
+    /**
+     * Get population data row
+     * @param rowIndex
+     */
+    @Override
+    public PopulationDataRow getPopulationDataRow(int rowIndex) {
+        return mPopulationDataRows.get(rowIndex);
+    }
+
     @Override
     public void onDncaFormLoaded(DNCAForm form) {
-        mPopulationDataRows = form.getGenInfo().getPopulationData().getPopulationDataRows();
+        if (mPopulationDataRows.size() > 0) {
+            mPopulationDataRows.clear();
+        }
+        mPopulationDataRows.addAll(form.getGenInfo().getPopulationData().getPopulationDataRows());
     }
 
     @Override

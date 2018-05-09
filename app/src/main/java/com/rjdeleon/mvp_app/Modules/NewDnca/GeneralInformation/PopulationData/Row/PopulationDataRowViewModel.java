@@ -10,9 +10,11 @@ import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
 
 public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
 
+    private PopulationDataRootViewModel mPopulationDataRootViewModel;
     private DNCAFormRepository mDncaFormRepository;
     private int mRowIndex;
 
@@ -30,11 +32,15 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements 
      * @param dncaFormRepository
      * @param rowIndex
      */
-    public PopulationDataRowViewModel(Context context, DNCAFormRepository dncaFormRepository, int rowIndex) {
+    public PopulationDataRowViewModel(Context context,
+                                      DNCAFormRepository dncaFormRepository,
+                                      PopulationDataRootViewModel populationDataRootViewModel,
+                                      int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
+        mPopulationDataRootViewModel = populationDataRootViewModel;
         mDncaFormRepository = dncaFormRepository;
-        ageGroup = new ObservableField<PopulationData.AgeGroup>(PopulationData.AgeGroup.AGE_0_5);
+        ageGroup = new ObservableField<>(PopulationData.AgeGroup.AGE_0_5);
         totalMale = new ObservableInt(0);
         totalFemale = new ObservableInt(0);
         affectedMale = new ObservableInt(0);
@@ -47,7 +53,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel implements 
 
     @Override
     public void onDncaFormLoaded(DNCAForm form) {
-        PopulationDataRow populationDataRow = form.getGenInfo().getPopulationData().getPopulationDataRows().get(mRowIndex);
+        PopulationDataRow populationDataRow = mPopulationDataRootViewModel.getPopulationDataRow(mRowIndex);
         ageGroup.set(populationDataRow.getAgeGroup());
         totalMale.set(populationDataRow.getTotal().male);
         totalFemale.set(populationDataRow.getTotal().female);

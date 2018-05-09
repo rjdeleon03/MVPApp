@@ -12,9 +12,11 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRootViewModel;
 
 public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
 
+    private PopulationDataRootViewModel mPopulationDataRootViewModel;
     private PopulationDataNavigator mPopulationDataNavigator;
     private DNCAFormRepository mDncaFormRepository;
 
@@ -30,9 +32,15 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
      * Constructor
      * @param context
      * @param dncaFormRepository
+     * @param populationDataRootViewModel
+     * @param ageGroupIndex
      */
-    public PopulationDataDialogViewModel(Context context, DNCAFormRepository dncaFormRepository, int ageGroupIndex) {
+    public PopulationDataDialogViewModel(Context context,
+                                         DNCAFormRepository dncaFormRepository,
+                                         PopulationDataRootViewModel populationDataRootViewModel,
+                                         int ageGroupIndex) {
         super(context);
+        mPopulationDataRootViewModel = populationDataRootViewModel;
         ageGroup = new ObservableField<>(PopulationData.AgeGroup.values()[ageGroupIndex]);
         totalMale = new ObservableInt(0);
         totalFemale = new ObservableInt(0);
@@ -71,10 +79,8 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel implemen
                 new GenderTuple(affectedMale.get(), affectedFemale.get()),
                 new GenderTuple(displacedMale.get(), displacedFemale.get())
         );
-        mDncaFormRepository.saveGenInfoPopulationDataRow(populationDataRow);
-        if (mPopulationDataNavigator != null) {
-            mPopulationDataNavigator.onDialogOkButtonPressed();
-        }
+        mPopulationDataRootViewModel.addPopulationDataRow(populationDataRow);
+        mPopulationDataNavigator.onDialogOkButtonPressed();
     }
 
     /**

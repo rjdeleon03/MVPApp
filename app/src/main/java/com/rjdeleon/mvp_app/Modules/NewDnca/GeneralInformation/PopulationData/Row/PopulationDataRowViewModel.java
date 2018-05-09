@@ -59,4 +59,12 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
         mPopulationDataNavigator.onCardSelected(mRowIndex);
     }
 
+    /**
+     * Handle navigation when card is deleted
+     */
+    public void navigateOnDeleteCardButtonPressed() {
+        mPopulationDataRootViewModel.deletePopulationDataRow(mRowIndex);
+        mPopulationDataNavigator.onDeleteCardButtonPressed();
+    }
+
 }

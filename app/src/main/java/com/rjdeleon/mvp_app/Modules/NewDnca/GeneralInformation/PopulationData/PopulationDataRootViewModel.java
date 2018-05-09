@@ -7,6 +7,8 @@ public interface PopulationDataRootViewModel {
 
     void addPopulationDataRow(PopulationDataRow populationDataRow);
 
+    void deletePopulationDataRow(int rowIndex);
+
     PopulationDataRow getPopulationDataRow(int rowIndex);
 
     PopulationData.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex);

@@ -49,6 +49,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_close_card"
+                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
                     android:paddingHorizontal="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

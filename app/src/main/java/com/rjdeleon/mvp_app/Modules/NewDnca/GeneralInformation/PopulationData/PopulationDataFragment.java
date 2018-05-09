@@ -115,7 +115,9 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
      */
     @Override
     public void onDeleteCardButtonPressed() {
-
+        mSpinnerAdapter.notifyDataSetChanged();
+        mAgeGroupSpinner.setSelection(0);
+        mPopulationDataAdapter.notifyDataSetChanged();
     }
 
     /**

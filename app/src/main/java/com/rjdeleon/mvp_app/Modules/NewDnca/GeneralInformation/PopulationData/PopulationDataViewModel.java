@@ -98,7 +98,7 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
                     break;
 
                 } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                        tempAgeGroupOrdinal > mPopulationDataRows.get(i - 1).getAgeGroup().ordinal()) {
+                        (i == 0 || tempAgeGroupOrdinal > mPopulationDataRows.get(i - 1).getAgeGroup().ordinal())) {
 
                     // If row must be inserted somewhere in the middle, find its correct position
                     mPopulationDataRows.add(i, populationDataRow);
@@ -122,6 +122,47 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
             }
         }
 
+    }
+
+    /**
+     * Delete population data row
+     * @param rowIndex
+     */
+    @Override
+    public void deletePopulationDataRow(int rowIndex) {
+
+        PopulationDataRow populationDataRow = mPopulationDataRows.get(rowIndex);
+
+        // If list is empty, add new row right away
+        if (mAgeGroupList.size() == 0) {
+            mAgeGroupList.add(populationDataRow.getAgeGroup());
+
+        } else {
+
+            // Else, select correct position
+            for (int i = 0; i < mAgeGroupList.size(); i++) {
+
+                int currAgeGroupOrdinal = mAgeGroupList.get(i).ordinal();
+                int tempAgeGroupOrdinal = populationDataRow.getAgeGroup().ordinal();
+
+                if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                        (i == 0 || tempAgeGroupOrdinal > mAgeGroupList.get(i - 1).ordinal())) {
+
+                    // If row must be inserted somewhere in the middle, find its correct position
+                    mAgeGroupList.add(i, populationDataRow.getAgeGroup());
+                    break;
+
+                } else if (mAgeGroupList.size() == i + 1) {
+
+                    // If end of list has been reached, add row
+                    mAgeGroupList.add(populationDataRow.getAgeGroup());
+                    break;
+
+                }
+            }
+        }
+
+        mPopulationDataRows.remove(rowIndex);
     }
 
     /**

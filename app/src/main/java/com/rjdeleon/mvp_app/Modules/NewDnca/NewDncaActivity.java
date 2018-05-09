@@ -136,7 +136,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case GEN_INFO:
-                viewModel = new NewDncaGenInfoViewModel(getApplicationContext());
+                viewModel = new NewDncaGenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_GEN_INFO_VIEWMODEL_TAG;
         }

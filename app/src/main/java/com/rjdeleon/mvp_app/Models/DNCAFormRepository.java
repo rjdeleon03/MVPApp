@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Models;
 import android.support.annotation.NonNull;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 
@@ -64,22 +65,11 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     /**
-     * Saves calamity details to new DNCA form
-     * @param calamityDesc
+     * Saves gen info to new DNCA form
+     * @param genInfo
      */
     @Override
-    public void saveGenInfoCalamityDetails(CalamityDesc calamityDesc) {
-        mForm.getGenInfo().setCalamityDesc(calamityDesc);
-    }
-
-    /**
-     * Saves a population data row to new DNCA form
-     * @param populationDataRow
-     */
-    @Override
-    public void saveGenInfoPopulationDataRow(PopulationDataRow populationDataRow) {
-        PopulationData populationData = mForm.getGenInfo().getPopulationData();
-        populationData.getPopulationDataRows().add(populationDataRow);
-        mForm.getGenInfo().setPopulationData(populationData);
+    public void saveGenInfo(GenInfo genInfo) {
+        mForm.setGenInfo(genInfo);
     }
 }

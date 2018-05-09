@@ -9,33 +9,44 @@ import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, PopulationDataRootViewModel {
+public class PopulationDataViewModel extends NewDncaBaseViewModel implements PopulationDataRootViewModel {
 
+    private NewDncaGenInfoRepositoryManager mNewDncaGenInfoRepositoryManager;
     private PopulationDataNavigator mPopulationDataNavigator;
     private List<PopulationData.AgeGroup> mAgeGroupList;
     private List<PopulationDataRow> mPopulationDataRows;
-    private DNCAFormRepository mDncaFormRepository;
+
 
     public ObservableInt spinnerValue;
 
     /**
      * Constructor
      * @param context
-     * @param dncaFormRepository
+     * @param newDncaGenInfoRepositoryManager
      */
-    public PopulationDataViewModel(Context context, DNCAFormRepository dncaFormRepository) {
+    public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context);
         spinnerValue = new ObservableInt(0);
+        mNewDncaGenInfoRepositoryManager = newDncaGenInfoRepositoryManager;
         mAgeGroupList = PopulationData.AgeGroup.asList();
-        mPopulationDataRows = new ArrayList<>();
-        mDncaFormRepository = dncaFormRepository;
-        mDncaFormRepository.retrieveNewDncaForm(this);
+        mPopulationDataRows = mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows();
+
+        // Remove items from age group list if age group is already in use
+        for(PopulationDataRow row : mPopulationDataRows) {
+            for (PopulationData.AgeGroup ageGroup : mAgeGroupList) {
+                if (ageGroup.ordinal() == row.getAgeGroup().ordinal()) {
+                    mAgeGroupList.remove(ageGroup);
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -182,18 +193,5 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
     @Override
     public PopulationData.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
         return mAgeGroupList.get(ageGroupIndex);
-    }
-
-    @Override
-    public void onDncaFormLoaded(DNCAForm form) {
-        if (mPopulationDataRows.size() > 0) {
-            mPopulationDataRows.clear();
-        }
-        mPopulationDataRows.addAll(form.getGenInfo().getPopulationData().getPopulationDataRows());
-    }
-
-    @Override
-    public void onDataNotAvailable() {
-
     }
 }

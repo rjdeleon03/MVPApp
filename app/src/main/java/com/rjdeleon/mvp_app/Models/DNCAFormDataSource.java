@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Models;
 import android.support.annotation.NonNull;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 
@@ -29,7 +30,5 @@ public interface DNCAFormDataSource {
 
     void saveFormInfo(FormInfo formInfo);
 
-    void saveGenInfoCalamityDetails(CalamityDesc calamityDesc);
-
-    void saveGenInfoPopulationDataRow(PopulationDataRow populationDataRow);
+    void saveGenInfo(GenInfo genInfo);
 }

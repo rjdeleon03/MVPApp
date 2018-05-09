@@ -27,6 +27,7 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
     /**
      * Constructor
      * @param context
+     * @param dncaFormRepository
      */
     public PopulationDataViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context);
@@ -73,7 +74,54 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
      */
     @Override
     public void addPopulationDataRow(PopulationDataRow populationDataRow) {
-        mPopulationDataRows.add(populationDataRow);
+
+        // If list is empty, add new row right away
+        if (mPopulationDataRows.size() == 0) {
+            mPopulationDataRows.add(populationDataRow);
+
+        } else {
+
+            // Else, select correct position
+            for (int i = 0; i < mPopulationDataRows.size(); i++) {
+
+                PopulationDataRow row = mPopulationDataRows.get(i);
+                int currAgeGroupOrdinal = row.getAgeGroup().ordinal();
+                int tempAgeGroupOrdinal = populationDataRow.getAgeGroup().ordinal();
+
+                if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
+
+                    // If age group already exists, update its values
+                    row.setAgeGroup(populationDataRow.getAgeGroup());
+                    row.setTotal(populationDataRow.getTotal());
+                    row.setAffected(populationDataRow.getAffected());
+                    row.setDisplaced(populationDataRow.getDisplaced());
+                    break;
+
+                } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                        tempAgeGroupOrdinal > mPopulationDataRows.get(i - 1).getAgeGroup().ordinal()) {
+
+                    // If row must be inserted somewhere in the middle, find its correct position
+                    mPopulationDataRows.add(i, populationDataRow);
+                    break;
+
+                } else if (mPopulationDataRows.size() == i + 1) {
+
+                    // If end of list has been reached, add row
+                    mPopulationDataRows.add(populationDataRow);
+                    break;
+
+                }
+            }
+        }
+
+        // Delete age group from list
+        for(PopulationData.AgeGroup ageGroup : mAgeGroupList) {
+            if (ageGroup.ordinal() == populationDataRow.getAgeGroup().ordinal()) {
+                mAgeGroupList.remove(ageGroup);
+                return;
+            }
+        }
+
     }
 
     /**
@@ -83,6 +131,16 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements DNC
     @Override
     public PopulationDataRow getPopulationDataRow(int rowIndex) {
         return mPopulationDataRows.get(rowIndex);
+    }
+
+    /**
+     * Get age group based on index
+     * @param ageGroupIndex
+     * @return
+     */
+    @Override
+    public PopulationData.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
+        return mAgeGroupList.get(ageGroupIndex);
     }
 
     @Override

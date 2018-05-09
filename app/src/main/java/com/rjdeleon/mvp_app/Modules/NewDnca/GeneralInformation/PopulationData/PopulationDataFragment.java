@@ -123,6 +123,8 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
      */
     @Override
     public void onDialogOkButtonPressed() {
+        mSpinnerAdapter.notifyDataSetChanged();
+        mAgeGroupSpinner.setSelection(0);
         mPopulationDataAdapter.notifyDataSetChanged();
         mDialogFragment.dismiss();
         mDialogFragment = null;

@@ -42,7 +42,7 @@ public class PopulationDataDialogViewModel extends NewDncaBaseViewModel {
         mPopulationDataRootViewModel = populationDataRootViewModel;
 
         if (isNewRow) {
-            ageGroup = new ObservableField<>(PopulationData.AgeGroup.values()[ageGroupIndex]);
+            ageGroup = new ObservableField<>(populationDataRootViewModel.getPopulationDataAgeGroup(ageGroupIndex));
             totalMale = new ObservableInt(0);
             totalFemale = new ObservableInt(0);
             affectedMale = new ObservableInt(0);

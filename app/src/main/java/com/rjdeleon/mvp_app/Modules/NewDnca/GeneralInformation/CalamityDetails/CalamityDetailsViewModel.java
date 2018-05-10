@@ -49,7 +49,6 @@ public class CalamityDetailsViewModel extends NewDncaBaseViewModel {
         mNewDncaGenInfoRepositoryManager.saveCalamityDetails(calamityDesc);
     }
 
-
     /**
      * Sets the assessment date
      * @param year

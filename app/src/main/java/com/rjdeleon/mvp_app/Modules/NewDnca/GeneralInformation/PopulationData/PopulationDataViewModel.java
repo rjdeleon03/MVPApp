@@ -3,11 +3,13 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.content.Context;
 import android.databinding.ObservableInt;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PopulationDataViewModel extends NewDncaBaseViewModel implements PopulationDataRepositoryManager {
@@ -30,7 +32,8 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements Pop
         spinnerValue = new ObservableInt(0);
         mNewDncaGenInfoRepositoryManager = newDncaGenInfoRepositoryManager;
         mAgeGroupList = PopulationData.AgeGroup.asList();
-        mPopulationDataRows = mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows();
+        mPopulationDataRows = new ArrayList<>();
+        mPopulationDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
 
         // Remove items from age group list if age group is already in use
         for(PopulationDataRow row : mPopulationDataRows) {
@@ -71,6 +74,15 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements Pop
      */
     public void navigateOnAddButtonPressed() {
         mPopulationDataNavigator.onAddButtonPressed();
+    }
+
+    /**
+     * Handles navigation when save button is pressed
+     */
+    public void navigateOnSaveButtonPressed() {
+        PopulationData populationData = new PopulationData();
+        populationData.setPopulationDataRows(mPopulationDataRows);
+        mNewDncaGenInfoRepositoryManager.savePopulationData(populationData);
     }
 
     /**

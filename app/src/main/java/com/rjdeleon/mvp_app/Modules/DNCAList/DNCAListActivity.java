@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Modules.DNCAList;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,13 +12,19 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListNavigator;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewFactory;
+import com.rjdeleon.mvp_app.ViewModelHolder;
 import com.rjdeleon.mvp_app.databinding.DncaListActivityBinding;
 
-public class DNCAListActivity extends AppCompatActivity implements DNCAListContract.View {
+public class DNCAListActivity extends AppCompatActivity implements DNCAListNavigator {
 
-    private DNCAListPresenter mPresenter;
+    public static final String DNCA_LIST_VIEWMODEL_TAG = "DNCA_LIST_VIEWMODEL_TAG";
+
+    private DNCAListViewModel mViewModel;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -25,12 +32,22 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.dnca_list_activity);
+
+        // Setup the toolbar
+        Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_list);
+        setSupportActionBar(toolbar);
+
+        DNCAListFragment dncaListFragment = findOrCreateViewFragment();
+        mViewModel = findOrCreateViewModel();
+        dncaListFragment.setViewModel(mViewModel);
+        mViewModel.onActivityCreated(this);
+
+        /*
         mPresenter = new DNCAListPresenter(this);
         DncaListActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.dnca_list_activity);
         binding.setPresenter(this.mPresenter);
 
-        Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_list);
-        setSupportActionBar(toolbar);
 
         // Initialize adapter
         mAdapter = new DNCAListAdapter(mPresenter);
@@ -45,46 +62,66 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
 
         mRecyclerView.setAdapter(mAdapter);
+        */
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.getAllDncaForms();
+    /**
+     * Finds or creates the fragment
+     * @return
+     */
+    @NonNull
+    private DNCAListFragment findOrCreateViewFragment() {
+
+        // Get fragment
+        DNCAListFragment dncaListFragment = (DNCAListFragment) getSupportFragmentManager().findFragmentById(R.id.dnca_list_container);
+
+        if (dncaListFragment == null) {
+            dncaListFragment = DNCAListFragment.newInstance();
+
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), dncaListFragment, R.id.dnca_list_container, true);
+        }
+
+        return dncaListFragment;
     }
 
+    /**
+     * Finds or creates the viewModel
+     * @return
+     */
+    private DNCAListViewModel findOrCreateViewModel() {
+
+        // Get viewModel
+        ViewModelHolder<DNCAListViewModel> retainedViewModel = (ViewModelHolder<DNCAListViewModel>) getSupportFragmentManager().findFragmentByTag(DNCA_LIST_VIEWMODEL_TAG);
+
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+
+            // Return viewModel if it was retained
+            return retainedViewModel.getViewmodel();
+
+        } else {
+
+            // Create viewModel if it does not exist yet
+            DNCAListViewModel dncaListViewModel = new DNCAListViewModel(
+                    getApplicationContext(),
+                    Injection.provideDncaRepository(getApplicationContext()));
+
+            // Bind viewModel to activity's lifecycle using fragment manager
+            ActivityUtils.addFragmentToActivity(
+                    getSupportFragmentManager(),
+                    ViewModelHolder.createContainer(dncaListViewModel),
+                    DNCA_LIST_VIEWMODEL_TAG);
+
+            return dncaListViewModel;
+        }
+    }
+
+    /**
+     * Handles back button pressed action
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
-    }
-
-    @Override
-    public void onBackButtonClick() {
-        onBackPressed();
-    }
-
-    @Override
-    public void onNewFormButtonClick() {
-        // Start New Form Activity
-        ViewFactory.startNewDncaActivity(this);
-    }
-
-    @Override
-    public void refreshAdapter() {
-        mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void displayShortToast(String message) {
-        final String fMessage = message;
-        final Context fContext = this;
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(fContext, fMessage, Toast.LENGTH_SHORT).show();
-            }
-        });
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

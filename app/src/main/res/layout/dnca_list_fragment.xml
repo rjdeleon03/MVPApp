@@ -5,6 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Modules.DNCAList.DNCAListFragment">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListViewModel" />
+    </data>
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,6 +21,7 @@
             android:id="@+id/dnca_list_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:items="@{viewModel.dncaListItems}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

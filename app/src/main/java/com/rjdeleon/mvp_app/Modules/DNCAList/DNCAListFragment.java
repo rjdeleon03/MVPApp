@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.DncaListFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +49,10 @@ public class DNCAListFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.dnca_list_fragment, container, false);
+
+        // Bind viewModel
+        DncaListFragmentBinding binding = DncaListFragmentBinding.bind(root);
+        binding.setViewModel(mDncaListViewModel);
 
         // Initialize RecyclerView
         mRecyclerView = root.findViewById(R.id.dnca_list_view);

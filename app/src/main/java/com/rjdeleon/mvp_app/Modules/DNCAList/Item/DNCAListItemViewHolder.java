@@ -33,7 +33,7 @@ public class DNCAListItemViewHolder extends RecyclerView.ViewHolder implements D
 
     @Override
     public void bind(DNCAListItemContract.Presenter presenter) {
-        binding.setPresenter((DNCAListItemPresenter) presenter);
+//        binding.setPresenter((DNCAListItemPresenter) presenter);
     }
 
     @Override

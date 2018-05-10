@@ -1,7 +1,9 @@
 package com.rjdeleon.mvp_app.Modules.DNCAList;
 
 import android.content.Context;
+import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableList;
 
 import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
@@ -14,11 +16,11 @@ import java.util.List;
 public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallback {
 
     public final ObservableBoolean isLoading = new ObservableBoolean(false);
+    public final ObservableList<DNCAListItem> dncaListItems = new ObservableArrayList<>();
 
     private Context mContext;
     private DNCAFormRepository mDncaFormRepository;
     private DNCAListNavigator mDncaListNavigator;
-    private List<DNCAListItem> mForms;
 
     /**
      * Constructor
@@ -28,7 +30,6 @@ public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallba
     public DNCAListViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         mContext = context;
         mDncaFormRepository = dncaFormRepository;
-        mForms = new ArrayList<>();
     }
 
     /**
@@ -59,7 +60,7 @@ public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallba
      * @return
      */
     public int getDncaFormsCount() {
-        return mForms.size();
+        return dncaListItems.size();
     }
 
     /**
@@ -68,14 +69,14 @@ public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallba
      * @return
      */
     public DNCAListItem getDncaForm(int index) {
-        return mForms.get(index);
+        return dncaListItems.get(index);
     }
 
     @Override
     public void onDncaFormsLoaded(List<DNCAListItem> forms) {
         isLoading.set(false);
-        mForms.clear();
-        mForms.addAll(forms);
+        dncaListItems.clear();
+        dncaListItems.addAll(forms);
     }
 
     @Override

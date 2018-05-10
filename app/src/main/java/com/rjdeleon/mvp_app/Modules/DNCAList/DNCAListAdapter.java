@@ -11,12 +11,22 @@ import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemViewHolder;
 import com.rjdeleon.mvp_app.databinding.DncaListItemBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DNCAListAdapter extends RecyclerView.Adapter<DNCAListItemViewHolder>{
 
     private DNCAListViewModel mViewModel;
+    private List<DNCAListItem> mItems;
 
     public DNCAListAdapter(DNCAListViewModel viewModel) {
         mViewModel = viewModel;
+        mItems = new ArrayList<>();
+    }
+
+    public void replaceItems(List<DNCAListItem> items) {
+        mItems = items;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -30,7 +40,7 @@ public class DNCAListAdapter extends RecyclerView.Adapter<DNCAListItemViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DNCAListItemViewHolder holder, int position) {
-        DNCAListItem dncaListItem = mViewModel.getDncaForm(position);
+        DNCAListItem dncaListItem = mItems.get(position);
         holder.setHead(dncaListItem.getSitio());
         holder.setDesc(dncaListItem.getBarangay());
     }

@@ -15,7 +15,7 @@ import java.util.List;
 public interface DNCAFormDataSource {
 
     interface LoadDncaFormsCallback {
-        void onDncaFormsLoaded(List<DNCAForm> forms);
+        void onDncaFormsLoaded(List<DNCAListItem> forms);
 
         void onDataNotAvailable();
     }
@@ -25,6 +25,8 @@ public interface DNCAFormDataSource {
 
         void onDataNotAvailable();
     }
+
+    void loadAllDncaForms(@NonNull LoadDncaFormsCallback callback);
 
     void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback);
 

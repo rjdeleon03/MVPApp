@@ -59,7 +59,7 @@ public class DNCAListPresenter implements DNCAListContract.Presenter, GetAllDnca
     public void getAllDncaForms() {
 
         // Obtain DNCA list
-        getAllDncaTask = new GetAllDncaTask(this);
+//        getAllDncaTask = new GetAllDncaTask(this);
         getAllDncaTask.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 

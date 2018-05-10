@@ -2,10 +2,12 @@ package com.rjdeleon.mvp_app.Models;
 
 import android.support.annotation.NonNull;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Tasks.GetAllDncaTask;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -39,6 +41,16 @@ public class DNCAFormRepository implements DNCAFormDataSource {
      */
     public static void destroyInstance() {
         INSTANCE = null;
+    }
+
+    /**
+     * Loads all DNCA forms from source
+     * @param callback
+     */
+    @Override
+    public void loadAllDncaForms(@NonNull LoadDncaFormsCallback callback) {
+        GetAllDncaTask getAllDncaTask = new GetAllDncaTask(callback);
+        getAllDncaTask.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 
     /**

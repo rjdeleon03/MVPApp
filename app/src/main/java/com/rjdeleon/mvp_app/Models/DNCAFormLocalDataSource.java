@@ -23,6 +23,11 @@ public class DNCAFormLocalDataSource implements DNCAFormDataSource {
     }
 
     @Override
+    public void loadAllDncaForms(@NonNull LoadDncaFormsCallback callback) {
+
+    }
+
+    @Override
     public void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback) {
 
     }

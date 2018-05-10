@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.Modules.NewForm.NewFormActivity;
 import com.rjdeleon.mvp_app.ViewFactory;
 import com.rjdeleon.mvp_app.databinding.DncaListActivityBinding;
 
@@ -57,7 +56,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListContr
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
     }
 

@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         // Start New DNCA Activity
         Toast.makeText(this, "Loading new DNCA form...", Toast.LENGTH_SHORT).show();
         ViewFactory.startDNCAListActivity(this);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override

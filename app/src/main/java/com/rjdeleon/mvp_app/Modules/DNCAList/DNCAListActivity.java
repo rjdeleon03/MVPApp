@@ -26,9 +26,6 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
 
     private DNCAListViewModel mViewModel;
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +40,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
         dncaListFragment.setViewModel(mViewModel);
         mViewModel.onActivityCreated(this);
 
-        /*
+        /**
         mPresenter = new DNCAListPresenter(this);
         DncaListActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.dnca_list_activity);
         binding.setPresenter(this.mPresenter);

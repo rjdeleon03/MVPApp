@@ -6,16 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemViewHolder;
 import com.rjdeleon.mvp_app.databinding.DncaListItemBinding;
 
 public class DNCAListAdapter extends RecyclerView.Adapter<DNCAListItemViewHolder>{
 
-    private DNCAListPresenter mPresenter;
+    private DNCAListViewModel mViewModel;
 
-    public DNCAListAdapter(DNCAListPresenter presenter) {
-        this.mPresenter = presenter;
+    public DNCAListAdapter(DNCAListViewModel viewModel) {
+        mViewModel = viewModel;
     }
 
     @NonNull
@@ -29,11 +30,13 @@ public class DNCAListAdapter extends RecyclerView.Adapter<DNCAListItemViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DNCAListItemViewHolder holder, int position) {
-        mPresenter.onBindItemViewAtPosition(holder, position);
+        DNCAListItem dncaListItem = mViewModel.getDncaForm(position);
+        holder.setHead(dncaListItem.getSitio());
+        holder.setDesc(dncaListItem.getBarangay());
     }
 
     @Override
     public int getItemCount() {
-        return mPresenter.getItemsCount();
+        return mViewModel.getDncaFormsCount();
     }
 }

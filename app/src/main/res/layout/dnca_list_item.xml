@@ -4,17 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--<data>-->
+    <data>
 
-        <!--<variable-->
-            <!--name="presenter"-->
-            <!--type="com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemPresenter" />-->
-    <!--</data>-->
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemViewModel" />
+    </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.navigateOnDncaListItemClicked()}">
 
         <ImageView
             android:id="@+id/dnca_item_img"
@@ -23,7 +24,6 @@
             app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
@@ -50,7 +50,6 @@
                 android:text="Description"/>
         </LinearLayout>
 
-        <!--android:onClick="@{presenter::downloadDnca}"-->
         <ImageButton
             android:id="@+id/dnca_item_dl_button"
             android:layout_width="38dp"

@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemNavigator;
 import com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListNavigator;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
@@ -22,7 +23,7 @@ import com.rjdeleon.mvp_app.ViewFactory;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 import com.rjdeleon.mvp_app.databinding.DncaListActivityBinding;
 
-public class DNCAListActivity extends AppCompatActivity implements DNCAListNavigator {
+public class DNCAListActivity extends AppCompatActivity implements DNCAListNavigator, DNCAListItemNavigator {
 
     public static final String DNCA_LIST_VIEWMODEL_TAG = "DNCA_LIST_VIEWMODEL_TAG";
 
@@ -107,7 +108,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
     }
 
     /**
-     * Setup back button
+     * Sets up back button
      */
     public void setupBackButton() {
         mBackButton = findViewById(R.id.dnca_list_back_button);
@@ -117,5 +118,14 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
                 onBackPressed();
             }
         });
+    }
+
+    /**
+     * Navigate to new activity to show DNCA form
+     * @param itemId
+     */
+    @Override
+    public void openDncaForm(int itemId) {
+        Toast.makeText(this, "Opening DNCA form...", Toast.LENGTH_SHORT).show();
     }
 }

@@ -74,7 +74,7 @@ public class DNCAListFragment extends Fragment {
     private void setupListAdapter() {
 
         // Initialize adapter
-        mAdapter = new DNCAListAdapter(mDncaListViewModel);
+        mAdapter = new DNCAListAdapter(mDncaListViewModel, (DNCAListActivity) getActivity());
 
         // Set RecyclerView layout and adapter
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

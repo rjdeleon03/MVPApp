@@ -3,12 +3,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListPresenter" />
-    </data>
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,7 +31,7 @@
 
 
                 <ImageButton
-                    android:id="@+id/new_dnca_settings_button"
+                    android:id="@+id/dnca_list_back_button"
                     android:layout_width="60dp"
                     android:layout_height="56dp"
                     android:layout_gravity="right|center_vertical"
@@ -45,7 +39,6 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:scaleType="fitCenter"
-                    android:onClick="@{presenter::onBackButtonClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -82,7 +75,6 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:scaleType="fitCenter"
-                    android:onClick="@{presenter::onNewFormButtonClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

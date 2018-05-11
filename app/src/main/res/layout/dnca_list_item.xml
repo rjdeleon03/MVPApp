@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="236dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
@@ -41,13 +41,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Header"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
             <TextView
                 android:id="@+id/dnca_item_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description" />
+                android:text="Description"/>
         </LinearLayout>
 
         <!--android:onClick="@{presenter::downloadDnca}"-->

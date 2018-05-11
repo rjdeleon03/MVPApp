@@ -55,23 +55,6 @@ public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallba
         mDncaFormRepository.loadAllDncaForms(this);
     }
 
-    /**
-     * Gets the count of retrieved DNCA forms
-     * @return
-     */
-    public int getDncaFormsCount() {
-        return dncaListItems.size();
-    }
-
-    /**
-     * Gets the DNCAListItem at the specified index
-     * @param index
-     * @return
-     */
-    public DNCAListItem getDncaForm(int index) {
-        return dncaListItems.get(index);
-    }
-
     @Override
     public void onDncaFormsLoaded(List<DNCAListItem> forms) {
         isLoading.set(false);

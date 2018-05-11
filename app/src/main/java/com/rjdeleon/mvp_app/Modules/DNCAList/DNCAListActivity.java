@@ -10,6 +10,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.rjdeleon.mvp_app.Injection;
@@ -25,6 +27,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
     public static final String DNCA_LIST_VIEWMODEL_TAG = "DNCA_LIST_VIEWMODEL_TAG";
 
     private DNCAListViewModel mViewModel;
+    private ImageButton mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
         mViewModel = findOrCreateViewModel();
         dncaListFragment.setViewModel(mViewModel);
         mViewModel.onActivityCreated(this);
+
+        setupBackButton();
 
         /**
         mPresenter = new DNCAListPresenter(this);
@@ -120,5 +125,18 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
         super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    /**
+     * Setup back button
+     */
+    public void setupBackButton() {
+        mBackButton = findViewById(R.id.dnca_list_back_button);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }

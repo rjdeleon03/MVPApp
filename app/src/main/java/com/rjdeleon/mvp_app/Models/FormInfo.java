@@ -33,10 +33,7 @@ public class FormInfo {
         this.province = "";
         this.interviewer = "";
         this.interviewerNo = "";
-
-        Calendar calendar = Calendar.getInstance();
-        SimpleDate current = new SimpleDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        this.assessmentDate = current;
+        this.assessmentDate = new SimpleDate();
     }
 
     public String getOrgName() {

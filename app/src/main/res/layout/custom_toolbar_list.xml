@@ -3,12 +3,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListPresenter" />
-    </data>
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -35,21 +29,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
                 <ImageButton
-                    android:id="@+id/dnca_list_new_button"
+                    android:id="@+id/dnca_list_back_button"
                     android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left|center_vertical"
-                    android:layout_margin="0dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="right|center_vertical"
                     android:background="@android:color/transparent"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:scaleType="fitCenter"
-                    android:onClick="@{presenter::onNewFormButtonClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_new_dnca" />
+                    app:layout_constraintVertical_bias="0.19999999"
+                    app:srcCompat="@drawable/ic_arr_left" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -67,25 +61,24 @@
                     android:textStyle="bold"
                     app:fontFamily="@font/comfortaa_reg"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/new_dnca_settings_button"
+                    app:layout_constraintEnd_toStartOf="@+id/dnca_list_back_button"
                     app:layout_constraintStart_toEndOf="@+id/dnca_list_new_button"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/new_dnca_settings_button"
+                    android:id="@+id/dnca_list_new_button"
                     android:layout_width="60dp"
-                    android:layout_height="56dp"
-                    android:layout_gravity="right|center_vertical"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_margin="0dp"
                     android:background="@android:color/transparent"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:scaleType="fitCenter"
-                    android:onClick="@{presenter::onBackButtonClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.19999999"
-                    app:srcCompat="@drawable/ic_arr_right" />
+                    app:srcCompat="@drawable/ic_new_dnca" />
 
             </android.support.constraint.ConstraintLayout>
 

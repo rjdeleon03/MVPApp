@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Models.Generics;
 
+import java.util.Calendar;
+
 public class SimpleDate {
     private int year;
     private int month;
@@ -9,6 +11,13 @@ public class SimpleDate {
         this.year = year;
         this.month = month;
         this.dayOfMonth = dayOfMonth;
+    }
+
+    public SimpleDate() {
+        Calendar calendar = Calendar.getInstance();
+        this.year = calendar.get(Calendar.YEAR);
+        this.month = calendar.get(Calendar.MONTH);
+        this.dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     public int getYear() {

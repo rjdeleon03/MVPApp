@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Dialog.PopulationDataDialogPresenter" />
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel" />
     </data>
 
     <LinearLayout
@@ -31,6 +31,24 @@
                     android:layout_height="50dp"
                     android:background="@color/colorPrimary">
 
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/nd_population_dlg_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@android:color/holo_red_light"
+                        android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_close_card"
+                        app:borderWidth="0dp"
+                        app:fabSize="mini"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -45,22 +63,39 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/nd_population_dlg_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@android:color/holo_green_light"
+                        android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
+                        android:src="@drawable/ic_check"
+                        app:borderWidth="0dp"
+                        app:fabSize="mini"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                 </android.support.constraint.ConstraintLayout>
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/nf_population_dlg"
+                    android:id="@+id/nd_population_dlg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
-                    android:paddingBottom="41dp">
+                    android:paddingBottom="32dp">
 
                     <TextView
-                        android:id="@+id/nf_population_dlg_label"
+                        android:id="@+id/nd_population_dlg_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="@{presenter.ageGroup}"
+                        android:text="@{viewModel.ageGroup.toString()}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +103,7 @@
                         app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
-                        android:id="@+id/nf_population_dlg_affected"
+                        android:id="@+id/nd_population_dlg_affected"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -76,10 +111,10 @@
                         android:text="AFFECTED"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_total_female_field"/>
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_female_field"/>
 
                     <TextView
-                        android:id="@+id/nf_population_dlg_displaced"
+                        android:id="@+id/nd_population_dlg_displaced"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -87,10 +122,10 @@
                         android:text="DISPLACED"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_affected_female_field"/>
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female_field"/>
 
                     <TextView
-                        android:id="@+id/nf_population_dlg_total"
+                        android:id="@+id/nd_population_dlg_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -98,10 +133,10 @@
                         android:text="TOTAL"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_female"/>
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_female"/>
 
                     <ImageView
-                        android:id="@+id/nf_population_dlg_male"
+                        android:id="@+id/nd_population_dlg_male"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="32dp"
@@ -109,13 +144,13 @@
                         android:layout_marginRight="32dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nf_population_dlg_total"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_male"/>
 
                     <ImageView
-                        android:id="@+id/nf_population_dlg_female"
+                        android:id="@+id/nd_population_dlg_female"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="32dp"
@@ -124,12 +159,12 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nf_population_dlg_total"
+                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_female"/>
 
                     <EditText
-                        android:id="@+id/nf_population_dlg_affected_male_field"
+                        android:id="@+id/nd_population_dlg_affected_male_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -140,14 +175,14 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="@={presenter.affectedMale}"
+                        android:text="@={viewModel.affectedMale}"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nf_population_dlg_total"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_total_male"/>
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male"/>
 
                     <EditText
-                        android:id="@+id/nf_population_dlg_displaced_male_field"
+                        android:id="@+id/nd_population_dlg_displaced_male_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -158,14 +193,14 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="@={presenter.displacedMale}"
+                        android:text="@={viewModel.displacedMale}"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nf_population_dlg_total"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_affected_male_field"/>
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male_field"/>
 
                     <EditText
-                        android:id="@+id/nf_population_dlg_total_male"
+                        android:id="@+id/nd_population_dlg_total_male"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -176,14 +211,14 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="@={presenter.totalMale}"
+                        android:text="@={viewModel.totalMale}"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nf_population_dlg_total"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_male"/>
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_male"/>
 
                     <EditText
-                        android:id="@+id/nf_population_dlg_total_female_field"
+                        android:id="@+id/nd_population_dlg_total_female_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -194,14 +229,14 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="@={presenter.totalFemale}"
+                        android:text="@={viewModel.totalFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nf_population_dlg_total"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_female"/>
+                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_female"/>
 
                     <EditText
-                        android:id="@+id/nf_population_dlg_affected_female_field"
+                        android:id="@+id/nd_population_dlg_affected_female_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -212,14 +247,14 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="@={presenter.affectedFemale}"
+                        android:text="@={viewModel.affectedFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nf_population_dlg_total"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_total_female_field"/>
+                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_female_field"/>
 
                     <EditText
-                        android:id="@+id/nf_population_dlg_displaced_female_field"
+                        android:id="@+id/nd_population_dlg_displaced_female_field"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -230,49 +265,26 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
-                        android:text="@={presenter.displacedFemale}"
+                        android:text="@={viewModel.displacedFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nf_population_dlg_total"
-                        app:layout_constraintTop_toBottomOf="@+id/nf_population_dlg_affected_female_field"/>
+                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female_field"/>
 
             </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:elevation="10dp">
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="-31dp"
-            android:elevation="10dp">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/nf_population_dlg_cancel"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="8dp"
-                android:onClick="@{presenter::handleDialogCancelButtonClick}"
-                android:backgroundTint="@android:color/holo_red_light"
-                android:src="@drawable/ic_close_card"
-                app:borderWidth="0dp"
-                app:fabSize="mini"/>
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/nf_population_dlg_ok"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="8dp"
-                android:onClick="@{presenter::handleDialogOkButtonClick}"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:src="@drawable/ic_check"
-                app:borderWidth="0dp"
-                app:fabSize="mini"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 

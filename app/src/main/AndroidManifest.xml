@@ -18,13 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Modules.DNCAList.DNCAListActivity"/>
+        <activity android:name=".Modules.DNCAList.DNCAListActivity" />
         <activity
-            android:name=".Modules.NewForm.NewFormActivity"
+            android:name=".Modules.NewDnca.NewDncaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Modules.NewFormV2.NewDncaActivity">
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

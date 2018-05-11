@@ -4,11 +4,18 @@ import android.app.Activity;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.InverseBindingAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
+import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListAdapter;
+
+import java.util.List;
 
 public class AppUtil {
 
@@ -58,8 +65,7 @@ public class AppUtil {
     }
 
     @BindingAdapter("android:text")
-    public static void bindIntegerInText(TextView view, int value)
-    {
+    public static void bindIntegerInText(TextView view, int value) {
         view.setText(String.valueOf(value));
     }
 
@@ -72,5 +78,29 @@ public class AppUtil {
             e.printStackTrace();
         }
         return value;
+    }
+
+    @BindingAdapter("android:text")
+    public static void bindSimpleDateInText(TextView view, SimpleDate date) {
+        view.setText(date.toString());
+    }
+
+    @BindingAdapter("currentItem")
+    public static void setCurrentItem(ViewPager viewPager, int item) {
+        viewPager.setCurrentItem(item);
+    }
+
+    @InverseBindingAdapter(attribute = "currentItem")
+    public static int getCurrentItem(ViewPager viewPager) {
+        return viewPager.getCurrentItem();
+    }
+
+    @BindingAdapter("app:items")
+    public static void setItems(RecyclerView recyclerView, List<DNCAListItem> items) {
+        DNCAListAdapter adapter = (DNCAListAdapter) recyclerView.getAdapter();
+        if (adapter != null)
+        {
+            adapter.replaceItems(items);
+        }
     }
 }

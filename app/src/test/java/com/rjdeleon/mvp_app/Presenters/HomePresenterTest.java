@@ -2,9 +2,6 @@ package com.rjdeleon.mvp_app.Presenters;
 
 import android.widget.Button;
 
-import com.rjdeleon.mvp_app.Modules.Home.HomeContract;
-import com.rjdeleon.mvp_app.Modules.Home.HomePresenter;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -3,10 +3,17 @@ package com.rjdeleon.mvp_app.Tasks;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
+import com.rjdeleon.mvp_app.Models.DNCAListItem;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GetAllDncaTask extends AsyncTask<String, Void, String> {
 
@@ -17,9 +24,9 @@ public class GetAllDncaTask extends AsyncTask<String, Void, String> {
     public static final String REQUEST_METHOD = "GET";
     public static final int READ_TIMEOUT = 15000;
     public static final int CONNECTION_TIMEOUT = 15000;
-    private GetAllDncaResult mDelegate;
+    private DNCAFormDataSource.LoadDncaFormsCallback mDelegate;
 
-    public GetAllDncaTask (GetAllDncaResult delegate) {
+    public GetAllDncaTask (DNCAFormDataSource.LoadDncaFormsCallback delegate) {
         this.mDelegate = delegate;
     };
 
@@ -76,7 +83,11 @@ public class GetAllDncaTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if (mDelegate != null) {
-            mDelegate.resultsRetrieved(result);
+
+            // Deserialize JSON here
+            Gson gson = new Gson();
+            List<DNCAListItem> listItems = gson.fromJson(result, new TypeToken<List<DNCAListItem>>(){}.getType());
+            mDelegate.onDncaFormsLoaded(listItems);
         }
     }
 }

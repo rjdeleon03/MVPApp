@@ -5,18 +5,18 @@
 
     <data>
         <variable
-            name="presenter"
-            type="com.rjdeleon.mvp_app.Modules.NewForm.GeneralInformation.PopulationData.Row.PopulationDataRowPresenter" />
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/nf_population_card"
+        android:id="@+id/nd_population_card"
+        android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="fill"
-        android:onClick="@{presenter::onItemClick}">
+        android:layout_gravity="fill">
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,14 +29,14 @@
                 android:background="@color/hotPink">
 
                 <TextView
-                    android:id="@+id/nf_population_age_group"
+                    android:id="@+id/nd_population_age_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
                     android:layout_marginTop="2dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="@{presenter.ageGroup}"
+                    android:text="@{viewModel.ageGroup.toString()}"
                     android:textSize="18sp"
                     android:textColor="@color/backgroundColor"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -49,8 +49,8 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_close_card"
+                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
                     android:paddingHorizontal="8dp"
-                    android:onClick="@{presenter::onDeleteButtonClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -84,20 +84,20 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/nf_population_total_male"
+                    android:id="@+id/nd_population_total_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{Integer.toString(presenter.totalMale)}"
+                    android:text="@{viewModel.totalMale}"
                     android:textSize="15sp"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
 
                 <TextView
-                    android:id="@+id/nf_population_total"
+                    android:id="@+id/nd_population_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -110,13 +110,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
 
                 <TextView
-                    android:id="@+id/nf_population_total_female"
+                    android:id="@+id/nd_population_total_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{Integer.toString(presenter.totalFemale)}"
+                    android:text="@{viewModel.totalFemale}"
                     android:textSize="15sp"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -125,20 +125,20 @@
                 <!-- Affected -->
 
                 <TextView
-                    android:id="@+id/nf_population_affected_male"
+                    android:id="@+id/nd_population_affected_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{Integer.toString(presenter.affectedMale)}"
+                    android:text="@{viewModel.affectedMale}"
                     android:textSize="15sp"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total_male"/>
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_total_male"/>
 
                 <TextView
-                    android:id="@+id/nf_population_affected"
+                    android:id="@+id/nd_population_affected"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -148,25 +148,25 @@
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total"/>
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_total"/>
 
                 <TextView
-                    android:id="@+id/nf_population_affected_female"
+                    android:id="@+id/nd_population_affected_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{Integer.toString(presenter.affectedFemale)}"
+                    android:text="@{viewModel.affectedFemale}"
                     android:textSize="15sp"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_total_female"/>
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_total_female"/>
 
                 <!-- Displaced -->
 
                 <TextView
-                    android:id="@+id/nf_population_displaced"
+                    android:id="@+id/nd_population_displaced"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -176,33 +176,33 @@
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected"/>
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_affected"/>
 
                 <TextView
-                    android:id="@+id/nf_population_displaced_male"
+                    android:id="@+id/nd_population_displaced_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="120dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{Integer.toString(presenter.displacedMale)}"
+                    android:text="@{viewModel.displacedMale}"
                     android:textSize="15sp"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_male"/>
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_affected_male"/>
 
                 <TextView
-                    android:id="@+id/nf_population_displaced_female"
+                    android:id="@+id/nd_population_displaced_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{Integer.toString(presenter.displacedFemale)}"
+                    android:text="@{viewModel.displacedFemale}"
                     android:textSize="15sp"
                     android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nf_population_affected_female"/>
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_affected_female"/>
 
 
             </android.support.constraint.ConstraintLayout>

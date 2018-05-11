@@ -1,0 +1,15 @@
+package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
+
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+
+public interface PopulationDataRepositoryManager {
+
+    void addPopulationDataRow(PopulationDataRow populationDataRow);
+
+    void deletePopulationDataRow(int rowIndex);
+
+    PopulationDataRow getPopulationDataRow(int rowIndex);
+
+    PopulationData.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex);
+}

@@ -1,51 +1,73 @@
 package com.rjdeleon.mvp_app.Modules.Home;
 
-import android.content.Context;
-import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
-import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListActivity;
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.Tasks.PostNewDncaTask;
 import com.rjdeleon.mvp_app.ViewFactory;
-import com.rjdeleon.mvp_app.databinding.HomeActivityBinding;
 
-public class HomeActivity extends AppCompatActivity implements HomeContract.View {
+public class HomeActivity extends AppCompatActivity {
 
-    private HomePresenter mPresenter;
+    private ImageButton mDncaListButton;
+    private ImageButton mSettingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.home_activity);
 
-        this.mPresenter = new HomePresenter(this);
-        HomeActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.home_activity);
-        binding.setPresenter(this.mPresenter);
-
+        // Setup the toolbar
         Toolbar toolbar = findViewById(R.id.custom_nav_toolbar);
         setSupportActionBar(toolbar);
+
+        // Setup the DNCA list button
+        setupDncaListButton();
+
+        // TODO: Temporarily setup test submit button
+        setupTestSubmitButton();
     }
 
-    @Override
-    public void navigateToNewDnca() {
-        // Start New DNCA Activity
-        Toast.makeText(this, "Loading new DNCA form...", Toast.LENGTH_SHORT).show();
-        ViewFactory.startDNCAListActivity(this);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-
-    @Override
-    public void displayShortToast(String message) {
-        final String fMessage = message;
-        final Context fContext = this;
-        this.runOnUiThread(new Runnable() {
+    /**
+     * Setup DNCA list button
+     */
+    private void setupDncaListButton() {
+        mDncaListButton = findViewById(R.id.home_dnca_list_button);
+        mDncaListButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Toast.makeText(fContext, fMessage, Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                navigateToDncaList();
             }
         });
+    }
+
+    /**
+     * Navigate to DNCA list activity
+     */
+    private void navigateToDncaList() {
+        ViewFactory.startDNCAListActivity(this);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    // TODO: Remove test submit button
+    private void setupTestSubmitButton() {
+        Button submitButton = findViewById(R.id.home_test_submit_form);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testSubmitForm();
+            }
+        });
+    }
+
+    // TODO: Remove test submit form implementation
+    private void testSubmitForm() {
+        PostNewDncaTask task = new PostNewDncaTask();
+        task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 }

@@ -9,13 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Injection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.NewDncaGenInfoFragmentBinding;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
@@ -29,6 +36,10 @@ public class NewDncaGenInfoFragment extends Fragment {
     public static final String NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_FAMILY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_FAMILY_VIEWMODEL_TAG";
+    public static final String NEW_DNCA_GEN_INFO_VULNERABLE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VULNERABLE_VIEWMODEL_TAG";
+    public static final String NEW_DNCA_GEN_INFO_CASUALTIES_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CASUALTIES_VIEWMODEL_TAG";
+    public static final String NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG";
+    public static final String NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG";
 
     private NewDncaGenInfoViewModel mViewModel;
     private NewDncaGenInfoFragmentBinding mBinding;
@@ -110,6 +121,58 @@ public class NewDncaGenInfoFragment extends Fragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(familyDataViewModel),
                     NEW_DNCA_GEN_INFO_FAMILY_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup vulnerable population fragment
+            VulnerablePopulationFragment vulnerablePopulationFragment = VulnerablePopulationFragment.getInstance();
+            VulnerablePopulationViewModel vulnerablePopulationViewModel = new VulnerablePopulationViewModel(getContext().getApplicationContext(), mViewModel);
+            vulnerablePopulationFragment.setViewModel(vulnerablePopulationViewModel);
+            mAdapter.addFragment(vulnerablePopulationFragment);
+
+            // Bind vulnerable population viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(vulnerablePopulationViewModel),
+                    NEW_DNCA_GEN_INFO_VULNERABLE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup casualties data fragment
+            CasualtiesDataFragment casualtiesDataFragment = CasualtiesDataFragment.getInstance();
+            CasualtiesDataViewModel casualtiesDataViewModel = new CasualtiesDataViewModel(getContext().getApplicationContext(), mViewModel);
+            casualtiesDataFragment.setViewModel(casualtiesDataViewModel);
+            mAdapter.addFragment(casualtiesDataFragment);
+
+            // Bind casualties data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(casualtiesDataViewModel),
+                    NEW_DNCA_GEN_INFO_CASUALTIES_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup death cause data fragment
+            DeathCauseDataFragment deathCauseDataFragment = DeathCauseDataFragment.getInstance();
+            DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(getContext().getApplicationContext(), mViewModel);
+            deathCauseDataFragment.setViewModel(deathCauseDataViewModel);
+            mAdapter.addFragment(deathCauseDataFragment);
+
+            // Bind death cause data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(deathCauseDataViewModel),
+                    NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup infrastructure damage fragment
+            InfrastructureDamageFragment infrastructureDamageFragment = InfrastructureDamageFragment.getInstance();
+            InfrastructureDamageViewModel infrastructureDamageViewModel = new InfrastructureDamageViewModel(getContext().getApplicationContext(), mViewModel);
+            infrastructureDamageFragment.setViewModel(infrastructureDamageViewModel);
+            mAdapter.addFragment(infrastructureDamageFragment);
+
+            // Bind infrastructure damage viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(infrastructureDamageViewModel),
+                    NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG);
         }
 
         // Initialize viewPager

@@ -7,14 +7,14 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopulationDataViewModel extends NewDncaBaseViewModel implements PopulationDataRepositoryManager {
+public class PopulationDataViewModel extends NewDncaGenInfoBaseViewModel implements PopulationDataRepositoryManager {
 
-    private NewDncaGenInfoRepositoryManager mNewDncaGenInfoRepositoryManager;
     private PopulationDataNavigator mPopulationDataNavigator;
     private List<PopulationData.AgeGroup> mAgeGroupList;
     private List<PopulationDataRow> mPopulationDataRows;
@@ -28,9 +28,9 @@ public class PopulationDataViewModel extends NewDncaBaseViewModel implements Pop
      * @param newDncaGenInfoRepositoryManager
      */
     public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context);
+        super(context, newDncaGenInfoRepositoryManager);
+
         spinnerValue = new ObservableInt(0);
-        mNewDncaGenInfoRepositoryManager = newDncaGenInfoRepositoryManager;
         mAgeGroupList = PopulationData.AgeGroup.asList();
         mPopulationDataRows = new ArrayList<>();
         mPopulationDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());

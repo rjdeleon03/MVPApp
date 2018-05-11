@@ -58,8 +58,11 @@ public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallba
     @Override
     public void onDncaFormsLoaded(List<DNCAListItem> forms) {
         isLoading.set(false);
-        dncaListItems.clear();
-        dncaListItems.addAll(forms);
+
+        if (forms != null && forms.size() > 0) {
+            dncaListItems.clear();
+            dncaListItems.addAll(forms);
+        }
     }
 
     @Override

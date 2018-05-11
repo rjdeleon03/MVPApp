@@ -44,27 +44,6 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
         mViewModel.onActivityCreated(this);
 
         setupBackButton();
-
-        /**
-        mPresenter = new DNCAListPresenter(this);
-        DncaListActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.dnca_list_activity);
-        binding.setPresenter(this.mPresenter);
-
-
-        // Initialize adapter
-        mAdapter = new DNCAListAdapter(mPresenter);
-
-        // Initialize RecyclerView
-        mRecyclerView = findViewById(R.id.dnca_list_view);
-        mRecyclerView.setHasFixedSize(true);
-
-        // Add horizontal dividers in Recycler view
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
-
-        mRecyclerView.setAdapter(mAdapter);
-        */
     }
 
     /**

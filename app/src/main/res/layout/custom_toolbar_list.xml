@@ -61,7 +61,7 @@
                     android:textStyle="bold"
                     app:fontFamily="@font/comfortaa_reg"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/new_dnca_settings_button"
+                    app:layout_constraintEnd_toStartOf="@+id/dnca_list_back_button"
                     app:layout_constraintStart_toEndOf="@+id/dnca_list_new_button"
                     app:layout_constraintTop_toTopOf="parent" />
 

@@ -12,20 +12,37 @@
             type="com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListViewModel" />
     </data>
 
-    <FrameLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dnca_list_view"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:items="@{viewModel.dncaListItems}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
-    </FrameLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/dnca_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:items="@{viewModel.dncaListItems}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/dnca_list_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="@{() -> viewModel.navigateOnNewDncaButtonPressed()}"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/colorAccent"
+            app:fabSize="mini" />
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </layout>

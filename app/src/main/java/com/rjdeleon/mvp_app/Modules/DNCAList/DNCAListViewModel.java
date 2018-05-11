@@ -55,6 +55,13 @@ public class DNCAListViewModel implements DNCAFormDataSource.LoadDncaFormsCallba
         mDncaFormRepository.loadAllDncaForms(this);
     }
 
+    /**
+     * Navigates when Add New DNCA button is pressed
+     */
+    public void navigateOnNewDncaButtonPressed() {
+        mDncaListNavigator.onNewDncaButtonPressed();
+    }
+
     @Override
     public void onDncaFormsLoaded(List<DNCAListItem> forms) {
         isLoading.set(false);

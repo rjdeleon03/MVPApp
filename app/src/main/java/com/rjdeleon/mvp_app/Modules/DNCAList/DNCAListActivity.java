@@ -121,11 +121,19 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
     }
 
     /**
-     * Navigate to new activity to show DNCA form
+     * Navigates to new activity to show DNCA form
      * @param itemId
      */
     @Override
     public void openDncaForm(int itemId) {
         Toast.makeText(this, "Opening DNCA form...", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Navigates to new activity to create new DNCA form
+     */
+    @Override
+    public void onNewDncaButtonPressed() {
+        ViewFactory.startNewDncaActivity(this);
     }
 }

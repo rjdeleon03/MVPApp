@@ -47,6 +47,6 @@ public class DNCAListAdapter extends RecyclerView.Adapter<DNCAListItemViewHolder
 
     @Override
     public int getItemCount() {
-        return mViewModel.getDncaFormsCount();
+        return mItems.size();
     }
 }

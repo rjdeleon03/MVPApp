@@ -6,6 +6,7 @@ import android.databinding.BindingConversion;
 import android.databinding.InverseBindingAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,11 +22,21 @@ public class AppUtil {
 
     public static void hideSoftKeyboard(Activity activity) {
         final InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+
         if (inputMethodManager.isActive()) {
-            if (activity.getCurrentFocus() != null) {
-                inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+
+            View focusedView = activity.getCurrentFocus();
+            if (focusedView != null) {
+                inputMethodManager.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
+                focusedView.clearFocus();
             }
         }
+    }
+
+    public static boolean isKeyboardShown(Activity activity) {
+        final InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        return activity.getCurrentFocus() != null;
+
     }
 
     public static PopulationData.AgeGroup stringToAgeGroup(String str) {

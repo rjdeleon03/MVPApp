@@ -10,10 +10,10 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRep
 
 public class CalamityDetailsViewModel extends NewDncaGenInfoBaseViewModel {
 
-    public ObservableField<String> calamityType;
-    public ObservableField<SimpleDate> dateOccurred;
-    public ObservableField<String> eventDescription;
-    public ObservableField<String> areaDescription;
+    public final ObservableField<String> calamityType = new ObservableField<>("");
+    public final ObservableField<SimpleDate> dateOccurred = new ObservableField<>(new SimpleDate());
+    public final ObservableField<String> eventDescription = new ObservableField<>("");
+    public final ObservableField<String> areaDescription = new ObservableField<>("");
 
     /**
      * Constructor
@@ -24,10 +24,10 @@ public class CalamityDetailsViewModel extends NewDncaGenInfoBaseViewModel {
         super(context, newDncaGenInfoRepositoryManager);
 
         CalamityDesc calamityDesc = mNewDncaGenInfoRepositoryManager.getCalamityDetails();
-        calamityType = new ObservableField<>(calamityDesc.getCalamityType());
-        dateOccurred = new ObservableField<>(calamityDesc.getDateOccurred());
-        eventDescription = new ObservableField<>(calamityDesc.getEventDescription());
-        areaDescription = new ObservableField<>(calamityDesc.getAreaDescription());
+        calamityType.set(calamityDesc.getCalamityType());
+        dateOccurred.set(calamityDesc.getDateOccurred());
+        eventDescription.set(calamityDesc.getEventDescription());
+        areaDescription.set(calamityDesc.getAreaDescription());
     }
 
     /**

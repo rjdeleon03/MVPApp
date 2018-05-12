@@ -8,6 +8,7 @@ import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
@@ -21,6 +22,7 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     private DNCAForm mDncaForm;
     private CalamityDesc mCalamityDesc;
     private PopulationData mPopulationData;
+    private FamilyData mFamilyData;
 
     public final ObservableInt viewPagerIndex;
 
@@ -34,34 +36,6 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
         mDncaFormRepository = dncaFormRepository;
         mDncaFormRepository.retrieveNewDncaForm(this);
     }
-
-    /**
-     * Navigate when save button is pressed
-     */
-    /*
-    public void navigateOnSaveButtonPressed(int pageCount) {
-
-        // Save data from current general information component
-        GenInfo genInfo  = mDncaForm.getGenInfo();
-        switch(viewPagerIndex.get()) {
-            case 0:
-                genInfo.setCalamityDesc(mCalamityDesc);
-                break;
-            case 1:
-                genInfo.setPopulationData(mPopulationData);
-                break;
-        }
-
-        mDncaFormRepository.saveGenInfo(genInfo);
-
-        boolean isLastPageReached = (viewPagerIndex.get() + 1 == pageCount);
-        if (isLastPageReached) {
-            mNewDncaNavigator.onBackButtonPressed();
-        } else {
-            viewPagerIndex.set(viewPagerIndex.get() + 1);
-        }
-    }
-    */
 
     /**
      * Get calamity details
@@ -81,6 +55,15 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
         return mPopulationData;
     }
 
+    /**
+     * Get family and household data
+     * @return
+     */
+    @Override
+    public FamilyData getFamilyData() {
+        return mFamilyData;
+    }
+
     @Override
     public void saveCalamityDetails(CalamityDesc calamityDesc) {
         mCalamityDesc = calamityDesc;
@@ -94,10 +77,17 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     }
 
     @Override
+    public void saveFamilyData(FamilyData familyData) {
+        mFamilyData = familyData;
+        mDncaForm.getGenInfo().setFamilyData(mFamilyData);
+    }
+
+    @Override
     public void onDncaFormLoaded(DNCAForm form) {
         mDncaForm = form;
         mCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
         mPopulationData = mDncaForm.getGenInfo().getPopulationData();
+        mFamilyData = mDncaForm.getGenInfo().getFamilyData();
     }
 
     @Override

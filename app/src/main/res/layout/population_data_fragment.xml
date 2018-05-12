@@ -59,7 +59,7 @@
                 </android.support.v7.widget.AppCompatSpinner>
 
 
-                <!--android:enabled="@{presenter.isAddButtonEnabled}"-->
+                <!-- TODO: android:enabled="@{presenter.isAddButtonEnabled}" -->
                 <Button
                     android:id="@+id/nd_population_add_button"
                     android:layout_width="wrap_content"

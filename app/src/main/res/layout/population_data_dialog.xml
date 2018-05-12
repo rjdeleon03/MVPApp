@@ -31,15 +31,15 @@
                     android:layout_height="50dp"
                     android:background="@color/colorPrimary">
 
-                    <android.support.design.widget.FloatingActionButton
+                    <ImageButton
                         android:id="@+id/nd_population_dlg_cancel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:backgroundTint="@android:color/holo_red_light"
+                        android:background="@drawable/round_button_cancel"
                         android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
                         android:padding="8dp"
                         android:src="@drawable/ic_close_card"
@@ -63,15 +63,15 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
-                    <android.support.design.widget.FloatingActionButton
+                    <ImageButton
                         android:id="@+id/nd_population_dlg_ok"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginTop="8dp"
-                        android:backgroundTint="@android:color/holo_green_light"
+                        android:background="@drawable/round_button_ok"
                         android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
                         android:src="@drawable/ic_check"
                         app:borderWidth="0dp"

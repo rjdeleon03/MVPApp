@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.AppUtil;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.FamilyDataFragmentBinding;
 
@@ -92,6 +93,10 @@ public class FamilyDataFragment extends Fragment {
 
             GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
             lp.columnSpec = GridLayout.spec(-2147483648, 1, GridLayout.FILL, 1.0f);
+
+            int horizontalMargin = AppUtil.dpToPx(getContext(), 8);
+            int bottomMargin = AppUtil.dpToPx(getContext(), 16);
+            lp.setMargins(horizontalMargin, 0, horizontalMargin, bottomMargin);
 
             view.setLayoutParams(lp);
         }

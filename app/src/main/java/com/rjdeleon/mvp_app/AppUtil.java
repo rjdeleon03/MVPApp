@@ -1,11 +1,13 @@
 package com.rjdeleon.mvp_app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.InverseBindingAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -33,10 +35,9 @@ public class AppUtil {
         }
     }
 
-    public static boolean isKeyboardShown(Activity activity) {
-        final InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        return activity.getCurrentFocus() != null;
-
+    public static int dpToPx(Context context, int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
     public static PopulationData.AgeGroup stringToAgeGroup(String str) {

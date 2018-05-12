@@ -22,7 +22,8 @@
         <activity
             android:name=".Modules.NewDnca.NewDncaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"
+            android:hardwareAccelerated="true"/>
     </application>
 
 </manifest>

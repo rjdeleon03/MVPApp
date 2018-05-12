@@ -30,23 +30,47 @@ public class FamilyData {
         return totalFamilies;
     }
 
+    public void setTotalFamilies(int totalFamilies) {
+        this.totalFamilies = totalFamilies;
+    }
+
     public int getAffectedFamilies() {
         return affectedFamilies;
+    }
+
+    public void setAffectedFamilies(int affectedFamilies) {
+        this.affectedFamilies = affectedFamilies;
     }
 
     public int getDisplacedFamilies() {
         return displacedFamilies;
     }
 
+    public void setDisplacedFamilies(int displacedFamilies) {
+        this.displacedFamilies = displacedFamilies;
+    }
+
     public int getTotalHouseholds() {
         return totalHouseholds;
+    }
+
+    public void setTotalHouseholds(int totalHouseholds) {
+        this.totalHouseholds = totalHouseholds;
     }
 
     public int getAffectedHouseholds() {
         return affectedHouseholds;
     }
 
+    public void setAffectedHouseholds(int affectedHouseholds) {
+        this.affectedHouseholds = affectedHouseholds;
+    }
+
     public int getDisplacedHouseholds() {
         return displacedHouseholds;
+    }
+
+    public void setDisplacedHouseholds(int displacedHouseholds) {
+        this.displacedHouseholds = displacedHouseholds;
     }
 }

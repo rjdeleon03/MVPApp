@@ -16,4 +16,11 @@ public class FamilyDataViewModel extends NewDncaGenInfoBaseViewModel {
     public FamilyDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
     }
+
+    /**
+     * Navigate when save button is pressed
+     */
+    public void navigateOnSaveButtonPressed() {
+
+    }
 }

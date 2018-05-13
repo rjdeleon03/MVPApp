@@ -63,7 +63,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment implements Base
                 (PopulationDataRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setPopulationDataNavigator(this);
+        dialogViewModel.setBaseAgeGroupNavigator(this);
         mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
@@ -80,7 +80,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment implements Base
                 (PopulationDataRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setPopulationDataNavigator(this);
+        dialogViewModel.setBaseAgeGroupNavigator(this);
         mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");

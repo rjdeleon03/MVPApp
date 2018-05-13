@@ -10,12 +10,12 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.PopulationDataDialogBinding;
 
-public class PopulationDataDialogFragment extends DialogFragment {
+public class PopulationDataDialogFragment extends BaseAgeGroupDialogFragment {
 
-    private PopulationDataDialogViewModel mViewModel;
     private PopulationDataDialogBinding mBinding;
 
     public static PopulationDataDialogFragment newInstance() {
@@ -37,14 +37,9 @@ public class PopulationDataDialogFragment extends DialogFragment {
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         mBinding = DataBindingUtil.inflate(inflater, R.layout.population_data_dialog, null, false);
-        mBinding.setViewModel(mViewModel);
+        mBinding.setViewModel((PopulationDataDialogViewModel) mViewModel);
         View view = mBinding.getRoot();
 
-        // Use builder for dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(view);
-        Dialog dialog = builder.create();
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        return dialog;
+        return super.createDialog(view);
     }
 }

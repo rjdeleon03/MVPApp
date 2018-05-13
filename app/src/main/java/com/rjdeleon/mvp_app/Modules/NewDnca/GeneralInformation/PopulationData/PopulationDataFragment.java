@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -20,7 +19,6 @@ import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
 public class PopulationDataFragment extends BaseAgeGroupFragment {
 
     private PopulationDataFragmentBinding mBinding;
-
     private PopulationDataFragmentAdapter mPopulationDataAdapter;
 
     public static PopulationDataFragment newInstance() {
@@ -90,9 +88,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onDeleteCardButtonPressed() {
-        mSpinnerAdapter.notifyDataSetChanged();
-        mAgeGroupSpinner.setSelection(0);
-        mPopulationDataAdapter.notifyDataSetChanged();
+        refreshData();
     }
 
     /**
@@ -100,11 +96,18 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onDialogOkButtonPressed() {
+        refreshData();
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
+    }
+
+    /**
+     * Refreshes the data displayed
+     */
+    private void refreshData() {
         mSpinnerAdapter.notifyDataSetChanged();
         mAgeGroupSpinner.setSelection(0);
         mPopulationDataAdapter.notifyDataSetChanged();
-        mDialogFragment.dismiss();
-        mDialogFragment = null;
     }
 
     /**
@@ -114,11 +117,11 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
     @Override
     protected void setupRecyclerGrid(View view, int controlId) {
         super.setupRecyclerGrid(view, controlId);
+        super.setRecyclerGridLayout(getResources().getConfiguration().orientation);
         mPopulationDataAdapter = new PopulationDataFragmentAdapter(
                 getContext().getApplicationContext(),
                 this,
                 (PopulationDataViewModel) mViewModel);
-        super.setRecyclerGridLayout(getResources().getConfiguration().orientation);
         mRowRecycler.setAdapter(mPopulationDataAdapter);
     }
 }

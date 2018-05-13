@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class CasualtiesData {
             injured.male += row.getInjured().male;
             injured.female += row.getInjured().female;
         }
-        this.casualtiesDataRows.add(new CasualtiesDataRow(PopulationData.AgeGroup.ALL, dead, missing, injured));
+        this.casualtiesDataRows.add(new CasualtiesDataRow(AgeGroupDataRow.AgeGroup.ALL, dead, missing, injured));
     }
 
     public CasualtiesData() {

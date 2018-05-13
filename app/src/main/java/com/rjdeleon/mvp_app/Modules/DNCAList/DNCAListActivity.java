@@ -1,14 +1,8 @@
 package com.rjdeleon.mvp_app.Modules.DNCAList;
 
-import android.content.Context;
-import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,7 +15,6 @@ import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewFactory;
 import com.rjdeleon.mvp_app.ViewModelHolder;
-import com.rjdeleon.mvp_app.databinding.DncaListActivityBinding;
 
 public class DNCAListActivity extends AppCompatActivity implements DNCAListNavigator, DNCAListItemNavigator {
 

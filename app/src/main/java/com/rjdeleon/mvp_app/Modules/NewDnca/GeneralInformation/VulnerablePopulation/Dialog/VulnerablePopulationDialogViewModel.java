@@ -1,10 +1,12 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog;
 
 import android.content.Context;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
@@ -24,6 +26,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
     public final ObservableInt disabledMale = new ObservableInt(0);
     public final ObservableInt disabledFemale = new ObservableInt(0);
     public final ObservableField<String> remarks = new ObservableField<>("");
+    public final ObservableBoolean shouldShowOtherFields = new ObservableBoolean(true);
 
     /**
      * Constructor
@@ -43,6 +46,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
             ageGroup.set(vulnerablePopulationRepositoryManager.getVulnerablePopulationAgeGroup(ageGroupIndex));
         } else {
             VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(ageGroupIndex);
+
             ageGroup.set(vulnerablePopulationDataRow.getAgeGroup());
             pregnant.set(vulnerablePopulationDataRow.getPregnant());
             lactating.set(vulnerablePopulationDataRow.getLactating());
@@ -56,6 +60,9 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
             disabledFemale.set(vulnerablePopulationDataRow.getDisabled().female);
             remarks.set(vulnerablePopulationDataRow.getRemarks());
         }
+
+        // Set visibility of fields such as pregnant, lactating, and lgbt
+        shouldShowOtherFields.set(ageGroup.get().ordinal() >= AgeGroupDataRow.AgeGroup.AGE_10_12.ordinal());
     }
 
     /**

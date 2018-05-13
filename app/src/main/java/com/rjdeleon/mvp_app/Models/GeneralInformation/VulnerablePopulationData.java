@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class VulnerablePopulationData {
             dis.female += row.getDisabled().female;
         }
 
-        this.vulnerablePopulationDataRows.add(new VulnerablePopulationDataRow(PopulationData.AgeGroup.ALL, pregnant, lactating, lgbt, fhh, chh, idg, dis, ""));
+        this.vulnerablePopulationDataRows.add(new VulnerablePopulationDataRow(AgeGroupDataRow.AgeGroup.ALL, pregnant, lactating, lgbt, fhh, chh, idg, dis, ""));
     }
 
     public VulnerablePopulationData() {

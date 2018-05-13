@@ -4,18 +4,22 @@ import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
 import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogFragment;
 
 public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGroupNavigator {
 
     protected BaseAgeGroupViewModel mViewModel;
     protected Spinner mAgeGroupSpinner;
-    protected ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
+    protected ArrayAdapter<AgeGroupDataRow.AgeGroup> mSpinnerAdapter;
     protected RecyclerView mRowRecycler;
     protected BaseAgeGroupDialogFragment mDialogFragment;
 
@@ -51,6 +55,9 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
      */
     protected void setupRecyclerGrid(View view, int controlId) {
         mRowRecycler = view.findViewById(controlId);
+        mRowRecycler.setHasFixedSize(true);
+        mRowRecycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+
     }
 
     /**
@@ -58,11 +65,12 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
      * @param orientation
      */
     protected void setRecyclerGridLayout(int orientation) {
+
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mRowRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        } else {
-            mRowRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+            ((StaggeredGridLayoutManager) mRowRecycler.getLayoutManager()).setSpanCount(2);
+            return;
         }
+        ((StaggeredGridLayoutManager) mRowRecycler.getLayoutManager()).setSpanCount(1);
     }
 
     /**

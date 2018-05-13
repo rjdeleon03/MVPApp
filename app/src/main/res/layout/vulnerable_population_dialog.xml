@@ -1,283 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel" />
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:orientation="vertical">
+        android:layout_margin="16dp"
+        android:background="@color/backgroundColor"
+        app:cardCornerRadius="6dp">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/backgroundColor">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary">
+
+                <ImageButton
+                    android:id="@+id/nd_vulnerable_dlg_cancel"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
+                    android:background="@drawable/round_button_cancel"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close_card"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_reg"
+                    android:text="@{viewModel.ageGroup.toString()}"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/nd_vulnerable_dlg_ok"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
+                    android:background="@drawable/round_button_ok"
+                    android:src="@drawable/ic_check"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/nd_vulnerable_dlg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:paddingBottom="32dp"
+                android:paddingTop="16dp">
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/colorPrimary">
-
-                    <ImageButton
-                        android:id="@+id/nd_vulnerable_dlg_cancel"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
-                        android:background="@drawable/round_button_cancel"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_close_card"
-                        app:borderWidth="0dp"
-                        app:fabSize="mini"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/comfortaa_reg"
-                        android:text="@{viewModel.ageGroup.toString()}"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textColor="@color/cardview_light_background"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-                    <ImageButton
-                        android:id="@+id/nd_vulnerable_dlg_ok"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
-                        android:background="@drawable/round_button_ok"
-                        android:src="@drawable/ic_check"
-                        app:borderWidth="0dp"
-                        app:fabSize="mini"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </android.support.constraint.ConstraintLayout>
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/nd_vulnerable_dlg"
-                    android:layout_width="match_parent"
+                <!-- Indigenous People -->
+                <TextView
+                    android:id="@+id/nd_vulnerable_dlg_indigenous_label"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="32dp"
-                    android:paddingTop="16dp">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:width="110dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:lines="2"
+                    android:maxWidth="80dp"
+                    android:text="INDIGENOUS PEOPLE"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male" />
 
-                    <!-- Indigenous People -->
-                    <TextView
-                        android:id="@+id/nd_vulnerable_dlg_indigenous_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:width="110dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:lines="2"
-                        android:maxWidth="80dp"
-                        android:text="INDIGENOUS PEOPLE"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male" />
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_indigenous_male_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male"
+                    app:srcCompat="@drawable/ic_male" />
 
-                    <ImageView
-                        android:id="@+id/nd_vulnerable_dlg_indigenous_male_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male"
-                        app:srcCompat="@drawable/ic_male" />
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_indigenous_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.indigenousMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_indigenous_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male" />
 
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_indigenous_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.indigenousMale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_indigenous_female_ic"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male" />
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_indigenous_female_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_indigenous_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_female"
+                    app:srcCompat="@drawable/ic_female" />
 
-                    <ImageView
-                        android:id="@+id/nd_vulnerable_dlg_indigenous_female_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_indigenous_female"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_male"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_female"
-                        app:srcCompat="@drawable/ic_female" />
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_indigenous_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.indigenousFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_female" />
 
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_indigenous_female"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.indigenousFemale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_female" />
+                <!-- Persons with Disabilities -->
+                <TextView
+                    android:id="@+id/nd_vulnerable_dlg_disabled_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:width="110dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:lines="2"
+                    android:maxWidth="80dp"
+                    android:text="PERSONS WITH DISABILITIES"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male" />
 
-                    <!-- Persons with Disabilities -->
-                    <TextView
-                        android:id="@+id/nd_vulnerable_dlg_disabled_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:width="110dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:lines="2"
-                        android:maxWidth="80dp"
-                        android:text="PERSONS WITH DISABILITIES"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male" />
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_disabled_male_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male"
+                    app:srcCompat="@drawable/ic_male" />
 
-                    <ImageView
-                        android:id="@+id/nd_vulnerable_dlg_disabled_male_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male"
-                        app:srcCompat="@drawable/ic_male" />
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_disabled_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.disabledMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_disabled_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male" />
 
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_disabled_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.disabledMale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_disabled_female_ic"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male" />
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_disabled_female_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_disabled_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_female"
+                    app:srcCompat="@drawable/ic_female" />
 
-                    <ImageView
-                        android:id="@+id/nd_vulnerable_dlg_disabled_female_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_disabled_female"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_male"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_female"
-                        app:srcCompat="@drawable/ic_female" />
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_disabled_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.disabledFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_female" />
 
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_disabled_female"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.disabledFemale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_female" />
+                <!-- Remarks -->
+                <TextView
+                    android:id="@+id/nd_vulnerable_dlg_remarks_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="REMARKS:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_disabled_male" />
 
-                    <!-- Remarks -->
-                    <TextView
-                        android:id="@+id/nd_vulnerable_dlg_remarks_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="REMARKS"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_disabled_male" />
+                <TextView
+                    android:id="@+id/nd_vulnerable_dlg_remarks_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="(Specify conditions e.g. Unable to go to school, etc.)"
+                    android:textSize="13dp"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_remarks_label" />
 
-                    <TextView
-                        android:id="@+id/nd_vulnerable_dlg_remarks_hint"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="(Specify conditions e.g. Unable to go to school, etc.)"
-                        android:textSize="13dp"
-                        android:textStyle="italic"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_remarks_label" />
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_remarks"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:minLines="2"
+                    android:singleLine="false"
+                    android:text="@={viewModel.remarks}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_remarks_hint" />
 
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_remarks"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:minLines="2"
-                        android:singleLine="false"
-                        android:text="@={viewModel.remarks}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_remarks_hint" />
+                <!-- Other Fields -->
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/nd_vulnerable_dlg_misc_fields"
+                    android:layout_width="match_parent"
+                    android:layout_height="143dp"
+                    android:visibility="@{viewModel.shouldShowOtherFields ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/nd_vulnerable_dlg_lactating_label"
@@ -285,8 +290,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
-                        android:lines="2"
-                        android:maxWidth="80dp"
+                        android:layout_marginTop="8dp"
                         android:text="LACTATING MOTHERS"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_pregnant" />
@@ -297,7 +301,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/lato_reg"
                         android:text="LGBT"
                         app:layout_constraintStart_toStartOf="parent"
@@ -310,7 +314,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="PREGNANT"
+                        android:text="PREGNANT WOMEN"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -322,14 +326,14 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.pregnant}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
+                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_lactating_label"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
@@ -342,119 +346,121 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.lactating}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
+                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_lactating_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_pregnant" />
 
                     <EditText
                         android:id="@+id/nd_vulnerable_dlg_lgbt"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.lgbt}"
                         android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
+                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_lactating_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lactating" />
-
-                    <TextView
-                        android:id="@+id/nd_vulnerable_dlg_child_headed_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:width="110dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:lines="2"
-                        android:maxWidth="80dp"
-                        android:text="CHILD-HEADED HOUSEHOLDS"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lgbt" />
-
-                    <ImageView
-                        android:id="@+id/nd_vulnerable_dlg_chh_male_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lgbt"
-                        app:srcCompat="@drawable/ic_male" />
-
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_chh_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.childHeadedMale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female_ic"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lgbt" />
-
-                    <ImageView
-                        android:id="@+id/nd_vulnerable_dlg_chh_female_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lgbt"
-                        app:srcCompat="@drawable/ic_female" />
-
-                    <EditText
-                        android:id="@+id/nd_vulnerable_dlg_chh_female"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.childHeadedFemale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lgbt" />
 
                 </android.support.constraint.ConstraintLayout>
 
-                </ScrollView>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/nd_vulnerable_dlg_child_headed_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:elevation="10dp">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:width="110dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:lines="2"
+                    android:maxWidth="80dp"
+                    android:text="CHILD-HEADED HOUSEHOLDS"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
 
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_chh_male_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_chh_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.childHeadedMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
+
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_chh_female_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_chh_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.childHeadedFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center_horizontal"
+                android:elevation="10dp">
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </LinearLayout>
 
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </layout>

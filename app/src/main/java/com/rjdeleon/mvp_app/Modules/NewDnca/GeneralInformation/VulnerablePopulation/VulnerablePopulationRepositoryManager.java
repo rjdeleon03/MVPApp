@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopula
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 
 public interface VulnerablePopulationRepositoryManager {
 
@@ -11,6 +12,6 @@ public interface VulnerablePopulationRepositoryManager {
 
     VulnerablePopulationDataRow getVulnerablePopulationRow(int rowIndex);
 
-    PopulationData.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex);
+    AgeGroupDataRow.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex);
 
 }

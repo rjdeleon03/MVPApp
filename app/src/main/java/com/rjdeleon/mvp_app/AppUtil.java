@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListAdapter;
 
@@ -40,19 +41,19 @@ public class AppUtil {
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
-    public static PopulationData.AgeGroup stringToAgeGroup(String str) {
+    public static AgeGroupDataRow.AgeGroup stringToAgeGroup(String str) {
         if (str.endsWith("0-5")) {
-            return PopulationData.AgeGroup.AGE_0_5;
+            return AgeGroupDataRow.AgeGroup.AGE_0_5;
         } else if (str.endsWith("6-9")) {
-            return PopulationData.AgeGroup.AGE_6_9;
+            return AgeGroupDataRow.AgeGroup.AGE_6_9;
         } else if (str.endsWith("10-12")) {
-            return PopulationData.AgeGroup.AGE_10_12;
+            return AgeGroupDataRow.AgeGroup.AGE_10_12;
         } else if (str.endsWith("13-17")) {
-            return PopulationData.AgeGroup.AGE_13_17;
+            return AgeGroupDataRow.AgeGroup.AGE_13_17;
         } else if (str.endsWith("18-59")) {
-            return PopulationData.AgeGroup.AGE_18_59;
+            return AgeGroupDataRow.AgeGroup.AGE_18_59;
         } else {
-            return PopulationData.AgeGroup.AGE_60_PLUS;
+            return AgeGroupDataRow.AgeGroup.AGE_60_PLUS;
         }
     }
 
@@ -107,7 +108,7 @@ public class AppUtil {
         return viewPager.getCurrentItem();
     }
 
-    @BindingAdapter("app:items")
+    @BindingAdapter("items")
     public static void setItems(RecyclerView recyclerView, List<DNCAListItem> items) {
         DNCAListAdapter adapter = (DNCAListAdapter) recyclerView.getAdapter();
         if (adapter != null)

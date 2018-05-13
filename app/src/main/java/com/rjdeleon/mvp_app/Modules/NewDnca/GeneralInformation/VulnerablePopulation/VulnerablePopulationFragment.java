@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragmentAdapter;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -20,6 +22,7 @@ import com.rjdeleon.mvp_app.databinding.VulnerablePopulationFragmentBinding;
 public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
 
     private VulnerablePopulationFragmentBinding mBinding;
+    private VulnerablePopulationFragmentAdapter mVulnerablePopulationAdapter;
 
     public static VulnerablePopulationFragment getInstance() {
         return new VulnerablePopulationFragment();
@@ -95,6 +98,7 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onDeleteCardButtonPressed() {
+        refreshData();
     }
 
     /**
@@ -102,6 +106,9 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onDialogOkButtonPressed() {
+        refreshData();
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
     }
 
     /**
@@ -111,5 +118,29 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
     public void onDialogCloseButtonPressed() {
         mDialogFragment.dismiss();
         mDialogFragment = null;
+    }
+
+    /**
+     * Refreshes the data displayed
+     */
+    private void refreshData() {
+        mSpinnerAdapter.notifyDataSetChanged();
+        mAgeGroupSpinner.setSelection(0);
+        mVulnerablePopulationAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Initialize RecyclerView grid for displaying population data rows
+     * @param view
+     */
+    @Override
+    protected void setupRecyclerGrid(View view, int controlId) {
+        super.setupRecyclerGrid(view, controlId);
+        super.setRecyclerGridLayout(getResources().getConfiguration().orientation);
+        mVulnerablePopulationAdapter = new VulnerablePopulationFragmentAdapter(
+                getContext().getApplicationContext(),
+                this,
+                (VulnerablePopulationViewModel) mViewModel);
+        mRowRecycler.setAdapter(mVulnerablePopulationAdapter);
     }
 }

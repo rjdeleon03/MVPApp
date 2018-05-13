@@ -6,23 +6,23 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Row.BaseAgeGroupRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
-public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
+public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
-    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
-    private int mRowIndex;
 
-    public final ObservableField<PopulationData.AgeGroup> ageGroup;
-    public final ObservableInt totalMale;
-    public final ObservableInt totalFemale;
-    public final ObservableInt affectedMale;
-    public final ObservableInt affectedFemale;
-    public final ObservableInt displacedMale;
-    public final ObservableInt displacedFemale;
+    public final ObservableField<AgeGroupDataRow.AgeGroup> ageGroup = new ObservableField<>();
+    public final ObservableInt totalMale = new ObservableInt(0);
+    public final ObservableInt totalFemale = new ObservableInt(0);
+    public final ObservableInt affectedMale = new ObservableInt(0);
+    public final ObservableInt affectedFemale = new ObservableInt(0);
+    public final ObservableInt displacedMale = new ObservableInt(0);
+    public final ObservableInt displacedFemale = new ObservableInt(0);
 
     /**
      * Constructor
@@ -34,34 +34,27 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
                                       PopulationDataRepositoryManager populationDataRepositoryManager,
                                       BaseAgeGroupNavigator baseAgeGroupNavigator,
                                       int rowIndex) {
-        super(context);
-        mRowIndex = rowIndex;
+
+        super(context, baseAgeGroupNavigator, rowIndex);
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
-        ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
-        totalMale = new ObservableInt(populationDataRow.getTotal().male);
-        totalFemale = new ObservableInt(populationDataRow.getTotal().female);
-        affectedMale = new ObservableInt(populationDataRow.getAffected().male);
-        affectedFemale = new ObservableInt(populationDataRow.getAffected().female);
-        displacedMale = new ObservableInt(populationDataRow.getDisplaced().male);
-        displacedFemale = new ObservableInt(populationDataRow.getDisplaced().female);
-    }
-
-    /**
-     * Handle navigation when card is selected
-     */
-    public void navigateOnCardSelected() {
-        mBaseAgeGroupNavigator.onCardSelected(mRowIndex);
+        ageGroup.set(populationDataRow.getAgeGroup());
+        totalMale.set(populationDataRow.getTotal().male);
+        totalFemale.set(populationDataRow.getTotal().female);
+        affectedMale.set(populationDataRow.getAffected().male);
+        affectedFemale.set(populationDataRow.getAffected().female);
+        displacedMale.set(populationDataRow.getDisplaced().male);
+        displacedFemale.set(populationDataRow.getDisplaced().female);
     }
 
     /**
      * Handle navigation when card is deleted
      */
+    @Override
     public void navigateOnDeleteCardButtonPressed() {
         mPopulationDataRepositoryManager.deletePopulationDataRow(mRowIndex);
-        mBaseAgeGroupNavigator.onDeleteCardButtonPressed();
+        super.navigateOnDeleteCardButtonPressed();
     }
 
 }

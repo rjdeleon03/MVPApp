@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
@@ -19,9 +20,12 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
     private PopulationDataViewModel mViewModel;
     private Context mContext;
 
-    public PopulationDataFragmentAdapter(Context context, BaseAgeGroupNavigator baseAgeGroupNavigator, PopulationDataViewModel viewModel) {
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+    public PopulationDataFragmentAdapter(Context context,
+                                         BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                         PopulationDataViewModel viewModel) {
+
         mContext = context;
+        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
         mViewModel = viewModel;
     }
 
@@ -29,7 +33,8 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
     @Override
     public PopulationDataRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        PopulationDataRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.population_data_row, parent, false);
+        View root = inflater.inflate(R.layout.population_data_row, parent, false);
+        PopulationDataRowBinding binding = PopulationDataRowBinding.bind(root);
         return new PopulationDataRowViewHolder(binding);
     }
 

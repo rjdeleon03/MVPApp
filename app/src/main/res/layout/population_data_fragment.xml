@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -59,7 +59,6 @@
                 </android.support.v7.widget.AppCompatSpinner>
 
 
-                <!-- TODO: android:enabled="@{presenter.isAddButtonEnabled}" -->
                 <Button
                     android:id="@+id/nd_population_add_button"
                     android:layout_width="wrap_content"

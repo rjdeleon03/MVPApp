@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/comfortaa_reg"
                         android:textStyle="bold"
-                        android:text="Add Age Group"
+                        android:text="@{viewModel.ageGroup.toString()}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textColor="@color/cardview_light_background"
                         android:textSize="20sp"
@@ -88,19 +88,6 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
                     android:paddingBottom="32dp">
-
-                    <TextView
-                        android:id="@+id/nd_population_dlg_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="@{viewModel.ageGroup.toString()}"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:id="@+id/nd_population_dlg_affected"

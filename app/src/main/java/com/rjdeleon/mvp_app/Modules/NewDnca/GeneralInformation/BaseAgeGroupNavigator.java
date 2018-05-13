@@ -1,6 +1,6 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
+package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
 
-public interface PopulationDataNavigator {
+public interface BaseAgeGroupNavigator {
 
     void onAddButtonPressed();
 

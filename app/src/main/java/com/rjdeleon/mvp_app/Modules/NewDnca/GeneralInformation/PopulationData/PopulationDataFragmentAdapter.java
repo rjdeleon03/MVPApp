@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel;
 import com.rjdeleon.mvp_app.databinding.PopulationDataRowBinding;
@@ -15,12 +15,12 @@ import com.rjdeleon.mvp_app.R;
 
 public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<PopulationDataRowViewHolder> {
 
-    private PopulationDataNavigator mPopulationDataNavigator;
+    private BaseAgeGroupNavigator mNewDncaGenInfoGenericRowHolderNavigator;
     private PopulationDataViewModel mViewModel;
     private Context mContext;
 
-    public PopulationDataFragmentAdapter(Context context, PopulationDataNavigator populationDataNavigator, PopulationDataViewModel viewModel) {
-        mPopulationDataNavigator = populationDataNavigator;
+    public PopulationDataFragmentAdapter(Context context, BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator, PopulationDataViewModel viewModel) {
+        mNewDncaGenInfoGenericRowHolderNavigator = newDncaGenInfoGenericRowHolderNavigator;
         mContext = context;
         mViewModel = viewModel;
     }
@@ -38,7 +38,7 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
                 mContext,
                 mViewModel,
-                mPopulationDataNavigator,
+                mNewDncaGenInfoGenericRowHolderNavigator,
                 position);
         holder.bind(populationDataRowViewModel);
     }

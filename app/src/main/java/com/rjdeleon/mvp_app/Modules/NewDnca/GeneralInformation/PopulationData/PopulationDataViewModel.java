@@ -3,20 +3,18 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.content.Context;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopulationDataViewModel extends NewDncaGenInfoBaseViewModel implements PopulationDataRepositoryManager {
+public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements PopulationDataRepositoryManager {
 
-    private PopulationDataNavigator mPopulationDataNavigator;
-    private List<PopulationData.AgeGroup> mAgeGroupList;
     private List<PopulationDataRow> mPopulationDataRows;
 
 
@@ -30,8 +28,8 @@ public class PopulationDataViewModel extends NewDncaGenInfoBaseViewModel impleme
     public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
 
-        spinnerValue = new ObservableInt(0);
-        mAgeGroupList = PopulationData.AgeGroup.asList();
+//        spinnerValue = new ObservableInt(0);
+//        mAgeGroupList = PopulationData.AgeGroup.asList();
         mPopulationDataRows = new ArrayList<>();
         mPopulationDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
 
@@ -46,20 +44,20 @@ public class PopulationDataViewModel extends NewDncaGenInfoBaseViewModel impleme
         }
     }
 
-    /**
-     * Set population data navigator
-     * @param populationDataNavigator
-     */
-    public void setPopulationDataNavigator(PopulationDataNavigator populationDataNavigator) {
-        mPopulationDataNavigator = populationDataNavigator;
-    }
-
-    /**
-     * Retrieves list of age group
-     */
-    public List<PopulationData.AgeGroup> getAgeGroupList() {
-        return mAgeGroupList;
-    }
+//    /**
+//     * Set population data navigator
+//     * @param newDncaGenInfoGenericRowHolderNavigator
+//     */
+//    public void setPopulationDataNavigator(BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator) {
+//        mBaseAgeGroupNavigator = newDncaGenInfoGenericRowHolderNavigator;
+//    }
+//
+//    /**
+//     * Retrieves list of age group
+//     */
+//    public List<PopulationData.AgeGroup> getAgeGroupList() {
+//        return mAgeGroupList;
+//    }
 
     /**
      * Retrieves population data rows count
@@ -70,15 +68,9 @@ public class PopulationDataViewModel extends NewDncaGenInfoBaseViewModel impleme
     }
 
     /**
-     * Called when add button is pressed
-     */
-    public void navigateOnAddButtonPressed() {
-        mPopulationDataNavigator.onAddButtonPressed();
-    }
-
-    /**
      * Handles navigation when save button is pressed
      */
+    @Override
     public void navigateOnSaveButtonPressed() {
         PopulationData populationData = new PopulationData();
         populationData.setPopulationDataRows(mPopulationDataRows);

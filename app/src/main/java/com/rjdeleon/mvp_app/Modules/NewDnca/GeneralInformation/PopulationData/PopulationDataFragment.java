@@ -5,15 +5,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
-import com.rjdeleon.mvp_app.Injection;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -22,15 +20,11 @@ import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PopulationDataFragment extends Fragment implements PopulationDataNavigator  {
+public class PopulationDataFragment extends BaseAgeGroupFragment implements BaseAgeGroupNavigator {
 
-    private PopulationDataViewModel mViewModel;
     private PopulationDataFragmentBinding mBinding;
 
-    private Spinner mAgeGroupSpinner;
-    private ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
     private PopulationDataDialogFragment mDialogFragment;
-    private RecyclerView mRowRecycler;
     private PopulationDataFragmentAdapter mPopulationDataAdapter;
 
     public static PopulationDataFragment newInstance() {
@@ -39,11 +33,6 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
 
     public PopulationDataFragment() {
         // Required empty public constructor
-    }
-
-    public void setViewModel(PopulationDataViewModel viewModel) {
-        mViewModel = viewModel;
-        mViewModel.setPopulationDataNavigator(this);
     }
 
     @Override
@@ -59,22 +48,12 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
         mBinding.setViewModel(mViewModel);
 
         // Initialize spinner
-        setupSpinner(root);
+        setupSpinner(root, R.id.nd_population_age_spinner);
 
         // Initialize row view
-        setupRecyclerGrid(root);
+        setupRecyclerGrid(root, R.id.nd_population_grid);
 
         return mBinding.getRoot();
-    }
-
-    /**
-     * Handle configuration changes
-     * @param newConfig
-     */
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        setRecyclerGridLayout(newConfig.orientation);
     }
 
     /**
@@ -84,7 +63,7 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     public void onAddButtonPressed() {
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
-                mViewModel,
+                (PopulationDataRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setPopulationDataNavigator(this);
@@ -101,7 +80,7 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     public void onCardSelected(int rowIndex) {
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
-                mViewModel,
+                (PopulationDataRepositoryManager) mViewModel,
                 rowIndex,
                 false);
         dialogViewModel.setPopulationDataNavigator(this);
@@ -142,40 +121,17 @@ public class PopulationDataFragment extends Fragment implements PopulationDataNa
     }
 
     /**
-     * Initialize AgeGroup spinner
-     * @param view
-     */
-    private void setupSpinner(View view) {
-        mAgeGroupSpinner = view.findViewById(R.id.nd_population_age_spinner);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                getActivity(),
-                android.R.layout.simple_spinner_dropdown_item,
-                mViewModel.getAgeGroupList()
-        );
-        mSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mAgeGroupSpinner.setAdapter(mSpinnerAdapter);
-    }
-
-    /**
      * Initialize RecyclerView grid for displaying population data rows
      * @param view
      */
-    private void setupRecyclerGrid(View view) {
-        mRowRecycler = view.findViewById(R.id.nd_population_grid);
-        mPopulationDataAdapter = new PopulationDataFragmentAdapter(getContext().getApplicationContext(), this, mViewModel);
-        setRecyclerGridLayout(getResources().getConfiguration().orientation);
+    @Override
+    protected void setupRecyclerGrid(View view, int controlId) {
+        super.setupRecyclerGrid(view, controlId);
+        mPopulationDataAdapter = new PopulationDataFragmentAdapter(
+                getContext().getApplicationContext(),
+                this,
+                (PopulationDataViewModel) mViewModel);
+        super.setRecyclerGridLayout(getResources().getConfiguration().orientation);
         mRowRecycler.setAdapter(mPopulationDataAdapter);
-    }
-
-    /**
-     * Sets column count of RecyclerView depending on device orientation
-     * @param orientation
-     */
-    private void setRecyclerGridLayout(int orientation) {
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mRowRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        } else {
-            mRowRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        }
     }
 }

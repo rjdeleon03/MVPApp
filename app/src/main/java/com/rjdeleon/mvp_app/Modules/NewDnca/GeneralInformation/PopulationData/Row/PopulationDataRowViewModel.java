@@ -7,13 +7,13 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
 public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
-    private PopulationDataNavigator mPopulationDataNavigator;
+    private BaseAgeGroupNavigator mNewDncaGenInfoGenericRowHolderNavigator;
     private int mRowIndex;
 
     public final ObservableField<PopulationData.AgeGroup> ageGroup;
@@ -32,12 +32,12 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      */
     public PopulationDataRowViewModel(Context context,
                                       PopulationDataRepositoryManager populationDataRepositoryManager,
-                                      PopulationDataNavigator populationDataNavigator,
+                                      BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator,
                                       int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
-        mPopulationDataNavigator = populationDataNavigator;
+        mNewDncaGenInfoGenericRowHolderNavigator = newDncaGenInfoGenericRowHolderNavigator;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
         ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
@@ -53,7 +53,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      * Handle navigation when card is selected
      */
     public void navigateOnCardSelected() {
-        mPopulationDataNavigator.onCardSelected(mRowIndex);
+        mNewDncaGenInfoGenericRowHolderNavigator.onCardSelected(mRowIndex);
     }
 
     /**
@@ -61,7 +61,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      */
     public void navigateOnDeleteCardButtonPressed() {
         mPopulationDataRepositoryManager.deletePopulationDataRow(mRowIndex);
-        mPopulationDataNavigator.onDeleteCardButtonPressed();
+        mNewDncaGenInfoGenericRowHolderNavigator.onDeleteCardButtonPressed();
     }
 
 }

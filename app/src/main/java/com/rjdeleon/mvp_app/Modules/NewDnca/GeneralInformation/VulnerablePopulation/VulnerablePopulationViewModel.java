@@ -2,10 +2,12 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopula
 
 import android.content.Context;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
-public class VulnerablePopulationViewModel extends NewDncaGenInfoBaseViewModel {
+public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel {
 
     /**
      * Constructor

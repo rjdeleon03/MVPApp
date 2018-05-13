@@ -1,13 +1,17 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog;
 
 import android.content.Context;
+import android.databinding.ObservableField;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
 
 public abstract class BaseAgeGroupDialogViewModel {
 
     protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
     protected Context mContext;
+
+    public final ObservableField<PopulationData.AgeGroup> ageGroup = new ObservableField<>();
 
     /**
      * Constructor

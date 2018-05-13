@@ -9,13 +9,15 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.VulnerablePopulationFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VulnerablePopulationFragment extends BaseAgeGroupFragment implements BaseAgeGroupNavigator {
+public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
 
     private VulnerablePopulationFragmentBinding mBinding;
 
@@ -60,21 +62,15 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment implement
      */
     @Override
     public void onAddButtonPressed() {
-//        PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-//                getContext(),
-//                mViewModel,
-//                mAgeGroupSpinner.getSelectedItemPosition(),
-//                true);
-//        dialogViewModel.setPopulationDataNavigator(this);
-//        mDialogFragment = PopulationDataDialogFragment.newInstance();
-//        mDialogFragment.setViewModel(dialogViewModel);
-//        mDialogFragment.show(getChildFragmentManager(), "");
-//
-//        VulnerablePopulationViewModel vulnerablePopulationViewModel = new VulnerablePopulationViewModel(
-//                getContext(),
-//                mViewModel,
-//
-//        )
+        VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
+                getContext(),
+                (VulnerablePopulationRepositoryManager) mViewModel,
+                mAgeGroupSpinner.getSelectedItemPosition(),
+                true);
+        dialogViewModel.setBaseAgeGroupNavigator(this);
+        mDialogFragment = VulnerablePopulationDialogFragment.newInstance();
+        mDialogFragment.setViewModel(dialogViewModel);
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**
@@ -83,6 +79,15 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment implement
      */
     @Override
     public void onCardSelected(int rowIndex) {
+        VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
+                getContext(),
+                (VulnerablePopulationRepositoryManager) mViewModel,
+                rowIndex,
+                false);
+        dialogViewModel.setBaseAgeGroupNavigator(this);
+        mDialogFragment = VulnerablePopulationDialogFragment.newInstance();
+        mDialogFragment.setViewModel(dialogViewModel);
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**
@@ -104,5 +109,7 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment implement
      */
     @Override
     public void onDialogCloseButtonPressed() {
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
     }
 }

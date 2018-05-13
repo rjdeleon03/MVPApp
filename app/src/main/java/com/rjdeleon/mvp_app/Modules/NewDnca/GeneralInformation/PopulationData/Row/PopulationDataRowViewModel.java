@@ -13,7 +13,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
-    private BaseAgeGroupNavigator mNewDncaGenInfoGenericRowHolderNavigator;
+    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
     private int mRowIndex;
 
     public final ObservableField<PopulationData.AgeGroup> ageGroup;
@@ -32,12 +32,12 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      */
     public PopulationDataRowViewModel(Context context,
                                       PopulationDataRepositoryManager populationDataRepositoryManager,
-                                      BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator,
+                                      BaseAgeGroupNavigator baseAgeGroupNavigator,
                                       int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
-        mNewDncaGenInfoGenericRowHolderNavigator = newDncaGenInfoGenericRowHolderNavigator;
+        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
         ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
@@ -53,7 +53,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      * Handle navigation when card is selected
      */
     public void navigateOnCardSelected() {
-        mNewDncaGenInfoGenericRowHolderNavigator.onCardSelected(mRowIndex);
+        mBaseAgeGroupNavigator.onCardSelected(mRowIndex);
     }
 
     /**
@@ -61,7 +61,7 @@ public class PopulationDataRowViewModel extends NewDncaBaseViewModel {
      */
     public void navigateOnDeleteCardButtonPressed() {
         mPopulationDataRepositoryManager.deletePopulationDataRow(mRowIndex);
-        mNewDncaGenInfoGenericRowHolderNavigator.onDeleteCardButtonPressed();
+        mBaseAgeGroupNavigator.onDeleteCardButtonPressed();
     }
 
 }

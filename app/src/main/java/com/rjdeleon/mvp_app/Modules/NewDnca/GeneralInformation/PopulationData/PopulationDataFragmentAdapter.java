@@ -15,12 +15,12 @@ import com.rjdeleon.mvp_app.R;
 
 public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<PopulationDataRowViewHolder> {
 
-    private BaseAgeGroupNavigator mNewDncaGenInfoGenericRowHolderNavigator;
+    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
     private PopulationDataViewModel mViewModel;
     private Context mContext;
 
-    public PopulationDataFragmentAdapter(Context context, BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator, PopulationDataViewModel viewModel) {
-        mNewDncaGenInfoGenericRowHolderNavigator = newDncaGenInfoGenericRowHolderNavigator;
+    public PopulationDataFragmentAdapter(Context context, BaseAgeGroupNavigator baseAgeGroupNavigator, PopulationDataViewModel viewModel) {
+        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
         mContext = context;
         mViewModel = viewModel;
     }
@@ -38,7 +38,7 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
                 mContext,
                 mViewModel,
-                mNewDncaGenInfoGenericRowHolderNavigator,
+                mBaseAgeGroupNavigator,
                 position);
         holder.bind(populationDataRowViewModel);
     }

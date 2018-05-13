@@ -13,8 +13,7 @@ import java.util.List;
 
 public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements PopulationDataRepositoryManager {
 
-    private List<PopulationDataRow> mPopulationDataRows;
-
+    private List<PopulationDataRow> mPopulationDataRows = new ArrayList<>();
 
     public ObservableInt spinnerValue;
 
@@ -25,10 +24,6 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
      */
     public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
-
-//        spinnerValue = new ObservableInt(0);
-//        mAgeGroupList = PopulationData.AgeGroup.asList();
-        mPopulationDataRows = new ArrayList<>();
         mPopulationDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
 
         // Remove items from age group list if age group is already in use
@@ -41,21 +36,6 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
             }
         }
     }
-
-//    /**
-//     * Set population data navigator
-//     * @param newDncaGenInfoGenericRowHolderNavigator
-//     */
-//    public void setPopulationDataNavigator(BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator) {
-//        mBaseAgeGroupNavigator = newDncaGenInfoGenericRowHolderNavigator;
-//    }
-//
-//    /**
-//     * Retrieves list of age group
-//     */
-//    public List<PopulationData.AgeGroup> getAgeGroupList() {
-//        return mAgeGroupList;
-//    }
 
     /**
      * Retrieves population data rows count
@@ -76,7 +56,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     }
 
     /**
-     * Add population data row
+     * Adds population data row
      * @param populationDataRow
      */
     @Override
@@ -132,7 +112,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     }
 
     /**
-     * Delete population data row
+     * Deletes population data row
      * @param rowIndex
      */
     @Override
@@ -173,7 +153,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     }
 
     /**
-     * Get population data row
+     * Gets population data row
      * @param rowIndex
      */
     @Override
@@ -182,7 +162,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     }
 
     /**
-     * Get age group based on index
+     * Gets age group based on index
      * @param ageGroupIndex
      * @return
      */

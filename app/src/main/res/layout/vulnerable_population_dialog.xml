@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<data>-->
-        <!--<variable-->
-            <!--name="viewModel"-->
-            <!--type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel" />-->
-    <!--</data>-->
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
+                        android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
                         android:background="@drawable/round_button_cancel"
                         android:padding="8dp"
                         android:src="@drawable/ic_close_card"
@@ -51,6 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/comfortaa_reg"
+                        android:text="@{viewModel.ageGroup.toString()}"
                         android:textStyle="bold"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textColor="@color/cardview_light_background"
@@ -68,6 +70,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         android:layout_marginTop="8dp"
+                        android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
                         android:background="@drawable/round_button_ok"
                         android:src="@drawable/ic_check"
                         app:borderWidth="0dp"
@@ -126,6 +129,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.indigenousMale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_indigenous_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_male_ic"
@@ -153,6 +157,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.indigenousFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_indigenous_female_ic"
@@ -195,6 +200,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.disabledMale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_disabled_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_male_ic"
@@ -222,6 +228,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.disabledFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_disabled_female_ic"
@@ -266,6 +273,7 @@
                         android:inputType="text"
                         android:minLines="2"
                         android:singleLine="false"
+                        android:text="@={viewModel.remarks}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -318,6 +326,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.pregnant}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
@@ -335,6 +344,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.lactating}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
@@ -352,6 +362,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.lgbt}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
@@ -393,6 +404,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.childHeadedMale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male_ic"
@@ -420,6 +432,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:inputType="number"
+                        android:text="@={viewModel.childHeadedFemale}"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_female_ic"

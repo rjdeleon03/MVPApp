@@ -43,4 +43,8 @@ public class VulnerablePopulationData {
     public List<VulnerablePopulationDataRow> getVulnerablePopulationDataRows() {
         return vulnerablePopulationDataRows;
     }
+
+    public void setVulnerablePopulationDataRows(List<VulnerablePopulationDataRow> vulnerablePopulationDataRows) {
+        this.vulnerablePopulationDataRows = vulnerablePopulationDataRows;
+    }
 }

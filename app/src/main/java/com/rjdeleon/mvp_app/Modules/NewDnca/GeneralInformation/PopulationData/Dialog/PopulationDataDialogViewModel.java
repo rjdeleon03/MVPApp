@@ -1,27 +1,23 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog;
 
 import android.content.Context;
-import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
 public class PopulationDataDialogViewModel extends BaseAgeGroupDialogViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
-    public final ObservableField<PopulationData.AgeGroup> ageGroup;
-    public final ObservableInt totalMale;
-    public final ObservableInt totalFemale;
-    public final ObservableInt affectedMale;
-    public final ObservableInt affectedFemale;
-    public final ObservableInt displacedMale;
-    public final ObservableInt displacedFemale;
+    public final ObservableInt totalMale = new ObservableInt(0);
+    public final ObservableInt totalFemale = new ObservableInt(0);
+    public final ObservableInt affectedMale = new ObservableInt(0);
+    public final ObservableInt affectedFemale = new ObservableInt(0);
+    public final ObservableInt displacedMale = new ObservableInt(0);
+    public final ObservableInt displacedFemale = new ObservableInt(0);
 
     /**
      * Constructor
@@ -38,22 +34,16 @@ public class PopulationDataDialogViewModel extends BaseAgeGroupDialogViewModel {
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         if (isNewRow) {
-            ageGroup = new ObservableField<>(populationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
-            totalMale = new ObservableInt(0);
-            totalFemale = new ObservableInt(0);
-            affectedMale = new ObservableInt(0);
-            affectedFemale = new ObservableInt(0);
-            displacedMale = new ObservableInt(0);
-            displacedFemale = new ObservableInt(0);
+            ageGroup.set(populationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
         } else {
             PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
-            ageGroup = new ObservableField<>(populationDataRow.getAgeGroup());
-            totalMale = new ObservableInt(populationDataRow.getTotal().male);
-            totalFemale = new ObservableInt(populationDataRow.getTotal().female);
-            affectedMale = new ObservableInt(populationDataRow.getAffected().male);
-            affectedFemale = new ObservableInt(populationDataRow.getAffected().female);
-            displacedMale = new ObservableInt(populationDataRow.getDisplaced().male);
-            displacedFemale = new ObservableInt(populationDataRow.getDisplaced().female);
+            ageGroup.set(populationDataRow.getAgeGroup());
+            totalMale.set(populationDataRow.getTotal().male);
+            totalFemale.set(populationDataRow.getTotal().female);
+            affectedMale.set(populationDataRow.getAffected().male);
+            affectedFemale.set(populationDataRow.getAffected().female);
+            displacedMale.set(populationDataRow.getDisplaced().male);
+            displacedFemale.set(populationDataRow.getDisplaced().female);
         }
     }
 

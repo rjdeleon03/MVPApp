@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogFragment;
 
 public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGroupNavigator {
 
@@ -16,6 +17,7 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
     protected Spinner mAgeGroupSpinner;
     protected ArrayAdapter<PopulationData.AgeGroup> mSpinnerAdapter;
     protected RecyclerView mRowRecycler;
+    protected BaseAgeGroupDialogFragment mDialogFragment;
 
     /**
      * Sets the viewModel
@@ -51,7 +53,6 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
         mRowRecycler = view.findViewById(controlId);
     }
 
-
     /**
      * Sets column count of RecyclerView depending on device orientation
      * @param orientation
@@ -73,4 +74,14 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
         super.onConfigurationChanged(newConfig);
         setRecyclerGridLayout(newConfig.orientation);
     }
+
+    /**
+     * Dismiss dialog when close button is pressed
+     */
+    @Override
+    public void onDialogCloseButtonPressed() {
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
+    }
+
 }

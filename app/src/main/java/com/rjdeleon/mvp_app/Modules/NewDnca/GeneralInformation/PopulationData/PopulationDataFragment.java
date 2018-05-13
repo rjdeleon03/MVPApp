@@ -17,11 +17,10 @@ import com.rjdeleon.mvp_app.databinding.PopulationDataFragmentBinding;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PopulationDataFragment extends BaseAgeGroupFragment implements BaseAgeGroupNavigator {
+public class PopulationDataFragment extends BaseAgeGroupFragment {
 
     private PopulationDataFragmentBinding mBinding;
 
-    private PopulationDataDialogFragment mDialogFragment;
     private PopulationDataFragmentAdapter mPopulationDataAdapter;
 
     public static PopulationDataFragment newInstance() {
@@ -64,7 +63,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment implements Base
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PopulationDataDialogFragment.newInstance();
+        mDialogFragment = PopulationDataDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -81,7 +80,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment implements Base
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PopulationDataDialogFragment.newInstance();
+        mDialogFragment = PopulationDataDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -104,15 +103,6 @@ public class PopulationDataFragment extends BaseAgeGroupFragment implements Base
         mSpinnerAdapter.notifyDataSetChanged();
         mAgeGroupSpinner.setSelection(0);
         mPopulationDataAdapter.notifyDataSetChanged();
-        mDialogFragment.dismiss();
-        mDialogFragment = null;
-    }
-
-    /**
-     * Dismiss dialog when close button is pressed
-     */
-    @Override
-    public void onDialogCloseButtonPressed() {
         mDialogFragment.dismiss();
         mDialogFragment = null;
     }

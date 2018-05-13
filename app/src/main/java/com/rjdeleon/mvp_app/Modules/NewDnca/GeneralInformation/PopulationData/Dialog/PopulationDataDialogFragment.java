@@ -18,7 +18,7 @@ public class PopulationDataDialogFragment extends BaseAgeGroupDialogFragment {
 
     private PopulationDataDialogBinding mBinding;
 
-    public static PopulationDataDialogFragment newInstance() {
+    public static PopulationDataDialogFragment getInstance() {
         return new PopulationDataDialogFragment();
     }
 

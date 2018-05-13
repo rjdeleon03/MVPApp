@@ -12,6 +12,7 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     private CalamityDesc mCalamityDesc;
     private PopulationData mPopulationData;
     private FamilyData mFamilyData;
+    private VulnerablePopulationData mVulnerablePopulation;
 
     public final ObservableInt viewPagerIndex;
 
@@ -64,6 +66,15 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
         return mFamilyData;
     }
 
+    /**
+     * Get vulnerable population data
+     * @return
+     */
+    @Override
+    public VulnerablePopulationData getVulnerablePopulation() {
+        return mVulnerablePopulation;
+    }
+
     @Override
     public void saveCalamityDetails(CalamityDesc calamityDesc) {
         mCalamityDesc = calamityDesc;
@@ -83,11 +94,18 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     }
 
     @Override
+    public void saveVulnerablePopulation(VulnerablePopulationData vulnerablePopulationData) {
+        mVulnerablePopulation = vulnerablePopulationData;
+        mDncaForm.getGenInfo().setVulnerablePopulationData(mVulnerablePopulation);
+    }
+
+    @Override
     public void onDncaFormLoaded(DNCAForm form) {
         mDncaForm = form;
         mCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
         mPopulationData = mDncaForm.getGenInfo().getPopulationData();
         mFamilyData = mDncaForm.getGenInfo().getFamilyData();
+        mVulnerablePopulation = mDncaForm.getGenInfo().getVulnerablePopulationData();
     }
 
     @Override

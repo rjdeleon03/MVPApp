@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.view.WindowManager;
 
 public abstract class BaseAgeGroupDialogFragment extends DialogFragment {
 
@@ -15,7 +16,7 @@ public abstract class BaseAgeGroupDialogFragment extends DialogFragment {
      * Sets the viewModel
      * @param viewModel
      */
-    protected void setViewModel(BaseAgeGroupDialogViewModel viewModel) {
+    public void setViewModel(BaseAgeGroupDialogViewModel viewModel) {
         mViewModel = viewModel;
     }
 
@@ -32,6 +33,7 @@ public abstract class BaseAgeGroupDialogFragment extends DialogFragment {
 
         // Set transparent background to dialog
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         return dialog;
     }

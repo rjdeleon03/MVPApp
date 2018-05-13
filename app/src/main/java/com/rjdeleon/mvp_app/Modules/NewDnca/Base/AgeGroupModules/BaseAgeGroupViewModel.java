@@ -27,10 +27,10 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
     /**
      * Set population data navigator
-     * @param newDncaGenInfoGenericRowHolderNavigator
+     * @param baseAgeGroupNavigator
      */
-    public void setBaseAgeGroupNavigator(BaseAgeGroupNavigator newDncaGenInfoGenericRowHolderNavigator) {
-        mBaseAgeGroupNavigator = newDncaGenInfoGenericRowHolderNavigator;
+    public void setBaseAgeGroupNavigator(BaseAgeGroupNavigator baseAgeGroupNavigator) {
+        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
     }
 
     /**

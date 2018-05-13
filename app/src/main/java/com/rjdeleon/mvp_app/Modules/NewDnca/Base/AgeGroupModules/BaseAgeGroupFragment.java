@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules;
 
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.R;
 
 public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGroupNavigator {
 

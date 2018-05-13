@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules;
 
 public interface BaseAgeGroupNavigator {
 

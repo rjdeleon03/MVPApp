@@ -1,9 +1,11 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules;
 
 import android.content.Context;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;
 

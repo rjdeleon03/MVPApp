@@ -44,7 +44,7 @@ public abstract class AgeGroupDataRow {
             ageGroupList.add(AGE_60_PLUS);
             return ageGroupList;
         }
-    };
+    }
 
     private AgeGroup ageGroup;
 

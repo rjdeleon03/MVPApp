@@ -29,13 +29,13 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@color/colorPrimary">
 
                     <ImageButton
                         android:id="@+id/nd_population_dlg_cancel"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginStart="8dp"
@@ -54,20 +54,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/comfortaa_reg"
-                        android:textStyle="bold"
                         android:text="@{viewModel.ageGroup.toString()}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textColor="@color/cardview_light_background"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageButton
                         android:id="@+id/nd_population_dlg_ok"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
@@ -83,192 +83,226 @@
 
                 </android.support.constraint.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/nd_population_dlg"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="32dp">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/nd_population_dlg_affected"
-                        android:layout_width="wrap_content"
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/nd_population_dlg"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="AFFECTED"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_female_field"/>
+                        android:paddingBottom="16dp"
+                        android:paddingTop="8dp">
 
-                    <TextView
-                        android:id="@+id/nd_population_dlg_displaced"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="DISPLACED"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female_field"/>
+                        <TextView
+                            android:id="@+id/nd_population_dlg_total_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="TOTAL"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/nd_population_dlg_total"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="TOTAL"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_female"/>
+                        <ImageView
+                            android:id="@+id/nd_population_dlg_chh_male_ic"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_label"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_male" />
 
-                    <ImageView
-                        android:id="@+id/nd_population_dlg_male"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_male"/>
+                        <EditText
+                            android:id="@+id/nd_population_dlg_chh_male"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.totalMale}"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_chh_female_ic"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_chh_male_ic"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/nd_population_dlg_female"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_female"/>
+                        <ImageView
+                            android:id="@+id/nd_population_dlg_chh_female_ic"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_chh_female"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_chh_male"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_female" />
 
-                    <EditText
-                        android:id="@+id/nd_population_dlg_affected_male_field"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.affectedMale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male"/>
+                        <EditText
+                            android:id="@+id/nd_population_dlg_chh_female"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.totalFemale}"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_chh_female_ic"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
-                        android:id="@+id/nd_population_dlg_displaced_male_field"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.displacedMale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male_field"/>
+                        <!-- Indigenous People -->
+                        <TextView
+                            android:id="@+id/nd_population_dlg_affected_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="AFFECTED"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_male" />
 
-                    <EditText
-                        android:id="@+id/nd_population_dlg_total_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.totalMale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_male"/>
+                        <ImageView
+                            android:id="@+id/nd_population_dlg_affected_male_ic"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_label"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_male"
+                            app:srcCompat="@drawable/ic_male" />
 
-                    <EditText
-                        android:id="@+id/nd_population_dlg_total_female_field"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.totalFemale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_female"/>
+                        <EditText
+                            android:id="@+id/nd_population_dlg_affected_male"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.affectedMale}"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_affected_female_ic"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_affected_male_ic"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_male" />
 
-                    <EditText
-                        android:id="@+id/nd_population_dlg_affected_female_field"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.affectedFemale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_female_field"/>
+                        <ImageView
+                            android:id="@+id/nd_population_dlg_affected_female_ic"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_affected_female"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_affected_male"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_female"
+                            app:srcCompat="@drawable/ic_female" />
 
-                    <EditText
-                        android:id="@+id/nd_population_dlg_displaced_female_field"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="@={viewModel.displacedFemale}"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female_field"/>
+                        <EditText
+                            android:id="@+id/nd_population_dlg_affected_female"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.affectedFemale}"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_affected_female_ic"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_female" />
 
-            </android.support.constraint.ConstraintLayout>
+                        <!-- Persons with Disabilities -->
+                        <TextView
+                            android:id="@+id/nd_population_dlg_displaced_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="DISPLACED"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:elevation="10dp">
+                        <ImageView
+                            android:id="@+id/nd_population_dlg_displaced_male_ic"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_label"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male"
+                            app:srcCompat="@drawable/ic_male" />
 
-                </LinearLayout>
+                        <EditText
+                            android:id="@+id/nd_population_dlg_displaced_male"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.displacedMale}"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_displaced_female_ic"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_male_ic"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male" />
+
+                        <ImageView
+                            android:id="@+id/nd_population_dlg_displaced_female_ic"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_displaced_female"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_male"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female"
+                            app:srcCompat="@drawable/ic_female" />
+
+                        <EditText
+                            android:id="@+id/nd_population_dlg_displaced_female"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="4dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.displacedFemale}"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_female_ic"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </ScrollView>
 
             </LinearLayout>
 

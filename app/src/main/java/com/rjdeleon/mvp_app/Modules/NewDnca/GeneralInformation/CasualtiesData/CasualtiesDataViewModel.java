@@ -4,11 +4,8 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;
@@ -71,6 +68,6 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public AgeGroupDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex) {
-        return mAgeGroupList.get(ageGroupIndex);
+        return ageGroupList.get(ageGroupIndex);
     }
 }

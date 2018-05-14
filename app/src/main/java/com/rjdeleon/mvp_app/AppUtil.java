@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -115,5 +116,10 @@ public class AppUtil {
         {
             adapter.replaceItems(items);
         }
+    }
+
+    @BindingAdapter("android:enabled")
+    public static void bindAgeGroupListInAddButton(Button button, List<AgeGroupDataRow.AgeGroup> ageGroups) {
+        button.setEnabled(ageGroups.size() > 0);
     }
 }

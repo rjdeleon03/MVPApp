@@ -65,6 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:text="Add"
+                    android:enabled="@{viewModel.ageGroupList}"
                     android:fontFamily="@font/lato_bold"
                     android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
                     app:layout_constraintBottom_toBottomOf="parent"

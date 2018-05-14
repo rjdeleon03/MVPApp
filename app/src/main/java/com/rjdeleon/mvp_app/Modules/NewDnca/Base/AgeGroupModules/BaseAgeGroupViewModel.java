@@ -1,11 +1,9 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules;
 
 import android.content.Context;
+import android.databinding.ObservableArrayList;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
@@ -16,10 +14,10 @@ import java.util.List;
 public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel {
 
     protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
-    protected List<AgeGroupDataRow.AgeGroup> mAgeGroupList = AgeGroupDataRow.AgeGroup.asList();
     protected List<AgeGroupDataRow> mAgeGroupDataRows = new ArrayList<>();
 
-    public ObservableInt spinnerValue = new ObservableInt(0);
+    public final ObservableArrayList<AgeGroupDataRow.AgeGroup> ageGroupList = new ObservableArrayList<>();
+    public final ObservableInt spinnerValue = new ObservableInt(0);
 
     /**
      * Constructor
@@ -28,6 +26,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      */
     protected BaseAgeGroupViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
+        ageGroupList.addAll(AgeGroupDataRow.AgeGroup.asList());
     }
 
     /**
@@ -37,9 +36,9 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
         // Remove items from age group list if age group is already in use
         for(AgeGroupDataRow row : mAgeGroupDataRows) {
-            for (AgeGroupDataRow.AgeGroup ageGroup : mAgeGroupList) {
+            for (AgeGroupDataRow.AgeGroup ageGroup : ageGroupList) {
                 if (ageGroup.ordinal() == row.getAgeGroup().ordinal()) {
-                    mAgeGroupList.remove(ageGroup);
+                    ageGroupList.remove(ageGroup);
                     break;
                 }
             }
@@ -89,9 +88,9 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
         }
 
         // Delete age group from list
-        for(AgeGroupDataRow.AgeGroup ageGroup : mAgeGroupList) {
+        for(AgeGroupDataRow.AgeGroup ageGroup : ageGroupList) {
             if (ageGroup.ordinal() == ageGroupDataRow.getAgeGroup().ordinal()) {
-                mAgeGroupList.remove(ageGroup);
+                ageGroupList.remove(ageGroup);
                 return;
             }
         }
@@ -107,28 +106,28 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
         AgeGroupDataRow ageGroupDataRow = mAgeGroupDataRows.get(rowIndex);
 
         // If list is empty, add new row right away
-        if (mAgeGroupList.size() == 0) {
-            mAgeGroupList.add(ageGroupDataRow.getAgeGroup());
+        if (ageGroupList.size() == 0) {
+            ageGroupList.add(ageGroupDataRow.getAgeGroup());
 
         } else {
 
             // Else, select correct position
-            for (int i = 0; i < mAgeGroupList.size(); i++) {
+            for (int i = 0; i < ageGroupList.size(); i++) {
 
-                int currAgeGroupOrdinal = mAgeGroupList.get(i).ordinal();
+                int currAgeGroupOrdinal = ageGroupList.get(i).ordinal();
                 int tempAgeGroupOrdinal = ageGroupDataRow.getAgeGroup().ordinal();
 
                 if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                        (i == 0 || tempAgeGroupOrdinal > mAgeGroupList.get(i - 1).ordinal())) {
+                        (i == 0 || tempAgeGroupOrdinal > ageGroupList.get(i - 1).ordinal())) {
 
                     // If row must be inserted somewhere in the middle, find its correct position
-                    mAgeGroupList.add(i, ageGroupDataRow.getAgeGroup());
+                    ageGroupList.add(i, ageGroupDataRow.getAgeGroup());
                     break;
 
-                } else if (mAgeGroupList.size() == i + 1) {
+                } else if (ageGroupList.size() == i + 1) {
 
                     // If end of list has been reached, add row
-                    mAgeGroupList.add(ageGroupDataRow.getAgeGroup());
+                    ageGroupList.add(ageGroupDataRow.getAgeGroup());
                     break;
 
                 }
@@ -144,14 +143,6 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      */
     public void setBaseAgeGroupNavigator(BaseAgeGroupNavigator baseAgeGroupNavigator) {
         mBaseAgeGroupNavigator = baseAgeGroupNavigator;
-    }
-
-    /**
-     * Retrieves list of age group
-     * @return
-     */
-    public List<AgeGroupDataRow.AgeGroup> getAgeGroupList() {
-        return mAgeGroupList;
     }
 
     /**

@@ -1,10 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation;
 
 import android.content.Context;
-import android.databinding.ObservableBoolean;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
@@ -71,6 +68,6 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
      */
     @Override
     public AgeGroupDataRow.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex) {
-        return mAgeGroupList.get(ageGroupIndex);
+        return ageGroupList.get(ageGroupIndex);
     }
 }

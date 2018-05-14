@@ -52,10 +52,10 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
         mBinding.setViewModel(mViewModel);
 
         // Initialize spinner
-        setupSpinner(root, R.id.nd_population_age_spinner);
+        setupSpinner(root, R.id.nd_vulnerable_age_spinner);
 
         // Initialize row view
-        setupRecyclerGrid(root, R.id.nd_population_grid);
+        setupRecyclerGrid(root, R.id.nd_vulnerable_grid);
 
         return mBinding.getRoot();
     }

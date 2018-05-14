@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Row.CasualtiesDataRowViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/nd_death_cause_card"
+        android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="fill"
+        app:cardCornerRadius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/yellowOrange">
+
+                <TextView
+                    android:id="@+id/nd_death_cause_age_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@{viewModel.ageGroup.toString()}"
+                    android:textSize="18sp"
+                    android:textColor="@color/backgroundColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_close_card"
+                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
+                    android:paddingHorizontal="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/nd_death_cause_dlg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:paddingTop="16dp">
+
+                <!-- Measles -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_measles_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="MEASLES"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_measles_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_measles_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.deadMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_measles_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_measles_male_ic"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_measles_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_measles_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_measles_male"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_measles_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.deadFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_measles_female_ic"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Diarrhea -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_diarrhea_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="DIARRHEA"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_measles_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_diarrhea_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_measles_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_diarrhea_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.missingMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_diarrhea_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_diarrhea_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_measles_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_diarrhea_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_diarrhea_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_diarrhea_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_measles_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_diarrhea_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.missingFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_diarrhea_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_measles_female" />
+
+                <!-- Pneumonia -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_pneumonia_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="PNEUMONIA"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_diarrhea_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_pneumonia_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_diarrhea_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_pneumonia_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_pneumonia_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_pneumonia_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_diarrhea_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_pneumonia_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_pneumonia_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_pneumonia_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_diarrhea_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_pneumonia_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_pneumonia_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_diarrhea_female" />
+
+                <!-- Dengue -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_dengue_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="DENGUE"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_pneumonia_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_dengue_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_pneumonia_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_dengue_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_dengue_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_dengue_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_pneumonia_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_dengue_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_dengue_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_dengue_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_pneumonia_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_dengue_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_dengue_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_pneumonia_female" />
+
+                <!-- Drowning -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_drowning_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="DROWNING"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_dengue_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_drowning_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_dengue_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_drowning_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_drowning_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_drowning_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_dengue_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_drowning_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_drowning_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_drowning_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_dengue_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_drowning_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_drowning_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_dengue_female" />
+
+                <!-- Heart Attack -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_heart_attack_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="HEART ATTACK"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_drowning_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_heart_attack_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_drowning_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_heart_attack_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_heart_attack_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_heart_attack_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_drowning_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_heart_attack_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_heart_attack_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_heart_attack_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_drowning_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_heart_attack_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_heart_attack_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_drowning_female" />
+
+                <!-- Electrocution -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_electrocution_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="ELECTROCUTION"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_heart_attack_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_electrocution_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_heart_attack_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_electrocution_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_electrocution_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_electrocution_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_heart_attack_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_electrocution_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_electrocution_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_electrocution_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_heart_attack_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_electrocution_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_electrocution_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_heart_attack_female" />
+
+                <!-- Collapsed Building -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_collapsed_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="COLLAPSED BUILDING"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_electrocution_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_collapsed_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_electrocution_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_collapsed_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_collapsed_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_electrocution_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_collapsed_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_collapsed_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_electrocution_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_collapsed_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_electrocution_female" />
+
+                <!-- Others -->
+                <TextView
+                    android:id="@+id/nd_death_cause_row_others_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:text="OTHERS"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_collapsed_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_others_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_collapsed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_collapsed_male"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_others_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_others_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_others_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_collapsed_male" />
+
+                <ImageView
+                    android:id="@+id/nd_death_cause_row_others_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_row_others_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_others_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_collapsed_female"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <TextView
+                    android:id="@+id/nd_death_cause_row_others_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.injuredFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_row_others_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_row_collapsed_female" />
+                
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

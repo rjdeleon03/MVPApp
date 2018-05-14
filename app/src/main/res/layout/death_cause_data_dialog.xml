@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/backgroundColor"
+        app:cardCornerRadius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary">
+
+                <ImageButton
+                    android:id="@+id/nd_casualties_dlg_cancel"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
+                    android:background="@drawable/round_button_cancel"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close_card"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_reg"
+                    android:text="@{viewModel.ageGroup.toString()}"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/nd_casualties_dlg_ok"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
+                    android:background="@drawable/round_button_ok"
+                    android:src="@drawable/ic_check"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/nd_casualties_dlg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="32dp"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_measles_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="MEASLES"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_chh_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_chh_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.deadMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_chh_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_male_ic"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_chh_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_chh_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_male"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_chh_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.deadFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_female_ic"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- Indigenous People -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_diarrhea_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="DIARRHEA"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_diarrhea_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_diarrhea_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.missingMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_diarrhea_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_diarrhea_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_diarrhea_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_diarrhea_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_diarrhea_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_diarrhea_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.missingFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_diarrhea_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_female" />
+
+                    <!-- Pneumonia -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_pneumonia_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="PNEUMONIA"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_pneumonia_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_pneumonia_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_pneumonia_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_pneumonia_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_pneumonia_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_pneumonia_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_pneumonia_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_pneumonia_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_pneumonia_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_female" />
+                    
+                    <!-- Dengue -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_dengue_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="DENGUE"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_dengue_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_dengue_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_dengue_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_dengue_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_dengue_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_dengue_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_dengue_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_dengue_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_dengue_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_female" />
+
+                    <!-- Drowning -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_drowning_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="DROWNING"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_drowning_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_drowning_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_drowning_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_drowning_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_drowning_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_drowning_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_drowning_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_drowning_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_drowning_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_female" />
+
+                    <!-- Heart Attack -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_heart_attack_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="HEART ATTACK"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_heart_attack_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_heart_attack_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_heart_attack_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_heart_attack_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_heart_attack_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_heart_attack_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_female" />
+
+                    <!-- Electrocution -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_electrocution_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="DROWNING"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_electrocution_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_electrocution_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_electrocution_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_electrocution_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_electrocution_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_electrocution_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_electrocution_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_electrocution_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_electrocution_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_female" />
+
+                    <!-- Collapsed Building -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_collapsed_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:lines="2"
+                        android:maxWidth="100dp"
+                        android:text="COLLAPSED BUILDING"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_collapsed_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_collapsed_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_collapsed_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_collapsed_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_collapsed_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_collapsed_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_collapsed_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_collapsed_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_collapsed_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_female" />
+
+                    <!-- Others -->
+                    <TextView
+                        android:id="@+id/nd_casualties_dlg_others_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="DROWNING"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_others_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_male"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_others_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredMale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_others_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_others_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_casualties_dlg_others_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_others_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_others_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_casualties_dlg_others_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.injuredFemale}"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_others_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_female" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center_horizontal"
+                android:elevation="10dp">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

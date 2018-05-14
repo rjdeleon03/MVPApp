@@ -49,7 +49,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
         mBinding.setViewModel(mViewModel);
 
         // Initialize spinner
-        setupSpinner(root, R.id.nd_population_age_spinner);
+        // setupSpinner(root, R.id.nd_population_age_spinner);
 
         // Initialize row view
         setupRecyclerGrid(root, R.id.nd_population_grid);
@@ -66,7 +66,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
                 (PopulationDataRepositoryManager) mViewModel,
-                mAgeGroupSpinner.getSelectedItemPosition(),
+//                mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
         mDialogFragment = PopulationDataDialogFragment.getInstance();
@@ -80,6 +80,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onCardSelected(int rowIndex) {
+        /*
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
@@ -90,6 +91,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
         mDialogFragment = PopulationDataDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
+        */
     }
 
     /**
@@ -114,8 +116,8 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
      * Refreshes the data displayed
      */
     private void refreshData() {
-        mSpinnerAdapter.notifyDataSetChanged();
-        mAgeGroupSpinner.setSelection(0);
+        // mSpinnerAdapter.notifyDataSetChanged();
+        // mAgeGroupSpinner.setSelection(0);
         mPopulationDataAdapter.notifyDataSetChanged();
     }
 

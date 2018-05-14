@@ -48,7 +48,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
      */
     @Override
     public void deletePopulationDataRow(int rowIndex) {
-        super.deletePopulationDataRow(rowIndex);
+        super.deleteAgeGroupDataRow(rowIndex);
     }
 
     /**

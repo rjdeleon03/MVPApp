@@ -49,7 +49,7 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
      */
     @Override
     public void deleteVulnerablePopulationRow(int rowIndex) {
-        super.deletePopulationDataRow(rowIndex);
+        super.deleteAgeGroupDataRow(rowIndex);
     }
 
     /**

@@ -26,10 +26,6 @@ public class PopulationDataDialogFragment extends BaseAgeGroupDialogFragment {
         // Required empty public constructor
     }
 
-    public void setViewModel(PopulationDataDialogViewModel viewModel) {
-        mViewModel = viewModel;
-    }
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

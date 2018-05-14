@@ -17,4 +17,8 @@ public class DeathCauseData {
     public List<DeathCauseDataRow> getDeathCauseDataRows() {
         return deathCauseDataRows;
     }
+
+    public void setDeathCauseDataRows(List<DeathCauseDataRow> deathCauseDataRows) {
+        this.deathCauseDataRows = deathCauseDataRows;
+    }
 }

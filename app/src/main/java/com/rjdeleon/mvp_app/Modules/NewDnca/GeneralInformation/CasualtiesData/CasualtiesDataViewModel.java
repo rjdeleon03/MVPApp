@@ -49,7 +49,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public void deleteCasualtiesDataRow(int rowIndex) {
-        super.deletePopulationDataRow(rowIndex);
+        super.deleteAgeGroupDataRow(rowIndex);
     }
 
     /**

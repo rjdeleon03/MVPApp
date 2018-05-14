@@ -101,7 +101,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      * Deletes age group data row
      * @param rowIndex
      */
-    protected void deletePopulationDataRow(int rowIndex) {
+    protected void deleteAgeGroupDataRow(int rowIndex) {
 
         AgeGroupDataRow ageGroupDataRow = mAgeGroupDataRows.get(rowIndex);
 

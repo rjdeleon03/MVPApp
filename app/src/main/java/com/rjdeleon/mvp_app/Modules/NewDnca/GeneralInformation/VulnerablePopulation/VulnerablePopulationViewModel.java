@@ -24,6 +24,7 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
     public VulnerablePopulationViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
         mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getVulnerablePopulation().getVulnerablePopulationDataRows());
+        super.updateAgeGroupList();
     }
 
     /**

@@ -20,6 +20,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
         mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
+        super.updateAgeGroupList();
     }
 
     /**

@@ -2,11 +2,16 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData;
 
 import android.content.Context;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+
+import java.util.List;
 
 public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements CasualtiesDataRepositoryManager {
 
@@ -18,8 +23,18 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     public CasualtiesDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
-        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
+        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
+        super.updateAgeGroupList();
+    }
 
+    /**
+     * Handles navigation when save button is pressed
+     */
+    @Override
+    public void navigateOnSaveButtonPressed() {
+        CasualtiesData casualtiesData = new CasualtiesData();
+        casualtiesData.setCasualtiesDataRows((List<CasualtiesDataRow>)(Object) mAgeGroupDataRows);
+        mNewDncaGenInfoRepositoryManager.saveCasualtiesData(casualtiesData);
     }
 
     /**
@@ -28,7 +43,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public void addCasualtiesDataRow(CasualtiesDataRow casualtiesDataRow) {
-
+        super.addAgeGroupDataRow(casualtiesDataRow);
     }
 
     /**
@@ -37,7 +52,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public void deleteCasualtiesDataRow(int rowIndex) {
-
+        super.deletePopulationDataRow(rowIndex);
     }
 
     /**
@@ -46,7 +61,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public CasualtiesDataRow getCasualtiesDataRow(int rowIndex) {
-        return null;
+        return (CasualtiesDataRow) mAgeGroupDataRows.get(rowIndex);
     }
 
     /**
@@ -56,6 +71,6 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public AgeGroupDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex) {
-        return null;
+        return mAgeGroupList.get(ageGroupIndex);
     }
 }

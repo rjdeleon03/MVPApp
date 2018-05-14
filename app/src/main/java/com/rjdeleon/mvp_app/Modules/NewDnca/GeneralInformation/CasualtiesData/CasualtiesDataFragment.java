@@ -80,7 +80,16 @@ public class CasualtiesDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onCardSelected(int rowIndex) {
-
+        if (super.dialogIsAlreadyShown()) return;
+        CasualtiesDataDialogViewModel dialogViewModel = new CasualtiesDataDialogViewModel(
+                getContext(),
+                (CasualtiesDataRepositoryManager) mViewModel,
+                rowIndex,
+                false);
+        dialogViewModel.setBaseAgeGroupNavigator(this);
+        mDialogFragment = CasualtiesDataDialogFragment.getInstance();
+        mDialogFragment.setViewModel(dialogViewModel);
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**
@@ -88,12 +97,14 @@ public class CasualtiesDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onDeleteCardButtonPressed() {
-
+        refreshData();
     }
 
     @Override
     public void onDialogOkButtonPressed() {
-
+        refreshData();
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
     }
 
     /**
@@ -103,5 +114,21 @@ public class CasualtiesDataFragment extends BaseAgeGroupFragment {
         mSpinnerAdapter.notifyDataSetChanged();
         mAgeGroupSpinner.setSelection(0);
         mCasualtiesDataAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Initialize RecyclerView grid for displaying population data rows
+     * @param view
+     * @param controlId
+     */
+    @Override
+    protected void setupRecyclerGrid(View view, int controlId) {
+        super.setupRecyclerGrid(view, controlId);
+        super.setRecyclerGridLayout(getResources().getConfiguration().orientation);
+        mCasualtiesDataAdapter = new CasualtiesDataFragmentAdapter(
+                getContext().getApplicationContext(),
+                this,
+                (CasualtiesDataViewModel) mViewModel);
+        mRowRecycler.setAdapter(mCasualtiesDataAdapter);
     }
 }

@@ -28,6 +28,12 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      */
     protected BaseAgeGroupViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
+    }
+
+    /**
+     * Updates the age group list
+     */
+    protected void updateAgeGroupList() {
 
         // Remove items from age group list if age group is already in use
         for(AgeGroupDataRow row : mAgeGroupDataRows) {

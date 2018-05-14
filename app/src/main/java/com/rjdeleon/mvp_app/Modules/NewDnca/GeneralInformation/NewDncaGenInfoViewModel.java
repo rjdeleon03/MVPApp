@@ -145,6 +145,9 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
         mPopulationData = mDncaForm.getGenInfo().getPopulationData();
         mFamilyData = mDncaForm.getGenInfo().getFamilyData();
         mVulnerablePopulation = mDncaForm.getGenInfo().getVulnerablePopulationData();
+        mCasualtiesData = mDncaForm.getGenInfo().getCasualtiesData();
+        mDeathCauseData = mDncaForm.getGenInfo().getDeathCauseData();
+        mInfrastructureDamageData = mDncaForm.getGenInfo().getInfrastructureDamageData();
     }
 
     @Override

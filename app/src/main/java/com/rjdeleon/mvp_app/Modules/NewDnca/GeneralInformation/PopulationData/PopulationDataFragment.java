@@ -115,6 +115,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
     /**
      * Initialize RecyclerView grid for displaying population data rows
      * @param view
+     * @param controlId
      */
     @Override
     protected void setupRecyclerGrid(View view, int controlId) {

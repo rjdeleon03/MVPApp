@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CasualtiesData {
+
     private List<CasualtiesDataRow> casualtiesDataRows;
 
     public CasualtiesData(List<CasualtiesDataRow> casualtiesDataRows) {
@@ -33,5 +34,9 @@ public class CasualtiesData {
 
     public List<CasualtiesDataRow> getCasualtiesDataRows() {
         return casualtiesDataRows;
+    }
+
+    public void setCasualtiesDataRows(List<CasualtiesDataRow> casualtiesDataRows) {
+        this.casualtiesDataRows = casualtiesDataRows;
     }
 }

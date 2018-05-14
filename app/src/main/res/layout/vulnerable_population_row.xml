@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="8dp"
         android:layout_gravity="fill"
         app:cardCornerRadius="6dp">
@@ -26,7 +27,7 @@
             android:orientation="horizontal">
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="75dp"
+                android:layout_width="65dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent">
 
@@ -72,8 +73,8 @@
                         android:id="@+id/nd_vulnerable_dlg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="24dp"
-                        android:paddingTop="16dp">
+                        android:paddingBottom="12dp"
+                        android:paddingTop="8dp">
 
                         <!-- Indigenous People -->
                         <TextView
@@ -83,11 +84,11 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
-                            android:width="110dp"
+                            android:width="95dp"
                             android:fontFamily="@font/lato_reg"
                             android:lines="2"
-                            android:maxWidth="80dp"
-                            android:text="INDIGENOUS PEOPLE"
+                            android:maxWidth="95dp"
+                            android:text="Indigenous People"
                             android:textColor="@android:color/black"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male" />
@@ -136,11 +137,11 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
-                            android:width="110dp"
+                            android:width="95dp"
                             android:fontFamily="@font/lato_reg"
                             android:lines="2"
-                            android:maxWidth="80dp"
-                            android:text="PERSONS WITH DISABILITIES"
+                            android:maxWidth="95dp"
+                            android:text="Persons with Disabilities"
                             android:textColor="@android:color/black"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_indigenous_male" />
@@ -183,35 +184,52 @@
 
                         <!-- Child-Headed Households -->
 
+                        <ImageView
+                            android:id="@+id/nd_vulnerable_dlg_chh_male_ic"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="@+id/nd_vulnerable_dlg_chh_male"
+                            app:layout_constraintStart_toStartOf="@+id/nd_vulnerable_dlg_chh_male"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_misc_fields"
+                            app:srcCompat="@drawable/ic_male" />
+
+                        <ImageView
+                            android:id="@+id/nd_vulnerable_dlg_chh_female_ic"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="@+id/nd_vulnerable_dlg_chh_female"
+                            app:layout_constraintStart_toStartOf="@+id/nd_vulnerable_dlg_chh_female"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_misc_fields"
+                            app:srcCompat="@drawable/ic_female" />
+
+                        <View
+                            android:id="@+id/nd_vulnerable_dlg_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male_ic" />
+
                         <TextView
                             android:id="@+id/nd_vulnerable_dlg_child_headed_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="26dp"
-                            android:width="110dp"
+                            android:layout_marginTop="4dp"
+                            android:width="95dp"
                             android:fontFamily="@font/lato_reg"
                             android:lines="2"
-                            android:maxWidth="80dp"
-                            android:text="CHILD-HEADED HOUSEHOLDS"
+                            android:maxWidth="95dp"
+                            android:text="Child-Headed Households"
                             android:textColor="@android:color/black"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_misc_fields" />
-
-                        <ImageView
-                            android:id="@+id/nd_vulnerable_dlg_chh_male_ic"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female_ic"
-                            app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
-                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_misc_fields"
-                            app:srcCompat="@drawable/ic_male" />
+                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_divider" />
 
                         <TextView
                             android:id="@+id/nd_vulnerable_dlg_chh_male"
@@ -221,7 +239,7 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="8dp"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="12dp"
                             android:ems="10"
                             android:gravity="right"
                             android:inputType="number"
@@ -229,19 +247,7 @@
                             android:textSize="16sp"
                             app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female"
                             app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
-                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_male_ic" />
-
-                        <ImageView
-                            android:id="@+id/nd_vulnerable_dlg_chh_female_ic"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male_ic"
-                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_misc_fields"
-                            app:srcCompat="@drawable/ic_female" />
+                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_divider" />
 
                         <TextView
                             android:id="@+id/nd_vulnerable_dlg_chh_female"
@@ -251,7 +257,7 @@
                             android:layout_marginLeft="8dp"
                             android:layout_marginRight="16dp"
                             android:layout_marginStart="8dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="12dp"
                             android:ems="10"
                             android:gravity="right"
                             android:inputType="number"
@@ -259,7 +265,7 @@
                             android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male"
-                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_chh_female_ic" />
+                            app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_divider" />
 
                         <!-- Remarks -->
                         <android.support.constraint.ConstraintLayout
@@ -277,7 +283,7 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="REMARKS:"
+                                android:text="Remarks:"
                                 android:textColor="@android:color/black"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -320,8 +326,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
-                                android:text="LACTATING MOTHERS"
+                                android:layout_marginTop="4dp"
+                                android:text="Lactating Mothers"
                                 android:textColor="@android:color/black"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_pregnant" />
@@ -332,7 +338,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="4dp"
                                 android:fontFamily="@font/lato_reg"
                                 android:text="LGBT"
                                 android:textColor="@android:color/black"
@@ -345,8 +351,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
-                                android:text="PREGNANT WOMEN"
+                                android:layout_marginTop="0dp"
+                                android:text="Pregnant Women"
                                 android:textColor="@android:color/black"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -359,7 +365,7 @@
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginRight="16dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="0dp"
                                 android:ems="10"
                                 android:gravity="right"
                                 android:inputType="number"
@@ -377,7 +383,7 @@
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginRight="16dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="4dp"
                                 android:ems="10"
                                 android:gravity="right"
                                 android:inputType="number"
@@ -391,12 +397,11 @@
                                 android:id="@+id/nd_vulnerable_dlg_lgbt"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
                                 android:layout_marginEnd="16dp"
                                 android:layout_marginLeft="16dp"
                                 android:layout_marginRight="16dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="4dp"
                                 android:ems="10"
                                 android:gravity="right"
                                 android:inputType="number"

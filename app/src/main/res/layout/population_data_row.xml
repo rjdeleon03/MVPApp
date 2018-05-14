@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="8dp"
         android:layout_gravity="fill"
         app:cardCornerRadius="6dp">
@@ -25,7 +26,7 @@
             android:orientation="horizontal">
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="75dp"
+                android:layout_width="65dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent">
 
@@ -68,6 +69,43 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="16dp">
 
+                <ImageView
+                    android:id="@+id/nd_population_dlg_total_male_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/nd_population_dlg_total_male"
+                    app:layout_constraintStart_toStartOf="@+id/nd_population_dlg_total_male"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <ImageView
+                    android:id="@+id/nd_population_dlg_total_female_ic"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/nd_population_dlg_total_female"
+                    app:layout_constraintStart_toStartOf="@+id/nd_population_dlg_total_female"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <View
+                    android:id="@+id/nd_population_dlg_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male_ic" />
+
                 <TextView
                     android:id="@+id/nd_population_dlg_total_label"
                     android:layout_width="wrap_content"
@@ -76,21 +114,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="TOTAL"
+                    android:text="Total"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male_ic" />
-
-                <ImageView
-                    android:id="@+id/nd_population_dlg_total_male_ic"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total_female_ic"
-                    app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_label"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_male" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_divider" />
 
                 <TextView
                     android:id="@+id/nd_population_dlg_total_male"
@@ -108,18 +135,7 @@
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_total_female"
                     app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male_ic" />
-
-                <ImageView
-                    android:id="@+id/nd_population_dlg_total_female_ic"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total_male_ic"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_female" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_divider" />
 
                 <TextView
                     android:id="@+id/nd_population_dlg_total_female"
@@ -137,18 +153,18 @@
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_total_male"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male_ic" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_divider" />
 
-                <!-- Indigenous People -->
+                <!-- Affected -->
                 <TextView
                     android:id="@+id/nd_population_dlg_affected_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="AFFECTED"
+                    android:text="Affected"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_male" />
@@ -161,7 +177,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -179,7 +195,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -189,16 +205,16 @@
                     app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_affected_male"
                     app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_total_female" />
 
-                <!-- Persons with Disabilities -->
+                <!-- Displaced -->
                 <TextView
                     android:id="@+id/nd_population_dlg_displaced_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="DISPLACED"
+                    android:text="Displaced"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male" />
@@ -211,7 +227,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -229,7 +245,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"

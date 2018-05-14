@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="8dp"
         android:layout_gravity="fill"
         app:cardCornerRadius="6dp">
 
@@ -26,7 +27,7 @@
             android:orientation="horizontal">
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="75dp"
+                android:layout_width="65dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccent">
 
@@ -74,12 +75,8 @@
                     android:id="@+id/nd_death_cause_dlg_measles_male_ic"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_dlg_measles_female_ic"
-                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_dlg_electrocution_label"
+                    app:layout_constraintEnd_toEndOf="@+id/nd_death_cause_dlg_measles_male"
+                    app:layout_constraintStart_toStartOf="@+id/nd_death_cause_dlg_measles_male"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_male" />
 
@@ -87,12 +84,21 @@
                     android:id="@+id/nd_death_cause_dlg_measles_female_ic"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginStart="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/nd_death_cause_dlg_measles_male_ic"
+                    app:layout_constraintEnd_toEndOf="@+id/nd_death_cause_dlg_measles_female"
+                    app:layout_constraintStart_toStartOf="@+id/nd_death_cause_dlg_measles_female"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_female" />
+
+                <View
+                    android:id="@+id/nd_death_cause_dlg_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_measles_male_ic" />
 
                 <!-- Measles -->
                 <TextView
@@ -101,12 +107,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="MEASLES"
+                    android:text="Measles"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_measles_male_ic" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_divider" />
 
                 <TextView
                     android:id="@+id/nd_death_cause_dlg_measles_male"
@@ -116,7 +122,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -124,7 +130,7 @@
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_dlg_measles_female"
                     app:layout_constraintStart_toEndOf="@+id/nd_death_cause_dlg_electrocution_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_measles_male_ic" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_divider" />
 
                 <TextView
                     android:id="@+id/nd_death_cause_dlg_measles_female"
@@ -134,7 +140,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -142,7 +148,7 @@
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/nd_death_cause_dlg_measles_male"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_measles_male_ic" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_divider" />
 
                 <!-- Diarrhea -->
                 <TextView
@@ -151,9 +157,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="DIARRHEA"
+                    android:text="Diarrhea"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_measles_male" />
@@ -166,7 +172,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -184,7 +190,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -201,9 +207,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="PNEUMONIA"
+                    android:text="Pneumonia"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_diarrhea_male" />
@@ -216,7 +222,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -234,7 +240,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -251,9 +257,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="DENGUE"
+                    android:text="Dengue"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_pneumonia_male" />
@@ -266,13 +272,14 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
                     android:text="@={viewModel.dengueMale}"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/nd_death_cause_dlg_dengue_female"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toEndOf="@+id/nd_death_cause_dlg_electrocution_label"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_pneumonia_male" />
 
@@ -284,7 +291,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -301,9 +308,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="DROWNING"
+                    android:text="Drowning"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_dengue_male" />
@@ -316,7 +323,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -334,7 +341,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -351,11 +358,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="HEART ATTACK"
-                    android:lines="2"
                     android:maxWidth="100dp"
+                    android:text="Heart Attack"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_drowning_male" />
@@ -368,7 +374,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -386,7 +392,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -403,9 +409,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="ELECTROCUTION"
+                    android:text="Electrocution"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_heart_attack_male" />
@@ -418,7 +424,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -436,7 +442,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -453,11 +459,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="COLLAPSED BUILDING"
                     android:lines="2"
-                    android:maxWidth="100dp"
+                    android:maxWidth="80dp"
+                    android:text="Collapsed Building"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_electrocution_male" />
@@ -470,7 +476,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -488,7 +494,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
@@ -507,7 +513,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="OTHERS"
+                    android:text="Others"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_death_cause_dlg_collapsed_male" />

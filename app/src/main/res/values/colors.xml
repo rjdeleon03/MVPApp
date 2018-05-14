@@ -13,6 +13,7 @@
     <color name="darkBlue">#23283a</color>
     <color name="hotPink">#fe104d</color>
     <color name="lightYellow">#cff5cc64</color>
+    <color name="translucentGray">#dcdcdc</color>
 
     <color name="blackOverlay">#66000000</color>
 </resources>

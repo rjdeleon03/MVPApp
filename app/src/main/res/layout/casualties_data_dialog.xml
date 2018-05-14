@@ -23,13 +23,13 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:background="@color/colorPrimary">
 
                 <ImageButton
                     android:id="@+id/nd_casualties_dlg_cancel"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@color/cardview_light_background"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +60,8 @@
 
                 <ImageButton
                     android:id="@+id/nd_casualties_dlg_ok"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
@@ -85,9 +85,10 @@
                     android:id="@+id/nd_casualties_dlg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="32dp"
-                    android:paddingTop="16dp">
+                    android:paddingBottom="16dp"
+                    android:paddingTop="8dp">
 
+                    <!-- Dead -->
                     <TextView
                         android:id="@+id/nd_casualties_dlg_dead_label"
                         android:layout_width="wrap_content"
@@ -96,7 +97,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="DEAD"
+                        android:text="Dead"
+                        android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,7 +124,7 @@
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.deadMale}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_chh_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_male_ic"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -150,12 +152,12 @@
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.deadFemale}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_female_ic"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- Indigenous People -->
+                    <!-- Missing -->
                     <TextView
                         android:id="@+id/nd_casualties_dlg_missing_label"
                         android:layout_width="wrap_content"
@@ -164,7 +166,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="MISSING"
+                        android:text="Missing"
+                        android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male" />
 
@@ -190,7 +193,7 @@
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.missingMale}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_missing_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_missing_male_ic"
                         app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male" />
@@ -218,12 +221,12 @@
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.missingFemale}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_missing_female_ic"
                         app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_female" />
 
-                    <!-- Persons with Disabilities -->
+                    <!-- Injured -->
                     <TextView
                         android:id="@+id/nd_casualties_dlg_injured_label"
                         android:layout_width="wrap_content"
@@ -232,7 +235,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="INJURED"
+                        android:text="Injured"
+                        android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_male" />
 
@@ -258,7 +262,7 @@
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.injuredMale}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_injured_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_male_ic"
                         app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_male" />
@@ -286,7 +290,7 @@
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.injuredFemale}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_female_ic"
                         app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_female" />
@@ -294,15 +298,6 @@
                 </android.support.constraint.ConstraintLayout>
 
             </ScrollView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom|center_horizontal"
-                android:elevation="10dp">
-
-            </LinearLayout>
 
         </LinearLayout>
 

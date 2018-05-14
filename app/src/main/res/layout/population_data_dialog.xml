@@ -57,7 +57,7 @@
                         android:text="@{viewModel.ageGroup.toString()}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textColor="@color/cardview_light_background"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +94,7 @@
                         android:paddingBottom="16dp"
                         android:paddingTop="8dp">
 
+                        <!-- Total -->
                         <TextView
                             android:id="@+id/nd_population_dlg_total_label"
                             android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
                             android:fontFamily="@font/lato_reg"
-                            android:text="TOTAL"
+                            android:text="Total"
                             android:textColor="@android:color/black"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -129,7 +130,7 @@
                             android:gravity="right"
                             android:inputType="number"
                             android:text="@={viewModel.totalMale}"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_chh_female_ic"
                             app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_chh_male_ic"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -157,12 +158,12 @@
                             android:gravity="right"
                             android:inputType="number"
                             android:text="@={viewModel.totalFemale}"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_chh_female_ic"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <!-- Indigenous People -->
+                        <!-- Affected -->
                         <TextView
                             android:id="@+id/nd_population_dlg_affected_label"
                             android:layout_width="wrap_content"
@@ -171,7 +172,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
                             android:fontFamily="@font/lato_reg"
-                            android:text="AFFECTED"
+                            android:text="Affected"
                             android:textColor="@android:color/black"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_male" />
@@ -198,7 +199,7 @@
                             android:gravity="right"
                             android:inputType="number"
                             android:text="@={viewModel.affectedMale}"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_affected_female_ic"
                             app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_affected_male_ic"
                             app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_male" />
@@ -226,12 +227,12 @@
                             android:gravity="right"
                             android:inputType="number"
                             android:text="@={viewModel.affectedFemale}"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_affected_female_ic"
                             app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_chh_female" />
 
-                        <!-- Persons with Disabilities -->
+                        <!-- Displaced -->
                         <TextView
                             android:id="@+id/nd_population_dlg_displaced_label"
                             android:layout_width="wrap_content"
@@ -240,7 +241,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
                             android:fontFamily="@font/lato_reg"
-                            android:text="DISPLACED"
+                            android:text="Displaced"
                             android:textColor="@android:color/black"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male" />
@@ -267,7 +268,7 @@
                             android:gravity="right"
                             android:inputType="number"
                             android:text="@={viewModel.displacedMale}"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toStartOf="@+id/nd_population_dlg_displaced_female_ic"
                             app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_male_ic"
                             app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_male" />
@@ -295,7 +296,7 @@
                             android:gravity="right"
                             android:inputType="number"
                             android:text="@={viewModel.displacedFemale}"
-                            android:textSize="16sp"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/nd_population_dlg_displaced_female_ic"
                             app:layout_constraintTop_toBottomOf="@+id/nd_population_dlg_affected_female" />

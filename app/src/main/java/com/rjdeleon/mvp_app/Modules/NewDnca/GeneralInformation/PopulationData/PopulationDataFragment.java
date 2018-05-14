@@ -55,6 +55,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onAddButtonPressed() {
+        if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
                 (PopulationDataRepositoryManager) mViewModel,
@@ -72,6 +73,7 @@ public class PopulationDataFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onCardSelected(int rowIndex) {
+        if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
                 (PopulationDataRepositoryManager) mViewModel,

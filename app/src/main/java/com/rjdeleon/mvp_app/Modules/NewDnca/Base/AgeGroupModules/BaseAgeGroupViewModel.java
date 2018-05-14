@@ -142,9 +142,18 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
     /**
      * Retrieves list of age group
+     * @return
      */
     public List<AgeGroupDataRow.AgeGroup> getAgeGroupList() {
         return mAgeGroupList;
+    }
+
+    /**
+     * Retrieves number of data rows
+     * @return
+     */
+    public int getDataRowsCount() {
+        return mAgeGroupDataRows.size();
     }
 
     /**

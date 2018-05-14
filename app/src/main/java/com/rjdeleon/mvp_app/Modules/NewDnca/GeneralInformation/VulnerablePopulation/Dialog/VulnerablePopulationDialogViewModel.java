@@ -43,7 +43,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
         mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
 
         if (isNewRow) {
-            ageGroup.set(vulnerablePopulationRepositoryManager.getVulnerablePopulationAgeGroup(ageGroupIndex));
+            ageGroup.set(mVulnerablePopulationRepositoryManager.getVulnerablePopulationAgeGroup(ageGroupIndex));
         } else {
             VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(ageGroupIndex);
 

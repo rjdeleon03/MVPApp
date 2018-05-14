@@ -27,14 +27,6 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
     }
 
     /**
-     * Retrieves vulnerable population data rows count
-     * @return
-     */
-    public int getVulnerablePopulationRowsCount() {
-        return mAgeGroupDataRows.size();
-    }
-
-    /**
      * Handles navigation when save button is pressed
      */
     @Override

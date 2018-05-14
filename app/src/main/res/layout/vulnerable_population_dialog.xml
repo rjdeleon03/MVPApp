@@ -89,6 +89,76 @@
                 android:paddingBottom="32dp"
                 android:paddingTop="16dp">
 
+                <TextView
+                    android:id="@+id/nd_vulnerable_dlg_child_headed_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:width="110dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:lines="2"
+                    android:maxWidth="80dp"
+                    android:text="CHILD-HEADED HOUSEHOLDS"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
+
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_chh_male_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields"
+                    app:srcCompat="@drawable/ic_male" />
+
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_chh_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.childHeadedMale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female_ic"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
+
+                <ImageView
+                    android:id="@+id/nd_vulnerable_dlg_chh_female_ic"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields"
+                    app:srcCompat="@drawable/ic_female" />
+
+                <EditText
+                    android:id="@+id/nd_vulnerable_dlg_chh_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:text="@={viewModel.childHeadedFemale}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_female_ic"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
+
                 <!-- Indigenous People -->
                 <TextView
                     android:id="@+id/nd_vulnerable_dlg_indigenous_label"
@@ -375,76 +445,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_lactating" />
 
                 </android.support.constraint.ConstraintLayout>
-
-                <TextView
-                    android:id="@+id/nd_vulnerable_dlg_child_headed_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:width="110dp"
-                    android:fontFamily="@font/lato_reg"
-                    android:lines="2"
-                    android:maxWidth="80dp"
-                    android:text="CHILD-HEADED HOUSEHOLDS"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
-
-                <ImageView
-                    android:id="@+id/nd_vulnerable_dlg_chh_male_ic"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_child_headed_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields"
-                    app:srcCompat="@drawable/ic_male" />
-
-                <EditText
-                    android:id="@+id/nd_vulnerable_dlg_chh_male"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="4dp"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:inputType="number"
-                    android:text="@={viewModel.childHeadedMale}"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female_ic"
-                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male_ic"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
-
-                <ImageView
-                    android:id="@+id/nd_vulnerable_dlg_chh_female_ic"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_vulnerable_dlg_chh_female"
-                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_male"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields"
-                    app:srcCompat="@drawable/ic_female" />
-
-                <EditText
-                    android:id="@+id/nd_vulnerable_dlg_chh_female"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="4dp"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:inputType="number"
-                    android:text="@={viewModel.childHeadedFemale}"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/nd_vulnerable_dlg_chh_female_ic"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_misc_fields" />
 
             </android.support.constraint.ConstraintLayout>
 

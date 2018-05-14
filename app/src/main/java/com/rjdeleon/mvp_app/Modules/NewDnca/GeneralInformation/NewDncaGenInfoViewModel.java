@@ -8,8 +8,11 @@ import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
@@ -25,6 +28,9 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     private PopulationData mPopulationData;
     private FamilyData mFamilyData;
     private VulnerablePopulationData mVulnerablePopulation;
+    private CasualtiesData mCasualtiesData;
+    private DeathCauseData mDeathCauseData;
+    private InfrastructureDamageData mInfrastructureDamageData;
 
     public final ObservableInt viewPagerIndex;
 
@@ -76,6 +82,21 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     }
 
     @Override
+    public CasualtiesData getCasualtiesData() {
+        return mCasualtiesData;
+    }
+
+    @Override
+    public DeathCauseData getDeathCauseData() {
+        return mDeathCauseData;
+    }
+
+    @Override
+    public InfrastructureDamageData getInfrastructureDamageData() {
+        return mInfrastructureDamageData;
+    }
+
+    @Override
     public void saveCalamityDetails(CalamityDesc calamityDesc) {
         mCalamityDesc = calamityDesc;
         mDncaForm.getGenInfo().setCalamityDesc(mCalamityDesc);
@@ -97,6 +118,24 @@ public class NewDncaGenInfoViewModel extends NewDncaBaseViewModel implements New
     public void saveVulnerablePopulation(VulnerablePopulationData vulnerablePopulationData) {
         mVulnerablePopulation = vulnerablePopulationData;
         mDncaForm.getGenInfo().setVulnerablePopulationData(mVulnerablePopulation);
+    }
+
+    @Override
+    public void saveCasualtiesData(CasualtiesData casualtiesData) {
+        mCasualtiesData = casualtiesData;
+        mDncaForm.getGenInfo().setCasualtiesData(mCasualtiesData);
+    }
+
+    @Override
+    public void saveDeathCauseData(DeathCauseData deathCauseData) {
+        mDeathCauseData = deathCauseData;
+        mDncaForm.getGenInfo().setDeathCauseData(mDeathCauseData);
+    }
+
+    @Override
+    public void saveInfrastructureDamageData(InfrastructureDamageData infrastructureDamageData) {
+        mInfrastructureDamageData = infrastructureDamageData;
+        mDncaForm.getGenInfo().setInfrastructureDamageData(mInfrastructureDamageData);
     }
 
     @Override

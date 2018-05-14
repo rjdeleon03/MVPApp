@@ -74,6 +74,14 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
     }
 
     /**
+     * Checks if a dialog is already shown
+     * @return
+     */
+    protected boolean dialogIsAlreadyShown() {
+        return mDialogFragment != null;
+    }
+
+    /**
      * Handle configuration changes
      * @param newConfig
      */

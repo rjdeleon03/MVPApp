@@ -45,6 +45,6 @@ public class VulnerablePopulationFragmentAdapter extends RecyclerView.Adapter<Vu
 
     @Override
     public int getItemCount() {
-        return mViewModel.getVulnerablePopulationRowsCount();
+        return mViewModel.getDataRowsCount();
     }
 }

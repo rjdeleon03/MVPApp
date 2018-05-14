@@ -23,14 +23,6 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     }
 
     /**
-     * Retrieves population data rows count
-     * @return
-     */
-    public int getPopulationDataRowsCount() {
-        return mAgeGroupDataRows.size();
-    }
-
-    /**
      * Handles navigation when save button is pressed
      */
     @Override

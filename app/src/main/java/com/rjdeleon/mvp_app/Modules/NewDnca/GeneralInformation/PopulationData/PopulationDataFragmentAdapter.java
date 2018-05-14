@@ -1,7 +1,6 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,6 +49,6 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
 
     @Override
     public int getItemCount() {
-        return mViewModel.getPopulationDataRowsCount();
+        return mViewModel.getDataRowsCount();
     }
 }

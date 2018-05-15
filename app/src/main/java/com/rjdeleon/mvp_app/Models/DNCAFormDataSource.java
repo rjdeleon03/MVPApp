@@ -26,9 +26,15 @@ public interface DNCAFormDataSource {
         void onDataNotAvailable();
     }
 
+    interface SubmitDncaFormCallback {
+        void onDncaFormSubmitted();
+    }
+
     void loadAllDncaForms(@NonNull LoadDncaFormsCallback callback);
 
     void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback);
+
+    void submitDncaForm(@NonNull SubmitDncaFormCallback callback);
 
     void saveFormInfo(FormInfo formInfo);
 

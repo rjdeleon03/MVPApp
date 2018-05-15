@@ -340,8 +340,7 @@
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_check"
             android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
-            app:backgroundTint="@android:color/holo_green_light"
-            app:elevation="0dp"/>
+            app:backgroundTint="@android:color/holo_green_light"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

@@ -8,6 +8,8 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Tasks.GetAllDncaTask;
+import com.rjdeleon.mvp_app.Tasks.PostNewDncaTask;
+import com.rjdeleon.mvp_app.Tasks.SubmitNewDncaTask;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -65,6 +67,17 @@ public class DNCAFormRepository implements DNCAFormDataSource {
             mForm = new DNCAForm();
         }
         callback.onDncaFormLoaded(mForm);
+    }
+
+    /**
+     * Submits the new DNCA form int is current state
+     * @param callback
+     */
+    @Override
+    public void submitDncaForm(@NonNull SubmitDncaFormCallback callback) {
+        checkNotNull(callback);
+        SubmitNewDncaTask task = new SubmitNewDncaTask(mForm, callback);
+        task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 
     /**

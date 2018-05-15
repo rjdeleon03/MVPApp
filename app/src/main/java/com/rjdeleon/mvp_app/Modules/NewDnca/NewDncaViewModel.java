@@ -7,7 +7,7 @@ import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
-public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
+public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, DNCAFormDataSource.SubmitDncaFormCallback {
 
     private DNCAFormRepository mDncaFormRepository;
 
@@ -35,19 +35,27 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
       */
     public void navigateOnBackButtonPressed() {
 
-        // Navigate when back button is pressed
+        // Perform clean up and navigate when back button is pressed
         mNewDncaNavigator.onBackButtonPressed();
+        performCleanup();
     }
 
     /**
-     * Navigate to Form Details view
+     * Handles navigation when submit button is pressed
+     */
+    public void navigateOnSubmitButtonPressed() {
+        mDncaFormRepository.submitDncaForm(this);
+    }
+
+    /**
+     * Handles navigation when form details button is pressed
      */
     public void navigateOnFormDetailsButtonPressed() {
         mNewDncaNavigator.onFormDetailsButtonPressed();
     }
 
     /**
-     * Navigate to General Information view
+     * Handles navigation when general information button is pressed
      */
     public void navigateOnGenInfoButtonPressed() {
         mNewDncaNavigator.onGenInfoButtonPressed();
@@ -68,5 +76,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     @Override
     public void onDataNotAvailable() {
 
+    }
+
+    /**
+     * Callback for when form has been submitted
+     */
+    @Override
+    public void onDncaFormSubmitted() {
+        navigateOnBackButtonPressed();
     }
 }

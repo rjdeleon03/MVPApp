@@ -19,7 +19,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      * @param newDncaGenInfoRepositoryManager
      */
     public CasualtiesDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager);
+        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.AgeGroup.class);
         mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
         super.updateAgeGroupList();
     }

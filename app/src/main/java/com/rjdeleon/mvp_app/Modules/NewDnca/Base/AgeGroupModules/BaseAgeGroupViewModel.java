@@ -25,9 +25,18 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      * @param context
      * @param newDncaGenInfoRepositoryManager
      */
-    protected BaseAgeGroupViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
+    protected BaseAgeGroupViewModel(Context context,
+                                    NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager,
+                                    Class<? extends Enum> enumClass) {
+
         super(context, newDncaGenInfoRepositoryManager);
-        ageGroupList.addAll(AgeGroupDataRow.AgeGroup.asList());
+
+        if (enumClass == AgeGroupDataRow.AgeGroup.class) {
+            ageGroupList.addAll(AgeGroupDataRow.AgeGroup.asList());
+
+        } else if (enumClass == AgeGroupDataRow.InfraType.class) {
+            ageGroupList.addAll(AgeGroupDataRow.InfraType.asList());
+        }
     }
 
     /**

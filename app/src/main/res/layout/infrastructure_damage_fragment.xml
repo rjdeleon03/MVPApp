@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -61,7 +61,7 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/nd_infrastructure_age_spinner"
+                    android:id="@+id/nd_infrastructure_type_spinner"
                     android:selectedItemPosition="@={viewModel.spinnerValue}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                 </android.support.v7.widget.AppCompatSpinner>
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/nf_population_add_button"
+                    android:id="@+id/nd_infrastructure_add_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="4dp"
@@ -88,7 +88,7 @@
                     app:elevation="0dp"/>
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/nf_population_save_button"
+                    android:id="@+id/nd_infrastructure_save_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="4dp"

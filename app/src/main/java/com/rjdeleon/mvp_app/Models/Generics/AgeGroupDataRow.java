@@ -1,5 +1,7 @@
 package com.rjdeleon.mvp_app.Models.Generics;
 
+import org.apache.commons.text.WordUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +75,11 @@ public abstract class AgeGroupDataRow {
         COMMUNICATION_LINES,
         LIVELIHOOD_FACILITIES,
         OTHERS;
+
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
 
         public static List<InfraType> asList() {
             List<InfraType> ageGroupList = new ArrayList<>();

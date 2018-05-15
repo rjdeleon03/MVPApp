@@ -20,7 +20,7 @@ public class DeathCauseDataViewModel extends BaseAgeGroupViewModel implements De
      * @param newDncaGenInfoRepositoryManager
      */
     public DeathCauseDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager);
+        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.AgeGroup.class);
         mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getDeathCauseData().getDeathCauseDataRows());
         super.updateAgeGroupList();
     }

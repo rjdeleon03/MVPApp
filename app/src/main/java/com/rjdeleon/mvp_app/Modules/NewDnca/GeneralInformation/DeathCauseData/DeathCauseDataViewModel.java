@@ -4,9 +4,8 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;
@@ -20,8 +19,8 @@ public class DeathCauseDataViewModel extends BaseAgeGroupViewModel implements De
      * @param newDncaGenInfoRepositoryManager
      */
     public DeathCauseDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.AgeGroup.class);
-        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getDeathCauseData().getDeathCauseDataRows());
+        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getDeathCauseData().getDeathCauseDataRows());
         super.updateAgeGroupList();
     }
 
@@ -31,7 +30,7 @@ public class DeathCauseDataViewModel extends BaseAgeGroupViewModel implements De
     @Override
     public void navigateOnSaveButtonPressed() {
         DeathCauseData deathCauseData = new DeathCauseData();
-        deathCauseData.setDeathCauseDataRows((List<DeathCauseDataRow>)(Object) mAgeGroupDataRows);
+        deathCauseData.setDeathCauseDataRows((List<DeathCauseDataRow>)(Object) mGenericEnumDataRows);
         mNewDncaGenInfoRepositoryManager.saveDeathCauseData(deathCauseData);
     }
 
@@ -59,7 +58,7 @@ public class DeathCauseDataViewModel extends BaseAgeGroupViewModel implements De
      */
     @Override
     public DeathCauseDataRow getDeathCauseDataRow(int rowIndex) {
-        return (DeathCauseDataRow) mAgeGroupDataRows.get(rowIndex);
+        return (DeathCauseDataRow) mGenericEnumDataRows.get(rowIndex);
     }
     /**
      * Gets age group based on index
@@ -67,7 +66,7 @@ public class DeathCauseDataViewModel extends BaseAgeGroupViewModel implements De
      * @return
      */
     @Override
-    public AgeGroupDataRow.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
-        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

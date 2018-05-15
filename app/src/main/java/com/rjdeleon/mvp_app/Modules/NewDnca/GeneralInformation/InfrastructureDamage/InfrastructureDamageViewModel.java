@@ -1,17 +1,13 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage;
 
 import android.content.Context;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InfrastructureDamageViewModel extends BaseAgeGroupViewModel implements InfrastructureDamageRepositoryManager {
@@ -22,8 +18,8 @@ public class InfrastructureDamageViewModel extends BaseAgeGroupViewModel impleme
      * @param newDncaGenInfoRepositoryManager
      */
     public InfrastructureDamageViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.InfraType.class);
-        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getInfrastructureDamageData().getInfrastructureDamageDataRows());
+        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.InfraType.class);
+        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getInfrastructureDamageData().getInfrastructureDamageDataRows());
         super.updateAgeGroupList();
     }
 
@@ -33,7 +29,7 @@ public class InfrastructureDamageViewModel extends BaseAgeGroupViewModel impleme
     @Override
     public void navigateOnSaveButtonPressed() {
         InfrastructureDamageData infrastructureDamageData = new InfrastructureDamageData();
-        infrastructureDamageData.setInfrastructureDamageDataRows((List<InfrastructureDamageDataRow>)(Object) mAgeGroupDataRows);
+        infrastructureDamageData.setInfrastructureDamageDataRows((List<InfrastructureDamageDataRow>)(Object) mGenericEnumDataRows);
         mNewDncaGenInfoRepositoryManager.saveInfrastructureDamageData(infrastructureDamageData);
     }
     /**
@@ -59,7 +55,7 @@ public class InfrastructureDamageViewModel extends BaseAgeGroupViewModel impleme
      */
     @Override
     public InfrastructureDamageDataRow getInfrastructureDamageRow(int rowIndex) {
-        return (InfrastructureDamageDataRow) mAgeGroupDataRows.get(rowIndex);
+        return (InfrastructureDamageDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
@@ -68,7 +64,7 @@ public class InfrastructureDamageViewModel extends BaseAgeGroupViewModel impleme
      * @return
      */
     @Override
-    public AgeGroupDataRow.InfraType getInfrastructureDamageType(int infraTypeIndex) {
-        return (AgeGroupDataRow.InfraType) ageGroupList.get(infraTypeIndex);
+    public GenericEnumDataRow.InfraType getInfrastructureDamageType(int infraTypeIndex) {
+        return (GenericEnumDataRow.InfraType) ageGroupList.get(infraTypeIndex);
     }
 }

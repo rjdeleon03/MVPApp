@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.rjdeleon.mvp_app.Models.DNCAForm;
 import com.rjdeleon.mvp_app.Models.FormInfo;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
@@ -102,8 +102,8 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         List<DeathCauseDataRow> dcdRows = new ArrayList<>();
         List<InfrastructureDamageDataRow> iddRows = new ArrayList<>();
 
-        for (int i = 0; i < AgeGroupDataRow.AgeGroup.values().length - 1; i++) {
-            AgeGroupDataRow.AgeGroup ageGroup = AgeGroupDataRow.AgeGroup.values()[i];
+        for (int i = 0; i < GenericEnumDataRow.AgeGroup.values().length - 1; i++) {
+            GenericEnumDataRow.AgeGroup ageGroup = GenericEnumDataRow.AgeGroup.values()[i];
             PopulationDataRow row = new PopulationDataRow(ageGroup,
                     new GenderTuple(1,2),
                     new GenderTuple(3,4),
@@ -122,8 +122,8 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
             dcdRows.add(dcdRow);
         }
 
-        for (int i = 0; i < AgeGroupDataRow.InfraType.values().length; i++) {
-            InfrastructureDamageDataRow iddRow = new InfrastructureDamageDataRow(AgeGroupDataRow.InfraType.values()[i], 77, true, "damagedInfra");
+        for (int i = 0; i < GenericEnumDataRow.InfraType.values().length; i++) {
+            InfrastructureDamageDataRow iddRow = new InfrastructureDamageDataRow(GenericEnumDataRow.InfraType.values()[i], 77, true, "damagedInfra");
             iddRows.add(iddRow);
         }
 

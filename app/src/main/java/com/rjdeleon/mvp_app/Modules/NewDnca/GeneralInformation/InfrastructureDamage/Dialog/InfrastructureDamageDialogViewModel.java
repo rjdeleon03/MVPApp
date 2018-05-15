@@ -6,7 +6,7 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
@@ -49,7 +49,7 @@ public class InfrastructureDamageDialogViewModel extends BaseAgeGroupDialogViewM
     @Override
     public void navigateOnOkButtonPressed() {
         InfrastructureDamageDataRow infrastructureDamageDataRow = new InfrastructureDamageDataRow(
-                (AgeGroupDataRow.InfraType) ageGroup.get(),
+                (GenericEnumDataRow.InfraType) ageGroup.get(),
                 infraNumber.get(),
                 status.get(),
                 remarks.get()

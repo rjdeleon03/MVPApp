@@ -3,7 +3,6 @@ package com.rjdeleon.mvp_app;
 import android.app.Activity;
 import android.content.Context;
 import android.databinding.BindingAdapter;
-import android.databinding.BindingConversion;
 import android.databinding.InverseBindingAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.Models.DNCAListItem;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListAdapter;
 
@@ -41,23 +40,6 @@ public class AppUtil {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
-
-    public static AgeGroupDataRow.AgeGroup stringToAgeGroup(String str) {
-        if (str.endsWith("0-5")) {
-            return AgeGroupDataRow.AgeGroup.AGE_0_5;
-        } else if (str.endsWith("6-9")) {
-            return AgeGroupDataRow.AgeGroup.AGE_6_9;
-        } else if (str.endsWith("10-12")) {
-            return AgeGroupDataRow.AgeGroup.AGE_10_12;
-        } else if (str.endsWith("13-17")) {
-            return AgeGroupDataRow.AgeGroup.AGE_13_17;
-        } else if (str.endsWith("18-59")) {
-            return AgeGroupDataRow.AgeGroup.AGE_18_59;
-        } else {
-            return AgeGroupDataRow.AgeGroup.AGE_60_PLUS;
-        }
-    }
-
     @BindingAdapter("android:text")
     public static void bindIntegerInText(EditText view, int value)
     {
@@ -119,7 +101,7 @@ public class AppUtil {
     }
 
     @BindingAdapter("android:enabled")
-    public static void bindAgeGroupListInAddButton(Button button, List<AgeGroupDataRow.AgeGroup> ageGroups) {
+    public static void bindAgeGroupListInAddButton(Button button, List<GenericEnumDataRow.AgeGroup> ageGroups) {
         button.setEnabled(ageGroups.size() > 0);
     }
 }

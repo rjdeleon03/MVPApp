@@ -1,9 +1,9 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
-public class PopulationDataRow extends AgeGroupDataRow {
+public class PopulationDataRow extends GenericEnumDataRow {
     private GenderTuple total;
     private GenderTuple affected;
     private GenderTuple displaced;

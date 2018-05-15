@@ -1,9 +1,9 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
-public class DeathCauseDataRow extends AgeGroupDataRow {
+public class DeathCauseDataRow extends GenericEnumDataRow {
     private GenderTuple measles;
     private GenderTuple diarrhea;
     private GenderTuple pneumonia;

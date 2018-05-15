@@ -6,7 +6,7 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Row.BaseAgeGroupRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
@@ -59,7 +59,7 @@ public class VulnerablePopulationRowViewModel extends BaseAgeGroupRowViewModel {
         remarks.set(vulnerablePopulationDataRow.getRemarks());
 
         // Set visibility of fields such as pregnant, lactating, and lgbt
-        shouldShowOtherFields.set(ageGroup.get().getOrdinal() >= AgeGroupDataRow.AgeGroup.AGE_10_12.getOrdinal());
+        shouldShowOtherFields.set(ageGroup.get().getOrdinal() >= GenericEnumDataRow.AgeGroup.AGE_10_12.getOrdinal());
         shouldShowRemarks.set(remarks.get().length() > 0);
     }
 

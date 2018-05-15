@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
@@ -19,8 +19,8 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
      * @param newDncaGenInfoRepositoryManager
      */
     public VulnerablePopulationViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.AgeGroup.class);
-        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getVulnerablePopulation().getVulnerablePopulationDataRows());
+        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getVulnerablePopulation().getVulnerablePopulationDataRows());
         super.updateAgeGroupList();
     }
 
@@ -30,7 +30,7 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
     @Override
     public void navigateOnSaveButtonPressed() {
         VulnerablePopulationData vulnerablePopulationData = new VulnerablePopulationData();
-        vulnerablePopulationData.setVulnerablePopulationDataRows((List<VulnerablePopulationDataRow>)(Object) mAgeGroupDataRows);
+        vulnerablePopulationData.setVulnerablePopulationDataRows((List<VulnerablePopulationDataRow>)(Object) mGenericEnumDataRows);
         mNewDncaGenInfoRepositoryManager.saveVulnerablePopulation(vulnerablePopulationData);
     }
 
@@ -58,7 +58,7 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
      */
     @Override
     public VulnerablePopulationDataRow getVulnerablePopulationRow(int rowIndex) {
-        return (VulnerablePopulationDataRow) mAgeGroupDataRows.get(rowIndex);
+        return (VulnerablePopulationDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
@@ -67,7 +67,7 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
      * @return
      */
     @Override
-    public AgeGroupDataRow.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex) {
-        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

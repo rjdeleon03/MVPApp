@@ -5,31 +5,12 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.rjdeleon.mvp_app.Models.DNCAForm;
 import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
-import com.rjdeleon.mvp_app.Models.FormInfo;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
-import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SubmitNewDncaTask extends AsyncTask<String, Void, String> {
     public static final String REQUEST_METHOD = "POST";
@@ -48,6 +29,7 @@ public class SubmitNewDncaTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
 
         Gson formJson = new Gson();
+        mDncaForm.getGenInfo().getPopulationData().normalize();
         String x = formJson.toJson(mDncaForm);
 
         String urlString = strings[0];

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
@@ -18,8 +18,8 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
      * @param newDncaGenInfoRepositoryManager
      */
     public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.AgeGroup.class);
-        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
+        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
         super.updateAgeGroupList();
     }
 
@@ -29,7 +29,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
     @Override
     public void navigateOnSaveButtonPressed() {
         PopulationData populationData = new PopulationData();
-        populationData.setPopulationDataRows((List<PopulationDataRow>)(Object) mAgeGroupDataRows);
+        populationData.setPopulationDataRows((List<PopulationDataRow>)(Object) mGenericEnumDataRows);
         mNewDncaGenInfoRepositoryManager.savePopulationData(populationData);
     }
 
@@ -57,7 +57,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
      */
     @Override
     public PopulationDataRow getPopulationDataRow(int rowIndex) {
-        return (PopulationDataRow) mAgeGroupDataRows.get(rowIndex);
+        return (PopulationDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
@@ -66,7 +66,7 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
      * @return
      */
     @Override
-    public AgeGroupDataRow.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
-        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

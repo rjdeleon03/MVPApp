@@ -1,7 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 
 public interface CasualtiesDataRepositoryManager {
 
@@ -11,5 +11,5 @@ public interface CasualtiesDataRepositoryManager {
 
     CasualtiesDataRow getCasualtiesDataRow(int rowIndex);
 
-    AgeGroupDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex);
+    GenericEnumDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex);
 }

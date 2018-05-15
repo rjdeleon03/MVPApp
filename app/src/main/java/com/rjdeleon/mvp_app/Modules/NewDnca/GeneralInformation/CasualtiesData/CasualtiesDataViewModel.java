@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
@@ -19,8 +19,8 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      * @param newDncaGenInfoRepositoryManager
      */
     public CasualtiesDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, AgeGroupDataRow.AgeGroup.class);
-        mAgeGroupDataRows.addAll(mNewDncaGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
+        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
         super.updateAgeGroupList();
     }
 
@@ -30,7 +30,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
     @Override
     public void navigateOnSaveButtonPressed() {
         CasualtiesData casualtiesData = new CasualtiesData();
-        casualtiesData.setCasualtiesDataRows((List<CasualtiesDataRow>)(Object) mAgeGroupDataRows);
+        casualtiesData.setCasualtiesDataRows((List<CasualtiesDataRow>)(Object) mGenericEnumDataRows);
         mNewDncaGenInfoRepositoryManager.saveCasualtiesData(casualtiesData);
     }
 
@@ -58,7 +58,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public CasualtiesDataRow getCasualtiesDataRow(int rowIndex) {
-        return (CasualtiesDataRow) mAgeGroupDataRows.get(rowIndex);
+        return (CasualtiesDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
@@ -67,7 +67,7 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      * @return
      */
     @Override
-    public AgeGroupDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex) {
-        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

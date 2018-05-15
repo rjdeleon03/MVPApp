@@ -3,10 +3,8 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.D
 import android.content.Context;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataRepositoryManager;
@@ -54,7 +52,7 @@ public class CasualtiesDataDialogViewModel extends BaseAgeGroupDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         CasualtiesDataRow casualtiesDataRow = new CasualtiesDataRow(
-                (AgeGroupDataRow.AgeGroup) ageGroup.get(),
+                (GenericEnumDataRow.AgeGroup) ageGroup.get(),
                 new GenderTuple(deadMale.get(), deadFemale.get()),
                 new GenderTuple(missingMale.get(), missingFemale.get()),
                 new GenderTuple(injuredMale.get(), injuredFemale.get())

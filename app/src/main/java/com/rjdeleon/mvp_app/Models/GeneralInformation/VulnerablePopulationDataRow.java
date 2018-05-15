@@ -1,9 +1,9 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 
-public class VulnerablePopulationDataRow extends AgeGroupDataRow {
+public class VulnerablePopulationDataRow extends GenericEnumDataRow {
     private int pregnant;
     private int lactating;
     private int lgbt;

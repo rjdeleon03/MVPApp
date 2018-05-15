@@ -5,7 +5,7 @@ import org.apache.commons.text.WordUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AgeGroupDataRow {
+public abstract class GenericEnumDataRow {
 
     public enum AgeGroup implements GenericEnum {
         AGE_0_5,
@@ -115,7 +115,7 @@ public abstract class AgeGroupDataRow {
 
     private GenericEnum ageGroup;
 
-    public AgeGroupDataRow(GenericEnum ageGroup) {
+    public GenericEnumDataRow(GenericEnum ageGroup) {
         this.ageGroup = ageGroup;
     }
 

@@ -1,7 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 
 public interface InfrastructureDamageRepositoryManager {
 
@@ -11,5 +11,5 @@ public interface InfrastructureDamageRepositoryManager {
 
     InfrastructureDamageDataRow getInfrastructureDamageRow(int rowIndex);
 
-    AgeGroupDataRow.InfraType getInfrastructureDamageType(int infraTypeIndex);
+    GenericEnumDataRow.InfraType getInfrastructureDamageType(int infraTypeIndex);
 }

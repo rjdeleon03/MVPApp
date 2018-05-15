@@ -65,6 +65,7 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onAddButtonPressed() {
+        if (super.dialogIsAlreadyShown()) return;
         VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
                 getContext(),
                 (VulnerablePopulationRepositoryManager) mViewModel,
@@ -82,6 +83,7 @@ public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
      */
     @Override
     public void onCardSelected(int rowIndex) {
+        if (super.dialogIsAlreadyShown()) return;
         VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
                 getContext(),
                 (VulnerablePopulationRepositoryManager) mViewModel,

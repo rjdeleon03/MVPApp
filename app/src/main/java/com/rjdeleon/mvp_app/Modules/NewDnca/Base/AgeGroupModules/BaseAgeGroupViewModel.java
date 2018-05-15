@@ -5,6 +5,7 @@ import android.databinding.ObservableArrayList;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
@@ -16,7 +17,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
     protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
     protected List<AgeGroupDataRow> mAgeGroupDataRows = new ArrayList<>();
 
-    public final ObservableArrayList<AgeGroupDataRow.AgeGroup> ageGroupList = new ObservableArrayList<>();
+    public final ObservableArrayList<GenericEnum> ageGroupList = new ObservableArrayList<>();
     public final ObservableInt spinnerValue = new ObservableInt(0);
 
     /**
@@ -36,8 +37,8 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
         // Remove items from age group list if age group is already in use
         for(AgeGroupDataRow row : mAgeGroupDataRows) {
-            for (AgeGroupDataRow.AgeGroup ageGroup : ageGroupList) {
-                if (ageGroup.ordinal() == row.getAgeGroup().ordinal()) {
+            for (GenericEnum ageGroup : ageGroupList) {
+                if (ageGroup.getOrdinal() == row.getAgeGroup().getOrdinal()) {
                     ageGroupList.remove(ageGroup);
                     break;
                 }
@@ -61,8 +62,8 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
             for (int i = 0; i < mAgeGroupDataRows.size(); i++) {
 
                 AgeGroupDataRow row = mAgeGroupDataRows.get(i);
-                int currAgeGroupOrdinal = row.getAgeGroup().ordinal();
-                int tempAgeGroupOrdinal = ageGroupDataRow.getAgeGroup().ordinal();
+                int currAgeGroupOrdinal = row.getAgeGroup().getOrdinal();
+                int tempAgeGroupOrdinal = ageGroupDataRow.getAgeGroup().getOrdinal();
 
                 if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
 
@@ -71,7 +72,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
                     break;
 
                 } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                        (i == 0 || tempAgeGroupOrdinal > mAgeGroupDataRows.get(i - 1).getAgeGroup().ordinal())) {
+                        (i == 0 || tempAgeGroupOrdinal > mAgeGroupDataRows.get(i - 1).getAgeGroup().getOrdinal())) {
 
                     // If row must be inserted somewhere in the middle, find its correct position
                     mAgeGroupDataRows.add(i, ageGroupDataRow);
@@ -88,8 +89,8 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
         }
 
         // Delete age group from list
-        for(AgeGroupDataRow.AgeGroup ageGroup : ageGroupList) {
-            if (ageGroup.ordinal() == ageGroupDataRow.getAgeGroup().ordinal()) {
+        for(GenericEnum ageGroup : ageGroupList) {
+            if (ageGroup.getOrdinal() == ageGroupDataRow.getAgeGroup().getOrdinal()) {
                 ageGroupList.remove(ageGroup);
                 return;
             }
@@ -114,11 +115,11 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
             // Else, select correct position
             for (int i = 0; i < ageGroupList.size(); i++) {
 
-                int currAgeGroupOrdinal = ageGroupList.get(i).ordinal();
-                int tempAgeGroupOrdinal = ageGroupDataRow.getAgeGroup().ordinal();
+                int currAgeGroupOrdinal = ageGroupList.get(i).getOrdinal();
+                int tempAgeGroupOrdinal = ageGroupDataRow.getAgeGroup().getOrdinal();
 
                 if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                        (i == 0 || tempAgeGroupOrdinal > ageGroupList.get(i - 1).ordinal())) {
+                        (i == 0 || tempAgeGroupOrdinal > ageGroupList.get(i - 1).getOrdinal())) {
 
                     // If row must be inserted somewhere in the middle, find its correct position
                     ageGroupList.add(i, ageGroupDataRow.getAgeGroup());

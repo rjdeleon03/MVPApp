@@ -62,7 +62,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
         }
 
         // Set visibility of fields such as pregnant, lactating, and lgbt
-        shouldShowOtherFields.set(ageGroup.get().ordinal() >= AgeGroupDataRow.AgeGroup.AGE_10_12.ordinal());
+        shouldShowOtherFields.set(ageGroup.get().getOrdinal() >= AgeGroupDataRow.AgeGroup.AGE_10_12.getOrdinal());
     }
 
     /**
@@ -71,7 +71,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
     @Override
     public void navigateOnOkButtonPressed() {
         VulnerablePopulationDataRow vulnerablePopulationDataRow = new VulnerablePopulationDataRow(
-                ageGroup.get(),
+                (AgeGroupDataRow.AgeGroup) ageGroup.get(),
                 lactating.get(),
                 pregnant.get(),
                 lgbt.get(),

@@ -6,6 +6,7 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
@@ -17,7 +18,7 @@ public class InfrastructureDamageViewModel extends NewDncaGenInfoBaseViewModel {
     private InfrastructureDamageNavigator mInfraDamageNavigator;
     private List<InfrastructureDamageDataRow> mInfraDamageRows = new ArrayList<>();
 
-    public final ObservableArrayList<InfrastructureDamageData.InfraType> infraList = new ObservableArrayList<>();
+    public final ObservableArrayList<AgeGroupDataRow.InfraType> infraList = new ObservableArrayList<>();
     public final ObservableInt spinnerValue = new ObservableInt(0);
 
     /**
@@ -27,7 +28,7 @@ public class InfrastructureDamageViewModel extends NewDncaGenInfoBaseViewModel {
      */
     public InfrastructureDamageViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
         super(context, newDncaGenInfoRepositoryManager);
-        infraList.addAll(InfrastructureDamageData.InfraType.asList());
+        infraList.addAll(AgeGroupDataRow.InfraType.asList());
     }
 
     /**

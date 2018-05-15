@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
@@ -14,7 +15,7 @@ public abstract class BaseAgeGroupRowViewModel extends NewDncaBaseViewModel {
     protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
     protected int mRowIndex;
 
-    public final ObservableField<AgeGroupDataRow.AgeGroup> ageGroup = new ObservableField<>();
+    public final ObservableField<GenericEnum> ageGroup = new ObservableField<>();
 
     /**
      * Constructor

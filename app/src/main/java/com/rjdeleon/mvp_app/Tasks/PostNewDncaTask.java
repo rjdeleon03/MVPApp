@@ -122,8 +122,8 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
             dcdRows.add(dcdRow);
         }
 
-        for (int i = 0; i < InfrastructureDamageData.InfraType.values().length; i++) {
-            InfrastructureDamageDataRow iddRow = new InfrastructureDamageDataRow(InfrastructureDamageData.InfraType.values()[i], 77, true, "damagedInfra");
+        for (int i = 0; i < AgeGroupDataRow.InfraType.values().length; i++) {
+            InfrastructureDamageDataRow iddRow = new InfrastructureDamageDataRow(AgeGroupDataRow.InfraType.values()[i], 77, true, "damagedInfra");
             iddRows.add(iddRow);
         }
 

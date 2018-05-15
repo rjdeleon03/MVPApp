@@ -68,6 +68,6 @@ public class DeathCauseDataViewModel extends BaseAgeGroupViewModel implements De
      */
     @Override
     public AgeGroupDataRow.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
-        return ageGroupList.get(ageGroupIndex);
+        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

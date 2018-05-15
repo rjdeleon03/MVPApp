@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class AgeGroupDataRow {
 
-    public enum AgeGroup {
+    public enum AgeGroup implements GenericEnum {
         AGE_0_5,
         AGE_6_9,
         AGE_10_12,
@@ -44,19 +44,79 @@ public abstract class AgeGroupDataRow {
             ageGroupList.add(AGE_60_PLUS);
             return ageGroupList;
         }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
     }
 
-    private AgeGroup ageGroup;
+    public enum InfraType implements GenericEnum {
+        SCHOOL,
+        CHURCH,
+        COVERED_COURT,
+        BRGY_HALL,
+        BRGY_HEALTH_STATION,
+        EVACUATION_CENTER,
+        BRIDGES,
+        ROADS,
+        MARKET,
+        ELECTRICITY,
+        WATER,
+        HOSPITAL,
+        SEAPORT_AIRPORT,
+        COMMUNICATION_LINES,
+        LIVELIHOOD_FACILITIES,
+        OTHERS;
 
-    public AgeGroupDataRow(AgeGroup ageGroup) {
+        public static List<InfraType> asList() {
+            List<InfraType> ageGroupList = new ArrayList<>();
+            ageGroupList.add(SCHOOL);
+            ageGroupList.add(CHURCH);
+            ageGroupList.add(COVERED_COURT);
+            ageGroupList.add(BRGY_HALL);
+            ageGroupList.add(BRGY_HEALTH_STATION);
+            ageGroupList.add(EVACUATION_CENTER);
+            ageGroupList.add(BRIDGES);
+            ageGroupList.add(ROADS);
+            ageGroupList.add(MARKET);
+            ageGroupList.add(ELECTRICITY);
+            ageGroupList.add(WATER);
+            ageGroupList.add(HOSPITAL);
+            ageGroupList.add(SEAPORT_AIRPORT);
+            ageGroupList.add(COMMUNICATION_LINES);
+            ageGroupList.add(LIVELIHOOD_FACILITIES);
+            ageGroupList.add(OTHERS);
+            return ageGroupList;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
+
+    private GenericEnum ageGroup;
+
+    public AgeGroupDataRow(GenericEnum ageGroup) {
         this.ageGroup = ageGroup;
     }
 
-    public AgeGroup getAgeGroup() {
+    public GenericEnum getAgeGroup() {
         return ageGroup;
     }
 
-    public void setAgeGroup(AgeGroup ageGroup) {
+    public void setAgeGroup(GenericEnum ageGroup) {
         this.ageGroup = ageGroup;
     }
 }

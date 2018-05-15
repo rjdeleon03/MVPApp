@@ -7,6 +7,7 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Row.BaseAgeGroupRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
@@ -16,7 +17,7 @@ public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
-    public final ObservableField<AgeGroupDataRow.AgeGroup> ageGroup = new ObservableField<>();
+    public final ObservableField<GenericEnum> ageGroup = new ObservableField<>();
     public final ObservableInt totalMale = new ObservableInt(0);
     public final ObservableInt totalFemale = new ObservableInt(0);
     public final ObservableInt affectedMale = new ObservableInt(0);

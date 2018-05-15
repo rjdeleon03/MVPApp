@@ -1,19 +1,22 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
-public class InfrastructureDamageDataRow {
-    private InfrastructureDamageData.InfraType infraType;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+
+public class InfrastructureDamageDataRow extends AgeGroupDataRow {
+    private AgeGroupDataRow.InfraType infraType;
     private int damaged;
     private boolean isFunctional;
     private String remarks;
 
-    public InfrastructureDamageDataRow(InfrastructureDamageData.InfraType infraType, int damaged, boolean isFunctional, String remarks) {
+    public InfrastructureDamageDataRow(AgeGroupDataRow.InfraType infraType, int damaged, boolean isFunctional, String remarks) {
+        super(infraType);
         this.infraType = infraType;
         this.damaged = damaged;
         this.isFunctional = isFunctional;
         this.remarks = remarks;
     }
 
-    public InfrastructureDamageData.InfraType getInfraType() {
+    public AgeGroupDataRow.InfraType getInfraType() {
         return infraType;
     }
 

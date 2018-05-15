@@ -9,13 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogFragment;
 
 public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGroupNavigator {
 
     protected BaseAgeGroupViewModel mViewModel;
     protected Spinner mAgeGroupSpinner;
-    protected ArrayAdapter<AgeGroupDataRow.AgeGroup> mSpinnerAdapter;
+    protected ArrayAdapter<GenericEnum> mSpinnerAdapter;
     protected RecyclerView mRowRecycler;
     protected BaseAgeGroupDialogFragment mDialogFragment;
 

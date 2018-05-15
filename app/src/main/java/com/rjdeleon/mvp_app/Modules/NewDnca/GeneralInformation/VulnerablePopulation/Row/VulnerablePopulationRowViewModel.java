@@ -59,7 +59,7 @@ public class VulnerablePopulationRowViewModel extends BaseAgeGroupRowViewModel {
         remarks.set(vulnerablePopulationDataRow.getRemarks());
 
         // Set visibility of fields such as pregnant, lactating, and lgbt
-        shouldShowOtherFields.set(ageGroup.get().ordinal() >= AgeGroupDataRow.AgeGroup.AGE_10_12.ordinal());
+        shouldShowOtherFields.set(ageGroup.get().getOrdinal() >= AgeGroupDataRow.AgeGroup.AGE_10_12.getOrdinal());
         shouldShowRemarks.set(remarks.get().length() > 0);
     }
 

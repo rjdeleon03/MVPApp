@@ -5,6 +5,7 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.AgeGroupDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
@@ -78,7 +79,7 @@ public class DeathCauseDataDialogViewModel extends BaseAgeGroupDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         DeathCauseDataRow deathCauseDataRow = new DeathCauseDataRow(
-                ageGroup.get(),
+                (AgeGroupDataRow.AgeGroup) ageGroup.get(),
                 new GenderTuple(measlesMale.get(), measlesFemale.get()),
                 new GenderTuple(diarrheaMale.get(), diarrheaFemale.get()),
                 new GenderTuple(pneumoniaMale.get(), pneumoniaFemale.get()),

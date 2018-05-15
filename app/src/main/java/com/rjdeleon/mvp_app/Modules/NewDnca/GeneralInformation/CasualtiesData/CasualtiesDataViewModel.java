@@ -68,6 +68,6 @@ public class CasualtiesDataViewModel extends BaseAgeGroupViewModel implements Ca
      */
     @Override
     public AgeGroupDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex) {
-        return ageGroupList.get(ageGroupIndex);
+        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

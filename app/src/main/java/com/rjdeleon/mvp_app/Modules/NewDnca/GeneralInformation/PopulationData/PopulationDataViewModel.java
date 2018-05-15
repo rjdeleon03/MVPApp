@@ -67,6 +67,6 @@ public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements P
      */
     @Override
     public AgeGroupDataRow.AgeGroup getPopulationDataAgeGroup(int ageGroupIndex) {
-        return ageGroupList.get(ageGroupIndex);
+        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

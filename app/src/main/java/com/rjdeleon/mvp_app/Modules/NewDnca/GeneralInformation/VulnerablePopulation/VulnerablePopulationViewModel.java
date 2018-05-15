@@ -68,6 +68,6 @@ public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel impleme
      */
     @Override
     public AgeGroupDataRow.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex) {
-        return ageGroupList.get(ageGroupIndex);
+        return (AgeGroupDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
     }
 }

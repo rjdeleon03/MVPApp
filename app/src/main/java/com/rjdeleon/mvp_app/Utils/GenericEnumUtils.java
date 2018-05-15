@@ -44,17 +44,18 @@ public class GenericEnumUtils {
 
             for(int i = 0; i < genericEnumsCount; i++) {
 
-                if (list.get(i).getAgeGroup().getOrdinal() == genericEnums[i].getOrdinal()) {
-                    rowIndex++;
-                }
-
-                if (list.get(rowIndex).getAgeGroup().getOrdinal() > genericEnums[i].getOrdinal()) {
-                    addNewRow(rowClass, genericEnums[i], list, i);
+                if (rowIndex < list.size() && list.get(rowIndex).getAgeGroup().getOrdinal() > genericEnums[i].getOrdinal()) {
+                    addNewRow(rowClass, genericEnums[i], list, rowIndex);
                     rowIndex++;
                     continue;
                 }
 
-                if (i >= list.size()) {
+                if (i < list.size() && list.get(i).getAgeGroup().getOrdinal() == genericEnums[i].getOrdinal()) {
+                    rowIndex++;
+                    continue;
+                }
+
+                if (i >= list.size()-1) {
                     addNewRow(rowClass, genericEnums[i], list);
                     rowIndex++;
                     continue;

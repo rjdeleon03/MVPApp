@@ -29,7 +29,6 @@ public class SubmitNewDncaTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
 
         Gson formJson = new Gson();
-        mDncaForm.getGenInfo().getPopulationData().normalize();
         String x = formJson.toJson(mDncaForm);
 
         String urlString = strings[0];

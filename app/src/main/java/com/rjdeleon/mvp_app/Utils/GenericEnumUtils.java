@@ -1,9 +1,15 @@
 package com.rjdeleon.mvp_app.Utils;
 
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
+import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 
@@ -11,12 +17,25 @@ import java.util.List;
 
 public class GenericEnumUtils {
 
+    /**
+     * Normalize rows of objects with GenericEnum type and add total row
+     * @param enumClass
+     * @param rowClass
+     * @param list
+     */
     public static void normalizeGenericEnumData(Class<? extends GenericEnum> enumClass,
                                                 Class<?> rowClass,
                                                 List<GenericEnumDataRow> list) {
         normalizeGenericEnumData(enumClass, rowClass, list, true);
     }
 
+    /**
+     * Normalize rows of objects with GenericEnum type
+     * @param enumClass
+     * @param rowClass
+     * @param list
+     * @param willUseTotalRow
+     */
     public static void normalizeGenericEnumData(Class<? extends GenericEnum> enumClass,
                                                 Class<?> rowClass,
                                                 List<GenericEnumDataRow> list,
@@ -33,7 +52,7 @@ public class GenericEnumUtils {
 
         if (list.size() == 0) {
             for(GenericEnum genericEnum : genericEnums) {
-                addNewRow(rowClass, genericEnum, list);
+                addNewRow(rowClass, genericEnum, list, list.size());
             }
         } else {
             int rowIndex = 0;
@@ -56,7 +75,7 @@ public class GenericEnumUtils {
                 }
 
                 if (i >= list.size()-1) {
-                    addNewRow(rowClass, genericEnums[i], list);
+                    addNewRow(rowClass, genericEnums[i], list, list.size());
                     rowIndex++;
                     continue;
                 }
@@ -64,6 +83,13 @@ public class GenericEnumUtils {
         }
     }
 
+    /**
+     * Adds new row to end of list
+     * @param rowClass
+     * @param genericEnum
+     * @param list
+     * */
+    /*
     private static void addNewRow(Class<?> rowClass,
                                   GenericEnum genericEnum,
                                   List<GenericEnumDataRow> list) {
@@ -77,7 +103,15 @@ public class GenericEnumUtils {
             list.add(new InfrastructureDamageDataRow((GenericEnumDataRow.InfraType) genericEnum));
         }
     }
+     */
 
+    /**
+     * Adds new row at specified index
+     * @param rowClass
+     * @param genericEnum
+     * @param list
+     * @param index
+     */
     private static void addNewRow(Class<?> rowClass,
                                   GenericEnum genericEnum,
                                   List<GenericEnumDataRow> list,
@@ -85,10 +119,17 @@ public class GenericEnumUtils {
 
         if (rowClass == PopulationData.class) {
             list.add(index, new PopulationDataRow((GenericEnumDataRow.AgeGroup) genericEnum));
-            return;
-        }
 
-        if (rowClass == InfrastructureDamageData.class) {
+        } else if (rowClass == VulnerablePopulationData.class) {
+            list.add(index, new VulnerablePopulationDataRow((GenericEnumDataRow.AgeGroup) genericEnum));
+
+        } else if (rowClass == CasualtiesData.class) {
+            list.add(index, new CasualtiesDataRow((GenericEnumDataRow.AgeGroup) genericEnum));
+
+        }else if (rowClass == DeathCauseData.class) {
+            list.add(index, new DeathCauseDataRow((GenericEnumDataRow.AgeGroup) genericEnum));
+
+        }else if (rowClass == InfrastructureDamageData.class) {
             list.add(index, new InfrastructureDamageDataRow((GenericEnumDataRow.InfraType) genericEnum));
         }
     }

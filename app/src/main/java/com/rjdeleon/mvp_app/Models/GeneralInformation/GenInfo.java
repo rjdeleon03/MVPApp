@@ -84,4 +84,8 @@ public class GenInfo {
     public void setInfrastructureDamageData(InfrastructureDamageData infrastructureDamageData) {
         this.infrastructureDamageData = infrastructureDamageData;
     }
+
+    public void normalize() {
+
+    }
 }

@@ -141,7 +141,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginStart="8dp"
-                        android:checked="@{viewModel.status}"
+                        android:checked="@={viewModel.status}"
                         android:text="Still Functional"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"

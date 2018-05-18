@@ -1,6 +1,8 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
-public class GenInfo {
+import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
+
+public class GenInfo implements NormalizableData {
     private CalamityDesc calamityDesc;
     private PopulationData populationData;
     private FamilyData familyData;
@@ -85,7 +87,16 @@ public class GenInfo {
         this.infrastructureDamageData = infrastructureDamageData;
     }
 
+    @Override
     public void normalize() {
+        if (populationData != null) populationData.normalize();
 
+        if (vulnerablePopulationData != null) vulnerablePopulationData.normalize();
+
+        if (casualtiesData != null) casualtiesData.normalize();
+
+        if (deathCauseData != null) deathCauseData.normalize();
+
+        if (infrastructureDamageData != null) infrastructureDamageData.normalize();
     }
 }

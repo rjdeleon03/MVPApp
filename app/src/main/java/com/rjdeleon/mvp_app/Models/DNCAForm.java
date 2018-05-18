@@ -1,8 +1,9 @@
 package com.rjdeleon.mvp_app.Models;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
+import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 
-public class DNCAForm {
+public class DNCAForm implements NormalizableData {
 
     private FormInfo formInfo;
     private GenInfo genInfo;
@@ -31,5 +32,10 @@ public class DNCAForm {
 
     public void setGenInfo(GenInfo genInfo) {
         this.genInfo = genInfo;
+    }
+
+    @Override
+    public void normalize() {
+        genInfo.normalize();
     }
 }

@@ -31,7 +31,6 @@ public class DeathCauseData implements NormalizableData {
         GenericEnumUtils.normalizeGenericEnumData(
                 GenericEnumDataRow.AgeGroup.class,
                 this.getClass(),
-                (List<GenericEnumDataRow>)(Object) deathCauseDataRows,
-                false);
+                (List<GenericEnumDataRow>)(Object) deathCauseDataRows);
     }
 }

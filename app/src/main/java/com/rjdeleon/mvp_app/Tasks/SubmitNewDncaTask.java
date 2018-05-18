@@ -28,6 +28,10 @@ public class SubmitNewDncaTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
 
+        // Normalize DNCA form data first
+        mDncaForm.normalize();
+
+        // Serialize to JSON
         Gson formJson = new Gson();
         String x = formJson.toJson(mDncaForm);
 

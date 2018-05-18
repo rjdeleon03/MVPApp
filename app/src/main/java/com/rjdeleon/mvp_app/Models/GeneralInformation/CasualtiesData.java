@@ -38,7 +38,7 @@ public class CasualtiesData implements NormalizableData, TotalizableData {
                 (List<GenericEnumDataRow>)(Object) casualtiesDataRows);
 
         addTotalRow();
-    }
+     }
 
     @Override
     public void addTotalRow() {

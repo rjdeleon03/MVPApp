@@ -37,6 +37,7 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
 
         // Perform clean up and navigate when back button is pressed
         mNewDncaNavigator.onBackButtonPressed();
+        DNCAFormRepository.destroyInstance();
     }
 
     /**

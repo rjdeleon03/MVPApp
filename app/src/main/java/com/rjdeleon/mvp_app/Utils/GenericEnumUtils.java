@@ -34,12 +34,12 @@ public class GenericEnumUtils {
      * @param enumClass
      * @param rowClass
      * @param list
-     * @param willUseTotalRow
+     * @param enumsHaveTotalRow
      */
     public static void normalizeGenericEnumData(Class<? extends GenericEnum> enumClass,
                                                 Class<?> rowClass,
                                                 List<GenericEnumDataRow> list,
-                                                boolean willUseTotalRow) {
+                                                boolean enumsHaveTotalRow) {
 
         GenericEnum[] genericEnums = null;
         if (enumClass == GenericEnumDataRow.AgeGroup.class) {
@@ -50,17 +50,21 @@ public class GenericEnumUtils {
 
         }
 
+        int genericEnumsCount = genericEnums.length;
+        if (enumsHaveTotalRow) {
+            genericEnumsCount -= 1;
+        }
+
         if (list.size() == 0) {
-            for(GenericEnum genericEnum : genericEnums) {
-                addNewRow(rowClass, genericEnum, list, list.size());
+
+            // If list is empty, directly populate it with empty rows
+            for(int i = 0; i < genericEnumsCount; i++) {
+                addNewRow(rowClass, genericEnums[i], list, list.size());
             }
         } else {
-            int rowIndex = 0;
-            int genericEnumsCount = genericEnums.length;
-            if (willUseTotalRow) {
-                genericEnumsCount -= 1;
-            }
 
+            // Complete missing rows if list is not empty
+            int rowIndex = 0;
             for(int i = 0; i < genericEnumsCount; i++) {
 
                 if (rowIndex < list.size() && list.get(rowIndex).getAgeGroup().getOrdinal() > genericEnums[i].getOrdinal()) {

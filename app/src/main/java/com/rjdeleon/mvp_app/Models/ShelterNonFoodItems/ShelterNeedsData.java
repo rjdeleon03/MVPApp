@@ -1,4 +1,4 @@
 package com.rjdeleon.mvp_app.Models.ShelterNonFoodItems;
 
-public class Gaps {
+public class ShelterNeedsData {
 }

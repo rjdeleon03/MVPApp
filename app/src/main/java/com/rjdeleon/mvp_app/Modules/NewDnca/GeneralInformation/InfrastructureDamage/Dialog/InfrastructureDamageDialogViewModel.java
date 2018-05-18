@@ -36,7 +36,7 @@ public class InfrastructureDamageDialogViewModel extends BaseAgeGroupDialogViewM
             ageGroup.set(mInfrastructureDamageRepositoryManager.getInfrastructureDamageType(infaTypeIndex));
         } else {
             InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(infaTypeIndex);
-            ageGroup.set(infrastructureDamageDataRow.getAgeGroup());
+            ageGroup.set(infrastructureDamageDataRow.getType());
             infraNumber.set(infrastructureDamageDataRow.getDamaged());
             status.set(infrastructureDamageDataRow.isFunctional());
             remarks.set(infrastructureDamageDataRow.getRemarks());

@@ -36,7 +36,7 @@ public class CasualtiesDataDialogViewModel extends BaseAgeGroupDialogViewModel {
             ageGroup.set(mCasualtiesDataRepositoryManager.getCasualtiesDataAgeGroup(ageGroupIndex));
         } else {
             CasualtiesDataRow casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(ageGroupIndex);
-            ageGroup.set(casualtiesDataRow.getAgeGroup());
+            ageGroup.set(casualtiesDataRow.getType());
             deadMale.set(casualtiesDataRow.getDead().male);
             deadFemale.set(casualtiesDataRow.getDead().female);
             missingMale.set(casualtiesDataRow.getMissing().male);

@@ -45,7 +45,7 @@ public class VulnerablePopulationRowViewModel extends BaseAgeGroupRowViewModel {
         mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
 
         VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(mRowIndex);
-        ageGroup.set(vulnerablePopulationDataRow.getAgeGroup());
+        ageGroup.set(vulnerablePopulationDataRow.getType());
         pregnant.set(vulnerablePopulationDataRow.getPregnant());
         lactating.set(vulnerablePopulationDataRow.getLactating());
         lgbt.set(vulnerablePopulationDataRow.getLgbt());

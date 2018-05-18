@@ -50,7 +50,7 @@ public class DeathCauseDataDialogViewModel extends BaseAgeGroupDialogViewModel {
             ageGroup.set(mDeathCauseRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
         } else {
             DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(ageGroupIndex);
-            ageGroup.set(deathCauseDataRow.getAgeGroup());
+            ageGroup.set(deathCauseDataRow.getType());
             measlesMale.set(deathCauseDataRow.getMeasles().male);
             measlesFemale.set(deathCauseDataRow.getMeasles().female);
             diarrheaMale.set(deathCauseDataRow.getDiarrhea().male);

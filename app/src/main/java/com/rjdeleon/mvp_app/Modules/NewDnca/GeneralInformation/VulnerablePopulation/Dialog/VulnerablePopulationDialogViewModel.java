@@ -47,7 +47,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
         } else {
             VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(ageGroupIndex);
 
-            ageGroup.set(vulnerablePopulationDataRow.getAgeGroup());
+            ageGroup.set(vulnerablePopulationDataRow.getType());
             pregnant.set(vulnerablePopulationDataRow.getPregnant());
             lactating.set(vulnerablePopulationDataRow.getLactating());
             lgbt.set(vulnerablePopulationDataRow.getLgbt());

@@ -43,7 +43,7 @@
                     android:fontFamily="@font/lato_bold"
                     android:gravity="center"
                     android:lines="2"
-                    android:text="@{viewModel.ageGroup.toString()}"
+                    android:text="@{viewModel.type.toString()}"
                     android:textColor="@color/backgroundColor"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"

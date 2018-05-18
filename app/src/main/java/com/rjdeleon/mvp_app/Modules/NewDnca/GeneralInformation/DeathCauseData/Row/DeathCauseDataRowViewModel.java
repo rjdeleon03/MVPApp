@@ -47,7 +47,7 @@ public class DeathCauseDataRowViewModel extends BaseAgeGroupRowViewModel {
         mDeathCauseRepositoryManager = deathCauseRepositoryManager;
 
         DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(mRowIndex);
-        ageGroup.set(deathCauseDataRow.getAgeGroup());
+        ageGroup.set(deathCauseDataRow.getType());
         measlesMale.set(deathCauseDataRow.getMeasles().male);
         measlesFemale.set(deathCauseDataRow.getMeasles().female);
         diarrheaMale.set(deathCauseDataRow.getDiarrhea().male);

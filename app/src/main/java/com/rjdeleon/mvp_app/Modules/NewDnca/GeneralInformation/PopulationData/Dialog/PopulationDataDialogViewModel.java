@@ -38,7 +38,7 @@ public class PopulationDataDialogViewModel extends BaseAgeGroupDialogViewModel {
             ageGroup.set(mPopulationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
         } else {
             PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
-            ageGroup.set(populationDataRow.getAgeGroup());
+            ageGroup.set(populationDataRow.getType());
             totalMale.set(populationDataRow.getTotal().male);
             totalFemale.set(populationDataRow.getTotal().female);
             affectedMale.set(populationDataRow.getAffected().male);

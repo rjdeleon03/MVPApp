@@ -47,7 +47,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
         // Remove items from age group list if age group is already in use
         for(GenericEnumDataRow row : mGenericEnumDataRows) {
             for (GenericEnum ageGroup : ageGroupList) {
-                if (ageGroup.getOrdinal() == row.getAgeGroup().getOrdinal()) {
+                if (ageGroup.getOrdinal() == row.getType().getOrdinal()) {
                     ageGroupList.remove(ageGroup);
                     break;
                 }
@@ -71,8 +71,8 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
             for (int i = 0; i < mGenericEnumDataRows.size(); i++) {
 
                 GenericEnumDataRow row = mGenericEnumDataRows.get(i);
-                int currAgeGroupOrdinal = row.getAgeGroup().getOrdinal();
-                int tempAgeGroupOrdinal = genericEnumDataRow.getAgeGroup().getOrdinal();
+                int currAgeGroupOrdinal = row.getType().getOrdinal();
+                int tempAgeGroupOrdinal = genericEnumDataRow.getType().getOrdinal();
 
                 if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
 
@@ -81,7 +81,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
                     break;
 
                 } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                        (i == 0 || tempAgeGroupOrdinal > mGenericEnumDataRows.get(i - 1).getAgeGroup().getOrdinal())) {
+                        (i == 0 || tempAgeGroupOrdinal > mGenericEnumDataRows.get(i - 1).getType().getOrdinal())) {
 
                     // If row must be inserted somewhere in the middle, find its correct position
                     mGenericEnumDataRows.add(i, genericEnumDataRow);
@@ -99,7 +99,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
         // Delete age group from list
         for(GenericEnum ageGroup : ageGroupList) {
-            if (ageGroup.getOrdinal() == genericEnumDataRow.getAgeGroup().getOrdinal()) {
+            if (ageGroup.getOrdinal() == genericEnumDataRow.getType().getOrdinal()) {
                 ageGroupList.remove(ageGroup);
                 return;
             }
@@ -117,7 +117,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
         // If list is empty, add new row right away
         if (ageGroupList.size() == 0) {
-            ageGroupList.add(genericEnumDataRow.getAgeGroup());
+            ageGroupList.add(genericEnumDataRow.getType());
 
         } else {
 
@@ -125,19 +125,19 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
             for (int i = 0; i < ageGroupList.size(); i++) {
 
                 int currAgeGroupOrdinal = ageGroupList.get(i).getOrdinal();
-                int tempAgeGroupOrdinal = genericEnumDataRow.getAgeGroup().getOrdinal();
+                int tempAgeGroupOrdinal = genericEnumDataRow.getType().getOrdinal();
 
                 if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
                         (i == 0 || tempAgeGroupOrdinal > ageGroupList.get(i - 1).getOrdinal())) {
 
                     // If row must be inserted somewhere in the middle, find its correct position
-                    ageGroupList.add(i, genericEnumDataRow.getAgeGroup());
+                    ageGroupList.add(i, genericEnumDataRow.getType());
                     break;
 
                 } else if (ageGroupList.size() == i + 1) {
 
                     // If end of list has been reached, add row
-                    ageGroupList.add(genericEnumDataRow.getAgeGroup());
+                    ageGroupList.add(genericEnumDataRow.getType());
                     break;
 
                 }

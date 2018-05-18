@@ -35,7 +35,7 @@ public class CasualtiesDataRowViewModel extends BaseAgeGroupRowViewModel {
         mCasualtiesDataRepositoryManager = casualtiesDataRepositoryManager;
 
         CasualtiesDataRow casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(mRowIndex);
-        ageGroup.set(casualtiesDataRow.getAgeGroup());
+        ageGroup.set(casualtiesDataRow.getType());
         deadMale.set(casualtiesDataRow.getDead().male);
         deadFemale.set(casualtiesDataRow.getDead().female);
         missingMale.set(casualtiesDataRow.getMissing().male);

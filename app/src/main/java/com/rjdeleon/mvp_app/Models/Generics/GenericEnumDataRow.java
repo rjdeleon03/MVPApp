@@ -143,18 +143,57 @@ public abstract class GenericEnumDataRow {
         }
     }
 
+    public enum NeedsType implements GenericEnum {
+        KITCHEN_MATERIALS,
+        SLEEPING_KITS,
+        PLASTIC_SHEETS,
+        HYGIENE_KITS,
+        HOUSE_REPAIR_KITS,
+        CLOTHES,
+        WATER_FILTER,
+        OTHERS;
 
-    private GenericEnum ageGroup;
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
 
-    public GenericEnumDataRow(GenericEnum ageGroup) {
-        this.ageGroup = ageGroup;
+        public static List<NeedsType> asList() {
+            List<NeedsType> list = new ArrayList<>();
+            list.add(KITCHEN_MATERIALS);
+            list.add(SLEEPING_KITS);
+            list.add(PLASTIC_SHEETS);
+            list.add(HYGIENE_KITS);
+            list.add(HOUSE_REPAIR_KITS);
+            list.add(CLOTHES);
+            list.add(WATER_FILTER);
+            list.add(OTHERS);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
     }
 
-    public GenericEnum getAgeGroup() {
-        return ageGroup;
+
+    private GenericEnum type;
+
+    public GenericEnumDataRow(GenericEnum type) {
+        this.type = type;
     }
 
-    public void setAgeGroup(GenericEnum ageGroup) {
-        this.ageGroup = ageGroup;
+    public GenericEnum getType() {
+        return type;
+    }
+
+    public void setType(GenericEnum type) {
+        this.type = type;
     }
 }

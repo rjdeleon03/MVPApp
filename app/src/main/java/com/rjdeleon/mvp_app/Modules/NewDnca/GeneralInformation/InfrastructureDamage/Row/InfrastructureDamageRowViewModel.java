@@ -35,7 +35,7 @@ public class InfrastructureDamageRowViewModel extends BaseAgeGroupRowViewModel {
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
         InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(rowIndex);
-        ageGroup.set(infrastructureDamageDataRow.getAgeGroup());
+        ageGroup.set(infrastructureDamageDataRow.getType());
         infraNumber.set(infrastructureDamageDataRow.getDamaged());
         status.set(infrastructureDamageDataRow.isFunctional());
         remarks.set(infrastructureDamageDataRow.getRemarks());

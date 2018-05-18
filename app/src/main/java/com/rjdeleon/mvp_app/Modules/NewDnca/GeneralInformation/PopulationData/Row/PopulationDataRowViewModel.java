@@ -37,7 +37,7 @@ public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
-        ageGroup.set(populationDataRow.getAgeGroup());
+        ageGroup.set(populationDataRow.getType());
         totalMale.set(populationDataRow.getTotal().male);
         totalFemale.set(populationDataRow.getTotal().female);
         affectedMale.set(populationDataRow.getAffected().male);

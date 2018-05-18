@@ -37,14 +37,14 @@ public abstract class GenericEnumDataRow {
         }
 
         public static List<AgeGroup> asList() {
-            List<AgeGroup> ageGroupList = new ArrayList<>();
-            ageGroupList.add(AGE_0_5);
-            ageGroupList.add(AGE_6_9);
-            ageGroupList.add(AGE_10_12);
-            ageGroupList.add(AGE_13_17);
-            ageGroupList.add(AGE_18_59);
-            ageGroupList.add(AGE_60_PLUS);
-            return ageGroupList;
+            List<AgeGroup> list = new ArrayList<>();
+            list.add(AGE_0_5);
+            list.add(AGE_6_9);
+            list.add(AGE_10_12);
+            list.add(AGE_13_17);
+            list.add(AGE_18_59);
+            list.add(AGE_60_PLUS);
+            return list;
         }
 
         @Override
@@ -82,24 +82,24 @@ public abstract class GenericEnumDataRow {
         }
 
         public static List<InfraType> asList() {
-            List<InfraType> ageGroupList = new ArrayList<>();
-            ageGroupList.add(SCHOOL);
-            ageGroupList.add(CHURCH);
-            ageGroupList.add(COVERED_COURT);
-            ageGroupList.add(BRGY_HALL);
-            ageGroupList.add(BRGY_HEALTH_STATION);
-            ageGroupList.add(EVACUATION_CENTER);
-            ageGroupList.add(BRIDGES);
-            ageGroupList.add(ROADS);
-            ageGroupList.add(MARKET);
-            ageGroupList.add(ELECTRICITY);
-            ageGroupList.add(WATER);
-            ageGroupList.add(HOSPITAL);
-            ageGroupList.add(SEAPORT_AIRPORT);
-            ageGroupList.add(COMMUNICATION_LINES);
-            ageGroupList.add(LIVELIHOOD_FACILITIES);
-            ageGroupList.add(OTHERS);
-            return ageGroupList;
+            List<InfraType> list = new ArrayList<>();
+            list.add(SCHOOL);
+            list.add(CHURCH);
+            list.add(COVERED_COURT);
+            list.add(BRGY_HALL);
+            list.add(BRGY_HEALTH_STATION);
+            list.add(EVACUATION_CENTER);
+            list.add(BRIDGES);
+            list.add(ROADS);
+            list.add(MARKET);
+            list.add(ELECTRICITY);
+            list.add(WATER);
+            list.add(HOSPITAL);
+            list.add(SEAPORT_AIRPORT);
+            list.add(COMMUNICATION_LINES);
+            list.add(LIVELIHOOD_FACILITIES);
+            list.add(OTHERS);
+            return list;
         }
 
         @Override
@@ -112,6 +112,37 @@ public abstract class GenericEnumDataRow {
             return this.ordinal();
         }
     }
+
+    public enum HouseType implements GenericEnum {
+        CONCRETE,
+        SEMI_CONCRETE,
+        LIGHT_MATERIALS,
+        ALL;
+
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
+
+        public static List<HouseType> asList() {
+            List<HouseType> list = new ArrayList<>();
+            list.add(CONCRETE);
+            list.add(SEMI_CONCRETE);
+            list.add(LIGHT_MATERIALS);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
+
 
     private GenericEnum ageGroup;
 

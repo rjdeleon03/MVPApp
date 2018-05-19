@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.AppUtil;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
@@ -36,7 +37,7 @@ import java.util.TimerTask;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewDncaGenInfoFragment extends Fragment {
+public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
 
     public static final String NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG";
@@ -48,9 +49,6 @@ public class NewDncaGenInfoFragment extends Fragment {
 
     private NewDncaGenInfoViewModel mViewModel;
     private NewDncaGenInfoFragmentBinding mBinding;
-
-    private NewDncaGenInfoFragmentAdapter mAdapter;
-    private ViewPager mPager;
 
     public static NewDncaGenInfoFragment newInstance() {
         return new NewDncaGenInfoFragment();
@@ -79,15 +77,13 @@ public class NewDncaGenInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.new_dnca_gen_info_fragment, container, false);
+        View root = super.onCreateView(inflater, container, savedInstanceState);
 
         // Bind viewModel to view
         if (mBinding == null) {
             mBinding = NewDncaGenInfoFragmentBinding.bind(root);
         }
         mBinding.setViewModel(mViewModel);
-
-        mAdapter = new NewDncaGenInfoFragmentAdapter(getChildFragmentManager());
 
         {
             // Setup calamity details fragment
@@ -180,31 +176,8 @@ public class NewDncaGenInfoFragment extends Fragment {
                     NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG);
         }
 
-        // Initialize viewPager
-        mPager = root.findViewById(R.id.nd_gen_info_pager);
-        mPager.setAdapter(mAdapter);
-        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        AppUtil.hideSoftKeyboard(getActivity());
-                    }
-                }, 300);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+        // Call to parent class to setup the view pager
+        super.setupViewPager(root, R.id.nd_gen_info_pager);
 
         return root;
     }

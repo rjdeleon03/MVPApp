@@ -44,25 +44,13 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <ProgressBar
-            android:id="@+id/nd_calamity_progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/lightYellow"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="0"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/nd_gen_info_stepper_container"  />
-
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nd_calamity_progress">
+            app:layout_constraintTop_toBottomOf="@+id/nd_gen_info_stepper_container">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/nd_gen_info_pager"

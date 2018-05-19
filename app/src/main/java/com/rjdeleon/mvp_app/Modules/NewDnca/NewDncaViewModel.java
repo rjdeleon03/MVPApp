@@ -62,6 +62,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     }
 
     /**
+     * Handles navigation when shelter information button is pressed
+     */
+    public void navigateOnShelterInfoButtonPressed() {
+        mNewDncaNavigator.onShelterInfoButtonPressed();
+    }
+
+    /**
      * Callback for when form has been created
      * @param form
      */

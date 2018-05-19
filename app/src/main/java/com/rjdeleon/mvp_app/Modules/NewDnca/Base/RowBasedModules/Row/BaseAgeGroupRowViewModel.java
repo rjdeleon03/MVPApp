@@ -1,10 +1,10 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Row;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row;
 
 import android.content.Context;
 import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
 public abstract class BaseAgeGroupRowViewModel extends NewDncaBaseViewModel {
@@ -12,7 +12,7 @@ public abstract class BaseAgeGroupRowViewModel extends NewDncaBaseViewModel {
     protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
     protected int mRowIndex;
 
-    public final ObservableField<GenericEnum> ageGroup = new ObservableField<>();
+    public final ObservableField<GenericEnum> type = new ObservableField<>();
 
     /**
      * Constructor

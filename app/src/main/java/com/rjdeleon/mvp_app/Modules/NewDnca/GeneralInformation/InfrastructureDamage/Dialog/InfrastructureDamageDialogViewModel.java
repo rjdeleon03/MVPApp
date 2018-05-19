@@ -7,7 +7,7 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
 public class InfrastructureDamageDialogViewModel extends BaseAgeGroupDialogViewModel {
@@ -33,10 +33,10 @@ public class InfrastructureDamageDialogViewModel extends BaseAgeGroupDialogViewM
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
         if (isNewRow) {
-            ageGroup.set(mInfrastructureDamageRepositoryManager.getInfrastructureDamageType(infaTypeIndex));
+            type.set(mInfrastructureDamageRepositoryManager.getInfrastructureDamageType(infaTypeIndex));
         } else {
             InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(infaTypeIndex);
-            ageGroup.set(infrastructureDamageDataRow.getType());
+            type.set(infrastructureDamageDataRow.getType());
             infraNumber.set(infrastructureDamageDataRow.getDamaged());
             status.set(infrastructureDamageDataRow.isFunctional());
             remarks.set(infrastructureDamageDataRow.getRemarks());
@@ -49,7 +49,7 @@ public class InfrastructureDamageDialogViewModel extends BaseAgeGroupDialogViewM
     @Override
     public void navigateOnOkButtonPressed() {
         InfrastructureDamageDataRow infrastructureDamageDataRow = new InfrastructureDamageDataRow(
-                (GenericEnumDataRow.InfraType) ageGroup.get(),
+                (GenericEnumDataRow.InfraType) type.get(),
                 infraNumber.get(),
                 status.get(),
                 remarks.get()

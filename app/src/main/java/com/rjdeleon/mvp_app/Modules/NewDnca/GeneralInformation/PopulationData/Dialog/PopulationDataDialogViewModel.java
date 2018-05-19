@@ -6,7 +6,7 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
 public class PopulationDataDialogViewModel extends BaseAgeGroupDialogViewModel {
@@ -35,10 +35,10 @@ public class PopulationDataDialogViewModel extends BaseAgeGroupDialogViewModel {
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         if (isNewRow) {
-            ageGroup.set(mPopulationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
+            type.set(mPopulationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
         } else {
             PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
-            ageGroup.set(populationDataRow.getType());
+            type.set(populationDataRow.getType());
             totalMale.set(populationDataRow.getTotal().male);
             totalFemale.set(populationDataRow.getTotal().female);
             affectedMale.set(populationDataRow.getAffected().male);
@@ -54,7 +54,7 @@ public class PopulationDataDialogViewModel extends BaseAgeGroupDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         PopulationDataRow populationDataRow = new PopulationDataRow(
-                (GenericEnumDataRow.AgeGroup) ageGroup.get(),
+                (GenericEnumDataRow.AgeGroup) type.get(),
                 new GenderTuple(totalMale.get(), totalFemale.get()),
                 new GenderTuple(affectedMale.get(), affectedFemale.get()),
                 new GenderTuple(displacedMale.get(), displacedFemale.get())

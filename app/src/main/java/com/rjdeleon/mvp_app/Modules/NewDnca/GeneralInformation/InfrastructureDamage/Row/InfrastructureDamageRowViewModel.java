@@ -6,8 +6,8 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Row.BaseAgeGroupRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
 public class InfrastructureDamageRowViewModel extends BaseAgeGroupRowViewModel {
@@ -35,7 +35,7 @@ public class InfrastructureDamageRowViewModel extends BaseAgeGroupRowViewModel {
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
         InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(rowIndex);
-        ageGroup.set(infrastructureDamageDataRow.getType());
+        type.set(infrastructureDamageDataRow.getType());
         infraNumber.set(infrastructureDamageDataRow.getDamaged());
         status.set(infrastructureDamageDataRow.isFunctional());
         remarks.set(infrastructureDamageDataRow.getRemarks());

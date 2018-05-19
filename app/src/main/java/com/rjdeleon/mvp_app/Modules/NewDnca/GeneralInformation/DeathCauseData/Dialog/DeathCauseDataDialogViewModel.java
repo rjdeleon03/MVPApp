@@ -6,7 +6,7 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
 
 public class DeathCauseDataDialogViewModel extends BaseAgeGroupDialogViewModel {
@@ -47,10 +47,10 @@ public class DeathCauseDataDialogViewModel extends BaseAgeGroupDialogViewModel {
         mDeathCauseRepositoryManager = deathCauseRepositoryManager;
 
         if (isNewRow) {
-            ageGroup.set(mDeathCauseRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
+            type.set(mDeathCauseRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
         } else {
             DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(ageGroupIndex);
-            ageGroup.set(deathCauseDataRow.getType());
+            type.set(deathCauseDataRow.getType());
             measlesMale.set(deathCauseDataRow.getMeasles().male);
             measlesFemale.set(deathCauseDataRow.getMeasles().female);
             diarrheaMale.set(deathCauseDataRow.getDiarrhea().male);
@@ -78,7 +78,7 @@ public class DeathCauseDataDialogViewModel extends BaseAgeGroupDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         DeathCauseDataRow deathCauseDataRow = new DeathCauseDataRow(
-                (GenericEnumDataRow.AgeGroup) ageGroup.get(),
+                (GenericEnumDataRow.AgeGroup) type.get(),
                 new GenderTuple(measlesMale.get(), measlesFemale.get()),
                 new GenderTuple(diarrheaMale.get(), diarrheaFemale.get()),
                 new GenderTuple(pneumoniaMale.get(), pneumoniaFemale.get()),

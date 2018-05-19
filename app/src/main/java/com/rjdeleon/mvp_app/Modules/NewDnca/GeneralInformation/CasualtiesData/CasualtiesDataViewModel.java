@@ -5,7 +5,7 @@ import android.content.Context;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;

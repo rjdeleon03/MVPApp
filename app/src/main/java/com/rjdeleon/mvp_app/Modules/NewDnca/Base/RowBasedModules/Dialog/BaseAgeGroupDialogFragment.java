@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog;
 
 import android.app.Dialog;
 import android.graphics.Color;

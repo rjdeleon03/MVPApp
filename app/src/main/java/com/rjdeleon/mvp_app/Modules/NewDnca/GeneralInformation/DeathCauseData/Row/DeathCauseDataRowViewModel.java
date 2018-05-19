@@ -4,8 +4,8 @@ import android.content.Context;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.BaseAgeGroupNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Row.BaseAgeGroupRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
 
 public class DeathCauseDataRowViewModel extends BaseAgeGroupRowViewModel {
@@ -47,7 +47,7 @@ public class DeathCauseDataRowViewModel extends BaseAgeGroupRowViewModel {
         mDeathCauseRepositoryManager = deathCauseRepositoryManager;
 
         DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(mRowIndex);
-        ageGroup.set(deathCauseDataRow.getType());
+        type.set(deathCauseDataRow.getType());
         measlesMale.set(deathCauseDataRow.getMeasles().male);
         measlesFemale.set(deathCauseDataRow.getMeasles().female);
         diarrheaMale.set(deathCauseDataRow.getDiarrhea().male);

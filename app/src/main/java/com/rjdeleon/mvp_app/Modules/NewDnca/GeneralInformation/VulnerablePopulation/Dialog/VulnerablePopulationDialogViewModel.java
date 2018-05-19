@@ -8,7 +8,7 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
 
 public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewModel {
@@ -43,11 +43,11 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
         mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
 
         if (isNewRow) {
-            ageGroup.set(mVulnerablePopulationRepositoryManager.getVulnerablePopulationAgeGroup(ageGroupIndex));
+            type.set(mVulnerablePopulationRepositoryManager.getVulnerablePopulationAgeGroup(ageGroupIndex));
         } else {
             VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(ageGroupIndex);
 
-            ageGroup.set(vulnerablePopulationDataRow.getType());
+            type.set(vulnerablePopulationDataRow.getType());
             pregnant.set(vulnerablePopulationDataRow.getPregnant());
             lactating.set(vulnerablePopulationDataRow.getLactating());
             lgbt.set(vulnerablePopulationDataRow.getLgbt());
@@ -62,7 +62,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
         }
 
         // Set visibility of fields such as pregnant, lactating, and lgbt
-        shouldShowOtherFields.set(ageGroup.get().getOrdinal() >= GenericEnumDataRow.AgeGroup.AGE_10_12.getOrdinal());
+        shouldShowOtherFields.set(type.get().getOrdinal() >= GenericEnumDataRow.AgeGroup.AGE_10_12.getOrdinal());
     }
 
     /**
@@ -71,7 +71,7 @@ public class VulnerablePopulationDialogViewModel extends BaseAgeGroupDialogViewM
     @Override
     public void navigateOnOkButtonPressed() {
         VulnerablePopulationDataRow vulnerablePopulationDataRow = new VulnerablePopulationDataRow(
-                (GenericEnumDataRow.AgeGroup) ageGroup.get(),
+                (GenericEnumDataRow.AgeGroup) type.get(),
                 lactating.get(),
                 pregnant.get(),
                 lgbt.get(),

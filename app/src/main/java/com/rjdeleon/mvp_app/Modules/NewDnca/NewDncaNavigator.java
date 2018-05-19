@@ -7,4 +7,6 @@ public interface NewDncaNavigator {
     void onFormDetailsButtonPressed();
 
     void onGenInfoButtonPressed();
+
+    void onShelterInfoButtonPressed();
 }

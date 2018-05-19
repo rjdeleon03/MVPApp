@@ -65,7 +65,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     }
 
     /**
-     * Show Form Details fragment
+     * Show form details fragment
      */
     @Override
     public void onFormDetailsButtonPressed() {
@@ -75,13 +75,21 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     }
 
     /**
-     * Show General Information fragment
+     * Show general information fragment
      */
     @Override
     public void onGenInfoButtonPressed() {
         NewDncaGenInfoFragment newDncaGenInfoFragment = (NewDncaGenInfoFragment) findOrCreateViewFragment(NewDncaComponent.GEN_INFO);
         mGenInfoViewModel = (NewDncaGenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
         newDncaGenInfoFragment.setViewModel(mGenInfoViewModel);
+    }
+
+    /**
+     * Show shelter information fragment
+     */
+    @Override
+    public void onShelterInfoButtonPressed() {
+
     }
 
     @NonNull

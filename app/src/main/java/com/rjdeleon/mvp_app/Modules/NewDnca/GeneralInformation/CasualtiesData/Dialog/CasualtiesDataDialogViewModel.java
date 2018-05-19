@@ -6,7 +6,7 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AgeGroupModules.Dialog.BaseAgeGroupDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataRepositoryManager;
 
 public class CasualtiesDataDialogViewModel extends BaseAgeGroupDialogViewModel {
@@ -33,10 +33,10 @@ public class CasualtiesDataDialogViewModel extends BaseAgeGroupDialogViewModel {
         mCasualtiesDataRepositoryManager = casualtiesDataRepositoryManager;
 
         if (isNewRow) {
-            ageGroup.set(mCasualtiesDataRepositoryManager.getCasualtiesDataAgeGroup(ageGroupIndex));
+            type.set(mCasualtiesDataRepositoryManager.getCasualtiesDataAgeGroup(ageGroupIndex));
         } else {
             CasualtiesDataRow casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(ageGroupIndex);
-            ageGroup.set(casualtiesDataRow.getType());
+            type.set(casualtiesDataRow.getType());
             deadMale.set(casualtiesDataRow.getDead().male);
             deadFemale.set(casualtiesDataRow.getDead().female);
             missingMale.set(casualtiesDataRow.getMissing().male);
@@ -52,7 +52,7 @@ public class CasualtiesDataDialogViewModel extends BaseAgeGroupDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         CasualtiesDataRow casualtiesDataRow = new CasualtiesDataRow(
-                (GenericEnumDataRow.AgeGroup) ageGroup.get(),
+                (GenericEnumDataRow.AgeGroup) type.get(),
                 new GenderTuple(deadMale.get(), deadFemale.get()),
                 new GenderTuple(missingMale.get(), missingFemale.get()),
                 new GenderTuple(injuredMale.get(), injuredFemale.get())

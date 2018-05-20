@@ -28,6 +28,7 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
 
         // Clear references to avoid potential memory leaks
         mNewDncaNavigator = null;
+        DNCAFormRepository.destroyInstance();
     }
 
     /**
@@ -37,7 +38,6 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
 
         // Perform clean up and navigate when back button is pressed
         mNewDncaNavigator.onBackButtonPressed();
-        DNCAFormRepository.destroyInstance();
     }
 
     /**

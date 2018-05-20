@@ -27,7 +27,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.NewDncaGenInfoFragmentBinding;
+import com.rjdeleon.mvp_app.databinding.MultiPageFragmentBinding;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
@@ -47,8 +47,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
     public static final String NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG";
 
-    private NewDncaGenInfoViewModel mViewModel;
-    private NewDncaGenInfoFragmentBinding mBinding;
+    private MultiPageFragmentBinding mBinding;
 
     public static NewDncaGenInfoFragment newInstance() {
         return new NewDncaGenInfoFragment();
@@ -56,14 +55,6 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
 
     public NewDncaGenInfoFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Sets the view model
-     * @param viewModel
-     */
-    public void setViewModel(@NonNull NewDncaGenInfoViewModel viewModel) {
-        mViewModel = viewModel;
     }
 
     /**
@@ -81,14 +72,19 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
 
         // Bind viewModel to view
         if (mBinding == null) {
-            mBinding = NewDncaGenInfoFragmentBinding.bind(root);
+            mBinding = MultiPageFragmentBinding.bind(root);
         }
         mBinding.setViewModel(mViewModel);
+
+        NewDncaGenInfoRepositoryManager repositoryManager = (NewDncaGenInfoRepositoryManager) mViewModel;
+        if (repositoryManager == null) {
+            return root;
+        }
 
         {
             // Setup calamity details fragment
             CalamityDetailsFragment calamityDetailsFragment = CalamityDetailsFragment.newInstance();
-            CalamityDetailsViewModel calamityDetailsViewModel = new CalamityDetailsViewModel(getContext().getApplicationContext(), mViewModel);
+            CalamityDetailsViewModel calamityDetailsViewModel = new CalamityDetailsViewModel(getContext().getApplicationContext(), repositoryManager);
             calamityDetailsFragment.setViewModel(calamityDetailsViewModel);
             mAdapter.addFragment(calamityDetailsFragment);
 
@@ -101,7 +97,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup population data fragment
             PopulationDataFragment populationDataFragment = PopulationDataFragment.newInstance();
-            PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(getContext().getApplicationContext(), mViewModel);
+            PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(getContext().getApplicationContext(), repositoryManager);
             populationDataFragment.setViewModel(populationDataViewModel);
             mAdapter.addFragment(populationDataFragment);
 
@@ -114,7 +110,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup family data fragment
             FamilyDataFragment familyDataFragment = FamilyDataFragment.newInstance();
-            FamilyDataViewModel familyDataViewModel = new FamilyDataViewModel(getContext().getApplicationContext(), mViewModel);
+            FamilyDataViewModel familyDataViewModel = new FamilyDataViewModel(getContext().getApplicationContext(), repositoryManager);
             familyDataFragment.setViewModel(familyDataViewModel);
             mAdapter.addFragment(familyDataFragment);
 
@@ -127,7 +123,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup vulnerable population fragment
             VulnerablePopulationFragment vulnerablePopulationFragment = VulnerablePopulationFragment.getInstance();
-            VulnerablePopulationViewModel vulnerablePopulationViewModel = new VulnerablePopulationViewModel(getContext().getApplicationContext(), mViewModel);
+            VulnerablePopulationViewModel vulnerablePopulationViewModel = new VulnerablePopulationViewModel(getContext().getApplicationContext(), repositoryManager);
             vulnerablePopulationFragment.setViewModel(vulnerablePopulationViewModel);
             mAdapter.addFragment(vulnerablePopulationFragment);
 
@@ -140,7 +136,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup casualties data fragment
             CasualtiesDataFragment casualtiesDataFragment = CasualtiesDataFragment.getInstance();
-            CasualtiesDataViewModel casualtiesDataViewModel = new CasualtiesDataViewModel(getContext().getApplicationContext(), mViewModel);
+            CasualtiesDataViewModel casualtiesDataViewModel = new CasualtiesDataViewModel(getContext().getApplicationContext(), repositoryManager);
             casualtiesDataFragment.setViewModel(casualtiesDataViewModel);
             mAdapter.addFragment(casualtiesDataFragment);
 
@@ -153,7 +149,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup death cause data fragment
             DeathCauseDataFragment deathCauseDataFragment = DeathCauseDataFragment.getInstance();
-            DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(getContext().getApplicationContext(), mViewModel);
+            DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(getContext().getApplicationContext(), repositoryManager);
             deathCauseDataFragment.setViewModel(deathCauseDataViewModel);
             mAdapter.addFragment(deathCauseDataFragment);
 
@@ -166,7 +162,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup infrastructure damage fragment
             InfrastructureDamageFragment infrastructureDamageFragment = InfrastructureDamageFragment.getInstance();
-            InfrastructureDamageViewModel infrastructureDamageViewModel = new InfrastructureDamageViewModel(getContext().getApplicationContext(), mViewModel);
+            InfrastructureDamageViewModel infrastructureDamageViewModel = new InfrastructureDamageViewModel(getContext().getApplicationContext(), repositoryManager);
             infrastructureDamageFragment.setViewModel(infrastructureDamageViewModel);
             mAdapter.addFragment(infrastructureDamageFragment);
 
@@ -177,7 +173,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         }
 
         // Call to parent class to setup the view pager
-        super.setupViewPager(root, R.id.nd_gen_info_pager);
+        super.setupViewPager(root, R.id.nd_multi_page_pager);
 
         return root;
     }

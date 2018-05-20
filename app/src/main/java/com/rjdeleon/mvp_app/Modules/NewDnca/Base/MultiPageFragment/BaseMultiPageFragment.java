@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -16,8 +17,18 @@ public abstract class BaseMultiPageFragment extends Fragment {
     protected BaseMultiPageFragmentAdapter mAdapter;
     protected ViewPager mPager;
 
+    protected BaseMultiPageViewModel mViewModel;
+
     public BaseMultiPageFragment() {
         // Required empty public constructor
+    }
+
+    /**
+     * Sets the view model
+     * @param viewModel
+     */
+    public void setViewModel(@NonNull BaseMultiPageViewModel viewModel) {
+        mViewModel = viewModel;
     }
 
     /**
@@ -31,7 +42,7 @@ public abstract class BaseMultiPageFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.new_dnca_gen_info_fragment, container, false);
+        View root = inflater.inflate(R.layout.multi_page_fragment, container, false);
 
         // Initialize adapter
         mAdapter = new BaseMultiPageFragmentAdapter(getChildFragmentManager());
@@ -39,6 +50,11 @@ public abstract class BaseMultiPageFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Sets up the view pager
+     * @param view
+     * @param pagerId
+     */
     protected void setupViewPager(View view, int pagerId) {
 
         // Initialize viewPager

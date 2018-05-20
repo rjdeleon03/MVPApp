@@ -31,15 +31,12 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     private DeathCauseData mDeathCauseData;
     private InfrastructureDamageData mInfrastructureDamageData;
 
-    public final ObservableInt viewPagerIndex;
-
     /**
      * Constructor
      * @param context
      */
     public NewDncaGenInfoViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context, dncaFormRepository);
-        viewPagerIndex = new ObservableInt(0);
     }
 
     /**

@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragme
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
@@ -21,21 +24,22 @@ import com.rjdeleon.mvp_app.databinding.NewDncaActivityBinding;
 public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
 
     public static final String NEW_DNCA_VIEWMODEL_TAG = "NEW_DNCA_VIEWMODEL_TAG";
-
     public static final String NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG = "NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG";
-
     public static final String NEW_DNCA_GEN_INFO_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VIEWMODEL_TAG";
+    public static final String SHELTER_INFO_VIEWMODEL_TAG = "SHELTER_INFO_VIEWMODEL_TAG";
 
     private NewDncaViewModel mMainViewModel;
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
     private NewDncaGenInfoViewModel mGenInfoViewModel;
+    private ShelterInfoViewModel mShelterInfoViewModel;
 
     private NewDncaActivityBinding mMainBinding;
 
     private enum NewDncaComponent {
         MENU,
         FORM_DETAILS,
-        GEN_INFO
+        GEN_INFO,
+        SHELTER_INFO
     }
 
     @Override
@@ -57,6 +61,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
         // Bind viewModel to view
         mMainBinding.setViewModel(mMainViewModel);
+    }
+
+    @Override
+    protected void onStop() {
+        mMainViewModel.performCleanup();
+        super.onStop();
     }
 
     @Override
@@ -89,7 +99,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onShelterInfoButtonPressed() {
-
+        ShelterInfoFragment shelterInfoFragment = (ShelterInfoFragment) findOrCreateViewFragment(NewDncaComponent.SHELTER_INFO);
+        mShelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
+        shelterInfoFragment.setViewModel(mShelterInfoViewModel);
     }
 
     @NonNull
@@ -117,6 +129,13 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 if (fragment == null || !(fragment instanceof NewDncaGenInfoFragment)) {
                     fragment = NewDncaGenInfoFragment.newInstance();
                 }
+                break;
+
+            case SHELTER_INFO:
+                if (fragment == null || !(fragment instanceof  ShelterInfoFragment)) {
+                    fragment = ShelterInfoFragment.newInstance();
+                }
+                break;
         }
 
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_dnca_fragment_container, addToBackstack);
@@ -147,6 +166,13 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 viewModel = new NewDncaGenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_GEN_INFO_VIEWMODEL_TAG;
+                break;
+
+            case SHELTER_INFO:
+                viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
+                tag = SHELTER_INFO_VIEWMODEL_TAG;
+                break;
         }
 
         // Bind viewModel to activity's lifecycle using fragment manager

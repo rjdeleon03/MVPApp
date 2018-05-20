@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewDncaGenInfoFragmentAdapter extends FragmentPagerAdapter {
+public class NewDncaBaseFragmentPagerAdapter extends FragmentPagerAdapter {
 
     List<Fragment> mFragmentList;
 
-    public NewDncaGenInfoFragmentAdapter(FragmentManager fm) {
+    public NewDncaBaseFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
         mFragmentList = new ArrayList<>();
     }

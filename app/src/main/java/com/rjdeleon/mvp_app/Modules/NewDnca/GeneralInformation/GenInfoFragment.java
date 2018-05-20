@@ -2,15 +2,11 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
 
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.AppUtil;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
@@ -19,7 +15,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Ca
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModelGenInfo;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment;
@@ -27,17 +23,13 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.MultiPageFragmentBinding;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
+public class GenInfoFragment extends BaseMultiPageFragment {
 
     public static final String NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG";
@@ -47,13 +39,11 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
     public static final String NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG";
 
-    private MultiPageFragmentBinding mBinding;
-
-    public static NewDncaGenInfoFragment newInstance() {
-        return new NewDncaGenInfoFragment();
+    public static GenInfoFragment newInstance() {
+        return new GenInfoFragment();
     }
 
-    public NewDncaGenInfoFragment() {
+    public GenInfoFragment() {
         // Required empty public constructor
     }
 
@@ -70,13 +60,8 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         // Inflate the layout for this fragment
         View root = super.onCreateView(inflater, container, savedInstanceState);
 
-        // Bind viewModel to view
-        if (mBinding == null) {
-            mBinding = MultiPageFragmentBinding.bind(root);
-        }
-        mBinding.setViewModel(mViewModel);
-
-        NewDncaGenInfoRepositoryManager repositoryManager = (NewDncaGenInfoRepositoryManager) mViewModel;
+        // Setup specific repository manager
+        GenInfoRepositoryManager repositoryManager = (GenInfoRepositoryManager) mViewModel;
         if (repositoryManager == null) {
             return root;
         }
@@ -110,7 +95,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup family data fragment
             FamilyDataFragment familyDataFragment = FamilyDataFragment.newInstance();
-            FamilyDataViewModel familyDataViewModel = new FamilyDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            FamilyDataViewModelGenInfo familyDataViewModel = new FamilyDataViewModelGenInfo(getContext().getApplicationContext(), repositoryManager);
             familyDataFragment.setViewModel(familyDataViewModel);
             mAdapter.addFragment(familyDataFragment);
 
@@ -173,7 +158,7 @@ public class NewDncaGenInfoFragment extends BaseMultiPageFragment {
         }
 
         // Call to parent class to setup the view pager
-        super.setupViewPager(root, R.id.nd_multi_page_pager);
+        super.setupViewPager(root);
 
         return root;
     }

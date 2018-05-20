@@ -5,10 +5,10 @@ import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
-public class CalamityDetailsViewModel extends NewDncaGenInfoBaseViewModel {
+public class CalamityDetailsViewModel extends GenInfoBaseViewModel {
 
     public final ObservableField<String> calamityType = new ObservableField<>("");
     public final ObservableField<SimpleDate> dateOccurred = new ObservableField<>(new SimpleDate());
@@ -18,12 +18,12 @@ public class CalamityDetailsViewModel extends NewDncaGenInfoBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public CalamityDetailsViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager);
+    public CalamityDetailsViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager);
 
-        CalamityDesc calamityDesc = mNewDncaGenInfoRepositoryManager.getCalamityDetails();
+        CalamityDesc calamityDesc = mGenInfoRepositoryManager.getCalamityDetails();
         calamityType.set(calamityDesc.getCalamityType());
         dateOccurred.set(calamityDesc.getDateOccurred());
         eventDescription.set(calamityDesc.getEventDescription());
@@ -39,7 +39,7 @@ public class CalamityDetailsViewModel extends NewDncaGenInfoBaseViewModel {
         calamityDesc.setDateOccurred(dateOccurred.get());
         calamityDesc.setEventDescription(eventDescription.get());
         calamityDesc.setAreaDescription(areaDescription.get());
-        mNewDncaGenInfoRepositoryManager.saveCalamityDetails(calamityDesc);
+        mGenInfoRepositoryManager.saveCalamityDetails(calamityDesc);
     }
 
     /**

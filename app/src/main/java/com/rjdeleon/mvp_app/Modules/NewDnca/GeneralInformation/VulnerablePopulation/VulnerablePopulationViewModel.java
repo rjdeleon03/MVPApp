@@ -6,21 +6,22 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class VulnerablePopulationViewModel extends BaseEnumViewModel implements VulnerablePopulationRepositoryManager {
+public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel implements VulnerablePopulationRepositoryManager {
 
     /**
      * Constructor
      *
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public VulnerablePopulationViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
-        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getVulnerablePopulation().getVulnerablePopulationDataRows());
+    public VulnerablePopulationViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getVulnerablePopulation().getVulnerablePopulationDataRows());
         super.updateAgeGroupList();
     }
 
@@ -31,7 +32,7 @@ public class VulnerablePopulationViewModel extends BaseEnumViewModel implements 
     public void navigateOnSaveButtonPressed() {
         VulnerablePopulationData vulnerablePopulationData = new VulnerablePopulationData();
         vulnerablePopulationData.setVulnerablePopulationDataRows((List<VulnerablePopulationDataRow>)(Object) mGenericEnumDataRows);
-        mNewDncaGenInfoRepositoryManager.saveVulnerablePopulation(vulnerablePopulationData);
+        mGenInfoRepositoryManager.saveVulnerablePopulation(vulnerablePopulationData);
     }
 
     /**

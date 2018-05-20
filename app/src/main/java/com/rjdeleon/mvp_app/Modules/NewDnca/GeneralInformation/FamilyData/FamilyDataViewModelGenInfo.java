@@ -4,11 +4,10 @@ import android.content.Context;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
-public class FamilyDataViewModel extends NewDncaGenInfoBaseViewModel {
+public class FamilyDataViewModelGenInfo extends GenInfoBaseViewModel {
 
     public final ObservableInt totalFamilies = new ObservableInt(0);
     public final ObservableInt affectedFamilies = new ObservableInt(0);
@@ -20,12 +19,12 @@ public class FamilyDataViewModel extends NewDncaGenInfoBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public FamilyDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager);
+    public FamilyDataViewModelGenInfo(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager);
 
-        FamilyData familyData = mNewDncaGenInfoRepositoryManager.getFamilyData();
+        FamilyData familyData = mGenInfoRepositoryManager.getFamilyData();
         totalFamilies.set(familyData.getTotalFamilies());
         affectedFamilies.set(familyData.getAffectedFamilies());
         displacedFamilies.set(familyData.getDisplacedFamilies());
@@ -45,6 +44,6 @@ public class FamilyDataViewModel extends NewDncaGenInfoBaseViewModel {
         familyData.setTotalHouseholds(totalHouseholds.get());
         familyData.setAffectedHouseholds(affectedHouseholds.get());
         familyData.setDisplacedHouseholds(displacedHouseholds.get());
-        mNewDncaGenInfoRepositoryManager.saveFamilyData(familyData);
+        mGenInfoRepositoryManager.saveFamilyData(familyData);
     }
 }

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData.Dialog.HouseDamageDialogViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor"
+            app:cardCornerRadius="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/colorPrimary">
+
+                    <ImageButton
+                        android:id="@+id/nd_population_dlg_cancel"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/round_button_cancel"
+                        android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_close_card"
+                        app:borderWidth="0dp"
+                        app:fabSize="mini"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/comfortaa_reg"
+                        android:text="@{viewModel.type.toString()}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/nd_population_dlg_ok"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/round_button_ok"
+                        android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
+                        android:src="@drawable/ic_check"
+                        app:borderWidth="0dp"
+                        app:fabSize="mini"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/nd_house_damage_dlg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="16dp">
+
+                        <!-- House Count -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_total_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Number of Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_total"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginStart="8dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.houseCount}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/nd_house_damage_row_partially_damaged_label"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- Owned Houses -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_owned_houses_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Owned Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_total" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_owned_houses"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.ownedHouse}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_total"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_total" />
+
+                        <!-- Rented Houses -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_rented_houses_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Rented Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_owned_houses" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_rented_houses"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.rentedHouse}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_owned_houses"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_owned_houses" />
+
+                        <!-- Shared Houses -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_shared_houses_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Shared Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_rented_houses" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_shared_houses"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.sharedHouse}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_rented_houses"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_rented_houses" />
+
+                        <!-- Owned Land -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_owned_land_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Owned Land"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_shared_houses" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_owned_land"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.ownedLand}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_shared_houses"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_shared_houses" />
+
+                        <!-- Rented Land -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_rented_land_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Rented Land"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_owned_land" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_rented_land"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.rentedLand}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_owned_land"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_owned_land" />
+
+                        <!-- Tenanted Land -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_tenant_land_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Tenanted Land"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_rented_land" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_tenant_land"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.tenantLand}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_rented_land"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_rented_land" />
+
+                        <!-- Informal Settlers -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_informal_settlers_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Informal Settlers"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_tenant_land" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_informal_settlers"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.informalSettlers}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_tenant_land"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_tenant_land" />
+
+                        <!-- Partially-damaged Houses -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_partially_damaged_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Partially-damaged Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_informal_settlers" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_partially_damaged"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.partiallyDamaged}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_informal_settlers"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_informal_settlers" />
+
+                        <!-- Totally-damaged Houses -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_totally_damaged_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="Totally-damaged Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_partially_damaged" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_totally_damaged"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.totallyDamaged}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_partially_damaged"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_partially_damaged" />
+
+                        <!-- All Damaged Houses (Total) -->
+                        <TextView
+                            android:id="@+id/nd_house_damage_row_all_damaged_house_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="All Damaged Houses"
+                            android:textColor="@android:color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_totally_damaged" />
+
+                        <EditText
+                            android:id="@+id/nd_house_damage_row_all_damaged_house"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="0dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.allDamaged}"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/nd_house_damage_row_totally_damaged"
+                            app:layout_constraintTop_toBottomOf="@+id/nd_house_damage_row_totally_damaged" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</layout>

@@ -6,21 +6,22 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class DeathCauseDataViewModel extends BaseEnumViewModel implements DeathCauseRepositoryManager {
+public class DeathCauseDataViewModel extends GenInfoEnumBaseViewModel implements DeathCauseRepositoryManager {
 
     /**
      * Constructor
      *
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public DeathCauseDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
-        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getDeathCauseData().getDeathCauseDataRows());
+    public DeathCauseDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getDeathCauseData().getDeathCauseDataRows());
         super.updateAgeGroupList();
     }
 
@@ -31,7 +32,7 @@ public class DeathCauseDataViewModel extends BaseEnumViewModel implements DeathC
     public void navigateOnSaveButtonPressed() {
         DeathCauseData deathCauseData = new DeathCauseData();
         deathCauseData.setDeathCauseDataRows((List<DeathCauseDataRow>)(Object) mGenericEnumDataRows);
-        mNewDncaGenInfoRepositoryManager.saveDeathCauseData(deathCauseData);
+        mGenInfoRepositoryManager.saveDeathCauseData(deathCauseData);
     }
 
     /**

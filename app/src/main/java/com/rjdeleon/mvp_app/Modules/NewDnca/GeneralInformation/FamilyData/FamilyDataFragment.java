@@ -18,7 +18,7 @@ import com.rjdeleon.mvp_app.databinding.FamilyDataFragmentBinding;
  */
 public class FamilyDataFragment extends Fragment {
 
-    private FamilyDataViewModel mViewModel;
+    private FamilyDataViewModelGenInfo mViewModel;
 
     private GridLayout mGridLayout;
 
@@ -34,7 +34,7 @@ public class FamilyDataFragment extends Fragment {
      * Sets the viewModel
      * @param viewModel
      */
-    public void setViewModel(FamilyDataViewModel viewModel) {
+    public void setViewModel(FamilyDataViewModelGenInfo viewModel) {
         mViewModel = viewModel;
     }
 

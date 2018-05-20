@@ -21,6 +21,7 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
+import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterInfo;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -138,6 +139,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         SimpleDate assessmentDate = new SimpleDate(2018, 3, 30);
         FormInfo formInfo = new FormInfo("aa", assessmentDate, "cc", "dd", "ee", "ff", "gg", "hh");
         GenInfo genInfo = new GenInfo(calamityDesc, populationData, familyData, vulnerablePopulationData, casualtiesData, deathCauseData, infrastructureDamageData);
-        return new DNCAForm(formInfo, genInfo);
+        ShelterInfo shelterInfo = new ShelterInfo();
+        return new DNCAForm(formInfo, genInfo, shelterInfo);
     }
 }

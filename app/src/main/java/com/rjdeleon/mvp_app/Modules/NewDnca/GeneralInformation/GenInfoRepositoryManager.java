@@ -8,8 +8,9 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 
-public interface NewDncaGenInfoRepositoryManager {
+public interface GenInfoRepositoryManager {
 
+    /* GENERAL INFORMATION */
     CalamityDesc getCalamityDetails();
 
     PopulationData getPopulationData();

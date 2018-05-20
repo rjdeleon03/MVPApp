@@ -57,8 +57,8 @@ public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
                 (GenericEnumDataRow.AgeGroup) type.get(),
                 new GenderTuple(totalMale.get(), totalFemale.get()),
                 new GenderTuple(affectedMale.get(), affectedFemale.get()),
-                new GenderTuple(displacedMale.get(), displacedFemale.get())
-        );
+                new GenderTuple(displacedMale.get(), displacedFemale.get()));
+
         mPopulationDataRepositoryManager.addPopulationDataRow(populationDataRow);
         super.navigateOnOkButtonPressed();
     }

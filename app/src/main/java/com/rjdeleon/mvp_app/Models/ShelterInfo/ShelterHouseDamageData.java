@@ -22,6 +22,14 @@ public class ShelterHouseDamageData implements NormalizableData, TotalizableData
         this.shelterHouseDamageDataRows = new ArrayList<>();
     }
 
+    public List<ShelterHouseDamageDataRow> getShelterHouseDamageDataRows() {
+        return shelterHouseDamageDataRows;
+    }
+
+    public void setShelterHouseDamageDataRows(List<ShelterHouseDamageDataRow> shelterHouseDamageDataRows) {
+        this.shelterHouseDamageDataRows = shelterHouseDamageDataRows;
+    }
+
     @Override
     public void normalize() {
         GenericEnumUtils.normalizeGenericEnumData(

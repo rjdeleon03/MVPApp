@@ -6,20 +6,21 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class InfrastructureDamageViewModel extends BaseEnumViewModel implements InfrastructureDamageRepositoryManager {
+public class InfrastructureDamageViewModel extends GenInfoEnumBaseViewModel implements InfrastructureDamageRepositoryManager {
 
     /**
      * Constructor
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public InfrastructureDamageViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.InfraType.class);
-        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getInfrastructureDamageData().getInfrastructureDamageDataRows());
+    public InfrastructureDamageViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager, GenericEnumDataRow.InfraType.class);
+        mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getInfrastructureDamageData().getInfrastructureDamageDataRows());
         super.updateAgeGroupList();
     }
 
@@ -30,7 +31,7 @@ public class InfrastructureDamageViewModel extends BaseEnumViewModel implements 
     public void navigateOnSaveButtonPressed() {
         InfrastructureDamageData infrastructureDamageData = new InfrastructureDamageData();
         infrastructureDamageData.setInfrastructureDamageDataRows((List<InfrastructureDamageDataRow>)(Object) mGenericEnumDataRows);
-        mNewDncaGenInfoRepositoryManager.saveInfrastructureDamageData(infrastructureDamageData);
+        mGenInfoRepositoryManager.saveInfrastructureDamageData(infrastructureDamageData);
     }
     /**
      * Adds infrastructure damage data row

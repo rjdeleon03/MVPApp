@@ -3,17 +3,15 @@ package com.rjdeleon.mvp_app.Modules.NewDnca;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.rjdeleon.mvp_app.Injection;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -30,7 +28,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
     private NewDncaViewModel mMainViewModel;
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
-    private NewDncaGenInfoViewModel mGenInfoViewModel;
+    private GenInfoViewModel mGenInfoViewModel;
     private ShelterInfoViewModel mShelterInfoViewModel;
 
     private NewDncaActivityBinding mMainBinding;
@@ -89,9 +87,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onGenInfoButtonPressed() {
-        NewDncaGenInfoFragment newDncaGenInfoFragment = (NewDncaGenInfoFragment) findOrCreateViewFragment(NewDncaComponent.GEN_INFO);
-        mGenInfoViewModel = (NewDncaGenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
-        newDncaGenInfoFragment.setViewModel(mGenInfoViewModel);
+        GenInfoFragment genInfoFragment = (GenInfoFragment) findOrCreateViewFragment(NewDncaComponent.GEN_INFO);
+        mGenInfoViewModel = (GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
+        genInfoFragment.setViewModel(mGenInfoViewModel);
     }
 
     /**
@@ -126,8 +124,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case GEN_INFO:
-                if (fragment == null || !(fragment instanceof NewDncaGenInfoFragment)) {
-                    fragment = NewDncaGenInfoFragment.newInstance();
+                if (fragment == null || !(fragment instanceof GenInfoFragment)) {
+                    fragment = GenInfoFragment.newInstance();
                 }
                 break;
 
@@ -142,9 +140,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         return fragment;
     }
 
-    private NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
+    private com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
 
-        NewDncaBaseViewModel viewModel = null;
+        com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel viewModel = null;
         String tag = null;
 
         switch(fragmentType) {
@@ -163,7 +161,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case GEN_INFO:
-                viewModel = new NewDncaGenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel = new GenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_GEN_INFO_VIEWMODEL_TAG;
                 break;

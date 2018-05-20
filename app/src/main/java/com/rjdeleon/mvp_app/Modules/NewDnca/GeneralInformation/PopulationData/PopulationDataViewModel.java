@@ -6,20 +6,21 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class  PopulationDataViewModel extends BaseEnumViewModel implements PopulationDataRepositoryManager {
+public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements PopulationDataRepositoryManager {
 
     /**
      * Constructor
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public PopulationDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
-        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
+    public PopulationDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
         super.updateAgeGroupList();
     }
 
@@ -30,7 +31,7 @@ public class  PopulationDataViewModel extends BaseEnumViewModel implements Popul
     public void navigateOnSaveButtonPressed() {
         PopulationData populationData = new PopulationData();
         populationData.setPopulationDataRows((List<PopulationDataRow>)(Object) mGenericEnumDataRows);
-        mNewDncaGenInfoRepositoryManager.savePopulationData(populationData);
+        mGenInfoRepositoryManager.savePopulationData(populationData);
     }
 
     /**

@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableList;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -101,7 +104,7 @@ public class AppUtil {
     }
 
     @BindingAdapter("android:enabled")
-    public static void bindAgeGroupListInAddButton(Button button, List<GenericEnumDataRow.AgeGroup> ageGroups) {
-        button.setEnabled(ageGroups.size() > 0);
+    public static void bindAgeGroupListInAddButton(FloatingActionButton button, List<GenericEnum> enums) {
+        button.setEnabled(enums.size() > 0);
     }
 }

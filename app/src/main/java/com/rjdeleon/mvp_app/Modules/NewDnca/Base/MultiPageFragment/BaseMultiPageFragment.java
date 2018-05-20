@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.AppUtil;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.MultiPageFragmentBinding;
 
 public abstract class BaseMultiPageFragment extends Fragment {
 
@@ -18,6 +19,7 @@ public abstract class BaseMultiPageFragment extends Fragment {
     protected ViewPager mPager;
 
     protected BaseMultiPageViewModel mViewModel;
+    private MultiPageFragmentBinding mBinding;
 
     public BaseMultiPageFragment() {
         // Required empty public constructor
@@ -44,6 +46,12 @@ public abstract class BaseMultiPageFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.multi_page_fragment, container, false);
 
+        // Bind viewModel to view
+        if (mBinding == null) {
+            mBinding = MultiPageFragmentBinding.bind(root);
+        }
+        mBinding.setViewModel(mViewModel);
+
         // Initialize adapter
         mAdapter = new BaseMultiPageFragmentAdapter(getChildFragmentManager());
 
@@ -53,12 +61,11 @@ public abstract class BaseMultiPageFragment extends Fragment {
     /**
      * Sets up the view pager
      * @param view
-     * @param pagerId
      */
-    protected void setupViewPager(View view, int pagerId) {
+    protected void setupViewPager(View view) {
 
         // Initialize viewPager
-        mPager = view.findViewById(pagerId);
+        mPager = view.findViewById(R.id.nd_multi_page_pager);
         mPager.setAdapter(mAdapter);
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

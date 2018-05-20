@@ -6,13 +6,14 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseEnumViewModel extends NewDncaGenInfoBaseViewModel {
+public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
 
     protected BaseEnumNavigator mBaseEnumNavigator;
     protected List<GenericEnumDataRow> mGenericEnumDataRows = new ArrayList<>();
@@ -23,19 +24,20 @@ public abstract class BaseEnumViewModel extends NewDncaGenInfoBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param newDncaGenInfoRepositoryManager
      */
-    protected BaseEnumViewModel(Context context,
-                                NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager,
-                                Class<? extends Enum> enumClass) {
+    protected BaseEnumViewModel(Context context, Class<? extends Enum> enumClass) {
 
-        super(context, newDncaGenInfoRepositoryManager);
+        super(context);
 
         if (enumClass == GenericEnumDataRow.AgeGroup.class) {
             ageGroupList.addAll(GenericEnumDataRow.AgeGroup.asList());
 
         } else if (enumClass == GenericEnumDataRow.InfraType.class) {
             ageGroupList.addAll(GenericEnumDataRow.InfraType.asList());
+
+        } else if (enumClass == GenericEnumDataRow.HouseType.class) {
+            ageGroupList.addAll(GenericEnumDataRow.HouseType.asList());
+
         }
     }
 

@@ -1,28 +1,41 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
 
 import android.content.Context;
-import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.DNCAForm;
-import com.rjdeleon.mvp_app.Models.DNCAFormDataSource;
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
-import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
+import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
+import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
+import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
+import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
+import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
-import java.util.ArrayList;
+public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoRepositoryManager {
 
-public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements NewDncaGenInfoRepositoryManager {
+    /**
+     * Constructor
+     * @param context
+     */
+    public GenInfoViewModel(Context context, DNCAFormRepository dncaFormRepository) {
+        super(context, dncaFormRepository);
+    }
 
+    /**
+     * Override parent method to handle DNCA form data when loaded
+     */
+    @Override
+    public void retrieveDataAfterFormLoaded() {
+        retrieveGenInfo();
+    }
+
+    /** ================== GENERAL INFORMATION ================== */
     private CalamityDesc mCalamityDesc;
     private PopulationData mPopulationData;
     private FamilyData mFamilyData;
@@ -32,15 +45,20 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     private InfrastructureDamageData mInfrastructureDamageData;
 
     /**
-     * Constructor
-     * @param context
+     * Retrieve general information
      */
-    public NewDncaGenInfoViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    private void retrieveGenInfo() {
+        mCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
+        mPopulationData = mDncaForm.getGenInfo().getPopulationData();
+        mFamilyData = mDncaForm.getGenInfo().getFamilyData();
+        mVulnerablePopulation = mDncaForm.getGenInfo().getVulnerablePopulationData();
+        mCasualtiesData = mDncaForm.getGenInfo().getCasualtiesData();
+        mDeathCauseData = mDncaForm.getGenInfo().getDeathCauseData();
+        mInfrastructureDamageData = mDncaForm.getGenInfo().getInfrastructureDamageData();
     }
 
     /**
-     * Get calamity details
+     * Gets calamity details
      * @return
      */
     @Override
@@ -49,7 +67,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Get population data
+     * Gets population data
      * @return
      */
     @Override
@@ -58,7 +76,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Get family and household data
+     * Gets family and household data
      * @return
      */
     @Override
@@ -67,7 +85,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Get vulnerable population data
+     * Gets vulnerable population data
      * @return
      */
     @Override
@@ -76,7 +94,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Get casualties data
+     * Gets casualties data
      * @return
      */
     @Override
@@ -85,7 +103,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Get death cause data
+     * Gets death cause data
      * @return
      */
     @Override
@@ -94,7 +112,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Get infrastructure damage data
+     * Gets infrastructure damage data
      * @return
      */
     @Override
@@ -103,7 +121,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save calamity details
+     * Saves calamity details
      * @param calamityDesc
      */
     @Override
@@ -113,7 +131,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save population data
+     * Saves population data
      * @param populationData
      */
     @Override
@@ -123,7 +141,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save family data
+     * Saves family data
      * @param familyData
      */
     @Override
@@ -133,7 +151,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save vulnerable population data
+     * Saves vulnerable population data
      * @param vulnerablePopulationData
      */
     @Override
@@ -143,7 +161,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save casualties data
+     * Saves casualties data
      * @param casualtiesData
      */
     @Override
@@ -153,7 +171,7 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save death cause data
+     * Saves death cause data
      * @param deathCauseData
      */
     @Override
@@ -163,26 +181,12 @@ public class NewDncaGenInfoViewModel extends BaseMultiPageViewModel implements N
     }
 
     /**
-     * Save infrastructure damage data
+     * Saves infrastructure damage data
      * @param infrastructureDamageData
      */
     @Override
     public void saveInfrastructureDamageData(InfrastructureDamageData infrastructureDamageData) {
         mInfrastructureDamageData = infrastructureDamageData;
         mDncaForm.getGenInfo().setInfrastructureDamageData(mInfrastructureDamageData);
-    }
-
-    /**
-     * Override parent method to handle DNCA form data when loaded
-     */
-    @Override
-    public void retrieveDataAfterFormLoaded() {
-        mCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
-        mPopulationData = mDncaForm.getGenInfo().getPopulationData();
-        mFamilyData = mDncaForm.getGenInfo().getFamilyData();
-        mVulnerablePopulation = mDncaForm.getGenInfo().getVulnerablePopulationData();
-        mCasualtiesData = mDncaForm.getGenInfo().getCasualtiesData();
-        mDeathCauseData = mDncaForm.getGenInfo().getDeathCauseData();
-        mInfrastructureDamageData = mDncaForm.getGenInfo().getInfrastructureDamageData();
     }
 }

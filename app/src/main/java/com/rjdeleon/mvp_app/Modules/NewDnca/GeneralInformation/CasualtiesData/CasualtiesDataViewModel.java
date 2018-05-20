@@ -6,21 +6,22 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class CasualtiesDataViewModel extends BaseEnumViewModel implements CasualtiesDataRepositoryManager {
+public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements CasualtiesDataRepositoryManager {
 
     /**
      * Constructor
      *
      * @param context
-     * @param newDncaGenInfoRepositoryManager
+     * @param genInfoRepositoryManager
      */
-    public CasualtiesDataViewModel(Context context, NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager) {
-        super(context, newDncaGenInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
-        mGenericEnumDataRows.addAll(mNewDncaGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
+    public CasualtiesDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
         super.updateAgeGroupList();
     }
 
@@ -31,7 +32,7 @@ public class CasualtiesDataViewModel extends BaseEnumViewModel implements Casual
     public void navigateOnSaveButtonPressed() {
         CasualtiesData casualtiesData = new CasualtiesData();
         casualtiesData.setCasualtiesDataRows((List<CasualtiesDataRow>)(Object) mGenericEnumDataRows);
-        mNewDncaGenInfoRepositoryManager.saveCasualtiesData(casualtiesData);
+        mGenInfoRepositoryManager.saveCasualtiesData(casualtiesData);
     }
 
     /**

@@ -5,12 +5,12 @@ import android.content.Context;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;
 
-public class InfrastructureDamageViewModel extends BaseAgeGroupViewModel implements InfrastructureDamageRepositoryManager {
+public class InfrastructureDamageViewModel extends BaseEnumViewModel implements InfrastructureDamageRepositoryManager {
 
     /**
      * Constructor

@@ -5,12 +5,12 @@ import android.content.Context;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;
 
-public class VulnerablePopulationViewModel extends BaseAgeGroupViewModel implements VulnerablePopulationRepositoryManager {
+public class VulnerablePopulationViewModel extends BaseEnumViewModel implements VulnerablePopulationRepositoryManager {
 
     /**
      * Constructor

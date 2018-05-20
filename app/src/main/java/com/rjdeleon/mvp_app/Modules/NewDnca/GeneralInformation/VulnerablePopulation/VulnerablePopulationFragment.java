@@ -3,14 +3,14 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopula
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VulnerablePopulationFragment extends BaseAgeGroupFragment {
+public class VulnerablePopulationFragment extends BaseEnumFragment {
 
     private VulnerablePopulationFragmentAdapter mVulnerablePopulationAdapter;
 

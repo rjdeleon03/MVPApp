@@ -4,11 +4,11 @@ import android.content.Context;
 import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 
-public abstract class BaseAgeGroupDialogViewModel {
+public abstract class BaseEnumDialogViewModel {
 
-    protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    protected BaseEnumNavigator mBaseEnumNavigator;
     protected Context mContext;
 
     public final ObservableField<GenericEnum> type = new ObservableField<>();
@@ -17,24 +17,24 @@ public abstract class BaseAgeGroupDialogViewModel {
      * Constructor
      * @param context
      */
-    public BaseAgeGroupDialogViewModel(Context context) {
+    public BaseEnumDialogViewModel(Context context) {
         mContext = context;
     }
 
     /**
      * Sets the base age group navigator
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      */
-    public void setBaseAgeGroupNavigator(BaseAgeGroupNavigator baseAgeGroupNavigator) {
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+    public void setBaseAgeGroupNavigator(BaseEnumNavigator baseEnumNavigator) {
+        mBaseEnumNavigator = baseEnumNavigator;
     }
 
     /**
      * Handles navigation when Cancel button is pressed
      */
     public void navigateOnCancelButtonPressed() {
-        if (mBaseAgeGroupNavigator != null) {
-            mBaseAgeGroupNavigator.onDialogCloseButtonPressed();
+        if (mBaseEnumNavigator != null) {
+            mBaseEnumNavigator.onDialogCloseButtonPressed();
         }
     }
 
@@ -42,6 +42,6 @@ public abstract class BaseAgeGroupDialogViewModel {
      * Handles navigation when OK button is pressed
      */
     public void navigateOnOkButtonPressed() {
-        mBaseAgeGroupNavigator.onDialogOkButtonPressed();
+        mBaseEnumNavigator.onDialogOkButtonPressed();
     }
 }

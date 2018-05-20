@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel;
 import com.rjdeleon.mvp_app.databinding.PopulationDataRowBinding;
@@ -15,16 +15,16 @@ import com.rjdeleon.mvp_app.R;
 
 public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<PopulationDataRowViewHolder> {
 
-    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    private BaseEnumNavigator mBaseEnumNavigator;
     private PopulationDataViewModel mViewModel;
     private Context mContext;
 
     public PopulationDataFragmentAdapter(Context context,
-                                         BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                         BaseEnumNavigator baseEnumNavigator,
                                          PopulationDataViewModel viewModel) {
 
         mContext = context;
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+        mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
     }
 
@@ -42,7 +42,7 @@ public class PopulationDataFragmentAdapter extends RecyclerView.Adapter<Populati
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
                 mContext,
                 mViewModel,
-                mBaseAgeGroupNavigator,
+                mBaseEnumNavigator,
                 position);
         holder.bind(populationDataRowViewModel);
     }

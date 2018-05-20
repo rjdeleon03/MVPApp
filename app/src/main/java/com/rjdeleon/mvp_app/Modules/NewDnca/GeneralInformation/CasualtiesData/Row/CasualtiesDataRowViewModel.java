@@ -4,11 +4,11 @@ import android.content.Context;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CasualtiesDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataRepositoryManager;
 
-public class CasualtiesDataRowViewModel extends BaseAgeGroupRowViewModel {
+public class CasualtiesDataRowViewModel extends BaseEnumRowViewModel {
 
     private CasualtiesDataRepositoryManager mCasualtiesDataRepositoryManager;
 
@@ -23,15 +23,15 @@ public class CasualtiesDataRowViewModel extends BaseAgeGroupRowViewModel {
      * Constructor
      *
      * @param context
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      * @param rowIndex
      */
     public CasualtiesDataRowViewModel(Context context,
                                       CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
-                                      BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                      BaseEnumNavigator baseEnumNavigator,
                                       int rowIndex) {
 
-        super(context, baseAgeGroupNavigator, rowIndex);
+        super(context, baseEnumNavigator, rowIndex);
         mCasualtiesDataRepositoryManager = casualtiesDataRepositoryManager;
 
         CasualtiesDataRow casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(mRowIndex);

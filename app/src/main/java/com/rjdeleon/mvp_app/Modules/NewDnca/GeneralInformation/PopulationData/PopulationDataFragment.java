@@ -4,14 +4,14 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PopulationDataFragment extends BaseAgeGroupFragment {
+public class PopulationDataFragment extends BaseEnumFragment {
 
     private PopulationDataFragmentAdapter mPopulationDataAdapter;
 

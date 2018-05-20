@@ -7,10 +7,10 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
-public class InfrastructureDamageDialogViewModel extends BaseAgeGroupDialogViewModel {
+public class InfrastructureDamageDialogViewModel extends BaseEnumDialogViewModel {
 
     private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
 

@@ -4,14 +4,14 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog.DeathCauseDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog.DeathCauseDataDialogViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DeathCauseDataFragment extends BaseAgeGroupFragment {
+public class DeathCauseDataFragment extends BaseEnumFragment {
 
     private DeathCauseDataFragmentAdapter mDeathCauseAdapter;
 

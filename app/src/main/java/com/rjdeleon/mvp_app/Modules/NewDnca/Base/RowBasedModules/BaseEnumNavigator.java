@@ -1,6 +1,6 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules;
 
-public interface BaseAgeGroupNavigator {
+public interface BaseEnumNavigator {
 
     void onAddButtonPressed();
 

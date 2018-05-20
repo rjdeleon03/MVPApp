@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Row.InfrastructureDamageRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Row.InfrastructureDamageRowViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -15,16 +15,16 @@ import com.rjdeleon.mvp_app.databinding.InfrastructureDamageRowBinding;
 
 public class InfrastructureDamageFragmentAdapter extends RecyclerView.Adapter<InfrastructureDamageRowViewHolder> {
 
-    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    private BaseEnumNavigator mBaseEnumNavigator;
     private InfrastructureDamageViewModel mViewModel;
     private Context mContext;
 
     public InfrastructureDamageFragmentAdapter(Context context,
-                                               BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                               BaseEnumNavigator baseEnumNavigator,
                                                InfrastructureDamageViewModel viewModel) {
 
         mContext = context;
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+        mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
     }
 
@@ -42,7 +42,7 @@ public class InfrastructureDamageFragmentAdapter extends RecyclerView.Adapter<In
         InfrastructureDamageRowViewModel infrastructureDamageRowViewModel = new InfrastructureDamageRowViewModel(
                 mContext,
                 mViewModel,
-                mBaseAgeGroupNavigator,
+                mBaseEnumNavigator,
                 position);
         holder.bind(infrastructureDamageRowViewModel);
     }

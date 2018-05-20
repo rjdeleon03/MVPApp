@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Row.CasualtiesDataRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Row.CasualtiesDataRowViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -15,16 +15,16 @@ import com.rjdeleon.mvp_app.databinding.CasualtiesDataRowBinding;
 
 public class CasualtiesDataFragmentAdapter extends RecyclerView.Adapter<CasualtiesDataRowViewHolder> {
 
-    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    private BaseEnumNavigator mBaseEnumNavigator;
     private CasualtiesDataViewModel mViewModel;
     private Context mContext;
 
     public CasualtiesDataFragmentAdapter(Context context,
-                                         BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                         BaseEnumNavigator baseEnumNavigator,
                                          CasualtiesDataViewModel viewModel) {
 
         mContext = context;
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+        mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
     }
 
@@ -42,7 +42,7 @@ public class CasualtiesDataFragmentAdapter extends RecyclerView.Adapter<Casualti
         CasualtiesDataRowViewModel casualtiesDataRowViewModel = new CasualtiesDataRowViewModel(
                 mContext,
                 mViewModel,
-                mBaseAgeGroupNavigator,
+                mBaseEnumNavigator,
                 position);
         holder.bind(casualtiesDataRowViewModel);
     }

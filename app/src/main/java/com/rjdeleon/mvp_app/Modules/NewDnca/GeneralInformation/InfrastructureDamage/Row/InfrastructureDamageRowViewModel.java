@@ -6,11 +6,11 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
-public class InfrastructureDamageRowViewModel extends BaseAgeGroupRowViewModel {
+public class InfrastructureDamageRowViewModel extends BaseEnumRowViewModel {
 
     private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
 
@@ -23,15 +23,15 @@ public class InfrastructureDamageRowViewModel extends BaseAgeGroupRowViewModel {
      * Constructor
      * @param context
      * @param infrastructureDamageRepositoryManager
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      * @param rowIndex
      */
     public InfrastructureDamageRowViewModel(Context context,
                                             InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
-                                            BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                            BaseEnumNavigator baseEnumNavigator,
                                             int rowIndex) {
 
-        super(context, baseAgeGroupNavigator, rowIndex);
+        super(context, baseEnumNavigator, rowIndex);
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
         InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(rowIndex);

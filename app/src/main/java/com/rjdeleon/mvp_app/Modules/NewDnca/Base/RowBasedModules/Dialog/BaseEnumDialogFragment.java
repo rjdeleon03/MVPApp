@@ -8,15 +8,15 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.WindowManager;
 
-public abstract class BaseAgeGroupDialogFragment extends DialogFragment {
+public abstract class BaseEnumDialogFragment extends DialogFragment {
 
-    protected BaseAgeGroupDialogViewModel mViewModel;
+    protected BaseEnumDialogViewModel mViewModel;
 
     /**
      * Sets the viewModel
      * @param viewModel
      */
-    public void setViewModel(BaseAgeGroupDialogViewModel viewModel) {
+    public void setViewModel(BaseEnumDialogViewModel viewModel) {
         mViewModel = viewModel;
     }
 

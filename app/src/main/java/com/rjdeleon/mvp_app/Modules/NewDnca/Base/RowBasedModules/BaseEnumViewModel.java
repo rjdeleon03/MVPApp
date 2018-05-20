@@ -12,9 +12,9 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRep
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel {
+public abstract class BaseEnumViewModel extends NewDncaGenInfoBaseViewModel {
 
-    protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    protected BaseEnumNavigator mBaseEnumNavigator;
     protected List<GenericEnumDataRow> mGenericEnumDataRows = new ArrayList<>();
 
     public final ObservableArrayList<GenericEnum> ageGroupList = new ObservableArrayList<>();
@@ -25,9 +25,9 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      * @param context
      * @param newDncaGenInfoRepositoryManager
      */
-    protected BaseAgeGroupViewModel(Context context,
-                                    NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager,
-                                    Class<? extends Enum> enumClass) {
+    protected BaseEnumViewModel(Context context,
+                                NewDncaGenInfoRepositoryManager newDncaGenInfoRepositoryManager,
+                                Class<? extends Enum> enumClass) {
 
         super(context, newDncaGenInfoRepositoryManager);
 
@@ -149,10 +149,10 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
 
     /**
      * Set population data navigator
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      */
-    public void setBaseAgeGroupNavigator(BaseAgeGroupNavigator baseAgeGroupNavigator) {
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+    public void setBaseAgeGroupNavigator(BaseEnumNavigator baseEnumNavigator) {
+        mBaseEnumNavigator = baseEnumNavigator;
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class BaseAgeGroupViewModel extends NewDncaGenInfoBaseViewModel 
      * Called when add button is pressed
      */
     public void navigateOnAddButtonPressed() {
-        mBaseAgeGroupNavigator.onAddButtonPressed();
+        mBaseEnumNavigator.onAddButtonPressed();
     }
 
     /**

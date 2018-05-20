@@ -5,12 +5,12 @@ import android.content.Context;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.NewDncaGenInfoRepositoryManager;
 
 import java.util.List;
 
-public class  PopulationDataViewModel extends BaseAgeGroupViewModel implements PopulationDataRepositoryManager {
+public class  PopulationDataViewModel extends BaseEnumViewModel implements PopulationDataRepositoryManager {
 
     /**
      * Constructor

@@ -1,16 +1,14 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Row;
 
 import android.content.Context;
-import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
-import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
-public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
+public class PopulationDataRowViewModel extends BaseEnumRowViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
@@ -29,10 +27,10 @@ public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
      */
     public PopulationDataRowViewModel(Context context,
                                       PopulationDataRepositoryManager populationDataRepositoryManager,
-                                      BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                      BaseEnumNavigator baseEnumNavigator,
                                       int rowIndex) {
 
-        super(context, baseAgeGroupNavigator, rowIndex);
+        super(context, baseEnumNavigator, rowIndex);
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);

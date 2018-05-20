@@ -7,11 +7,11 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.DeathCauseDataDialogBinding;
 
-public class DeathCauseDataDialogFragment extends BaseAgeGroupDialogFragment {
+public class DeathCauseDataDialogFragment extends BaseEnumDialogFragment {
 
     private DeathCauseDataDialogBinding mBinding;
 

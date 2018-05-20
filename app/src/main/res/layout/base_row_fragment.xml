@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

@@ -15,16 +15,16 @@ import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.rjdeleon.mvp_app.databinding.BaseRowFragmentBinding;
 
-public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGroupNavigator {
+public abstract class BaseEnumFragment extends Fragment implements BaseEnumNavigator {
 
-    protected BaseAgeGroupViewModel mViewModel;
+    protected BaseEnumViewModel mViewModel;
     protected Spinner mAgeGroupSpinner;
     protected ArrayAdapter<GenericEnum> mSpinnerAdapter;
     protected RecyclerView mRowRecycler;
-    protected BaseAgeGroupDialogFragment mDialogFragment;
+    protected BaseEnumDialogFragment mDialogFragment;
 
     private BaseRowFragmentBinding mBinding;
 
@@ -59,7 +59,7 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
      * Sets the viewModel
      * @param viewModel
      */
-    public void setViewModel(BaseAgeGroupViewModel viewModel) {
+    public void setViewModel(BaseEnumViewModel viewModel) {
         mViewModel = viewModel;
         mViewModel.setBaseAgeGroupNavigator(this);
     }

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.DeathCauseDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
 
-public class DeathCauseDataRowViewModel extends BaseAgeGroupRowViewModel {
+public class DeathCauseDataRowViewModel extends BaseEnumRowViewModel {
 
     private DeathCauseRepositoryManager mDeathCauseRepositoryManager;
 
@@ -35,15 +35,15 @@ public class DeathCauseDataRowViewModel extends BaseAgeGroupRowViewModel {
      * Constructor
      *
      * @param context
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      * @param rowIndex
      */
     public DeathCauseDataRowViewModel(Context context,
                                       DeathCauseRepositoryManager deathCauseRepositoryManager,
-                                      BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                      BaseEnumNavigator baseEnumNavigator,
                                       int rowIndex) {
 
-        super(context, baseAgeGroupNavigator, rowIndex);
+        super(context, baseEnumNavigator, rowIndex);
         mDeathCauseRepositoryManager = deathCauseRepositoryManager;
 
         DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(mRowIndex);

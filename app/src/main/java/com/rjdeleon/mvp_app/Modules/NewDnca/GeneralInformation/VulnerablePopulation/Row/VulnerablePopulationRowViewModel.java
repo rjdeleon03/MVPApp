@@ -7,11 +7,11 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseAgeGroupRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
 
-public class VulnerablePopulationRowViewModel extends BaseAgeGroupRowViewModel {
+public class VulnerablePopulationRowViewModel extends BaseEnumRowViewModel {
 
     private VulnerablePopulationRepositoryManager mVulnerablePopulationRepositoryManager;
 
@@ -33,15 +33,15 @@ public class VulnerablePopulationRowViewModel extends BaseAgeGroupRowViewModel {
      * Constructor
      * @param context
      * @param vulnerablePopulationRepositoryManager
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      * @param rowIndex
      */
     public VulnerablePopulationRowViewModel(Context context,
                                             VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
-                                            BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                            BaseEnumNavigator baseEnumNavigator,
                                             int rowIndex) {
 
-        super(context, baseAgeGroupNavigator, rowIndex);
+        super(context, baseEnumNavigator, rowIndex);
         mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
 
         VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(mRowIndex);

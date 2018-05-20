@@ -4,12 +4,12 @@ import android.content.Context;
 import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
-public abstract class BaseAgeGroupRowViewModel extends NewDncaBaseViewModel {
+public abstract class BaseEnumRowViewModel extends NewDncaBaseViewModel {
 
-    protected BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    protected BaseEnumNavigator mBaseEnumNavigator;
     protected int mRowIndex;
 
     public final ObservableField<GenericEnum> type = new ObservableField<>();
@@ -17,26 +17,26 @@ public abstract class BaseAgeGroupRowViewModel extends NewDncaBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param baseAgeGroupNavigator
+     * @param baseEnumNavigator
      * @param rowIndex
      */
-    public BaseAgeGroupRowViewModel(Context context, BaseAgeGroupNavigator baseAgeGroupNavigator, int rowIndex) {
+    public BaseEnumRowViewModel(Context context, BaseEnumNavigator baseEnumNavigator, int rowIndex) {
         super(context);
         mRowIndex = rowIndex;
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+        mBaseEnumNavigator = baseEnumNavigator;
     }
 
     /**
      * Handle navigation when card is selected
      */
     public void navigateOnCardSelected() {
-        mBaseAgeGroupNavigator.onCardSelected(mRowIndex);
+        mBaseEnumNavigator.onCardSelected(mRowIndex);
     }
 
     /**
      * Handle navigation when card is deleted
      */
     public void navigateOnDeleteCardButtonPressed() {
-        mBaseAgeGroupNavigator.onDeleteCardButtonPressed();
+        mBaseEnumNavigator.onDeleteCardButtonPressed();
     }
 }

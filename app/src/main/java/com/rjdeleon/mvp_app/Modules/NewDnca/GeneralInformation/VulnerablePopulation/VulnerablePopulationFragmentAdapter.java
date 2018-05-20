@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseAgeGroupNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row.VulnerablePopulationRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row.VulnerablePopulationRowViewModel;
 import com.rjdeleon.mvp_app.databinding.VulnerablePopulationRowBinding;
@@ -15,16 +15,16 @@ import com.rjdeleon.mvp_app.R;
 
 public class VulnerablePopulationFragmentAdapter extends RecyclerView.Adapter<VulnerablePopulationRowViewHolder> {
 
-    private BaseAgeGroupNavigator mBaseAgeGroupNavigator;
+    private BaseEnumNavigator mBaseEnumNavigator;
     private VulnerablePopulationViewModel mViewModel;
     private Context mContext;
 
     public VulnerablePopulationFragmentAdapter(Context context,
-                                               BaseAgeGroupNavigator baseAgeGroupNavigator,
+                                               BaseEnumNavigator baseEnumNavigator,
                                                VulnerablePopulationViewModel viewModel) {
 
         mContext = context;
-        mBaseAgeGroupNavigator = baseAgeGroupNavigator;
+        mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
     }
 
@@ -39,7 +39,7 @@ public class VulnerablePopulationFragmentAdapter extends RecyclerView.Adapter<Vu
 
     @Override
     public void onBindViewHolder(@NonNull VulnerablePopulationRowViewHolder holder, int position) {
-        VulnerablePopulationRowViewModel vulnerablePopulationRowViewModel = new VulnerablePopulationRowViewModel(mContext, mViewModel, mBaseAgeGroupNavigator, position);
+        VulnerablePopulationRowViewModel vulnerablePopulationRowViewModel = new VulnerablePopulationRowViewModel(mContext, mViewModel, mBaseEnumNavigator, position);
         holder.bind(vulnerablePopulationRowViewModel);
     }
 

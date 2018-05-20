@@ -14,7 +14,6 @@ public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
-    public final ObservableField<GenericEnum> ageGroup = new ObservableField<>();
     public final ObservableInt totalMale = new ObservableInt(0);
     public final ObservableInt totalFemale = new ObservableInt(0);
     public final ObservableInt affectedMale = new ObservableInt(0);
@@ -37,7 +36,7 @@ public class PopulationDataRowViewModel extends BaseAgeGroupRowViewModel {
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
-        ageGroup.set(populationDataRow.getType());
+        type.set(populationDataRow.getType());
         totalMale.set(populationDataRow.getTotal().male);
         totalFemale.set(populationDataRow.getTotal().female);
         affectedMale.set(populationDataRow.getAffected().male);

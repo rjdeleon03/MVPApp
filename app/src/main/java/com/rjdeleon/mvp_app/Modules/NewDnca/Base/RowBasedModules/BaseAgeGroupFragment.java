@@ -1,15 +1,22 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules;
 
 import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseAgeGroupDialogFragment;
+import com.rjdeleon.mvp_app.databinding.BaseRowFragmentBinding;
 
 public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGroupNavigator {
 
@@ -18,6 +25,35 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
     protected ArrayAdapter<GenericEnum> mSpinnerAdapter;
     protected RecyclerView mRowRecycler;
     protected BaseAgeGroupDialogFragment mDialogFragment;
+
+    private BaseRowFragmentBinding mBinding;
+
+    /**
+     * Creates the view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.base_row_fragment, container, false);
+
+        // Initialize binding
+        if (mBinding == null) {
+            mBinding = BaseRowFragmentBinding.bind(root);
+        }
+        mBinding.setViewModel(mViewModel);
+
+        // Initialize spinner
+        setupSpinner(root);
+
+        // Initiailize row view
+        setupRecyclerGrid(root);
+
+        return mBinding.getRoot();
+    }
 
     /**
      * Sets the viewModel
@@ -31,10 +67,9 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
     /**
      * Sets up AgeGroup spinner
      * @param view
-     * @param controlId
      */
-    protected void setupSpinner(View view, int controlId) {
-        mAgeGroupSpinner = view.findViewById(controlId);
+    protected void setupSpinner(View view) {
+        mAgeGroupSpinner = view.findViewById(R.id.nd_row_controls_spinner);
         mSpinnerAdapter = new ArrayAdapter<>(
                 getActivity(),
                 android.R.layout.simple_spinner_dropdown_item,
@@ -47,13 +82,12 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
     /**
      * Sets up RecyclerView grid for displaying age group rows
      * @param view
-     * @param controlId
      */
-    protected void setupRecyclerGrid(View view, int controlId) {
-        mRowRecycler = view.findViewById(controlId);
+    protected void setupRecyclerGrid(View view) {
+        mRowRecycler = view.findViewById(R.id.nd_row_layout_grid);
         mRowRecycler.setHasFixedSize(true);
         mRowRecycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
-
+        setRecyclerGridLayout(getResources().getConfiguration().orientation);
     }
 
     /**
@@ -94,6 +128,32 @@ public abstract class BaseAgeGroupFragment extends Fragment implements BaseAgeGr
     public void onDialogCloseButtonPressed() {
         mDialogFragment.dismiss();
         mDialogFragment = null;
+    }
+
+    /**
+     * Delete card for selected row when its delete button is pressed
+     */
+    @Override
+    public void onDeleteCardButtonPressed() {
+        refreshData();
+    }
+
+    /**
+     * Refresh recycler view adapter and dismiss dialog when OK button is pressed
+     */
+    @Override
+    public void onDialogOkButtonPressed() {
+        refreshData();
+        mDialogFragment.dismiss();
+        mDialogFragment = null;
+    }
+
+    /**
+     * Refreshes the data displayed
+     */
+    protected void refreshData() {
+        mSpinnerAdapter.notifyDataSetChanged();
+        mAgeGroupSpinner.setSelection(0);
     }
 
 }

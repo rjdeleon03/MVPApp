@@ -1,6 +1,5 @@
-package com.rjdeleon.mvp_app.Models.ShelterNonFoodItems;
+package com.rjdeleon.mvp_app.Models.ShelterInfo;
 
-import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;

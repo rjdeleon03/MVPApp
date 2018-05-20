@@ -4,8 +4,6 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPage
 
 public class ShelterInfoFragment extends BaseMultiPageFragment {
 
-    private ShelterInfoViewModel mViewModel;
-
     public static ShelterInfoFragment newInstance() {
         return new ShelterInfoFragment();
     }

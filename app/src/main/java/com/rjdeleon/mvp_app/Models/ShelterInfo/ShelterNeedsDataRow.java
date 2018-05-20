@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Models.ShelterNonFoodItems;
+package com.rjdeleon.mvp_app.Models.ShelterInfo;
 
 public class ShelterNeedsDataRow {
 

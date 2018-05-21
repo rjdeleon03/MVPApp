@@ -9,9 +9,9 @@ import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.NewDncaNavigator;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 
-public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback {
+public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements NonEnumSaveableSection, DNCAFormDataSource.GetDncaFormCallback {
 
     private DNCAFormRepository mDncaFormRepository;
 
@@ -46,6 +46,7 @@ public class NewDncaFormDetailsViewModel extends NewDncaBaseViewModel implements
     /**
      * Navigate when save button is pressed
      */
+    @Override
     public void navigateOnSaveButtonPressed() {
         FormInfo formInfo = new FormInfo(
                 orgName.get(),

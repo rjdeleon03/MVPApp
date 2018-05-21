@@ -15,14 +15,13 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Ca
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModelGenInfo;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
-import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
@@ -95,7 +94,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup family data fragment
             FamilyDataFragment familyDataFragment = FamilyDataFragment.newInstance();
-            FamilyDataViewModelGenInfo familyDataViewModel = new FamilyDataViewModelGenInfo(getContext().getApplicationContext(), repositoryManager);
+            FamilyDataViewModel familyDataViewModel = new FamilyDataViewModel(getContext().getApplicationContext(), repositoryManager);
             familyDataFragment.setViewModel(familyDataViewModel);
             mAdapter.addFragment(familyDataFragment);
 

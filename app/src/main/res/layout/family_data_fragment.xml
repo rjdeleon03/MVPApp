@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModelGenInfo" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -332,15 +332,8 @@
 
         </ScrollView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/nf_family_save_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_check"
-            android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
-            app:backgroundTint="@android:color/holo_green_light"/>
+        <include layout="@layout/base_save_button"
+                 viewModel="@{viewModel}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

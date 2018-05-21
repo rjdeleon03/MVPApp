@@ -4,10 +4,11 @@ import android.content.Context;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
-public class FamilyDataViewModelGenInfo extends GenInfoBaseViewModel {
+public class FamilyDataViewModel extends GenInfoBaseViewModel implements NonEnumSaveableSection {
 
     public final ObservableInt totalFamilies = new ObservableInt(0);
     public final ObservableInt affectedFamilies = new ObservableInt(0);
@@ -21,7 +22,7 @@ public class FamilyDataViewModelGenInfo extends GenInfoBaseViewModel {
      * @param context
      * @param genInfoRepositoryManager
      */
-    public FamilyDataViewModelGenInfo(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
+    public FamilyDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
         super(context, genInfoRepositoryManager);
 
         FamilyData familyData = mGenInfoRepositoryManager.getFamilyData();
@@ -36,6 +37,7 @@ public class FamilyDataViewModelGenInfo extends GenInfoBaseViewModel {
     /**
      * Navigate when save button is pressed
      */
+    @Override
     public void navigateOnSaveButtonPressed() {
         FamilyData familyData = new FamilyData();
         familyData.setTotalFamilies(totalFamilies.get());

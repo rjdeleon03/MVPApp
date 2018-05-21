@@ -3,13 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection" />
+    </data>
+
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/nd_shelter_coping_save_button"
+        android:id="@+id/nd_base_save_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_check"
+        android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
         app:backgroundTint="@android:color/holo_green_light"
         app:elevation="0dp"/>
 

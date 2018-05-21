@@ -5,10 +5,11 @@ import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.GeneralInformation.CalamityDesc;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
-public class CalamityDetailsViewModel extends GenInfoBaseViewModel {
+public class CalamityDetailsViewModel extends GenInfoBaseViewModel implements NonEnumSaveableSection {
 
     public final ObservableField<String> calamityType = new ObservableField<>("");
     public final ObservableField<SimpleDate> dateOccurred = new ObservableField<>(new SimpleDate());
@@ -33,6 +34,7 @@ public class CalamityDetailsViewModel extends GenInfoBaseViewModel {
     /**
      * Handles navigation when save button is pressed
      */
+    @Override
     public void navigateOnSaveButtonPressed() {
         CalamityDesc calamityDesc = new CalamityDesc();
         calamityDesc.setCalamityType(calamityType.get());

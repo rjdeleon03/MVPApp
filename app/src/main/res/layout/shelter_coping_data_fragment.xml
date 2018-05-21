@@ -137,16 +137,8 @@
 
         </ScrollView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/nd_shelter_coping_save_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_check"
-            android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
-            app:backgroundTint="@android:color/holo_green_light"
-            app:elevation="0dp"/>
+        <include layout="@layout/base_save_button"
+                 viewModel="@{viewModel}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

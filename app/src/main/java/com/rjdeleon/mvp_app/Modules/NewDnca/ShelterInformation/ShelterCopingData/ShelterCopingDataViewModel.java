@@ -4,10 +4,11 @@ import android.content.Context;
 import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoRepositoryManager;
 
-public class ShelterCopingDataViewModel extends ShelterInfoBaseViewModel {
+public class ShelterCopingDataViewModel extends ShelterInfoBaseViewModel implements NonEnumSaveableSection {
 
     public final ObservableField<String> evacuationSitesLocation = new ObservableField<>("");
     public final ObservableField<String> howToCope = new ObservableField<>("");
@@ -33,12 +34,14 @@ public class ShelterCopingDataViewModel extends ShelterInfoBaseViewModel {
     /**
      * Handles navigation when save button is pressed
      */
+    @Override
     public void navigateOnSaveButtonPressed() {
         ShelterCopingData shelterCopingData = new ShelterCopingData();
         shelterCopingData.setEvacuationSitesLocation(evacuationSitesLocation.get());
         shelterCopingData.setHowToCope(howToCope.get());
         shelterCopingData.setWhenToGoHome(whenToGoHome.get());
         shelterCopingData.setWhatIfCantGoHome(whatIfCantGoHome.get());
+        mShelterInfoRepositoryManager.saveShelterCopingData(shelterCopingData);
     }
 
 }

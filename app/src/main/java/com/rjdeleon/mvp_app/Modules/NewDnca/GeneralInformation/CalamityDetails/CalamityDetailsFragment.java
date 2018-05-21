@@ -53,7 +53,7 @@ public class CalamityDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(com.rjdeleon.mvp_app.R.layout.calamity_details_fragment, container, false);
+        View root = inflater.inflate(R.layout.calamity_details_fragment, container, false);
         if (mBinding == null) {
             mBinding = CalamityDetailsFragmentBinding.bind(root);
         }

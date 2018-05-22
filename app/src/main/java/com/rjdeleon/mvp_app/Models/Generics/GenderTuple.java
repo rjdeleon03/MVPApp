@@ -10,7 +10,6 @@ public class GenderTuple {
     }
 
     public GenderTuple() {
-        this.male = 0;
-        this.female = 0;
+        this(0, 0);
     }
 }

@@ -12,6 +12,12 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPage
 
 public class ShelterInfoViewModel extends BaseMultiPageViewModel implements ShelterInfoRepositoryManager {
 
+    private ShelterHouseDamageData mHouseDamageData;
+    private ShelterCopingData mShelterCopingData;
+    private ShelterNeedsData mShelterNeedsData;
+    private AssistanceData mShelterAssistanceData;
+    private ShelterGapsData mShelterGapsData;
+
     /**
      * Constructor
      * @param context
@@ -26,20 +32,6 @@ public class ShelterInfoViewModel extends BaseMultiPageViewModel implements Shel
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
-        retrieveShelterInfo();
-    }
-
-    /** ================== SHELTER AND NON-FOOD ITEMS ================== */
-    private ShelterHouseDamageData mHouseDamageData;
-    private ShelterCopingData mShelterCopingData;
-    private ShelterNeedsData mShelterNeedsData;
-    private AssistanceData mShelterAssistanceData;
-    private ShelterGapsData mShelterGapsData;
-
-    /**
-     * Retrieve general information
-     */
-    private void retrieveShelterInfo() {
         mHouseDamageData = mDncaForm.getShelterInfo().getHouseDamageData();
         mShelterCopingData = mDncaForm.getShelterInfo().getCopingData();
         mShelterNeedsData = mDncaForm.getShelterInfo().getNeedsData();

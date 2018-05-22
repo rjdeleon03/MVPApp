@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
@@ -25,11 +27,13 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     public static final String NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG = "NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG";
     public static final String NEW_DNCA_GEN_INFO_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_VIEWMODEL_TAG = "SHELTER_INFO_VIEWMODEL_TAG";
+    public static final String FOOD_SECURITY_VIEWMODEL_TAG = "FOOD_SECURITY_VIEWMODEL_TAG";
 
     private NewDncaViewModel mMainViewModel;
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
     private GenInfoViewModel mGenInfoViewModel;
     private ShelterInfoViewModel mShelterInfoViewModel;
+    private FoodSecurityViewModel mFoodSecurityViewModel;
 
     private NewDncaActivityBinding mMainBinding;
 
@@ -37,7 +41,13 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         MENU,
         FORM_DETAILS,
         GEN_INFO,
-        SHELTER_INFO
+        SHELTER_INFO,
+        FOOD_SECURITY,
+        LIVELIHOODS,
+        HEALTH,
+        WATER_SANITATION_HYGIENE,
+        SITUATION_IN_EVACUATION,
+        CASE_STORIES
     }
 
     @Override
@@ -102,6 +112,16 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         shelterInfoFragment.setViewModel(mShelterInfoViewModel);
     }
 
+    /**
+     * Show food security fragment
+     */
+    @Override
+    public void onFoodSecurityButtonPressed() {
+        FoodSecurityFragment foodSecurityFragment = (FoodSecurityFragment) findOrCreateViewFragment(NewDncaComponent.FOOD_SECURITY);
+        mFoodSecurityViewModel = (FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY);
+        foodSecurityFragment.setViewModel(mFoodSecurityViewModel);
+    }
+
     @NonNull
     private Fragment findOrCreateViewFragment(NewDncaComponent fragmentType) {
 
@@ -132,6 +152,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             case SHELTER_INFO:
                 if (fragment == null || !(fragment instanceof  ShelterInfoFragment)) {
                     fragment = ShelterInfoFragment.newInstance();
+                }
+                break;
+
+            case FOOD_SECURITY:
+                if (fragment == null || !(fragment instanceof  ShelterInfoFragment)) {
+                    fragment = FoodSecurityFragment.newInstance();
                 }
                 break;
         }
@@ -170,6 +196,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = SHELTER_INFO_VIEWMODEL_TAG;
+                break;
+
+            case FOOD_SECURITY:
+                viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
+                tag = FOOD_SECURITY_VIEWMODEL_TAG;
                 break;
         }
 

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 import com.rjdeleon.mvp_app.Models.DNCAForm;
+import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodSecurity;
 import com.rjdeleon.mvp_app.Models.FormInfo;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
@@ -140,6 +141,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         FormInfo formInfo = new FormInfo("aa", assessmentDate, "cc", "dd", "ee", "ff", "gg", "hh");
         GenInfo genInfo = new GenInfo(calamityDesc, populationData, familyData, vulnerablePopulationData, casualtiesData, deathCauseData, infrastructureDamageData);
         ShelterInfo shelterInfo = new ShelterInfo();
-        return new DNCAForm(formInfo, genInfo, shelterInfo);
+        FoodSecurity foodSecurity = new FoodSecurity();
+        return new DNCAForm(formInfo, genInfo, shelterInfo, foodSecurity);
     }
 }

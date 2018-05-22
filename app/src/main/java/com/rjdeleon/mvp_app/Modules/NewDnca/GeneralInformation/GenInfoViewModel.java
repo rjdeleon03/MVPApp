@@ -19,6 +19,14 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPage
 
 public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoRepositoryManager {
 
+    private CalamityDesc mCalamityDesc;
+    private PopulationData mPopulationData;
+    private FamilyData mFamilyData;
+    private VulnerablePopulationData mVulnerablePopulation;
+    private CasualtiesData mCasualtiesData;
+    private DeathCauseData mDeathCauseData;
+    private InfrastructureDamageData mInfrastructureDamageData;
+
     /**
      * Constructor
      * @param context
@@ -32,22 +40,6 @@ public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoR
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
-        retrieveGenInfo();
-    }
-
-    /** ================== GENERAL INFORMATION ================== */
-    private CalamityDesc mCalamityDesc;
-    private PopulationData mPopulationData;
-    private FamilyData mFamilyData;
-    private VulnerablePopulationData mVulnerablePopulation;
-    private CasualtiesData mCasualtiesData;
-    private DeathCauseData mDeathCauseData;
-    private InfrastructureDamageData mInfrastructureDamageData;
-
-    /**
-     * Retrieve general information
-     */
-    private void retrieveGenInfo() {
         mCalamityDesc = mDncaForm.getGenInfo().getCalamityDesc();
         mPopulationData = mDncaForm.getGenInfo().getPopulationData();
         mFamilyData = mDncaForm.getGenInfo().getFamilyData();
@@ -56,7 +48,6 @@ public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoR
         mDeathCauseData = mDncaForm.getGenInfo().getDeathCauseData();
         mInfrastructureDamageData = mDncaForm.getGenInfo().getInfrastructureDamageData();
     }
-
     /**
      * Gets calamity details
      * @return

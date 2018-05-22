@@ -8,7 +8,6 @@ import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
 
 public interface ShelterInfoRepositoryManager {
 
-    /* SHELTER AND NON_FOOD ITEMS */
     ShelterHouseDamageData getHouseDamageData();
 
     ShelterCopingData getShelterCopingData();

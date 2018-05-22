@@ -10,7 +10,6 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 
 public interface GenInfoRepositoryManager {
 
-    /* GENERAL INFORMATION */
     CalamityDesc getCalamityDetails();
 
     PopulationData getPopulationData();

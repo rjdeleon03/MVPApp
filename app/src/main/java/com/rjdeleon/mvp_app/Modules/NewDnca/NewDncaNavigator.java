@@ -9,4 +9,6 @@ public interface NewDncaNavigator {
     void onGenInfoButtonPressed();
 
     void onShelterInfoButtonPressed();
+
+    void onFoodSecurityButtonPressed();
 }

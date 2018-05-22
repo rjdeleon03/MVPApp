@@ -7,14 +7,14 @@ public class FoodSecurity {
     private FoodImpactData foodImpactData;
     private FoodCopingData foodCopingData;
     private FoodNeedsData foodNeedsData;
-    private AssistanceData foodAssistance;
+    private AssistanceData assistanceData;
     private FoodGapsData foodGapsData;
 
-    public FoodSecurity(FoodImpactData foodImpactData, FoodCopingData foodCopingData, FoodNeedsData foodNeedsData, AssistanceData foodAssistance, FoodGapsData foodGapsData) {
+    public FoodSecurity(FoodImpactData foodImpactData, FoodCopingData foodCopingData, FoodNeedsData foodNeedsData, AssistanceData assistanceData, FoodGapsData foodGapsData) {
         this.foodImpactData = foodImpactData;
         this.foodCopingData = foodCopingData;
         this.foodNeedsData = foodNeedsData;
-        this.foodAssistance = foodAssistance;
+        this.assistanceData = assistanceData;
         this.foodGapsData = foodGapsData;
     }
 
@@ -46,12 +46,12 @@ public class FoodSecurity {
         this.foodNeedsData = foodNeedsData;
     }
 
-    public AssistanceData getFoodAssistance() {
-        return foodAssistance;
+    public AssistanceData getAssistanceData() {
+        return assistanceData;
     }
 
-    public void setFoodAssistance(AssistanceData foodAssistance) {
-        this.foodAssistance = foodAssistance;
+    public void setAssistanceData(AssistanceData assistanceData) {
+        this.assistanceData = assistanceData;
     }
 
     public FoodGapsData getFoodGapsData() {

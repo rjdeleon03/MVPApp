@@ -27,6 +27,7 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
 
     public static final String SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG = "SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_COPING_VIEWMODEL_TAG = "SHELTER_INFO_COPING_VIEWMODEL_TAG";
+    public static final String SHELTER_INFO_GAPS_VIEWMODEL_TAG = "SHELTER_INFO_GAPS_VIEWMODEL_TAG";
 
     public static ShelterInfoFragment newInstance() {
         return new ShelterInfoFragment();
@@ -91,7 +92,7 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
             // Bind shelter gaps data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(shelterGapsDataViewModel),
-                    SHELTER_INFO_COPING_VIEWMODEL_TAG);
+                    SHELTER_INFO_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

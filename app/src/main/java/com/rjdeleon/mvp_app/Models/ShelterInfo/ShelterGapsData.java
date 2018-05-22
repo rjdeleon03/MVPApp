@@ -8,15 +8,17 @@ public class ShelterGapsData {
     private String hasAccessToBasicServices;
     private String hasAbleBodiedMember;
     private String hasReferralPathwayForGbv;
+    private String hasGbvProtectionServices;
     private String hasGbvProtectionFocalPoint;
 
-    public ShelterGapsData(String hasSeparateCubicles, String isAssistanceCulturallyAppropriate, String isShelterAppropriate, String hasAccessToBasicServices, String hasAbleBodiedMember, String hasReferralPathwayForGbv, String hasGbvProtectionFocalPoint) {
+    public ShelterGapsData(String hasSeparateCubicles, String isAssistanceCulturallyAppropriate, String isShelterAppropriate, String hasAccessToBasicServices, String hasAbleBodiedMember, String hasReferralPathwayForGbv, String hasGbvProtectionServices, String hasGbvProtectionFocalPoint) {
         this.hasSeparateCubicles = hasSeparateCubicles;
         this.isAssistanceCulturallyAppropriate = isAssistanceCulturallyAppropriate;
         this.isShelterAppropriate = isShelterAppropriate;
         this.hasAccessToBasicServices = hasAccessToBasicServices;
         this.hasAbleBodiedMember = hasAbleBodiedMember;
         this.hasReferralPathwayForGbv = hasReferralPathwayForGbv;
+        this.hasGbvProtectionServices = hasGbvProtectionServices;
         this.hasGbvProtectionFocalPoint = hasGbvProtectionFocalPoint;
     }
 
@@ -27,6 +29,7 @@ public class ShelterGapsData {
         this.hasAccessToBasicServices = "";
         this.hasAbleBodiedMember = "";
         this.hasReferralPathwayForGbv = "";
+        this.hasGbvProtectionServices = "";
         this.hasGbvProtectionFocalPoint = "";
     }
 
@@ -76,6 +79,14 @@ public class ShelterGapsData {
 
     public void setHasReferralPathwayForGbv(String hasReferralPathwayForGbv) {
         this.hasReferralPathwayForGbv = hasReferralPathwayForGbv;
+    }
+
+    public String getHasGbvProtectionServices() {
+        return hasGbvProtectionServices;
+    }
+
+    public void setHasGbvProtectionServices(String hasGbvProtectionServices) {
+        this.hasGbvProtectionServices = hasGbvProtectionServices;
     }
 
     public String getHasGbvProtectionFocalPoint() {

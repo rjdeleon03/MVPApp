@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
+import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData.HouseDamageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData.HouseDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterCopingData.ShelterCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterCopingData.ShelterCopingDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterGapsData.ShelterGapsDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterGapsData.ShelterGapsDataViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
@@ -75,6 +78,19 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
             // Bind shelter coping data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(shelterCopingDataViewModel),
+                    SHELTER_INFO_COPING_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup shelter gaps data fragment
+            ShelterGapsDataFragment shelterGapsDataFragment = ShelterGapsDataFragment.newInstance();
+            ShelterGapsDataViewModel shelterGapsDataViewModel = new ShelterGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            shelterGapsDataFragment.setViewModel(shelterGapsDataViewModel);
+            mAdapter.addFragment(shelterGapsDataFragment);
+
+            // Bind shelter gaps data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(shelterGapsDataViewModel),
                     SHELTER_INFO_COPING_VIEWMODEL_TAG);
         }
 

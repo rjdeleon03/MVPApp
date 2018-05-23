@@ -392,7 +392,6 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
-                    android:id="@+id/nd_shelter_coping_return_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -411,7 +410,6 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
-                    android:id="@+id/nd_shelter_coping_cannot_return_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             tools:context=".Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="72dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="What are the coping strategies employed?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="@={viewModel.copingStrategies}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include layout="@layout/base_save_button"
+                 viewModel="@{viewModel}"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

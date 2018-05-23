@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Form Details"
+                android:fontFamily="@font/lato_bold"
                 android:onClick="@{() -> viewModel.navigateOnFormDetailsButtonPressed()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="General Information"
+                android:fontFamily="@font/lato_bold"
                 android:onClick="@{() -> viewModel.navigateOnGenInfoButtonPressed()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
@@ -49,11 +51,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Shelter and Non-Food Items"
+                android:fontFamily="@font/lato_bold"
                 android:onClick="@{() -> viewModel.navigateOnShelterInfoButtonPressed()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nd_gen_info_button" />
+
+            <Button
+                android:id="@+id/nd_food_security_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Food Security"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="@{() -> viewModel.navigateOnFoodSecurityButtonPressed()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nd_shelter_info_button" />
 
         </android.support.constraint.ConstraintLayout>
 

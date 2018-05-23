@@ -39,13 +39,12 @@ public class FamilyDataViewModel extends GenInfoBaseViewModel implements NonEnum
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        FamilyData familyData = new FamilyData();
-        familyData.setTotalFamilies(totalFamilies.get());
-        familyData.setAffectedFamilies(affectedFamilies.get());
-        familyData.setDisplacedFamilies(displacedFamilies.get());
-        familyData.setTotalHouseholds(totalHouseholds.get());
-        familyData.setAffectedHouseholds(affectedHouseholds.get());
-        familyData.setDisplacedHouseholds(displacedHouseholds.get());
+        FamilyData familyData = new FamilyData(totalFamilies.get(),
+                affectedFamilies.get(),
+                displacedFamilies.get(),
+                totalHouseholds.get(),
+                affectedHouseholds.get(),
+                displacedHouseholds.get());
         mGenInfoRepositoryManager.saveFamilyData(familyData);
     }
 }

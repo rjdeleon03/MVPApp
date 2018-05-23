@@ -10,14 +10,14 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoReposi
 
 public class ShelterGapsDataViewModel extends ShelterInfoBaseViewModel implements NonEnumSaveableSection {
 
-    public final ObservableField<String> hasSeparateCubicles= new ObservableField<>("");
-    public final ObservableField<String> isAssistanceCulturallyAppropriate= new ObservableField<>("");
-    public final ObservableField<String> isShelterAppropriate= new ObservableField<>("");
-    public final ObservableField<String> hasAccessToBasicServices= new ObservableField<>("");
-    public final ObservableField<String> hasAbleBodiedMember= new ObservableField<>("");
-    public final ObservableField<String> hasReferralPathwayForGbv= new ObservableField<>("");
-    public final ObservableField<String> hasGbvProtectionServices= new ObservableField<>("");
-    public final ObservableField<String> hasGbvProtectionFocalPoint= new ObservableField<>("");
+    public final ObservableField<String> hasSeparateCubicles = new ObservableField<>("");
+    public final ObservableField<String> isAssistanceCulturallyAppropriate = new ObservableField<>("");
+    public final ObservableField<String> isShelterAppropriate = new ObservableField<>("");
+    public final ObservableField<String> hasAccessToBasicServices = new ObservableField<>("");
+    public final ObservableField<String> hasAbleBodiedMember = new ObservableField<>("");
+    public final ObservableField<String> hasReferralPathwayForGbv = new ObservableField<>("");
+    public final ObservableField<String> hasGbvProtectionServices = new ObservableField<>("");
+    public final ObservableField<String> hasGbvProtectionFocalPoint = new ObservableField<>("");
     
     /**
      * Constructor
@@ -43,15 +43,14 @@ public class ShelterGapsDataViewModel extends ShelterInfoBaseViewModel implement
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        ShelterGapsData shelterGapsData = new ShelterGapsData();
-        shelterGapsData.setHasSeparateCubicles(hasSeparateCubicles.get());
-        shelterGapsData.setIsAssistanceCulturallyAppropriate(isAssistanceCulturallyAppropriate.get());
-        shelterGapsData.setIsShelterAppropriate(isShelterAppropriate.get());
-        shelterGapsData.setHasAccessToBasicServices(hasAccessToBasicServices.get());
-        shelterGapsData.setHasAbleBodiedMember(hasAbleBodiedMember.get());
-        shelterGapsData.setHasReferralPathwayForGbv(hasReferralPathwayForGbv.get());
-        shelterGapsData.setHasGbvProtectionServices(hasGbvProtectionServices.get());
-        shelterGapsData.setHasGbvProtectionFocalPoint(hasGbvProtectionFocalPoint.get());
+        ShelterGapsData shelterGapsData = new ShelterGapsData(hasSeparateCubicles.get(),
+                isAssistanceCulturallyAppropriate.get(),
+                isShelterAppropriate.get(),
+                hasAccessToBasicServices.get(),
+                hasAbleBodiedMember.get(),
+                hasReferralPathwayForGbv.get(),
+                hasGbvProtectionServices.get(),
+                hasGbvProtectionFocalPoint.get());
         mShelterInfoRepositoryManager.saveShelterGapsData(shelterGapsData);
     }
 }

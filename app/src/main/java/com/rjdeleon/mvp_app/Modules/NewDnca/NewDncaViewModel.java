@@ -69,6 +69,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     }
 
     /**
+     * Handles navigation when food security button is pressed
+     */
+    public void navigateOnFoodSecurityButtonPressed() {
+        mNewDncaNavigator.onFoodSecurityButtonPressed();
+    }
+
+    /**
      * Callback for when form has been created
      * @param form
      */

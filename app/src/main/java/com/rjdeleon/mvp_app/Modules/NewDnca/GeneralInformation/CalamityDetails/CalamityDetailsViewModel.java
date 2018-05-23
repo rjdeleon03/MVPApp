@@ -36,11 +36,7 @@ public class CalamityDetailsViewModel extends GenInfoBaseViewModel implements No
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        CalamityDesc calamityDesc = new CalamityDesc();
-        calamityDesc.setCalamityType(calamityType.get());
-        calamityDesc.setDateOccurred(dateOccurred.get());
-        calamityDesc.setEventDescription(eventDescription.get());
-        calamityDesc.setAreaDescription(areaDescription.get());
+        CalamityDesc calamityDesc = new CalamityDesc(calamityType.get(), dateOccurred.get(), eventDescription.get(), areaDescription.get());
         mGenInfoRepositoryManager.saveCalamityDetails(calamityDesc);
     }
 

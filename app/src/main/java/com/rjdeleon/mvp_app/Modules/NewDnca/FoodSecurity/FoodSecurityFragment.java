@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataViewModel;
+import com.rjdeleon.mvp_app.Utils.ActivityUtils;
+import com.rjdeleon.mvp_app.ViewModelHolder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,20 +49,18 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
             return root;
         }
 
-        /*
         {
-            // Setup house damage data fragment
-            HouseDamageFragment houseDamageFragment = HouseDamageFragment.newInstance();
-            HouseDamageViewModel calamityDetailsViewModel = new HouseDamageViewModel(getContext().getApplicationContext(), repositoryManager);
-            houseDamageFragment.setViewModel(calamityDetailsViewModel);
-            mAdapter.addFragment(houseDamageFragment);
+            // Setup food impact data fragment
+            FoodImpactDataFragment foodImpactDataFragment = FoodImpactDataFragment.newInstance();
+            FoodImpactDataViewModel foodImpactDataViewModel = new FoodImpactDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            foodImpactDataFragment.setViewModel(foodImpactDataViewModel);
+            mAdapter.addFragment(foodImpactDataFragment);
 
-            // Bind calamity details viewModel to root activity's lifecycle
+            // Bind food impact data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(calamityDetailsViewModel),
-                    SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG);
+                    ViewModelHolder.createContainer(foodImpactDataViewModel),
+                    FOOD_SECURITY_IMPACT_VIEWMODEL_TAG);
         }
-        */
 
         // Call to parent class to setup the view pager
         super.setupViewPager(root);

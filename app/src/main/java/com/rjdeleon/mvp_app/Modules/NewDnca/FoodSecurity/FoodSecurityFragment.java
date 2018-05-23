@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataFragment;
@@ -90,6 +92,19 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodNeedsDataViewModel),
                     FOOD_SECURITY_NEEDS_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup food gaps data fragment
+            FoodGapsDataFragment foodGapsDataFragment = FoodGapsDataFragment.newInstance();
+            FoodGapsDataViewModel foodGapsDataViewModel = new FoodGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            foodGapsDataFragment.setViewModel(foodGapsDataViewModel);
+            mAdapter.addFragment(foodGapsDataFragment);
+
+            // Bind food gaps data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(foodGapsDataViewModel),
+                    FOOD_SECURITY_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

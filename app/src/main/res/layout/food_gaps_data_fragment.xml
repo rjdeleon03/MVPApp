@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             tools:context=".Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="72dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp">
+
+                <!-- Is the assistance provided appropriate to the needs of the families? -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Is the assistance provided appropriate to the needs of the families?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="@={viewModel.isAssistanceAppropriate}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="textMultiLine" />
+
+                <!-- Is the assistance provided enough? -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Is the assistance provided enough?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="@={viewModel.isAssistanceEnough}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="textMultiLine" />
+
+                <!-- Do women and men have equal access to the assistance? -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Do women and men have equal access to the assistance?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="@={viewModel.hasEqualAccess}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="textMultiLine" />
+
+                <!-- Were the specific food needs of men, women, boys, girls, PWD, children, breastfeeding and lactating women considered in the assistance? -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Were the specific food needs of men, women, boys, girls, PWD, children, breastfeeding and lactating women considered in the assistance?"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text="@={viewModel.wereAllConsidered}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include layout="@layout/base_save_button"
+                 viewModel="@{viewModel}"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

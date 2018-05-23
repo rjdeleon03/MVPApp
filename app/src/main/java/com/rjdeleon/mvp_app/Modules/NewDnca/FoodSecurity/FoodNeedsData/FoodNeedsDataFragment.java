@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData;
+package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData;
 
 
 import android.os.Bundle;
@@ -8,30 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.databinding.FoodCopingDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.FoodNeedsDataFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FoodCopingDataFragment extends Fragment {
+public class FoodNeedsDataFragment extends Fragment {
 
-    private FoodCopingDataFragmentBinding mBinding;
-    private FoodCopingDataViewModel mViewModel;
+    private FoodNeedsDataFragmentBinding mBinding;
+    private FoodNeedsDataViewModel mViewModel;
 
-    public FoodCopingDataFragment() {
+    public FoodNeedsDataFragment() {
         // Required empty public constructor
     }
 
-    public static FoodCopingDataFragment newInstance() {
-        return new FoodCopingDataFragment();
+    public static FoodNeedsDataFragment newInstance() {
+        return new FoodNeedsDataFragment();
     }
 
     /**
      * Sets the viewModel
      * @param viewModel
      */
-    public void setViewModel(@NonNull FoodCopingDataViewModel viewModel) {
+    public void setViewModel(@NonNull FoodNeedsDataViewModel viewModel) {
         mViewModel = viewModel;
     }
 
@@ -40,12 +40,13 @@ public class FoodCopingDataFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.food_coping_data_fragment, container, false);
+        View root = inflater.inflate(R.layout.food_needs_data_fragment, container, false);
         if (mBinding == null) {
-            mBinding = FoodCopingDataFragmentBinding.bind(root);
+            mBinding = FoodNeedsDataFragmentBinding.bind(root);
         }
         mBinding.setViewModel(mViewModel);
 
         return root;
     }
+
 }

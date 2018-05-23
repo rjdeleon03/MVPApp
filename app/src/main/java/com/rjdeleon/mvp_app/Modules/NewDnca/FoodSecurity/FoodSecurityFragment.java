@@ -11,6 +11,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopi
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
@@ -75,6 +77,19 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodCopingDataViewModel),
                     FOOD_SECURITY_COPING_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup food needs data fragment
+            FoodNeedsDataFragment foodNeedsDataFragment = FoodNeedsDataFragment.newInstance();
+            FoodNeedsDataViewModel foodNeedsDataViewModel = new FoodNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            foodNeedsDataFragment.setViewModel(foodNeedsDataViewModel);
+            mAdapter.addFragment(foodNeedsDataFragment);
+
+            // Bind food needs data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(foodNeedsDataViewModel),
+                    FOOD_SECURITY_NEEDS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

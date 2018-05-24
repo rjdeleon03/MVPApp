@@ -1,18 +1,20 @@
 package com.rjdeleon.mvp_app.Models.ShelterInfo;
 
-public class ShelterNeedsDataRow {
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
+
+public class ShelterNeedsDataRow extends GenericEnumDataRow {
 
     private String items;
     private int familyCount;
 
-    public ShelterNeedsDataRow(String items, int familyCount) {
+    public ShelterNeedsDataRow(NeedsType type, String items, int familyCount) {
+        super(type);
         this.items = items;
         this.familyCount = familyCount;
     }
 
     public ShelterNeedsDataRow() {
-        this.items = "";
-        this.familyCount = 0;
+        this(NeedsType.values()[0], "", 0);
     }
 
     public String getItems() {

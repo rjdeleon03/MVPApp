@@ -27,8 +27,10 @@ public class HouseDamageDialogViewModel extends BaseEnumDialogViewModel {
 
     /**
      * Constructor
-     *
      * @param context
+     * @param houseDamageRepositoryManager
+     * @param houseTypeIndex
+     * @param isNewRow
      */
     public HouseDamageDialogViewModel(Context context,
                                       HouseDamageRepositoryManager houseDamageRepositoryManager,

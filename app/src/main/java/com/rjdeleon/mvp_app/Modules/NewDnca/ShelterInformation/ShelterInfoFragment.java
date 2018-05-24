@@ -16,6 +16,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterCopingData
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterCopingData.ShelterCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterGapsData.ShelterGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterGapsData.ShelterGapsDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterNeedsData.ShelterNeedsFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterNeedsData.ShelterNeedsViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
@@ -26,6 +28,7 @@ import com.rjdeleon.mvp_app.ViewModelHolder;
 public class ShelterInfoFragment extends BaseMultiPageFragment {
 
     public static final String SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG = "SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG";
+    public static final String SHELTER_INFO_NEEDS_VIEWMODEL_TAG = "SHELTER_INFO_GAPS_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_COPING_VIEWMODEL_TAG = "SHELTER_INFO_COPING_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_GAPS_VIEWMODEL_TAG = "SHELTER_INFO_GAPS_VIEWMODEL_TAG";
 
@@ -67,6 +70,19 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(calamityDetailsViewModel),
                     SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup shelter needs data fragment
+            ShelterNeedsFragment shelterNeedsFragment = ShelterNeedsFragment.newInstance();
+            ShelterNeedsViewModel shelterNeedsViewModel = new ShelterNeedsViewModel(getContext().getApplicationContext(), repositoryManager);
+            shelterNeedsFragment.setViewModel(shelterNeedsViewModel);
+            mAdapter.addFragment(shelterNeedsFragment);
+
+            // Bind shelter needs data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(shelterNeedsViewModel),
+                    SHELTER_INFO_NEEDS_VIEWMODEL_TAG);
         }
 
         {

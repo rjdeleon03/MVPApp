@@ -15,9 +15,9 @@ import com.rjdeleon.mvp_app.databinding.HouseDamageRowBinding;
 
 public class HouseDamageFragmentAdapter extends RecyclerView.Adapter<HouseDamageRowViewHolder> {
 
+    private Context mContext;
     private BaseEnumNavigator mBaseEnumNavigator;
     private HouseDamageViewModel mViewModel;
-    private Context mContext;
 
     public HouseDamageFragmentAdapter(Context context,
                                          BaseEnumNavigator baseEnumNavigator,

@@ -27,6 +27,7 @@ public class HouseDamageRowViewModel extends BaseEnumRowViewModel {
     /**
      * Constructor
      * @param context
+     * @param houseDamageRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */

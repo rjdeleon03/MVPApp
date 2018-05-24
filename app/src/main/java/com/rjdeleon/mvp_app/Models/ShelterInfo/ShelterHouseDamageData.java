@@ -33,7 +33,7 @@ public class ShelterHouseDamageData implements NormalizableData, TotalizableData
     @Override
     public void normalize() {
         GenericEnumUtils.normalizeGenericEnumData(
-                GenericEnumDataRow.AgeGroup.class,
+                GenericEnumDataRow.HouseType.class,
                 this.getClass(),
                 (List<GenericEnumDataRow>)(Object) shelterHouseDamageDataRows);
         

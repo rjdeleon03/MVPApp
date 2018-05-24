@@ -58,5 +58,6 @@ public class DNCAForm implements NormalizableData {
     @Override
     public void normalize() {
         genInfo.normalize();
+        shelterInfo.normalize();
     }
 }

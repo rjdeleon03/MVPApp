@@ -1,9 +1,14 @@
 package com.rjdeleon.mvp_app.Models.ShelterInfo;
 
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
+import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;
+import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShelterNeedsData {
+public class ShelterNeedsData implements NormalizableData {
 
     private List<ShelterNeedsDataRow> shelterNeedsDataRows;
 
@@ -21,5 +26,14 @@ public class ShelterNeedsData {
 
     public void setShelterNeedsDataRows(List<ShelterNeedsDataRow> shelterNeedsDataRows) {
         this.shelterNeedsDataRows = shelterNeedsDataRows;
+    }
+
+    @Override
+    public void normalize() {
+        GenericEnumUtils.normalizeGenericEnumData(
+                GenericEnumDataRow.NeedsType.class,
+                this.getClass(),
+                (List<GenericEnumDataRow>)(Object) shelterNeedsDataRows,
+                false);
     }
 }

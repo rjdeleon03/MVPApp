@@ -1,8 +1,9 @@
 package com.rjdeleon.mvp_app.Models.ShelterInfo;
 
 import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
+import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 
-public class ShelterInfo {
+public class ShelterInfo implements NormalizableData {
 
     private ShelterHouseDamageData houseDamageData;
     private ShelterCopingData copingData;
@@ -64,5 +65,12 @@ public class ShelterInfo {
 
     public void setGapsData(ShelterGapsData gapsData) {
         this.gapsData = gapsData;
+    }
+
+    @Override
+    public void normalize() {
+        if (houseDamageData != null) houseDamageData.normalize();
+
+        if (needsData != null) needsData.normalize();
     }
 }

@@ -13,8 +13,8 @@ public class ShelterNeedsDataRow extends GenericEnumDataRow {
         this.familyCount = familyCount;
     }
 
-    public ShelterNeedsDataRow() {
-        this(NeedsType.values()[0], "", 0);
+    public ShelterNeedsDataRow(NeedsType type) {
+        this(type, "", 0);
     }
 
     public String getItems() {

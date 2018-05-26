@@ -103,8 +103,8 @@ public class AppUtil {
         }
     }
 
-    @BindingAdapter("android:enabled")
-    public static void bindAgeGroupListInAddButton(FloatingActionButton button, List<GenericEnum> enums) {
-        button.setEnabled(enums.size() > 0);
+    @BindingAdapter({"bind:enumList", "bind:spinnerVisibility"})
+    public static void bindAgeGroupListInAddButton(FloatingActionButton button, List<GenericEnum> enums, boolean shouldShowSpinner) {
+        button.setEnabled(enums.size() > 0 || !shouldShowSpinner);
     }
 }

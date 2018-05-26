@@ -24,7 +24,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     }
 
     /**
-     * Show Population Data dialog when add button is pressed
+     * Show population data dialog when add button is pressed
      */
     @Override
     public void onAddButtonPressed() {

@@ -1,9 +1,9 @@
 package com.rjdeleon.mvp_app.Models.Generics;
 
-public class AssistanceDataRow {
+public class AssistanceDataRow extends GenericEnumDataRow {
 
     private String orgName;
-    private String type;
+    private String assistanceType;
     private SimpleDate dateReceived;
     private int amount;
     private int beneficiariesTotal;
@@ -12,28 +12,21 @@ public class AssistanceDataRow {
     private int beneficiariesBoys;
     private int beneficiariesGirls;
 
-    public AssistanceDataRow(String orgName, String type, SimpleDate dateReceived, int amount, int beneficiariesTotal, int beneficiariesMen, int beneficiariesWomen, int beneficiariesBoys, int beneficiariesGirls) {
+    public AssistanceDataRow(String orgName, String assistanceType, SimpleDate dateReceived, int amount, int beneficiariesMen, int beneficiariesWomen, int beneficiariesBoys, int beneficiariesGirls) {
+        super(null);
         this.orgName = orgName;
-        this.type = type;
+        this.assistanceType = assistanceType;
         this.dateReceived = dateReceived;
         this.amount = amount;
-        this.beneficiariesTotal = beneficiariesTotal;
         this.beneficiariesMen = beneficiariesMen;
         this.beneficiariesWomen = beneficiariesWomen;
         this.beneficiariesBoys = beneficiariesBoys;
         this.beneficiariesGirls = beneficiariesGirls;
+        this.beneficiariesTotal = this.beneficiariesMen + this.beneficiariesWomen + this.beneficiariesBoys + this.beneficiariesGirls;
     }
 
     public AssistanceDataRow() {
-        this.orgName = "";
-        this.type = "";
-        this.dateReceived = new SimpleDate();
-        this.amount = 0;
-        this.beneficiariesTotal = 0;
-        this.beneficiariesMen = 0;
-        this.beneficiariesWomen = 0;
-        this.beneficiariesBoys = 0;
-        this.beneficiariesGirls = 0;
+        this("", "", new SimpleDate(), 0, 0, 0, 0, 0);
     }
 
     public String getOrgName() {
@@ -44,12 +37,12 @@ public class AssistanceDataRow {
         this.orgName = orgName;
     }
 
-    public String getType() {
-        return type;
+    public String getAssistanceType() {
+        return assistanceType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAssistanceType(String type) {
+        this.assistanceType = type;
     }
 
     public SimpleDate getDateReceived() {

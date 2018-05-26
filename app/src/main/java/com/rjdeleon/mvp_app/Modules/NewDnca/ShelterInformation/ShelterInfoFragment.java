@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData.HouseDamageFragment;
@@ -30,6 +32,7 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
     public static final String SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG = "SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_NEEDS_VIEWMODEL_TAG = "SHELTER_INFO_GAPS_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_COPING_VIEWMODEL_TAG = "SHELTER_INFO_COPING_VIEWMODEL_TAG";
+    public static final String SHELTER_INFO_ASSISTANCE_VIEWMODEL_TAG = "SHELTER_INFO_ASSISTANCE_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_GAPS_VIEWMODEL_TAG = "SHELTER_INFO_GAPS_VIEWMODEL_TAG";
 
     public static ShelterInfoFragment newInstance() {
@@ -97,6 +100,20 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
                     ViewModelHolder.createContainer(shelterCopingDataViewModel),
                     SHELTER_INFO_COPING_VIEWMODEL_TAG);
         }
+
+        {
+            // Setup shelter assistance data fragment
+            AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
+            AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            assistanceDataFragment.setViewModel(assistanceDataViewModel);
+            mAdapter.addFragment(assistanceDataFragment);
+
+            // Bind shelter assistance data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(assistanceDataViewModel),
+                    SHELTER_INFO_ASSISTANCE_VIEWMODEL_TAG);
+        }
+
 
         {
             // Setup shelter gaps data fragment

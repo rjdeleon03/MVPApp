@@ -23,6 +23,7 @@ public class PopulationDataRowViewModel extends BaseEnumRowViewModel {
      * Constructor
      * @param context
      * @param populationDataRepositoryManager
+     * @param baseEnumNavigator
      * @param rowIndex
      */
     public PopulationDataRowViewModel(Context context,

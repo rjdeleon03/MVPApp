@@ -5,16 +5,15 @@ import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataContainer;
 
-public interface ShelterInfoRepositoryManager {
+public interface ShelterInfoRepositoryManager extends AssistanceDataContainer {
 
     ShelterHouseDamageData getHouseDamageData();
 
     ShelterCopingData getShelterCopingData();
 
     ShelterNeedsData getShelterNeedsData();
-
-    AssistanceData getShelterAssistanceData();
 
     ShelterGapsData getShelterGapsData();
 
@@ -23,8 +22,6 @@ public interface ShelterInfoRepositoryManager {
     void saveShelterCopingData(ShelterCopingData shelterCopingData);
 
     void saveShelterNeedsData(ShelterNeedsData shelterNeedsData);
-
-    void saveShelterAssistanceData(AssistanceData assistanceData);
 
     void saveShelterGapsData(ShelterGapsData shelterGapsData);
 }

@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules;
 
 import android.content.Context;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
@@ -13,11 +14,14 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepository
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
 
     protected BaseEnumNavigator mBaseEnumNavigator;
     protected List<GenericEnumDataRow> mGenericEnumDataRows = new ArrayList<>();
 
+    public final ObservableBoolean shouldShowSpinner = new ObservableBoolean(false);
     public final ObservableArrayList<GenericEnum> ageGroupList = new ObservableArrayList<>();
     public final ObservableInt spinnerValue = new ObservableInt(0);
 
@@ -25,10 +29,14 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
      * Constructor
      * @param context
      */
-    protected BaseEnumViewModel(Context context, Class<? extends Enum> enumClass) {
+    protected BaseEnumViewModel(Context context, @Nullable Class<? extends Enum> enumClass) {
 
         super(context);
+        if (enumClass == null) {
+            return;
+        }
 
+        shouldShowSpinner.set(true);
         if (enumClass == GenericEnumDataRow.AgeGroup.class) {
             ageGroupList.addAll(GenericEnumDataRow.AgeGroup.asList());
 
@@ -67,7 +75,7 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
     protected void addAgeGroupDataRow(GenericEnumDataRow genericEnumDataRow) {
 
         // If list is empty, add new row right away
-        if (mGenericEnumDataRows.size() == 0) {
+        if (mGenericEnumDataRows.size() == 0 ) {
             mGenericEnumDataRows.add(genericEnumDataRow);
 
         } else {

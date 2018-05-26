@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel" />
@@ -23,6 +25,7 @@
             <android.support.v7.widget.AppCompatSpinner
                 android:id="@+id/nd_row_controls_spinner"
                 android:selectedItemPosition="@={viewModel.spinnerValue}"
+                android:visibility="@{viewModel.shouldShowSpinner ? View.VISIBLE : View.GONE}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -43,8 +46,9 @@
                 android:layout_height="50dp"
                 android:layout_margin="4dp"
                 android:src="@drawable/ic_add"
-                android:enabled="@{viewModel.ageGroupList}"
                 android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
+                bind:enumList="@{viewModel.ageGroupList}"
+                bind:spinnerVisibility="@{viewModel.shouldShowSpinner}"
                 app:backgroundTint="@color/colorAccent"
                 app:elevation="0dp"/>
 

@@ -71,7 +71,7 @@ public class ShelterInfoViewModel extends BaseMultiPageViewModel implements Shel
      * @return
      */
     @Override
-    public AssistanceData getShelterAssistanceData() {
+    public AssistanceData getAssistanceData() {
         return mShelterAssistanceData;
     }
 
@@ -119,7 +119,7 @@ public class ShelterInfoViewModel extends BaseMultiPageViewModel implements Shel
      * @param assistanceData
      */
     @Override
-    public void saveShelterAssistanceData(AssistanceData assistanceData) {
+    public void saveAssistanceData(AssistanceData assistanceData) {
         mShelterAssistanceData = assistanceData;
         mDncaForm.getShelterInfo().setAssistanceData(mShelterAssistanceData);
     }

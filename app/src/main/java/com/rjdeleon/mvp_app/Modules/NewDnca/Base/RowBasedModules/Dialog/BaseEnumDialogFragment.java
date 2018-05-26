@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
@@ -36,5 +37,11 @@ public abstract class BaseEnumDialogFragment extends DialogFragment {
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         return dialog;
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        super.onCancel(dialog);
+        mViewModel.navigateOnCancelButtonPressed();
     }
 }

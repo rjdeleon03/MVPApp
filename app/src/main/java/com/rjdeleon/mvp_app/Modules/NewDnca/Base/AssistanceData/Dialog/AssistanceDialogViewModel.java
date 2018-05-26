@@ -79,4 +79,14 @@ public class AssistanceDialogViewModel extends BaseEnumDialogViewModel {
         mAssistanceDataRepositoryManager.addAssistanceDataRow(assistanceDataRow, mRowIndex);
         super.navigateOnOkButtonPressed();
     }
+
+    /**
+     * Sets the date received
+     * @param year
+     * @param month
+     * @param day
+     */
+    public void onDateReceivedSet(int year, int month, int day) {
+        dateReceived.set(new SimpleDate(year, month, day));
+    }
 }

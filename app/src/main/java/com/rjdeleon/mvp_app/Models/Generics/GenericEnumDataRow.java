@@ -182,6 +182,66 @@ public abstract class GenericEnumDataRow {
         }
     }
 
+    public enum IncomeSourceType implements GenericEnum {
+        PRIMARY_SOURCE,
+        SECONDARY_SOURCE;
+
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
+
+        public static List<IncomeSourceType> asList() {
+            List<IncomeSourceType> list = new ArrayList<>();
+            list.add(PRIMARY_SOURCE);
+            list.add(SECONDARY_SOURCE);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+
+    }
+
+    public enum LivelihoodsType implements GenericEnum {
+        FARMING,
+        FISHING,
+        TRANSPORTATION,
+        ENTREPRENEURSHIP,
+        WORKERS;
+
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
+
+        public static List<LivelihoodsType> asList() {
+            List<LivelihoodsType> list = new ArrayList<>();
+            list.add(FARMING);
+            list.add(FISHING);
+            list.add(TRANSPORTATION);
+            list.add(ENTREPRENEURSHIP);
+            list.add(WORKERS);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
 
     private GenericEnum type;
 

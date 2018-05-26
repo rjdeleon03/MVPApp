@@ -206,6 +206,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="@={viewModel.amount}"
                         android:textSize="12sp"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="@+id/nd_assistance_dlg_org"
                         app:layout_constraintStart_toStartOf="@+id/nd_assistance_dlg_org"
                         app:layout_constraintTop_toBottomOf="@+id/nd_assistance_dlg_date" />
@@ -260,6 +261,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="@={viewModel.beneficiariesMen}"
                         android:textSize="12sp"
+                        android:inputType="number"
                         app:layout_constraintEnd_toStartOf="@+id/nd_assistance_dlg_women_label"
                         app:layout_constraintStart_toEndOf="@+id/nd_assistance_dlg_men_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_assistance_dlg_divider" />
@@ -290,6 +292,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="@={viewModel.beneficiariesWomen}"
                         android:textSize="12sp"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_assistance_dlg_women_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_assistance_dlg_divider" />
@@ -315,6 +318,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="@={viewModel.beneficiariesBoys}"
                         android:textSize="12sp"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="@+id/nd_assistance_dlg_men"
                         app:layout_constraintStart_toStartOf="@+id/nd_assistance_dlg_men"
                         app:layout_constraintTop_toBottomOf="@+id/nd_assistance_dlg_men" />
@@ -340,6 +344,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="@={viewModel.beneficiariesGirls}"
                         android:textSize="12sp"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="@+id/nd_assistance_dlg_women"
                         app:layout_constraintStart_toStartOf="@+id/nd_assistance_dlg_women"
                         app:layout_constraintTop_toBottomOf="@+id/nd_assistance_dlg_women" />

@@ -71,7 +71,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      * @return
      */
     @Override
-    public AssistanceData getFoodAssistanceData() {
+    public AssistanceData getAssistanceData() {
         return mFoodAssistanceData;
     }
 
@@ -119,7 +119,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      * @return
      */
     @Override
-    public void saveFoodAssistanceData(AssistanceData foodAssistanceData) {
+    public void saveAssistanceData(AssistanceData foodAssistanceData) {
         mFoodAssistanceData = foodAssistanceData;
         mDncaForm.getFoodSecurity().setAssistanceData(mFoodAssistanceData);
     }

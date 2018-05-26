@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
@@ -26,6 +28,7 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
     public static final String FOOD_SECURITY_IMPACT_VIEWMODEL_TAG = "FOOD_SECURITY_IMPACT_VIEWMODEL_TAG";
     public static final String FOOD_SECURITY_COPING_VIEWMODEL_TAG = "FOOD_SECURITY_COPING_VIEWMODEL_TAG";
     public static final String FOOD_SECURITY_NEEDS_VIEWMODEL_TAG = "FOOD_SECURITY_NEEDS_VIEWMODEL_TAG";
+    public static final String FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG = "FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG";
     public static final String FOOD_SECURITY_GAPS_VIEWMODEL_TAG = "FOOD_SECURITY_GAPS_VIEWMODEL_TAG";
 
     public static FoodSecurityFragment newInstance() {
@@ -92,6 +95,19 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodNeedsDataViewModel),
                     FOOD_SECURITY_NEEDS_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup shelter assistance data fragment
+            AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
+            AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            assistanceDataFragment.setViewModel(assistanceDataViewModel);
+            mAdapter.addFragment(assistanceDataFragment);
+
+            // Bind shelter assistance data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(assistanceDataViewModel),
+                    FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG);
         }
 
         {

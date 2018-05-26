@@ -5,16 +5,16 @@ import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodGapsData;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodImpactData;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodNeedsData;
 import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataContainer;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataRepositoryManager;
 
-public interface FoodSecurityRepositoryManager {
+public interface FoodSecurityRepositoryManager extends AssistanceDataContainer {
 
     FoodImpactData getFoodImpactData();
 
     FoodCopingData getFoodCopingData();
 
     FoodNeedsData getFoodNeedsData();
-
-    AssistanceData getFoodAssistanceData();
 
     FoodGapsData getFoodGapsData();
 
@@ -23,8 +23,6 @@ public interface FoodSecurityRepositoryManager {
     void saveFoodCopingData(FoodCopingData foodCopingData);
 
     void saveFoodNeedsData(FoodNeedsData foodNeedsData);
-
-    void saveFoodAssistanceData(AssistanceData foodAssistanceData);
 
     void saveFoodGapsData(FoodGapsData foodGapsData);
 }

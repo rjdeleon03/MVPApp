@@ -114,7 +114,6 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
                     SHELTER_INFO_ASSISTANCE_VIEWMODEL_TAG);
         }
 
-
         {
             // Setup shelter gaps data fragment
             ShelterGapsDataFragment shelterGapsDataFragment = ShelterGapsDataFragment.newInstance();

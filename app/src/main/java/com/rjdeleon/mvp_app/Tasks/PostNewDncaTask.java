@@ -22,6 +22,7 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationDataRow;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
+import com.rjdeleon.mvp_app.Models.Livelihoods.Livelihoods;
 import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterInfo;
 
 import java.io.BufferedReader;
@@ -142,6 +143,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         GenInfo genInfo = new GenInfo(calamityDesc, populationData, familyData, vulnerablePopulationData, casualtiesData, deathCauseData, infrastructureDamageData);
         ShelterInfo shelterInfo = new ShelterInfo();
         FoodSecurity foodSecurity = new FoodSecurity();
-        return new DNCAForm(formInfo, genInfo, shelterInfo, foodSecurity);
+        Livelihoods livelihoods = new Livelihoods();
+        return new DNCAForm(formInfo, genInfo, shelterInfo, foodSecurity, livelihoods);
     }
 }

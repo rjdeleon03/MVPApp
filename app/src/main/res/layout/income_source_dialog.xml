@@ -3,14 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
     <data>
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Dialog.IncomeBeforeDialogViewModel" />
     </data>
-    -->
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -257,7 +255,7 @@
                         app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_women"
                         app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_women" />
 
-                    <!-- Number of Dependent Households -->
+                    <!-- Average Income per Household -->
                     <TextView
                         android:id="@+id/nd_lhood_dmg_dlg_income_label"
                         android:layout_width="wrap_content"

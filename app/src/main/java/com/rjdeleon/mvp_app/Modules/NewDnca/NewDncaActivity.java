@@ -14,6 +14,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragme
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -28,12 +30,14 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     public static final String NEW_DNCA_GEN_INFO_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VIEWMODEL_TAG";
     public static final String SHELTER_INFO_VIEWMODEL_TAG = "SHELTER_INFO_VIEWMODEL_TAG";
     public static final String FOOD_SECURITY_VIEWMODEL_TAG = "FOOD_SECURITY_VIEWMODEL_TAG";
+    public static final String LIVELIHOODS_VIEWMODEL_TAG = "LIVELIHOODS_VIEWMODEL_TAG";
 
     private NewDncaViewModel mMainViewModel;
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
     private GenInfoViewModel mGenInfoViewModel;
     private ShelterInfoViewModel mShelterInfoViewModel;
     private FoodSecurityViewModel mFoodSecurityViewModel;
+    private LivelihoodsViewModel mLivelihoodsViewModel;
 
     private NewDncaActivityBinding mMainBinding;
 
@@ -122,6 +126,16 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         foodSecurityFragment.setViewModel(mFoodSecurityViewModel);
     }
 
+    /**
+     * Show livelihoods fragment
+     */
+    @Override
+    public void onLivelihoodsButtonPressed() {
+        LivelihoodsFragment livelihoodsFragment = (LivelihoodsFragment) findOrCreateViewFragment(NewDncaComponent.LIVELIHOODS);
+        mLivelihoodsViewModel = (LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS);
+        livelihoodsFragment.setViewModel(mLivelihoodsViewModel);
+    }
+
     @NonNull
     private Fragment findOrCreateViewFragment(NewDncaComponent fragmentType) {
 
@@ -156,8 +170,14 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case FOOD_SECURITY:
-                if (fragment == null || !(fragment instanceof  ShelterInfoFragment)) {
+                if (fragment == null || !(fragment instanceof  FoodSecurityFragment)) {
                     fragment = FoodSecurityFragment.newInstance();
+                }
+                break;
+
+            case LIVELIHOODS:
+                if (fragment == null || !(fragment instanceof  LivelihoodsFragment)) {
+                    fragment = LivelihoodsFragment.newInstance();
                 }
                 break;
         }
@@ -202,6 +222,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = FOOD_SECURITY_VIEWMODEL_TAG;
+                break;
+
+            case LIVELIHOODS:
+                viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
+                tag = LIVELIHOODS_VIEWMODEL_TAG;
                 break;
         }
 

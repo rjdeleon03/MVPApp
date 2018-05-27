@@ -11,4 +11,6 @@ public interface NewDncaNavigator {
     void onShelterInfoButtonPressed();
 
     void onFoodSecurityButtonPressed();
+
+    void onLivelihoodsButtonPressed();
 }

@@ -65,13 +65,13 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
         {
             // Setup house damage data fragment
             HouseDamageFragment houseDamageFragment = HouseDamageFragment.newInstance();
-            HouseDamageViewModel calamityDetailsViewModel = new HouseDamageViewModel(getContext().getApplicationContext(), repositoryManager);
-            houseDamageFragment.setViewModel(calamityDetailsViewModel);
+            HouseDamageViewModel houseDamageViewModel = new HouseDamageViewModel(getContext().getApplicationContext(), repositoryManager);
+            houseDamageFragment.setViewModel(houseDamageViewModel);
             mAdapter.addFragment(houseDamageFragment);
 
             // Bind calamity details viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(calamityDetailsViewModel),
+                    ViewModelHolder.createContainer(houseDamageViewModel),
                     SHELTER_INFO_HOUSE_DAMAGE_VIEWMODEL_TAG);
         }
 

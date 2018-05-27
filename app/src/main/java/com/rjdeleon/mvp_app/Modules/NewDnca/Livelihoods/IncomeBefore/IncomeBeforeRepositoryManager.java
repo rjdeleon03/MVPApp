@@ -5,11 +5,11 @@ import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsIncomeDataRow;
 
 public interface IncomeBeforeRepositoryManager {
 
-    void addIncomeBeforeRow(LivelihoodsIncomeDataRow shelterNeedsDataRow);
+    void addIncomeBeforeRow(LivelihoodsIncomeDataRow livelihoodsIncomeDataRow, int rowIndex);
 
     void deleteIncomeBeforeRow(int rowIndex);
 
     LivelihoodsIncomeDataRow getIncomeBeforeRow(int rowIndex);
 
-    GenericEnumDataRow.NeedsType getIncomeBeforeSourceType(int needsTypeIndex);
+    GenericEnumDataRow.IncomeSourceType getIncomeBeforeSourceType(int needsTypeIndex);
 }

@@ -110,8 +110,8 @@
                         android:layout_marginRight="16dp"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
-                        android:inputType="number"
-                        android:text="Lorem ipsum"
+                        android:inputType="text"
+                        android:text="@={viewModel.source}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_source_label"
@@ -138,7 +138,7 @@
                         android:layout_marginRight="16dp"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
-                        android:text="Lorem ipsum"
+                        android:text="@={viewModel.depHousehold}"
                         android:textSize="12sp"
                         android:inputType="number"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -147,21 +147,21 @@
 
                     <!-- Men -->
                     <TextView
-                        android:id="@+id/nd_lhood_dmg_dlg_men_label"
+                        android:id="@+id/nd_lhood_dmg_dlg_male_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="Men"
+                        android:text="Male"
                         android:textColor="@android:color/black"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_men"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_male"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
 
                     <EditText
-                        android:id="@+id/nd_lhood_dmg_dlg_men"
+                        android:id="@+id/nd_lhood_dmg_dlg_male"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -169,29 +169,30 @@
                         android:layout_marginTop="4dp"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
+                        android:text="@={viewModel.depMale}"
                         android:textSize="12sp"
                         android:inputType="number"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_women_label"
-                        app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_men_label"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_female_label"
+                        app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_male_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
 
                     <!-- Women -->
                     <TextView
-                        android:id="@+id/nd_lhood_dmg_dlg_women_label"
+                        android:id="@+id/nd_lhood_dmg_dlg_female_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="Women"
+                        android:text="Female"
                         android:textColor="@android:color/black"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_women"
-                        app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_men"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_male"
                         app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
 
                     <EditText
-                        android:id="@+id/nd_lhood_dmg_dlg_women"
+                        android:id="@+id/nd_lhood_dmg_dlg_female"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -199,10 +200,11 @@
                         android:layout_marginTop="4dp"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
+                        android:text="@={viewModel.depFemale}"
                         android:textSize="12sp"
                         android:inputType="number"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_women_label"
+                        app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_female_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
 
                     <!-- Boys -->
@@ -214,9 +216,9 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="Boys"
                         android:textColor="@android:color/black"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_men"
-                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_men_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_men" />
+                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_male"
+                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_male_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_male" />
 
                     <EditText
                         android:id="@+id/nd_lhood_dmg_dlg_boys"
@@ -224,11 +226,12 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
+                        android:text="@={viewModel.depBoys}"
                         android:textSize="12sp"
                         android:inputType="number"
-                        app:layout_constraintEnd_toEndOf="@+id/nd_lhood_dmg_dlg_men"
-                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_men"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_men" />
+                        app:layout_constraintEnd_toEndOf="@+id/nd_lhood_dmg_dlg_male"
+                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_male" />
 
                     <!-- Girls -->
                     <TextView
@@ -239,9 +242,9 @@
                         android:fontFamily="@font/lato_reg"
                         android:text="Girls"
                         android:textColor="@android:color/black"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_women"
-                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_women_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_women" />
+                        app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_female"
+                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_female_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_female" />
 
                     <EditText
                         android:id="@+id/nd_lhood_dmg_dlg_girls"
@@ -249,11 +252,12 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
+                        android:text="@={viewModel.depGirls}"
                         android:textSize="12sp"
                         android:inputType="number"
-                        app:layout_constraintEnd_toEndOf="@+id/nd_lhood_dmg_dlg_women"
-                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_women"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_women" />
+                        app:layout_constraintEnd_toEndOf="@+id/nd_lhood_dmg_dlg_female"
+                        app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_female"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_female" />
 
                     <!-- Average Income per Household -->
                     <TextView
@@ -276,7 +280,7 @@
                         android:layout_marginRight="16dp"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
-                        android:text="Lorem ipsum"
+                        android:text="@={viewModel.averageIncome}"
                         android:textSize="12sp"
                         android:inputType="number"
                         app:layout_constraintEnd_toEndOf="parent"

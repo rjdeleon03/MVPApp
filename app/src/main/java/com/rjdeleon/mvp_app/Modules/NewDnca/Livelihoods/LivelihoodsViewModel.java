@@ -50,7 +50,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public LivelihoodsIncomeData getLivelihoodsIncomeBeforeEmergency() {
-        return null;
+        return mIncomeBeforeEmergency;
     }
 
     /**
@@ -59,7 +59,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public LivelihoodsIncomeData getLivelihoodsIncomeAfterEmergency() {
-        return null;
+        return mIncomeAfterEmergency;
     }
 
     /**
@@ -68,7 +68,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public LivelihoodsDamageData getLivelihoodsDamageData() {
-        return null;
+        return mEstimatedDamage;
     }
 
     /**
@@ -77,7 +77,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public LivelihoodsCopingData getLivelihoodsCopingData() {
-        return null;
+        return mCopingData;
     }
 
     /**
@@ -86,7 +86,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public LivelihoodsNeedsData getLivelihoodsNeedsData() {
-        return null;
+        return mNeedsData;
     }
 
     /**
@@ -95,7 +95,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public LivelihoodsGapsData getLivelihoodsGapsData() {
-        return null;
+        return mGapsData;
     }
 
     /**
@@ -104,7 +104,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public AssistanceData getAssistanceData() {
-        return null;
+        return mAssistanceData;
     }
 
     /**

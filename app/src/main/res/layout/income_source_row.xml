@@ -70,7 +70,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/nd_lhood_dmg_dlg"
+                android:id="@+id/nd_lhood_income_dlg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp"
@@ -78,19 +78,22 @@
 
                 <!-- Source of Income -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_source_label"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nd_lhood_income_dlg_source_label"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Source of Income"
                     android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_source"
+                    android:id="@+id/nd_lhood_income_dlg_source"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -98,26 +101,29 @@
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="number"
-                    android:text="Lorem ipsum"
+                    android:text="@{viewModel.source}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_source_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_source_label" />
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_source_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_source_label" />
 
                 <!-- Number of Dependent Households -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_households_label"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nd_lhood_income_dlg_households_label"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Number of Dependent Households"
                     android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_source" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_source" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_households"
+                    android:id="@+id/nd_lhood_income_dlg_households"
                     android:layout_width="0dp"
                     android:layout_height="23dp"
                     android:layout_marginEnd="16dp"
@@ -125,28 +131,28 @@
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="number"
-                    android:text="Lorem ipsum"
+                    android:text="@{viewModel.depHousehold}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_households_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households_label" />
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_households_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_households_label" />
 
                 <!-- Men -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_men_label"
+                    android:id="@+id/nd_lhood_income_dlg_male_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="Men"
+                    android:text="Male"
                     android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_men"
+                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_income_dlg_male"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_households" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_men"
+                    android:id="@+id/nd_lhood_income_dlg_male"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -154,28 +160,29 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
+                    android:text="@{viewModel.depMale}"
                     android:inputType="number"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_women_label"
-                    app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_men_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
+                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_income_dlg_female_label"
+                    app:layout_constraintStart_toEndOf="@+id/nd_lhood_income_dlg_male_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_households" />
 
                 <!-- Women -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_women_label"
+                    android:id="@+id/nd_lhood_income_dlg_female_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="Women"
+                    android:text="Female"
                     android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_women"
-                    app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_men"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
+                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_income_dlg_female"
+                    app:layout_constraintStart_toEndOf="@+id/nd_lhood_income_dlg_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_households" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_women"
+                    android:id="@+id/nd_lhood_income_dlg_female"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -183,87 +190,93 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
+                    android:text="@{viewModel.depFemale}"
                     android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/nd_lhood_dmg_dlg_women_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_households" />
+                    app:layout_constraintStart_toEndOf="@+id/nd_lhood_income_dlg_female_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_households" />
 
                 <!-- Boys -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_boys_label"
+                    android:id="@+id/nd_lhood_income_dlg_boys_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
                     android:text="Boys"
                     android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_men"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_men_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_men" />
+                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_income_dlg_male"
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_male_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_male" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_boys"
+                    android:id="@+id/nd_lhood_income_dlg_boys"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="number"
-                    app:layout_constraintEnd_toEndOf="@+id/nd_lhood_dmg_dlg_men"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_men"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_men" />
+                    android:text="@{viewModel.depBoys}"
+                    app:layout_constraintEnd_toEndOf="@+id/nd_lhood_income_dlg_male"
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_male"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_male" />
 
                 <!-- Girls -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_girls_label"
+                    android:id="@+id/nd_lhood_income_dlg_girls_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/lato_reg"
                     android:text="Girls"
                     android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_dmg_dlg_women"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_women_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_women" />
+                    app:layout_constraintEnd_toStartOf="@+id/nd_lhood_income_dlg_female"
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_female_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_female" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_girls"
+                    android:id="@+id/nd_lhood_income_dlg_girls"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="number"
-                    app:layout_constraintEnd_toEndOf="@+id/nd_lhood_dmg_dlg_women"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_women"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_women" />
+                    android:text="@{viewModel.depGirls}"
+                    app:layout_constraintEnd_toEndOf="@+id/nd_lhood_income_dlg_female"
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_female"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_female" />
 
                 <!-- Average Income per Household -->
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_avg_income_label"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nd_lhood_income_dlg_avg_income_label"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Average Monthly/Daily Income per Household"
                     android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_boys" />
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_boys" />
 
                 <TextView
-                    android:id="@+id/nd_lhood_dmg_dlg_avg_income"
+                    android:id="@+id/nd_lhood_income_dlg_avg_income"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:ems="10"
                     android:fontFamily="@font/lato_reg"
-                    android:text="Lorem ipsum"
                     android:inputType="number"
+                    android:text="@{viewModel.averageIncome}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_dmg_dlg_avg_income_label"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_dmg_dlg_avg_income_label" />
+                    app:layout_constraintStart_toStartOf="@+id/nd_lhood_income_dlg_avg_income_label"
+                    app:layout_constraintTop_toBottomOf="@+id/nd_lhood_income_dlg_avg_income_label" />
 
             </android.support.constraint.ConstraintLayout>
 

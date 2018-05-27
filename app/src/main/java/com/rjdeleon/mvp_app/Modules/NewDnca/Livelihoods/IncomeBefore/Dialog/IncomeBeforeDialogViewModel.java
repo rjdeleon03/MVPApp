@@ -12,6 +12,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBefor
 public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
 
     private IncomeBeforeRepositoryManager mIncomeBeforeRepositoryManager;
+    private boolean mIsNewRow = false;
+    private int mRowIndex = -1;
 
     public final ObservableField<String> source = new ObservableField<>("");
     public final ObservableInt depHousehold= new ObservableInt(0);
@@ -23,8 +25,10 @@ public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
 
     /**
      * Constructor
-     *
      * @param context
+     * @param incomeBeforeRepositoryManager
+     * @param incomeSourceTypeIndex
+     * @param isNewRow
      */
     public IncomeBeforeDialogViewModel(Context context, 
                                        IncomeBeforeRepositoryManager incomeBeforeRepositoryManager,
@@ -32,10 +36,13 @@ public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
                                        boolean isNewRow) {
         super(context);
         mIncomeBeforeRepositoryManager = incomeBeforeRepositoryManager;
+        mIsNewRow = isNewRow;
 
-        if (isNewRow) {
+        if (mIsNewRow) {
             type.set(mIncomeBeforeRepositoryManager.getIncomeBeforeSourceType(incomeSourceTypeIndex));
         } else {
+            mRowIndex = incomeSourceTypeIndex;
+
             LivelihoodsIncomeDataRow incomeDataRow = mIncomeBeforeRepositoryManager.getIncomeBeforeRow(incomeSourceTypeIndex);
             type.set(incomeDataRow.getType());
             source.set(incomeDataRow.getSource());
@@ -62,7 +69,7 @@ public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
                 depBoys.get(),
                 depGirls.get(),
                 averageIncome.get());
-        mIncomeBeforeRepositoryManager.addIncomeBeforeRow(livelihoodsIncomeDataRow);
+        mIncomeBeforeRepositoryManager.addIncomeBeforeRow(livelihoodsIncomeDataRow, mRowIndex);
         super.navigateOnOkButtonPressed();
     }
 }

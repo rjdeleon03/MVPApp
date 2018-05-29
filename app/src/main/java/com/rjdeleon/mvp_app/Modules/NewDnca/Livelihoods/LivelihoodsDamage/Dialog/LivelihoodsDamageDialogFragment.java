@@ -1,7 +1,6 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog;
 
 import android.app.Dialog;
-import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,17 +14,17 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnum
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.LivelihoodsDamageDialogBinding;
 
-public class DamageCostDialogFragment extends BaseEnumDialogFragment {
+public class LivelihoodsDamageDialogFragment extends BaseEnumDialogFragment {
 
     private LivelihoodsDamageDialogBinding mBinding;
     private RecyclerView mCheckboxRecycler;
-    private DamageCostDialogFragmentAdapter mDamageCostDialogFragmentAdapter;
+    private LivelihoodsDamageDialogFragmentAdapter mLivelihoodsDamageDialogFragmentAdapter;
 
-    public static DamageCostDialogFragment getInstance() {
-        return new DamageCostDialogFragment();
+    public static LivelihoodsDamageDialogFragment getInstance() {
+        return new LivelihoodsDamageDialogFragment();
     }
 
-    public DamageCostDialogFragment() {
+    public LivelihoodsDamageDialogFragment() {
         // Required empty public constructor
     }
 
@@ -36,7 +35,7 @@ public class DamageCostDialogFragment extends BaseEnumDialogFragment {
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         mBinding = DataBindingUtil.inflate(inflater, R.layout.livelihoods_damage_dialog, null, false);
-        mBinding.setViewModel((DamageCostDialogViewModel) mViewModel);
+        mBinding.setViewModel((LivelihoodsDamageDialogViewModel) mViewModel);
         View view = mBinding.getRoot();
         setupCheckboxGrid(view);
 
@@ -50,7 +49,7 @@ public class DamageCostDialogFragment extends BaseEnumDialogFragment {
         ((StaggeredGridLayoutManager) mCheckboxRecycler.getLayoutManager()).setSpanCount(2);
 
         // Setup adapter and use with fragment
-        mDamageCostDialogFragmentAdapter = new DamageCostDialogFragmentAdapter((DamageCostDialogViewModel) mViewModel);
-        mCheckboxRecycler.setAdapter(mDamageCostDialogFragmentAdapter);
+        mLivelihoodsDamageDialogFragmentAdapter = new LivelihoodsDamageDialogFragmentAdapter((LivelihoodsDamageDialogViewModel) mViewModel);
+        mCheckboxRecycler.setAdapter(mLivelihoodsDamageDialogFragmentAdapter);
     }
 }

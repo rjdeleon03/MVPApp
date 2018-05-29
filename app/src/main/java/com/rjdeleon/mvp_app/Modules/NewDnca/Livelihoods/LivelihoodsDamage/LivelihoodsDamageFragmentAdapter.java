@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,20 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Row.DamageCostRowViewHolder;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Row.DamageCostRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Row.LivelihoodsDamageRowViewHolder;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Row.LivelihoodsDamageRowViewModel;
 import com.rjdeleon.mvp_app.databinding.LivelihoodsDamageRowBinding;
 import com.rjdeleon.mvp_app.R;
 
-public class DamageCostFragmentAdapter extends RecyclerView.Adapter<DamageCostRowViewHolder> {
+public class LivelihoodsDamageFragmentAdapter extends RecyclerView.Adapter<LivelihoodsDamageRowViewHolder> {
 
     private Context mContext;
     private BaseEnumNavigator mBaseEnumNavigator;
-    private DamageCostViewModel mViewModel;
+    private LivelihoodsDamageViewModel mViewModel;
 
-    public DamageCostFragmentAdapter(Context context,
-                                     BaseEnumNavigator baseEnumNavigator,
-                                     DamageCostViewModel viewModel) {
+    public LivelihoodsDamageFragmentAdapter(Context context,
+                                            BaseEnumNavigator baseEnumNavigator,
+                                            LivelihoodsDamageViewModel viewModel) {
         mContext = context;
         mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
@@ -29,21 +29,21 @@ public class DamageCostFragmentAdapter extends RecyclerView.Adapter<DamageCostRo
 
     @NonNull
     @Override
-    public DamageCostRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LivelihoodsDamageRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root = inflater.inflate(R.layout.livelihoods_damage_row, parent, false);
         LivelihoodsDamageRowBinding binding = LivelihoodsDamageRowBinding.bind(root);
-        return new DamageCostRowViewHolder(binding);
+        return new LivelihoodsDamageRowViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DamageCostRowViewHolder holder, int position) {
-        DamageCostRowViewModel damageCostRowViewModel = new DamageCostRowViewModel(
+    public void onBindViewHolder(@NonNull LivelihoodsDamageRowViewHolder holder, int position) {
+        LivelihoodsDamageRowViewModel livelihoodsDamageRowViewModel = new LivelihoodsDamageRowViewModel(
                 mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);
-        holder.bind(damageCostRowViewModel);
+        holder.bind(livelihoodsDamageRowViewModel);
     }
 
     @Override

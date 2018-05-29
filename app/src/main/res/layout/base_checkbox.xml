@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog.Checkbox.DamageCostCheckboxViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.Checkbox.LivelihoodsDamageCheckboxViewModel" />
     </data>
 
     <LinearLayout

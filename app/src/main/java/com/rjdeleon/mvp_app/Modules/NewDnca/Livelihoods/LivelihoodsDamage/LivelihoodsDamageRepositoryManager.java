@@ -1,9 +1,9 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsDamageDataRow;
 
-public interface DamageCostRepositoryManager {
+public interface LivelihoodsDamageRepositoryManager {
 
     void addLivelihoodsDamageRow(LivelihoodsDamageDataRow damageDataRow);
 

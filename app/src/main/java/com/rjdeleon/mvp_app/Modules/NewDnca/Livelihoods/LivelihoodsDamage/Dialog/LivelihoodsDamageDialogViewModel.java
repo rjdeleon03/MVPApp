@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog;
 
 import android.content.Context;
 import android.databinding.ObservableField;
@@ -7,18 +7,18 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsDamageDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.DamageCostRepositoryManager;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog.Checkbox.DamageCostCheckboxParentViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog.Checkbox.DamageCostCheckboxViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.Checkbox.LivelihoodsDamageCheckboxParentViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.Checkbox.LivelihoodsDamageCheckboxViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DamageCostDialogViewModel extends BaseEnumDialogViewModel implements DamageCostCheckboxParentViewModel {
+public class LivelihoodsDamageDialogViewModel extends BaseEnumDialogViewModel implements LivelihoodsDamageCheckboxParentViewModel {
 
-    private DamageCostRepositoryManager mDamageCostRepositoryManager;
+    private LivelihoodsDamageRepositoryManager mLivelihoodsDamageRepositoryManager;
 
-    private List<DamageCostCheckboxViewModel> mCheckboxViewModels;
+    private List<LivelihoodsDamageCheckboxViewModel> mCheckboxViewModels;
     private List<LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple> mAffectedLivelihoods = new ArrayList<>();
     public final ObservableInt damageCost = new ObservableInt(0);
     public final ObservableField<String> remarks = new ObservableField<>("");
@@ -28,18 +28,18 @@ public class DamageCostDialogViewModel extends BaseEnumDialogViewModel implement
      *
      * @param context
      */
-    public DamageCostDialogViewModel(Context context,
-                                     DamageCostRepositoryManager damageCostRepositoryManager,
-                                     int livelihoodsTypeIndex,
-                                     boolean isNewRow) {
+    public LivelihoodsDamageDialogViewModel(Context context,
+                                            LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
+                                            int livelihoodsTypeIndex,
+                                            boolean isNewRow) {
         super(context);
-        mDamageCostRepositoryManager = damageCostRepositoryManager;
+        mLivelihoodsDamageRepositoryManager = livelihoodsDamageRepositoryManager;
 
         LivelihoodsDamageDataRow damageDataRow;
         if (isNewRow) {
-            damageDataRow = new LivelihoodsDamageDataRow(mDamageCostRepositoryManager.getLivelihoodsType(livelihoodsTypeIndex));
+            damageDataRow = new LivelihoodsDamageDataRow(mLivelihoodsDamageRepositoryManager.getLivelihoodsType(livelihoodsTypeIndex));
         } else {
-            damageDataRow = mDamageCostRepositoryManager.getLivelihoodsDamageRow(livelihoodsTypeIndex);
+            damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(livelihoodsTypeIndex);
         }
         type.set(damageDataRow.getType());
         damageCost.set(damageDataRow.getDamageCost());
@@ -48,7 +48,7 @@ public class DamageCostDialogViewModel extends BaseEnumDialogViewModel implement
 
         mCheckboxViewModels = new ArrayList<>();
         for(LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple affectedLivelihood : mAffectedLivelihoods) {
-            mCheckboxViewModels.add(new DamageCostCheckboxViewModel(affectedLivelihood));
+            mCheckboxViewModels.add(new LivelihoodsDamageCheckboxViewModel(affectedLivelihood));
         }
     }
 
@@ -68,7 +68,7 @@ public class DamageCostDialogViewModel extends BaseEnumDialogViewModel implement
                 mAffectedLivelihoods,
                 damageCost.get(),
                 remarks.get());
-        mDamageCostRepositoryManager.addLivelihoodsDamageRow(damageDataRow);
+        mLivelihoodsDamageRepositoryManager.addLivelihoodsDamageRow(damageDataRow);
         super.navigateOnOkButtonPressed();
     }
 
@@ -78,7 +78,7 @@ public class DamageCostDialogViewModel extends BaseEnumDialogViewModel implement
      * @return
      */
     @Override
-    public DamageCostCheckboxViewModel getAffectedLivelihoodViewModel(int index) {
+    public LivelihoodsDamageCheckboxViewModel getAffectedLivelihoodViewModel(int index) {
         return mCheckboxViewModels.get(index);
     }
 

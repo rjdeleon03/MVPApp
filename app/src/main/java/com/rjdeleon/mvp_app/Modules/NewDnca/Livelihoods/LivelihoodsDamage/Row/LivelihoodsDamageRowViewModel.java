@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Row;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Row;
 
 import android.content.Context;
 import android.databinding.ObservableArrayList;
@@ -9,11 +9,11 @@ import android.databinding.ObservableList;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsDamageDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.DamageCostRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
 
-public class DamageCostRowViewModel extends BaseEnumRowViewModel {
+public class LivelihoodsDamageRowViewModel extends BaseEnumRowViewModel {
 
-    private DamageCostRepositoryManager mDamageCostRepositoryManager;
+    private LivelihoodsDamageRepositoryManager mLivelihoodsDamageRepositoryManager;
 
     public final ObservableList<LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple> affectedLivelihoods = new ObservableArrayList<>();
     public final ObservableInt damageCost = new ObservableInt(0);
@@ -22,18 +22,18 @@ public class DamageCostRowViewModel extends BaseEnumRowViewModel {
     /**
      * Constructor
      * @param context
-     * @param damageCostRepositoryManager
+     * @param livelihoodsDamageRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public DamageCostRowViewModel(Context context,
-                                  DamageCostRepositoryManager damageCostRepositoryManager,
-                                  BaseEnumNavigator baseEnumNavigator,
-                                  int rowIndex) {
+    public LivelihoodsDamageRowViewModel(Context context,
+                                         LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
+                                         BaseEnumNavigator baseEnumNavigator,
+                                         int rowIndex) {
         super(context, baseEnumNavigator, rowIndex);
-        mDamageCostRepositoryManager = damageCostRepositoryManager;
+        mLivelihoodsDamageRepositoryManager = livelihoodsDamageRepositoryManager;
 
-        LivelihoodsDamageDataRow damageDataRow = mDamageCostRepositoryManager.getLivelihoodsDamageRow(rowIndex);
+        LivelihoodsDamageDataRow damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(rowIndex);
         type.set(damageDataRow.getType());
         damageCost.set(damageDataRow.getDamageCost());
         remarks.set(damageDataRow.getRemarks());
@@ -46,7 +46,7 @@ public class DamageCostRowViewModel extends BaseEnumRowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mDamageCostRepositoryManager.deleteLivelihoodsDamageRow(mRowIndex);
+        mLivelihoodsDamageRepositoryManager.deleteLivelihoodsDamageRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage;
 
 import android.content.Context;
 
@@ -10,14 +10,14 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryMan
 
 import java.util.List;
 
-public class DamageCostViewModel extends LivelihoodsEnumBaseViewModel implements DamageCostRepositoryManager {
+public class LivelihoodsDamageViewModel extends LivelihoodsEnumBaseViewModel implements LivelihoodsDamageRepositoryManager {
 
     /**
      * Constructor
      * @param context
      * @param livelihoodsRepositoryManager
      */
-    public DamageCostViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
+    public LivelihoodsDamageViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
         super(context, livelihoodsRepositoryManager, GenericEnumDataRow.LivelihoodsType.class);
         mGenericEnumDataRows.addAll(mLivelihoodsRepositoryManager.getLivelihoodsDamageData().getLivelihoodsDamageDataRows());
     }

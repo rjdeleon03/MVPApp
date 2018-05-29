@@ -1,33 +1,33 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage;
 
 import android.view.View;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog.DamageCostDialogFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.Dialog.DamageCostDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogViewModel;
 
-public class DamageCostFragment extends BaseEnumFragment {
+public class LivelihoodsDamageFragment extends BaseEnumFragment {
 
-    private DamageCostFragmentAdapter mDamageCostFragmentAdapter;
+    private LivelihoodsDamageFragmentAdapter mLivelihoodsDamageFragmentAdapter;
 
-    public static DamageCostFragment newInstance() {
-        return new DamageCostFragment();
+    public static LivelihoodsDamageFragment newInstance() {
+        return new LivelihoodsDamageFragment();
     }
 
-    public DamageCostFragment() {
+    public LivelihoodsDamageFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
-        DamageCostDialogViewModel dialogViewModel = new DamageCostDialogViewModel(
+        LivelihoodsDamageDialogViewModel dialogViewModel = new LivelihoodsDamageDialogViewModel(
                 getContext(),
-                (DamageCostRepositoryManager) mViewModel,
+                (LivelihoodsDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DamageCostDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsDamageDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
 
@@ -36,13 +36,13 @@ public class DamageCostFragment extends BaseEnumFragment {
     @Override
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
-        DamageCostDialogViewModel dialogViewModel = new DamageCostDialogViewModel(
+        LivelihoodsDamageDialogViewModel dialogViewModel = new LivelihoodsDamageDialogViewModel(
                 getContext(),
-                (DamageCostRepositoryManager) mViewModel,
+                (LivelihoodsDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DamageCostDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsDamageDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -53,7 +53,7 @@ public class DamageCostFragment extends BaseEnumFragment {
     @Override
     protected void refreshData() {
         super.refreshData();
-        mDamageCostFragmentAdapter.notifyDataSetChanged();
+        mLivelihoodsDamageFragmentAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -63,10 +63,10 @@ public class DamageCostFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mDamageCostFragmentAdapter = new DamageCostFragmentAdapter(
+        mLivelihoodsDamageFragmentAdapter = new LivelihoodsDamageFragmentAdapter(
                 getContext().getApplicationContext(),
                 this,
-                (DamageCostViewModel) mViewModel);
-        mRowRecycler.setAdapter(mDamageCostFragmentAdapter);
+                (LivelihoodsDamageViewModel) mViewModel);
+        mRowRecycler.setAdapter(mLivelihoodsDamageFragmentAdapter);
     }
 }

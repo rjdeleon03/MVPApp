@@ -15,6 +15,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Liveli
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
@@ -122,6 +124,19 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(assistanceDataViewModel),
                     LIVELIHOODS_ASSISTANCE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup gaps data fragment
+            LivelihoodsGapsDataFragment livelihoodsGapsDataFragment = LivelihoodsGapsDataFragment.newInstance();
+            LivelihoodsGapsDataViewModel livelihoodsGapsDataViewModel = new LivelihoodsGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            livelihoodsGapsDataFragment.setViewModel(livelihoodsGapsDataViewModel);
+            mAdapter.addFragment(livelihoodsGapsDataFragment);
+
+            // Bind gaps data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(livelihoodsGapsDataViewModel),
+                    LIVELIHOODS_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

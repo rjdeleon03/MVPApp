@@ -83,7 +83,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.foodAvailabilityRemarks}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_food_impact_availability_checkbox"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_availability_remarks"/>
@@ -136,7 +136,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.lackOfFoodAccessRemarks}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_food_impact_access_checkbox"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_access_remarks"/>
@@ -189,7 +189,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.foodConstraintsRemarks}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_food_impact_constraint_checkbox"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_constraint_remarks"/>
@@ -239,7 +239,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.foodSourcesRemarks}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_food_impact_others_checkbox"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_others_remarks"/>
@@ -282,7 +282,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.timesEatingBefore}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_eating_times_before_label"/>
@@ -307,7 +307,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.timesEatingAfter}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/nd_food_impact_eating_times_after_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_eating_times_after_label"/>
@@ -350,7 +350,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.meetFoodNeedsBefore}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_needs_before_label"/>
@@ -375,7 +375,7 @@
                         android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine"
                         android:text="@={viewModel.meetFoodNeedsAfter}"
-                        android:textSize="14dp"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/nd_food_impact_needs_after_label"
                         app:layout_constraintTop_toBottomOf="@+id/nd_food_impact_needs_after_label"/>
@@ -396,7 +396,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:text="@={viewModel.foodProdChanged}"
-                    android:textSize="14dp"
+                    android:textSize="12dp"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
@@ -414,7 +414,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:text="@={viewModel.nextFoodRation}"
-                    android:textSize="14dp"
+                    android:textSize="12dp"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 

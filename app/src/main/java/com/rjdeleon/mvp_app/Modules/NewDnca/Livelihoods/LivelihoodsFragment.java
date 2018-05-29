@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.DamageCostFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.DamageCost.DamageCostViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
@@ -62,6 +64,19 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(incomeBeforeViewModel),
                     LIVELIHOODS_INCOME_BEFORE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup damage data fragment
+            DamageCostFragment damageCostFragment = DamageCostFragment.newInstance();
+            DamageCostViewModel damageCostViewModel = new DamageCostViewModel(getContext().getApplicationContext(), repositoryManager);
+            damageCostFragment.setViewModel(damageCostViewModel);
+            mAdapter.addFragment(damageCostFragment);
+
+            // Bind damage data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(damageCostViewModel),
+                    LIVELIHOODS_DAMAGE_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

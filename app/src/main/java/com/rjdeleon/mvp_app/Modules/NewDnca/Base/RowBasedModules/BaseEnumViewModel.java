@@ -52,6 +52,9 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
         } else if (enumClass == GenericEnumDataRow.IncomeSourceType.class) {
             ageGroupList.addAll(GenericEnumDataRow.IncomeSourceType.asList());
 
+        } else if (enumClass == GenericEnumDataRow.LivelihoodsType.class) {
+            ageGroupList.addAll(GenericEnumDataRow.LivelihoodsType.asList());
+
         }
     }
 

@@ -113,7 +113,8 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveLivelihoodsIncomeBeforeEmergency(LivelihoodsIncomeData livelihoodsIncomeData) {
-
+        mIncomeBeforeEmergency = livelihoodsIncomeData;
+        mDncaForm.getLivelihoods().setIncomeBeforeEmergency(mIncomeBeforeEmergency);
     }
 
     /**
@@ -122,7 +123,8 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveLivelihoodsIncomeAfterEmergency(LivelihoodsIncomeData livelihoodsIncomeData) {
-
+        mIncomeAfterEmergency = livelihoodsIncomeData;
+        mDncaForm.getLivelihoods().setIncomeBeforeEmergency(mIncomeAfterEmergency);
     }
 
     /**
@@ -131,7 +133,8 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveLivelihoodsDamageData(LivelihoodsDamageData livelihoodsDamageData) {
-
+        mEstimatedDamage = livelihoodsDamageData;
+        mDncaForm.getLivelihoods().setEstimatedDamage(mEstimatedDamage);
     }
 
     /**
@@ -140,7 +143,8 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveLivelihoodsCopingData(LivelihoodsCopingData livelihoodsCopingData) {
-
+        mCopingData = livelihoodsCopingData;
+        mDncaForm.getLivelihoods().setCopingData(mCopingData);
     }
 
     /**
@@ -149,7 +153,8 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveLivelihoodsNeedsData(LivelihoodsNeedsData livelihoodsNeedsData) {
-
+        mNeedsData = livelihoodsNeedsData;
+        mDncaForm.getLivelihoods().setNeedsData(mNeedsData);
     }
 
     /**
@@ -158,7 +163,8 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveLivelihoodsGapsData(LivelihoodsGapsData livelihoodsGapsData) {
-
+        mGapsData = livelihoodsGapsData;
+        mDncaForm.getLivelihoods().setGapsData(mGapsData);
     }
 
     /**
@@ -167,6 +173,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
      */
     @Override
     public void saveAssistanceData(AssistanceData assistanceData) {
-
+        mAssistanceData = assistanceData;
+        mDncaForm.getLivelihoods().setAssistanceData(mAssistanceData);
     }
 }

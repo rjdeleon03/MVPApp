@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataFragment">
+        tools:context=".Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -28,55 +28,55 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginStart="16dp">
 
-                <!-- Coping strategies -->
+                <!-- Assistance to fill gap -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_bold"
-                    android:text="How are people responding to livelihoods problems? What coping strategies do they employ?"
+                    android:text="What assistance can be provided to fill the income gap?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:text="@={viewModel.copingStrategies}"
+                    android:text="@={viewModel.assistanceToFillGap}"
                     android:textSize="14dp"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
-                <!-- Income opportunities -->
+                <!-- Resources needed -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Are there new income opportunities?"
+                    android:text="What resources are needed to return to normal?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:text="@={viewModel.incomeOpportunities}"
+                    android:text="@={viewModel.resourcesNeeded}"
                     android:textSize="14dp"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
-                <!-- Livelihood skills -->
+                <!-- Families needing assistance -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Are there any livelihood skills available in the community? (carpentry, masonry, etc.)"
+                    android:text="How many families are in need of livelihood assistance?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:text="@={viewModel.livelihoodSkills}"
+                    android:text="@={viewModel.familiesNeedingAssistance}"
                     android:textSize="14dp"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />

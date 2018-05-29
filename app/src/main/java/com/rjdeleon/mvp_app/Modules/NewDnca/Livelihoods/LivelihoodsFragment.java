@@ -13,6 +13,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Liveli
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
@@ -92,6 +94,19 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(livelihoodsCopingDataViewModel),
                     LIVELIHOODS_COPING_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup needs data fragment
+            LivelihoodsNeedsDataFragment livelihoodsNeedsDataFragment = LivelihoodsNeedsDataFragment.newInstance();
+            LivelihoodsNeedsDataViewModel livelihoodsNeedsDataViewModel = new LivelihoodsNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            livelihoodsNeedsDataFragment.setViewModel(livelihoodsNeedsDataViewModel);
+            mAdapter.addFragment(livelihoodsNeedsDataFragment);
+
+            // Bind needs data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(livelihoodsNeedsDataViewModel),
+                    LIVELIHOODS_NEEDS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

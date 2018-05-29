@@ -20,6 +20,7 @@ import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
+import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsDamageDataRow;
 import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListAdapter;
 
 import java.util.List;
@@ -106,5 +107,24 @@ public class AppUtil {
     @BindingAdapter({"bind:enumList", "bind:spinnerVisibility"})
     public static void bindAgeGroupListInAddButton(FloatingActionButton button, List<GenericEnum> enums, boolean shouldShowSpinner) {
         button.setEnabled(enums.size() > 0 || !shouldShowSpinner);
+    }
+
+    @BindingAdapter("android:text")
+    public static void bindLivelihoodsEnumInText(TextView view, List<LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple> list) {
+        String text = "";
+        int listSize = list.size();
+
+        for (int i = 0; i < listSize; i++) {
+            if (list.get(i).isAffected) {
+                text += list.get(i).subType.toString() + ", ";
+            }
+        }
+        if (text.isEmpty()) {
+            text = "None";
+        } else {
+            // Remove last comma and space
+            text = text.substring(0, text.length()-2);
+        }
+        view.setText(text);
     }
 }

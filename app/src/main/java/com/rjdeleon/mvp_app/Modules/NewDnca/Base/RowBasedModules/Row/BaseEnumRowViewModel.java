@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row;
 
 import android.content.Context;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
@@ -13,6 +14,9 @@ public abstract class BaseEnumRowViewModel extends NewDncaBaseViewModel {
     protected int mRowIndex;
 
     public final ObservableField<GenericEnum> type = new ObservableField<>();
+
+    // Use only when necessary to show/hide remarks
+    public final ObservableBoolean shouldShowRemarks = new ObservableBoolean(false);
 
     /**
      * Constructor

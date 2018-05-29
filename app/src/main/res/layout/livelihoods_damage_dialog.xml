@@ -115,6 +115,7 @@
                         android:text="@={viewModel.damageCost}"
                         android:textSize="12sp"
                         android:fontFamily="@font/lato_reg"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_lh_damage_dlg_cost_label"
                         app:layout_constraintTop_toTopOf="parent" />

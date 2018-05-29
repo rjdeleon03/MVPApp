@@ -17,7 +17,6 @@ public class InfrastructureDamageRowViewModel extends BaseEnumRowViewModel {
     public final ObservableInt infraNumber = new ObservableInt(0);
     public final ObservableBoolean status = new ObservableBoolean(false);
     public final ObservableField<String> remarks = new ObservableField<>("");
-    public final ObservableBoolean shouldShowRemarks = new ObservableBoolean(false);
 
     /**
      * Constructor

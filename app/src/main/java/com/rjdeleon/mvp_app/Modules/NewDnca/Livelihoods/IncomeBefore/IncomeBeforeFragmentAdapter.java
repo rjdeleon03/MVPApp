@@ -38,12 +38,12 @@ public class IncomeBeforeFragmentAdapter extends RecyclerView.Adapter<IncomeBefo
 
     @Override
     public void onBindViewHolder(@NonNull IncomeBeforeRowViewHolder holder, int position) {
-        IncomeBeforeRowViewModel shelterNeedsRowViewModel = new IncomeBeforeRowViewModel(
+        IncomeBeforeRowViewModel incomeBeforeRowViewModel = new IncomeBeforeRowViewModel(
                 mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);
-        holder.bind(shelterNeedsRowViewModel);
+        holder.bind(incomeBeforeRowViewModel);
     }
 
     @Override

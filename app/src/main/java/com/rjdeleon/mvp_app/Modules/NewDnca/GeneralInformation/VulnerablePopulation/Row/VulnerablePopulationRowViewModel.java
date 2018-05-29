@@ -27,7 +27,6 @@ public class VulnerablePopulationRowViewModel extends BaseEnumRowViewModel {
     public final ObservableInt disabledFemale = new ObservableInt(0);
     public final ObservableField<String> remarks = new ObservableField<>("");
     public final ObservableBoolean shouldShowOtherFields = new ObservableBoolean(false);
-    public final ObservableBoolean shouldShowRemarks = new ObservableBoolean(false);
 
     /**
      * Constructor

@@ -38,7 +38,7 @@ public class InfrastructureDamageRowViewModel extends BaseEnumRowViewModel {
         infraNumber.set(infrastructureDamageDataRow.getDamaged());
         status.set(infrastructureDamageDataRow.isFunctional());
         remarks.set(infrastructureDamageDataRow.getRemarks());
-        shouldShowRemarks.set(remarks.get().length() > 0);
+        shouldShowRemarks.set(remarks.get().trim().length() > 0);
     }
 
     /**

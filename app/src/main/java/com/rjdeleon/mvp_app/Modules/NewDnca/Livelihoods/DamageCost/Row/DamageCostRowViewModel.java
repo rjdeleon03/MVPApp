@@ -38,7 +38,7 @@ public class DamageCostRowViewModel extends BaseEnumRowViewModel {
         damageCost.set(damageDataRow.getDamageCost());
         remarks.set(damageDataRow.getRemarks());
         affectedLivelihoods.addAll(damageDataRow.getAffectedLivelihoods());
-        shouldShowRemarks.set(remarks.get().length() > 0);
+        shouldShowRemarks.set(remarks.get().trim().length() > 0);
     }
 
     /**

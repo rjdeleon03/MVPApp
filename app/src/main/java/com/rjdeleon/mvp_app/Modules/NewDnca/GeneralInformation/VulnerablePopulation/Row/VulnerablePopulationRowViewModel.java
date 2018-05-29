@@ -59,7 +59,7 @@ public class VulnerablePopulationRowViewModel extends BaseEnumRowViewModel {
 
         // Set visibility of fields such as pregnant, lactating, and lgbt
         shouldShowOtherFields.set(type.get().getOrdinal() >= GenericEnumDataRow.AgeGroup.AGE_10_12.getOrdinal());
-        shouldShowRemarks.set(remarks.get().length() > 0);
+        shouldShowRemarks.set(remarks.get().trim().length() > 0);
     }
 
     /**

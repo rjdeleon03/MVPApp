@@ -155,7 +155,7 @@
                 <TextView
                     android:id="@+id/nd_lh_damage_row_remarks_label"
                     android:layout_width="0dp"
-                    android:layout_height="22dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_reg"
                     android:text="Remarks"
                     android:textColor="@android:color/black"

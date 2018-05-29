@@ -59,65 +59,65 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
         }
 
         {
-            // Setup food impact data fragment
+            // Setup impact data fragment
             FoodImpactDataFragment foodImpactDataFragment = FoodImpactDataFragment.newInstance();
             FoodImpactDataViewModel foodImpactDataViewModel = new FoodImpactDataViewModel(getContext().getApplicationContext(), repositoryManager);
             foodImpactDataFragment.setViewModel(foodImpactDataViewModel);
             mAdapter.addFragment(foodImpactDataFragment);
 
-            // Bind food impact data viewModel to root activity's lifecycle
+            // Bind impact data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodImpactDataViewModel),
                     FOOD_SECURITY_IMPACT_VIEWMODEL_TAG);
         }
 
         {
-            // Setup food coping data fragment
+            // Setup coping data fragment
             FoodCopingDataFragment foodCopingDataFragment = FoodCopingDataFragment.newInstance();
             FoodCopingDataViewModel foodCopingDataViewModel = new FoodCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
             foodCopingDataFragment.setViewModel(foodCopingDataViewModel);
             mAdapter.addFragment(foodCopingDataFragment);
 
-            // Bind food coping data viewModel to root activity's lifecycle
+            // Bind coping data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodCopingDataViewModel),
                     FOOD_SECURITY_COPING_VIEWMODEL_TAG);
         }
 
         {
-            // Setup food needs data fragment
+            // Setup needs data fragment
             FoodNeedsDataFragment foodNeedsDataFragment = FoodNeedsDataFragment.newInstance();
             FoodNeedsDataViewModel foodNeedsDataViewModel = new FoodNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
             foodNeedsDataFragment.setViewModel(foodNeedsDataViewModel);
             mAdapter.addFragment(foodNeedsDataFragment);
 
-            // Bind food needs data viewModel to root activity's lifecycle
+            // Bind needs data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodNeedsDataViewModel),
                     FOOD_SECURITY_NEEDS_VIEWMODEL_TAG);
         }
 
         {
-            // Setup shelter assistance data fragment
+            // Setup assistance data fragment
             AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
             AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
             assistanceDataFragment.setViewModel(assistanceDataViewModel);
             mAdapter.addFragment(assistanceDataFragment);
 
-            // Bind shelter assistance data viewModel to root activity's lifecycle
+            // Bind assistance data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(assistanceDataViewModel),
                     FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG);
         }
 
         {
-            // Setup food gaps data fragment
+            // Setup gaps data fragment
             FoodGapsDataFragment foodGapsDataFragment = FoodGapsDataFragment.newInstance();
             FoodGapsDataViewModel foodGapsDataViewModel = new FoodGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
             foodGapsDataFragment.setViewModel(foodGapsDataViewModel);
             mAdapter.addFragment(foodGapsDataFragment);
 
-            // Bind food gaps data viewModel to root activity's lifecycle
+            // Bind gaps data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodGapsDataViewModel),
                     FOOD_SECURITY_GAPS_VIEWMODEL_TAG);

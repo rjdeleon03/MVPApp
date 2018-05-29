@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel;
@@ -107,6 +109,19 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(livelihoodsNeedsDataViewModel),
                     LIVELIHOODS_NEEDS_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup food assistance data fragment
+            AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
+            AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            assistanceDataFragment.setViewModel(assistanceDataViewModel);
+            mAdapter.addFragment(assistanceDataFragment);
+
+            // Bind food assistance data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(assistanceDataViewModel),
+                    LIVELIHOODS_ASSISTANCE_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

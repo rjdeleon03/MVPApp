@@ -76,52 +76,52 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
         }
 
         {
-            // Setup shelter needs data fragment
+            // Setup needs data fragment
             ShelterNeedsFragment shelterNeedsFragment = ShelterNeedsFragment.newInstance();
             ShelterNeedsViewModel shelterNeedsViewModel = new ShelterNeedsViewModel(getContext().getApplicationContext(), repositoryManager);
             shelterNeedsFragment.setViewModel(shelterNeedsViewModel);
             mAdapter.addFragment(shelterNeedsFragment);
 
-            // Bind shelter needs data viewModel to root activity's lifecycle
+            // Bind needs data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(shelterNeedsViewModel),
                     SHELTER_INFO_NEEDS_VIEWMODEL_TAG);
         }
 
         {
-            // Setup shelter coping data fragment
+            // Setup coping data fragment
             ShelterCopingDataFragment shelterCopingDataFragment = ShelterCopingDataFragment.newInstance();
             ShelterCopingDataViewModel shelterCopingDataViewModel = new ShelterCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
             shelterCopingDataFragment.setViewModel(shelterCopingDataViewModel);
             mAdapter.addFragment(shelterCopingDataFragment);
 
-            // Bind shelter coping data viewModel to root activity's lifecycle
+            // Bind coping data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(shelterCopingDataViewModel),
                     SHELTER_INFO_COPING_VIEWMODEL_TAG);
         }
 
         {
-            // Setup shelter assistance data fragment
+            // Setup assistance data fragment
             AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
             AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
             assistanceDataFragment.setViewModel(assistanceDataViewModel);
             mAdapter.addFragment(assistanceDataFragment);
 
-            // Bind shelter assistance data viewModel to root activity's lifecycle
+            // Bind assistance data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(assistanceDataViewModel),
                     SHELTER_INFO_ASSISTANCE_VIEWMODEL_TAG);
         }
 
         {
-            // Setup shelter gaps data fragment
+            // Setup gaps data fragment
             ShelterGapsDataFragment shelterGapsDataFragment = ShelterGapsDataFragment.newInstance();
             ShelterGapsDataViewModel shelterGapsDataViewModel = new ShelterGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
             shelterGapsDataFragment.setViewModel(shelterGapsDataViewModel);
             mAdapter.addFragment(shelterGapsDataFragment);
 
-            // Bind shelter gaps data viewModel to root activity's lifecycle
+            // Bind gaps data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(shelterGapsDataViewModel),
                     SHELTER_INFO_GAPS_VIEWMODEL_TAG);

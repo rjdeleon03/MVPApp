@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeFragment;
@@ -22,10 +24,10 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
     public static final String LIVELIHOODS_INCOME_BEFORE_VIEWMODEL_TAG = "LIVELIHOODS_INCOME_BEFORE_VIEWMODEL_TAG";
     public static final String LIVELIHOODS_INCOME_AFTER_VIEWMODEL_TAG = "LIVELIHOODS_INCOME_AFTER_VIEWMODEL_TAG";
     public static final String LIVELIHOODS_DAMAGE_VIEWMODEL_TAG = "LIVELIHOODS_DAMAGE_VIEWMODEL_TAG";
-    public static final String LIVELIHOODS_COPING_AFTER_VIEWMODEL_TAG = "LIVELIHOODS_COPING_AFTER_VIEWMODEL_TAG";
-    public static final String LIVELIHOODS_NEEDS_AFTER_VIEWMODEL_TAG = "LIVELIHOODS_NEEDS_AFTER_VIEWMODEL_TAG";
-    public static final String LIVELIHOODS_ASSISTANCE_AFTER_VIEWMODEL_TAG = "LIVELIHOODS_ASSISTANCE_AFTER_VIEWMODEL_TAG";
-    public static final String LIVELIHOODS_GAPS_AFTER_VIEWMODEL_TAG = "LIVELIHOODS_GAPS_AFTER_VIEWMODEL_TAG";
+    public static final String LIVELIHOODS_COPING_VIEWMODEL_TAG = "LIVELIHOODS_COPING_VIEWMODEL_TAG";
+    public static final String LIVELIHOODS_NEEDS_VIEWMODEL_TAG = "LIVELIHOODS_NEEDS_VIEWMODEL_TAG";
+    public static final String LIVELIHOODS_ASSISTANCE_VIEWMODEL_TAG = "LIVELIHOODS_ASSISTANCE_VIEWMODEL_TAG";
+    public static final String LIVELIHOODS_GAPS_VIEWMODEL_TAG = "LIVELIHOODS_GAPS_VIEWMODEL_TAG";
 
     public static LivelihoodsFragment newInstance() {
         return new LivelihoodsFragment();
@@ -77,6 +79,19 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(livelihoodsDamageViewModel),
                     LIVELIHOODS_DAMAGE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup coping data fragment
+            LivelihoodsCopingDataFragment livelihoodsCopingDataFragment = LivelihoodsCopingDataFragment.newInstance();
+            LivelihoodsCopingDataViewModel livelihoodsCopingDataViewModel = new LivelihoodsCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            livelihoodsCopingDataFragment.setViewModel(livelihoodsCopingDataViewModel);
+            mAdapter.addFragment(livelihoodsCopingDataFragment);
+
+            // Bind coping data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(livelihoodsCopingDataViewModel),
+                    LIVELIHOODS_COPING_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

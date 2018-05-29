@@ -17,18 +17,17 @@ public class ShelterCopingDataViewModel extends ShelterInfoBaseViewModel impleme
 
     /**
      * Constructor
-     *
      * @param context
      * @param shelterInfoRepositoryManager
      */
     public ShelterCopingDataViewModel(Context context, ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
         super(context, shelterInfoRepositoryManager);
 
-        ShelterCopingData shelterCopingData = mShelterInfoRepositoryManager.getShelterCopingData();
-        evacuationSitesLocation.set(shelterCopingData.getEvacuationSitesLocation());
-        howToCope.set(shelterCopingData.getHowToCope());
-        whenToGoHome.set(shelterCopingData.getWhenToGoHome());
-        whatIfCantGoHome.set(shelterCopingData.getWhatIfCantGoHome());
+        ShelterCopingData copingData = mShelterInfoRepositoryManager.getShelterCopingData();
+        evacuationSitesLocation.set(copingData.getEvacuationSitesLocation());
+        howToCope.set(copingData.getHowToCope());
+        whenToGoHome.set(copingData.getWhenToGoHome());
+        whatIfCantGoHome.set(copingData.getWhatIfCantGoHome());
     }
 
     /**
@@ -36,12 +35,12 @@ public class ShelterCopingDataViewModel extends ShelterInfoBaseViewModel impleme
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        ShelterCopingData shelterCopingData = new ShelterCopingData();
-        shelterCopingData.setEvacuationSitesLocation(evacuationSitesLocation.get());
-        shelterCopingData.setHowToCope(howToCope.get());
-        shelterCopingData.setWhenToGoHome(whenToGoHome.get());
-        shelterCopingData.setWhatIfCantGoHome(whatIfCantGoHome.get());
-        mShelterInfoRepositoryManager.saveShelterCopingData(shelterCopingData);
+        ShelterCopingData copingData = new ShelterCopingData(
+                evacuationSitesLocation.get(),
+                howToCope.get(),
+                whenToGoHome.get(),
+                whatIfCantGoHome.get());
+        mShelterInfoRepositoryManager.saveShelterCopingData(copingData);
     }
 
 }

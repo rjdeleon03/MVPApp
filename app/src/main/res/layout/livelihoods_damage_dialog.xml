@@ -27,7 +27,7 @@
                 android:background="@color/colorPrimary">
 
                 <ImageButton
-                    android:id="@+id/nd_assistance_dlg_cancel"
+                    android:id="@+id/nd_lh_damage_dlg_cancel"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginBottom="8dp"
@@ -59,7 +59,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageButton
-                    android:id="@+id/nd_assistance_dlg_ok"
+                    android:id="@+id/nd_lh_damage_dlg_ok"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginBottom="8dp"
@@ -82,28 +82,28 @@
                 android:layout_height="wrap_content">
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/nd_assistance_dlg"
+                    android:id="@+id/nd_lh_damage_dlg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="16dp"
                     android:paddingTop="8dp">
 
-                    <!-- Organization/Agency -->
+                    <!-- Estimated Cost -->
                     <TextView
-                        android:id="@+id/nd_assistance_dlg_org_label"
+                        android:id="@+id/nd_lh_damage_dlg_cost_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="12dp"
                         android:fontFamily="@font/lato_reg"
-                        android:text="Organization/Agency"
+                        android:text="Estimated Cost"
                         android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/nd_assistance_dlg_org"
+                        android:id="@+id/nd_lh_damage_dlg_cost"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -112,12 +112,93 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:ems="10"
-                        android:text="Lorem ipsum"
+                        android:text="@={viewModel.damageCost}"
                         android:textSize="12sp"
                         android:fontFamily="@font/lato_reg"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_assistance_dlg_org_label"
+                        app:layout_constraintStart_toEndOf="@+id/nd_lh_damage_dlg_cost_label"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- Affected Livelihoods -->
+                    <TextView
+                        android:id="@+id/nd_lh_damage_dlg_checkbox_grid_label"
+                        android:layout_width="0dp"
+                        android:layout_height="21dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Affected Livelihoods"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_cost"/>
+
+                    <!-- Checkbox RecyclerView -->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/nd_lh_damage_dlg_checkbox_grid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_checkbox_grid_label"/>
+
+                    <!-- Remarks -->
+                    <TextView
+                        android:id="@+id/nd_lh_damage_dlg_remarks_label"
+                        android:layout_width="0dp"
+                        android:layout_height="21dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Remarks"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_checkbox_grid"/>
+
+                    <TextView
+                        android:id="@+id/nd_lh_damage_dlg_remarks_ex_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="(Number of hectares damaged, lost assets, equipment, number of days not able to go back to work, etc)"
+                        android:textStyle="italic"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_remarks_label"/>
+
+                    <EditText
+                        android:id="@+id/nd_lh_damage_dlg_remarks"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:text="@={viewModel.remarks}"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/lato_reg"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_remarks_ex_label" />
 
                 </android.support.constraint.ConstraintLayout>
 

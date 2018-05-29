@@ -313,7 +313,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_reg"
-                    android:text="Remarks:"
+                    android:text="Remarks"
                     android:textColor="@android:color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_disabled_male" />
@@ -327,7 +327,7 @@
                     android:paddingRight="5dp"
                     android:fontFamily="@font/lato_reg"
                     android:text="(Specify conditions e.g. Unable to go to school, etc.)"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_dlg_remarks_label" />

@@ -4,10 +4,10 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
 import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterCopingData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterGapsData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterHouseDamageData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
 
 public class ShelterInfoViewModel extends BaseMultiPageViewModel implements ShelterInfoRepositoryManager {

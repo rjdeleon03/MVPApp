@@ -5,7 +5,7 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsDataRow;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterNeedsData.ShelterNeedsRepositoryManager;
 

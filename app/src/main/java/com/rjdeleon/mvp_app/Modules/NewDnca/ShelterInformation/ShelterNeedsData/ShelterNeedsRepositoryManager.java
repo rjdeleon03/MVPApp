@@ -1,7 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterNeedsData;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsDataRow;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsDataRow;
 
 public interface ShelterNeedsRepositoryManager {
 

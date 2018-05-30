@@ -3,10 +3,8 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData;
 import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageDataRow;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterHouseDamageData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterHouseDamageDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoEnumBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoRepositoryManager;
 

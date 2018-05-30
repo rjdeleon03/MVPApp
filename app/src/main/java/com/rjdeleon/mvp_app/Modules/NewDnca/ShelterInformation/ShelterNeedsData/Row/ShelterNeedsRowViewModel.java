@@ -4,7 +4,7 @@ import android.content.Context;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsDataRow;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterNeedsData.ShelterNeedsRepositoryManager;

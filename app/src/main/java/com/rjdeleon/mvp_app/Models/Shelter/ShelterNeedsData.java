@@ -1,8 +1,7 @@
-package com.rjdeleon.mvp_app.Models.ShelterInfo;
+package com.rjdeleon.mvp_app.Models.Shelter;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
-import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;
 import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
 
 import java.util.ArrayList;

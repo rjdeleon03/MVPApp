@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Models.ShelterInfo;
+package com.rjdeleon.mvp_app.Models.Shelter;
 
 public class ShelterGapsData {
 

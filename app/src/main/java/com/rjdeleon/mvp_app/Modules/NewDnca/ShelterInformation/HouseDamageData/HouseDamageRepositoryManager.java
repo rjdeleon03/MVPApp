@@ -1,12 +1,7 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData;
 
-import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterHouseDamageDataRow;
 
 public interface HouseDamageRepositoryManager {
 

@@ -12,10 +12,14 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsDataRow;
+import com.rjdeleon.mvp_app.Models.Health.DiseasesInjuriesData;
+import com.rjdeleon.mvp_app.Models.Health.DiseasesInjuriesDataRow;
+import com.rjdeleon.mvp_app.Models.Health.SpecialNeedsData;
+import com.rjdeleon.mvp_app.Models.Health.SpecialNeedsDataRow;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterHouseDamageData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterHouseDamageDataRow;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsDataRow;
 
 import java.util.List;
 
@@ -56,6 +60,9 @@ public class GenericEnumUtils {
             genericEnums = GenericEnumDataRow.HouseType.values();
 
         } else if (enumClass == GenericEnumDataRow.NeedsType.class) {
+            genericEnums = GenericEnumDataRow.NeedsType.values();
+
+        } else if (enumClass == GenericEnumDataRow.SpecialNeedsType.class) {
             genericEnums = GenericEnumDataRow.NeedsType.values();
 
         }
@@ -129,6 +136,12 @@ public class GenericEnumUtils {
 
         } else if (rowClass == ShelterNeedsData.class) {
             list.add(index, new ShelterNeedsDataRow((GenericEnumDataRow.NeedsType) genericEnum));
+
+        } else if (rowClass == DiseasesInjuriesData.class) {
+            list.add(index, new DiseasesInjuriesDataRow((GenericEnumDataRow.AgeGroup) genericEnum));
+
+        } else if (rowClass == SpecialNeedsData.class) {
+            list.add(index, new SpecialNeedsDataRow((GenericEnumDataRow.SpecialNeedsType) genericEnum));
 
         }
     }

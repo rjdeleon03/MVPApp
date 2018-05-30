@@ -243,6 +243,45 @@ public abstract class GenericEnumDataRow {
         }
     }
 
+    public enum SpecialNeedsType implements GenericEnum {
+        PREGNANT,
+        LACTATING,
+        PHYSICALLY_CHALLENGED,
+        MENTALLY_CHALLENGED,
+        CHILDREN,
+        SENIOR_CITIZENS,
+        INFANTS,
+        OTHERS;
+
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
+
+        public static List<SpecialNeedsType> asList() {
+            List<SpecialNeedsType> list = new ArrayList<>();
+            list.add(PREGNANT);
+            list.add(LACTATING);
+            list.add(PHYSICALLY_CHALLENGED);
+            list.add(MENTALLY_CHALLENGED);
+            list.add(CHILDREN);
+            list.add(SENIOR_CITIZENS);
+            list.add(INFANTS);
+            list.add(OTHERS);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
+
     private GenericEnum type;
 
     public GenericEnumDataRow(GenericEnum type) {

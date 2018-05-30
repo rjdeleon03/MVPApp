@@ -4,7 +4,7 @@ import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodSecurity;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 import com.rjdeleon.mvp_app.Models.Livelihoods.Livelihoods;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterInfo;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterInfo;
 
 public class DNCAForm implements NormalizableData {
 

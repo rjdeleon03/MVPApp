@@ -10,11 +10,6 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.FamilyData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.InfrastructureDamageData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.PopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
-import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterCopingData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterHouseDamageData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
 
 public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoRepositoryManager {

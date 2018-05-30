@@ -3,8 +3,8 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterNeedsData
 import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsData;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterNeedsDataRow;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterNeedsDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoEnumBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoRepositoryManager;
 

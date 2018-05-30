@@ -3,7 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterGapsData;
 import android.content.Context;
 import android.databinding.ObservableField;
 
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterGapsData;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterGapsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterInfoRepositoryManager;

@@ -1,49 +1,50 @@
 package com.rjdeleon.mvp_app.Models.FoodSecurity;
 
 import com.rjdeleon.mvp_app.Models.Generics.AssistanceData;
+import com.rjdeleon.mvp_app.Models.Generics.GenericCopingData;
 
 public class FoodSecurity {
 
-    private FoodImpactData foodImpactData;
-    private FoodCopingData foodCopingData;
-    private FoodNeedsData foodNeedsData;
+    private FoodImpactData impactData;
+    private GenericCopingData copingData;
+    private FoodNeedsData needsData;
     private AssistanceData assistanceData;
-    private FoodGapsData foodGapsData;
+    private FoodGapsData gapsData;
 
-    public FoodSecurity(FoodImpactData foodImpactData, FoodCopingData foodCopingData, FoodNeedsData foodNeedsData, AssistanceData assistanceData, FoodGapsData foodGapsData) {
-        this.foodImpactData = foodImpactData;
-        this.foodCopingData = foodCopingData;
-        this.foodNeedsData = foodNeedsData;
+    public FoodSecurity(FoodImpactData impactData, GenericCopingData copingData, FoodNeedsData needsData, AssistanceData assistanceData, FoodGapsData gapsData) {
+        this.impactData = impactData;
+        this.copingData = copingData;
+        this.needsData = needsData;
         this.assistanceData = assistanceData;
-        this.foodGapsData = foodGapsData;
+        this.gapsData = gapsData;
     }
 
     public FoodSecurity() {
-        this(new FoodImpactData(), new FoodCopingData(), new FoodNeedsData(), new AssistanceData(), new FoodGapsData());
+        this(new FoodImpactData(), new GenericCopingData(), new FoodNeedsData(), new AssistanceData(), new FoodGapsData());
     }
 
-    public FoodImpactData getFoodImpactData() {
-        return foodImpactData;
+    public FoodImpactData getImpactData() {
+        return impactData;
     }
 
-    public void setFoodImpactData(FoodImpactData foodImpactData) {
-        this.foodImpactData = foodImpactData;
+    public void setImpactData(FoodImpactData impactData) {
+        this.impactData = impactData;
     }
 
-    public FoodCopingData getFoodCopingData() {
-        return foodCopingData;
+    public GenericCopingData getCopingData() {
+        return copingData;
     }
 
-    public void setFoodCopingData(FoodCopingData foodCopingData) {
-        this.foodCopingData = foodCopingData;
+    public void setCopingData(GenericCopingData copingData) {
+        this.copingData = copingData;
     }
 
-    public FoodNeedsData getFoodNeedsData() {
-        return foodNeedsData;
+    public FoodNeedsData getNeedsData() {
+        return needsData;
     }
 
-    public void setFoodNeedsData(FoodNeedsData foodNeedsData) {
-        this.foodNeedsData = foodNeedsData;
+    public void setNeedsData(FoodNeedsData needsData) {
+        this.needsData = needsData;
     }
 
     public AssistanceData getAssistanceData() {
@@ -54,11 +55,11 @@ public class FoodSecurity {
         this.assistanceData = assistanceData;
     }
 
-    public FoodGapsData getFoodGapsData() {
-        return foodGapsData;
+    public FoodGapsData getGapsData() {
+        return gapsData;
     }
 
-    public void setFoodGapsData(FoodGapsData foodGapsData) {
-        this.foodGapsData = foodGapsData;
+    public void setGapsData(FoodGapsData gapsData) {
+        this.gapsData = gapsData;
     }
 }

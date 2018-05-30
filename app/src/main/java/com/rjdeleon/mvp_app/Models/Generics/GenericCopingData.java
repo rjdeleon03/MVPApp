@@ -1,14 +1,14 @@
-package com.rjdeleon.mvp_app.Models.FoodSecurity;
+package com.rjdeleon.mvp_app.Models.Generics;
 
-public class FoodCopingData {
+public class GenericCopingData {
 
     private String copingStrategies;
 
-    public FoodCopingData(String copingStrategies) {
+    public GenericCopingData(String copingStrategies) {
         this.copingStrategies = copingStrategies;
     }
 
-    public FoodCopingData() {
+    public GenericCopingData() {
         this("");
     }
 

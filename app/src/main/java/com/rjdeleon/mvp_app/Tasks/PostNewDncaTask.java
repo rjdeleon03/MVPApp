@@ -23,7 +23,7 @@ import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationData;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Models.Livelihoods.Livelihoods;
-import com.rjdeleon.mvp_app.Models.ShelterInfo.ShelterInfo;
+import com.rjdeleon.mvp_app.Models.Shelter.ShelterInfo;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

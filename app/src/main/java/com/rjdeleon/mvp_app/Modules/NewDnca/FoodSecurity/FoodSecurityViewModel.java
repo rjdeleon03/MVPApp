@@ -3,7 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity;
 import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.DNCAFormRepository;
-import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodCopingData;
+import com.rjdeleon.mvp_app.Models.Generics.GenericCopingData;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodGapsData;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodImpactData;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodNeedsData;
@@ -13,7 +13,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPage
 public class FoodSecurityViewModel extends BaseMultiPageViewModel implements FoodSecurityRepositoryManager {
 
     private FoodImpactData mFoodImpactData;
-    private FoodCopingData mFoodCopingData;
+    private GenericCopingData mFoodCopingData;
     private FoodNeedsData mFoodNeedsData;
     private AssistanceData mFoodAssistanceData;
     private FoodGapsData mFoodGapsData;
@@ -32,11 +32,11 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
-        mFoodImpactData = mDncaForm.getFoodSecurity().getFoodImpactData();
-        mFoodCopingData = mDncaForm.getFoodSecurity().getFoodCopingData();
-        mFoodNeedsData = mDncaForm.getFoodSecurity().getFoodNeedsData();
+        mFoodImpactData = mDncaForm.getFoodSecurity().getImpactData();
+        mFoodCopingData = mDncaForm.getFoodSecurity().getCopingData();
+        mFoodNeedsData = mDncaForm.getFoodSecurity().getNeedsData();
         mFoodAssistanceData = mDncaForm.getFoodSecurity().getAssistanceData();
-        mFoodGapsData = mDncaForm.getFoodSecurity().getFoodGapsData();
+        mFoodGapsData = mDncaForm.getFoodSecurity().getGapsData();
     }
 
     /**
@@ -53,7 +53,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      * @return
      */
     @Override
-    public FoodCopingData getFoodCopingData() {
+    public GenericCopingData getFoodCopingData() {
         return mFoodCopingData;
     }
 
@@ -91,7 +91,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
     @Override
     public void saveFoodImpactData(FoodImpactData foodImpactData) {
         mFoodImpactData = foodImpactData;
-        mDncaForm.getFoodSecurity().setFoodImpactData(mFoodImpactData);
+        mDncaForm.getFoodSecurity().setImpactData(mFoodImpactData);
     }
 
     /**
@@ -99,9 +99,9 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      * @return
      */
     @Override
-    public void saveFoodCopingData(FoodCopingData foodCopingData) {
+    public void saveFoodCopingData(GenericCopingData foodCopingData) {
         mFoodCopingData = foodCopingData;
-        mDncaForm.getFoodSecurity().setFoodCopingData(mFoodCopingData);
+        mDncaForm.getFoodSecurity().setCopingData(mFoodCopingData);
     }
 
     /**
@@ -111,7 +111,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
     @Override
     public void saveFoodNeedsData(FoodNeedsData foodNeedsData) {
         mFoodNeedsData = foodNeedsData;
-        mDncaForm.getFoodSecurity().setFoodNeedsData(mFoodNeedsData);
+        mDncaForm.getFoodSecurity().setNeedsData(mFoodNeedsData);
     }
 
     /**
@@ -131,6 +131,6 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
     @Override
     public void saveFoodGapsData(FoodGapsData foodGapsData) {
         mFoodGapsData = foodGapsData;
-        mDncaForm.getFoodSecurity().setFoodGapsData(mFoodGapsData);
+        mDncaForm.getFoodSecurity().setGapsData(mFoodGapsData);
     }
 }

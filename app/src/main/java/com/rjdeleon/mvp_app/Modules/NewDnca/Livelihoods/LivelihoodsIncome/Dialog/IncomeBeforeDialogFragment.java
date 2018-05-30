@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Dialog;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog;
 
 import android.app.Dialog;
 import android.databinding.DataBindingUtil;

@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Row.IncomeBeforeRowViewHolder;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Row.IncomeBeforeRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.IncomeBeforeRowViewHolder;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.IncomeBeforeRowViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.IncomeSourceRowBinding;
 

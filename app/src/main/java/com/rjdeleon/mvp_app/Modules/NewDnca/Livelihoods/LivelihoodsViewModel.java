@@ -124,7 +124,7 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
     @Override
     public void saveLivelihoodsIncomeAfterEmergency(LivelihoodsIncomeData livelihoodsIncomeData) {
         mIncomeAfterEmergency = livelihoodsIncomeData;
-        mDncaForm.getLivelihoods().setIncomeBeforeEmergency(mIncomeAfterEmergency);
+        mDncaForm.getLivelihoods().setIncomeAfterEmergency(mIncomeAfterEmergency);
     }
 
     /**

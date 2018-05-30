@@ -1,7 +1,6 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Row;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.rjdeleon.mvp_app.databinding.IncomeSourceRowBinding;
 

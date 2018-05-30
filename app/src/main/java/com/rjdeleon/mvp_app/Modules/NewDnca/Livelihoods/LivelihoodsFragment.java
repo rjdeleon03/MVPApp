@@ -13,8 +13,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.Li
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.IncomeBeforeViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.IncomeBeforeFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.IncomeBeforeViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
@@ -62,7 +62,7 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
         {
             // Setup income before emergency fragment
             IncomeBeforeFragment incomeBeforeFragment = IncomeBeforeFragment.newInstance();
-            IncomeBeforeViewModel incomeBeforeViewModel = new IncomeBeforeViewModel(getContext().getApplicationContext(), repositoryManager);
+            IncomeBeforeViewModel incomeBeforeViewModel = new IncomeBeforeViewModel(getContext().getApplicationContext(), repositoryManager, true);
             incomeBeforeFragment.setViewModel(incomeBeforeViewModel);
             mAdapter.addFragment(incomeBeforeFragment);
 
@@ -70,6 +70,19 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(incomeBeforeViewModel),
                     LIVELIHOODS_INCOME_BEFORE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup income after emergency fragment
+            IncomeBeforeFragment incomeBeforeFragment = IncomeBeforeFragment.newInstance();
+            IncomeBeforeViewModel incomeBeforeViewModel = new IncomeBeforeViewModel(getContext().getApplicationContext(), repositoryManager, false);
+            incomeBeforeFragment.setViewModel(incomeBeforeViewModel);
+            mAdapter.addFragment(incomeBeforeFragment);
+
+            // Bind income after emergency viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(incomeBeforeViewModel),
+                    LIVELIHOODS_INCOME_AFTER_VIEWMODEL_TAG);
         }
 
         {

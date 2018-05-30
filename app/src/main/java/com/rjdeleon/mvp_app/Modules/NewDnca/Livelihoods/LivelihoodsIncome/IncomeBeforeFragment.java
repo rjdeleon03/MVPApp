@@ -1,10 +1,10 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 
 import android.view.View;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Dialog.IncomeBeforeDialogFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore.Dialog.IncomeBeforeDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.IncomeBeforeDialogFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.IncomeBeforeDialogViewModel;
 
 public class IncomeBeforeFragment extends BaseEnumFragment {
 

@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.IncomeBefore;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 
 import android.content.Context;
 
@@ -12,14 +12,22 @@ import java.util.List;
 
 public class IncomeBeforeViewModel extends LivelihoodsEnumBaseViewModel implements IncomeBeforeRepositoryManager {
 
+    private boolean mWillSaveAsIncomeBefore = false;
+
     /**
      * Constructor
      * @param context
      * @param livelihoodsRepositoryManager
      */
-    public IncomeBeforeViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
+    public IncomeBeforeViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager, boolean willSaveAsIncomeBefore) {
         super(context, livelihoodsRepositoryManager, GenericEnumDataRow.IncomeSourceType.class);
-        mGenericEnumDataRows.addAll(mLivelihoodsRepositoryManager.getLivelihoodsIncomeBeforeEmergency().getLivelihoodsIncomeDataRows());
+        mWillSaveAsIncomeBefore = willSaveAsIncomeBefore;
+
+        if (mWillSaveAsIncomeBefore) {
+            mGenericEnumDataRows.addAll(mLivelihoodsRepositoryManager.getLivelihoodsIncomeBeforeEmergency().getLivelihoodsIncomeDataRows());
+        } else {
+            mGenericEnumDataRows.addAll(mLivelihoodsRepositoryManager.getLivelihoodsIncomeAfterEmergency().getLivelihoodsIncomeDataRows());
+        }
     }
 
     /**
@@ -29,7 +37,12 @@ public class IncomeBeforeViewModel extends LivelihoodsEnumBaseViewModel implemen
     public void navigateOnSaveButtonPressed() {
         LivelihoodsIncomeData incomeData = new LivelihoodsIncomeData();
         incomeData.setLivelihoodsIncomeDataRows((List<LivelihoodsIncomeDataRow>)(Object) mGenericEnumDataRows);
-        mLivelihoodsRepositoryManager.saveLivelihoodsIncomeBeforeEmergency(incomeData);
+
+        if (mWillSaveAsIncomeBefore) {
+            mLivelihoodsRepositoryManager.saveLivelihoodsIncomeBeforeEmergency(incomeData);
+        } else {
+            mLivelihoodsRepositoryManager.saveLivelihoodsIncomeAfterEmergency(incomeData);
+        }
     }
 
     @Override

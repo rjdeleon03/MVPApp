@@ -7,11 +7,11 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsIncomeDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.IncomeBeforeRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeRepositoryManager;
 
-public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
+public class LivelihoodsIncomeDialogViewModel extends BaseEnumDialogViewModel {
 
-    private IncomeBeforeRepositoryManager mIncomeBeforeRepositoryManager;
+    private LivelihoodsIncomeRepositoryManager mLivelihoodsIncomeRepositoryManager;
     private boolean mIsNewRow = false;
     private int mRowIndex = -1;
 
@@ -26,24 +26,24 @@ public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
     /**
      * Constructor
      * @param context
-     * @param incomeBeforeRepositoryManager
+     * @param livelihoodsIncomeRepositoryManager
      * @param incomeSourceTypeIndex
      * @param isNewRow
      */
-    public IncomeBeforeDialogViewModel(Context context, 
-                                       IncomeBeforeRepositoryManager incomeBeforeRepositoryManager,
-                                       int incomeSourceTypeIndex,
-                                       boolean isNewRow) {
+    public LivelihoodsIncomeDialogViewModel(Context context,
+                                            LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
+                                            int incomeSourceTypeIndex,
+                                            boolean isNewRow) {
         super(context);
-        mIncomeBeforeRepositoryManager = incomeBeforeRepositoryManager;
+        mLivelihoodsIncomeRepositoryManager = livelihoodsIncomeRepositoryManager;
         mIsNewRow = isNewRow;
 
         if (mIsNewRow) {
-            type.set(mIncomeBeforeRepositoryManager.getIncomeBeforeSourceType(incomeSourceTypeIndex));
+            type.set(mLivelihoodsIncomeRepositoryManager.getIncomeBeforeSourceType(incomeSourceTypeIndex));
         } else {
             mRowIndex = incomeSourceTypeIndex;
 
-            LivelihoodsIncomeDataRow incomeDataRow = mIncomeBeforeRepositoryManager.getIncomeBeforeRow(incomeSourceTypeIndex);
+            LivelihoodsIncomeDataRow incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(incomeSourceTypeIndex);
             type.set(incomeDataRow.getType());
             source.set(incomeDataRow.getSource());
             depHousehold.set(incomeDataRow.getDepHousehold());
@@ -69,7 +69,7 @@ public class IncomeBeforeDialogViewModel extends BaseEnumDialogViewModel {
                 depBoys.get(),
                 depGirls.get(),
                 averageIncome.get());
-        mIncomeBeforeRepositoryManager.addIncomeBeforeRow(livelihoodsIncomeDataRow, mRowIndex);
+        mLivelihoodsIncomeRepositoryManager.addIncomeBeforeRow(livelihoodsIncomeDataRow, mRowIndex);
         super.navigateOnOkButtonPressed();
     }
 }

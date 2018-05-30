@@ -7,11 +7,11 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsIncomeDataRow;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.IncomeBeforeRepositoryManager;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeRepositoryManager;
 
-public class IncomeBeforeRowViewModel extends BaseEnumRowViewModel {
+public class LivelihoodsIncomeRowViewModel extends BaseEnumRowViewModel {
 
-    private IncomeBeforeRepositoryManager mIncomeBeforeRepositoryManager;
+    private LivelihoodsIncomeRepositoryManager mLivelihoodsIncomeRepositoryManager;
 
     public final ObservableField<String> source = new ObservableField<>("");
     public final ObservableInt depHousehold= new ObservableInt(0);
@@ -24,18 +24,18 @@ public class IncomeBeforeRowViewModel extends BaseEnumRowViewModel {
     /**
      * Constructor
      * @param context
-     * @param incomeBeforeRepositoryManager
+     * @param livelihoodsIncomeRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public IncomeBeforeRowViewModel(Context context,
-                                    IncomeBeforeRepositoryManager incomeBeforeRepositoryManager,
-                                    BaseEnumNavigator baseEnumNavigator,
-                                    int rowIndex) {
+    public LivelihoodsIncomeRowViewModel(Context context,
+                                         LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
+                                         BaseEnumNavigator baseEnumNavigator,
+                                         int rowIndex) {
         super(context, baseEnumNavigator, rowIndex);
-        mIncomeBeforeRepositoryManager = incomeBeforeRepositoryManager;
+        mLivelihoodsIncomeRepositoryManager = livelihoodsIncomeRepositoryManager;
 
-        LivelihoodsIncomeDataRow incomeDataRow = mIncomeBeforeRepositoryManager.getIncomeBeforeRow(rowIndex);
+        LivelihoodsIncomeDataRow incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(rowIndex);
         type.set(incomeDataRow.getType());
         source.set(incomeDataRow.getSource());
         depHousehold.set(incomeDataRow.getDepHousehold());
@@ -51,7 +51,7 @@ public class IncomeBeforeRowViewModel extends BaseEnumRowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mIncomeBeforeRepositoryManager.deleteIncomeBeforeRow(mRowIndex);
+        mLivelihoodsIncomeRepositoryManager.deleteIncomeBeforeRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

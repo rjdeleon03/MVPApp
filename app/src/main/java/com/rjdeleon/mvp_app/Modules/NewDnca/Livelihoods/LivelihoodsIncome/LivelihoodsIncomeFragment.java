@@ -3,31 +3,31 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 import android.view.View;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.IncomeBeforeDialogFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.IncomeBeforeDialogViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogViewModel;
 
-public class IncomeBeforeFragment extends BaseEnumFragment {
+public class LivelihoodsIncomeFragment extends BaseEnumFragment {
 
-    private IncomeBeforeFragmentAdapter mIncomeBeforeFragmentAdapter;
+    private LivelihoodsIncomeFragmentAdapter mLivelihoodsIncomeFragmentAdapter;
 
-    public static IncomeBeforeFragment newInstance() {
-        return new IncomeBeforeFragment();
+    public static LivelihoodsIncomeFragment newInstance() {
+        return new LivelihoodsIncomeFragment();
     }
 
-    public IncomeBeforeFragment() {
+    public LivelihoodsIncomeFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
-        IncomeBeforeDialogViewModel dialogViewModel = new IncomeBeforeDialogViewModel(
+        LivelihoodsIncomeDialogViewModel dialogViewModel = new LivelihoodsIncomeDialogViewModel(
                 getContext(),
-                (IncomeBeforeRepositoryManager) mViewModel,
+                (LivelihoodsIncomeRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = IncomeBeforeDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsIncomeDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -35,13 +35,13 @@ public class IncomeBeforeFragment extends BaseEnumFragment {
     @Override
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
-        IncomeBeforeDialogViewModel dialogViewModel = new IncomeBeforeDialogViewModel(
+        LivelihoodsIncomeDialogViewModel dialogViewModel = new LivelihoodsIncomeDialogViewModel(
                 getContext(),
-                (IncomeBeforeRepositoryManager) mViewModel,
+                (LivelihoodsIncomeRepositoryManager) mViewModel,
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = IncomeBeforeDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsIncomeDialogFragment.getInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -52,7 +52,7 @@ public class IncomeBeforeFragment extends BaseEnumFragment {
     @Override
     protected void refreshData() {
         super.refreshData();
-        mIncomeBeforeFragmentAdapter.notifyDataSetChanged();
+        mLivelihoodsIncomeFragmentAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -62,10 +62,10 @@ public class IncomeBeforeFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mIncomeBeforeFragmentAdapter = new IncomeBeforeFragmentAdapter(
+        mLivelihoodsIncomeFragmentAdapter = new LivelihoodsIncomeFragmentAdapter(
                 getContext().getApplicationContext(),
                 this,
-                (IncomeBeforeViewModel) mViewModel);
-        mRowRecycler.setAdapter(mIncomeBeforeFragmentAdapter);
+                (LivelihoodsLivelihoodsIncomeViewModel) mViewModel);
+        mRowRecycler.setAdapter(mLivelihoodsIncomeFragmentAdapter);
     }
 }

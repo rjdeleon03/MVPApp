@@ -10,7 +10,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryMan
 
 import java.util.List;
 
-public class IncomeBeforeViewModel extends LivelihoodsEnumBaseViewModel implements IncomeBeforeRepositoryManager {
+public class LivelihoodsLivelihoodsIncomeViewModel extends LivelihoodsEnumBaseViewModel implements LivelihoodsIncomeRepositoryManager {
 
     private boolean mWillSaveAsIncomeBefore = false;
 
@@ -19,7 +19,7 @@ public class IncomeBeforeViewModel extends LivelihoodsEnumBaseViewModel implemen
      * @param context
      * @param livelihoodsRepositoryManager
      */
-    public IncomeBeforeViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager, boolean willSaveAsIncomeBefore) {
+    public LivelihoodsLivelihoodsIncomeViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager, boolean willSaveAsIncomeBefore) {
         super(context, livelihoodsRepositoryManager, GenericEnumDataRow.IncomeSourceType.class);
         mWillSaveAsIncomeBefore = willSaveAsIncomeBefore;
 

@@ -8,20 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.IncomeBeforeRowViewHolder;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.IncomeBeforeRowViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.LivelihoodsIncomeRowViewHolder;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.LivelihoodsIncomeRowViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.IncomeSourceRowBinding;
 
-public class IncomeBeforeFragmentAdapter extends RecyclerView.Adapter<IncomeBeforeRowViewHolder> {
+public class LivelihoodsIncomeFragmentAdapter extends RecyclerView.Adapter<LivelihoodsIncomeRowViewHolder> {
 
     private Context mContext;
     private BaseEnumNavigator mBaseEnumNavigator;
-    private IncomeBeforeViewModel mViewModel;
+    private LivelihoodsLivelihoodsIncomeViewModel mViewModel;
 
-    public IncomeBeforeFragmentAdapter(Context context,
-                                       BaseEnumNavigator baseEnumNavigator,
-                                       IncomeBeforeViewModel viewModel) {
+    public LivelihoodsIncomeFragmentAdapter(Context context,
+                                            BaseEnumNavigator baseEnumNavigator,
+                                            LivelihoodsLivelihoodsIncomeViewModel viewModel) {
         mContext = context;
         mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
@@ -29,21 +29,21 @@ public class IncomeBeforeFragmentAdapter extends RecyclerView.Adapter<IncomeBefo
 
     @NonNull
     @Override
-    public IncomeBeforeRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LivelihoodsIncomeRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root = inflater.inflate(R.layout.income_source_row, parent, false);
         IncomeSourceRowBinding binding = IncomeSourceRowBinding.bind(root);
-        return new IncomeBeforeRowViewHolder(binding);
+        return new LivelihoodsIncomeRowViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IncomeBeforeRowViewHolder holder, int position) {
-        IncomeBeforeRowViewModel incomeBeforeRowViewModel = new IncomeBeforeRowViewModel(
+    public void onBindViewHolder(@NonNull LivelihoodsIncomeRowViewHolder holder, int position) {
+        LivelihoodsIncomeRowViewModel livelihoodsIncomeRowViewModel = new LivelihoodsIncomeRowViewModel(
                 mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);
-        holder.bind(incomeBeforeRowViewModel);
+        holder.bind(livelihoodsIncomeRowViewModel);
     }
 
     @Override

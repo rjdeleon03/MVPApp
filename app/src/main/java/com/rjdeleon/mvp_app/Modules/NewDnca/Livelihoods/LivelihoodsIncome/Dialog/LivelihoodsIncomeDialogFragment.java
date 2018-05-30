@@ -11,15 +11,15 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnum
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.IncomeSourceDialogBinding;
 
-public class IncomeBeforeDialogFragment extends BaseEnumDialogFragment {
+public class LivelihoodsIncomeDialogFragment extends BaseEnumDialogFragment {
 
     private IncomeSourceDialogBinding mBinding;
 
-    public static IncomeBeforeDialogFragment getInstance() {
-        return new IncomeBeforeDialogFragment();
+    public static LivelihoodsIncomeDialogFragment getInstance() {
+        return new LivelihoodsIncomeDialogFragment();
     }
 
-    public IncomeBeforeDialogFragment() {
+    public LivelihoodsIncomeDialogFragment() {
         // Required empty public constructor
     }
 
@@ -30,7 +30,7 @@ public class IncomeBeforeDialogFragment extends BaseEnumDialogFragment {
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         mBinding = DataBindingUtil.inflate(inflater, R.layout.income_source_dialog, null, false);
-        mBinding.setViewModel((IncomeBeforeDialogViewModel) mViewModel);
+        mBinding.setViewModel((LivelihoodsIncomeDialogViewModel) mViewModel);
         View view = mBinding.getRoot();
 
         return super.createDialog(view);

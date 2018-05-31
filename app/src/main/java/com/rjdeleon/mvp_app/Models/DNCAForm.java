@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Models;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodSecurity;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
+import com.rjdeleon.mvp_app.Models.Health.HealthInfo;
 import com.rjdeleon.mvp_app.Models.Livelihoods.Livelihoods;
 import com.rjdeleon.mvp_app.Models.Shelter.ShelterInfo;
 
@@ -13,17 +14,19 @@ public class DNCAForm implements NormalizableData {
     private ShelterInfo shelterInfo;
     private FoodSecurity foodSecurity;
     private Livelihoods livelihoods;
+    private HealthInfo healthInfo;
 
-    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods) {
+    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo) {
         this.formInfo = formInfo;
         this.genInfo = genInfo;
         this.shelterInfo = shelterInfo;
         this.foodSecurity = foodSecurity;
         this.livelihoods = livelihoods;
+        this.healthInfo = healthInfo;
     }
 
     public DNCAForm() {
-        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods());
+        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo());
     }
 
     public FormInfo getFormInfo() {
@@ -64,6 +67,14 @@ public class DNCAForm implements NormalizableData {
 
     public void setLivelihoods(Livelihoods livelihoods) {
         this.livelihoods = livelihoods;
+    }
+
+    public HealthInfo getHealthInfo() {
+        return healthInfo;
+    }
+
+    public void setHealthInfo(HealthInfo healthInfo) {
+        this.healthInfo = healthInfo;
     }
 
     @Override

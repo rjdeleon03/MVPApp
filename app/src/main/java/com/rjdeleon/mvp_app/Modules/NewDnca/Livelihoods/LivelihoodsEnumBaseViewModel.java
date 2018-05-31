@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 
+import javax.annotation.Nullable;
+
 public abstract class LivelihoodsEnumBaseViewModel extends BaseEnumViewModel {
 
     protected LivelihoodsRepositoryManager mLivelihoodsRepositoryManager;
@@ -16,8 +18,7 @@ public abstract class LivelihoodsEnumBaseViewModel extends BaseEnumViewModel {
      */
     public LivelihoodsEnumBaseViewModel(Context context,
                                         LivelihoodsRepositoryManager livelihoodsRepositoryManager,
-                                        Class<? extends Enum> enumClass) {
-
+                                        @Nullable Class<? extends Enum> enumClass) {
         super(context, enumClass);
         mLivelihoodsRepositoryManager = livelihoodsRepositoryManager;
     }

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.HouseDamageData.Dialog.HouseDamageDialogViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogViewModel" />
     </data>
 
     <LinearLayout

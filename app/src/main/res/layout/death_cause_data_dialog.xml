@@ -121,13 +121,14 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.measlesMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_measles_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_measles_male_ic"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_measles_female_ic"
@@ -149,13 +150,14 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginTop="4dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.measlesFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_measles_female_ic"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <!-- Diarrhea -->
                     <TextView
@@ -189,13 +191,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.diarrheaMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_diarrhea_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_diarrhea_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_measles_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_measles_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_diarrhea_female_ic"
@@ -216,13 +219,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.diarrheaFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_diarrhea_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_measles_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_measles_female"/>
 
                     <!-- Pneumonia -->
                     <TextView
@@ -256,13 +260,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.pneumoniaMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_pneumonia_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_pneumonia_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_pneumonia_female_ic"
@@ -283,13 +288,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.pneumoniaFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_pneumonia_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_diarrhea_female"/>
                     
                     <!-- Dengue -->
                     <TextView
@@ -323,13 +329,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.dengueMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_dengue_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_dengue_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_dengue_female_ic"
@@ -350,13 +357,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.dengueFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_dengue_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_pneumonia_female"/>
 
                     <!-- Drowning -->
                     <TextView
@@ -390,13 +398,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.drowningMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_drowning_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_drowning_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_drowning_female_ic"
@@ -417,13 +426,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.drowningFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_drowning_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_dengue_female"/>
 
                     <!-- Heart Attack -->
                     <TextView
@@ -457,13 +467,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.heartAttackMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_heart_attack_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_heart_attack_female_ic"
@@ -484,13 +495,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.heartAttackFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_heart_attack_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_drowning_female"/>
 
                     <!-- Electrocution -->
                     <TextView
@@ -524,13 +536,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.drowningMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_electrocution_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_electrocution_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_electrocution_female_ic"
@@ -551,13 +564,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.drowningFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_electrocution_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_heart_attack_female"/>
 
                     <!-- Collapsed Building -->
                     <TextView
@@ -592,13 +606,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.collapsedMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_collapsed_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_collapsed_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_collapsed_female_ic"
@@ -619,13 +634,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.collapsedFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_collapsed_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_electrocution_female"/>
 
                     <!-- Others -->
                     <TextView
@@ -659,13 +675,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.othersMale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_others_female_ic"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_others_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_male" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_male"/>
 
                     <ImageView
                         android:id="@+id/nd_casualties_dlg_others_female_ic"
@@ -686,13 +703,14 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:ems="10"
+                        android:fontFamily="@font/lato_reg"
                         android:gravity="right"
                         android:inputType="number"
                         android:text="@={viewModel.othersFemale}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_others_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_female" />
+                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_collapsed_female"/>
 
                 </android.support.constraint.ConstraintLayout>
 

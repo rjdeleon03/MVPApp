@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterCopingData.ShelterCopingDataViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

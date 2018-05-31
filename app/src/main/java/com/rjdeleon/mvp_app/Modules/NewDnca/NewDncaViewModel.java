@@ -83,6 +83,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     }
 
     /**
+     * Handles navigation when helath button button is pressed
+     */
+    public void navigateOnHealthButtonPressed() {
+        mNewDncaNavigator.onHealthButtonPressed();
+    }
+
+    /**
      * Callback for when form has been created
      * @param form
      */

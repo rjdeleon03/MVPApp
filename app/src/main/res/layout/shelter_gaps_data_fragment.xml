@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
-             tools:context=".Modules.NewDnca.ShelterInformation.ShelterGapsData.ShelterGapsDataFragment">
+             tools:context=".Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.ShelterInformation.ShelterGapsData.ShelterGapsDataViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

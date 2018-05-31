@@ -19,13 +19,13 @@ public interface HealthRepositoryManager extends AssistanceDataContainer {
     
     HealthGapsData getHealthGapsData();
 
-    void setDiseasesInjuriesData(DiseasesInjuriesData diseasesInjuriesData);
+    void saveDiseasesInjuriesData(DiseasesInjuriesData diseasesInjuriesData);
 
-    void setSpecialNeedsData(SpecialNeedsData specialNeedsData);
+    void saveSpecialNeedsData(SpecialNeedsData specialNeedsData);
 
-    void setPsychosocialData(PsychosocialData psychosocialData);
+    void savePsychosocialData(PsychosocialData psychosocialData);
 
-    void setHealthCopingData(GenericCopingData healthCopingData);
+    void saveHealthCopingData(GenericCopingData healthCopingData);
 
-    void setHealthGapsData(HealthGapsData healthGapsData);
+    void saveHealthGapsData(HealthGapsData healthGapsData);
 }

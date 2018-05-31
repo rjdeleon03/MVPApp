@@ -1,15 +1,14 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.Row;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.rjdeleon.mvp_app.databinding.HouseDamageRowBinding;
+import com.rjdeleon.mvp_app.databinding.ShelterHouseDamageRowBinding;
 
 public class HouseDamageRowViewHolder extends RecyclerView.ViewHolder {
 
-    private HouseDamageRowBinding mBinding;
+    private ShelterHouseDamageRowBinding mBinding;
 
-    public HouseDamageRowViewHolder(HouseDamageRowBinding binding) {
+    public HouseDamageRowViewHolder(ShelterHouseDamageRowBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
     }

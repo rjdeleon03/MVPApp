@@ -29,8 +29,7 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        PopulationData populationData = new PopulationData();
-        populationData.setPopulationDataRows((List<PopulationDataRow>)(Object) mGenericEnumDataRows);
+        PopulationData populationData = new PopulationData((List<PopulationDataRow>)(Object) mGenericEnumDataRows);
         mGenInfoRepositoryManager.savePopulationData(populationData);
     }
 

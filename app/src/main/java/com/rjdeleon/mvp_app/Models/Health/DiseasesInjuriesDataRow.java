@@ -6,22 +6,22 @@ import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 
 public class DiseasesInjuriesDataRow extends GenericEnumDataRow {
 
+    private GenderTuple measles;
     private GenderTuple diarrhea;
     private GenderTuple pneumonia;
     private GenderTuple dengue;
-    private GenderTuple measles;
     private GenderTuple illOthers;
     private GenderTuple checkUp;
     private GenderTuple hospitalization;
     private GenderTuple medicines;
     private GenderTuple medOthers;
 
-    public DiseasesInjuriesDataRow(GenericEnum type, GenderTuple diarrhea, GenderTuple pneumonia, GenderTuple dengue, GenderTuple measles, GenderTuple illOthers, GenderTuple checkUp, GenderTuple hospitalization, GenderTuple medicines, GenderTuple medOthers) {
+    public DiseasesInjuriesDataRow(GenericEnum type, GenderTuple measles, GenderTuple diarrhea, GenderTuple pneumonia, GenderTuple dengue, GenderTuple illOthers, GenderTuple checkUp, GenderTuple hospitalization, GenderTuple medicines, GenderTuple medOthers) {
         super(type);
+        this.measles = measles;
         this.diarrhea = diarrhea;
         this.pneumonia = pneumonia;
         this.dengue = dengue;
-        this.measles = measles;
         this.illOthers = illOthers;
         this.checkUp = checkUp;
         this.hospitalization = hospitalization;

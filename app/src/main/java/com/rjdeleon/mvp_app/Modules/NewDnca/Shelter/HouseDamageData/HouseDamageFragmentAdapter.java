@@ -11,7 +11,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigat
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.Row.HouseDamageRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.Row.HouseDamageRowViewModel;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.HouseDamageRowBinding;
+import com.rjdeleon.mvp_app.databinding.ShelterHouseDamageRowBinding;
 
 public class HouseDamageFragmentAdapter extends RecyclerView.Adapter<HouseDamageRowViewHolder> {
 
@@ -33,7 +33,7 @@ public class HouseDamageFragmentAdapter extends RecyclerView.Adapter<HouseDamage
     public HouseDamageRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root = inflater.inflate(R.layout.shelter_house_damage_row, parent, false);
-        HouseDamageRowBinding binding = HouseDamageRowBinding.bind(root);
+        ShelterHouseDamageRowBinding binding = ShelterHouseDamageRowBinding.bind(root);
         return new HouseDamageRowViewHolder(binding);
     }
 

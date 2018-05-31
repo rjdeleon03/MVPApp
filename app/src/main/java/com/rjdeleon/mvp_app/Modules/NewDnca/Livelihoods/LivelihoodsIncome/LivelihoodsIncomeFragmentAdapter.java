@@ -11,7 +11,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigat
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.LivelihoodsIncomeRowViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.LivelihoodsIncomeRowViewModel;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.IncomeSourceRowBinding;
+import com.rjdeleon.mvp_app.databinding.LivelihoodsIncomeSourceRowBinding;
 
 public class LivelihoodsIncomeFragmentAdapter extends RecyclerView.Adapter<LivelihoodsIncomeRowViewHolder> {
 
@@ -32,7 +32,7 @@ public class LivelihoodsIncomeFragmentAdapter extends RecyclerView.Adapter<Livel
     public LivelihoodsIncomeRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root = inflater.inflate(R.layout.livelihoods_income_source_row, parent, false);
-        IncomeSourceRowBinding binding = IncomeSourceRowBinding.bind(root);
+        LivelihoodsIncomeSourceRowBinding binding = LivelihoodsIncomeSourceRowBinding.bind(root);
         return new LivelihoodsIncomeRowViewHolder(binding);
     }
 

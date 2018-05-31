@@ -12,7 +12,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Liveli
 public class LivelihoodsIncomeDialogViewModel extends BaseEnumDialogViewModel {
 
     private LivelihoodsIncomeRepositoryManager mLivelihoodsIncomeRepositoryManager;
-    private boolean mIsNewRow = false;
+    private boolean mIsNewRow;
     private int mRowIndex = -1;
 
     public final ObservableField<String> source = new ObservableField<>("");

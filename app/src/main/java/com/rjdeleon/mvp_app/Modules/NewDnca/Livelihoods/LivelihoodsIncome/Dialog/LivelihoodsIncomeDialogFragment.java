@@ -9,11 +9,11 @@ import android.view.View;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.IncomeSourceDialogBinding;
+import com.rjdeleon.mvp_app.databinding.LivelihoodsIncomeSourceDialogBinding;
 
 public class LivelihoodsIncomeDialogFragment extends BaseEnumDialogFragment {
 
-    private IncomeSourceDialogBinding mBinding;
+    private LivelihoodsIncomeSourceDialogBinding mBinding;
 
     public static LivelihoodsIncomeDialogFragment getInstance() {
         return new LivelihoodsIncomeDialogFragment();

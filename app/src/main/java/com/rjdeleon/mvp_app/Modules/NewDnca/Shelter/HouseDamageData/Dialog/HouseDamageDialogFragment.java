@@ -10,11 +10,11 @@ import android.view.View;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.HouseDamageDialogBinding;
+import com.rjdeleon.mvp_app.databinding.ShelterHouseDamageDialogBinding;
 
 public class HouseDamageDialogFragment extends BaseEnumDialogFragment {
 
-    private HouseDamageDialogBinding mBinding;
+    private ShelterHouseDamageDialogBinding mBinding;
 
     public static HouseDamageDialogFragment getInstance() {
         return new HouseDamageDialogFragment();

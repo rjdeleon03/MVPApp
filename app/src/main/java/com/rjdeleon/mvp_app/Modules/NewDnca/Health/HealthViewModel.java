@@ -101,7 +101,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @param diseasesInjuriesData
      */
     @Override
-    public void setDiseasesInjuriesData(DiseasesInjuriesData diseasesInjuriesData) {
+    public void saveDiseasesInjuriesData(DiseasesInjuriesData diseasesInjuriesData) {
         mDiseasesInjuriesData = diseasesInjuriesData;
         mDncaForm.getHealthInfo().setDiseasesInjuriesData(mDiseasesInjuriesData);
     }
@@ -111,7 +111,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @param specialNeedsData
      */
     @Override
-    public void setSpecialNeedsData(SpecialNeedsData specialNeedsData) {
+    public void saveSpecialNeedsData(SpecialNeedsData specialNeedsData) {
         mSpecialNeedsData = specialNeedsData;
         mDncaForm.getHealthInfo().setSpecialNeedsData(mSpecialNeedsData);
     }
@@ -121,7 +121,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @param psychosocialData
      */
     @Override
-    public void setPsychosocialData(PsychosocialData psychosocialData) {
+    public void savePsychosocialData(PsychosocialData psychosocialData) {
         mPsychosocialData = psychosocialData;
         mDncaForm.getHealthInfo().setPsychosocialData(mPsychosocialData);
     }
@@ -131,7 +131,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @param healthCopingData
      */
     @Override
-    public void setHealthCopingData(GenericCopingData healthCopingData) {
+    public void saveHealthCopingData(GenericCopingData healthCopingData) {
         mCopingData = healthCopingData;
         mDncaForm.getHealthInfo().setCopingData(mCopingData);
     }
@@ -141,7 +141,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @param healthGapsData
      */
     @Override
-    public void setHealthGapsData(HealthGapsData healthGapsData) {
+    public void saveHealthGapsData(HealthGapsData healthGapsData) {
         mGapsData = healthGapsData;
         mDncaForm.getHealthInfo().setGapsData(mGapsData);
     }

@@ -65,7 +65,7 @@ public class LivelihoodsIncomeFragment extends BaseEnumFragment {
         mLivelihoodsIncomeFragmentAdapter = new LivelihoodsIncomeFragmentAdapter(
                 getContext().getApplicationContext(),
                 this,
-                (LivelihoodsLivelihoodsIncomeViewModel) mViewModel);
+                (LivelihoodsIncomeViewModel) mViewModel);
         mRowRecycler.setAdapter(mLivelihoodsIncomeFragmentAdapter);
     }
 }

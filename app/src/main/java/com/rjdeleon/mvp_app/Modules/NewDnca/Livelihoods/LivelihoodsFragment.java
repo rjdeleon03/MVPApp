@@ -16,7 +16,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Liveli
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsLivelihoodsIncomeViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
@@ -65,7 +65,7 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
         {
             // Setup income before emergency fragment
             LivelihoodsIncomeFragment livelihoodsIncomeFragment = LivelihoodsIncomeFragment.newInstance();
-            LivelihoodsLivelihoodsIncomeViewModel livelihoodsIncomeViewModel = new LivelihoodsLivelihoodsIncomeViewModel(getContext().getApplicationContext(), repositoryManager, true);
+            LivelihoodsIncomeViewModel livelihoodsIncomeViewModel = new LivelihoodsIncomeViewModel(getContext().getApplicationContext(), repositoryManager, true);
             livelihoodsIncomeFragment.setViewModel(livelihoodsIncomeViewModel);
             mAdapter.addFragment(livelihoodsIncomeFragment);
 
@@ -78,7 +78,7 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
         {
             // Setup income after emergency fragment
             LivelihoodsIncomeFragment livelihoodsIncomeFragment = LivelihoodsIncomeFragment.newInstance();
-            LivelihoodsLivelihoodsIncomeViewModel livelihoodsIncomeViewModel = new LivelihoodsLivelihoodsIncomeViewModel(getContext().getApplicationContext(), repositoryManager, false);
+            LivelihoodsIncomeViewModel livelihoodsIncomeViewModel = new LivelihoodsIncomeViewModel(getContext().getApplicationContext(), repositoryManager, false);
             livelihoodsIncomeFragment.setViewModel(livelihoodsIncomeViewModel);
             mAdapter.addFragment(livelihoodsIncomeFragment);
 

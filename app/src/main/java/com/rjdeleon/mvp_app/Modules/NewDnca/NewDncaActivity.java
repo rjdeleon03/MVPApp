@@ -261,8 +261,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         ActivityUtils.addFragmentToActivity(
                 getSupportFragmentManager(),
                 ViewModelHolder.createContainer(viewModel),
-                tag
-        );
+                tag);
 
         return viewModel;
     }

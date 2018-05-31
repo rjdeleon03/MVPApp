@@ -17,11 +17,11 @@ public class LivelihoodsIncomeFragmentAdapter extends RecyclerView.Adapter<Livel
 
     private Context mContext;
     private BaseEnumNavigator mBaseEnumNavigator;
-    private LivelihoodsLivelihoodsIncomeViewModel mViewModel;
+    private LivelihoodsIncomeViewModel mViewModel;
 
     public LivelihoodsIncomeFragmentAdapter(Context context,
                                             BaseEnumNavigator baseEnumNavigator,
-                                            LivelihoodsLivelihoodsIncomeViewModel viewModel) {
+                                            LivelihoodsIncomeViewModel viewModel) {
         mContext = context;
         mBaseEnumNavigator = baseEnumNavigator;
         mViewModel = viewModel;
@@ -31,7 +31,7 @@ public class LivelihoodsIncomeFragmentAdapter extends RecyclerView.Adapter<Livel
     @Override
     public LivelihoodsIncomeRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View root = inflater.inflate(R.layout.income_source_row, parent, false);
+        View root = inflater.inflate(R.layout.livelihoods_income_source_row, parent, false);
         IncomeSourceRowBinding binding = IncomeSourceRowBinding.bind(root);
         return new LivelihoodsIncomeRowViewHolder(binding);
     }

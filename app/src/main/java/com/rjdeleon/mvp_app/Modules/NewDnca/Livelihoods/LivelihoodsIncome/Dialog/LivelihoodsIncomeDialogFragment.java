@@ -29,7 +29,7 @@ public class LivelihoodsIncomeDialogFragment extends BaseEnumDialogFragment {
 
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.income_source_dialog, null, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.livelihoods_income_source_dialog, null, false);
         mBinding.setViewModel((LivelihoodsIncomeDialogViewModel) mViewModel);
         View view = mBinding.getRoot();
 

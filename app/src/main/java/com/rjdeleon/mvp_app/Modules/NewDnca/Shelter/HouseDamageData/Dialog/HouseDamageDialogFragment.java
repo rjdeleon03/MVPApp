@@ -30,7 +30,7 @@ public class HouseDamageDialogFragment extends BaseEnumDialogFragment {
 
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.house_damage_dialog, null, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.shelter_house_damage_dialog, null, false);
         mBinding.setViewModel((HouseDamageDialogViewModel) mViewModel);
         View view = mBinding.getRoot();
 

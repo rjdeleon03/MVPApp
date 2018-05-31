@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Dialog.DiseasesInjuriesDialogViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/backgroundColor"
+        app:cardCornerRadius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimary">
+
+                <ImageButton
+                    android:id="@+id/nd_health_diseases_dlg_cancel"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
+                    android:background="@drawable/round_button_cancel"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close_card"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa_reg"
+                    android:text="@{viewModel.type.toString()}"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/nd_health_diseases_dlg_ok"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
+                    android:background="@drawable/round_button_ok"
+                    android:src="@drawable/ic_check"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/nd_health_diseases_dlg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="8dp">
+
+                    <!-- Number of Cases -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_cases_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:text="NUMBER OF CASES OF ILLNESSES"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- Measles -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_measles_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Measles"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_cases_label" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_hospitalization_label"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_cases_label"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_measles_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.measlesMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_measles_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_cases_label"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_measles_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_measles_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_measles_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_cases_label"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_measles_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.measlesFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_measles_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_cases_label"/>
+
+                    <!-- Diarrhea -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_diarrhea_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Diarrhea"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_measles_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_diarrhea_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_measles_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_diarrhea_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.diarrheaMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_diarrhea_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_diarrhea_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_measles_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_diarrhea_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_diarrhea_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_diarrhea_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_measles_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_diarrhea_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.diarrheaFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_diarrhea_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_measles_female"/>
+
+                    <!-- Pneumonia -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_pneumonia_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Pneumonia"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_diarrhea_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_pneumonia_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_diarrhea_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_pneumonia_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.pneumoniaMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_pneumonia_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_pneumonia_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_diarrhea_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_pneumonia_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_pneumonia_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_pneumonia_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_diarrhea_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_pneumonia_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.pneumoniaFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_pneumonia_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_diarrhea_female"/>
+                    
+                    <!-- Dengue -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_dengue_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Dengue"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_pneumonia_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_dengue_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_pneumonia_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_dengue_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.dengueMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_dengue_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_dengue_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_pneumonia_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_dengue_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_dengue_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_dengue_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_pneumonia_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_dengue_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.dengueFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_dengue_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_pneumonia_female"/>
+
+                    <!-- Others (Illnesses) -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_illness_other_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Others"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_dengue_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_illness_other_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_dengue_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_illness_other_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.drowningMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_illness_other_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_illness_other_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_dengue_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_illness_other_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_illness_other_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_illness_other_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_dengue_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_illness_other_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.drowningFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_illness_other_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_dengue_female"/>
+
+                    <!-- Medical Needs -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_medical_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:text="MEDICAL NEEDS"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_illness_other_male"/>
+
+                    <!-- Check-up -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_checkup_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Check-up"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medical_label"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_checkup_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medical_label"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_checkup_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.heartAttackMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_checkup_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_checkup_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medical_label"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_checkup_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_checkup_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_checkup_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medical_label"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_checkup_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="4dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.heartAttackFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_checkup_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medical_label"/>
+
+                    <!-- Hospitalization -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_hospitalization_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Hospitalization"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_checkup_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_hospitalization_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_checkup_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_hospitalization_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.drowningMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_hospitalization_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_hospitalization_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_checkup_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_hospitalization_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_hospitalization_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_hospitalization_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_checkup_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_hospitalization_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.drowningFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_hospitalization_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_checkup_female"/>
+
+                    <!-- Medicines -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_medicines_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:maxWidth="80dp"
+                        android:text="Medicines"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_hospitalization_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_medicines_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_hospitalization_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_medicines_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.collapsedMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_medicines_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_medicines_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_hospitalization_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_medicines_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_medicines_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_medicines_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_hospitalization_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_medicines_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.collapsedFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_medicines_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_hospitalization_female"/>
+
+                    <!-- Others (Medical Needs) -->
+                    <TextView
+                        android:id="@+id/nd_health_diseases_dlg_others_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Others"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medicines_male" />
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_others_male_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="@+id/nd_health_diseases_dlg_measles_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medicines_male"
+                        app:srcCompat="@drawable/ic_male"/>
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_others_male"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.othersMale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_others_female_ic"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_others_male_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medicines_male"/>
+
+                    <ImageView
+                        android:id="@+id/nd_health_diseases_dlg_others_female_ic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/nd_health_diseases_dlg_others_female"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_others_male"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medicines_female"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <EditText
+                        android:id="@+id/nd_health_diseases_dlg_others_female"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@={viewModel.othersFemale}"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nd_health_diseases_dlg_others_female_ic"
+                        app:layout_constraintTop_toBottomOf="@+id/nd_health_diseases_dlg_medicines_female"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

@@ -32,7 +32,7 @@ public class HouseDamageFragmentAdapter extends RecyclerView.Adapter<HouseDamage
     @Override
     public HouseDamageRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View root = inflater.inflate(R.layout.house_damage_row, parent, false);
+        View root = inflater.inflate(R.layout.shelter_house_damage_row, parent, false);
         HouseDamageRowBinding binding = HouseDamageRowBinding.bind(root);
         return new HouseDamageRowViewHolder(binding);
     }

@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Row.DiseasesInjuriesRowViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.Row.SpecialNeedsRowViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -24,44 +24,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="65dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:background="@color/colorAccent">
 
                 <TextView
-                    android:id="@+id/nd_vulnerable_age_group"
+                    android:id="@+id/nd_health_special_needs_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_bold"
                     android:gravity="center"
                     android:lines="2"
-                    android:maxWidth="53dp"
                     android:text="@{viewModel.type.toString()}"
                     android:textColor="@color/backgroundColor"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/nd_vulnerable_delete_button"
+                    android:id="@+id/imageButton"
                     android:layout_width="25dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="4dp"
                     android:background="@android:color/transparent"
                     android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
                     android:paddingHorizontal="8dp"
                     android:src="@drawable/ic_close_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nd_vulnerable_age_group" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -75,30 +79,12 @@
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:stretchColumns="2,4"
+                    android:stretchColumns="1"
                     android:layout_marginHorizontal="16dp">
 
-                    <!-- Number of Cases -->
-                    <TableRow>
-                        <TextView
-                            android:layout_span="5"
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"
-                            android:text="NUMBER OF CASES OF ILLNESSES"
-                            android:textColor="@android:color/black"/>
-                    </TableRow>
-                    <TableRow>
-                        <View
-                            android:layout_span="5"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="@android:color/darker_gray" />
-                    </TableRow>
-
-                    <!-- Measles -->
+                    <!-- Count -->
                     <TableRow
+                        android:layout_margin="0dp"
                         android:layout_marginVertical="2dp">
 
                         <TextView
@@ -106,409 +92,47 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/lato_reg"
-                            android:text="Measles"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
+                            android:text="Count"
+                            android:textColor="@android:color/black" />
 
                         <TextView
                             android:layout_width="30dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="64dp"
+                            android:layout_marginLeft="64dp"
                             android:ems="10"
                             android:fontFamily="@font/lato_reg"
                             android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.measlesMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.measlesFemale}"/>
+                            android:text="@{viewModel.count}" />
 
                     </TableRow>
 
-                    <!-- Diarrhea -->
+
                     <TableRow
+                        android:layout_margin="0dp"
                         android:layout_marginVertical="2dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Diarrhea"
-                            android:textColor="@android:color/black"/>
+                        <LinearLayout
+                            android:layout_span="2"
+                            android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/lato_reg"
+                                android:textColor="@android:color/black"
+                                android:text="Health / Medical Needs"/>
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.diarrheaMale}"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_reg"
+                                android:textSize="12dp"
+                                android:text="@{viewModel.needs}"/>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.diarrheaFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Pneumonia -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Pneumonia"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.pneumoniaMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.pneumoniaFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Dengue -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Dengue"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.dengueMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.dengueFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Others (Illness) -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Others"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.illOthersMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.illOthersFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Medical Needs -->
-                    <TableRow>
-                        <TextView
-                            android:layout_span="5"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:text="MEDICAL NEEDS"
-                            android:textColor="@android:color/black"/>
-                    </TableRow>
-                    <TableRow>
-                        <View
-                            android:layout_span="5"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="@android:color/darker_gray" />
-                    </TableRow>
-
-                    <!-- Check-up -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Check-up"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.checkUpMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.checkUpFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Hospitalization -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Hospitalization"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.hospitalizationMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.hospitalizationFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Medicines -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Medicines"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.medicinesMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.medicinesFemale}"/>
-
-                    </TableRow>
-
-                    <!-- Others (Medical) -->
-                    <TableRow
-                        android:layout_marginVertical="2dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Others"
-                            android:textColor="@android:color/black"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_male"/>
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.medOthersMale}"/>
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/ic_female" />
-
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.medOthersFemale}"/>
+                        </LinearLayout>
 
                     </TableRow>
 

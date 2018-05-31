@@ -16,7 +16,7 @@ public class DiseasesInjuriesDataRow extends GenericEnumDataRow {
     private GenderTuple medicines;
     private GenderTuple medOthers;
 
-    public DiseasesInjuriesDataRow(GenericEnum type, GenderTuple measles, GenderTuple diarrhea, GenderTuple pneumonia, GenderTuple dengue, GenderTuple illOthers, GenderTuple checkUp, GenderTuple hospitalization, GenderTuple medicines, GenderTuple medOthers) {
+    public DiseasesInjuriesDataRow(AgeGroup type, GenderTuple measles, GenderTuple diarrhea, GenderTuple pneumonia, GenderTuple dengue, GenderTuple illOthers, GenderTuple checkUp, GenderTuple hospitalization, GenderTuple medicines, GenderTuple medOthers) {
         super(type);
         this.measles = measles;
         this.diarrhea = diarrhea;
@@ -29,7 +29,7 @@ public class DiseasesInjuriesDataRow extends GenericEnumDataRow {
         this.medOthers = medOthers;
     }
 
-    public DiseasesInjuriesDataRow(GenericEnum type) {
+    public DiseasesInjuriesDataRow(AgeGroup type) {
         this(type, new GenderTuple(), new GenderTuple(), new GenderTuple(), new GenderTuple(), new GenderTuple(), new GenderTuple(), new GenderTuple(), new GenderTuple(), new GenderTuple());
     }
 

@@ -79,7 +79,7 @@ public class DiseasesInjuriesDialogViewModel extends BaseEnumDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         DiseasesInjuriesDataRow diseasesInjuriesDataRow = new DiseasesInjuriesDataRow(
-                type.get(),
+                (GenericEnumDataRow.AgeGroup) type.get(),
                 new GenderTuple(measlesMale.get(), measlesFemale.get()),
                 new GenderTuple(diarrheaMale.get(), diarrheaFemale.get()),
                 new GenderTuple(pneumoniaMale.get(), pneumoniaFemale.get()),

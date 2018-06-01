@@ -16,6 +16,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCoping
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsFragment;
@@ -23,6 +25,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsView
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
+
+import static com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityFragment.FOOD_SECURITY_GAPS_VIEWMODEL_TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -119,6 +123,19 @@ public class HealthFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(assistanceDataViewModel),
                     HEALTH_ASSISTANCE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup gaps data fragment
+            HealthGapsDataFragment foodGapsDataFragment = HealthGapsDataFragment.newInstance();
+            HealthGapsDataViewModel foodGapsDataViewModel = new HealthGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            foodGapsDataFragment.setViewModel(foodGapsDataViewModel);
+            mAdapter.addFragment(foodGapsDataFragment);
+
+            // Bind gaps data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(foodGapsDataViewModel),
+                    FOOD_SECURITY_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

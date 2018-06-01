@@ -53,7 +53,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      * @return
      */
     @Override
-    public GenericCopingData getFoodCopingData() {
+    public GenericCopingData getGenericCopingData() {
         return mFoodCopingData;
     }
 
@@ -99,7 +99,7 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
      * @return
      */
     @Override
-    public void saveFoodCopingData(GenericCopingData foodCopingData) {
+    public void saveGenericCopingData(GenericCopingData foodCopingData) {
         mFoodCopingData = foodCopingData;
         mDncaForm.getFoodSecurity().setCopingData(mFoodCopingData);
     }

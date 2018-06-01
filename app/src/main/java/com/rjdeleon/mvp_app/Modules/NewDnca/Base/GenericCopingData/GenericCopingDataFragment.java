@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData;
 
 
 import android.os.Bundle;
@@ -8,30 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.databinding.FoodCopingDataFragmentBinding;
+import com.rjdeleon.mvp_app.databinding.BaseCopingDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FoodCopingDataFragment extends Fragment {
+public class GenericCopingDataFragment extends Fragment {
 
-    private FoodCopingDataFragmentBinding mBinding;
-    private FoodCopingDataViewModel mViewModel;
+    private BaseCopingDataFragmentBinding mBinding;
+    private GenericCopingDataViewModel mViewModel;
 
-    public FoodCopingDataFragment() {
+    public GenericCopingDataFragment() {
         // Required empty public constructor
     }
 
-    public static FoodCopingDataFragment newInstance() {
-        return new FoodCopingDataFragment();
+    public static GenericCopingDataFragment newInstance() {
+        return new GenericCopingDataFragment();
     }
 
     /**
      * Sets the viewModel
      * @param viewModel
      */
-    public void setViewModel(@NonNull FoodCopingDataViewModel viewModel) {
+    public void setViewModel(@NonNull GenericCopingDataViewModel viewModel) {
         mViewModel = viewModel;
     }
 
@@ -40,9 +40,9 @@ public class FoodCopingDataFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.food_coping_data_fragment, container, false);
+        View root = inflater.inflate(R.layout.base_coping_data_fragment, container, false);
         if (mBinding == null) {
-            mBinding = FoodCopingDataFragmentBinding.bind(root);
+            mBinding = BaseCopingDataFragmentBinding.bind(root);
         }
         mBinding.setViewModel(mViewModel);
 

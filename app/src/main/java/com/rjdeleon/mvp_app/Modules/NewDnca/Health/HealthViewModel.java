@@ -74,7 +74,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @return
      */
     @Override
-    public GenericCopingData getHealthCopingData() {
+    public GenericCopingData getGenericCopingData() {
         return mCopingData;
     }
 
@@ -93,7 +93,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      */
     @Override
     public AssistanceData getAssistanceData() {
-        return null;
+        return mAssistanceData;
     }
 
     /**
@@ -131,7 +131,7 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
      * @param healthCopingData
      */
     @Override
-    public void saveHealthCopingData(GenericCopingData healthCopingData) {
+    public void saveGenericCopingData(GenericCopingData healthCopingData) {
         mCopingData = healthCopingData;
         mDncaForm.getHealthInfo().setCopingData(mCopingData);
     }

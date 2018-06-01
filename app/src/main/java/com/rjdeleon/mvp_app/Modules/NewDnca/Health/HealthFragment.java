@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.Models.Health.HealthGapsData;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
@@ -25,8 +29,11 @@ import com.rjdeleon.mvp_app.ViewModelHolder;
  */
 public class HealthFragment extends BaseMultiPageFragment {
 
-    public static final String NEW_DNCA_HEALTH_DISEASES_INJURIES_VIEWMODEL_TAG = "NEW_DNCA_HEALTH_DISEASES_INJURIES_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG = "NEW_DNCA_HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG";
+    public static final String HEALTH_DISEASES_INJURIES_VIEWMODEL_TAG = "HEALTH_DISEASES_INJURIES_VIEWMODEL_TAG";
+    public static final String HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG = "HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG";
+    public static final String HEALTH_COPING_VIEWMODEL_TAG = "HEALTH_COPING_VIEWMODEL_TAG";
+    public static final String HEALTH_ASSISTANCE_VIEWMODEL_TAG = "HEALTH_ASSISTANCE_VIEWMODEL_TAG";
+    public static final String HEALTH_GAPS_VIEWMODEL_TAG = "HEALTH_GAPS_VIEWMODEL_TAG";
 
     public static HealthFragment newInstance() {
         return new HealthFragment();
@@ -59,7 +66,7 @@ public class HealthFragment extends BaseMultiPageFragment {
             // Bind diseases and injuries viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(diseasesInjuriesViewModel),
-                    NEW_DNCA_HEALTH_DISEASES_INJURIES_VIEWMODEL_TAG);
+                    HEALTH_DISEASES_INJURIES_VIEWMODEL_TAG);
         }
 
         {
@@ -72,7 +79,7 @@ public class HealthFragment extends BaseMultiPageFragment {
             // Bind special needs viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(specialNeedsViewModel),
-                    NEW_DNCA_HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG);
+                    HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG);
         }
 
         {
@@ -85,7 +92,33 @@ public class HealthFragment extends BaseMultiPageFragment {
             // Bind psychosocial viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(psychosocialViewModel),
-                    NEW_DNCA_HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG);
+                    HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup coping data fragment
+            GenericCopingDataFragment genericCopingDataFragment = GenericCopingDataFragment.newInstance();
+            GenericCopingDataViewModel genericCopingDataViewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            genericCopingDataFragment.setViewModel(genericCopingDataViewModel);
+            mAdapter.addFragment(genericCopingDataFragment);
+
+            // Bind coping data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(genericCopingDataViewModel),
+                    HEALTH_COPING_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup assistance data fragment
+            AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
+            AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            assistanceDataFragment.setViewModel(assistanceDataViewModel);
+            mAdapter.addFragment(assistanceDataFragment);
+
+            // Bind assistance data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(assistanceDataViewModel),
+                    HEALTH_ASSISTANCE_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

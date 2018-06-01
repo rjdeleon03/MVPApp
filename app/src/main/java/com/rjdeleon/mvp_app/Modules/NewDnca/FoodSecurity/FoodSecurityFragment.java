@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
@@ -73,14 +73,14 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
 
         {
             // Setup coping data fragment
-            FoodCopingDataFragment foodCopingDataFragment = FoodCopingDataFragment.newInstance();
-            FoodCopingDataViewModel foodCopingDataViewModel = new FoodCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            foodCopingDataFragment.setViewModel(foodCopingDataViewModel);
-            mAdapter.addFragment(foodCopingDataFragment);
+            GenericCopingDataFragment genericCopingDataFragment = GenericCopingDataFragment.newInstance();
+            GenericCopingDataViewModel genericCopingDataViewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            genericCopingDataFragment.setViewModel(genericCopingDataViewModel);
+            mAdapter.addFragment(genericCopingDataFragment);
 
             // Bind coping data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(foodCopingDataViewModel),
+                    ViewModelHolder.createContainer(genericCopingDataViewModel),
                     FOOD_SECURITY_COPING_VIEWMODEL_TAG);
         }
 

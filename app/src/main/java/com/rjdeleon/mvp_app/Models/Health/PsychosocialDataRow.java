@@ -10,14 +10,14 @@ public class PsychosocialDataRow extends GenericEnumDataRow {
     private GenderTuple cases;
     private String needs;
 
-    public PsychosocialDataRow(GenericEnum type, String manifestations, GenderTuple cases, String needs) {
+    public PsychosocialDataRow(AgeGroup type, String manifestations, GenderTuple cases, String needs) {
         super(type);
         this.manifestations = manifestations;
         this.cases = cases;
         this.needs = needs;
     }
 
-    public PsychosocialDataRow(GenericEnum type) {
+    public PsychosocialDataRow(AgeGroup type) {
         this(type, "", new GenderTuple(), "");
     }
 

@@ -61,12 +61,12 @@ public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements Sp
     }
 
     /**
-     * Gets age group based on index
+     * Gets special needs type based on index
      * @param specialNeedsIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.SpecialNeedsType getSpecialNeedsDataAgeGroup(int specialNeedsIndex) {
+    public GenericEnumDataRow.SpecialNeedsType getSpecialNeedsDataType(int specialNeedsIndex) {
         return (GenericEnumDataRow.SpecialNeedsType) ageGroupList.get(specialNeedsIndex);
     }
 }

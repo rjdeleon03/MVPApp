@@ -12,6 +12,8 @@ import com.rjdeleon.mvp_app.Models.Health.HealthGapsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsViewModel;
 import com.rjdeleon.mvp_app.R;
@@ -70,6 +72,19 @@ public class HealthFragment extends BaseMultiPageFragment {
             // Bind special needs viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(specialNeedsViewModel),
+                    NEW_DNCA_HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup psychosocial fragment
+            PsychosocialFragment psychosocialFragment = PsychosocialFragment.newInstance();
+            PsychosocialViewModel psychosocialViewModel = new PsychosocialViewModel(getContext().getApplicationContext(), repositoryManager);
+            psychosocialFragment.setViewModel(psychosocialViewModel);
+            mAdapter.addFragment(psychosocialFragment);
+
+            // Bind psychosocial viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(psychosocialViewModel),
                     NEW_DNCA_HEALTH_SPECIAL_NEEDS_VIEWMODEL_TAG);
         }
 

@@ -20,6 +20,9 @@ public class SpecialNeedsDialogViewModel extends BaseEnumDialogViewModel {
     /**
      * Constructor
      * @param context
+     * @param specialNeedsRepositoryManager
+     * @param specialNeedsIndex
+     * @param isNewRow
      */
     public SpecialNeedsDialogViewModel(Context context,
                                        SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
@@ -29,7 +32,7 @@ public class SpecialNeedsDialogViewModel extends BaseEnumDialogViewModel {
         mSpecialNeedsRepositoryManager = specialNeedsRepositoryManager;
 
         if (isNewRow) {
-            type.set(mSpecialNeedsRepositoryManager.getSpecialNeedsDataAgeGroup(specialNeedsIndex));
+            type.set(mSpecialNeedsRepositoryManager.getSpecialNeedsDataType(specialNeedsIndex));
         } else {
             SpecialNeedsDataRow specialNeedsDataRow = mSpecialNeedsRepositoryManager.getSpecialNeedsDataRow(specialNeedsIndex);
             type.set(specialNeedsDataRow.getType());

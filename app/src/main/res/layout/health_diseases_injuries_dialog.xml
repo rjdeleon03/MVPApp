@@ -115,8 +115,7 @@
 
                         <!-- Measles -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -164,8 +163,7 @@
 
                         <!-- Diarrhea -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -213,8 +211,7 @@
 
                         <!-- Pneumonia -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -262,8 +259,7 @@
 
                         <!-- Dengue -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -311,8 +307,7 @@
 
                         <!-- Others (Illness) -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -379,8 +374,7 @@
 
                         <!-- Check-up -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -428,8 +422,7 @@
 
                         <!-- Hospitalization -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -477,8 +470,7 @@
 
                         <!-- Medicines -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -526,8 +518,7 @@
 
                         <!-- Others (Medical) -->
                         <TableRow
-                            android:layout_margin="0dp"
-                            android:layout_marginVertical="2dp">
+                            android:layout_marginTop="2dp">
 
                             <TextView
                                 android:layout_width="wrap_content"

@@ -12,5 +12,5 @@ public interface SpecialNeedsRepositoryManager {
 
     SpecialNeedsDataRow getSpecialNeedsDataRow(int rowIndex);
 
-    GenericEnumDataRow.SpecialNeedsType getSpecialNeedsDataAgeGroup(int specialNeedsIndex);
+    GenericEnumDataRow.SpecialNeedsType getSpecialNeedsDataType(int specialNeedsIndex);
 }

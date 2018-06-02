@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 public interface QuestionItemDataSource {
 
@@ -12,6 +12,6 @@ public interface QuestionItemDataSource {
      * Gets question at specified index
      * @return
      */
-    QuestionItemViewModelBase getQuestionViewModel(int index);
+    QuestionItemViewModel getQuestionViewModel(int index);
 
 }

@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +17,7 @@ public class QuestionItemViewHolder extends RecyclerView.ViewHolder {
         mBinding = binding;
     }
 
-    public void bind(QuestionItemViewModelBase washConditionsItemViewModel) {
+    public void bind(QuestionItemViewModel washConditionsItemViewModel) {
 
         if (washConditionsItemViewModel instanceof QuestionItemViewModelString) {
             ((BaseQuestionStringBinding) mBinding).setViewModel((QuestionItemViewModelString) washConditionsItemViewModel);

@@ -5,20 +5,16 @@ import android.content.Context;
 import com.rjdeleon.mvp_app.Models.Wash.WashConditionsData;
 import com.rjdeleon.mvp_app.Models.Wash.WaterLevelRemarksTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemDataSource;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelBase;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelLevels;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelString;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelLevels;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WashConditionsViewModel extends WashBaseViewModel implements QuestionItemDataSource, NonEnumSaveableSection {
-
-    private List<QuestionItemViewModelBase> mQuestionsViewModels = new ArrayList<>();
+public class WashConditionsViewModel extends WashBaseViewModel {
 
     private String[] mQuestions = {
             "What is the current water source and level of water system available?\nDrinking and food preparation:",
@@ -102,24 +98,6 @@ public class WashConditionsViewModel extends WashBaseViewModel implements Questi
                 washConditionsData.getAreToiletsSegregated())));
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[22],
                 washConditionsData.getAreToiletsAccessible())));
-    }
-
-    /**
-     * Gets number of questions
-     * @return
-     */
-    @Override
-    public int getQuestionsCount() {
-        return mQuestionsViewModels.size();
-    }
-
-    /**
-     * Gets question at specified index
-     * @return
-     */
-    @Override
-    public QuestionItemViewModelBase getQuestionViewModel(int index) {
-        return mQuestionsViewModels.get(index);
     }
 
     /**

@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

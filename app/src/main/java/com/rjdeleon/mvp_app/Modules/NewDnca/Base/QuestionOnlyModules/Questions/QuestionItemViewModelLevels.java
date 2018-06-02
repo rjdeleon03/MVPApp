@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -6,7 +6,7 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.Wash.WaterLevelRemarksTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
 
-public class QuestionItemViewModelLevels extends QuestionItemViewModelBase {
+public class QuestionItemViewModelLevels extends QuestionItemViewModel {
 
     public final ObservableInt answerWaterLevel;
     public final ObservableField<String> answerRemarks;

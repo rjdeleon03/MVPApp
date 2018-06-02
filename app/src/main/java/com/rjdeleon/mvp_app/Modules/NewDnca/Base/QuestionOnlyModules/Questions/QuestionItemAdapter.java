@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
@@ -7,17 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionBooleanBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionIntBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionStringBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionLevelsBinding;
 import com.rjdeleon.mvp_app.R;
 
-import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemAdapter.LayoutIdMapping.BOOLEAN;
-import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemAdapter.LayoutIdMapping.INT;
-import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemAdapter.LayoutIdMapping.STRING;
-import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemAdapter.LayoutIdMapping.WATER_LEVELS;
+import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.BOOLEAN;
+import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.INT;
+import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.STRING;
+import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.WATER_LEVELS;
 
 public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHolder> {
 
@@ -80,7 +79,7 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHo
 
     @Override
     public int getItemViewType(int position) {
-        QuestionItemViewModelBase questionViewModel = mDataSource.getQuestionViewModel(position);
+        QuestionItemViewModel questionViewModel = mDataSource.getQuestionViewModel(position);
         int viewType = 0;
 
         if (questionViewModel instanceof QuestionItemViewModelString) {

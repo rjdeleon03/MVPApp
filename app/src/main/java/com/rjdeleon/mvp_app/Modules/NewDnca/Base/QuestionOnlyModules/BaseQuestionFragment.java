@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,25 +10,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemAdapter;
-import com.rjdeleon.mvp_app.databinding.WashConditionsFragmentBinding;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter;
 import com.rjdeleon.mvp_app.R;
+import com.rjdeleon.mvp_app.databinding.BaseQuestionFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WashConditionsFragment extends Fragment {
+public class BaseQuestionFragment extends Fragment {
 
     private QuestionItemAdapter mWashConditionsAdapter;
-    private WashConditionsViewModel mViewModel;
-    private WashConditionsFragmentBinding mBinding;
+    private BaseQuestionViewModel mViewModel;
+    private BaseQuestionFragmentBinding mBinding;
     private RecyclerView mQuestionRecycler;
 
-    public static WashConditionsFragment newInstance() {
-        return new WashConditionsFragment();
+    public static BaseQuestionFragment newInstance() {
+        return new BaseQuestionFragment();
     }
 
-    public WashConditionsFragment() {
+    public BaseQuestionFragment() {
         // Required empty public constructor
     }
 
@@ -36,7 +36,7 @@ public class WashConditionsFragment extends Fragment {
      * Sets the viewModel
      * @param viewModel
      */
-    public void setViewModel(WashConditionsViewModel viewModel) {
+    public void setViewModel(BaseQuestionViewModel viewModel) {
         mViewModel = viewModel;
     }
 
@@ -50,11 +50,11 @@ public class WashConditionsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.wash_conditions_fragment, container, false);
+        View root = inflater.inflate(R.layout.base_question_fragment, container, false);
 
         // Initialize binding
         if (mBinding == null) {
-            mBinding = WashConditionsFragmentBinding.bind(root);
+            mBinding = BaseQuestionFragmentBinding.bind(root);
         }
         mBinding.setViewModel(mViewModel);
 

@@ -1,10 +1,10 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 import android.databinding.ObservableBoolean;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
 
-public class QuestionItemViewModelBoolean extends QuestionItemViewModelBase {
+public class QuestionItemViewModelBoolean extends QuestionItemViewModel {
 
     public final ObservableBoolean answer;
 

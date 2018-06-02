@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragment;
@@ -37,6 +39,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     public static final String LIVELIHOODS_VIEWMODEL_TAG = "LIVELIHOODS_VIEWMODEL_TAG";
     public static final String HEALTH_VIEWMODEL_TAG = "HEALTH_VIEWMODEL_TAG";
     public static final String WASH_VIEWMODEL_TAG = "WASH_VIEWMODEL_TAG";
+    public static final String EVACUATION_VIEWMODEL_TAG = "EVACUATION_VIEWMODEL_TAG";
 
     private NewDncaViewModel mMainViewModel;
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
@@ -46,6 +49,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private LivelihoodsViewModel mLivelihoodsViewModel;
     private HealthViewModel mHealthViewModel;
     private WashViewModel mWashViewModel;
+    private EvacuationViewModel mEvacuationViewModel;
 
     private NewDncaActivityBinding mMainBinding;
 
@@ -164,6 +168,16 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         washFragment.setViewModel(mWashViewModel);
     }
 
+    /**
+     * Show evacuation fragment
+     */
+    @Override
+    public void onEvacuationButtonPressed() {
+        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
+        mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+        evacuationFragment.setViewModel(mEvacuationViewModel);
+    }
+
     @NonNull
     private Fragment findOrCreateViewFragment(NewDncaComponent fragmentType) {
 
@@ -216,8 +230,14 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case WASH:
-                if (fragment == null || !(fragment instanceof  WashFragment)) {
+                if (fragment == null || !(fragment instanceof WashFragment)) {
                     fragment = WashFragment.newInstance();
+                }
+                break;
+
+            case EVACUATION:
+                if (fragment == null || !(fragment instanceof EvacuationFragment)) {
+                    fragment = EvacuationFragment.newInstance();
                 }
                 break;
         }
@@ -280,6 +300,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = WASH_VIEWMODEL_TAG;
+                break;
+
+            case EVACUATION:
+                viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
+                tag = EVACUATION_VIEWMODEL_TAG;
                 break;
         }
 

@@ -17,4 +17,6 @@ public interface NewDncaNavigator {
     void onHealthButtonPressed();
 
     void onWashButtonPressed();
+
+    void onEvacuationButtonPressed();
 }

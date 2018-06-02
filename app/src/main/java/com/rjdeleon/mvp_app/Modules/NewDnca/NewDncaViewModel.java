@@ -97,6 +97,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     }
 
     /**
+     * Handles navigation when evacuation button is pressed
+     */
+    public void navigateOnEvacuationButtonPressed() {
+        mNewDncaNavigator.onEvacuationButtonPressed();
+    }
+
+    /**
      * Callback for when form has been created
      * @param form
      */

@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Models;
 
+import com.rjdeleon.mvp_app.Models.Evacuation.EvacuationInfo;
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodSecurity;
 import com.rjdeleon.mvp_app.Models.GeneralInformation.GenInfo;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
@@ -17,8 +18,9 @@ public class DNCAForm implements NormalizableData {
     private Livelihoods livelihoods;
     private HealthInfo healthInfo;
     private WashInfo washInfo;
+    private EvacuationInfo evacuationInfo;
 
-    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo) {
+    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo, EvacuationInfo evacuationInfo) {
         this.formInfo = formInfo;
         this.genInfo = genInfo;
         this.shelterInfo = shelterInfo;
@@ -26,10 +28,11 @@ public class DNCAForm implements NormalizableData {
         this.livelihoods = livelihoods;
         this.healthInfo = healthInfo;
         this.washInfo = washInfo;
+        this.evacuationInfo = evacuationInfo;
     }
 
     public DNCAForm() {
-        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo());
+        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo(), new EvacuationInfo());
     }
 
     public FormInfo getFormInfo() {
@@ -86,6 +89,14 @@ public class DNCAForm implements NormalizableData {
 
     public void setWashInfo(WashInfo washInfo) {
         this.washInfo = washInfo;
+    }
+
+    public EvacuationInfo getEvacuationInfo() {
+        return evacuationInfo;
+    }
+
+    public void setEvacuationInfo(EvacuationInfo evacuationInfo) {
+        this.evacuationInfo = evacuationInfo;
     }
 
     @Override

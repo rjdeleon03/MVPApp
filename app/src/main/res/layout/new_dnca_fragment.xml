@@ -110,6 +110,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nd_health_button" />
 
+            <Button
+                android:id="@+id/nd_evacuation_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Situation in Evacuation Centers"
+                android:fontFamily="@font/lato_bold"
+                android:onClick="@{() -> viewModel.navigateOnEvacuationButtonPressed()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nd_wash_button" />
+
         </android.support.constraint.ConstraintLayout>
 
         <android.support.design.widget.FloatingActionButton

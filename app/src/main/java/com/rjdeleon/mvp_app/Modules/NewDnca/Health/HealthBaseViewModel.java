@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
-public abstract class HealthBaseViewModel extends NewDncaBaseViewModel{
+public abstract class HealthBaseViewModel extends NewDncaBaseViewModel {
 
     protected HealthRepositoryManager mHealthRepositoryManager;
 

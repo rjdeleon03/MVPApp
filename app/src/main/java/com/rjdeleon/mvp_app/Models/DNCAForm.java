@@ -6,6 +6,7 @@ import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 import com.rjdeleon.mvp_app.Models.Health.HealthInfo;
 import com.rjdeleon.mvp_app.Models.Livelihoods.Livelihoods;
 import com.rjdeleon.mvp_app.Models.Shelter.ShelterInfo;
+import com.rjdeleon.mvp_app.Models.Wash.WashInfo;
 
 public class DNCAForm implements NormalizableData {
 
@@ -15,18 +16,20 @@ public class DNCAForm implements NormalizableData {
     private FoodSecurity foodSecurity;
     private Livelihoods livelihoods;
     private HealthInfo healthInfo;
+    private WashInfo washInfo;
 
-    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo) {
+    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo) {
         this.formInfo = formInfo;
         this.genInfo = genInfo;
         this.shelterInfo = shelterInfo;
         this.foodSecurity = foodSecurity;
         this.livelihoods = livelihoods;
         this.healthInfo = healthInfo;
+        this.washInfo = washInfo;
     }
 
     public DNCAForm() {
-        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo());
+        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo());
     }
 
     public FormInfo getFormInfo() {
@@ -75,6 +78,14 @@ public class DNCAForm implements NormalizableData {
 
     public void setHealthInfo(HealthInfo healthInfo) {
         this.healthInfo = healthInfo;
+    }
+
+    public WashInfo getWashInfo() {
+        return washInfo;
+    }
+
+    public void setWashInfo(WashInfo washInfo) {
+        this.washInfo = washInfo;
     }
 
     @Override

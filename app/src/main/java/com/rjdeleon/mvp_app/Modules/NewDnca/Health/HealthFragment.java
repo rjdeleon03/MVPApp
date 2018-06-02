@@ -135,7 +135,7 @@ public class HealthFragment extends BaseMultiPageFragment {
             // Bind gaps data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(foodGapsDataViewModel),
-                    FOOD_SECURITY_GAPS_VIEWMODEL_TAG);
+                    HEALTH_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

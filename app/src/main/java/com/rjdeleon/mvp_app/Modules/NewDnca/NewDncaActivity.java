@@ -20,6 +20,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterInfoViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashViewModel;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
@@ -34,6 +36,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     public static final String FOOD_SECURITY_VIEWMODEL_TAG = "FOOD_SECURITY_VIEWMODEL_TAG";
     public static final String LIVELIHOODS_VIEWMODEL_TAG = "LIVELIHOODS_VIEWMODEL_TAG";
     public static final String HEALTH_VIEWMODEL_TAG = "HEALTH_VIEWMODEL_TAG";
+    public static final String WASH_VIEWMODEL_TAG = "WASH_VIEWMODEL_TAG";
 
     private NewDncaViewModel mMainViewModel;
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
@@ -42,6 +45,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private FoodSecurityViewModel mFoodSecurityViewModel;
     private LivelihoodsViewModel mLivelihoodsViewModel;
     private HealthViewModel mHealthViewModel;
+    private WashViewModel mWashViewModel;
 
     private NewDncaActivityBinding mMainBinding;
 
@@ -53,8 +57,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         FOOD_SECURITY,
         LIVELIHOODS,
         HEALTH,
-        WATER_SANITATION_HYGIENE,
-        SITUATION_IN_EVACUATION,
+        WASH,
+        EVACUATION,
         CASE_STORIES
     }
 
@@ -150,6 +154,16 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         healthFragment.setViewModel(mHealthViewModel);
     }
 
+    /**
+     * Show wash fragment
+     */
+    @Override
+    public void onWashButtonPressed() {
+        WashFragment washFragment = (WashFragment) findOrCreateViewFragment(NewDncaComponent.WASH);
+        mWashViewModel = (WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH);
+        washFragment.setViewModel(mWashViewModel);
+    }
+
     @NonNull
     private Fragment findOrCreateViewFragment(NewDncaComponent fragmentType) {
 
@@ -198,6 +212,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             case HEALTH:
                 if (fragment == null || !(fragment instanceof  HealthFragment)) {
                     fragment = HealthFragment.newInstance();
+                }
+                break;
+
+            case WASH:
+                if (fragment == null || !(fragment instanceof  WashFragment)) {
+                    fragment = WashFragment.newInstance();
                 }
                 break;
         }
@@ -254,6 +274,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                 viewModel.setNewDncaNavigator(this);
                 tag = HEALTH_VIEWMODEL_TAG;
+                break;
+
+            case WASH:
+                viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                viewModel.setNewDncaNavigator(this);
+                tag = WASH_VIEWMODEL_TAG;
                 break;
         }
 

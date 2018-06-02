@@ -25,6 +25,7 @@ import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Models.Health.HealthInfo;
 import com.rjdeleon.mvp_app.Models.Livelihoods.Livelihoods;
 import com.rjdeleon.mvp_app.Models.Shelter.ShelterInfo;
+import com.rjdeleon.mvp_app.Models.Wash.WashInfo;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -146,6 +147,7 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         FoodSecurity foodSecurity = new FoodSecurity();
         Livelihoods livelihoods = new Livelihoods();
         HealthInfo  healthInfo = new HealthInfo();
-        return new DNCAForm(formInfo, genInfo, shelterInfo, foodSecurity, livelihoods, healthInfo);
+        WashInfo washInfo = new WashInfo();
+        return new DNCAForm(formInfo, genInfo, shelterInfo, foodSecurity, livelihoods, healthInfo, washInfo);
     }
 }

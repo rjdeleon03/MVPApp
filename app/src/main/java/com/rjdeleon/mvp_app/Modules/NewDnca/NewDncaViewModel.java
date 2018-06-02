@@ -76,17 +76,24 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     }
 
     /**
-     * Handles navigation when livelihoods button button is pressed
+     * Handles navigation when livelihoods button is pressed
      */
     public void navigateOnLivelihoodsButtonPressed() {
         mNewDncaNavigator.onLivelihoodsButtonPressed();
     }
 
     /**
-     * Handles navigation when helath button button is pressed
+     * Handles navigation when health button is pressed
      */
     public void navigateOnHealthButtonPressed() {
         mNewDncaNavigator.onHealthButtonPressed();
+    }
+
+    /**
+     * Handles navigation when wash button is pressed
+     */
+    public void navigateOnWashButtonPressed() {
+        mNewDncaNavigator.onWashButtonPressed();
     }
 
     /**

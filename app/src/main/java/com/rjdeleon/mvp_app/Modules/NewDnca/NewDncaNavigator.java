@@ -15,4 +15,6 @@ public interface NewDncaNavigator {
     void onLivelihoodsButtonPressed();
 
     void onHealthButtonPressed();
+
+    void onWashButtonPressed();
 }

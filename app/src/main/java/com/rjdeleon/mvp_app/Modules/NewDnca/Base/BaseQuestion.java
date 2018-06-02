@@ -5,9 +5,9 @@ import android.databinding.Observable;
 public class BaseQuestion {
 
     private String question;
-    private Observable value;
+    private Object value;
 
-    public BaseQuestion(String question, Observable value) {
+    public BaseQuestion(String question, Object value) {
         this.question = question;
         this.value = value;
     }
@@ -20,7 +20,7 @@ public class BaseQuestion {
         this.question = question;
     }
 
-    public Observable getValue() {
+    public Object getValue() {
         return value;
     }
 

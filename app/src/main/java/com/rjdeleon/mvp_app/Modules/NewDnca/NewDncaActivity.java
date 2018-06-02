@@ -192,25 +192,25 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case SHELTER_INFO:
-                if (fragment == null || !(fragment instanceof  ShelterInfoFragment)) {
+                if (fragment == null || !(fragment instanceof ShelterInfoFragment)) {
                     fragment = ShelterInfoFragment.newInstance();
                 }
                 break;
 
             case FOOD_SECURITY:
-                if (fragment == null || !(fragment instanceof  FoodSecurityFragment)) {
+                if (fragment == null || !(fragment instanceof FoodSecurityFragment)) {
                     fragment = FoodSecurityFragment.newInstance();
                 }
                 break;
 
             case LIVELIHOODS:
-                if (fragment == null || !(fragment instanceof  LivelihoodsFragment)) {
+                if (fragment == null || !(fragment instanceof LivelihoodsFragment)) {
                     fragment = LivelihoodsFragment.newInstance();
                 }
                 break;
 
             case HEALTH:
-                if (fragment == null || !(fragment instanceof  HealthFragment)) {
+                if (fragment == null || !(fragment instanceof HealthFragment)) {
                     fragment = HealthFragment.newInstance();
                 }
                 break;

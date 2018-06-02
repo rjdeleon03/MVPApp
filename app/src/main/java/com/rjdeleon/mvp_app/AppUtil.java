@@ -2,9 +2,12 @@ package com.rjdeleon.mvp_app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.databinding.ObservableList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;

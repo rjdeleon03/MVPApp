@@ -5,55 +5,51 @@ public class WashConditionsData {
     private WaterLevelRemarksTuple drinkingLevel;
     private WaterLevelRemarksTuple bathingLevel;
 
-    private int waterPointsNumber;
-
+    private String waterPointsNumber;
     private String waterPotable;
     private String timeFetchingWater;
     private String waterSourceOwner;
     private String payForWater;
     private String payForTranspo;
     private String timesNoWater;
-
-    private boolean hasWashingFacilities;
-    private boolean hasGarbageDisposal;
-    private boolean isWasteSegregated;
-
+    private String hasWashingFacilities;
+    private String hasGarbageDisposal;
+    private String isWasteSegregated;
     private String womenMenstruation;
     private String napkinsDisposed;
     private String diapersDispoed;
     private String defecationPractices;
     private String toiletFacilities;
     private String toiletConditions;
-
-    private boolean isDefecationThreat;
-    private boolean areFacilitiesMaintained;
-    private boolean hasSecurityIssues;
-    private boolean areToiletsSegregated;
-    private boolean areToiletsAccessible;
+    private String isDefecationThreat;
+    private String areFacilitiesMaintained;
+    private String hasSecurityIssues;
+    private String areToiletsSegregated;
+    private String areToiletsAccessible;
 
     public WashConditionsData(WaterLevelRemarksTuple drinkingLevel,
                               WaterLevelRemarksTuple bathingLevel,
-                              int waterPointsNumber,
+                              String waterPointsNumber,
                               String waterPotable,
                               String timeFetchingWater,
                               String waterSourceOwner,
                               String payForWater,
                               String payForTranspo,
                               String timesNoWater,
-                              boolean hasWashingFacilities,
-                              boolean hasGarbageDisposal,
-                              boolean isWasteSegregated,
+                              String hasWashingFacilities,
+                              String hasGarbageDisposal,
+                              String isWasteSegregated,
                               String womenMenstruation,
                               String napkinsDisposed,
                               String diapersDispoed,
                               String defecationPractices,
                               String toiletFacilities,
                               String toiletConditions,
-                              boolean isDefecationThreat,
-                              boolean areFacilitiesMaintained,
-                              boolean hasSecurityIssues,
-                              boolean areToiletsSegregated,
-                              boolean areToiletsAccessible) {
+                              String isDefecationThreat,
+                              String areFacilitiesMaintained,
+                              String hasSecurityIssues,
+                              String areToiletsSegregated,
+                              String areToiletsAccessible) {
 
         this.drinkingLevel = drinkingLevel;
         this.bathingLevel = bathingLevel;
@@ -81,7 +77,7 @@ public class WashConditionsData {
     }
 
     public WashConditionsData() {
-        this(new WaterLevelRemarksTuple(), new WaterLevelRemarksTuple(), 0, "", "", "", "", "", "", false, false, false, "", "", "", "", "", "", false, false, false, false, false);
+        this(new WaterLevelRemarksTuple(), new WaterLevelRemarksTuple(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
     }
 
     public WaterLevelRemarksTuple getDrinkingLevel() {
@@ -100,11 +96,11 @@ public class WashConditionsData {
         this.bathingLevel = bathingLevel;
     }
 
-    public int getWaterPointsNumber() {
+    public String getWaterPointsNumber() {
         return waterPointsNumber;
     }
 
-    public void setWaterPointsNumber(int waterPointsNumber) {
+    public void setWaterPointsNumber(String waterPointsNumber) {
         this.waterPointsNumber = waterPointsNumber;
     }
 
@@ -156,28 +152,28 @@ public class WashConditionsData {
         this.timesNoWater = timesNoWater;
     }
 
-    public boolean getHasWashingFacilities() {
+    public String getHasWashingFacilities() {
         return hasWashingFacilities;
     }
 
-    public void setHasWashingFacilities(boolean hasWashingFacilities) {
+    public void setHasWashingFacilities(String hasWashingFacilities) {
         this.hasWashingFacilities = hasWashingFacilities;
     }
 
-    public boolean getHasGarbageDisposal() {
+    public String getHasGarbageDisposal() {
         return hasGarbageDisposal;
     }
 
-    public void setHasGarbageDisposal(boolean hasGarbageDisposal) {
+    public void setHasGarbageDisposal(String hasGarbageDisposal) {
         this.hasGarbageDisposal = hasGarbageDisposal;
     }
 
-    public boolean getWasteSegregated() {
+    public String getIsWasteSegregated() {
         return isWasteSegregated;
     }
 
-    public void setWasteSegregated(boolean wasteSegregated) {
-        isWasteSegregated = wasteSegregated;
+    public void setIsWasteSegregated(String isWasteSegregated) {
+        this.isWasteSegregated = isWasteSegregated;
     }
 
     public String getWomenMenstruation() {
@@ -228,43 +224,43 @@ public class WashConditionsData {
         this.toiletConditions = toiletConditions;
     }
 
-    public boolean getDefecationThreat() {
+    public String getIsDefecationThreat() {
         return isDefecationThreat;
     }
 
-    public void setDefecationThreat(boolean defecationThreat) {
-        isDefecationThreat = defecationThreat;
+    public void setIsDefecationThreat(String isDefecationThreat) {
+        this.isDefecationThreat = isDefecationThreat;
     }
 
-    public boolean getAreFacilitiesMaintained() {
+    public String getAreFacilitiesMaintained() {
         return areFacilitiesMaintained;
     }
 
-    public void setAreFacilitiesMaintained(boolean areFacilitiesMaintained) {
+    public void setAreFacilitiesMaintained(String areFacilitiesMaintained) {
         this.areFacilitiesMaintained = areFacilitiesMaintained;
     }
 
-    public boolean getHasSecurityIssues() {
+    public String getHasSecurityIssues() {
         return hasSecurityIssues;
     }
 
-    public void setHasSecurityIssues(boolean hasSecurityIssues) {
+    public void setHasSecurityIssues(String hasSecurityIssues) {
         this.hasSecurityIssues = hasSecurityIssues;
     }
 
-    public boolean getAreToiletsSegregated() {
+    public String getAreToiletsSegregated() {
         return areToiletsSegregated;
     }
 
-    public void setAreToiletsSegregated(boolean areToiletsSegregated) {
+    public void setAreToiletsSegregated(String areToiletsSegregated) {
         this.areToiletsSegregated = areToiletsSegregated;
     }
 
-    public boolean getAreToiletsAccessible() {
+    public String getAreToiletsAccessible() {
         return areToiletsAccessible;
     }
 
-    public void setAreToiletsAccessible(boolean areToiletsAccessible) {
+    public void setAreToiletsAccessible(String areToiletsAccessible) {
         this.areToiletsAccessible = areToiletsAccessible;
     }
 }

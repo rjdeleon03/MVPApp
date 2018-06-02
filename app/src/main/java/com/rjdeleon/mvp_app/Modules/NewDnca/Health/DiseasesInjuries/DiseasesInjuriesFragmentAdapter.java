@@ -30,7 +30,8 @@ public class DiseasesInjuriesFragmentAdapter extends RecyclerView.Adapter<Diseas
 
     @NonNull
     @Override
-    public DiseasesInjuriesRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+    public DiseasesInjuriesRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root = inflater.inflate(R.layout.health_diseases_injuries_row, parent, false);
         HealthDiseasesInjuriesRowBinding binding = HealthDiseasesInjuriesRowBinding.bind(root);
         return new DiseasesInjuriesRowViewHolder(binding);

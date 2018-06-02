@@ -4,6 +4,7 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 
 import com.rjdeleon.mvp_app.databinding.WashConditionsIntBinding;
+import com.rjdeleon.mvp_app.databinding.WashConditionsLevelsBinding;
 import com.rjdeleon.mvp_app.databinding.WashConditionsStringBinding;
 import com.rjdeleon.mvp_app.databinding.WashConditionsBooleanBinding;
 
@@ -26,6 +27,9 @@ public class WashConditionsItemViewHolder extends RecyclerView.ViewHolder {
 
         } else if (washConditionsItemViewModel instanceof WashConditionsItemViewModelBoolean) {
             ((WashConditionsBooleanBinding) mBinding).setViewModel((WashConditionsItemViewModelBoolean) washConditionsItemViewModel);
+
+        } else if (washConditionsItemViewModel instanceof WashConditionsItemViewModelLevels) {
+            ((WashConditionsLevelsBinding) mBinding).setViewModel((WashConditionsItemViewModelLevels) washConditionsItemViewModel);
 
         }
     }

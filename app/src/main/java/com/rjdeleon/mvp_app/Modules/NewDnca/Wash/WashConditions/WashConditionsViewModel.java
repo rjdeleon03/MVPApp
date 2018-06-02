@@ -10,6 +10,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBase;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBoolean;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelInt;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelLevels;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashRepositoryManager;
 
@@ -21,8 +22,8 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
     private List<WashConditionsItemViewModelBase> mQuestionsViewModels = new ArrayList<>();
 
     private String[] mQuestions = {
-            "",
-            "",
+            "What is the current water source and level of water system available?\nDrinking and food preparation:",
+            "Bathing, washing and domestic use:",
             "How many water points and conditions are there?",
             "Is the water potable? \n" +
                     "If not, where do they get clean drinking water? (specify distance from the residential units)",
@@ -56,29 +57,52 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
         super(context, washRepositoryManager);
 
         WashConditionsData washConditionsData = mWashRepositoryManager.getWashConditionsData();
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[1], "Sample")));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[2], "Sample")));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[2], washConditionsData.getWaterPointsNumber())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[3], washConditionsData.getWaterPotable())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[4], washConditionsData.getTimeFetchingWater())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[5], washConditionsData.getWaterSourceOwner())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[6], washConditionsData.getPayForWater())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[7], washConditionsData.getPayForTranspo())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[8], washConditionsData.getTimesNoWater())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[9], washConditionsData.getHasWashingFacilities())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[10], washConditionsData.getHasGarbageDisposal())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[11], washConditionsData.getIsWasteSegregated())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[12], washConditionsData.getWomenMenstruation())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[13], washConditionsData.getNapkinsDisposed())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[14], washConditionsData.getDiapersDispoed())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[15], washConditionsData.getDefecationPractices())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[16], washConditionsData.getToiletFacilities())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[17], washConditionsData.getToiletConditions())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[18], washConditionsData.getIsDefecationThreat())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[19], washConditionsData.getAreFacilitiesMaintained())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[20], washConditionsData.getHasSecurityIssues())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[21], washConditionsData.getAreToiletsSegregated())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[22], washConditionsData.getAreToiletsAccessible())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelLevels(new BaseQuestion(mQuestions[0],
+                washConditionsData.getDrinkingLevel().waterLevel, washConditionsData.getDrinkingLevel().remarks)));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelLevels(new BaseQuestion(mQuestions[1],
+                washConditionsData.getBathingLevel().waterLevel, washConditionsData.getBathingLevel().remarks)));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[2],
+                washConditionsData.getWaterPointsNumber())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[3],
+                washConditionsData.getWaterPotable())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[4],
+                washConditionsData.getTimeFetchingWater())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[5],
+                washConditionsData.getWaterSourceOwner())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[6],
+                washConditionsData.getPayForWater())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[7],
+                washConditionsData.getPayForTranspo())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[8],
+                washConditionsData.getTimesNoWater())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[9],
+                washConditionsData.getHasWashingFacilities())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[10],
+                washConditionsData.getHasGarbageDisposal())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[11],
+                washConditionsData.getIsWasteSegregated())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[12],
+                washConditionsData.getWomenMenstruation())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[13],
+                washConditionsData.getNapkinsDisposed())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[14],
+                washConditionsData.getDiapersDispoed())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[15],
+                washConditionsData.getDefecationPractices())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[16],
+                washConditionsData.getToiletFacilities())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[17],
+                washConditionsData.getToiletConditions())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[18],
+                washConditionsData.getIsDefecationThreat())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[19],
+                washConditionsData.getAreFacilitiesMaintained())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[20],
+                washConditionsData.getHasSecurityIssues())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[21],
+                washConditionsData.getAreToiletsSegregated())));
+        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[22],
+                washConditionsData.getAreToiletsAccessible())));
     }
 
     /**
@@ -102,9 +126,12 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
      */
     @Override
     public void navigateOnSaveButtonPressed() {
+        WashConditionsItemViewModelLevels drinkingLevelViewModel = (WashConditionsItemViewModelLevels) mQuestionsViewModels.get(0);
+        WashConditionsItemViewModelLevels bathingLevelViewModel = (WashConditionsItemViewModelLevels) mQuestionsViewModels.get(1);
+
         WashConditionsData washConditionsData = new WashConditionsData(
-                new WaterLevelRemarksTuple(),
-                new WaterLevelRemarksTuple(),
+                new WaterLevelRemarksTuple(drinkingLevelViewModel.getActualWaterLevel(), drinkingLevelViewModel.answerRemarks.get()),
+                new WaterLevelRemarksTuple(bathingLevelViewModel.getActualWaterLevel(), bathingLevelViewModel.answerRemarks.get()),
                 ((WashConditionsItemViewModelString) mQuestionsViewModels.get(2)).answer.get(),
                 ((WashConditionsItemViewModelString) mQuestionsViewModels.get(3)).answer.get(),
                 ((WashConditionsItemViewModelString) mQuestionsViewModels.get(4)).answer.get(),

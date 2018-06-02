@@ -2,28 +2,24 @@ package com.rjdeleon.mvp_app;
 
 import android.app.Activity;
 import android.content.Context;
-import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
-import android.databinding.ObservableList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.Models.DNCAListItem;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
-import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.SimpleDate;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsDamageDataRow;
+import com.rjdeleon.mvp_app.Models.Wash.WaterLevelRemarksTuple;
 import com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListAdapter;
 
 import java.util.List;
@@ -129,5 +125,19 @@ public class AppUtil {
             text = text.substring(0, text.length()-2);
         }
         view.setText(text);
+    }
+
+    @BindingAdapter("android:checkedButton")
+    public static void bindWaterLevelEnumInRadioGroup(RadioGroup radioGroup, int waterLevel) {
+        for(int i = 0; i < radioGroup.getChildCount(); i++) {
+            RadioButton radioButton = (RadioButton) radioGroup.getChildAt(i);
+            radioButton.setChecked(waterLevel == WaterLevelRemarksTuple.WaterLevel.fromString(radioButton.getText().toString()).ordinal());
+        }
+    }
+
+    @InverseBindingAdapter(attribute = "android:checkedButton")
+    public static int getWaterLevelFromRadioGroup(RadioGroup radioGroup) {
+        RadioButton radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+        return WaterLevelRemarksTuple.WaterLevel.fromString(radioButton.getText().toString()).ordinal();
     }
 }

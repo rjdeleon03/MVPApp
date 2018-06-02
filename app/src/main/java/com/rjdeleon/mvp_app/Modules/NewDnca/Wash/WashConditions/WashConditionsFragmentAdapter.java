@@ -7,20 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewHolder;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBase;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBoolean;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelInt;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelLevels;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelString;
 import com.rjdeleon.mvp_app.databinding.WashConditionsBooleanBinding;
 import com.rjdeleon.mvp_app.databinding.WashConditionsIntBinding;
 import com.rjdeleon.mvp_app.databinding.WashConditionsStringBinding;
+import com.rjdeleon.mvp_app.databinding.WashConditionsLevelsBinding;
 import com.rjdeleon.mvp_app.R;
 
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsFragmentAdapter.LayoutIdMapping.BOOLEAN;
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsFragmentAdapter.LayoutIdMapping.INT;
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsFragmentAdapter.LayoutIdMapping.STRING;
+import static com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsFragmentAdapter.LayoutIdMapping.WATER_LEVELS;
 
 public class WashConditionsFragmentAdapter extends RecyclerView.Adapter<WashConditionsItemViewHolder> {
 
@@ -29,7 +31,8 @@ public class WashConditionsFragmentAdapter extends RecyclerView.Adapter<WashCond
     public enum LayoutIdMapping {
         STRING,
         INT,
-        BOOLEAN;
+        BOOLEAN,
+        WATER_LEVELS;
 
         public int getLayoutId() {
             switch (this) {
@@ -37,6 +40,8 @@ public class WashConditionsFragmentAdapter extends RecyclerView.Adapter<WashCond
                     return R.layout.wash_conditions_int;
                 case BOOLEAN:
                     return R.layout.wash_conditions_boolean;
+                case WATER_LEVELS:
+                    return R.layout.wash_conditions_levels;
                 default:
                     return R.layout.wash_conditions_string;
             }
@@ -64,6 +69,10 @@ public class WashConditionsFragmentAdapter extends RecyclerView.Adapter<WashCond
 
         } else if (viewType == BOOLEAN.getLayoutId()) {
             binding = WashConditionsBooleanBinding.bind(root);
+
+        } else if (viewType == WATER_LEVELS.getLayoutId()) {
+            binding = WashConditionsLevelsBinding.bind(root);
+
         }
 
         return new WashConditionsItemViewHolder(binding);
@@ -87,6 +96,9 @@ public class WashConditionsFragmentAdapter extends RecyclerView.Adapter<WashCond
 
         } else if (questionViewModel instanceof WashConditionsItemViewModelBoolean) {
             viewType = BOOLEAN.getLayoutId();
+
+        } else if (questionViewModel instanceof WashConditionsItemViewModelLevels) {
+            viewType = WATER_LEVELS.getLayoutId();
 
         }
 

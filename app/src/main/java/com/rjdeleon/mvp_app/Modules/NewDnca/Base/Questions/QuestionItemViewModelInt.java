@@ -1,14 +1,14 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
 
 import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
 
-public class WashConditionsItemViewModelInt extends WashConditionsItemViewModelBase {
+public class QuestionItemViewModelInt extends QuestionItemViewModelBase {
 
     public final ObservableInt answer;
 
-    public WashConditionsItemViewModelInt(BaseQuestion baseQuestion) {
+    public QuestionItemViewModelInt(BaseQuestion baseQuestion) {
         super(baseQuestion.getQuestion());
         answer = new ObservableInt((int) baseQuestion.getValue());
     }

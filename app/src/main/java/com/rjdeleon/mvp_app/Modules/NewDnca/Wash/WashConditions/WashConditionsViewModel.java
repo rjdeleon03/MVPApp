@@ -7,19 +7,18 @@ import com.rjdeleon.mvp_app.Models.Wash.WaterLevelRemarksTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBase;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBoolean;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelInt;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelLevels;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelString;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemDataSource;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelBase;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelLevels;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WashConditionsViewModel extends WashBaseViewModel implements NonEnumSaveableSection {
+public class WashConditionsViewModel extends WashBaseViewModel implements QuestionItemDataSource, NonEnumSaveableSection {
 
-    private List<WashConditionsItemViewModelBase> mQuestionsViewModels = new ArrayList<>();
+    private List<QuestionItemViewModelBase> mQuestionsViewModels = new ArrayList<>();
 
     private String[] mQuestions = {
             "What is the current water source and level of water system available?\nDrinking and food preparation:",
@@ -57,51 +56,51 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
         super(context, washRepositoryManager);
 
         WashConditionsData washConditionsData = mWashRepositoryManager.getWashConditionsData();
-        mQuestionsViewModels.add(new WashConditionsItemViewModelLevels(new BaseQuestion(mQuestions[0],
+        mQuestionsViewModels.add(new QuestionItemViewModelLevels(new BaseQuestion(mQuestions[0],
                 washConditionsData.getDrinkingLevel().waterLevel, washConditionsData.getDrinkingLevel().remarks)));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelLevels(new BaseQuestion(mQuestions[1],
+        mQuestionsViewModels.add(new QuestionItemViewModelLevels(new BaseQuestion(mQuestions[1],
                 washConditionsData.getBathingLevel().waterLevel, washConditionsData.getBathingLevel().remarks)));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[2],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[2],
                 washConditionsData.getWaterPointsNumber())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[3],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[3],
                 washConditionsData.getWaterPotable())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[4],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[4],
                 washConditionsData.getTimeFetchingWater())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[5],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[5],
                 washConditionsData.getWaterSourceOwner())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[6],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[6],
                 washConditionsData.getPayForWater())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[7],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[7],
                 washConditionsData.getPayForTranspo())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[8],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[8],
                 washConditionsData.getTimesNoWater())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[9],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[9],
                 washConditionsData.getHasWashingFacilities())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[10],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[10],
                 washConditionsData.getHasGarbageDisposal())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[11],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[11],
                 washConditionsData.getIsWasteSegregated())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[12],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[12],
                 washConditionsData.getWomenMenstruation())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[13],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[13],
                 washConditionsData.getNapkinsDisposed())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[14],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[14],
                 washConditionsData.getDiapersDispoed())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[15],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[15],
                 washConditionsData.getDefecationPractices())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[16],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[16],
                 washConditionsData.getToiletFacilities())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[17],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[17],
                 washConditionsData.getToiletConditions())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[18],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[18],
                 washConditionsData.getIsDefecationThreat())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[19],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[19],
                 washConditionsData.getAreFacilitiesMaintained())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[20],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[20],
                 washConditionsData.getHasSecurityIssues())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[21],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[21],
                 washConditionsData.getAreToiletsSegregated())));
-        mQuestionsViewModels.add(new WashConditionsItemViewModelString(new BaseQuestion(mQuestions[22],
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[22],
                 washConditionsData.getAreToiletsAccessible())));
     }
 
@@ -109,6 +108,7 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
      * Gets number of questions
      * @return
      */
+    @Override
     public int getQuestionsCount() {
         return mQuestionsViewModels.size();
     }
@@ -117,7 +117,8 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
      * Gets question at specified index
      * @return
      */
-    public WashConditionsItemViewModelBase getQuestionViewModel(int index) {
+    @Override
+    public QuestionItemViewModelBase getQuestionViewModel(int index) {
         return mQuestionsViewModels.get(index);
     }
 
@@ -126,33 +127,33 @@ public class WashConditionsViewModel extends WashBaseViewModel implements NonEnu
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        WashConditionsItemViewModelLevels drinkingLevelViewModel = (WashConditionsItemViewModelLevels) mQuestionsViewModels.get(0);
-        WashConditionsItemViewModelLevels bathingLevelViewModel = (WashConditionsItemViewModelLevels) mQuestionsViewModels.get(1);
+        QuestionItemViewModelLevels drinkingLevelViewModel = (QuestionItemViewModelLevels) mQuestionsViewModels.get(0);
+        QuestionItemViewModelLevels bathingLevelViewModel = (QuestionItemViewModelLevels) mQuestionsViewModels.get(1);
 
         WashConditionsData washConditionsData = new WashConditionsData(
                 new WaterLevelRemarksTuple(drinkingLevelViewModel.getActualWaterLevel(), drinkingLevelViewModel.answerRemarks.get()),
                 new WaterLevelRemarksTuple(bathingLevelViewModel.getActualWaterLevel(), bathingLevelViewModel.answerRemarks.get()),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(2)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(3)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(4)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(5)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(6)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(7)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(8)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(9)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(10)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(11)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(12)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(13)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(14)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(15)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(16)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(17)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(18)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(19)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(20)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(21)).answer.get(),
-                ((WashConditionsItemViewModelString) mQuestionsViewModels.get(22)).answer.get());
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(2)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(3)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(4)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(5)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(6)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(7)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(8)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(9)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(10)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(11)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(12)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(13)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(14)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(15)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(16)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(17)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(18)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(19)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(20)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(21)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(22)).answer.get());
         mWashRepositoryManager.saveWashConditionsData(washConditionsData);
     }
 }

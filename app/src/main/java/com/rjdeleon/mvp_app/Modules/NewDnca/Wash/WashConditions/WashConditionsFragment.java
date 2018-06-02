@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemAdapter;
 import com.rjdeleon.mvp_app.databinding.WashConditionsFragmentBinding;
 import com.rjdeleon.mvp_app.R;
 
@@ -18,7 +19,7 @@ import com.rjdeleon.mvp_app.R;
  */
 public class WashConditionsFragment extends Fragment {
 
-    private WashConditionsFragmentAdapter mWashConditionsAdapter;
+    private QuestionItemAdapter mWashConditionsAdapter;
     private WashConditionsViewModel mViewModel;
     private WashConditionsFragmentBinding mBinding;
     private RecyclerView mQuestionRecycler;
@@ -68,7 +69,7 @@ public class WashConditionsFragment extends Fragment {
      * @param view
      */
     private void setupQuestionsList(View view) {
-        mWashConditionsAdapter = new WashConditionsFragmentAdapter(mViewModel);
+        mWashConditionsAdapter = new QuestionItemAdapter(mViewModel);
         mQuestionRecycler = view.findViewById(R.id.nd_wash_list);
         mQuestionRecycler.setHasFixedSize(true);
         mQuestionRecycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));

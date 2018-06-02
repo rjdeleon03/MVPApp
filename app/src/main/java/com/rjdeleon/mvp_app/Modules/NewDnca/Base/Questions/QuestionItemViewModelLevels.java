@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions;
 
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -6,12 +6,12 @@ import android.databinding.ObservableInt;
 import com.rjdeleon.mvp_app.Models.Wash.WaterLevelRemarksTuple;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
 
-public class WashConditionsItemViewModelLevels extends WashConditionsItemViewModelBase {
+public class QuestionItemViewModelLevels extends QuestionItemViewModelBase {
 
     public final ObservableInt answerWaterLevel;
     public final ObservableField<String> answerRemarks;
 
-    public WashConditionsItemViewModelLevels(BaseQuestion baseQuestion) {
+    public QuestionItemViewModelLevels(BaseQuestion baseQuestion) {
         super(baseQuestion.getQuestion());
         answerWaterLevel = new ObservableInt(((WaterLevelRemarksTuple.WaterLevel) baseQuestion.getValue()).ordinal());
         answerRemarks = new ObservableField<>(baseQuestion.getRemarks());

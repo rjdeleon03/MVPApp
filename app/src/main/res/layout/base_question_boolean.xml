@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.Questions.WashConditionsItemViewModelBoolean" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.Questions.QuestionItemViewModelBoolean" />
     </data>
 
     <android.support.constraint.ConstraintLayout

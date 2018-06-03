@@ -18,7 +18,7 @@ public class EvacuationSiteData {
         public String toString() {
             switch(this) {
                 case PLANNED_EVACUATION_CENTER:
-                    return "Planned EvacuationInfo Center";
+                    return "Planned Evacuation Center";
                 case LIVING_WITH_HOST_FAMILY:
                     return "Living with Host Family";
                 case RENTING_AN_APARTMENT:
@@ -49,7 +49,7 @@ public class EvacuationSiteData {
         public String toString() {
             switch (this) {
                 case EVACUATION_CENTER:
-                    return "EvacuationInfo Center";
+                    return "Evacuation Center";
                 case MULTI_PURPOSE_HALL:
                     return "Multi-Purpose Hall";
                 case CHURCH:

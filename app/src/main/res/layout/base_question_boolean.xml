@@ -29,12 +29,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
+                    android:text="@{viewModel.yesText}"
                     android:checked="@={viewModel.answer}"
                     android:fontFamily="@font/lato_reg"/>
 
@@ -43,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:text="No"
+                    android:text="@{viewModel.noText}"
                     android:checked="@={!viewModel.answer}"
                     android:fontFamily="@font/lato_reg"/>
 

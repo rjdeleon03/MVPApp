@@ -34,7 +34,6 @@ public abstract class BaseEnumDialogFragment extends DialogFragment {
 
         // Set transparent background to dialog
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         return dialog;
     }

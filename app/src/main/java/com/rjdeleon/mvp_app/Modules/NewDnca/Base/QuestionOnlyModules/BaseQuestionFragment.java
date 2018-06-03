@@ -9,8 +9,10 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelEnum;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionFragmentBinding;
 
@@ -23,6 +25,7 @@ public class BaseQuestionFragment extends Fragment {
     private BaseQuestionViewModel mViewModel;
     private BaseQuestionFragmentBinding mBinding;
     private RecyclerView mQuestionRecycler;
+    private Spinner mSpinner;
 
     public static BaseQuestionFragment newInstance() {
         return new BaseQuestionFragment();

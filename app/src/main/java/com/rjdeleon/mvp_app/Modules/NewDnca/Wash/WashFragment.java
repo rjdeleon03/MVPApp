@@ -51,7 +51,7 @@ public class WashFragment extends BaseMultiPageFragment {
             BaseQuestionFragment washConditionsFragment =  BaseQuestionFragment.newInstance();
             WashConditionsViewModel washConditionsViewModel = new  WashConditionsViewModel(getContext().getApplicationContext(), repositoryManager);
             washConditionsFragment.setViewModel(washConditionsViewModel);
-            mAdapter.addFragment( washConditionsFragment);
+            mAdapter.addFragment(washConditionsFragment);
 
             // Bind wash conditions viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
@@ -64,7 +64,7 @@ public class WashFragment extends BaseMultiPageFragment {
             BaseQuestionFragment washCopingDataFragment =  BaseQuestionFragment.newInstance();
             WashCopingDataViewModel washCopingDataViewModel = new  WashCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
             washCopingDataFragment.setViewModel(washCopingDataViewModel);
-            mAdapter.addFragment( washCopingDataFragment);
+            mAdapter.addFragment(washCopingDataFragment);
 
             // Bind coping data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
@@ -90,7 +90,7 @@ public class WashFragment extends BaseMultiPageFragment {
             BaseQuestionFragment washGapsDataFragment =  BaseQuestionFragment.newInstance();
             WashGapsDataViewModel washGapsDataViewModel = new  WashGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
             washGapsDataFragment.setViewModel(washGapsDataViewModel);
-            mAdapter.addFragment( washGapsDataFragment);
+            mAdapter.addFragment(washGapsDataFragment);
 
             // Bind gaps data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),

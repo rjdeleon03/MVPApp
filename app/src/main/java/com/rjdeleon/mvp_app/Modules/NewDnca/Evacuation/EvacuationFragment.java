@@ -6,7 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Models.Evacuation.EvacuationSiteData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationSiteData.EvacuationSiteDataViewModel;
+import com.rjdeleon.mvp_app.Utils.ActivityUtils;
+import com.rjdeleon.mvp_app.ViewModelHolder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +42,19 @@ public class EvacuationFragment extends BaseMultiPageFragment {
         EvacuationRepositoryManager repositoryManager = (EvacuationRepositoryManager) mViewModel;
         if (repositoryManager == null) {
             return root;
+        }
+
+        {
+            // Setup evacuation site data fragment
+            BaseQuestionFragment evacuationSiteDataFragment =  BaseQuestionFragment.newInstance();
+            EvacuationSiteDataViewModel evacuationSiteDataViewModel = new  EvacuationSiteDataViewModel(getContext().getApplicationContext(), repositoryManager);
+            evacuationSiteDataFragment.setViewModel(evacuationSiteDataViewModel);
+            mAdapter.addFragment(evacuationSiteDataFragment);
+
+            // Bind evacuation site data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(evacuationSiteDataViewModel),
+                    EVACUATION_SITE_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

@@ -43,6 +43,7 @@ public class AppUtil {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
+
     @BindingAdapter("android:text")
     public static void bindIntegerInText(EditText view, int value)
     {
@@ -57,6 +58,26 @@ public class AppUtil {
         Integer value = 0;
         try {
             value = Integer.parseInt(view.getText().toString());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+    @BindingAdapter("android:text")
+    public static void bindFloatInText(EditText view, float value)
+    {
+        view.setText(String.valueOf(value));
+
+        // Set the cursor to the end of the text
+        view.setSelection(view.getText().length());
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static Float parseViewFloat(EditText view) {
+        Float value = 0f;
+        try {
+            value = Float.parseFloat(view.getText().toString());
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

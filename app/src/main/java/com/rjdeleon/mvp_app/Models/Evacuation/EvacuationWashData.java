@@ -4,7 +4,7 @@ import com.rjdeleon.mvp_app.Models.Generics.BoolRemarksTuple;
 
 public class EvacuationWashData {
 
-    private BoolRemarksTuple cleanfoodPrepSpace;
+    private BoolRemarksTuple cleanFoodPrepSpace;
     private BoolRemarksTuple cleanWaterSource;
     private BoolRemarksTuple cleanToilets;
     private BoolRemarksTuple garbageDisposal;
@@ -12,8 +12,8 @@ public class EvacuationWashData {
     private BoolRemarksTuple sickSpace;
     private BoolRemarksTuple washingFacilities;
 
-    public EvacuationWashData(BoolRemarksTuple cleanfoodPrepSpace, BoolRemarksTuple cleanWaterSource, BoolRemarksTuple cleanToilets, BoolRemarksTuple garbageDisposal, BoolRemarksTuple clinicSpace, BoolRemarksTuple sickSpace, BoolRemarksTuple washingFacilities) {
-        this.cleanfoodPrepSpace = cleanfoodPrepSpace;
+    public EvacuationWashData(BoolRemarksTuple cleanFoodPrepSpace, BoolRemarksTuple cleanWaterSource, BoolRemarksTuple cleanToilets, BoolRemarksTuple garbageDisposal, BoolRemarksTuple clinicSpace, BoolRemarksTuple sickSpace, BoolRemarksTuple washingFacilities) {
+        this.cleanFoodPrepSpace = cleanFoodPrepSpace;
         this.cleanWaterSource = cleanWaterSource;
         this.cleanToilets = cleanToilets;
         this.garbageDisposal = garbageDisposal;
@@ -26,12 +26,12 @@ public class EvacuationWashData {
         this(new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple());
     }
 
-    public BoolRemarksTuple getCleanfoodPrepSpace() {
-        return cleanfoodPrepSpace;
+    public BoolRemarksTuple getCleanFoodPrepSpace() {
+        return cleanFoodPrepSpace;
     }
 
-    public void setCleanfoodPrepSpace(BoolRemarksTuple cleanfoodPrepSpace) {
-        this.cleanfoodPrepSpace = cleanfoodPrepSpace;
+    public void setCleanFoodPrepSpace(BoolRemarksTuple cleanFoodPrepSpace) {
+        this.cleanFoodPrepSpace = cleanFoodPrepSpace;
     }
 
     public BoolRemarksTuple getCleanWaterSource() {

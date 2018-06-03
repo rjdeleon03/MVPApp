@@ -1,17 +1,18 @@
 package com.rjdeleon.mvp_app.Models.Evacuation;
 
+import com.rjdeleon.mvp_app.Models.Generics.BoolIntTuple;
 import com.rjdeleon.mvp_app.Models.Generics.BoolRemarksTuple;
 
 public class EvacuationFacilitiesData {
 
     private int capacity;
-    private BoolRemarksTuple toilets;
+    private BoolIntTuple toilets;
     private BoolRemarksTuple wideEntrance;
     private BoolRemarksTuple electricity;
     private BoolRemarksTuple waterSupply;
     private BoolRemarksTuple properVentilation;
 
-    public EvacuationFacilitiesData(int capacity, BoolRemarksTuple toilets, BoolRemarksTuple wideEntrance, BoolRemarksTuple electricity, BoolRemarksTuple waterSupply, BoolRemarksTuple properVentilation) {
+    public EvacuationFacilitiesData(int capacity, BoolIntTuple toilets, BoolRemarksTuple wideEntrance, BoolRemarksTuple electricity, BoolRemarksTuple waterSupply, BoolRemarksTuple properVentilation) {
         this.capacity = capacity;
         this.toilets = toilets;
         this.wideEntrance = wideEntrance;
@@ -21,7 +22,7 @@ public class EvacuationFacilitiesData {
     }
 
     public EvacuationFacilitiesData() {
-        this(0, new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple());
+        this(0, new BoolIntTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple());
     }
 
     public int getCapacity() {
@@ -32,11 +33,11 @@ public class EvacuationFacilitiesData {
         this.capacity = capacity;
     }
 
-    public BoolRemarksTuple getToilets() {
+    public BoolIntTuple getToilets() {
         return toilets;
     }
 
-    public void setToilets(BoolRemarksTuple toilets) {
+    public void setToilets(BoolIntTuple toilets) {
         this.toilets = toilets;
     }
 

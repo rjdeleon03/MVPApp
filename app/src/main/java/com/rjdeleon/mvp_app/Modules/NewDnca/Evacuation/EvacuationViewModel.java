@@ -65,7 +65,7 @@ public class EvacuationViewModel extends BaseMultiPageViewModel implements Evacu
      * @return
      */
     @Override
-    public EvacuationFacilitiesData getFaciliesData() {
+    public EvacuationFacilitiesData getFacilitiesData() {
         return mFacilitiesData;
     }
 
@@ -123,7 +123,7 @@ public class EvacuationViewModel extends BaseMultiPageViewModel implements Evacu
     @Override
     public void saveFacilitiesData(EvacuationFacilitiesData facilitiesData) {
         mFacilitiesData = facilitiesData;
-        mDncaForm.getEvacuationInfo().setSiteData(mSiteData);
+        mDncaForm.getEvacuationInfo().setFacilitiesData(mFacilitiesData);
     }
 
     /**

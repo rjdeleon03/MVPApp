@@ -1,10 +1,11 @@
 package com.rjdeleon.mvp_app.Models.Evacuation;
 
+import com.rjdeleon.mvp_app.Models.Generics.BoolIntTuple;
 import com.rjdeleon.mvp_app.Models.Generics.BoolRemarksTuple;
 
 public class EvacuationSecurityData {
 
-    private BoolRemarksTuple unaccompaniedChildren;
+    private BoolIntTuple unaccompaniedChildren;
     private BoolRemarksTuple toiletLocks;
     private BoolRemarksTuple segregatedToilet;
     private BoolRemarksTuple properLighting;
@@ -12,12 +13,13 @@ public class EvacuationSecurityData {
     private BoolRemarksTuple sleepingPartitions;
     private BoolRemarksTuple childFriendlySpace;
     private BoolRemarksTuple pregnantSafeSpace;
+    private BoolRemarksTuple disabledSafeSpace;
     private BoolRemarksTuple religiousSpace;
     private BoolRemarksTuple gbvReferral;
     private BoolRemarksTuple gbvProtection;
     private BoolRemarksTuple gbvFocalPoint;
 
-    public EvacuationSecurityData(BoolRemarksTuple unaccompaniedChildren, BoolRemarksTuple toiletLocks, BoolRemarksTuple segregatedToilet, BoolRemarksTuple properLighting, BoolRemarksTuple securityOfficers, BoolRemarksTuple sleepingPartitions, BoolRemarksTuple childFriendlySpace, BoolRemarksTuple pregnantSafeSpace, BoolRemarksTuple religiousSpace, BoolRemarksTuple gbvReferral, BoolRemarksTuple gbvProtection, BoolRemarksTuple gbvFocalPoint) {
+    public EvacuationSecurityData(BoolIntTuple unaccompaniedChildren, BoolRemarksTuple toiletLocks, BoolRemarksTuple segregatedToilet, BoolRemarksTuple properLighting, BoolRemarksTuple securityOfficers, BoolRemarksTuple sleepingPartitions, BoolRemarksTuple childFriendlySpace, BoolRemarksTuple pregnantSafeSpace, BoolRemarksTuple disabledSafeSpace, BoolRemarksTuple religiousSpace, BoolRemarksTuple gbvReferral, BoolRemarksTuple gbvProtection, BoolRemarksTuple gbvFocalPoint) {
         this.unaccompaniedChildren = unaccompaniedChildren;
         this.toiletLocks = toiletLocks;
         this.segregatedToilet = segregatedToilet;
@@ -26,6 +28,7 @@ public class EvacuationSecurityData {
         this.sleepingPartitions = sleepingPartitions;
         this.childFriendlySpace = childFriendlySpace;
         this.pregnantSafeSpace = pregnantSafeSpace;
+        this.disabledSafeSpace = disabledSafeSpace;
         this.religiousSpace = religiousSpace;
         this.gbvReferral = gbvReferral;
         this.gbvProtection = gbvProtection;
@@ -33,14 +36,14 @@ public class EvacuationSecurityData {
     }
 
     public EvacuationSecurityData() {
-        this(new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple());
+        this(new BoolIntTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple(), new BoolRemarksTuple());
     }
 
-    public BoolRemarksTuple getUnaccompaniedChildren() {
+    public BoolIntTuple getUnaccompaniedChildren() {
         return unaccompaniedChildren;
     }
 
-    public void setUnaccompaniedChildren(BoolRemarksTuple unaccompaniedChildren) {
+    public void setUnaccompaniedChildren(BoolIntTuple unaccompaniedChildren) {
         this.unaccompaniedChildren = unaccompaniedChildren;
     }
 
@@ -98,6 +101,14 @@ public class EvacuationSecurityData {
 
     public void setPregnantSafeSpace(BoolRemarksTuple pregnantSafeSpace) {
         this.pregnantSafeSpace = pregnantSafeSpace;
+    }
+
+    public BoolRemarksTuple getDisabledSafeSpace() {
+        return disabledSafeSpace;
+    }
+
+    public void setDisabledSafeSpace(BoolRemarksTuple disabledSafeSpace) {
+        this.disabledSafeSpace = disabledSafeSpace;
     }
 
     public BoolRemarksTuple getReligiousSpace() {

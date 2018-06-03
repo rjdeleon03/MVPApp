@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean" />
@@ -31,23 +32,59 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.yesText}"
-                    android:checked="@={viewModel.answer}"
-                    android:fontFamily="@font/lato_reg"/>
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.yesText}"
+                        android:checked="@={viewModel.answer}"
+                        android:fontFamily="@font/lato_reg"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:text="@{viewModel.noText}"
+                        android:checked="@={!viewModel.answer}"
+                        android:fontFamily="@font/lato_reg"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:text="@{viewModel.noText}"
-                    android:checked="@={!viewModel.answer}"
-                    android:fontFamily="@font/lato_reg"/>
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@{viewModel.remarksText}"
+                    android:textSize="13dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.shouldShowRemarks ? View.VISIBLE : View.GONE}"
+                    android:ems="10"
+                    android:text="@={viewModel.remarks}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="textMultiLine" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.shouldShowRemarksInt ? View.VISIBLE : View.GONE}"
+                    android:ems="10"
+                    android:text="@={viewModel.remarksInt}"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/lato_reg"
+                    android:inputType="number" />
 
             </LinearLayout>
 

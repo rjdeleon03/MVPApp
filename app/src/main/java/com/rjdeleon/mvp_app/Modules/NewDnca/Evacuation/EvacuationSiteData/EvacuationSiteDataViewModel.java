@@ -56,17 +56,17 @@ public class EvacuationSiteDataViewModel extends EvacuationBaseViewModel {
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        EvacuationSiteData siteData = new EvacuationSiteData();
-        siteData.setName(((QuestionItemViewModelString) mQuestionsViewModels.get(0)).answer.get());
-        siteData.setLocation(((QuestionItemViewModelString) mQuestionsViewModels.get(1)).answer.get());
-        siteData.setDisplaced(((QuestionItemViewModelBoolean) mQuestionsViewModels.get(2)).answer.get());
-        siteData.setEvacuationType((EvacuationSiteData.EvacuationType) ((QuestionItemViewModelEnum) mQuestionsViewModels.get(3)).getEnumAnswer());
-        siteData.setPlannedEvacuationType((EvacuationSiteData.PlannedEvacuationType) ((QuestionItemViewModelEnum) mQuestionsViewModels.get(4)).getEnumAnswer());
-        siteData.setLguDesignated(((QuestionItemViewModelBoolean) mQuestionsViewModels.get(5)).answer.get());
-        siteData.setCommunityDistance(((QuestionItemViewModelFloat) mQuestionsViewModels.get(6)).answer.get());
-        siteData.setEvacuationDate(((QuestionItemViewModelDate) mQuestionsViewModels.get(7)).answer.get());
-        siteData.setShelterSize(((QuestionItemViewModelFloat) mQuestionsViewModels.get(8)).answer.get());
-        siteData.setFamiliesCount(((QuestionItemViewModelInt) mQuestionsViewModels.get(9)).answer.get());
+        EvacuationSiteData siteData = new EvacuationSiteData(
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(0)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(1)).answer.get(),
+                ((QuestionItemViewModelBoolean) mQuestionsViewModels.get(2)).answer.get(),
+                (EvacuationSiteData.EvacuationType) ((QuestionItemViewModelEnum) mQuestionsViewModels.get(3)).getEnumAnswer(),
+                (EvacuationSiteData.PlannedEvacuationType) ((QuestionItemViewModelEnum) mQuestionsViewModels.get(4)).getEnumAnswer(),
+                ((QuestionItemViewModelBoolean) mQuestionsViewModels.get(5)).answer.get(),
+                ((QuestionItemViewModelFloat) mQuestionsViewModels.get(6)).answer.get(),
+                ((QuestionItemViewModelDate) mQuestionsViewModels.get(7)).answer.get(),
+                ((QuestionItemViewModelFloat) mQuestionsViewModels.get(8)).answer.get(),
+                ((QuestionItemViewModelInt) mQuestionsViewModels.get(9)).answer.get());
         mEvacuationRepositoryManager.saveSiteData(siteData);
     }
 }

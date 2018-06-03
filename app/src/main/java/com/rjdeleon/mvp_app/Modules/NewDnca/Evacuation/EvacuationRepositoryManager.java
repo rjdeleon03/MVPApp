@@ -13,7 +13,7 @@ public interface EvacuationRepositoryManager extends GenericCopingDataContainer 
 
     EvacuationPopulationData getPopulationData();
 
-    EvacuationFacilitiesData getFaciliesData();
+    EvacuationFacilitiesData getFacilitiesData();
 
     EvacuationWashData getWashData();
 

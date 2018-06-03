@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.rjdeleon.mvp_app.Models.Evacuation.EvacuationSiteData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationPopulationData.EvacuationPopulationFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationPopulationData.EvacuationPopulationViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationSiteData.EvacuationSiteDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
@@ -55,6 +57,19 @@ public class EvacuationFragment extends BaseMultiPageFragment {
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(evacuationSiteDataViewModel),
                     EVACUATION_SITE_VIEWMODEL_TAG);
+        }
+
+        {
+            // Setup population data fragment
+            EvacuationPopulationFragment evacuationPopulationFragment =  EvacuationPopulationFragment.newInstance();
+            EvacuationPopulationViewModel evacuationPopulationViewModel = new  EvacuationPopulationViewModel(getContext().getApplicationContext(), repositoryManager);
+            evacuationPopulationFragment.setViewModel(evacuationPopulationViewModel);
+            mAdapter.addFragment(evacuationPopulationFragment);
+
+            // Bind population data viewModel to root activity's lifecycle
+            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
+                    ViewModelHolder.createContainer(evacuationPopulationViewModel),
+                    EVACUATION_POPULATION_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager

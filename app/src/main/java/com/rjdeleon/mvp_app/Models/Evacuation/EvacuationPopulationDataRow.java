@@ -13,8 +13,8 @@ public class EvacuationPopulationDataRow extends GenericEnumDataRow {
     private int disabled;
     private int sick;
 
-    public EvacuationPopulationDataRow(GenericEnum type, int male, int female, int lgbt, int pregnant, int lactating, int disabled, int sick) {
-        super(type);
+    public EvacuationPopulationDataRow(AgeGroup ageGroup, int male, int female, int lgbt, int pregnant, int lactating, int disabled, int sick) {
+        super(ageGroup);
         this.male = male;
         this.female = female;
         this.lgbt = lgbt;

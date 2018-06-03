@@ -52,5 +52,4 @@ public class PopulationDataRowViewModel extends BaseEnumRowViewModel {
         mPopulationDataRepositoryManager.deletePopulationDataRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
-
 }

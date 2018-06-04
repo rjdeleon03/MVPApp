@@ -27,7 +27,7 @@ public class LivelihoodsIncomeFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsIncomeDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsIncomeDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -41,7 +41,7 @@ public class LivelihoodsIncomeFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsIncomeDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsIncomeDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }

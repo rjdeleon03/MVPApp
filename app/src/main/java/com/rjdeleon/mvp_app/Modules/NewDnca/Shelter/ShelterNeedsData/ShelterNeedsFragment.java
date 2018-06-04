@@ -31,7 +31,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = ShelterNeedsDialogFragment.getInstance();
+        mDialogFragment = ShelterNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -45,7 +45,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = ShelterNeedsDialogFragment.getInstance();
+        mDialogFragment = ShelterNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }

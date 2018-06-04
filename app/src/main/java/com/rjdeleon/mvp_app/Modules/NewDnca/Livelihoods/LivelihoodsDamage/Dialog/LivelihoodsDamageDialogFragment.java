@@ -20,7 +20,7 @@ public class LivelihoodsDamageDialogFragment extends BaseEnumDialogFragment {
     private RecyclerView mCheckboxRecycler;
     private LivelihoodsDamageDialogFragmentAdapter mLivelihoodsDamageDialogFragmentAdapter;
 
-    public static LivelihoodsDamageDialogFragment getInstance() {
+    public static LivelihoodsDamageDialogFragment newInstance() {
         return new LivelihoodsDamageDialogFragment();
     }
 

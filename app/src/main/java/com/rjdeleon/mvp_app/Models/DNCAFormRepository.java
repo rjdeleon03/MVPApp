@@ -39,7 +39,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     /**
-     * Destroys instance to create it the next time getInstance() is called
+     * Destroys instance to create it the next time newInstance() is called
      */
     public static void destroyInstance() {
         INSTANCE = null;

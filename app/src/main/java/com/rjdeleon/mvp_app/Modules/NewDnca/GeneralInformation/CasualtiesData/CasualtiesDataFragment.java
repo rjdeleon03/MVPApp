@@ -15,7 +15,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
 
     private CasualtiesDataFragmentAdapter mCasualtiesDataAdapter;
 
-    public static CasualtiesDataFragment getInstance() {
+    public static CasualtiesDataFragment newInstance() {
         return new CasualtiesDataFragment();
     }
 
@@ -35,7 +35,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = CasualtiesDataDialogFragment.getInstance();
+        mDialogFragment = CasualtiesDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -53,7 +53,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = CasualtiesDataDialogFragment.getInstance();
+        mDialogFragment = CasualtiesDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

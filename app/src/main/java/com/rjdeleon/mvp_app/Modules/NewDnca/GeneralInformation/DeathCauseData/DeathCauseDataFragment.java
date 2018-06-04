@@ -15,7 +15,7 @@ public class DeathCauseDataFragment extends BaseEnumFragment {
 
     private DeathCauseDataFragmentAdapter mDeathCauseAdapter;
 
-    public static DeathCauseDataFragment getInstance() {
+    public static DeathCauseDataFragment newInstance() {
         return new DeathCauseDataFragment();
     }
 
@@ -35,7 +35,7 @@ public class DeathCauseDataFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DeathCauseDataDialogFragment.getInstance();
+        mDialogFragment = DeathCauseDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -53,7 +53,7 @@ public class DeathCauseDataFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DeathCauseDataDialogFragment.getInstance();
+        mDialogFragment = DeathCauseDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

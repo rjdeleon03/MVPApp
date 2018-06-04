@@ -37,7 +37,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = EvacuationPopulationDialogFragment.getInstance();
+        mDialogFragment = EvacuationPopulationDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -55,7 +55,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = EvacuationPopulationDialogFragment.getInstance();
+        mDialogFragment = EvacuationPopulationDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

@@ -16,7 +16,7 @@ public class SpecialNeedsDialogFragment extends BaseEnumDialogFragment {
 
     private HealthSpecialNeedsDialogBinding mBinding;
 
-    public static SpecialNeedsDialogFragment getInstance() {
+    public static SpecialNeedsDialogFragment newInstance() {
         return new SpecialNeedsDialogFragment();
     }
 

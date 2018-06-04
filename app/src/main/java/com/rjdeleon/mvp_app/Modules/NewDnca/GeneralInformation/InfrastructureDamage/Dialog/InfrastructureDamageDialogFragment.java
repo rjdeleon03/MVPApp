@@ -15,7 +15,7 @@ public class InfrastructureDamageDialogFragment extends BaseEnumDialogFragment {
 
     private InfrastructureDamageDialogBinding mBinding;
 
-    public static InfrastructureDamageDialogFragment getInstance() {
+    public static InfrastructureDamageDialogFragment newInstance() {
         return new InfrastructureDamageDialogFragment();
     }
 

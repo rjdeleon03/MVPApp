@@ -14,7 +14,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
 
     private VulnerablePopulationFragmentAdapter mVulnerablePopulationAdapter;
 
-    public static VulnerablePopulationFragment getInstance() {
+    public static VulnerablePopulationFragment newInstance() {
         return new VulnerablePopulationFragment();
     }
 

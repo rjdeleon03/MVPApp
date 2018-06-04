@@ -16,7 +16,7 @@ public class EvacuationPopulationDialogFragment extends BaseEnumDialogFragment {
     private EvacuationPopulationDialogBinding mBinding;
 
 
-    public static EvacuationPopulationDialogFragment getInstance() {
+    public static EvacuationPopulationDialogFragment newInstance() {
         return new EvacuationPopulationDialogFragment();
     }
 

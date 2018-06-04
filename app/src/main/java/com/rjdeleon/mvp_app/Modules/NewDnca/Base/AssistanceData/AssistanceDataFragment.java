@@ -32,7 +32,7 @@ public class AssistanceDataFragment extends BaseEnumFragment{
                 getContext(),
                 (AssistanceDataRepositoryManager) mViewModel);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = AssistanceDialogFragment.getInstance();
+        mDialogFragment = AssistanceDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -49,7 +49,7 @@ public class AssistanceDataFragment extends BaseEnumFragment{
                 (AssistanceDataRepositoryManager) mViewModel,
                 rowIndex);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = AssistanceDialogFragment.getInstance();
+        mDialogFragment = AssistanceDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

@@ -32,7 +32,7 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DiseasesInjuriesDialogFragment.getInstance();
+        mDialogFragment = DiseasesInjuriesDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -46,7 +46,7 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DiseasesInjuriesDialogFragment.getInstance();
+        mDialogFragment = DiseasesInjuriesDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

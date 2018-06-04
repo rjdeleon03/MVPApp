@@ -15,7 +15,7 @@ public class ShelterNeedsDialogFragment extends BaseEnumDialogFragment {
 
     private ShelterNeedsDialogBinding mBinding;
 
-    public static ShelterNeedsDialogFragment getInstance() {
+    public static ShelterNeedsDialogFragment newInstance() {
         return new ShelterNeedsDialogFragment();
     }
 

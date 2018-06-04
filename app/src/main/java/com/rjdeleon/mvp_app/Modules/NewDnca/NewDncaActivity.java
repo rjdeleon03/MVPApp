@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
@@ -258,24 +259,61 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     }
 
     @NonNull
-    private com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
+    private NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
 
-        com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel viewModel = null;
+        NewDncaBaseViewModel viewModel = null;
         String tag = null;
+        boolean isNewViewModel = false;
+
+        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = null;
+
+        /*
+        // Get viewModel
+        ViewModelHolder<DNCAListViewModel> retainedViewModel = (ViewModelHolder<DNCAListViewModel>) getSupportFragmentManager().findFragmentByTag(DNCA_LIST_VIEWMODEL_TAG);
+
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+
+            // Return viewModel if it was retained
+            return retainedViewModel.getViewmodel();
+
+        } else {
+
+            // Create viewModel if it does not exist yet
+            DNCAListViewModel dncaListViewModel = new DNCAListViewModel(
+                    getApplicationContext(),
+                    Injection.provideDncaRepository(getApplicationContext()));
+
+            // Bind viewModel to activity's lifecycle using fragment manager
+            ActivityUtils.addFragmentToActivity(
+                    getSupportFragmentManager(),
+                    ViewModelHolder.createContainer(dncaListViewModel),
+                    DNCA_LIST_VIEWMODEL_TAG);
+
+            return dncaListViewModel;
+        }
+         */
 
         switch(fragmentType) {
             case MENU:
-                // TODO: Restore view model for config change
-                // Create viewModel
-                viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+                    viewModel = retainedViewModel.getViewmodel();
+                } else {
+                    viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                }
                 break;
 
             case FORM_DETAILS:
-                viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
                 tag = NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+                    viewModel = retainedViewModel.getViewmodel();
+                } else {
+                    viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                }
                 break;
 
             case GEN_INFO:

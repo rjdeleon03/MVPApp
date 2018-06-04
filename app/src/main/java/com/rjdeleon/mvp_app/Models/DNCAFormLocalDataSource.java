@@ -15,7 +15,7 @@ public class DNCAFormLocalDataSource implements DNCAFormDataSource {
 
     }
 
-    public static DNCAFormLocalDataSource getInstance() {
+    public static DNCAFormLocalDataSource newInstance() {
         if(INSTANCE == null) {
             INSTANCE = new DNCAFormLocalDataSource();
         }

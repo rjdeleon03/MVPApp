@@ -15,7 +15,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
 
     private InfrastructureDamageFragmentAdapter mInfrastructureAdapter;
 
-    public static InfrastructureDamageFragment getInstance() {
+    public static InfrastructureDamageFragment newInstance() {
         return new InfrastructureDamageFragment();
     }
 
@@ -35,7 +35,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InfrastructureDamageDialogFragment.getInstance();
+        mDialogFragment = InfrastructureDamageDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -53,7 +53,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InfrastructureDamageDialogFragment.getInstance();
+        mDialogFragment = InfrastructureDamageDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
 

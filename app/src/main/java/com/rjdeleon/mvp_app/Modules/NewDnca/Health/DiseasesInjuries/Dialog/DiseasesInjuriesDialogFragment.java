@@ -16,7 +16,7 @@ public class DiseasesInjuriesDialogFragment extends BaseEnumDialogFragment {
 
     private HealthDiseasesInjuriesDialogBinding mBinding;
 
-    public static DiseasesInjuriesDialogFragment getInstance() {
+    public static DiseasesInjuriesDialogFragment newInstance() {
         return new DiseasesInjuriesDialogFragment();
     }
 

@@ -34,7 +34,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = SpecialNeedsDialogFragment.getInstance();
+        mDialogFragment = SpecialNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -52,7 +52,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = SpecialNeedsDialogFragment.getInstance();
+        mDialogFragment = SpecialNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

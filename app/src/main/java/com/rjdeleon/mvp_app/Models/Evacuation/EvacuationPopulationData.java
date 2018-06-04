@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Models.Evacuation;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataTotalizable;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;
 import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
@@ -8,11 +9,12 @@ import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EvacuationPopulationData implements NormalizableData, TotalizableData {
+public class EvacuationPopulationData extends GenericEnumDataTotalizable {
 
     private List<EvacuationPopulationDataRow> evacuationPopulationDataRows;
 
     public EvacuationPopulationData(List<EvacuationPopulationDataRow> evacuationPopulationDataRows) {
+        super(new EvacuationPopulationDataRow(GenericEnumDataRow.AgeGroup.ALL));
         this.evacuationPopulationDataRows = evacuationPopulationDataRows;
     }
 
@@ -36,7 +38,6 @@ public class EvacuationPopulationData implements NormalizableData, TotalizableDa
                 (List<GenericEnumDataRow>)(Object) evacuationPopulationDataRows);
 
         addTotalRow();
-
     }
 
     @Override
@@ -58,6 +59,14 @@ public class EvacuationPopulationData implements NormalizableData, TotalizableDa
             disabled += row.getDisabled();
             sick += row.getSick();
         }
-        this.evacuationPopulationDataRows.add(new EvacuationPopulationDataRow(GenericEnumDataRow.AgeGroup.ALL, male, female, lgbt, pregnant, lactating, disabled, sick));
+
+        EvacuationPopulationDataRow row = (EvacuationPopulationDataRow) totalRow;
+        row.setMale(male);
+        row.setFemale(female);
+        row.setLgbt(lgbt);
+        row.setPregnant(pregnant);
+        row.setLactating(lactating);
+        row.setDisabled(disabled);
+        row.setSick(sick);
     }
 }

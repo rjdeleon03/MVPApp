@@ -29,6 +29,8 @@ import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 import com.rjdeleon.mvp_app.databinding.NewDncaActivityBinding;
 
+import java.util.List;
+
 public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
 
     public static final String NEW_DNCA_VIEWMODEL_TAG = "NEW_DNCA_VIEWMODEL_TAG";
@@ -85,6 +87,15 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
         // Bind viewModel to view
         mMainBinding.setViewModel(mMainViewModel);
+
+        Fragment topFragment = getSupportFragmentManager().findFragmentById(R.id.new_dnca_fragment_container);
+        if (topFragment == null) return;
+        if(topFragment instanceof NewDncaFormDetailsFragment) {
+            ((NewDncaFormDetailsFragment) topFragment).setViewModel((NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS));
+        }
+        if(topFragment instanceof GenInfoFragment) {
+            ((GenInfoFragment) topFragment).setViewModel((GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO));
+        }
     }
 
     @Override

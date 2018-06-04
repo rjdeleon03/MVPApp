@@ -25,6 +25,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulat
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */

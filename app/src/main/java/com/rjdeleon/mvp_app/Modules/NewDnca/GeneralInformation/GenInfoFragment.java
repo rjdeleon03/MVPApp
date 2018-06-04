@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.NewDncaActivity;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
@@ -32,13 +34,23 @@ import java.util.List;
  */
 public class GenInfoFragment extends BaseMultiPageFragment {
 
-    public static final String NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_FAMILY_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_FAMILY_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_VULNERABLE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VULNERABLE_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_CASUALTIES_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_CASUALTIES_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG";
+    private enum GenInfoComponent {
+        CALAMITY,
+        POPULATION,
+        FAMILY,
+        VULNERABLE,
+        CASUALTIES,
+        DEATH_CAUSE,
+        INFRASTRUCTURE
+    }
+
+    public static final String GEN_INFO_CALAMITY_VIEWMODEL_TAG = "GEN_INFO_CALAMITY_VIEWMODEL_TAG";
+    public static final String GEN_INFO_POPULATION_VIEWMODEL_TAG = "GEN_INFO_POPULATION_VIEWMODEL_TAG";
+    public static final String GEN_INFO_FAMILY_VIEWMODEL_TAG = "GEN_INFO_FAMILY_VIEWMODEL_TAG";
+    public static final String GEN_INFO_VULNERABLE_VIEWMODEL_TAG = "GEN_INFO_VULNERABLE_VIEWMODEL_TAG";
+    public static final String GEN_INFO_CASUALTIES_VIEWMODEL_TAG = "GEN_INFO_CASUALTIES_VIEWMODEL_TAG";
+    public static final String GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG = "GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG";
+    public static final String GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG = "GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG";
 
     public static GenInfoFragment newInstance() {
         return new GenInfoFragment();
@@ -77,7 +89,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind calamity details viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(calamityDetailsViewModel),
-                    NEW_DNCA_GEN_INFO_CALAMITY_VIEWMODEL_TAG);
+                    GEN_INFO_CALAMITY_VIEWMODEL_TAG);
         }
 
         {
@@ -90,7 +102,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind population data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(populationDataViewModel),
-                    NEW_DNCA_GEN_INFO_POPULATION_VIEWMODEL_TAG);
+                    GEN_INFO_POPULATION_VIEWMODEL_TAG);
         }
 
         {
@@ -103,7 +115,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind family data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(familyDataViewModel),
-                    NEW_DNCA_GEN_INFO_FAMILY_VIEWMODEL_TAG);
+                    GEN_INFO_FAMILY_VIEWMODEL_TAG);
         }
 
         {
@@ -116,7 +128,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind vulnerable population viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(vulnerablePopulationViewModel),
-                    NEW_DNCA_GEN_INFO_VULNERABLE_VIEWMODEL_TAG);
+                    GEN_INFO_VULNERABLE_VIEWMODEL_TAG);
         }
 
         {
@@ -129,7 +141,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind casualties data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(casualtiesDataViewModel),
-                    NEW_DNCA_GEN_INFO_CASUALTIES_VIEWMODEL_TAG);
+                    GEN_INFO_CASUALTIES_VIEWMODEL_TAG);
         }
 
         {
@@ -142,7 +154,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind death cause data viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(deathCauseDataViewModel),
-                    NEW_DNCA_GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG);
+                    GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG);
         }
 
         {
@@ -155,12 +167,24 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             // Bind infrastructure damage viewModel to root activity's lifecycle
             ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
                     ViewModelHolder.createContainer(infrastructureDamageViewModel),
-                    NEW_DNCA_GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG);
+                    GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager
         super.setupViewPager(root);
 
         return root;
+    }
+
+    @NonNull
+    private Fragment findOrCreateViewFragment(GenInfoComponent fragmentType) {
+        // TODO: Implement fragment retrieval or creation
+        return null;
+    }
+
+    @NonNull
+    private com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel findOrCreateViewModel(GenInfoComponent fragmentType) {
+        // TODO: Implement viewModel retrieval or creation
+        return null;
     }
 }

@@ -257,6 +257,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         return fragment;
     }
 
+    @NonNull
     private com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
 
         com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel viewModel = null;

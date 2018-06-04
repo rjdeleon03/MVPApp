@@ -1,25 +1,25 @@
 package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataTotalizable;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
-import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
-import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;
 import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopulationData implements NormalizableData, TotalizableData {
+public class PopulationData extends GenericEnumDataTotalizable {
 
     private List<PopulationDataRow> populationDataRows;
 
     public PopulationData(List<PopulationDataRow> populationDataRows) {
+        super(new PopulationDataRow(GenericEnumDataRow.AgeGroup.ALL));
         this.populationDataRows = populationDataRows;
         addTotalRow();
     }
 
     public PopulationData() {
-        this.populationDataRows = new ArrayList<>();
+        this(new ArrayList<PopulationDataRow>());
     }
 
     public List<PopulationDataRow> getPopulationDataRows() {
@@ -54,6 +54,10 @@ public class PopulationData implements NormalizableData, TotalizableData {
             displaced.male += row.getDisplaced().male;
             displaced.female += row.getDisplaced().female;
         }
-        this.populationDataRows.add(new PopulationDataRow(GenericEnumDataRow.AgeGroup.ALL, total, affected, displaced));
+
+        PopulationDataRow row = (PopulationDataRow) totalRow;
+        row.setTotal(total);
+        row.setAffected(affected);
+        row.setDisplaced(displaced);
     }
 }

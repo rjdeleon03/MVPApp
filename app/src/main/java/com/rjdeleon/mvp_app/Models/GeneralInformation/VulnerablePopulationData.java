@@ -2,6 +2,7 @@ package com.rjdeleon.mvp_app.Models.GeneralInformation;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
 import com.rjdeleon.mvp_app.Models.Generics.GenderTuple;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataTotalizable;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;
 import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
@@ -9,17 +10,18 @@ import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VulnerablePopulationData implements NormalizableData, TotalizableData {
+public class VulnerablePopulationData extends GenericEnumDataTotalizable {
 
     private List<VulnerablePopulationDataRow> vulnerablePopulationDataRows;
 
     public VulnerablePopulationData(List<VulnerablePopulationDataRow> vulnerablePopulationDataRows) {
+        super(new VulnerablePopulationDataRow(GenericEnumDataRow.AgeGroup.ALL));
         this.vulnerablePopulationDataRows = vulnerablePopulationDataRows;
         addTotalRow();
     }
 
     public VulnerablePopulationData() {
-        vulnerablePopulationDataRows = new ArrayList<>();
+        this(new ArrayList<VulnerablePopulationDataRow>());
     }
 
     public List<VulnerablePopulationDataRow> getVulnerablePopulationDataRows() {
@@ -64,6 +66,13 @@ public class VulnerablePopulationData implements NormalizableData, TotalizableDa
             dis.female += row.getDisabled().female;
         }
 
-        this.vulnerablePopulationDataRows.add(new VulnerablePopulationDataRow(GenericEnumDataRow.AgeGroup.ALL, pregnant, lactating, lgbt, fhh, chh, idg, dis, ""));
+        VulnerablePopulationDataRow row = (VulnerablePopulationDataRow) totalRow;
+        row.setPregnant(pregnant);
+        row.setLactating(lactating);
+        row.setLgbt(lgbt);
+        row.setFemaleHeadedHouseholds(fhh);
+        row.setChildHeadedHouseholds(chh);
+        row.setIndigenous(idg);
+        row.setDisabled(dis);
     }
 }

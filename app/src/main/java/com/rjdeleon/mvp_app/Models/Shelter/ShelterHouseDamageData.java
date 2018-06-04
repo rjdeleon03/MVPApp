@@ -1,6 +1,7 @@
 package com.rjdeleon.mvp_app.Models.Shelter;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataRow;
+import com.rjdeleon.mvp_app.Models.Generics.GenericEnumDataTotalizable;
 import com.rjdeleon.mvp_app.Models.Generics.NormalizableData;
 import com.rjdeleon.mvp_app.Models.Generics.TotalizableData;
 import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
@@ -8,18 +9,18 @@ import com.rjdeleon.mvp_app.Utils.GenericEnumUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShelterHouseDamageData implements NormalizableData, TotalizableData {
+public class ShelterHouseDamageData extends GenericEnumDataTotalizable {
 
     private List<ShelterHouseDamageDataRow> shelterHouseDamageDataRows;
 
     public ShelterHouseDamageData(List<ShelterHouseDamageDataRow> shelterHouseDamageDataRows) {
+        super(new ShelterHouseDamageDataRow(GenericEnumDataRow.HouseType.ALL));
         this.shelterHouseDamageDataRows = shelterHouseDamageDataRows;
-        
         addTotalRow();
     }
 
     public ShelterHouseDamageData() {
-        this.shelterHouseDamageDataRows = new ArrayList<>();
+        this(new ArrayList<ShelterHouseDamageDataRow>());
     }
 
     public List<ShelterHouseDamageDataRow> getShelterHouseDamageDataRows() {
@@ -69,18 +70,17 @@ public class ShelterHouseDamageData implements NormalizableData, TotalizableData
             allDamaged += row.getAllDamaged();
         }
 
-        this.shelterHouseDamageDataRows.add(new ShelterHouseDamageDataRow(
-                GenericEnumDataRow.HouseType.ALL,
-                houseCount,
-                ownedHouse,
-                rentedHouse,
-                sharedHouse,
-                ownedLand,
-                rentedLand,
-                tenantLand,
-                informalSettlers,
-                partiallyDamaged,
-                totallyDamaged,
-                allDamaged));
+        ShelterHouseDamageDataRow row = (ShelterHouseDamageDataRow) totalRow;
+        row.setHouseCount(houseCount);
+        row.setOwnedHouse(ownedHouse);
+        row.setRentedHouse(rentedHouse);
+        row.setSharedHouse(sharedHouse);
+        row.setOwnedLand(ownedLand);
+        row.setRentedLand(rentedLand);
+        row.setTenantLand(tenantLand);
+        row.setInformalSettlers(informalSettlers);
+        row.setPartiallyDamaged(partiallyDamaged);
+        row.setTotallyDamaged(totallyDamaged);
+        row.setAllDamaged(allDamaged);
     }
 }

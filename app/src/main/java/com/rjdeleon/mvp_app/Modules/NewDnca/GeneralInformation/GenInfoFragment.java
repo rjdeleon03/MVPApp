@@ -103,7 +103,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
                     ViewModelHolder.createContainer(populationDataViewModel),
                     GEN_INFO_POPULATION_VIEWMODEL_TAG);
         }
-
+/*
         {
             // Setup family data fragment
             FamilyDataFragment familyDataFragment = (FamilyDataFragment)findOrCreateViewFragment(GenInfoComponent.FAMILY);
@@ -168,7 +168,7 @@ public class GenInfoFragment extends BaseMultiPageFragment {
                     ViewModelHolder.createContainer(infrastructureDamageViewModel),
                     GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG);
         }
-
+*/
         // Call to parent class to setup the view pager
         super.setupViewPager(root);
 
@@ -219,36 +219,59 @@ public class GenInfoFragment extends BaseMultiPageFragment {
         GenInfoRepositoryManager repositoryManager = (GenInfoRepositoryManager) mViewModel;
 
         ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = null;
+        NewDncaBaseViewModel viewModel = null;
+        String tag = null;
         switch(fragmentType) {
             case CALAMITY:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_CALAMITY_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new CalamityDetailsViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_CALAMITY_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new CalamityDetailsViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
             case POPULATION:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_POPULATION_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new PopulationDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_POPULATION_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new PopulationDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
             case FAMILY:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_FAMILY_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new FamilyDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_FAMILY_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new FamilyDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
             case VULNERABLE:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_VULNERABLE_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new VulnerablePopulationViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_VULNERABLE_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new VulnerablePopulationViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
             case CASUALTIES:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_CASUALTIES_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new CasualtiesDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_CASUALTIES_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new CasualtiesDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
             case DEATH_CAUSE:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new DeathCauseDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_DEATH_CAUSE_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new DeathCauseDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
             case INFRASTRUCTURE:
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) return retainedViewModel.getViewmodel();
-                return new InfrastructureDamageViewModel(getContext().getApplicationContext(), repositoryManager);
+                tag = GEN_INFO_INFRASTRUCTURE_VIEWMODEL_TAG;
+                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) viewModel = retainedViewModel.getViewmodel();
+                viewModel = new InfrastructureDamageViewModel(getContext().getApplicationContext(), repositoryManager);
+                break;
         }
-        return null;
+
+        // Bind viewModel to activity's lifecycle using fragment manager
+        ActivityUtils.addFragmentToActivity(
+                getChildFragmentManager(),
+                ViewModelHolder.createContainer(viewModel),
+                tag);
+
+        return viewModel;
     }
 }

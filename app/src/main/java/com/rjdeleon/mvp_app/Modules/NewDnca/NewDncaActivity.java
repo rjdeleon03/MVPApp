@@ -90,9 +90,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
         {
             // Setup view and viewModel
-            mNewDncaFragment = (NewDncaFragment) findOrCreateViewFragment(NewDncaComponent.MENU);
+            mNewDncaFragment = (NewDncaFragment) findOrCreateViewFragment2(NewDncaComponent.MENU);
             mMainViewModel = (NewDncaViewModel) findOrCreateViewModel(NewDncaComponent.MENU);
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mNewDncaFragment, R.id.new_dnca_fragment_container, false);
 
             // Link view and viewModel
             mNewDncaFragment.setViewModel(mMainViewModel);
@@ -114,6 +113,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             mGenInfoFragment.setViewModel(mGenInfoViewModel);
         }
 
+        /*
         {
             mShelterInfoFragment = (ShelterInfoFragment) findOrCreateViewFragment(NewDncaComponent.SHELTER_INFO);
             mShelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
@@ -149,6 +149,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
             mEvacuationFragment.setViewModel(mEvacuationViewModel);
         }
+        */
     }
 
     @NonNull
@@ -172,7 +173,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         if (selectedFragment == null) {
             switch(fragmentType) {
                 case MENU:
-                    return NewDncaFragment.newInstance();
+                    Fragment fragment = NewDncaFragment.newInstance();
+                    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_dnca_fragment_container, false);
+                    return fragment;
                 case FORM_DETAILS:
                     return NewDncaFormDetailsFragment.newInstance();
                 case SHELTER_INFO:
@@ -272,59 +275,70 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
         // Retrieve fragment if it exists
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.new_dnca_fragment_container);
+        boolean willAddFragmentToActivity = false;
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
 
         switch(fragmentType) {
             case MENU:
                 if (fragment == null || !(fragment instanceof NewDncaFragment)) {
                     fragment = NewDncaFragment.newInstance();
+                    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_dnca_fragment_container, false);
                 }
                 break;
 
             case FORM_DETAILS:
                 if (fragment == null || !(fragment instanceof NewDncaFormDetailsFragment)) {
                     fragment = NewDncaFormDetailsFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case GEN_INFO:
                 if (fragment == null || !(fragment instanceof GenInfoFragment)) {
                     fragment = GenInfoFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case SHELTER_INFO:
                 if (fragment == null || !(fragment instanceof ShelterInfoFragment)) {
                     fragment = ShelterInfoFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case FOOD_SECURITY:
                 if (fragment == null || !(fragment instanceof FoodSecurityFragment)) {
                     fragment = FoodSecurityFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case LIVELIHOODS:
                 if (fragment == null || !(fragment instanceof LivelihoodsFragment)) {
                     fragment = LivelihoodsFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case HEALTH:
                 if (fragment == null || !(fragment instanceof HealthFragment)) {
                     fragment = HealthFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case WASH:
                 if (fragment == null || !(fragment instanceof WashFragment)) {
                     fragment = WashFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
 
             case EVACUATION:
                 if (fragment == null || !(fragment instanceof EvacuationFragment)) {
                     fragment = EvacuationFragment.newInstance();
+                    willAddFragmentToActivity = true;
                 }
                 break;
         }

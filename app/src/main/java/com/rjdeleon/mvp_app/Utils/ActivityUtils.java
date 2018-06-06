@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.rjdeleon.mvp_app.R;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ActivityUtils {
@@ -20,7 +22,12 @@ public class ActivityUtils {
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (addToBackstack) {
-            transaction.replace(frameId, fragment);
+            Fragment previousFragment = fragmentManager.findFragmentById(R.id.new_dnca_fragment_container);
+            if (previousFragment != null) {
+                transaction.hide(previousFragment);
+            }
+            transaction.add(frameId, fragment);
+            transaction.show(fragment);
             transaction.addToBackStack(null);
         } else {
             transaction.add(frameId, fragment);

@@ -26,23 +26,13 @@ public class ActivityUtils {
             if (previousFragment != null) {
                 transaction.hide(previousFragment);
             }
-
-            if (tag == null) {
-                transaction.add(frameId, fragment);
-            } else {
-                transaction.add(frameId, fragment, tag);
-            }
+            transaction.add(frameId, fragment, tag);
 
             transaction.show(fragment);
             transaction.addToBackStack(null);
 
         } else {
-
-            if (tag == null) {
-                transaction.add(frameId, fragment);
-            } else {
-                transaction.add(frameId, fragment, tag);
-            }
+            transaction.add(frameId, fragment, tag);
         }
         transaction.commit();
     }
@@ -66,4 +56,6 @@ public class ActivityUtils {
         transaction.add(fragment, tag);
         transaction.commit();
     }
+
+
 }

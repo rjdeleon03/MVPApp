@@ -9,14 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.AppUtil;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.FamilyDataFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FamilyDataFragment extends Fragment {
+public class FamilyDataFragment extends BaseSubFragment {
 
     private FamilyDataViewModel mViewModel;
 
@@ -27,7 +29,7 @@ public class FamilyDataFragment extends Fragment {
     }
 
     public FamilyDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(AppConstants.GenInfoComponent.FAMILY.toString());
     }
 
     /**

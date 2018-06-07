@@ -4,6 +4,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDa
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel;
@@ -20,7 +21,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     }
 
     public InfrastructureDamageFragment() {
-        // Required empty public constructor
+        setFragmentTag(AppConstants.GenInfoComponent.INFRASTRUCTURE.toString());
     }
 
     /**

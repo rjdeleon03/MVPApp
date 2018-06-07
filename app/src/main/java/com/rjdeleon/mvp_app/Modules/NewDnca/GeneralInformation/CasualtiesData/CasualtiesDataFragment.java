@@ -4,6 +4,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogViewModel;
@@ -20,7 +21,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
     }
 
     public CasualtiesDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(AppConstants.GenInfoComponent.CASUALTIES.toString());
     }
 
     /**

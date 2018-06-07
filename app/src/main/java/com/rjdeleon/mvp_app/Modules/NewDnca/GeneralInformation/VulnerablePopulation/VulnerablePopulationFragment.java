@@ -3,6 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopula
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
@@ -19,7 +20,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     }
 
     public VulnerablePopulationFragment() {
-        // Required empty public constructor
+        setFragmentTag(AppConstants.GenInfoComponent.VULNERABLE.toString());
     }
 
     /**

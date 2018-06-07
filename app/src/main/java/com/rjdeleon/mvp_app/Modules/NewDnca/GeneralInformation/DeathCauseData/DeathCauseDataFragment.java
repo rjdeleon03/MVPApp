@@ -4,6 +4,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog.DeathCauseDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog.DeathCauseDataDialogViewModel;
@@ -20,7 +21,7 @@ public class DeathCauseDataFragment extends BaseEnumFragment {
     }
 
     public DeathCauseDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(AppConstants.GenInfoComponent.DEATH_CAUSE.toString());
     }
 
     /**

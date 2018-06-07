@@ -32,17 +32,9 @@ import com.rjdeleon.mvp_app.databinding.NewDncaActivityBinding;
 
 import java.util.List;
 
-public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
+import static com.rjdeleon.mvp_app.AppConstants.VIEWMODEL_TAG;
 
-    public static final String NEW_DNCA_VIEWMODEL_TAG = "NEW_DNCA_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG = "NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VIEWMODEL_TAG";
-    public static final String SHELTER_INFO_VIEWMODEL_TAG = "SHELTER_INFO_VIEWMODEL_TAG";
-    public static final String FOOD_SECURITY_VIEWMODEL_TAG = "FOOD_SECURITY_VIEWMODEL_TAG";
-    public static final String LIVELIHOODS_VIEWMODEL_TAG = "LIVELIHOODS_VIEWMODEL_TAG";
-    public static final String HEALTH_VIEWMODEL_TAG = "HEALTH_VIEWMODEL_TAG";
-    public static final String WASH_VIEWMODEL_TAG = "WASH_VIEWMODEL_TAG";
-    public static final String EVACUATION_VIEWMODEL_TAG = "EVACUATION_VIEWMODEL_TAG";
+public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
 
     private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
@@ -299,92 +291,73 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
 
         NewDncaBaseViewModel viewModel = null;
-        String tag = null;
+        String tag = fragmentType.toString() + VIEWMODEL_TAG;
 
-        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = null;
+        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel;
 
-        switch(fragmentType) {
-            case MENU:
-                tag = NEW_DNCA_VIEWMODEL_TAG;
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-                    viewModel = retainedViewModel.getViewmodel();
-                } else {
+        retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+            viewModel = retainedViewModel.getViewmodel();
+        } else {
+            switch (fragmentType) {
+                case MENU:
                     viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                     viewModel.setNewDncaNavigator(this);
-                }
-                break;
+                    break;
 
-            case FORM_DETAILS:
-                tag = NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG;
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-                    viewModel = retainedViewModel.getViewmodel();
-                } else {
+                case FORM_DETAILS:
                     viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                     viewModel.setNewDncaNavigator(this);
-                }
-                break;
+                    break;
 
-            case GEN_INFO:
-                tag = NEW_DNCA_GEN_INFO_VIEWMODEL_TAG;
-                retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
-                if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-                    viewModel = retainedViewModel.getViewmodel();
-                } else {
+                case GEN_INFO:
                     viewModel = new GenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                     viewModel.setNewDncaNavigator(this);
-                }
-                break;
+                    break;
 
-            case SHELTER_INFO:
-                viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = SHELTER_INFO_VIEWMODEL_TAG;
-                break;
+                case SHELTER_INFO:
+                    viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case FOOD_SECURITY:
-                viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = FOOD_SECURITY_VIEWMODEL_TAG;
-                break;
+                case FOOD_SECURITY:
+                    viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case LIVELIHOODS:
-                viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = LIVELIHOODS_VIEWMODEL_TAG;
-                break;
+                case LIVELIHOODS:
+                    viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case HEALTH:
-                viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = HEALTH_VIEWMODEL_TAG;
-                break;
+                case HEALTH:
+                    viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case WASH:
-                viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = WASH_VIEWMODEL_TAG;
-                break;
+                case WASH:
+                    viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case EVACUATION:
-                viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = EVACUATION_VIEWMODEL_TAG;
-                break;
-        }
+                case EVACUATION:
+                    viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
+            }
 
-        if (retainedViewModel != null) {
-            // If container already exists, just inject viewModel into container
-            retainedViewModel.setViewModel(viewModel);
+            if (retainedViewModel != null) {
+                // If container already exists, just inject viewModel into container
+                retainedViewModel.setViewModel(viewModel);
 
-        } else {
+            } else {
 
-            // Bind viewModel to activity's lifecycle using fragment manager
-            ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(),
-                    ViewModelHolder.createContainer(viewModel),
-                    tag);
+                // Bind viewModel to activity's lifecycle using fragment manager
+                ActivityUtils.addFragmentToActivity(
+                        getSupportFragmentManager(),
+                        ViewModelHolder.createContainer(viewModel),
+                        tag);
+            }
         }
 
         return viewModel;

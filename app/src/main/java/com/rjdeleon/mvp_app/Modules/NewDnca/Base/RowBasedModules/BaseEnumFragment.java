@@ -14,12 +14,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.rjdeleon.mvp_app.databinding.BaseRowFragmentBinding;
 
-public abstract class BaseEnumFragment extends Fragment implements BaseEnumNavigator {
+public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEnumNavigator {
 
     protected BaseEnumViewModel mViewModel;
     protected Spinner mAgeGroupSpinner;

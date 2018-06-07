@@ -17,7 +17,7 @@ public class ActivityUtils {
      *
      */
     public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                              @NonNull Fragment fragment, int frameId, boolean addToBackstack) {
+                                              @NonNull Fragment fragment, int frameId, boolean addToBackstack, String tag) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -26,13 +26,31 @@ public class ActivityUtils {
             if (previousFragment != null) {
                 transaction.hide(previousFragment);
             }
-            transaction.add(frameId, fragment);
+
+            if (tag == null) {
+                transaction.add(frameId, fragment);
+            } else {
+                transaction.add(frameId, fragment, tag);
+            }
+
             transaction.show(fragment);
             transaction.addToBackStack(null);
+
         } else {
-            transaction.add(frameId, fragment);
+
+            if (tag == null) {
+                transaction.add(frameId, fragment);
+            } else {
+                transaction.add(frameId, fragment, tag);
+            }
         }
         transaction.commit();
+    }
+
+    public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
+                                              @NonNull Fragment fragment, int frameId, boolean addToBackstack) {
+
+        addFragmentToActivity(fragmentManager, fragment, frameId, addToBackstack, null);
     }
 
     /**

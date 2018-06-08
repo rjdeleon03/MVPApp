@@ -8,6 +8,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Dialog.Disea
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Dialog.DiseasesInjuriesDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Row.DiseasesInjuriesRowViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_DISEASES;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -20,7 +22,7 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
     }
 
     public DiseasesInjuriesFragment() {
-        // Required empty public constructor
+        setFragmentTag(HEALTH_DISEASES.toString());
     }
 
     @Override

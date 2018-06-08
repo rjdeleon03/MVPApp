@@ -104,7 +104,6 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
         return root;
     }
 
-
     /**
      * Finds the fragment of the specified type;
      * Creates the fragment if it does not exist

@@ -49,4 +49,12 @@ public class AppConstants {
         LIVELIHOODS_GAPS
     }
 
+    public enum HealthComponent {
+        HEALTH_DISEASES,
+        HEALTH_SPECIAL_NEEDS,
+        HEALTH_PSYCHOSOCIAL,
+        COPING,
+        ASSISTANCE,
+        HEALTH_GAPS
+    }
 }

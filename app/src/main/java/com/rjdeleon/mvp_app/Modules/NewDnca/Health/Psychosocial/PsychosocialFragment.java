@@ -7,6 +7,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_PSYCHOSOCIAL;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -19,7 +21,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
     }
 
     public PsychosocialFragment() {
-        // Required empty public constructor
+        setFragmentTag(HEALTH_PSYCHOSOCIAL.toString());
     }
 
     /**

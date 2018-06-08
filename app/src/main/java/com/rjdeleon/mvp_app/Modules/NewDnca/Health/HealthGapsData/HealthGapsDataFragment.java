@@ -7,19 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.HealthGapsDataFragmentBinding;
+
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HealthGapsDataFragment extends Fragment {
+public class HealthGapsDataFragment extends BaseSubFragment {
 
     private HealthGapsDataFragmentBinding mBinding;
     private HealthGapsDataViewModel mViewModel;
 
     public HealthGapsDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(HEALTH_GAPS.toString());
     }
 
     public static HealthGapsDataFragment newInstance() {

@@ -64,4 +64,13 @@ public class AppConstants {
         ASSISTANCE,
         WASH_GAPS
     }
+    
+    public enum EvacuationComponent {
+        EVACUATION_SITE,
+        EVACUATION_POPULATION,
+        EVACUATION_FACILITIES,
+        EVACUATION_WASH,
+        EVACUATION_SECURITY,
+        EVACUATION_COPING
+    }
 }

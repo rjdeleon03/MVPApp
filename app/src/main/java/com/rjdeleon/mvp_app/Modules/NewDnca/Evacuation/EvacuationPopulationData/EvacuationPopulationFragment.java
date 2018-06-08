@@ -7,6 +7,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.EvacuationComponent.EVACUATION_POPULATION;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -22,7 +24,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
      * Show evacuation population data dialog when add button is pressed
      */
     public EvacuationPopulationFragment() {
-        // Required empty public constructor
+        setFragmentTag(EVACUATION_POPULATION.toString());
     }
 
     /**

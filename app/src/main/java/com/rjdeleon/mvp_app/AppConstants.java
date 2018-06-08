@@ -57,4 +57,11 @@ public class AppConstants {
         ASSISTANCE,
         HEALTH_GAPS
     }
+
+    public enum WashComponent {
+        WASH_CONDITIONS,
+        WASH_COPING,
+        ASSISTANCE,
+        WASH_GAPS
+    }
 }

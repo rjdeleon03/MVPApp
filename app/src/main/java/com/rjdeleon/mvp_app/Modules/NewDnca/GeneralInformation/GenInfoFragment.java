@@ -26,12 +26,16 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.NewDncaActivity;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
-import java.util.List;
-
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_CALAMITY;
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_CASUALTIES;
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_DEATH_CAUSE;
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_FAMILY;
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_INFRASTRUCTURE;
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_POPULATION;
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_VULNERABLE;
 import static com.rjdeleon.mvp_app.AppConstants.VIEWMODEL_TAG;
 
 /**
@@ -66,50 +70,50 @@ public class GenInfoFragment extends BaseMultiPageFragment {
 
         {
             // Setup calamity details fragment
-            CalamityDetailsFragment calamityDetailsFragment = (CalamityDetailsFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.CALAMITY);
-            calamityDetailsFragment.setViewModel((CalamityDetailsViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.CALAMITY));
+            CalamityDetailsFragment calamityDetailsFragment = (CalamityDetailsFragment)findOrCreateViewFragment(GEN_INFO_CALAMITY);
+            calamityDetailsFragment.setViewModel((CalamityDetailsViewModel)findOrCreateViewModel(GEN_INFO_CALAMITY));
             mAdapter.addFragment(calamityDetailsFragment);
         }
 
         {
             // Setup population data fragment
-            PopulationDataFragment populationDataFragment = (PopulationDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.POPULATION);
-            populationDataFragment.setViewModel((PopulationDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.POPULATION));
+            PopulationDataFragment populationDataFragment = (PopulationDataFragment)findOrCreateViewFragment(GEN_INFO_POPULATION);
+            populationDataFragment.setViewModel((PopulationDataViewModel)findOrCreateViewModel(GEN_INFO_POPULATION));
             mAdapter.addFragment(populationDataFragment);
         }
 
         {
             // Setup family data fragment
-            FamilyDataFragment familyDataFragment = (FamilyDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.FAMILY);
-            familyDataFragment.setViewModel((FamilyDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.FAMILY));
+            FamilyDataFragment familyDataFragment = (FamilyDataFragment)findOrCreateViewFragment(GEN_INFO_FAMILY);
+            familyDataFragment.setViewModel((FamilyDataViewModel)findOrCreateViewModel(GEN_INFO_FAMILY));
             mAdapter.addFragment(familyDataFragment);
         }
 
         {
             // Setup vulnerable population fragment
-            VulnerablePopulationFragment vulnerablePopulationFragment = (VulnerablePopulationFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.VULNERABLE);
-            vulnerablePopulationFragment.setViewModel((VulnerablePopulationViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.VULNERABLE));
+            VulnerablePopulationFragment vulnerablePopulationFragment = (VulnerablePopulationFragment)findOrCreateViewFragment(GEN_INFO_VULNERABLE);
+            vulnerablePopulationFragment.setViewModel((VulnerablePopulationViewModel)findOrCreateViewModel(GEN_INFO_VULNERABLE));
             mAdapter.addFragment(vulnerablePopulationFragment);
         }
 
         {
             // Setup casualties data fragment
-            CasualtiesDataFragment casualtiesDataFragment = (CasualtiesDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.CASUALTIES);
-            casualtiesDataFragment.setViewModel((CasualtiesDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.CASUALTIES));
+            CasualtiesDataFragment casualtiesDataFragment = (CasualtiesDataFragment)findOrCreateViewFragment(GEN_INFO_CASUALTIES);
+            casualtiesDataFragment.setViewModel((CasualtiesDataViewModel)findOrCreateViewModel(GEN_INFO_CASUALTIES));
             mAdapter.addFragment(casualtiesDataFragment);
         }
 
         {
             // Setup death cause data fragment
-            DeathCauseDataFragment deathCauseDataFragment = (DeathCauseDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.DEATH_CAUSE);
-            deathCauseDataFragment.setViewModel((DeathCauseDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.DEATH_CAUSE));
+            DeathCauseDataFragment deathCauseDataFragment = (DeathCauseDataFragment)findOrCreateViewFragment(GEN_INFO_DEATH_CAUSE);
+            deathCauseDataFragment.setViewModel((DeathCauseDataViewModel)findOrCreateViewModel(GEN_INFO_DEATH_CAUSE));
             mAdapter.addFragment(deathCauseDataFragment);
         }
 
         {
             // Setup infrastructure damage fragment
-            InfrastructureDamageFragment infrastructureDamageFragment = (InfrastructureDamageFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.INFRASTRUCTURE);
-            infrastructureDamageFragment.setViewModel((InfrastructureDamageViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.INFRASTRUCTURE));
+            InfrastructureDamageFragment infrastructureDamageFragment = (InfrastructureDamageFragment)findOrCreateViewFragment(GEN_INFO_INFRASTRUCTURE);
+            infrastructureDamageFragment.setViewModel((InfrastructureDamageViewModel)findOrCreateViewModel(GEN_INFO_INFRASTRUCTURE));
             mAdapter.addFragment(infrastructureDamageFragment);
         }
         // Call to parent class to setup the view pager
@@ -118,40 +122,36 @@ public class GenInfoFragment extends BaseMultiPageFragment {
         return root;
     }
 
+    /**
+     * Finds the fragment of the specified type;
+     * Creates the fragment if it does not exist
+     * @param fragmentType
+     * @return
+     */
     @NonNull
     private Fragment findOrCreateViewFragment(AppConstants.GenInfoComponent fragmentType) {
-        List<Fragment> fragments = getChildFragmentManager().getFragments();
-        BaseSubFragment selectedFragment = null;
-        for(Fragment fragment : fragments) {
-            if (!(fragment instanceof BaseSubFragment)) continue;
-
-            selectedFragment = (BaseSubFragment)fragment;
-            if ((selectedFragment.getFragmentTag().equals(fragmentType.toString()))) {
-                break;
-            }
-            selectedFragment = null;
-        }
+        BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
         if (selectedFragment == null) {
             switch(fragmentType) {
-                case CALAMITY:
+                case GEN_INFO_CALAMITY:
                     selectedFragment = CalamityDetailsFragment.newInstance();
                     break;
-                case POPULATION:
+                case GEN_INFO_POPULATION:
                     selectedFragment = PopulationDataFragment.newInstance();
                     break;
-                case FAMILY:
+                case GEN_INFO_FAMILY:
                     selectedFragment = FamilyDataFragment.newInstance();
                     break;
-                case VULNERABLE:
+                case GEN_INFO_VULNERABLE:
                     selectedFragment = VulnerablePopulationFragment.newInstance();
                     break;
-                case CASUALTIES:
+                case GEN_INFO_CASUALTIES:
                     selectedFragment = CasualtiesDataFragment.newInstance();
                     break;
-                case DEATH_CAUSE:
+                case GEN_INFO_DEATH_CAUSE:
                     selectedFragment = DeathCauseDataFragment.newInstance();
                     break;
-                case INFRASTRUCTURE:
+                case GEN_INFO_INFRASTRUCTURE:
                     selectedFragment = InfrastructureDamageFragment.newInstance();
                     break;
             }
@@ -159,6 +159,12 @@ public class GenInfoFragment extends BaseMultiPageFragment {
         return selectedFragment;
     }
 
+    /**
+     * Finds the viewModel of the specified type;
+     * Creates the viewModel if it does not exist
+     * @param fragmentType
+     * @return
+     */
     @NonNull
     private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.GenInfoComponent fragmentType) {
 
@@ -174,41 +180,30 @@ public class GenInfoFragment extends BaseMultiPageFragment {
             viewModel = retainedViewModel.getViewmodel();
         } else {
             switch (fragmentType) {
-                case CALAMITY:
+                case GEN_INFO_CALAMITY:
                     viewModel = new CalamityDetailsViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case POPULATION:
+                case GEN_INFO_POPULATION:
                     viewModel = new PopulationDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case FAMILY:
+                case GEN_INFO_FAMILY:
                     viewModel = new FamilyDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case VULNERABLE:
+                case GEN_INFO_VULNERABLE:
                     viewModel = new VulnerablePopulationViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case CASUALTIES:
+                case GEN_INFO_CASUALTIES:
                     viewModel = new CasualtiesDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case DEATH_CAUSE:
+                case GEN_INFO_DEATH_CAUSE:
                     viewModel = new DeathCauseDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case INFRASTRUCTURE:
+                case GEN_INFO_INFRASTRUCTURE:
                     viewModel = new InfrastructureDamageViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
             }
 
-            if (retainedViewModel != null) {
-                // If container already exists, just inject viewModel into container
-                retainedViewModel.setViewModel(viewModel);
-
-            } else {
-
-                // Bind viewModel to activity's lifecycle using fragment manager
-                ActivityUtils.addFragmentToActivity(
-                        getChildFragmentManager(),
-                        ViewModelHolder.createContainer(viewModel),
-                        tag);
-            }
+            ActivityUtils.bindViewModel(getChildFragmentManager(), retainedViewModel, viewModel, tag);
         }
         return viewModel;
     }

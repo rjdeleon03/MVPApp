@@ -9,6 +9,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_INFRASTRUCTURE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -21,7 +23,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     }
 
     public InfrastructureDamageFragment() {
-        setFragmentTag(AppConstants.GenInfoComponent.INFRASTRUCTURE.toString());
+        setFragmentTag(GEN_INFO_INFRASTRUCTURE.toString());
     }
 
     /**

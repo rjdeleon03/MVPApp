@@ -10,6 +10,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_POPULATION;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -22,7 +24,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     }
 
     public PopulationDataFragment() {
-        setFragmentTag(AppConstants.GenInfoComponent.POPULATION.toString());
+        setFragmentTag(GEN_INFO_POPULATION.toString());
     }
 
     /**

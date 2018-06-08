@@ -7,6 +7,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.Dialog.Assistanc
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenericComponent.ASSISTANCE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -19,7 +21,7 @@ public class AssistanceDataFragment extends BaseEnumFragment{
     }
 
     public AssistanceDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(ASSISTANCE.toString());
     }
 
     /**

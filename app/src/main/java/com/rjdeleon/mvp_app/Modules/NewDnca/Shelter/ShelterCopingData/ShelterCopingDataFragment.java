@@ -9,19 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.ShelterCopingDataFragmentBinding;
+
+import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_COPING;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShelterCopingDataFragment extends Fragment {
+public class ShelterCopingDataFragment extends BaseSubFragment {
 
     private ShelterCopingDataViewModel mViewModel;
     private ShelterCopingDataFragmentBinding mBinding;
 
     public ShelterCopingDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(SHELTER_COPING.toString());
     }
 
     public static ShelterCopingDataFragment newInstance() {

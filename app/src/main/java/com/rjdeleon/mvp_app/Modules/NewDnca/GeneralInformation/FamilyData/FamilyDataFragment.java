@@ -15,6 +15,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.FamilyDataFragmentBinding;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_FAMILY;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -29,7 +31,7 @@ public class FamilyDataFragment extends BaseSubFragment {
     }
 
     public FamilyDataFragment() {
-        setFragmentTag(AppConstants.GenInfoComponent.FAMILY.toString());
+        setFragmentTag(GEN_INFO_FAMILY.toString());
     }
 
     /**

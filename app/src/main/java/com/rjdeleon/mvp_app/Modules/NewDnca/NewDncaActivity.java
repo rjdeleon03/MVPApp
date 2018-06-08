@@ -154,7 +154,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         ShelterInfoViewModel shelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
         shelterInfoFragment.setViewModel(shelterInfoViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), shelterInfoFragment,
-                R.id.new_dnca_fragment_container, true, NewDncaComponent.GEN_INFO.toString());
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.SHELTER_INFO.toString());
     }
 
     /**

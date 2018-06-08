@@ -18,6 +18,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.CalamityDetailsFragmentBinding;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_CALAMITY;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +36,7 @@ public class CalamityDetailsFragment extends BaseSubFragment {
     }
 
     public CalamityDetailsFragment() {
-        setFragmentTag(AppConstants.GenInfoComponent.CALAMITY.toString());
+        setFragmentTag(GEN_INFO_CALAMITY.toString());
     }
 
     /**

@@ -9,6 +9,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_CASUALTIES;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -21,7 +23,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
     }
 
     public CasualtiesDataFragment() {
-        setFragmentTag(AppConstants.GenInfoComponent.CASUALTIES.toString());
+        setFragmentTag(GEN_INFO_CASUALTIES.toString());
     }
 
     /**

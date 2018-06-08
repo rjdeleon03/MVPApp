@@ -8,6 +8,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_VULNERABLE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -20,7 +22,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     }
 
     public VulnerablePopulationFragment() {
-        setFragmentTag(AppConstants.GenInfoComponent.VULNERABLE.toString());
+        setFragmentTag(GEN_INFO_VULNERABLE.toString());
     }
 
     /**

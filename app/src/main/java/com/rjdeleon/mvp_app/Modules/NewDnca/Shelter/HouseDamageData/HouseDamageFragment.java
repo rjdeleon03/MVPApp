@@ -9,6 +9,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Po
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_HOUSE_DAMAGE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -21,7 +23,7 @@ public class HouseDamageFragment extends BaseEnumFragment {
     }
 
     public HouseDamageFragment() {
-        // Required empty public constructor
+        setFragmentTag(SHELTER_HOUSE_DAMAGE.toString());
     }
 
     @Override

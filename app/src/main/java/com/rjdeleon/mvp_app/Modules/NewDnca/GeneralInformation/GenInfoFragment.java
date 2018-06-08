@@ -67,56 +67,49 @@ public class GenInfoFragment extends BaseMultiPageFragment {
         {
             // Setup calamity details fragment
             CalamityDetailsFragment calamityDetailsFragment = (CalamityDetailsFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.CALAMITY);
-            CalamityDetailsViewModel calamityDetailsViewModel = (CalamityDetailsViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.CALAMITY);
-            calamityDetailsFragment.setViewModel(calamityDetailsViewModel);
+            calamityDetailsFragment.setViewModel((CalamityDetailsViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.CALAMITY));
             mAdapter.addFragment(calamityDetailsFragment);
         }
 
         {
             // Setup population data fragment
             PopulationDataFragment populationDataFragment = (PopulationDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.POPULATION);
-            PopulationDataViewModel populationDataViewModel = (PopulationDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.POPULATION);
-            populationDataFragment.setViewModel(populationDataViewModel);
+            populationDataFragment.setViewModel((PopulationDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.POPULATION));
             mAdapter.addFragment(populationDataFragment);
         }
 
         {
             // Setup family data fragment
             FamilyDataFragment familyDataFragment = (FamilyDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.FAMILY);
-            FamilyDataViewModel familyDataViewModel = (FamilyDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.FAMILY);
-            familyDataFragment.setViewModel(familyDataViewModel);
+            familyDataFragment.setViewModel((FamilyDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.FAMILY));
             mAdapter.addFragment(familyDataFragment);
         }
 
         {
             // Setup vulnerable population fragment
             VulnerablePopulationFragment vulnerablePopulationFragment = (VulnerablePopulationFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.VULNERABLE);
-            VulnerablePopulationViewModel vulnerablePopulationViewModel = (VulnerablePopulationViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.VULNERABLE);
-            vulnerablePopulationFragment.setViewModel(vulnerablePopulationViewModel);
+            vulnerablePopulationFragment.setViewModel((VulnerablePopulationViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.VULNERABLE));
             mAdapter.addFragment(vulnerablePopulationFragment);
         }
 
         {
             // Setup casualties data fragment
             CasualtiesDataFragment casualtiesDataFragment = (CasualtiesDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.CASUALTIES);
-            CasualtiesDataViewModel casualtiesDataViewModel = (CasualtiesDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.CASUALTIES);
-            casualtiesDataFragment.setViewModel(casualtiesDataViewModel);
+            casualtiesDataFragment.setViewModel((CasualtiesDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.CASUALTIES));
             mAdapter.addFragment(casualtiesDataFragment);
         }
 
         {
             // Setup death cause data fragment
             DeathCauseDataFragment deathCauseDataFragment = (DeathCauseDataFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.DEATH_CAUSE);
-            DeathCauseDataViewModel deathCauseDataViewModel = (DeathCauseDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.DEATH_CAUSE);
-            deathCauseDataFragment.setViewModel(deathCauseDataViewModel);
+            deathCauseDataFragment.setViewModel((DeathCauseDataViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.DEATH_CAUSE));
             mAdapter.addFragment(deathCauseDataFragment);
         }
 
         {
             // Setup infrastructure damage fragment
             InfrastructureDamageFragment infrastructureDamageFragment = (InfrastructureDamageFragment)findOrCreateViewFragment(AppConstants.GenInfoComponent.INFRASTRUCTURE);
-            InfrastructureDamageViewModel infrastructureDamageViewModel = (InfrastructureDamageViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.INFRASTRUCTURE);
-            infrastructureDamageFragment.setViewModel(infrastructureDamageViewModel);
+            infrastructureDamageFragment.setViewModel((InfrastructureDamageViewModel)findOrCreateViewModel(AppConstants.GenInfoComponent.INFRASTRUCTURE));
             mAdapter.addFragment(infrastructureDamageFragment);
         }
         // Call to parent class to setup the view pager

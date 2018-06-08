@@ -8,19 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.databinding.LivelihoodsGapsDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
+
+import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.LIVELIHOODS_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LivelihoodsGapsDataFragment extends Fragment {
+public class LivelihoodsGapsDataFragment extends BaseSubFragment {
 
     private LivelihoodsGapsDataFragmentBinding mBinding;
     private LivelihoodsGapsDataViewModel mViewModel;
 
     public LivelihoodsGapsDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(LIVELIHOODS_GAPS.toString());
     }
 
     public static LivelihoodsGapsDataFragment newInstance() {

@@ -8,19 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.databinding.BaseCopingDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
+
+import static com.rjdeleon.mvp_app.AppConstants.GenericComponent.COPING;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GenericCopingDataFragment extends Fragment {
+public class GenericCopingDataFragment extends BaseSubFragment {
 
     private BaseCopingDataFragmentBinding mBinding;
     private GenericCopingDataViewModel mViewModel;
 
     public GenericCopingDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(COPING.toString());
     }
 
     public static GenericCopingDataFragment newInstance() {

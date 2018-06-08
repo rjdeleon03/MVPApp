@@ -22,11 +22,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialFrag
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsViewModel;
-import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
-
-import static com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityFragment.FOOD_SECURITY_GAPS_VIEWMODEL_TAG;
 
 /**
  * A simple {@link Fragment} subclass.

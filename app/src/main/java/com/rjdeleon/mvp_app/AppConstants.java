@@ -9,7 +9,8 @@ public class AppConstants {
 
     public enum GenericComponent {
         ASSISTANCE,
-        COPING
+        COPING,
+        GAPS
     }
 
     public enum GenInfoComponent {
@@ -30,5 +31,22 @@ public class AppConstants {
         SHELTER_GAPS
     }
 
+    public enum FoodSecurityComponent {
+        FOOD_IMPACT,
+        COPING,
+        FOOD_NEEDS,
+        ASSISTANCE,
+        FOOD_GAPS
+    }
+
+    public enum LivelihoodsComponent {
+        LIVELIHOODS_INCOME_BEFORE,
+        LIVELIHOODS_INCOME_AFTER,
+        LIVELIHOODS_DAMAGE,
+        LIVELIHOODS_COPING,
+        LIVELIHOODS_NEEDS,
+        ASSISTANCE,
+        LIVELIHOODS_GAPS
+    }
 
 }

@@ -8,19 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.databinding.FoodImpactDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
+
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_IMPACT;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FoodImpactDataFragment extends Fragment {
+public class FoodImpactDataFragment extends BaseSubFragment {
 
     private FoodImpactDataFragmentBinding mBinding;
     private FoodImpactDataViewModel mViewModel;
 
     public FoodImpactDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(FOOD_IMPACT.toString());
     }
 
     public static FoodImpactDataFragment newInstance() {

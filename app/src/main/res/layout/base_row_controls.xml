@@ -47,8 +47,8 @@
                 android:layout_margin="4dp"
                 android:src="@drawable/ic_add"
                 android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
-                bind:enumList="@{viewModel.ageGroupList}"
-                bind:spinnerVisibility="@{viewModel.shouldShowSpinner}"
+                enumList="@{viewModel.ageGroupList}"
+                spinnerVisibility="@{viewModel.shouldShowSpinner}"
                 app:backgroundTint="@color/colorAccent"
                 app:elevation="0dp"/>
 

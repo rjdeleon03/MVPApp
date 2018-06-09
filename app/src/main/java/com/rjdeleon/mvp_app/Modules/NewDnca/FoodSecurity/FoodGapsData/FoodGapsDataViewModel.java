@@ -5,15 +5,19 @@ import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodGapsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityRepositoryManager;
 
-public class FoodGapsDataViewModel extends FoodSecurityBaseViewModel implements NonEnumSaveableSection {
+public class FoodGapsDataViewModel extends FoodSecurityBaseViewModel {
 
-    public final ObservableField<String> isAssistanceAppropriate = new ObservableField<>("");
-    public final ObservableField<String> isAssistanceEnough = new ObservableField<>("");
-    public final ObservableField<String> hasEqualAccess = new ObservableField<>("");
-    public final ObservableField<String> wereAllConsidered = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Is the assistance provided appropriate to the needs of the families?",
+            "Is the assistance provided enough?",
+            "Do women and men have equal access to the assistance?",
+            "Were the specific food needs of men, women, boys, girls, pwd, children, breastfeeding and lactating women considered in the assistance?"
+    };
     
     /**
      * Constructor
@@ -24,10 +28,10 @@ public class FoodGapsDataViewModel extends FoodSecurityBaseViewModel implements 
         super(context, foodSecurityRepositoryManager);
 
         FoodGapsData foodGapsData = mFoodSecurityRepositoryManager.getFoodGapsData();
-        isAssistanceAppropriate.set(foodGapsData.getIsAssistanceAppropriate());
-        isAssistanceEnough.set(foodGapsData.getIsAssistanceEnough());
-        hasEqualAccess.set(foodGapsData.getHasEqualAccess());
-        wereAllConsidered.set(foodGapsData.getWereAllConsidered());
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], foodGapsData.getIsAssistanceAppropriate())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[1], foodGapsData.getIsAssistanceEnough())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[2], foodGapsData.getHasEqualAccess())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[3], foodGapsData.getWereAllConsidered())));
     }
 
     /**
@@ -36,10 +40,10 @@ public class FoodGapsDataViewModel extends FoodSecurityBaseViewModel implements 
     @Override
     public void navigateOnSaveButtonPressed() {
         FoodGapsData foodGapsData = new FoodGapsData(
-                isAssistanceAppropriate.get(),
-                isAssistanceEnough.get(),
-                hasEqualAccess.get(),
-                wereAllConsidered.get());
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(0)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(1)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(2)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(3)).answer.get());
         mFoodSecurityRepositoryManager.saveFoodGapsData(foodGapsData);
     }
 }

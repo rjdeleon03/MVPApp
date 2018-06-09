@@ -1,19 +1,19 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules;
 
-public class BaseQuestion {
+public class BaseQuestionMultipleValue {
 
     private String question;
-    private Object value;
+    private Object[] value;
     private String remarks;
 
-    public BaseQuestion(String question, Object value, String remarks) {
+    public BaseQuestionMultipleValue(String question, String remarks, Object...value) {
         this.question = question;
         this.value = value;
         this.remarks = remarks;
     }
 
-    public BaseQuestion(String question, Object value) {
-        this(question, value, null);
+    public BaseQuestionMultipleValue(String question, Object...value) {
+        this(question, null, value);
     }
 
     public String getQuestion() {
@@ -24,11 +24,11 @@ public class BaseQuestion {
         this.question = question;
     }
 
-    public Object getValue() {
+    public Object[] getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(Object[] value) {
         this.value = value;
     }
 

@@ -6,13 +6,18 @@ import android.databinding.ObservableInt;
 
 import com.rjdeleon.mvp_app.Models.FoodSecurity.FoodNeedsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelInt;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityRepositoryManager;
 
 public class FoodNeedsDataViewModel extends FoodSecurityBaseViewModel implements NonEnumSaveableSection {
 
-    public final ObservableField<String> assistanceNeeded = new ObservableField<>();
-    public final ObservableInt numberOfFamilies = new ObservableInt(0);
+    private String[] mQuestions = {
+            "What assistance can be provided to fill the food gap?",
+            "Number of families in need of food supply or lack the capacity to buy or secure food for their own consumption"
+    };
 
     /**
      * Constructor
@@ -23,8 +28,8 @@ public class FoodNeedsDataViewModel extends FoodSecurityBaseViewModel implements
         super(context, foodSecurityRepositoryManager);
 
         FoodNeedsData foodNeedsData = mFoodSecurityRepositoryManager.getFoodNeedsData();
-        assistanceNeeded.set(foodNeedsData.getAssistanceNeeded());
-        numberOfFamilies.set(foodNeedsData.getNumberOfFamilies());
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], foodNeedsData.getAssistanceNeeded())));
+        mQuestionsViewModels.add(new QuestionItemViewModelInt(new BaseQuestion(mQuestions[1], foodNeedsData.getNumberOfFamilies())));
     }
 
     /**
@@ -32,7 +37,9 @@ public class FoodNeedsDataViewModel extends FoodSecurityBaseViewModel implements
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        FoodNeedsData foodNeedsData = new FoodNeedsData(assistanceNeeded.get(), numberOfFamilies.get());
+        FoodNeedsData foodNeedsData = new FoodNeedsData(
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(0)).answer.get(),
+                ((QuestionItemViewModelInt) mQuestionsViewModels.get(1)).answer.get());
         mFoodSecurityRepositoryManager.saveFoodNeedsData(foodNeedsData);
     }
 }

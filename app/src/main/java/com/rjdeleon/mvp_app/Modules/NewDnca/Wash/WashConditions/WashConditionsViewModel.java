@@ -16,7 +16,7 @@ public class WashConditionsViewModel extends WashBaseViewModel {
             "What is the current water source and level of water system available?\nDrinking and food preparation:",
             "Bathing, washing and domestic use:",
             "How many water points and conditions are there?",
-            "Is the water potable? \n" +
+            "Is the water potable?\n" +
                     "If not, where do they get clean drinking water? (specify distance from the residential units)",
             "How much time do they spend in fetching water?",
             "Who owns the water source?",

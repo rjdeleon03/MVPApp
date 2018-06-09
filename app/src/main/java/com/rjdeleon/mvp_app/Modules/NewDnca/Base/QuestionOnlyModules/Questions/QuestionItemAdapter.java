@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.databinding.BaseQuestionDateBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionBooleanBinding;
+import com.rjdeleon.mvp_app.databinding.BaseQuestionDoubleStringBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionEnumBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionFloatBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionIntBinding;
@@ -18,6 +19,7 @@ import com.rjdeleon.mvp_app.R;
 
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.DATE;
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.BOOLEAN;
+import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.DOUBLE_STRING;
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.ENUM;
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.FLOAT;
 import static com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter.LayoutIdMapping.INT;
@@ -35,7 +37,8 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHo
         BOOLEAN,
         ENUM,
         DATE,
-        WATER_LEVELS;
+        WATER_LEVELS,
+        DOUBLE_STRING;
 
         public int getLayoutId() {
             switch (this) {
@@ -51,6 +54,8 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHo
                     return R.layout.base_question_date;
                 case WATER_LEVELS:
                     return R.layout.base_question_levels;
+                case DOUBLE_STRING:
+                    return R.layout.base_question_double_string;
                 default:
                     return R.layout.base_question_string;
             }
@@ -91,6 +96,9 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHo
         } else if (viewType == WATER_LEVELS.getLayoutId()) {
             binding = BaseQuestionLevelsBinding.bind(root);
 
+        } else if (viewType == DOUBLE_STRING.getLayoutId()) {
+            binding = BaseQuestionDoubleStringBinding.bind(root);
+
         }
 
         return new QuestionItemViewHolder(binding);
@@ -126,6 +134,9 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHo
 
         } else if (questionViewModel instanceof QuestionItemViewModelLevels) {
             viewType = WATER_LEVELS.getLayoutId();
+
+        } else if (questionViewModel instanceof QuestionItemViewModelDoubleString) {
+            viewType = DOUBLE_STRING.getLayoutId();
 
         }
 

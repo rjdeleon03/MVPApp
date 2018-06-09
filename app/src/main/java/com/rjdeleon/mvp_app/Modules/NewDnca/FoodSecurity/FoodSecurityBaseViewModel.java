@@ -2,9 +2,9 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity;
 
 import android.content.Context;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionViewModel;
 
-public abstract class FoodSecurityBaseViewModel extends NewDncaBaseViewModel {
+public abstract class FoodSecurityBaseViewModel extends BaseQuestionViewModel {
 
     protected FoodSecurityRepositoryManager mFoodSecurityRepositoryManager;
 

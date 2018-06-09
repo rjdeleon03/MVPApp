@@ -15,6 +15,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCoping
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodAssistanceData.FoodAssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
@@ -73,7 +74,7 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
         {
             // Setup coping data fragment
             FoodCopingDataFragment foodCopingDataFragment = (FoodCopingDataFragment)findOrCreateViewFragment(FOOD_COPING);
-            foodCopingDataFragment.setViewModel((GenericCopingDataViewModel)findOrCreateViewModel(FOOD_COPING));
+            foodCopingDataFragment.setViewModel((FoodCopingDataViewModel)findOrCreateViewModel(FOOD_COPING));
             mAdapter.addFragment(foodCopingDataFragment);
         }
 
@@ -160,7 +161,7 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
                     viewModel = new FoodImpactDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case FOOD_COPING:
-                    viewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    viewModel = new FoodCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case FOOD_NEEDS:
                     viewModel = new FoodNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);

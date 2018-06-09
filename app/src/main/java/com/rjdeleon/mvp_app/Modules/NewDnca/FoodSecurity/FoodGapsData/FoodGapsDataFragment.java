@@ -1,54 +1,22 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
-import com.rjdeleon.mvp_app.R;
-import com.rjdeleon.mvp_app.databinding.FoodGapsDataFragmentBinding;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
 import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FoodGapsDataFragment extends BaseSubFragment {
-
-    private FoodGapsDataFragmentBinding mBinding;
-    private FoodGapsDataViewModel mViewModel;
-
-    public FoodGapsDataFragment() {
-        setFragmentTag(FOOD_GAPS.toString());
-    }
+public class FoodGapsDataFragment extends BaseQuestionFragment {
 
     public static FoodGapsDataFragment newInstance() {
         return new FoodGapsDataFragment();
     }
 
-    /**
-     * Sets the viewModel
-     * @param viewModel
-     */
-    public void setViewModel(FoodGapsDataViewModel viewModel) {
-        mViewModel = viewModel;
+    public FoodGapsDataFragment() {
+        setFragmentTag(FOOD_GAPS.toString());
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.food_gaps_data_fragment, container, false);
-        if (mBinding == null) {
-            mBinding = FoodGapsDataFragmentBinding.bind(root);
-        }
-        mBinding.setViewModel(mViewModel);
-
-        return root;
-    }
-
 }

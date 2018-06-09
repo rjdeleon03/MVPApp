@@ -11,6 +11,7 @@ import android.widget.Spinner;
 
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionDateBinding;
+import com.rjdeleon.mvp_app.databinding.BaseQuestionDoubleStringBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionEnumBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionFloatBinding;
 import com.rjdeleon.mvp_app.databinding.BaseQuestionIntBinding;
@@ -72,6 +73,9 @@ public class QuestionItemViewHolder extends RecyclerView.ViewHolder {
                             showDatePickerDialog(v, dateViewModel);
                         }
                     });
+        } else if (questionItemViewModel instanceof QuestionItemViewModelDoubleString) {
+            ((BaseQuestionDoubleStringBinding) mBinding).setViewModel((QuestionItemViewModelDoubleString) questionItemViewModel);
+
         }
     }
 

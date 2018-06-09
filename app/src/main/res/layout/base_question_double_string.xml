@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             tools:context=".Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataFragment">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataViewModel" />
+            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelDoubleString" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="@{viewModel.question}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="16dp"
-                android:paddingBottom="72dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginStart="16dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_bold"
-                    android:text="What assistance can be provided to fill the food gap?"
+                    android:text="@{viewModel.subQuestion1}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:text="@={viewModel.assistanceNeeded}"
+                    android:text="@={viewModel.answer1}"
                     android:textSize="14dp"
                     android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
@@ -47,25 +53,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Number of families in need of food supply or lack the capacity to buy or secure food for their own consumption:"
+                    android:text="@{viewModel.subQuestion2}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:text="@={viewModel.numberOfFamilies}"
+                    android:text="@={viewModel.answer2}"
                     android:textSize="14dp"
                     android:fontFamily="@font/lato_reg"
-                    android:inputType="number" />
+                    android:inputType="textMultiLine" />
 
             </LinearLayout>
 
-        </ScrollView>
+        </LinearLayout>
 
-        <include layout="@layout/base_save_button"
-                 viewModel="@{viewModel}"/>
-
-    </android.support.design.widget.CoordinatorLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </layout>

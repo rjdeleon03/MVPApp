@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.Base;
+package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules;
 
 import android.databinding.Observable;
 

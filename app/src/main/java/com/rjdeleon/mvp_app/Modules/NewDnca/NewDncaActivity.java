@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.rjdeleon.mvp_app.Injection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
@@ -29,27 +30,14 @@ import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 import com.rjdeleon.mvp_app.databinding.NewDncaActivityBinding;
 
+import java.util.List;
+
+import static com.rjdeleon.mvp_app.AppConstants.VIEWMODEL_TAG;
+
 public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
 
-    public static final String NEW_DNCA_VIEWMODEL_TAG = "NEW_DNCA_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG = "NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG";
-    public static final String NEW_DNCA_GEN_INFO_VIEWMODEL_TAG = "NEW_DNCA_GEN_INFO_VIEWMODEL_TAG";
-    public static final String SHELTER_INFO_VIEWMODEL_TAG = "SHELTER_INFO_VIEWMODEL_TAG";
-    public static final String FOOD_SECURITY_VIEWMODEL_TAG = "FOOD_SECURITY_VIEWMODEL_TAG";
-    public static final String LIVELIHOODS_VIEWMODEL_TAG = "LIVELIHOODS_VIEWMODEL_TAG";
-    public static final String HEALTH_VIEWMODEL_TAG = "HEALTH_VIEWMODEL_TAG";
-    public static final String WASH_VIEWMODEL_TAG = "WASH_VIEWMODEL_TAG";
-    public static final String EVACUATION_VIEWMODEL_TAG = "EVACUATION_VIEWMODEL_TAG";
-
+    private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
-    private NewDncaFormDetailsViewModel mFormDetailsViewModel;
-    private GenInfoViewModel mGenInfoViewModel;
-    private ShelterInfoViewModel mShelterInfoViewModel;
-    private FoodSecurityViewModel mFoodSecurityViewModel;
-    private LivelihoodsViewModel mLivelihoodsViewModel;
-    private HealthViewModel mHealthViewModel;
-    private WashViewModel mWashViewModel;
-    private EvacuationViewModel mEvacuationViewModel;
 
     private NewDncaActivityBinding mMainBinding;
 
@@ -75,16 +63,51 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         Toolbar toolbar = findViewById(R.id.custom_nav_toolbar_new_dnca);
         setSupportActionBar(toolbar);
 
-        // Setup view and viewModel
-        NewDncaFragment newDncaFragment = (NewDncaFragment) findOrCreateViewFragment(NewDncaComponent.MENU);
-        mMainViewModel = (NewDncaViewModel) findOrCreateViewModel(NewDncaComponent.MENU);
+        {
+            // Setup view and viewModel
+            mNewDncaFragment = (NewDncaFragment) findOrCreateViewFragment(NewDncaComponent.MENU);
+            mMainViewModel = (NewDncaViewModel) findOrCreateViewModel(NewDncaComponent.MENU);
 
-        // Link view and viewModel
-        newDncaFragment.setViewModel(mMainViewModel);
-        mMainViewModel.setNewDncaNavigator(this);
+            // Link view and viewModel
+            mNewDncaFragment.setViewModel(mMainViewModel);
+            mMainViewModel.setNewDncaNavigator(this);
 
-        // Bind viewModel to view
-        mMainBinding.setViewModel(mMainViewModel);
+            // Bind viewModel to view
+            mMainBinding.setViewModel(mMainViewModel);
+        }
+
+        // Restore viewModels if applicable when activity is started
+        List<Fragment> loadedFragments = getSupportFragmentManager().getFragments();
+        for(Fragment currentFragment : loadedFragments) {
+            
+            if (currentFragment instanceof ViewModelHolder) continue;
+
+            if(currentFragment.getTag().equals(NewDncaComponent.FORM_DETAILS.toString())) {
+                ((NewDncaFormDetailsFragment) currentFragment).setViewModel((NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.GEN_INFO.toString())) {
+                ((GenInfoFragment) currentFragment).setViewModel((GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.SHELTER_INFO.toString())) {
+                ((ShelterInfoFragment) currentFragment).setViewModel((ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.FOOD_SECURITY.toString())) {
+                ((FoodSecurityFragment) currentFragment).setViewModel((FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.LIVELIHOODS.toString())) {
+                ((LivelihoodsFragment) currentFragment).setViewModel((LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.HEALTH.toString())) {
+                ((HealthFragment) currentFragment).setViewModel((HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.WASH.toString())) {
+                ((WashFragment) currentFragment).setViewModel((WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH));
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.EVACUATION.toString())) {
+                ((EvacuationFragment) currentFragment).setViewModel((EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION));
+
+            }
+        }
     }
 
     @Override
@@ -103,9 +126,11 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onFormDetailsButtonPressed() {
-        NewDncaFormDetailsFragment newDncaFormDetailsFragment = (NewDncaFormDetailsFragment) findOrCreateViewFragment(NewDncaComponent.FORM_DETAILS);
-        mFormDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
-        newDncaFormDetailsFragment.setViewModel(mFormDetailsViewModel);
+        NewDncaFormDetailsFragment formDetailsFragment = (NewDncaFormDetailsFragment) findOrCreateViewFragment(NewDncaComponent.FORM_DETAILS);
+        NewDncaFormDetailsViewModel formDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
+        formDetailsFragment.setViewModel(formDetailsViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formDetailsFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.FORM_DETAILS.toString());
     }
 
     /**
@@ -114,8 +139,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onGenInfoButtonPressed() {
         GenInfoFragment genInfoFragment = (GenInfoFragment) findOrCreateViewFragment(NewDncaComponent.GEN_INFO);
-        mGenInfoViewModel = (GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
-        genInfoFragment.setViewModel(mGenInfoViewModel);
+        GenInfoViewModel genInfoViewModel = (GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
+        genInfoFragment.setViewModel(genInfoViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), genInfoFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.GEN_INFO.toString());
     }
 
     /**
@@ -124,8 +151,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onShelterInfoButtonPressed() {
         ShelterInfoFragment shelterInfoFragment = (ShelterInfoFragment) findOrCreateViewFragment(NewDncaComponent.SHELTER_INFO);
-        mShelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
-        shelterInfoFragment.setViewModel(mShelterInfoViewModel);
+        ShelterInfoViewModel shelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
+        shelterInfoFragment.setViewModel(shelterInfoViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), shelterInfoFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.SHELTER_INFO.toString());
     }
 
     /**
@@ -134,8 +163,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onFoodSecurityButtonPressed() {
         FoodSecurityFragment foodSecurityFragment = (FoodSecurityFragment) findOrCreateViewFragment(NewDncaComponent.FOOD_SECURITY);
-        mFoodSecurityViewModel = (FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY);
-        foodSecurityFragment.setViewModel(mFoodSecurityViewModel);
+        FoodSecurityViewModel foodSecurityViewModel = (FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY);
+        foodSecurityFragment.setViewModel(foodSecurityViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), foodSecurityFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.FOOD_SECURITY.toString());
     }
 
     /**
@@ -144,8 +175,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onLivelihoodsButtonPressed() {
         LivelihoodsFragment livelihoodsFragment = (LivelihoodsFragment) findOrCreateViewFragment(NewDncaComponent.LIVELIHOODS);
-        mLivelihoodsViewModel = (LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS);
-        livelihoodsFragment.setViewModel(mLivelihoodsViewModel);
+        LivelihoodsViewModel livelihoodsViewModel = (LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS);
+        livelihoodsFragment.setViewModel(livelihoodsViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), livelihoodsFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.LIVELIHOODS.toString());
     }
 
     /**
@@ -154,8 +187,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onHealthButtonPressed() {
         HealthFragment healthFragment = (HealthFragment) findOrCreateViewFragment(NewDncaComponent.HEALTH);
-        mHealthViewModel = (HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH);
-        healthFragment.setViewModel(mHealthViewModel);
+        HealthViewModel healthViewModel = (HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH);
+        healthFragment.setViewModel(healthViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), healthFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.HEALTH.toString());
     }
 
     /**
@@ -164,8 +199,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onWashButtonPressed() {
         WashFragment washFragment = (WashFragment) findOrCreateViewFragment(NewDncaComponent.WASH);
-        mWashViewModel = (WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH);
-        washFragment.setViewModel(mWashViewModel);
+        WashViewModel washViewModel = (WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH);
+        washFragment.setViewModel(washViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), washFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.WASH.toString());
     }
 
     /**
@@ -173,23 +210,28 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onEvacuationButtonPressed() {
-        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
-        mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
-        evacuationFragment.setViewModel(mEvacuationViewModel);
+        EvacuationFragment evacuationFragent = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
+        EvacuationViewModel evacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+        evacuationFragent.setViewModel(evacuationViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragent,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
     }
 
     @NonNull
     private Fragment findOrCreateViewFragment(NewDncaComponent fragmentType) {
 
         // Retrieve fragment if it exists
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.new_dnca_fragment_container);
-        boolean addToBackstack = true;
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(fragmentType.toString());
 
         switch(fragmentType) {
             case MENU:
                 if (fragment == null || !(fragment instanceof NewDncaFragment)) {
                     fragment = NewDncaFragment.newInstance();
-                    addToBackstack = false;
+                    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
+                            fragment,
+                            R.id.new_dnca_fragment_container,
+                            false,
+                            fragmentType.toString());
                 }
                 break;
 
@@ -242,78 +284,81 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
         }
 
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_dnca_fragment_container, addToBackstack);
         return fragment;
     }
 
-    private com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
+    @NonNull
+    private NewDncaBaseViewModel findOrCreateViewModel(NewDncaComponent fragmentType) {
 
-        com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel viewModel = null;
-        String tag = null;
+        NewDncaBaseViewModel viewModel = null;
+        String tag = fragmentType.toString() + VIEWMODEL_TAG;
 
-        switch(fragmentType) {
-            case MENU:
-                // TODO: Restore view model for config change
-                // Create viewModel
-                viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = NEW_DNCA_VIEWMODEL_TAG;
-                break;
+        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel;
 
-            case FORM_DETAILS:
-                viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = NEW_DNCA_FORM_DETAILS_VIEWMODEL_TAG;
-                break;
+        retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getSupportFragmentManager().findFragmentByTag(tag);
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+            viewModel = retainedViewModel.getViewmodel();
+        } else {
+            switch (fragmentType) {
+                case MENU:
+                    viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case GEN_INFO:
-                viewModel = new GenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = NEW_DNCA_GEN_INFO_VIEWMODEL_TAG;
-                break;
+                case FORM_DETAILS:
+                    viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case SHELTER_INFO:
-                viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = SHELTER_INFO_VIEWMODEL_TAG;
-                break;
+                case GEN_INFO:
+                    viewModel = new GenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case FOOD_SECURITY:
-                viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = FOOD_SECURITY_VIEWMODEL_TAG;
-                break;
+                case SHELTER_INFO:
+                    viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case LIVELIHOODS:
-                viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = LIVELIHOODS_VIEWMODEL_TAG;
-                break;
+                case FOOD_SECURITY:
+                    viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case HEALTH:
-                viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = HEALTH_VIEWMODEL_TAG;
-                break;
+                case LIVELIHOODS:
+                    viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case WASH:
-                viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = WASH_VIEWMODEL_TAG;
-                break;
+                case HEALTH:
+                    viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
 
-            case EVACUATION:
-                viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                viewModel.setNewDncaNavigator(this);
-                tag = EVACUATION_VIEWMODEL_TAG;
-                break;
+                case WASH:
+                    viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
+
+                case EVACUATION:
+                    viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
+            }
+
+            if (retainedViewModel != null) {
+                // If container already exists, just inject viewModel into container
+                retainedViewModel.setViewModel(viewModel);
+
+            } else {
+
+                // Bind viewModel to activity's lifecycle using fragment manager
+                ActivityUtils.addFragmentToActivity(
+                        getSupportFragmentManager(),
+                        ViewModelHolder.createContainer(viewModel),
+                        tag);
+            }
         }
-
-        // Bind viewModel to activity's lifecycle using fragment manager
-        ActivityUtils.addFragmentToActivity(
-                getSupportFragmentManager(),
-                ViewModelHolder.createContainer(viewModel),
-                tag);
 
         return viewModel;
     }

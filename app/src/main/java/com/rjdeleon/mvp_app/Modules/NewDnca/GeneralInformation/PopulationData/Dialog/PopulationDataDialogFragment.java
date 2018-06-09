@@ -15,7 +15,7 @@ public class PopulationDataDialogFragment extends BaseEnumDialogFragment {
 
     private PopulationDataDialogBinding mBinding;
 
-    public static PopulationDataDialogFragment getInstance() {
+    public static PopulationDataDialogFragment newInstance() {
         return new PopulationDataDialogFragment();
     }
 

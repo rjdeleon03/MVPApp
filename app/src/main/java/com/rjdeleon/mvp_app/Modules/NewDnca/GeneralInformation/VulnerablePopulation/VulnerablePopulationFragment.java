@@ -3,9 +3,12 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopula
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
+
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_VULNERABLE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,12 +17,12 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
 
     private VulnerablePopulationFragmentAdapter mVulnerablePopulationAdapter;
 
-    public static VulnerablePopulationFragment getInstance() {
+    public static VulnerablePopulationFragment newInstance() {
         return new VulnerablePopulationFragment();
     }
 
     public VulnerablePopulationFragment() {
-        // Required empty public constructor
+        setFragmentTag(GEN_INFO_VULNERABLE.toString());
     }
 
     /**

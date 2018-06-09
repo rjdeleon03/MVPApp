@@ -53,7 +53,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
         if (dncaListFragment == null) {
             dncaListFragment = DNCAListFragment.newInstance();
 
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), dncaListFragment, R.id.dnca_list_container, true);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), dncaListFragment, R.id.dnca_list_container, false);
         }
 
         return dncaListFragment;

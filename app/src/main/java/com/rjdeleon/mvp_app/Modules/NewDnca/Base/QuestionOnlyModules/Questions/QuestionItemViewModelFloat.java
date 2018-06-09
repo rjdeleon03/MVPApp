@@ -1,9 +1,8 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 import android.databinding.ObservableFloat;
-import android.databinding.ObservableInt;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 
 public class QuestionItemViewModelFloat extends QuestionItemViewModel {
 

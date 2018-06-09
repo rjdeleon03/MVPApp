@@ -7,6 +7,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_PSYCHOSOCIAL;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -19,7 +21,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
     }
 
     public PsychosocialFragment() {
-        // Required empty public constructor
+        setFragmentTag(HEALTH_PSYCHOSOCIAL.toString());
     }
 
     /**
@@ -34,7 +36,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PsychosocialDialogFragment.getInstance();
+        mDialogFragment = PsychosocialDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -52,7 +54,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PsychosocialDialogFragment.getInstance();
+        mDialogFragment = PsychosocialDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

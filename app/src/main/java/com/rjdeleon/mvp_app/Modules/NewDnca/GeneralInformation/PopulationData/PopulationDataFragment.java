@@ -4,9 +4,13 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
+
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_POPULATION;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +24,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     }
 
     public PopulationDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(GEN_INFO_POPULATION.toString());
     }
 
     /**
@@ -35,7 +39,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PopulationDataDialogFragment.getInstance();
+        mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -53,7 +57,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PopulationDataDialogFragment.getInstance();
+        mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

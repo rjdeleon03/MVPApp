@@ -15,7 +15,7 @@ public class LivelihoodsIncomeDialogFragment extends BaseEnumDialogFragment {
 
     private LivelihoodsIncomeSourceDialogBinding mBinding;
 
-    public static LivelihoodsIncomeDialogFragment getInstance() {
+    public static LivelihoodsIncomeDialogFragment newInstance() {
         return new LivelihoodsIncomeDialogFragment();
     }
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemAdapter;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelEnum;
 import com.rjdeleon.mvp_app.R;
@@ -19,17 +20,12 @@ import com.rjdeleon.mvp_app.databinding.BaseQuestionFragmentBinding;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BaseQuestionFragment extends Fragment {
+public abstract class BaseQuestionFragment extends BaseSubFragment {
 
     private QuestionItemAdapter mWashConditionsAdapter;
     private BaseQuestionViewModel mViewModel;
     private BaseQuestionFragmentBinding mBinding;
     private RecyclerView mQuestionRecycler;
-    private Spinner mSpinner;
-
-    public static BaseQuestionFragment newInstance() {
-        return new BaseQuestionFragment();
-    }
 
     public BaseQuestionFragment() {
         // Required empty public constructor

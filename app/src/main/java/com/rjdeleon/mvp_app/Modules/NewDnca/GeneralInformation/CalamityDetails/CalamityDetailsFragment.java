@@ -12,14 +12,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 
+import com.rjdeleon.mvp_app.AppConstants;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.CalamityDetailsFragmentBinding;
+
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_CALAMITY;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CalamityDetailsFragment extends Fragment {
+public class CalamityDetailsFragment extends BaseSubFragment {
 
     private CalamityDetailsViewModel mViewModel;
     private CalamityDetailsFragmentBinding mBinding;
@@ -31,7 +36,7 @@ public class CalamityDetailsFragment extends Fragment {
     }
 
     public CalamityDetailsFragment() {
-        // Required empty public constructor
+        setFragmentTag(GEN_INFO_CALAMITY.toString());
     }
 
     /**

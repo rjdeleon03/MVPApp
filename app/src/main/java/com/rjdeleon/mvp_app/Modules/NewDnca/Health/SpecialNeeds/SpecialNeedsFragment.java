@@ -7,6 +7,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_SPECIAL_NEEDS;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -19,7 +21,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
     }
 
     public SpecialNeedsFragment() {
-        // Required empty public constructor
+        setFragmentTag(HEALTH_SPECIAL_NEEDS.toString());
     }
 
     /**
@@ -34,7 +36,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = SpecialNeedsDialogFragment.getInstance();
+        mDialogFragment = SpecialNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -52,7 +54,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = SpecialNeedsDialogFragment.getInstance();
+        mDialogFragment = SpecialNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

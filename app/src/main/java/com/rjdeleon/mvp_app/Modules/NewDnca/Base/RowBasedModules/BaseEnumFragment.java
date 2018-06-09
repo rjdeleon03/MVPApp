@@ -1,5 +1,6 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules;
 
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,12 +14,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.Models.Generics.GenericEnum;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.rjdeleon.mvp_app.databinding.BaseRowFragmentBinding;
 
-public abstract class BaseEnumFragment extends Fragment implements BaseEnumNavigator {
+public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEnumNavigator {
 
     protected BaseEnumViewModel mViewModel;
     protected Spinner mAgeGroupSpinner;
@@ -70,8 +72,9 @@ public abstract class BaseEnumFragment extends Fragment implements BaseEnumNavig
      */
     protected void setupSpinner(View view) {
         mAgeGroupSpinner = view.findViewById(R.id.nd_row_controls_spinner);
+        Activity activity = getActivity();
         mSpinnerAdapter = new ArrayAdapter<>(
-                getActivity(),
+                activity,
                 android.R.layout.simple_spinner_dropdown_item,
                 mViewModel.ageGroupList
         );

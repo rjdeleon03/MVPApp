@@ -16,7 +16,7 @@ public class HouseDamageDialogFragment extends BaseEnumDialogFragment {
 
     private ShelterHouseDamageDialogBinding mBinding;
 
-    public static HouseDamageDialogFragment getInstance() {
+    public static HouseDamageDialogFragment newInstance() {
         return new HouseDamageDialogFragment();
     }
 

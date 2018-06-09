@@ -8,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.databinding.ShelterGapsDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShelterGapsDataFragment extends Fragment {
+public class ShelterGapsDataFragment extends BaseSubFragment {
 
     private ShelterGapsDataViewModel mViewModel;
     private ShelterGapsDataFragmentBinding mBinding;

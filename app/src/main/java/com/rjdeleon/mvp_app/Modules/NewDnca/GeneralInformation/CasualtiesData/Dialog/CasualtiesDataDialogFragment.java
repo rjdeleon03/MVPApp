@@ -15,7 +15,7 @@ public class CasualtiesDataDialogFragment extends BaseEnumDialogFragment {
 
     private CasualtiesDataDialogBinding mBinding;
 
-    public static CasualtiesDataDialogFragment getInstance() {
+    public static CasualtiesDataDialogFragment newInstance() {
         return new CasualtiesDataDialogFragment();
     }
 

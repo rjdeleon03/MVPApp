@@ -4,9 +4,12 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDa
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel;
+
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_INFRASTRUCTURE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,12 +18,12 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
 
     private InfrastructureDamageFragmentAdapter mInfrastructureAdapter;
 
-    public static InfrastructureDamageFragment getInstance() {
+    public static InfrastructureDamageFragment newInstance() {
         return new InfrastructureDamageFragment();
     }
 
     public InfrastructureDamageFragment() {
-        // Required empty public constructor
+        setFragmentTag(GEN_INFO_INFRASTRUCTURE.toString());
     }
 
     /**
@@ -35,7 +38,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InfrastructureDamageDialogFragment.getInstance();
+        mDialogFragment = InfrastructureDamageDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -53,7 +56,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InfrastructureDamageDialogFragment.getInstance();
+        mDialogFragment = InfrastructureDamageDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
 

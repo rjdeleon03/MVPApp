@@ -12,6 +12,6 @@ public class Injection {
 
     public static DNCAFormRepository provideDncaRepository(@NonNull Context context) {
         checkNotNull(context);
-        return DNCAFormRepository.getInstance(DNCAFormLocalDataSource.getInstance());
+        return DNCAFormRepository.getInstance(DNCAFormLocalDataSource.newInstance());
     }
 }

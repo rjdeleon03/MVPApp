@@ -8,23 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.databinding.BaseCopingDataFragmentBinding;
 import com.rjdeleon.mvp_app.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GenericCopingDataFragment extends Fragment {
+public abstract class GenericCopingDataFragment extends BaseSubFragment {
 
     private BaseCopingDataFragmentBinding mBinding;
     private GenericCopingDataViewModel mViewModel;
 
     public GenericCopingDataFragment() {
         // Required empty public constructor
-    }
-
-    public static GenericCopingDataFragment newInstance() {
-        return new GenericCopingDataFragment();
     }
 
     /**

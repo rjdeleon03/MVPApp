@@ -10,13 +10,9 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AssistanceDataFragment extends BaseEnumFragment{
+public abstract class AssistanceDataFragment extends BaseEnumFragment{
 
     private AssistanceDataFragmentAdapter mAssistanceDataAdapter;
-
-    public static AssistanceDataFragment newInstance() {
-        return new AssistanceDataFragment();
-    }
 
     public AssistanceDataFragment() {
         // Required empty public constructor
@@ -32,7 +28,7 @@ public class AssistanceDataFragment extends BaseEnumFragment{
                 getContext(),
                 (AssistanceDataRepositoryManager) mViewModel);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = AssistanceDialogFragment.getInstance();
+        mDialogFragment = AssistanceDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -49,7 +45,7 @@ public class AssistanceDataFragment extends BaseEnumFragment{
                 (AssistanceDataRepositoryManager) mViewModel,
                 rowIndex);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = AssistanceDialogFragment.getInstance();
+        mDialogFragment = AssistanceDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

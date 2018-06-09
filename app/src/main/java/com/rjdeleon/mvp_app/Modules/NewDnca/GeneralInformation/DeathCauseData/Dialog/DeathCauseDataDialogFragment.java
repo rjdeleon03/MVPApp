@@ -15,7 +15,7 @@ public class DeathCauseDataDialogFragment extends BaseEnumDialogFragment {
 
     private DeathCauseDataDialogBinding mBinding;
 
-    public static DeathCauseDataDialogFragment getInstance() {
+    public static DeathCauseDataDialogFragment newInstance() {
         return new DeathCauseDataDialogFragment();
     }
 

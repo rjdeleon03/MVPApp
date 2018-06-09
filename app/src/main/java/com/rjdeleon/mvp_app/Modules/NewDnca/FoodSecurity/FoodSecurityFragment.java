@@ -1,16 +1,20 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodAssistanceData.FoodAssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
@@ -20,16 +24,17 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeeds
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_COPING;
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_GAPS;
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_IMPACT;
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_NEEDS;
+import static com.rjdeleon.mvp_app.AppConstants.VIEWMODEL_TAG;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FoodSecurityFragment extends BaseMultiPageFragment {
-
-    public static final String FOOD_SECURITY_IMPACT_VIEWMODEL_TAG = "FOOD_SECURITY_IMPACT_VIEWMODEL_TAG";
-    public static final String FOOD_SECURITY_COPING_VIEWMODEL_TAG = "FOOD_SECURITY_COPING_VIEWMODEL_TAG";
-    public static final String FOOD_SECURITY_NEEDS_VIEWMODEL_TAG = "FOOD_SECURITY_NEEDS_VIEWMODEL_TAG";
-    public static final String FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG = "FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG";
-    public static final String FOOD_SECURITY_GAPS_VIEWMODEL_TAG = "FOOD_SECURITY_GAPS_VIEWMODEL_TAG";
 
     public static FoodSecurityFragment newInstance() {
         return new FoodSecurityFragment();
@@ -60,67 +65,37 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
 
         {
             // Setup impact data fragment
-            FoodImpactDataFragment foodImpactDataFragment = FoodImpactDataFragment.newInstance();
-            FoodImpactDataViewModel foodImpactDataViewModel = new FoodImpactDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            foodImpactDataFragment.setViewModel(foodImpactDataViewModel);
+            FoodImpactDataFragment foodImpactDataFragment = (FoodImpactDataFragment)findOrCreateViewFragment(FOOD_IMPACT);
+            foodImpactDataFragment.setViewModel((FoodImpactDataViewModel)findOrCreateViewModel(FOOD_IMPACT));
             mAdapter.addFragment(foodImpactDataFragment);
-
-            // Bind impact data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(foodImpactDataViewModel),
-                    FOOD_SECURITY_IMPACT_VIEWMODEL_TAG);
         }
 
         {
             // Setup coping data fragment
-            GenericCopingDataFragment genericCopingDataFragment = GenericCopingDataFragment.newInstance();
-            GenericCopingDataViewModel genericCopingDataViewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            genericCopingDataFragment.setViewModel(genericCopingDataViewModel);
-            mAdapter.addFragment(genericCopingDataFragment);
-
-            // Bind coping data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(genericCopingDataViewModel),
-                    FOOD_SECURITY_COPING_VIEWMODEL_TAG);
+            FoodCopingDataFragment foodCopingDataFragment = (FoodCopingDataFragment)findOrCreateViewFragment(FOOD_COPING);
+            foodCopingDataFragment.setViewModel((GenericCopingDataViewModel)findOrCreateViewModel(FOOD_COPING));
+            mAdapter.addFragment(foodCopingDataFragment);
         }
 
         {
             // Setup needs data fragment
-            FoodNeedsDataFragment foodNeedsDataFragment = FoodNeedsDataFragment.newInstance();
-            FoodNeedsDataViewModel foodNeedsDataViewModel = new FoodNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            foodNeedsDataFragment.setViewModel(foodNeedsDataViewModel);
+            FoodNeedsDataFragment foodNeedsDataFragment = (FoodNeedsDataFragment)findOrCreateViewFragment(FOOD_NEEDS);
+            foodNeedsDataFragment.setViewModel((FoodNeedsDataViewModel) findOrCreateViewModel(FOOD_NEEDS));
             mAdapter.addFragment(foodNeedsDataFragment);
-
-            // Bind needs data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(foodNeedsDataViewModel),
-                    FOOD_SECURITY_NEEDS_VIEWMODEL_TAG);
         }
 
         {
             // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
-            AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            assistanceDataFragment.setViewModel(assistanceDataViewModel);
-            mAdapter.addFragment(assistanceDataFragment);
-
-            // Bind assistance data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(assistanceDataViewModel),
-                    FOOD_SECURITY_ASSISTANCE_VIEWMODEL_TAG);
+            FoodAssistanceDataFragment foodAssistanceDataFragment = (FoodAssistanceDataFragment)findOrCreateViewFragment(FOOD_ASSISTANCE);
+            foodAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(FOOD_ASSISTANCE));
+            mAdapter.addFragment(foodAssistanceDataFragment);
         }
 
         {
             // Setup gaps data fragment
-            FoodGapsDataFragment foodGapsDataFragment = FoodGapsDataFragment.newInstance();
-            FoodGapsDataViewModel foodGapsDataViewModel = new FoodGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            foodGapsDataFragment.setViewModel(foodGapsDataViewModel);
+            FoodGapsDataFragment foodGapsDataFragment = (FoodGapsDataFragment)findOrCreateViewFragment(FOOD_GAPS);
+            foodGapsDataFragment.setViewModel((FoodGapsDataViewModel) findOrCreateViewModel(FOOD_GAPS));
             mAdapter.addFragment(foodGapsDataFragment);
-
-            // Bind gaps data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(foodGapsDataViewModel),
-                    FOOD_SECURITY_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager
@@ -128,4 +103,79 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
 
         return root;
     }
+
+    /**
+     * Finds the fragment of the specified type;
+     * Creates the fragment if it does not exist
+     * @param fragmentType
+     * @return
+     */
+    @NonNull
+    private Fragment findOrCreateViewFragment(AppConstants.FoodSecurityComponent fragmentType) {
+        BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
+        if (selectedFragment == null) {
+            switch(fragmentType) {
+                case FOOD_IMPACT:
+                    selectedFragment = FoodImpactDataFragment.newInstance();
+                    break;
+                case FOOD_COPING:
+                    selectedFragment = FoodCopingDataFragment.newInstance();
+                    break;
+                case FOOD_NEEDS:
+                    selectedFragment = FoodNeedsDataFragment.newInstance();
+                    break;
+                case FOOD_ASSISTANCE:
+                    selectedFragment = FoodAssistanceDataFragment.newInstance();
+                    break;
+                case FOOD_GAPS:
+                    selectedFragment = FoodGapsDataFragment.newInstance();
+                    break;
+            }
+        }
+        return selectedFragment;
+    }
+
+    /**
+     * Finds the viewModel of the specified type;
+     * Creates the viewModel if it does not exist
+     * @param fragmentType
+     * @return
+     */
+    @NonNull
+    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.FoodSecurityComponent fragmentType) {
+
+        NewDncaBaseViewModel viewModel = null;
+        String tag = fragmentType.toString() + VIEWMODEL_TAG;
+
+        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+
+        // Setup specific repository manager
+        FoodSecurityRepositoryManager repositoryManager = (FoodSecurityRepositoryManager) mViewModel;
+
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+            viewModel = retainedViewModel.getViewmodel();
+        } else {
+            switch (fragmentType) {
+                case FOOD_IMPACT:
+                    viewModel = new FoodImpactDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case FOOD_COPING:
+                    viewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case FOOD_NEEDS:
+                    viewModel = new FoodNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case FOOD_ASSISTANCE:
+                    viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case FOOD_GAPS:
+                    viewModel = new FoodGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+            }
+
+            ActivityUtils.bindViewModel(getChildFragmentManager(), retainedViewModel, viewModel, tag);
+        }
+        return viewModel;
+    }
+
 }

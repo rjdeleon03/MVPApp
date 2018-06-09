@@ -21,7 +21,7 @@ public class AssistanceDialogFragment extends BaseEnumDialogFragment {
     private AssistanceDialogBinding mBinding;
     private Button mSetDateButton;
 
-    public static AssistanceDialogFragment getInstance() {
+    public static AssistanceDialogFragment newInstance() {
         return new AssistanceDialogFragment();
     }
 

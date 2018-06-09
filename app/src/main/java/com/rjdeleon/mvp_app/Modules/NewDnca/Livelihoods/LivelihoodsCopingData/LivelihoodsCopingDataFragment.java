@@ -8,19 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.LivelihoodsCopingDataFragmentBinding;
+
+import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.LIVELIHOODS_COPING;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LivelihoodsCopingDataFragment extends Fragment {
+public class LivelihoodsCopingDataFragment extends BaseSubFragment {
 
     private LivelihoodsCopingDataViewModel mViewModel;
     private LivelihoodsCopingDataFragmentBinding mBinding;
 
     public LivelihoodsCopingDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(LIVELIHOODS_COPING.toString());
     }
 
     public static LivelihoodsCopingDataFragment newInstance() {

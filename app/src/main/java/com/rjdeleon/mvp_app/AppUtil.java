@@ -124,7 +124,7 @@ public class AppUtil {
         }
     }
 
-    @BindingAdapter({"bind:enumList", "bind:spinnerVisibility"})
+    @BindingAdapter({"enumList", "spinnerVisibility"})
     public static void bindAgeGroupListInAddButton(FloatingActionButton button, List<GenericEnum> enums, boolean shouldShowSpinner) {
         button.setEnabled(enums.size() > 0 || !shouldShowSpinner);
     }

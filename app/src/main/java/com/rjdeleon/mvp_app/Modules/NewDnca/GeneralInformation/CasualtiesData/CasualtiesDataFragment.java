@@ -4,9 +4,12 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogViewModel;
+
+import static com.rjdeleon.mvp_app.AppConstants.GenInfoComponent.GEN_INFO_CASUALTIES;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,12 +18,12 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
 
     private CasualtiesDataFragmentAdapter mCasualtiesDataAdapter;
 
-    public static CasualtiesDataFragment getInstance() {
+    public static CasualtiesDataFragment newInstance() {
         return new CasualtiesDataFragment();
     }
 
     public CasualtiesDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(GEN_INFO_CASUALTIES.toString());
     }
 
     /**
@@ -35,7 +38,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = CasualtiesDataDialogFragment.getInstance();
+        mDialogFragment = CasualtiesDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -53,7 +56,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = CasualtiesDataDialogFragment.getInstance();
+        mDialogFragment = CasualtiesDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

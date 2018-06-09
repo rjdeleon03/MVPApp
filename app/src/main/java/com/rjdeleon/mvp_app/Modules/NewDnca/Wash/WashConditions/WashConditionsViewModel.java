@@ -4,15 +4,11 @@ import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.Wash.WashConditionsData;
 import com.rjdeleon.mvp_app.Models.Wash.WaterLevelRemarksTuple;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelLevels;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashRepositoryManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WashConditionsViewModel extends WashBaseViewModel {
 

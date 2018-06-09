@@ -7,6 +7,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_NEEDS;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -19,7 +21,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
     }
 
     public ShelterNeedsFragment() {
-        // Required empty public constructor
+        setFragmentTag(SHELTER_NEEDS.toString());
     }
 
     @Override
@@ -31,7 +33,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = ShelterNeedsDialogFragment.getInstance();
+        mDialogFragment = ShelterNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -45,7 +47,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = ShelterNeedsDialogFragment.getInstance();
+        mDialogFragment = ShelterNeedsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }

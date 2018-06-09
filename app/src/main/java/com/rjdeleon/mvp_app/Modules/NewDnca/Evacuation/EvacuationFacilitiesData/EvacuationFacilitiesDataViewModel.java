@@ -5,7 +5,7 @@ import android.content.Context;
 import com.rjdeleon.mvp_app.Models.Evacuation.EvacuationFacilitiesData;
 import com.rjdeleon.mvp_app.Models.Generics.BoolIntTuple;
 import com.rjdeleon.mvp_app.Models.Generics.BoolRemarksTuple;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelInt;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationBaseViewModel;

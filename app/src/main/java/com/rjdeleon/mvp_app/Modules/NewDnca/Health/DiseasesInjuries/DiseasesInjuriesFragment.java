@@ -8,6 +8,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Dialog.Disea
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Dialog.DiseasesInjuriesDialogViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.Row.DiseasesInjuriesRowViewModel;
 
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_DISEASES;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -20,7 +22,7 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
     }
 
     public DiseasesInjuriesFragment() {
-        // Required empty public constructor
+        setFragmentTag(HEALTH_DISEASES.toString());
     }
 
     @Override
@@ -32,7 +34,7 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DiseasesInjuriesDialogFragment.getInstance();
+        mDialogFragment = DiseasesInjuriesDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -46,7 +48,7 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DiseasesInjuriesDialogFragment.getInstance();
+        mDialogFragment = DiseasesInjuriesDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }

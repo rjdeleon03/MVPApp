@@ -1,30 +1,37 @@
 package com.rjdeleon.mvp_app.Modules.NewDnca.Wash;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
+import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashAssistanceData.WashAssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashCopingData.WashCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashCopingData.WashCopingDataViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashGapsData.WashGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
+
+import static com.rjdeleon.mvp_app.AppConstants.VIEWMODEL_TAG;
+import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_CONDITIONS;
+import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_COPING;
+import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WashFragment extends BaseMultiPageFragment {
-
-    public static final String WASH_CONDITIONS_VIEWMODEL_TAG = "WASH_CONDITIONS_VIEWMODEL_TAG";
-    public static final String WASH_COPING_VIEWMODEL_TAG = "WASH_COPING_VIEWMODEL_TAG";
-    public static final String WASH_ASSISTANCE_VIEWMODEL_TAG = "WASH_GAPS_VIEWMODEL_TAG";
-    public static final String WASH_GAPS_VIEWMODEL_TAG = "WASH_GAPS_VIEWMODEL_TAG";
 
     public static WashFragment newInstance() {
         return new WashFragment();
@@ -48,60 +55,104 @@ public class WashFragment extends BaseMultiPageFragment {
 
         {
             // Setup wash conditions fragment
-            BaseQuestionFragment washConditionsFragment =  BaseQuestionFragment.newInstance();
-            WashConditionsViewModel washConditionsViewModel = new  WashConditionsViewModel(getContext().getApplicationContext(), repositoryManager);
-            washConditionsFragment.setViewModel(washConditionsViewModel);
+            WashConditionsFragment washConditionsFragment = (WashConditionsFragment)findOrCreateViewFragment(WASH_CONDITIONS);
+            washConditionsFragment.setViewModel((WashConditionsViewModel)findOrCreateViewModel(WASH_CONDITIONS));
             mAdapter.addFragment(washConditionsFragment);
-
-            // Bind wash conditions viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(washConditionsViewModel),
-                    WASH_CONDITIONS_VIEWMODEL_TAG);
         }
 
         {
             // Setup coping data fragment
-            BaseQuestionFragment washCopingDataFragment =  BaseQuestionFragment.newInstance();
-            WashCopingDataViewModel washCopingDataViewModel = new  WashCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            washCopingDataFragment.setViewModel(washCopingDataViewModel);
+            WashCopingDataFragment washCopingDataFragment = (WashCopingDataFragment)findOrCreateViewFragment(WASH_COPING);
+            washCopingDataFragment.setViewModel((WashCopingDataViewModel)findOrCreateViewModel(WASH_COPING));
             mAdapter.addFragment(washCopingDataFragment);
-
-            // Bind coping data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(washCopingDataViewModel),
-                    WASH_COPING_VIEWMODEL_TAG);
         }
 
         {
             // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = AssistanceDataFragment.newInstance();
-            AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            assistanceDataFragment.setViewModel(assistanceDataViewModel);
-            mAdapter.addFragment(assistanceDataFragment);
-
-            // Bind assistance data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(assistanceDataViewModel),
-                    WASH_ASSISTANCE_VIEWMODEL_TAG);
+            WashAssistanceDataFragment washAssistanceDataFragment = (WashAssistanceDataFragment)findOrCreateViewFragment(WASH_ASSISTANCE);
+            washAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(WASH_ASSISTANCE));
+            mAdapter.addFragment(washAssistanceDataFragment);
         }
 
         {
             // Setup gaps data fragment
-            BaseQuestionFragment washGapsDataFragment =  BaseQuestionFragment.newInstance();
-            WashGapsDataViewModel washGapsDataViewModel = new  WashGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
-            washGapsDataFragment.setViewModel(washGapsDataViewModel);
+            WashGapsDataFragment washGapsDataFragment = (WashGapsDataFragment)findOrCreateViewFragment(WASH_GAPS);
+            washGapsDataFragment.setViewModel((WashGapsDataViewModel)findOrCreateViewModel(WASH_GAPS));
             mAdapter.addFragment(washGapsDataFragment);
-
-            // Bind gaps data viewModel to root activity's lifecycle
-            ActivityUtils.addFragmentToActivity(getChildFragmentManager(),
-                    ViewModelHolder.createContainer(washGapsDataViewModel),
-                    WASH_GAPS_VIEWMODEL_TAG);
         }
 
         // Call to parent class to setup the view pager
         super.setupViewPager(root);
         
         return root;
+    }
+
+    /**
+     * Finds the fragment of the specified type;
+     * Creates the fragment if it does not exist
+     * @param fragmentType
+     * @return
+     */
+    @NonNull
+    private Fragment findOrCreateViewFragment(AppConstants.WashComponent fragmentType) {
+        BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
+        if (selectedFragment == null) {
+            switch(fragmentType) {
+                case WASH_CONDITIONS:
+                    selectedFragment = WashConditionsFragment.newInstance();
+                    break;
+                case WASH_COPING:
+                    selectedFragment = WashCopingDataFragment.newInstance();
+                    break;
+                case WASH_ASSISTANCE:
+                    selectedFragment = WashAssistanceDataFragment.newInstance();
+                    break;
+                case WASH_GAPS:
+                    selectedFragment = WashGapsDataFragment.newInstance();
+                    break;
+            }
+        }
+        return selectedFragment;
+    }
+
+    /**
+     * Finds the viewModel of the specified type;
+     * Creates the viewModel if it does not exist
+     * @param fragmentType
+     * @return
+     */
+    @NonNull
+    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.WashComponent fragmentType) {
+
+        NewDncaBaseViewModel viewModel = null;
+        String tag = fragmentType.toString() + VIEWMODEL_TAG;
+
+        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
+
+        // Setup specific repository manager
+        WashRepositoryManager repositoryManager = (WashRepositoryManager) mViewModel;
+
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+            viewModel = retainedViewModel.getViewmodel();
+        } else {
+            switch (fragmentType) {
+                case WASH_CONDITIONS:
+                    viewModel = new WashConditionsViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case WASH_COPING:
+                    viewModel = new WashCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case WASH_ASSISTANCE:
+                    viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+                case WASH_GAPS:
+                    viewModel = new WashGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    break;
+            }
+
+            ActivityUtils.bindViewModel(getChildFragmentManager(), retainedViewModel, viewModel, tag);
+        }
+        return viewModel;
     }
 
 }

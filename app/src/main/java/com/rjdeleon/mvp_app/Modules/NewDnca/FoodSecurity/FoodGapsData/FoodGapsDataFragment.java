@@ -7,20 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.R;
 import com.rjdeleon.mvp_app.databinding.FoodGapsDataFragmentBinding;
+
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FoodGapsDataFragment extends Fragment {
+public class FoodGapsDataFragment extends BaseSubFragment {
 
     private FoodGapsDataFragmentBinding mBinding;
     private FoodGapsDataViewModel mViewModel;
 
-
     public FoodGapsDataFragment() {
-        // Required empty public constructor
+        setFragmentTag(FOOD_GAPS.toString());
     }
 
     public static FoodGapsDataFragment newInstance() {

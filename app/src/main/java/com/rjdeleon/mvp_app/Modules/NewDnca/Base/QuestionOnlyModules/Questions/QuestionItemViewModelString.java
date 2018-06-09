@@ -2,7 +2,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions;
 
 import android.databinding.ObservableField;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 
 public class QuestionItemViewModelString extends QuestionItemViewModel {
 

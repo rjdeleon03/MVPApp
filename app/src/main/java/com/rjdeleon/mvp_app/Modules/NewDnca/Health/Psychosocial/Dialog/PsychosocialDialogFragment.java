@@ -15,7 +15,7 @@ public class PsychosocialDialogFragment extends BaseEnumDialogFragment {
 
     private HealthPsychosocialDialogBinding mBinding;
 
-    public static PsychosocialDialogFragment getInstance() {
+    public static PsychosocialDialogFragment newInstance() {
         return new PsychosocialDialogFragment();
     }
 

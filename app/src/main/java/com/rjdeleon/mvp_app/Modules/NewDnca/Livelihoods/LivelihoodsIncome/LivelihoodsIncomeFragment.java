@@ -6,16 +6,13 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragmen
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogViewModel;
 
-public class LivelihoodsIncomeFragment extends BaseEnumFragment {
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_GAPS;
+
+public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
 
     private LivelihoodsIncomeFragmentAdapter mLivelihoodsIncomeFragmentAdapter;
 
-    public static LivelihoodsIncomeFragment newInstance() {
-        return new LivelihoodsIncomeFragment();
-    }
-
     public LivelihoodsIncomeFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -27,7 +24,7 @@ public class LivelihoodsIncomeFragment extends BaseEnumFragment {
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsIncomeDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsIncomeDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }
@@ -41,7 +38,7 @@ public class LivelihoodsIncomeFragment extends BaseEnumFragment {
                 rowIndex,
                 false);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsIncomeDialogFragment.getInstance();
+        mDialogFragment = LivelihoodsIncomeDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getFragmentManager(), "");
     }

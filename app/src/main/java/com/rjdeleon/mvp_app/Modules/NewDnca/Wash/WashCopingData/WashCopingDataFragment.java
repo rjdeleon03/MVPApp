@@ -12,6 +12,5 @@ public class WashCopingDataFragment extends BaseQuestionFragment {
 
     public WashCopingDataFragment() {
         setFragmentTag(WASH_COPING.toString());
-
     }
 }

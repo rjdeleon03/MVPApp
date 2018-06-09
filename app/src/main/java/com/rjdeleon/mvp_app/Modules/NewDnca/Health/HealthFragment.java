@@ -7,18 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthAssistanceData.HealthAssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialFragment;
@@ -86,7 +85,7 @@ public class HealthFragment extends BaseMultiPageFragment {
         {
             // Setup coping data fragment
             HealthCopingDataFragment healthCopingDataFragment = (HealthCopingDataFragment)findOrCreateViewFragment(HEALTH_COPING);
-            healthCopingDataFragment.setViewModel((GenericCopingDataViewModel) findOrCreateViewModel(HEALTH_COPING));
+            healthCopingDataFragment.setViewModel((HealthCopingDataViewModel) findOrCreateViewModel(HEALTH_COPING));
             mAdapter.addFragment(healthCopingDataFragment);
         }
 
@@ -175,7 +174,7 @@ public class HealthFragment extends BaseMultiPageFragment {
                     viewModel = new PsychosocialViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case HEALTH_COPING:
-                    viewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
+                    viewModel = new HealthCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case HEALTH_ASSISTANCE:
                     viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);

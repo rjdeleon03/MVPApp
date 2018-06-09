@@ -2,9 +2,9 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Health;
 
 import android.content.Context;
 
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionViewModel;
 
-public abstract class HealthBaseViewModel extends NewDncaBaseViewModel {
+public abstract class HealthBaseViewModel extends BaseQuestionViewModel {
 
     protected HealthRepositoryManager mHealthRepositoryManager;
 

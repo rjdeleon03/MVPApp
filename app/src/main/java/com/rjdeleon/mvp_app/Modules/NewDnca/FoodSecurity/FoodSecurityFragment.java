@@ -11,7 +11,6 @@ import com.rjdeleon.mvp_app.AppConstants;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodAssistanceData.FoodAssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;

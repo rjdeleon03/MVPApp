@@ -5,14 +5,18 @@ import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsCopingData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager;
 
-public class LivelihoodsCopingDataViewModel extends LivelihoodsBaseViewModel implements NonEnumSaveableSection {
+public class LivelihoodsCopingDataViewModel extends LivelihoodsBaseViewModel {
 
-    public final ObservableField<String> copingStrategies = new ObservableField<>();
-    public final ObservableField<String> incomeOpportunities = new ObservableField<>(); 
-    public final ObservableField<String> livelihoodSkills = new ObservableField<>();
+    private String[] mQuestions = {
+            "How are people responding to livelihoods problems? What coping strategies do they employ?",
+            "Are there new income opportunities?",
+            "Are there any livelihood skills available in the community? (carpentry, masonry, etc.)"
+    };
 
     /**
      * Constructor
@@ -23,9 +27,9 @@ public class LivelihoodsCopingDataViewModel extends LivelihoodsBaseViewModel imp
         super(context, livelihoodsRepositoryManager);
 
         LivelihoodsCopingData copingData = mLivelihoodsRepositoryManager.getLivelihoodsCopingData();
-        copingStrategies.set(copingData.getCopingStrategies());
-        incomeOpportunities.set(copingData.getIncomeOpportunities());
-        livelihoodSkills.set(copingData.getLivelihoodSkills());
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], copingData.getCopingStrategies())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[1], copingData.getIncomeOpportunities())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[2], copingData.getLivelihoodSkills())));
     }
 
     /**
@@ -34,9 +38,9 @@ public class LivelihoodsCopingDataViewModel extends LivelihoodsBaseViewModel imp
     @Override
     public void navigateOnSaveButtonPressed() {
         LivelihoodsCopingData copingData = new LivelihoodsCopingData(
-                copingStrategies.get(),
-                incomeOpportunities.get(),
-                livelihoodSkills.get());
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(0)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(1)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(2)).answer.get());
         mLivelihoodsRepositoryManager.saveLivelihoodsCopingData(copingData);
     }
 }

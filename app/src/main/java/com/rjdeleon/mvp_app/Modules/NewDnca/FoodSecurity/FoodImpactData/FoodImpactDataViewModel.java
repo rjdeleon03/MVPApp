@@ -45,13 +45,13 @@ public class FoodImpactDataViewModel extends FoodSecurityBaseViewModel {
 
         FoodImpactData foodImpactData = mFoodSecurityRepositoryManager.getFoodImpactData();
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0],
-                foodImpactData.getFoodAvailability().isYes, foodImpactData.getFoodAvailability().remarks)));
+                foodImpactData.getFoodAvailability().isYes), foodImpactData.getFoodAvailability().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[1],
-                foodImpactData.getLackOfFoodAccess().isYes, foodImpactData.getLackOfFoodAccess().remarks)));
+                foodImpactData.getLackOfFoodAccess().isYes), foodImpactData.getLackOfFoodAccess().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[2],
-                foodImpactData.getFoodConstraints().isYes, foodImpactData.getFoodConstraints().remarks)));
+                foodImpactData.getFoodConstraints().isYes), foodImpactData.getFoodConstraints().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[3],
-                foodImpactData.getFoodSources().isYes, foodImpactData.getFoodSources().remarks)));
+                foodImpactData.getFoodSources().isYes), foodImpactData.getFoodSources().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelDoubleString(new BaseQuestionMultipleValue(mQuestions[4], null,
                 foodImpactData.getTimesEatingBefore(), foodImpactData.getTimesEatingAfter()), mSubQuestions[0], mSubQuestions[1]));
         mQuestionsViewModels.add(new QuestionItemViewModelDoubleString(new BaseQuestionMultipleValue(mQuestions[5], null,

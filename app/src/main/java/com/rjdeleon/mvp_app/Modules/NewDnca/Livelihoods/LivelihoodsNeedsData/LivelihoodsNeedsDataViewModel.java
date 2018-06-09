@@ -5,14 +5,18 @@ import android.databinding.ObservableField;
 
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsNeedsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager;
 
-public class LivelihoodsNeedsDataViewModel extends LivelihoodsBaseViewModel implements NonEnumSaveableSection {
+public class LivelihoodsNeedsDataViewModel extends LivelihoodsBaseViewModel {
 
-    public final ObservableField<String> assistanceToFillGap = new ObservableField<>("");
-    public final ObservableField<String> resourcesNeeded = new ObservableField<>("");
-    public final ObservableField<String> familiesNeedingAssistance = new ObservableField<>("");
+    private String[] mQuestions = {
+            "What assistance can be provided to fill the income gap?",
+            "What resources are needed to return to normal?",
+            "How many families are in need of livelihood assistance?"
+    };
 
     /**
      * Constructor
@@ -23,18 +27,20 @@ public class LivelihoodsNeedsDataViewModel extends LivelihoodsBaseViewModel impl
         super(context, livelihoodsRepositoryManager);
 
         LivelihoodsNeedsData needsData = mLivelihoodsRepositoryManager.getLivelihoodsNeedsData();
-        assistanceToFillGap.set(needsData.getAssistanceToFillGap());
-        resourcesNeeded.set(needsData.getResourcesNeeded());
-        familiesNeedingAssistance.set(needsData.getFamiliesNeedingAssistance());
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], needsData.getAssistanceToFillGap())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[1], needsData.getResourcesNeeded())));
+        mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[2], needsData.getFamiliesNeedingAssistance())));
     }
 
-
+    /**
+     * Handles navigation when save button is pressed
+     */
     @Override
     public void navigateOnSaveButtonPressed() {
         LivelihoodsNeedsData needsData = new LivelihoodsNeedsData(
-                assistanceToFillGap.get(),
-                resourcesNeeded.get(),
-                familiesNeedingAssistance.get());
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(0)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(1)).answer.get(),
+                ((QuestionItemViewModelString) mQuestionsViewModels.get(2)).answer.get());
         mLivelihoodsRepositoryManager.saveLivelihoodsNeedsData(needsData);
     }
 }

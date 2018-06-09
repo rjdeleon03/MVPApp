@@ -7,19 +7,19 @@ import android.databinding.ObservableField;
 import com.rjdeleon.mvp_app.Models.Generics.BoolRemarksTuple;
 import com.rjdeleon.mvp_app.Models.Livelihoods.LivelihoodsGapsData;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager;
 
-public class LivelihoodsGapsDataViewModel extends LivelihoodsBaseViewModel implements NonEnumSaveableSection {
+public class LivelihoodsGapsDataViewModel extends LivelihoodsBaseViewModel {
 
-    public final ObservableBoolean localMarketBool = new ObservableBoolean(false);
-    public final ObservableField<String> localMarketRemarks = new ObservableField<>("");
-    public final ObservableBoolean opportunitiesBool = new ObservableBoolean(false);
-    public final ObservableField<String> opportunitiesRemarks = new ObservableField<>("");
-    public final ObservableBoolean creditBool = new ObservableBoolean(false);
-    public final ObservableField<String> creditRemarks = new ObservableField<>("");
-    public final ObservableBoolean livelihoodMaterialsBool = new ObservableBoolean(false);
-    public final ObservableField<String> livelihoodMaterialsRemarks = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Do women and men have equal access to:\n" + "Local Market",
+            "Cash and Food-for-Work Opportunities",
+            "Credit",
+            "Livelihood Materials and Services"
+    };
 
     /**
      * Constructor
@@ -30,14 +30,14 @@ public class LivelihoodsGapsDataViewModel extends LivelihoodsBaseViewModel imple
         super(context, livelihoodsRepositoryManager);
 
         LivelihoodsGapsData gapsData = mLivelihoodsRepositoryManager.getLivelihoodsGapsData();
-        localMarketBool.set(gapsData.getLocalMarket().isYes);
-        localMarketRemarks.set(gapsData.getLocalMarket().remarks);
-        opportunitiesBool.set(gapsData.getOpportunities().isYes);
-        opportunitiesRemarks.set(gapsData.getOpportunities().remarks);
-        creditBool.set(gapsData.getCredit().isYes);
-        creditRemarks.set(gapsData.getCredit().remarks);
-        livelihoodMaterialsBool.set(gapsData.getLivelihoodMaterials().isYes);
-        livelihoodMaterialsRemarks.set(gapsData.getLivelihoodMaterials().remarks);
+        mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0],
+                gapsData.getLocalMarket().isYes), gapsData.getLocalMarket().remarks));
+        mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[1],
+                gapsData.getOpportunities().isYes), gapsData.getOpportunities().remarks));
+        mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[2],
+                gapsData.getCredit().isYes), gapsData.getCredit().remarks));
+        mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[3],
+                gapsData.getLivelihoodMaterials().isYes), gapsData.getLivelihoodMaterials().remarks));
     }
 
     /**
@@ -45,11 +45,16 @@ public class LivelihoodsGapsDataViewModel extends LivelihoodsBaseViewModel imple
      */
     @Override
     public void navigateOnSaveButtonPressed() {
+        QuestionItemViewModelBoolean localMarketViewModel = (QuestionItemViewModelBoolean) mQuestionsViewModels.get(0);
+        QuestionItemViewModelBoolean opportunitiesViewModel = (QuestionItemViewModelBoolean) mQuestionsViewModels.get(1);
+        QuestionItemViewModelBoolean creditViewModel = (QuestionItemViewModelBoolean) mQuestionsViewModels.get(2);
+        QuestionItemViewModelBoolean livelihoodMaterialsViewModel = (QuestionItemViewModelBoolean) mQuestionsViewModels.get(3);
+
         LivelihoodsGapsData gapsData = new LivelihoodsGapsData(
-                new BoolRemarksTuple(localMarketBool.get(), localMarketRemarks.get()),
-                new BoolRemarksTuple(opportunitiesBool.get(), opportunitiesRemarks.get()),
-                new BoolRemarksTuple(creditBool.get(), creditRemarks.get()),
-                new BoolRemarksTuple(livelihoodMaterialsBool.get(), livelihoodMaterialsRemarks.get()));
+                new BoolRemarksTuple(localMarketViewModel.answer.get(), localMarketViewModel.remarks.get()),
+                new BoolRemarksTuple(opportunitiesViewModel.answer.get(), opportunitiesViewModel.remarks.get()),
+                new BoolRemarksTuple(creditViewModel.answer.get(), creditViewModel.remarks.get()),
+                new BoolRemarksTuple(livelihoodMaterialsViewModel.answer.get(), livelihoodMaterialsViewModel.remarks.get()));
         mLivelihoodsRepositoryManager.saveLivelihoodsGapsData(gapsData);
     }
 }

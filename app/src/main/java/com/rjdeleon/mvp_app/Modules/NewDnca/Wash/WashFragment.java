@@ -8,12 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.AppConstants;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashAssistanceData.WashAssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Wash.WashCopingData.WashCopingDataFragment;
@@ -24,7 +23,7 @@ import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
 import static com.rjdeleon.mvp_app.AppConstants.VIEWMODEL_TAG;
-import static com.rjdeleon.mvp_app.AppConstants.WashComponent.ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_ASSISTANCE;
 import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_CONDITIONS;
 import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_COPING;
 import static com.rjdeleon.mvp_app.AppConstants.WashComponent.WASH_GAPS;
@@ -70,9 +69,9 @@ public class WashFragment extends BaseMultiPageFragment {
 
         {
             // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = (AssistanceDataFragment)findOrCreateViewFragment(ASSISTANCE);
-            assistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(ASSISTANCE));
-            mAdapter.addFragment(assistanceDataFragment);
+            WashAssistanceDataFragment washAssistanceDataFragment = (WashAssistanceDataFragment)findOrCreateViewFragment(WASH_ASSISTANCE);
+            washAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(WASH_ASSISTANCE));
+            mAdapter.addFragment(washAssistanceDataFragment);
         }
 
         {
@@ -105,8 +104,8 @@ public class WashFragment extends BaseMultiPageFragment {
                 case WASH_COPING:
                     selectedFragment = WashCopingDataFragment.newInstance();
                     break;
-                case ASSISTANCE:
-                    selectedFragment = AssistanceDataFragment.newInstance();
+                case WASH_ASSISTANCE:
+                    selectedFragment = WashAssistanceDataFragment.newInstance();
                     break;
                 case WASH_GAPS:
                     selectedFragment = WashGapsDataFragment.newInstance();
@@ -143,7 +142,7 @@ public class WashFragment extends BaseMultiPageFragment {
                 case WASH_COPING:
                     viewModel = new WashCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case ASSISTANCE:
+                case WASH_ASSISTANCE:
                     viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case WASH_GAPS:

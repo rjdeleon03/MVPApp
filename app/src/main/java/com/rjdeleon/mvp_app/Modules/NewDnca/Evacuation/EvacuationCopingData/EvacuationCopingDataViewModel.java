@@ -3,7 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationCopingData;
 import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.Generics.GenericCopingData;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationRepositoryManager;

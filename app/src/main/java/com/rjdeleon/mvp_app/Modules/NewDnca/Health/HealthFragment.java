@@ -10,16 +10,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rjdeleon.mvp_app.AppConstants;
-import com.rjdeleon.mvp_app.Models.Health.HealthGapsData;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthAssistanceData.HealthAssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.PsychosocialFragment;
@@ -29,8 +28,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsView
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
-import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.ASSISTANCE;
-import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.COPING;
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_COPING;
 import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_DISEASES;
 import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_GAPS;
 import static com.rjdeleon.mvp_app.AppConstants.HealthComponent.HEALTH_PSYCHOSOCIAL;
@@ -86,16 +85,16 @@ public class HealthFragment extends BaseMultiPageFragment {
 
         {
             // Setup coping data fragment
-            GenericCopingDataFragment genericCopingDataFragment = (GenericCopingDataFragment)findOrCreateViewFragment(COPING);
-            genericCopingDataFragment.setViewModel((GenericCopingDataViewModel) findOrCreateViewModel(COPING));
-            mAdapter.addFragment(genericCopingDataFragment);
+            HealthCopingDataFragment healthCopingDataFragment = (HealthCopingDataFragment)findOrCreateViewFragment(HEALTH_COPING);
+            healthCopingDataFragment.setViewModel((GenericCopingDataViewModel) findOrCreateViewModel(HEALTH_COPING));
+            mAdapter.addFragment(healthCopingDataFragment);
         }
 
         {
             // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = (AssistanceDataFragment)findOrCreateViewFragment(ASSISTANCE);
-            assistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(ASSISTANCE));
-            mAdapter.addFragment(assistanceDataFragment);
+            HealthAssistanceDataFragment healthAssistanceDataFragment = (HealthAssistanceDataFragment)findOrCreateViewFragment(HEALTH_ASSISTANCE);
+            healthAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(HEALTH_ASSISTANCE));
+            mAdapter.addFragment(healthAssistanceDataFragment);
         }
 
         {
@@ -131,11 +130,11 @@ public class HealthFragment extends BaseMultiPageFragment {
                 case HEALTH_PSYCHOSOCIAL:
                     selectedFragment = PsychosocialFragment.newInstance();
                     break;
-                case COPING:
-                    selectedFragment = GenericCopingDataFragment.newInstance();
+                case HEALTH_COPING:
+                    selectedFragment = HealthCopingDataFragment.newInstance();
                     break;
-                case ASSISTANCE:
-                    selectedFragment = AssistanceDataFragment.newInstance();
+                case HEALTH_ASSISTANCE:
+                    selectedFragment = HealthAssistanceDataFragment.newInstance();
                     break;
                 case HEALTH_GAPS:
                     selectedFragment = HealthGapsDataFragment.newInstance();
@@ -175,10 +174,10 @@ public class HealthFragment extends BaseMultiPageFragment {
                 case HEALTH_PSYCHOSOCIAL:
                     viewModel = new PsychosocialViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case COPING:
+                case HEALTH_COPING:
                     viewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case ASSISTANCE:
+                case HEALTH_ASSISTANCE:
                     viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case HEALTH_GAPS:

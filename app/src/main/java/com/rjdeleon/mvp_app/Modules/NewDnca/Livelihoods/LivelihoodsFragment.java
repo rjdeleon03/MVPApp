@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.AppConstants;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageFragment;
@@ -21,14 +21,13 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.Live
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeAfterFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeBeforeFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
-import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.LIVELIHOODS_ASSISTANCE;
 import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.LIVELIHOODS_COPING;
 import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.LIVELIHOODS_DAMAGE;
 import static com.rjdeleon.mvp_app.AppConstants.LivelihoodsComponent.LIVELIHOODS_GAPS;
@@ -106,9 +105,9 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
 
         {
             // Setup food assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = (AssistanceDataFragment)findOrCreateViewFragment(ASSISTANCE);
-            assistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(ASSISTANCE));
-            mAdapter.addFragment(assistanceDataFragment);
+            LivelihoodsAssistanceDataFragment livelihoodsAssistanceDataFragment = (LivelihoodsAssistanceDataFragment)findOrCreateViewFragment(LIVELIHOODS_ASSISTANCE);
+            livelihoodsAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(LIVELIHOODS_ASSISTANCE));
+            mAdapter.addFragment(livelihoodsAssistanceDataFragment);
         }
 
         {
@@ -151,8 +150,8 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
                 case LIVELIHOODS_NEEDS:
                     selectedFragment = LivelihoodsNeedsDataFragment.newInstance();
                     break;
-                case ASSISTANCE:
-                    selectedFragment = AssistanceDataFragment.newInstance();
+                case LIVELIHOODS_ASSISTANCE:
+                    selectedFragment = LivelihoodsAssistanceDataFragment.newInstance();
                     break;
                 case LIVELIHOODS_GAPS:
                     selectedFragment = LivelihoodsGapsDataFragment.newInstance();
@@ -198,7 +197,7 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
                 case LIVELIHOODS_NEEDS:
                     viewModel = new LivelihoodsNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case ASSISTANCE:
+                case LIVELIHOODS_ASSISTANCE:
                     viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case LIVELIHOODS_GAPS:

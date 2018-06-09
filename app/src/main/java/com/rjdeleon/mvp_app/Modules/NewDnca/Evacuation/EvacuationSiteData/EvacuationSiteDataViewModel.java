@@ -3,7 +3,7 @@ package com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationSiteData;
 import android.content.Context;
 
 import com.rjdeleon.mvp_app.Models.Evacuation.EvacuationSiteData;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseQuestion;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelDate;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelEnum;

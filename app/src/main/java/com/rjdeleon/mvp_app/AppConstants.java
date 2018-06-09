@@ -7,12 +7,6 @@ public class AppConstants {
 
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";
 
-    public enum GenericComponent {
-        ASSISTANCE,
-        COPING,
-        GAPS
-    }
-
     public enum GenInfoComponent {
         GEN_INFO_CALAMITY,
         GEN_INFO_POPULATION,
@@ -27,15 +21,15 @@ public class AppConstants {
         SHELTER_HOUSE_DAMAGE,
         SHELTER_NEEDS,
         SHELTER_COPING,
-        ASSISTANCE,
+        SHELTER_ASSISTANCE,
         SHELTER_GAPS
     }
 
     public enum FoodSecurityComponent {
         FOOD_IMPACT,
-        COPING,
+        FOOD_COPING,
         FOOD_NEEDS,
-        ASSISTANCE,
+        FOOD_ASSISTANCE,
         FOOD_GAPS
     }
 
@@ -45,7 +39,7 @@ public class AppConstants {
         LIVELIHOODS_DAMAGE,
         LIVELIHOODS_COPING,
         LIVELIHOODS_NEEDS,
-        ASSISTANCE,
+        LIVELIHOODS_ASSISTANCE,
         LIVELIHOODS_GAPS
     }
 
@@ -53,15 +47,15 @@ public class AppConstants {
         HEALTH_DISEASES,
         HEALTH_SPECIAL_NEEDS,
         HEALTH_PSYCHOSOCIAL,
-        COPING,
-        ASSISTANCE,
+        HEALTH_COPING,
+        HEALTH_ASSISTANCE,
         HEALTH_GAPS
     }
 
     public enum WashComponent {
         WASH_CONDITIONS,
         WASH_COPING,
-        ASSISTANCE,
+        WASH_ASSISTANCE,
         WASH_GAPS
     }
     

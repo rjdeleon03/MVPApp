@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.AppConstants;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterAssistanceData.ShelterAssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataFragment;
@@ -24,7 +24,7 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeed
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
-import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_ASSISTANCE;
 import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_COPING;
 import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_GAPS;
 import static com.rjdeleon.mvp_app.AppConstants.ShelterInfoComponent.SHELTER_HOUSE_DAMAGE;
@@ -86,9 +86,9 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
 
         {
             // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = (AssistanceDataFragment)findOrCreateViewFragment(ASSISTANCE);
-            assistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(ASSISTANCE));
-            mAdapter.addFragment(assistanceDataFragment);
+            ShelterAssistanceDataFragment shelterAssistanceDataFragment = (ShelterAssistanceDataFragment)findOrCreateViewFragment(SHELTER_ASSISTANCE);
+            shelterAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(SHELTER_ASSISTANCE));
+            mAdapter.addFragment(shelterAssistanceDataFragment);
         }
 
         {
@@ -124,8 +124,8 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
                 case SHELTER_COPING:
                     selectedFragment = ShelterCopingDataFragment.newInstance();
                     break;
-                case ASSISTANCE:
-                    selectedFragment = AssistanceDataFragment.newInstance();
+                case SHELTER_ASSISTANCE:
+                    selectedFragment = ShelterAssistanceDataFragment.newInstance();
                     break;
                 case SHELTER_GAPS:
                     selectedFragment = ShelterGapsDataFragment.newInstance();
@@ -165,7 +165,7 @@ public class ShelterInfoFragment extends BaseMultiPageFragment {
                 case SHELTER_COPING:
                     viewModel = new ShelterCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case ASSISTANCE:
+                case SHELTER_ASSISTANCE:
                     viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case SHELTER_GAPS:

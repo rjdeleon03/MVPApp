@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rjdeleon.mvp_app.AppConstants;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.BaseSubFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
-import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodAssistanceData.FoodAssistanceDataFragment;
+import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataFragment;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodGapsData.FoodGapsDataViewModel;
 import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDataFragment;
@@ -24,8 +24,8 @@ import com.rjdeleon.mvp_app.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeeds
 import com.rjdeleon.mvp_app.Utils.ActivityUtils;
 import com.rjdeleon.mvp_app.ViewModelHolder;
 
-import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.ASSISTANCE;
-import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.COPING;
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_ASSISTANCE;
+import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_COPING;
 import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_GAPS;
 import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_IMPACT;
 import static com.rjdeleon.mvp_app.AppConstants.FoodSecurityComponent.FOOD_NEEDS;
@@ -72,9 +72,9 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
 
         {
             // Setup coping data fragment
-            GenericCopingDataFragment genericCopingDataFragment = (GenericCopingDataFragment)findOrCreateViewFragment(COPING);
-            genericCopingDataFragment.setViewModel((GenericCopingDataViewModel)findOrCreateViewModel(COPING));
-            mAdapter.addFragment(genericCopingDataFragment);
+            FoodCopingDataFragment foodCopingDataFragment = (FoodCopingDataFragment)findOrCreateViewFragment(FOOD_COPING);
+            foodCopingDataFragment.setViewModel((GenericCopingDataViewModel)findOrCreateViewModel(FOOD_COPING));
+            mAdapter.addFragment(foodCopingDataFragment);
         }
 
         {
@@ -86,9 +86,9 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
 
         {
             // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment = (AssistanceDataFragment)findOrCreateViewFragment(ASSISTANCE);
-            assistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(ASSISTANCE));
-            mAdapter.addFragment(assistanceDataFragment);
+            FoodAssistanceDataFragment foodAssistanceDataFragment = (FoodAssistanceDataFragment)findOrCreateViewFragment(FOOD_ASSISTANCE);
+            foodAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(FOOD_ASSISTANCE));
+            mAdapter.addFragment(foodAssistanceDataFragment);
         }
 
         {
@@ -118,14 +118,14 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
                 case FOOD_IMPACT:
                     selectedFragment = FoodImpactDataFragment.newInstance();
                     break;
-                case COPING:
-                    selectedFragment = GenericCopingDataFragment.newInstance();
+                case FOOD_COPING:
+                    selectedFragment = FoodCopingDataFragment.newInstance();
                     break;
                 case FOOD_NEEDS:
                     selectedFragment = FoodNeedsDataFragment.newInstance();
                     break;
-                case ASSISTANCE:
-                    selectedFragment = AssistanceDataFragment.newInstance();
+                case FOOD_ASSISTANCE:
+                    selectedFragment = FoodAssistanceDataFragment.newInstance();
                     break;
                 case FOOD_GAPS:
                     selectedFragment = FoodGapsDataFragment.newInstance();
@@ -159,13 +159,13 @@ public class FoodSecurityFragment extends BaseMultiPageFragment {
                 case FOOD_IMPACT:
                     viewModel = new FoodImpactDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case COPING:
+                case FOOD_COPING:
                     viewModel = new GenericCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case FOOD_NEEDS:
                     viewModel = new FoodNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
-                case ASSISTANCE:
+                case FOOD_ASSISTANCE:
                     viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
                     break;
                 case FOOD_GAPS:

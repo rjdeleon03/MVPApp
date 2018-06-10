@@ -16,114 +16,151 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <GridLayout
+            android:id="@+id/grid"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:columnCount="3" >
 
-            <Button
-                android:id="@+id/nd_form_details_button"
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Form Details"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnFormDetailsButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnFormDetailsButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_gen_info_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Form Details"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="General Information"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnGenInfoButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_form_details_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnGenInfoButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_shelter_info_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="General Information"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Shelter and Non-Food Items"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnShelterInfoButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_gen_info_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnShelterInfoButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_food_security_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Shelter and Non-Food Items"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Food Security"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnFoodSecurityButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_shelter_info_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnFoodSecurityButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_livelihoods_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Food Security"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Livelihoods"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnLivelihoodsButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_food_security_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnLivelihoodsButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_health_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Livelihoods"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Health"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnHealthButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_livelihoods_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnHealthButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_wash_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Health"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <!--
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Water, Sanitation, and Hygiene"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnWashButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_health_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnWashButtonPressed()}">
 
-            <Button
-                android:id="@+id/nd_evacuation_button"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Water, Sanitation, and Hygiene"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Situation in Evacuation Centers"
-                android:fontFamily="@font/lato_bold"
-                android:onClick="@{() -> viewModel.navigateOnEvacuationButtonPressed()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nd_wash_button" />
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:minHeight="100dp"
+                android:onClick="@{() -> viewModel.navigateOnEvacuationButtonPressed()}">
 
-        </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Situation in Evacuation Centers"
+                    android:gravity="center"/>
+
+            </android.support.v7.widget.CardView>
+            -->
+
+        </GridLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/nd_save_button"

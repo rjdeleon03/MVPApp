@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app.Modules.NewDnca.CaseStories;
+package com.cpu.quikdata.Modules.NewDnca.CaseStories;
 
 
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rjdeleon.mvp_app.R;
+import com.cpu.quikdata.R;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app;
+package com.cpu.quikdata;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.rjdeleon.mvp_app", appContext.getPackageName());
+        assertEquals("com.cpu.quikdata", appContext.getPackageName());
     }
 }

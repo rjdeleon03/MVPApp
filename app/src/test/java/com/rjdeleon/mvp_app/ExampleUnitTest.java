@@ -1,4 +1,4 @@
-package com.rjdeleon.mvp_app;
+package com.cpu.quikdata;
 
 import org.junit.Test;
 

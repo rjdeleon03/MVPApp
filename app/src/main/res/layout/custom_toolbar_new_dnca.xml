@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.NewDncaViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.NewDncaViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

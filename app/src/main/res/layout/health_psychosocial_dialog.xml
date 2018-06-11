@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

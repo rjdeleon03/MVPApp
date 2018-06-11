@@ -60,6 +60,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="@{(viewModel.shouldShowRemarks || viewModel.shouldShowRemarksInt) ? View.VISIBLE : View.GONE}"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_bold"
                     android:text="@{viewModel.remarksText}"

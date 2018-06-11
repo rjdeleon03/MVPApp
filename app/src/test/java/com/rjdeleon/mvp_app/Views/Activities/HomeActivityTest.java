@@ -1,6 +1,6 @@
-package com.rjdeleon.mvp_app.Views.Activities;
+package com.cpu.quikdata.Views.Activities;
 
-import com.rjdeleon.mvp_app.Modules.Home.HomeActivity;
+import com.cpu.quikdata.Modules.Home.HomeActivity;
 
 import org.junit.After;
 import org.junit.Before;

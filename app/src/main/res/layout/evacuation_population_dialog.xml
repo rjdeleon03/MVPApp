@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

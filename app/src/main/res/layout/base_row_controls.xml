@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

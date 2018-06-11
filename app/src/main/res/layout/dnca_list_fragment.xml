@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.DNCAList.DNCAListViewModel" />
+            type="com.cpu.quikdata.Modules.DNCAList.DNCAListViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

@@ -8,7 +8,7 @@
 
         <!--<variable-->
             <!--name="presenter"-->
-            <!--type="com.rjdeleon.mvp_app.Modules.Home.HomePresenter" />-->
+            <!--type="com.cpu.quikdata.Modules.Home.HomePresenter" />-->
     <!--</data>-->
 
     <LinearLayout

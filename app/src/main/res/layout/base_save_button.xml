@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.Base.NonEnumSaveableSection" />
+            type="com.cpu.quikdata.Modules.NewDnca.Base.NonEnumSaveableSection" />
     </data>
 
     <android.support.design.widget.FloatingActionButton

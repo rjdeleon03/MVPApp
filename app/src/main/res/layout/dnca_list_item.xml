@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.DNCAList.Item.DNCAListItemViewModel" />
+            type="com.cpu.quikdata.Modules.DNCAList.Item.DNCAListItemViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

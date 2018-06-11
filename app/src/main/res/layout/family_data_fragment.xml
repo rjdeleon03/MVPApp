@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.rjdeleon.mvp_app.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

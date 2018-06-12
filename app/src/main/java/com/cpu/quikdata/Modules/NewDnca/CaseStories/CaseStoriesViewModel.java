@@ -10,7 +10,7 @@ import com.cpu.quikdata.Modules.NewDnca.CameraOwner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CaseStoriesViewModel extends NewDncaBaseViewModel implements NonEnumSaveableSection, CameraOwner {
+public class CaseStoriesViewModel extends NewDncaBaseViewModel implements NonEnumSaveableSection, CameraOwner, CaseStoriesRepositoryManager {
 
     private DNCAFormRepository mDncaFormRepository;
     private CaseStoriesNavigator mCaseStoriesNavigator;
@@ -44,11 +44,38 @@ public class CaseStoriesViewModel extends NewDncaBaseViewModel implements NonEnu
     }
 
     /**
+     * Gets number of image paths
+     * @return
+     */
+    public int getImagePathsCount() {
+        return mImagePaths.size();
+    }
+
+    /**
      * Adds image path to list of image paths
      * @param path
      */
     @Override
     public void addImagePath(String path) {
         mImagePaths.add(path);
+    }
+
+    /**
+     * Deletes image path at specified index
+     * @param rowIndex
+     */
+    @Override
+    public void deleteImagePath(int rowIndex) {
+        mImagePaths.remove(rowIndex);
+    }
+
+    /**
+     * Gets image path at specified index
+     * @param rowIndex
+     * @return
+     */
+    @Override
+    public String getImagePath(int rowIndex) {
+        return mImagePaths.get(rowIndex);
     }
 }

@@ -4,6 +4,8 @@ package com.cpu.quikdata.Modules.NewDnca.CaseStories;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ public class CaseStoriesFragment extends Fragment {
 
     private CaseStoriesViewModel mViewModel;
     private CaseStoriesFragmentBinding mBinding;
+    private CaseStoriesFragmentAdapter mCaseStoriesAdapter;
+    private RecyclerView mImageRecycler;
 
     public static CaseStoriesFragment newInstance() {
         return new CaseStoriesFragment();
@@ -52,6 +56,22 @@ public class CaseStoriesFragment extends Fragment {
         }
         mBinding.setViewModel(mViewModel);
 
+        setupImageRecycler(root);
+
         return root;
+    }
+
+    /**
+     * Sets up recycler view for images
+     * @param view
+     */
+    private void setupImageRecycler(View view) {
+        mImageRecycler = view.findViewById(R.id.nd_case_image_list);
+        mImageRecycler.setHasFixedSize(true);
+        mImageRecycler.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        mCaseStoriesAdapter = new CaseStoriesFragmentAdapter(
+                getContext().getApplicationContext(),
+                mViewModel);
+        mImageRecycler.setAdapter(mCaseStoriesAdapter);
     }
 }

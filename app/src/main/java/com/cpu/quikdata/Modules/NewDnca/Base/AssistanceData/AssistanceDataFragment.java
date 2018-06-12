@@ -10,7 +10,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class AssistanceDataFragment extends BaseEnumFragment{
+public abstract class AssistanceDataFragment extends BaseEnumFragment {
 
     private AssistanceDataFragmentAdapter mAssistanceDataAdapter;
 

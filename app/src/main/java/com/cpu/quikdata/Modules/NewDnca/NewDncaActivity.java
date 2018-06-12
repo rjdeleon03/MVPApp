@@ -47,6 +47,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private NewDncaViewModel mMainViewModel;
 
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
+
+    private CaseStoriesFragment mCaseStoriesFragment;
+
     private GenInfoViewModel mGenInfoViewModel;
     private ShelterInfoViewModel mShelterInfoViewModel;
     private FoodSecurityViewModel mFoodSecurityViewModel;
@@ -249,10 +252,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onCaseStoriesButtonPressed() {
-        CaseStoriesFragment caseStoriesFragment = (CaseStoriesFragment) findOrCreateViewFragment(NewDncaComponent.CASE_STORIES);
+        mCaseStoriesFragment = (CaseStoriesFragment) findOrCreateViewFragment(NewDncaComponent.CASE_STORIES);
         mCaseStoriesViewModel = (CaseStoriesViewModel) findOrCreateViewModel(NewDncaComponent.CASE_STORIES);
-        caseStoriesFragment.setViewModel(mCaseStoriesViewModel);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), caseStoriesFragment,
+        mCaseStoriesFragment.setViewModel(mCaseStoriesViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mCaseStoriesFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.CASE_STORIES.toString());
     }
 
@@ -277,6 +280,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (mCameraOwner != null) {
                 mCameraOwner.addImagePath(ImageUtils.getImagePath(this, ImageUtils.getBitmapFromIntent(data)));
+                mCaseStoriesFragment.refreshData();
             }
         }
     }

@@ -74,4 +74,15 @@ public class CaseStoriesFragment extends Fragment {
                 mViewModel);
         mImageRecycler.setAdapter(mCaseStoriesAdapter);
     }
+
+    /**
+     * Refreshes the images displayed in the recycler view
+     */
+    public void refreshData() {
+        if (mCaseStoriesAdapter != null) {
+            int w = mImageRecycler.getWidth();
+            int h = mImageRecycler.getHeight();
+            mCaseStoriesAdapter.notifyDataSetChanged();
+        }
+    }
 }

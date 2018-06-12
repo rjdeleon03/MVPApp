@@ -1,7 +1,6 @@
 package com.cpu.quikdata.Modules.NewDnca.CaseStories.Image;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.cpu.quikdata.databinding.CaseImageItemBinding;
 

@@ -2,29 +2,56 @@ package com.cpu.quikdata.Modules.NewDnca.CaseStories;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.R;
+import com.cpu.quikdata.databinding.CaseStoriesFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CaseStoriesFragment extends Fragment {
 
+    private CaseStoriesViewModel mViewModel;
+    private CaseStoriesFragmentBinding mBinding;
+
+    public static CaseStoriesFragment newInstance() {
+        return new CaseStoriesFragment();
+    }
 
     public CaseStoriesFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Sets the viewModel
+     * @param viewModel
+     */
+    public void setViewModel(@NonNull CaseStoriesViewModel viewModel) {
+        mViewModel = viewModel;
+    }
 
+    /**
+     * Creates the view and binds the viewModel
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.case_stories_fragment, container, false);
-    }
+        View root = inflater.inflate(R.layout.case_stories_fragment, container, false);
+        if (mBinding == null) {
+            mBinding = CaseStoriesFragmentBinding.bind(root);
+        }
+        mBinding.setViewModel(mViewModel);
 
+        return root;
+    }
 }

@@ -7,6 +7,8 @@ public class AppConstants {
 
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";
 
+    public static final int REQUEST_IMAGE_CAPTURE = 100;
+
     public enum GenInfoComponent {
         GEN_INFO_CALAMITY,
         GEN_INFO_POPULATION,

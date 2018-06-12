@@ -104,6 +104,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     }
 
     /**
+     * Handles navigation when case stories button is pressed
+     */
+    public void navigateOnCaseStoriesButtonPressed() {
+        mNewDncaNavigator.onCaseStoriesButtonPressed();
+    }
+
+    /**
      * Callback for when form has been created
      * @param form
      */

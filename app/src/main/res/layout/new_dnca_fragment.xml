@@ -23,7 +23,8 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="72dp">
 
                 <GridLayout
                     android:columnCount="2"
@@ -274,7 +275,7 @@
                         android:layout_rowWeight="1"
                         android:layout_margin="8dp"
                         app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnEvacuationButtonPressed()}">
+                        android:onClick="@{() -> viewModel.navigateOnCaseStoriesButtonPressed()}">
 
                         <LinearLayout
                             android:layout_gravity="center_horizontal|center_vertical"

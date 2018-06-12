@@ -1,5 +1,6 @@
 package com.cpu.quikdata.Modules.NewDnca;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,9 @@ import android.support.v7.widget.Toolbar;
 
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesFragment;
+import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesNavigator;
+import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
@@ -27,18 +31,32 @@ import com.cpu.quikdata.Modules.NewDnca.Wash.WashFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
+import com.cpu.quikdata.Utils.ImageUtils;
+import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 import com.cpu.quikdata.databinding.NewDncaActivityBinding;
 
 import java.util.List;
 
+import static com.cpu.quikdata.AppConstants.REQUEST_IMAGE_CAPTURE;
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 
-public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator {
+public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator, CaseStoriesNavigator {
 
     private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
 
+    private NewDncaFormDetailsViewModel mFormDetailsViewModel;
+    private GenInfoViewModel mGenInfoViewModel;
+    private ShelterInfoViewModel mShelterInfoViewModel;
+    private FoodSecurityViewModel mFoodSecurityViewModel;
+    private LivelihoodsViewModel mLivelihoodsViewModel;
+    private HealthViewModel mHealthViewModel;
+    private WashViewModel mWashViewModel;
+    private EvacuationViewModel mEvacuationViewModel;
+    private CaseStoriesViewModel mCaseStoriesViewModel;
+
+    private CameraOwner mCameraOwner = null;
     private NewDncaActivityBinding mMainBinding;
 
     private enum NewDncaComponent {
@@ -113,6 +131,15 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     protected void onStop() {
         mMainViewModel.performCleanup();
+        mFormDetailsViewModel = null;
+        mGenInfoViewModel = null;
+        mShelterInfoViewModel = null;
+        mFoodSecurityViewModel = null;
+        mLivelihoodsViewModel = null;
+        mHealthViewModel = null;
+        mWashViewModel = null;
+        mEvacuationViewModel = null;
+        mCaseStoriesViewModel = null;
         super.onStop();
     }
 
@@ -127,8 +154,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onFormDetailsButtonPressed() {
         NewDncaFormDetailsFragment formDetailsFragment = (NewDncaFormDetailsFragment) findOrCreateViewFragment(NewDncaComponent.FORM_DETAILS);
-        NewDncaFormDetailsViewModel formDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
-        formDetailsFragment.setViewModel(formDetailsViewModel);
+        mFormDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
+        formDetailsFragment.setViewModel(mFormDetailsViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formDetailsFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.FORM_DETAILS.toString());
     }
@@ -139,8 +166,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onGenInfoButtonPressed() {
         GenInfoFragment genInfoFragment = (GenInfoFragment) findOrCreateViewFragment(NewDncaComponent.GEN_INFO);
-        GenInfoViewModel genInfoViewModel = (GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
-        genInfoFragment.setViewModel(genInfoViewModel);
+        mGenInfoViewModel = (GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
+        genInfoFragment.setViewModel(mGenInfoViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), genInfoFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.GEN_INFO.toString());
     }
@@ -151,8 +178,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onShelterInfoButtonPressed() {
         ShelterInfoFragment shelterInfoFragment = (ShelterInfoFragment) findOrCreateViewFragment(NewDncaComponent.SHELTER_INFO);
-        ShelterInfoViewModel shelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
-        shelterInfoFragment.setViewModel(shelterInfoViewModel);
+        mShelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
+        shelterInfoFragment.setViewModel(mShelterInfoViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), shelterInfoFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.SHELTER_INFO.toString());
     }
@@ -163,8 +190,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onFoodSecurityButtonPressed() {
         FoodSecurityFragment foodSecurityFragment = (FoodSecurityFragment) findOrCreateViewFragment(NewDncaComponent.FOOD_SECURITY);
-        FoodSecurityViewModel foodSecurityViewModel = (FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY);
-        foodSecurityFragment.setViewModel(foodSecurityViewModel);
+        mFoodSecurityViewModel = (FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY);
+        foodSecurityFragment.setViewModel(mFoodSecurityViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), foodSecurityFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.FOOD_SECURITY.toString());
     }
@@ -175,8 +202,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onLivelihoodsButtonPressed() {
         LivelihoodsFragment livelihoodsFragment = (LivelihoodsFragment) findOrCreateViewFragment(NewDncaComponent.LIVELIHOODS);
-        LivelihoodsViewModel livelihoodsViewModel = (LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS);
-        livelihoodsFragment.setViewModel(livelihoodsViewModel);
+        mLivelihoodsViewModel = (LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS);
+        livelihoodsFragment.setViewModel(mLivelihoodsViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), livelihoodsFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.LIVELIHOODS.toString());
     }
@@ -187,8 +214,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onHealthButtonPressed() {
         HealthFragment healthFragment = (HealthFragment) findOrCreateViewFragment(NewDncaComponent.HEALTH);
-        HealthViewModel healthViewModel = (HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH);
-        healthFragment.setViewModel(healthViewModel);
+        mHealthViewModel = (HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH);
+        healthFragment.setViewModel(mHealthViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), healthFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.HEALTH.toString());
     }
@@ -199,8 +226,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onWashButtonPressed() {
         WashFragment washFragment = (WashFragment) findOrCreateViewFragment(NewDncaComponent.WASH);
-        WashViewModel washViewModel = (WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH);
-        washFragment.setViewModel(washViewModel);
+        mWashViewModel = (WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH);
+        washFragment.setViewModel(mWashViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), washFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.WASH.toString());
     }
@@ -210,11 +237,48 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onEvacuationButtonPressed() {
-        EvacuationFragment evacuationFragent = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
-        EvacuationViewModel evacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
-        evacuationFragent.setViewModel(evacuationViewModel);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragent,
+        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
+        mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+        evacuationFragment.setViewModel(mEvacuationViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
+    }
+
+    /**
+     * Show case stories fragment
+     */
+    @Override
+    public void onCaseStoriesButtonPressed() {
+        CaseStoriesFragment caseStoriesFragment = (CaseStoriesFragment) findOrCreateViewFragment(NewDncaComponent.CASE_STORIES);
+        mCaseStoriesViewModel = (CaseStoriesViewModel) findOrCreateViewModel(NewDncaComponent.CASE_STORIES);
+        caseStoriesFragment.setViewModel(mCaseStoriesViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), caseStoriesFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.CASE_STORIES.toString());
+    }
+
+    /**
+     * Starts image capture activity
+     * @param cameraOwner
+     */
+    @Override
+    public void onCameraButtonPressed(CameraOwner cameraOwner) {
+        ViewFactory.startCameraActivity(this);
+        mCameraOwner = cameraOwner;
+    }
+
+    /**
+     * Handles results from startActivityForResult calls
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            if (mCameraOwner != null) {
+                mCameraOwner.addImagePath(ImageUtils.getImagePath(this, ImageUtils.getBitmapFromIntent(data)));
+            }
+        }
     }
 
     @NonNull
@@ -282,6 +346,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                     fragment = EvacuationFragment.newInstance();
                 }
                 break;
+
+            case CASE_STORIES:
+                if (fragment == null || !(fragment instanceof CaseStoriesFragment)) {
+                    fragment = CaseStoriesFragment.newInstance();
+                }
+                break;
         }
 
         return fragment;
@@ -342,6 +412,11 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
                 case EVACUATION:
                     viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel.setNewDncaNavigator(this);
+                    break;
+
+                case CASE_STORIES:
+                    viewModel = new CaseStoriesViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()), this);
                     viewModel.setNewDncaNavigator(this);
                     break;
             }

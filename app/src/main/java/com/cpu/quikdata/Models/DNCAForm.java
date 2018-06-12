@@ -19,8 +19,9 @@ public class DNCAForm implements NormalizableData {
     private HealthInfo healthInfo;
     private WashInfo washInfo;
     private EvacuationInfo evacuationInfo;
+    private CaseStories caseStories;
 
-    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo, EvacuationInfo evacuationInfo) {
+    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo, EvacuationInfo evacuationInfo, CaseStories caseStories) {
         this.formInfo = formInfo;
         this.genInfo = genInfo;
         this.shelterInfo = shelterInfo;
@@ -29,10 +30,11 @@ public class DNCAForm implements NormalizableData {
         this.healthInfo = healthInfo;
         this.washInfo = washInfo;
         this.evacuationInfo = evacuationInfo;
+        this.caseStories = caseStories;
     }
 
     public DNCAForm() {
-        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo(), new EvacuationInfo());
+        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo(), new EvacuationInfo(), new CaseStories());
     }
 
     public FormInfo getFormInfo() {
@@ -97,6 +99,14 @@ public class DNCAForm implements NormalizableData {
 
     public void setEvacuationInfo(EvacuationInfo evacuationInfo) {
         this.evacuationInfo = evacuationInfo;
+    }
+
+    public CaseStories getCaseStories() {
+        return caseStories;
+    }
+
+    public void setCaseStories(CaseStories caseStories) {
+        this.caseStories = caseStories;
     }
 
     @Override

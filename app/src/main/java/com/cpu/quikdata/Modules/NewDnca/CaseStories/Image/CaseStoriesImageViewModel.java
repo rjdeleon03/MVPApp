@@ -1,6 +1,7 @@
 package com.cpu.quikdata.Modules.NewDnca.CaseStories.Image;
 
 import android.content.Context;
+import android.databinding.ObservableField;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesRepositoryManager;
@@ -8,7 +9,7 @@ import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesRepositoryManager
 public class CaseStoriesImageViewModel extends NewDncaBaseViewModel {
 
     private CaseStoriesRepositoryManager mCaseStoriesRepositoryManager;
-    private String mImagePath;
+    public final ObservableField<String> imagePath = new ObservableField<>("");
 
     /**
      * Constructor
@@ -21,15 +22,6 @@ public class CaseStoriesImageViewModel extends NewDncaBaseViewModel {
                                      int index) {
         super(context);
         mCaseStoriesRepositoryManager = caseStoriesRepositoryManager;
-
-        mImagePath = mCaseStoriesRepositoryManager.getImagePath(index);
-    }
-
-    /**
-     * Gets image path
-     * @return
-     */
-    public String getImagePath() {
-        return mImagePath;
+        imagePath.set(mCaseStoriesRepositoryManager.getImagePath(index));
     }
 }

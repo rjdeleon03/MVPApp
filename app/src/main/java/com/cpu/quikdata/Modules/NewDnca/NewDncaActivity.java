@@ -132,22 +132,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     }
 
     @Override
-    protected void onStop() {
-        mMainViewModel.performCleanup();
-        mFormDetailsViewModel = null;
-        mGenInfoViewModel = null;
-        mShelterInfoViewModel = null;
-        mFoodSecurityViewModel = null;
-        mLivelihoodsViewModel = null;
-        mHealthViewModel = null;
-        mWashViewModel = null;
-        mEvacuationViewModel = null;
-        mCaseStoriesViewModel = null;
-        super.onStop();
-    }
-
-    @Override
     public void onBackButtonPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            mMainViewModel.performCleanup();
+        }
         onBackPressed();
     }
 

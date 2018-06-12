@@ -2,7 +2,11 @@ package com.cpu.quikdata.Modules.NewDnca.CaseStories;
 
 import android.content.Context;
 
+import com.cpu.quikdata.Models.CaseStories;
+import com.cpu.quikdata.Models.DNCAForm;
+import com.cpu.quikdata.Models.DNCAFormDataSource;
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.NonEnumSaveableSection;
 import com.cpu.quikdata.Modules.NewDnca.CameraOwner;
@@ -10,9 +14,9 @@ import com.cpu.quikdata.Modules.NewDnca.CameraOwner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CaseStoriesViewModel extends NewDncaBaseViewModel implements NonEnumSaveableSection, CameraOwner, CaseStoriesRepositoryManager {
+public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
+        NonEnumSaveableSection, CameraOwner, CaseStoriesRepositoryManager, DNCAFormDataSource.GetDncaFormCallback {
 
-    private DNCAFormRepository mDncaFormRepository;
     private CaseStoriesNavigator mCaseStoriesNavigator;
     private List<String> mImagePaths = new ArrayList<>();
 
@@ -23,9 +27,19 @@ public class CaseStoriesViewModel extends NewDncaBaseViewModel implements NonEnu
      * @param caseStoriesNavigator
      */
     public CaseStoriesViewModel(Context context, DNCAFormRepository dncaFormRepository, CaseStoriesNavigator caseStoriesNavigator) {
-        super(context);
-        mDncaFormRepository = dncaFormRepository;
+        super(context, dncaFormRepository);
+        mDncaFormRepository.retrieveNewDncaForm(this);
         mCaseStoriesNavigator = caseStoriesNavigator;
+    }
+
+    /**
+     * Override parent method to handle DNCA form data when loaded
+     */
+    @Override
+    public void retrieveDataAfterFormLoaded() {
+        if (mImagePaths != null) {
+            mImagePaths.addAll(mDncaForm.getCaseStories().getImages());
+        }
     }
 
     /**
@@ -40,7 +54,10 @@ public class CaseStoriesViewModel extends NewDncaBaseViewModel implements NonEnu
      */
     @Override
     public void navigateOnSaveButtonPressed() {
+        mDncaForm.setCaseStories(new CaseStories(mImagePaths));
 
+        if (mNewDncaNavigator != null)
+            mNewDncaNavigator.onBackButtonPressed();
     }
 
     /**

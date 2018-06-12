@@ -33,6 +33,13 @@ public class NewDncaFormDetailsViewModel extends BaseMultiPageViewModel implemen
     }
 
     /**
+     * Refresh viewModel with correct data when view is reshown
+     */
+    public void refreshViewModel() {
+        retrieveDataAfterFormLoaded();
+    }
+
+    /**
      * Override parent method to handle DNCA form data when loaded
      */
     @Override

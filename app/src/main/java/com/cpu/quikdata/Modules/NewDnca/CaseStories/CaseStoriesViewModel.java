@@ -28,8 +28,17 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      */
     public CaseStoriesViewModel(Context context, DNCAFormRepository dncaFormRepository, CaseStoriesNavigator caseStoriesNavigator) {
         super(context, dncaFormRepository);
-        mDncaFormRepository.retrieveNewDncaForm(this);
         mCaseStoriesNavigator = caseStoriesNavigator;
+    }
+
+    /**
+     * Refresh viewModel with correct data when view is reshown
+     */
+    public void refreshViewModel() {
+        if (mImagePaths != null) {
+            mImagePaths.clear();
+            mImagePaths.addAll(mDncaForm.getCaseStories().getImages());
+        }
     }
 
     /**
@@ -54,7 +63,9 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        mDncaForm.setCaseStories(new CaseStories(mImagePaths));
+        CaseStories caseStories = new CaseStories();
+        caseStories.getImages().addAll(mImagePaths);
+        mDncaForm.setCaseStories(caseStories);
 
         if (mNewDncaNavigator != null)
             mNewDncaNavigator.onBackButtonPressed();

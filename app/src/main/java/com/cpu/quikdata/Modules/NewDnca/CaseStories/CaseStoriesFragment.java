@@ -54,6 +54,7 @@ public class CaseStoriesFragment extends Fragment {
         if (mBinding == null) {
             mBinding = CaseStoriesFragmentBinding.bind(root);
         }
+        mViewModel.refreshViewModel();
         mBinding.setViewModel(mViewModel);
 
         setupImageRecycler(root);

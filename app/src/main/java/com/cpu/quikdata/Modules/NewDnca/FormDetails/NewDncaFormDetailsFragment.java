@@ -56,6 +56,7 @@ public class NewDncaFormDetailsFragment extends Fragment {
         if (mBinding == null) {
             mBinding = NewDncaFormDetailsFragmentBinding.bind(root);
         }
+        mViewModel.refreshViewModel();
         mBinding.setViewModel(mViewModel);
 
         // Setup set date button

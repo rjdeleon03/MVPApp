@@ -46,10 +46,9 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
 
+
+
     private NewDncaFormDetailsViewModel mFormDetailsViewModel;
-
-    private CaseStoriesFragment mCaseStoriesFragment;
-
     private GenInfoViewModel mGenInfoViewModel;
     private ShelterInfoViewModel mShelterInfoViewModel;
     private FoodSecurityViewModel mFoodSecurityViewModel;
@@ -58,6 +57,16 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private WashViewModel mWashViewModel;
     private EvacuationViewModel mEvacuationViewModel;
     private CaseStoriesViewModel mCaseStoriesViewModel;
+
+    private NewDncaFormDetailsFragment mFormDetailsFragment;
+    private GenInfoFragment mGenInfoFragment;
+    private ShelterInfoFragment mShelterInfoFragment;
+    private FoodSecurityFragment mFoodSecurityFragment;
+    private LivelihoodsFragment mLivelihoodsFragment;
+    private HealthFragment mHealthFragment;
+    private WashFragment mWashFragment;
+    private EvacuationFragment mEvacuationFragment;
+    private CaseStoriesFragment mCaseStoriesFragment;
 
     private CameraOwner mCameraOwner = null;
     private NewDncaActivityBinding mMainBinding;
@@ -104,28 +113,50 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             if (currentFragment instanceof ViewModelHolder) continue;
 
             if(currentFragment.getTag().equals(NewDncaComponent.FORM_DETAILS.toString())) {
-                ((NewDncaFormDetailsFragment) currentFragment).setViewModel((NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS));
+                mFormDetailsFragment = (NewDncaFormDetailsFragment) currentFragment;
+                mFormDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
+                mFormDetailsFragment.setViewModel(mFormDetailsViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.GEN_INFO.toString())) {
-                ((GenInfoFragment) currentFragment).setViewModel((GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO));
+                mGenInfoFragment = (GenInfoFragment) currentFragment;
+                mGenInfoViewModel = (GenInfoViewModel) findOrCreateViewModel(NewDncaComponent.GEN_INFO);
+                mGenInfoFragment.setViewModel(mGenInfoViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.SHELTER_INFO.toString())) {
-                ((ShelterInfoFragment) currentFragment).setViewModel((ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO));
+                mShelterInfoFragment = (ShelterInfoFragment) currentFragment;
+                mShelterInfoViewModel = (ShelterInfoViewModel) findOrCreateViewModel(NewDncaComponent.SHELTER_INFO);
+                mShelterInfoFragment.setViewModel(mShelterInfoViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.FOOD_SECURITY.toString())) {
-                ((FoodSecurityFragment) currentFragment).setViewModel((FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY));
+                mFoodSecurityFragment = (FoodSecurityFragment) currentFragment;
+                mFoodSecurityViewModel = (FoodSecurityViewModel) findOrCreateViewModel(NewDncaComponent.FOOD_SECURITY);
+                mFoodSecurityFragment.setViewModel(mFoodSecurityViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.LIVELIHOODS.toString())) {
-                ((LivelihoodsFragment) currentFragment).setViewModel((LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS));
+                mLivelihoodsFragment = (LivelihoodsFragment) currentFragment;
+                mLivelihoodsViewModel = (LivelihoodsViewModel) findOrCreateViewModel(NewDncaComponent.LIVELIHOODS);
+                mLivelihoodsFragment.setViewModel(mLivelihoodsViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.HEALTH.toString())) {
-                ((HealthFragment) currentFragment).setViewModel((HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH));
+                mHealthFragment = (HealthFragment) currentFragment;
+                mHealthViewModel = (HealthViewModel) findOrCreateViewModel(NewDncaComponent.HEALTH);
+                mHealthFragment.setViewModel(mHealthViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.WASH.toString())) {
-                ((WashFragment) currentFragment).setViewModel((WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH));
+                mWashFragment = (WashFragment) currentFragment;
+                mWashViewModel = (WashViewModel) findOrCreateViewModel(NewDncaComponent.WASH);
+                mWashFragment.setViewModel(mWashViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.EVACUATION.toString())) {
-                ((EvacuationFragment) currentFragment).setViewModel((EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION));
+                mEvacuationFragment = (EvacuationFragment) currentFragment;
+                mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+                mEvacuationFragment.setViewModel(mEvacuationViewModel);
+
+            } else if(currentFragment.getTag().equals(NewDncaComponent.CASE_STORIES.toString())) {
+                mCaseStoriesFragment = (CaseStoriesFragment) currentFragment;
+                mCaseStoriesViewModel = (CaseStoriesViewModel) findOrCreateViewModel(NewDncaComponent.CASE_STORIES);
+                mCaseStoriesFragment.setViewModel(mCaseStoriesViewModel);
+                mCameraOwner = mCaseStoriesViewModel;
 
             }
         }

@@ -1,7 +1,11 @@
 package com.cpu.quikdata.Modules.NewDnca.CaseStories;
 
 import android.content.Context;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
+import android.databinding.ObservableList;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Models.CaseStories;
 import com.cpu.quikdata.Models.DNCAForm;
 import com.cpu.quikdata.Models.DNCAFormDataSource;
@@ -18,7 +22,7 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
         NonEnumSaveableSection, CameraOwner, CaseStoriesRepositoryManager, DNCAFormDataSource.GetDncaFormCallback {
 
     private CaseStoriesNavigator mCaseStoriesNavigator;
-    private List<String> mImagePaths = new ArrayList<>();
+    public final ObservableList<String> imagePaths = new ObservableArrayList<>();
 
     /**
      * Constructor
@@ -35,9 +39,9 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      * Refresh viewModel with correct data when view is reshown
      */
     public void refreshViewModel() {
-        if (mImagePaths != null) {
-            mImagePaths.clear();
-            mImagePaths.addAll(mDncaForm.getCaseStories().getImages());
+        if (imagePaths != null) {
+            imagePaths.clear();
+            imagePaths.addAll(mDncaForm.getCaseStories().getImages());
         }
     }
 
@@ -46,8 +50,8 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
-        if (mImagePaths != null) {
-            mImagePaths.addAll(mDncaForm.getCaseStories().getImages());
+        if (imagePaths != null) {
+            imagePaths.addAll(mDncaForm.getCaseStories().getImages());
         }
     }
 
@@ -64,7 +68,7 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
     @Override
     public void navigateOnSaveButtonPressed() {
         CaseStories caseStories = new CaseStories();
-        caseStories.getImages().addAll(mImagePaths);
+        caseStories.getImages().addAll(imagePaths);
         mDncaForm.setCaseStories(caseStories);
 
         if (mNewDncaNavigator != null)
@@ -76,7 +80,7 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      * @return
      */
     public int getImagePathsCount() {
-        return mImagePaths.size();
+        return imagePaths.size();
     }
 
     /**
@@ -85,7 +89,8 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      */
     @Override
     public void addImagePath(String path) {
-        mImagePaths.add(path);
+        if (AppConstants.MAX_IMAGE_COUNT <= imagePaths.size()) return;
+        imagePaths.add(path);
     }
 
     /**
@@ -94,7 +99,8 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      */
     @Override
     public void deleteImagePath(int rowIndex) {
-        mImagePaths.remove(rowIndex);
+        imagePaths.remove(rowIndex);
+        mCaseStoriesNavigator.onImagesUpdated();
     }
 
     /**
@@ -104,6 +110,6 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
      */
     @Override
     public String getImagePath(int rowIndex) {
-        return mImagePaths.get(rowIndex);
+        return imagePaths.get(rowIndex);
     }
 }

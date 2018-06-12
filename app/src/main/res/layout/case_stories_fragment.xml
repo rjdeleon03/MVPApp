@@ -46,6 +46,7 @@
                     android:layout_height="50dp"
                     android:layout_margin="4dp"
                     android:src="@drawable/ic_camera_alt"
+                    imagePaths="@{viewModel.imagePaths}"
                     android:onClick="@{() -> viewModel.navigateOnCameraButtonPressed()}"
                     app:backgroundTint="@color/colorAccent"
                     app:elevation="0dp"/>

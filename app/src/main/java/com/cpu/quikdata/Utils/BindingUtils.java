@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Models.DNCAListItem;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Models.Generics.SimpleDate;
@@ -142,7 +143,12 @@ public class BindingUtils {
     }
 
     @BindingAdapter("imageSrc")
-    public static void bindWaterLevelEnumInRadioGroup(ImageView imageView, String imagePath) {
+    public static void bindImagePathInImageView(ImageView imageView, String imagePath) {
         Glide.with(imageView.getRootView()).load(imagePath).into(imageView);
+    }
+
+    @BindingAdapter("imagePaths")
+    public static void bindImagePathListInFloatingActionButton(FloatingActionButton button, List<String> imagePaths) {
+        button.setEnabled(imagePaths.size() < AppConstants.MAX_IMAGE_COUNT);
     }
 }

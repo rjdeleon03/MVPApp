@@ -69,7 +69,7 @@ public class CaseStoriesFragment extends Fragment {
     private void setupImageRecycler(View view) {
         mImageRecycler = view.findViewById(R.id.nd_case_image_list);
         mImageRecycler.setHasFixedSize(true);
-        mImageRecycler.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        mImageRecycler.setLayoutManager(new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL));
         mCaseStoriesAdapter = new CaseStoriesFragmentAdapter(
                 getContext().getApplicationContext(),
                 mViewModel);
@@ -81,8 +81,6 @@ public class CaseStoriesFragment extends Fragment {
      */
     public void refreshData() {
         if (mCaseStoriesAdapter != null) {
-            int w = mImageRecycler.getWidth();
-            int h = mImageRecycler.getHeight();
             mCaseStoriesAdapter.notifyDataSetChanged();
         }
     }

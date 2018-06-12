@@ -8,17 +8,26 @@
             type="com.cpu.quikdata.Modules.NewDnca.CaseStories.Image.CaseStoriesImageViewModel" />
     </data>
 
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="top|right"
+            android:layout_margin="3dp"
+            android:onClick="@{() -> viewModel.navigateOnDeleteButtonPressed()}"
+            android:src="@drawable/ic_close_card"/>
 
         <ImageView
             android:id="@+id/case_image_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="center"
             app:srcCompat="@mipmap/ic_launcher"
             imageSrc="@{viewModel.imagePath}"/>
 
-    </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
 </layout>

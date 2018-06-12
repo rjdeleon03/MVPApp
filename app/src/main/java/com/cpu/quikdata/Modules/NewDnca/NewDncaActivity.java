@@ -268,9 +268,17 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (mCameraOwner != null) {
                 mCameraOwner.addImagePath(ImageUtils.getImagePath(this, ImageUtils.getBitmapFromIntent(data)));
-                mCaseStoriesFragment.refreshData();
+                onImagesUpdated();
             }
         }
+    }
+
+    /**
+     * Refreshes case stories fragment data when image updates occur
+     */
+    @Override
+    public void onImagesUpdated() {
+        mCaseStoriesFragment.refreshData();
     }
 
     @NonNull

@@ -38,6 +38,11 @@ public class DNCAFormLocalDataSource implements DNCAFormDataSource {
     }
 
     @Override
+    public void uploadImages(@NonNull UploadImagesCallback callback) {
+
+    }
+
+    @Override
     public void saveFormInfo(FormInfo formInfo) {
 
     }

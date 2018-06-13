@@ -10,6 +10,7 @@ import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.Tasks.GetAllDncaTask;
 import com.cpu.quikdata.Tasks.PostNewDncaTask;
 import com.cpu.quikdata.Tasks.SubmitNewDncaTask;
+import com.cpu.quikdata.Tasks.UploadImagesTask;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -76,8 +77,23 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     @Override
     public void submitDncaForm(@NonNull SubmitDncaFormCallback callback) {
         checkNotNull(callback);
+
+        // Submit DNCA form
         SubmitNewDncaTask task = new SubmitNewDncaTask(mForm, callback);
         task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
+    }
+
+    /**
+     * Uploads DNCA form images
+     * @param callback
+     */
+    @Override
+    public void uploadImages(@NonNull UploadImagesCallback callback) {
+        checkNotNull(callback);
+
+        // Submit images first
+        UploadImagesTask task = new UploadImagesTask(mForm.getCaseStories().getImages(), callback);
+        task.execute(AppConstants.URL + AppConstants.ROUTE_IMAGES);
     }
 
     /**

@@ -7,7 +7,7 @@ import com.cpu.quikdata.Models.DNCAFormDataSource;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
-public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, DNCAFormDataSource.SubmitDncaFormCallback {
+public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, DNCAFormDataSource.SubmitDncaFormCallback, DNCAFormDataSource.UploadImagesCallback {
 
     private DNCAFormRepository mDncaFormRepository;
 
@@ -44,7 +44,8 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
      * Handles navigation when submit button is pressed
      */
     public void navigateOnSubmitButtonPressed() {
-        mDncaFormRepository.submitDncaForm(this);
+        mDncaFormRepository.uploadImages(this);
+//        mDncaFormRepository.submitDncaForm(this);
     }
 
     /**
@@ -133,5 +134,13 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     @Override
     public void onDncaFormSubmitted() {
         navigateOnBackButtonPressed();
+    }
+
+    /**
+     * Callback for when images have been submitted
+     */
+    @Override
+    public void onImagesUploaded() {
+
     }
 }

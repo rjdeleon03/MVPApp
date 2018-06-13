@@ -30,11 +30,17 @@ public interface DNCAFormDataSource {
         void onDncaFormSubmitted();
     }
 
+    interface UploadImagesCallback {
+        void onImagesUploaded();
+    }
+
     void loadAllDncaForms(@NonNull LoadDncaFormsCallback callback);
 
     void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback);
 
     void submitDncaForm(@NonNull SubmitDncaFormCallback callback);
+
+    void uploadImages(@NonNull UploadImagesCallback callback);
 
     void saveFormInfo(FormInfo formInfo);
 

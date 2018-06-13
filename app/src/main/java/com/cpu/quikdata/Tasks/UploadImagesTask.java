@@ -32,17 +32,14 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
 
-        String attachmentPath = mImagePaths.get(0);
         String attachmentName = "image";
-        String attachmentFileName = attachmentPath.substring(attachmentPath.lastIndexOf('/') + 1);
-        String crlf = "\r\n";
+        String LINE_FEED = "\r\n";
         String twoHyphens = "--";
-        String boundary =  "----WebKitFormBoundarydcZUvCx5UjNTopKM";
+        String boundary =  "**QuikDataBoundary**";
 
         String urlString = strings[0];
         String result = new String();
         OutputStream outputStream;
-        String LINE_FEED = "\r\n";
 
         try {
             // Create URL object
@@ -69,30 +66,38 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
                     connection.getOutputStream());
 
             // For every file in file path, do this
-            request.writeBytes(twoHyphens + boundary + crlf);
-            request.writeBytes("Content-Disposition: form-data; name=\"" +
-                    attachmentName + "\";filename=\"" +
-                    attachmentFileName + "\"" + crlf);
-            request.writeBytes("Content-Type: image/jpeg" + crlf);
-            request.writeBytes(crlf);
+            int i = 0;
+            for(String imagePath : mImagePaths) {
 
-            FileInputStream inputStream = new FileInputStream(attachmentPath);
-            byte[] buffer = new byte[4096];
-            int bytesRead = -1;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
+                String imageFileName = imagePath.substring(imagePath.lastIndexOf('/') + 1);
+
+                request.writeBytes(twoHyphens + boundary + LINE_FEED);
+                request.writeBytes("Content-Disposition: form-data; name=\"" +
+                        attachmentName + "\";filename=\"" +
+                        imageFileName + "\"" + LINE_FEED);
+                request.writeBytes("Content-Type: image/jpeg" + LINE_FEED);
+                request.writeBytes(LINE_FEED);
+
+                FileInputStream inputStream = new FileInputStream(imagePath);
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+                outputStream.flush();
+                inputStream.close();
+
+                request.writeBytes(LINE_FEED);
+
+                i++;
+
+                if (i == mImagePaths.size()) {
+                    // If this is the last file, boundary should be as follows:
+                    request.writeBytes(twoHyphens + boundary + twoHyphens + LINE_FEED);
+                } else {
+                    request.writeBytes(twoHyphens + boundary + LINE_FEED);
+                }
             }
-            outputStream.flush();
-            inputStream.close();
-
-            request.writeBytes(LINE_FEED);
-
-            // If this is the last file, boundary should be as follows:
-            request.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
-
-            // else:
-            // request.writeBytes(twoHyphens + boundary + crlf);
-
 
             // End
             request.flush();

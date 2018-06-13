@@ -85,7 +85,9 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
             inputStream.close();
 
             request.writeBytes(LINE_FEED);
-            request.writeBytes(twoHyphens + boundary + crlf);
+            request.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
+
+            // End
             request.flush();
             request.close();
 

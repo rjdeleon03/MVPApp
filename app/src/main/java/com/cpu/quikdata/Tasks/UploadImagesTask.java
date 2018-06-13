@@ -37,7 +37,7 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
         String attachmentFileName = attachmentPath.substring(attachmentPath.lastIndexOf('/') + 1);
         String crlf = "\r\n";
         String twoHyphens = "--";
-        String boundary =  "*****";
+        String boundary =  "----WebKitFormBoundarydcZUvCx5UjNTopKM";
 
         String urlString = strings[0];
         String result = new String();
@@ -57,10 +57,12 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
             connection.setRequestMethod(REQUEST_METHOD);
             connection.setReadTimeout(READ_TIMEOUT);
             connection.setConnectTimeout(CONNECTION_TIMEOUT);
-            connection.setRequestProperty("Connection", "Keep-Alive");
+            connection.setRequestProperty("Connection", "keep-alive");
             connection.setRequestProperty("Cache-Control", "no-cache");
-            connection.setRequestProperty(
-                    "Content-Type", "multipart/form-data;boundary=" + boundary);
+            connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+            connection.setRequestProperty("Accept", "*/*");
+            connection.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
+            connection.setRequestProperty("Accept-Language", "en-US,en;q=0.9");
             outputStream = connection.getOutputStream();
 
             DataOutputStream request = new DataOutputStream(

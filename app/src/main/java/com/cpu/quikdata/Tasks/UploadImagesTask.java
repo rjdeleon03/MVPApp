@@ -68,6 +68,7 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
             DataOutputStream request = new DataOutputStream(
                     connection.getOutputStream());
 
+            // For every file in file path, do this
             request.writeBytes(twoHyphens + boundary + crlf);
             request.writeBytes("Content-Disposition: form-data; name=\"" +
                     attachmentName + "\";filename=\"" +
@@ -85,7 +86,13 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
             inputStream.close();
 
             request.writeBytes(LINE_FEED);
+
+            // If this is the last file, boundary should be as follows:
             request.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
+
+            // else:
+            // request.writeBytes(twoHyphens + boundary + crlf);
+
 
             // End
             request.flush();

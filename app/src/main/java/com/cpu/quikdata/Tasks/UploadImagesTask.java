@@ -94,8 +94,6 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
                 if (i == mImagePaths.size()) {
                     // If this is the last file, boundary should be as follows:
                     request.writeBytes(twoHyphens + boundary + twoHyphens + LINE_FEED);
-                } else {
-                    request.writeBytes(twoHyphens + boundary + LINE_FEED);
                 }
             }
 

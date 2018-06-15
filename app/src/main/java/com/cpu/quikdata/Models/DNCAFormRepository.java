@@ -12,6 +12,8 @@ import com.cpu.quikdata.Tasks.PostNewDncaTask;
 import com.cpu.quikdata.Tasks.SubmitNewDncaTask;
 import com.cpu.quikdata.Tasks.UploadImagesTask;
 
+import java.util.List;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class DNCAFormRepository implements DNCAFormDataSource {
@@ -94,6 +96,16 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         // Submit images first
         UploadImagesTask task = new UploadImagesTask(mForm.getCaseStories().getImages(), callback);
         task.execute(AppConstants.URL + AppConstants.ROUTE_IMAGES);
+    }
+
+    /**
+     * Updates DNCA form images with web URL
+     * @param images
+     */
+    public void uploadDncaImageUrls(List<String> images) {
+        List<String> oldImagesUrl = mForm.getCaseStories().getImages();
+        oldImagesUrl.clear();
+        oldImagesUrl.addAll(images);
     }
 
     /**

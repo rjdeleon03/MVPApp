@@ -7,6 +7,8 @@ import com.cpu.quikdata.Models.DNCAFormDataSource;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
+import java.util.List;
+
 public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, DNCAFormDataSource.SubmitDncaFormCallback, DNCAFormDataSource.UploadImagesCallback {
 
     private DNCAFormRepository mDncaFormRepository;
@@ -45,7 +47,6 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
      */
     public void navigateOnSubmitButtonPressed() {
         mDncaFormRepository.uploadImages(this);
-//        mDncaFormRepository.submitDncaForm(this);
     }
 
     /**
@@ -140,7 +141,10 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
      * Callback for when images have been submitted
      */
     @Override
-    public void onImagesUploaded() {
-
+    public void onImagesUploaded(List<String> images) {
+        if (images != null && !images.isEmpty()) {
+            mDncaFormRepository.uploadDncaImageUrls(images);
+        }
+        mDncaFormRepository.submitDncaForm(this);
     }
 }

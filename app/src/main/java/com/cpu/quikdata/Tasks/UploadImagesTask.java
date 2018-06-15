@@ -2,7 +2,10 @@ package com.cpu.quikdata.Tasks;
 
 import android.os.AsyncTask;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Models.DNCAFormDataSource;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -36,6 +39,7 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
         String LINE_FEED = "\r\n";
         String twoHyphens = "--";
         String boundary =  "**QuikDataBoundary**";
+        String inputLine;
 
         String urlString = strings[0];
         String result = new String();
@@ -80,7 +84,7 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
 
                 FileInputStream inputStream = new FileInputStream(imagePath);
                 byte[] buffer = new byte[4096];
-                int bytesRead = -1;
+                int bytesRead;
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     outputStream.write(buffer, 0, bytesRead);
                 }
@@ -101,32 +105,52 @@ public class UploadImagesTask extends AsyncTask<String, Void, String> {
             request.flush();
             request.close();
 
-            // Get response
-            InputStream responseStream = new
-                    BufferedInputStream(connection.getInputStream());
+            // Handle responses
+            // Create a new InputStreamReader
+            InputStreamReader streamReader = new
+                    InputStreamReader(connection.getInputStream());
 
-            BufferedReader responseStreamReader =
-                    new BufferedReader(new InputStreamReader(responseStream));
-
-            String line = "";
+            // Create a new buffered reader and String Builder
+            BufferedReader reader = new BufferedReader(streamReader);
             StringBuilder stringBuilder = new StringBuilder();
 
-            while ((line = responseStreamReader.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
+            // Check if the line we are reading is not null
+            while ((inputLine = reader.readLine()) != null) {
+                stringBuilder.append(inputLine);
+
+                if (isCancelled()) return result;
             }
-            responseStreamReader.close();
 
-            String response = stringBuilder.toString();
+            //Close our InputStream and Buffered reader
+            reader.close();
+            streamReader.close();
 
-            // Close response stream
-            responseStream.close();
+            if (isCancelled()) return result;
 
-            // Close connection
-            connection.disconnect();
+            //Set our result equal to our stringBuilder
+            result = stringBuilder.toString();
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return null;
+
+        return result;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        if (mCallback != null) {
+
+            // Deserialize JSON here
+            Gson gson = new Gson();
+            List<String> listItems = gson.fromJson(result, new TypeToken<List<String>>(){}.getType());
+            if (listItems != null) {
+                for (int i = 0; i < listItems.size(); i++) {
+                    listItems.set(i, AppConstants.URL + AppConstants.ROUTE_IMAGES + "/" + listItems.get(i));
+                }
+            }
+
+            mCallback.onImagesUploaded(listItems);
+        }
     }
 }

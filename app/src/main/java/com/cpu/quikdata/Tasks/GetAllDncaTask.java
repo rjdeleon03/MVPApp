@@ -17,10 +17,6 @@ import java.util.List;
 
 public class GetAllDncaTask extends AsyncTask<String, Void, String> {
 
-    public interface GetAllDncaResult {
-        void resultsRetrieved(String result);
-    }
-
     public static final String REQUEST_METHOD = "GET";
     public static final int READ_TIMEOUT = 15000;
     public static final int CONNECTION_TIMEOUT = 15000;

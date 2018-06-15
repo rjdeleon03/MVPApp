@@ -31,7 +31,7 @@ public interface DNCAFormDataSource {
     }
 
     interface UploadImagesCallback {
-        void onImagesUploaded();
+        void onImagesUploaded(List<String> images);
     }
 
     void loadAllDncaForms(@NonNull LoadDncaFormsCallback callback);

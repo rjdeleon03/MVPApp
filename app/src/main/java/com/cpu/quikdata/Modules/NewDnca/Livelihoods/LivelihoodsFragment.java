@@ -1,8 +1,10 @@
 package com.cpu.quikdata.Modules.NewDnca.Livelihoods;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Livelihood
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
 import com.cpu.quikdata.Utils.ActivityUtils;
+import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_ASSISTANCE;
@@ -62,58 +65,77 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
         // Inflate the layout for this fragment
         View root = super.onCreateView(inflater, container, savedInstanceState);
 
-        // Setup specific repository manager
-        LivelihoodsRepositoryManager repositoryManager = (LivelihoodsRepositoryManager) mViewModel;
-        if (repositoryManager == null) {
+        if (mViewModel == null) {
             return root;
         }
 
+        // Setup specific repository manager
+        LivelihoodsRepositoryManager repositoryManager = (LivelihoodsRepositoryManager) mViewModel;
+
+        // Obtain fragment manager and context
+        FragmentManager fragmentManager = getChildFragmentManager();
+        Context appContext = getContext().getApplicationContext();
+
         {
             // Setup income before emergency fragment
-            LivelihoodsIncomeBeforeFragment livelihoodsIncomeFragment = (LivelihoodsIncomeBeforeFragment)findOrCreateViewFragment(LIVELIHOODS_INCOME_BEFORE);
-            livelihoodsIncomeFragment.setViewModel((LivelihoodsIncomeViewModel)findOrCreateViewModel(LIVELIHOODS_INCOME_BEFORE));
+            LivelihoodsIncomeBeforeFragment livelihoodsIncomeFragment =
+                    (LivelihoodsIncomeBeforeFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_INCOME_BEFORE);
+            livelihoodsIncomeFragment.setViewModel(
+                    (LivelihoodsIncomeViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_INCOME_BEFORE, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsIncomeFragment);
         }
 
         {
             // Setup income after emergency fragment
-            LivelihoodsIncomeAfterFragment livelihoodsIncomeFragment = (LivelihoodsIncomeAfterFragment)findOrCreateViewFragment(LIVELIHOODS_INCOME_AFTER);
-            livelihoodsIncomeFragment.setViewModel((LivelihoodsIncomeViewModel)findOrCreateViewModel(LIVELIHOODS_INCOME_AFTER));
+            LivelihoodsIncomeAfterFragment livelihoodsIncomeFragment =
+                    (LivelihoodsIncomeAfterFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_INCOME_AFTER);
+            livelihoodsIncomeFragment.setViewModel(
+                    (LivelihoodsIncomeViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_INCOME_AFTER, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsIncomeFragment);
         }
 
         {
             // Setup damage data fragment
-            LivelihoodsDamageFragment livelihoodsDamageFragment = (LivelihoodsDamageFragment)findOrCreateViewFragment(LIVELIHOODS_DAMAGE);
-            livelihoodsDamageFragment.setViewModel((LivelihoodsDamageViewModel)findOrCreateViewModel(LIVELIHOODS_DAMAGE));
+            LivelihoodsDamageFragment livelihoodsDamageFragment =
+                    (LivelihoodsDamageFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_DAMAGE);
+            livelihoodsDamageFragment.setViewModel(
+                    (LivelihoodsDamageViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_DAMAGE, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsDamageFragment);
         }
 
         {
             // Setup coping data fragment
-            LivelihoodsCopingDataFragment livelihoodsCopingDataFragment = (LivelihoodsCopingDataFragment)findOrCreateViewFragment(LIVELIHOODS_COPING);
-            livelihoodsCopingDataFragment.setViewModel((LivelihoodsCopingDataViewModel)findOrCreateViewModel(LIVELIHOODS_COPING));
+            LivelihoodsCopingDataFragment livelihoodsCopingDataFragment =
+                    (LivelihoodsCopingDataFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_COPING);
+            livelihoodsCopingDataFragment.setViewModel(
+                    (LivelihoodsCopingDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_COPING, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsCopingDataFragment);
         }
 
         {
             // Setup needs data fragment
-            LivelihoodsNeedsDataFragment livelihoodsNeedsDataFragment = (LivelihoodsNeedsDataFragment)findOrCreateViewFragment(LIVELIHOODS_NEEDS);
-            livelihoodsNeedsDataFragment.setViewModel((LivelihoodsNeedsDataViewModel)findOrCreateViewModel(LIVELIHOODS_NEEDS));
+            LivelihoodsNeedsDataFragment livelihoodsNeedsDataFragment =
+                    (LivelihoodsNeedsDataFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_NEEDS);
+            livelihoodsNeedsDataFragment.setViewModel(
+                    (LivelihoodsNeedsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_NEEDS, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsNeedsDataFragment);
         }
 
         {
             // Setup food assistance data fragment
-            LivelihoodsAssistanceDataFragment livelihoodsAssistanceDataFragment = (LivelihoodsAssistanceDataFragment)findOrCreateViewFragment(LIVELIHOODS_ASSISTANCE);
-            livelihoodsAssistanceDataFragment.setViewModel((AssistanceDataViewModel)findOrCreateViewModel(LIVELIHOODS_ASSISTANCE));
+            LivelihoodsAssistanceDataFragment livelihoodsAssistanceDataFragment =
+                    (LivelihoodsAssistanceDataFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_ASSISTANCE);
+            livelihoodsAssistanceDataFragment.setViewModel(
+                    (AssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_ASSISTANCE, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsAssistanceDataFragment);
         }
 
         {
             // Setup gaps data fragment
-            LivelihoodsGapsDataFragment livelihoodsGapsDataFragment = (LivelihoodsGapsDataFragment)findOrCreateViewFragment(LIVELIHOODS_GAPS);
-            livelihoodsGapsDataFragment.setViewModel((LivelihoodsGapsDataViewModel)findOrCreateViewModel(LIVELIHOODS_GAPS));
+            LivelihoodsGapsDataFragment livelihoodsGapsDataFragment =
+                    (LivelihoodsGapsDataFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, LIVELIHOODS_GAPS);
+            livelihoodsGapsDataFragment.setViewModel(
+                    (LivelihoodsGapsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, LIVELIHOODS_GAPS, repositoryManager, appContext));
             mAdapter.addFragment(livelihoodsGapsDataFragment);
         }
 
@@ -121,92 +143,5 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
         super.setupViewPager(root);
 
         return root;
-    }
-
-
-    /**
-     * Finds the fragment of the specified type;
-     * Creates the fragment if it does not exist
-     * @param fragmentType
-     * @return
-     */
-    @NonNull
-    private Fragment findOrCreateViewFragment(AppConstants.NewDncaComponent fragmentType) {
-        BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
-        if (selectedFragment == null) {
-            switch(fragmentType) {
-                case LIVELIHOODS_INCOME_BEFORE:
-                    selectedFragment = LivelihoodsIncomeBeforeFragment.newInstance();
-                    break;
-                case LIVELIHOODS_INCOME_AFTER:
-                    selectedFragment = LivelihoodsIncomeAfterFragment.newInstance();
-                    break;
-                case LIVELIHOODS_DAMAGE:
-                    selectedFragment = LivelihoodsDamageFragment.newInstance();
-                    break;
-                case LIVELIHOODS_COPING:
-                    selectedFragment = LivelihoodsCopingDataFragment.newInstance();
-                    break;
-                case LIVELIHOODS_NEEDS:
-                    selectedFragment = LivelihoodsNeedsDataFragment.newInstance();
-                    break;
-                case LIVELIHOODS_ASSISTANCE:
-                    selectedFragment = LivelihoodsAssistanceDataFragment.newInstance();
-                    break;
-                case LIVELIHOODS_GAPS:
-                    selectedFragment = LivelihoodsGapsDataFragment.newInstance();
-                    break;
-            }
-        }
-        return selectedFragment;
-    }
-
-    /**
-     * Finds the viewModel of the specified type;
-     * Creates the viewModel if it does not exist
-     * @param fragmentType
-     * @return
-     */
-    @NonNull
-    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.NewDncaComponent fragmentType) {
-
-        NewDncaBaseViewModel viewModel = null;
-        String tag = fragmentType.toString() + VIEWMODEL_TAG;
-
-        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) getChildFragmentManager().findFragmentByTag(tag);
-
-        // Setup specific repository manager
-        LivelihoodsRepositoryManager repositoryManager = (LivelihoodsRepositoryManager) mViewModel;
-
-        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-            viewModel = retainedViewModel.getViewmodel();
-        } else {
-            switch (fragmentType) {
-                case LIVELIHOODS_INCOME_BEFORE:
-                    viewModel = new LivelihoodsIncomeViewModel(getContext().getApplicationContext(), repositoryManager, true);
-                    break;
-                case LIVELIHOODS_INCOME_AFTER:
-                    viewModel = new LivelihoodsIncomeViewModel(getContext().getApplicationContext(), repositoryManager, false);
-                    break;
-                case LIVELIHOODS_DAMAGE:
-                    viewModel = new LivelihoodsDamageViewModel(getContext().getApplicationContext(), repositoryManager);
-                    break;
-                case LIVELIHOODS_COPING:
-                    viewModel = new LivelihoodsCopingDataViewModel(getContext().getApplicationContext(), repositoryManager);
-                    break;
-                case LIVELIHOODS_NEEDS:
-                    viewModel = new LivelihoodsNeedsDataViewModel(getContext().getApplicationContext(), repositoryManager);
-                    break;
-                case LIVELIHOODS_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel(getContext().getApplicationContext(), repositoryManager);
-                    break;
-                case LIVELIHOODS_GAPS:
-                    viewModel = new LivelihoodsGapsDataViewModel(getContext().getApplicationContext(), repositoryManager);
-                    break;
-            }
-
-            ActivityUtils.bindViewModel(getChildFragmentManager(), retainedViewModel, viewModel, tag);
-        }
-        return viewModel;
     }
 }

@@ -44,6 +44,31 @@ import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Popula
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
+import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.HealthAssistanceData.HealthAssistanceDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.HealthRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialFragment;
+import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsFragment;
+import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsGapsData.LivelihoodsGapsDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeAfterFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeBeforeFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.LivelihoodsNeedsDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.NewDncaActivity;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageViewModel;
@@ -148,6 +173,49 @@ public class ViewFactory {
                     selectedFragment = FoodGapsDataFragment.newInstance();
                     break;
 
+                // Livelihoods
+                case LIVELIHOODS_INCOME_BEFORE:
+                    selectedFragment = LivelihoodsIncomeBeforeFragment.newInstance();
+                    break;
+                case LIVELIHOODS_INCOME_AFTER:
+                    selectedFragment = LivelihoodsIncomeAfterFragment.newInstance();
+                    break;
+                case LIVELIHOODS_DAMAGE:
+                    selectedFragment = LivelihoodsDamageFragment.newInstance();
+                    break;
+                case LIVELIHOODS_COPING:
+                    selectedFragment = LivelihoodsCopingDataFragment.newInstance();
+                    break;
+                case LIVELIHOODS_NEEDS:
+                    selectedFragment = LivelihoodsNeedsDataFragment.newInstance();
+                    break;
+                case LIVELIHOODS_ASSISTANCE:
+                    selectedFragment = LivelihoodsAssistanceDataFragment.newInstance();
+                    break;
+                case LIVELIHOODS_GAPS:
+                    selectedFragment = LivelihoodsGapsDataFragment.newInstance();
+                    break;
+                    
+                // Health
+                case HEALTH_DISEASES:
+                    selectedFragment = DiseasesInjuriesFragment.newInstance();
+                    break;
+                case HEALTH_SPECIAL_NEEDS:
+                    selectedFragment = SpecialNeedsFragment.newInstance();
+                    break;
+                case HEALTH_PSYCHOSOCIAL:
+                    selectedFragment = PsychosocialFragment.newInstance();
+                    break;
+                case HEALTH_COPING:
+                    selectedFragment = HealthCopingDataFragment.newInstance();
+                    break;
+                case HEALTH_ASSISTANCE:
+                    selectedFragment = HealthAssistanceDataFragment.newInstance();
+                    break;
+                case HEALTH_GAPS:
+                    selectedFragment = HealthGapsDataFragment.newInstance();
+                    break;
+
                 // Evacuation Centers
                 case EVACUATION_SITE:
                     selectedFragment = EvacuationSiteDataFragment.newInstance();
@@ -249,6 +317,49 @@ public class ViewFactory {
                     break;
                 case FOOD_GAPS:
                     viewModel = new FoodGapsDataViewModel(context, (FoodSecurityRepositoryManager)repositoryManager);
+                    break;
+                    
+                // Livelihoods
+                case LIVELIHOODS_INCOME_BEFORE:
+                    viewModel = new LivelihoodsIncomeViewModel(context, (LivelihoodsRepositoryManager)repositoryManager, true);
+                    break;
+                case LIVELIHOODS_INCOME_AFTER:
+                    viewModel = new LivelihoodsIncomeViewModel(context, (LivelihoodsRepositoryManager)repositoryManager, false);
+                    break;
+                case LIVELIHOODS_DAMAGE:
+                    viewModel = new LivelihoodsDamageViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    break;
+                case LIVELIHOODS_COPING:
+                    viewModel = new LivelihoodsCopingDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    break;
+                case LIVELIHOODS_NEEDS:
+                    viewModel = new LivelihoodsNeedsDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    break;
+                case LIVELIHOODS_ASSISTANCE:
+                    viewModel = new AssistanceDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    break;
+                case LIVELIHOODS_GAPS:
+                    viewModel = new LivelihoodsGapsDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    break;
+
+                // Health
+                case HEALTH_DISEASES:
+                    viewModel = new DiseasesInjuriesViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    break;
+                case HEALTH_SPECIAL_NEEDS:
+                    viewModel = new SpecialNeedsViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    break;
+                case HEALTH_PSYCHOSOCIAL:
+                    viewModel = new PsychosocialViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    break;
+                case HEALTH_COPING:
+                    viewModel = new HealthCopingDataViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    break;
+                case HEALTH_ASSISTANCE:
+                    viewModel = new AssistanceDataViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    break;
+                case HEALTH_GAPS:
+                    viewModel = new HealthGapsDataViewModel(context, (HealthRepositoryManager)repositoryManager);
                     break;
             }
 

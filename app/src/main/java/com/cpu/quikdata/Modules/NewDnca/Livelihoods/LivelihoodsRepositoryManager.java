@@ -6,8 +6,9 @@ import com.cpu.quikdata.Models.Livelihoods.LivelihoodsGapsData;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeData;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsNeedsData;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataContainer;
+import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 
-public interface LivelihoodsRepositoryManager extends AssistanceDataContainer {
+public interface LivelihoodsRepositoryManager extends RepositoryManager, AssistanceDataContainer {
 
     LivelihoodsIncomeData getLivelihoodsIncomeBeforeEmergency();
 

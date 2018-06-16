@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.FoodSecurityComponent.FOOD_IMPACT;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.FOOD_IMPACT;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -2,8 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationSiteData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_SECURITY;
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_SITE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_SITE;
 
 public class EvacuationSiteDataFragment extends BaseQuestionFragment {
 

@@ -9,7 +9,7 @@ import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Popula
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.ShelterInfoComponent.SHELTER_HOUSE_DAMAGE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_HOUSE_DAMAGE;
 
 /**
  * A simple {@link Fragment} subclass.

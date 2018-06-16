@@ -7,7 +7,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_SPECIAL_NEEDS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_SPECIAL_NEEDS;
 
 /**
  * A simple {@link Fragment} subclass.

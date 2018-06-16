@@ -23,10 +23,10 @@ import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
 
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_ASSISTANCE;
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_CONDITIONS;
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_COPING;
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_GAPS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_ASSISTANCE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_CONDITIONS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,7 +94,7 @@ public class WashFragment extends BaseMultiPageFragment {
      * @return
      */
     @NonNull
-    private Fragment findOrCreateViewFragment(AppConstants.WashComponent fragmentType) {
+    private Fragment findOrCreateViewFragment(AppConstants.NewDncaComponent fragmentType) {
         BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
         if (selectedFragment == null) {
             switch(fragmentType) {
@@ -122,7 +122,7 @@ public class WashFragment extends BaseMultiPageFragment {
      * @return
      */
     @NonNull
-    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.WashComponent fragmentType) {
+    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.NewDncaComponent fragmentType) {
 
         NewDncaBaseViewModel viewModel = null;
         String tag = fragmentType.toString() + VIEWMODEL_TAG;

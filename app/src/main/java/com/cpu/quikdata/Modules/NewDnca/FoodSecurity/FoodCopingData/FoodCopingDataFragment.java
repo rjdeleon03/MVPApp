@@ -3,7 +3,7 @@ package com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodCopingData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.FoodSecurityComponent.FOOD_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.FOOD_COPING;
 
 public class FoodCopingDataFragment extends BaseQuestionFragment {
 

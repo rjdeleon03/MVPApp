@@ -7,7 +7,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_POPULATION;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_POPULATION;
 
 /**
  * A simple {@link Fragment} subclass.

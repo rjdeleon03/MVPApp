@@ -2,7 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.Wash.WashAssistanceData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_ASSISTANCE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_ASSISTANCE;
 
 public class WashAssistanceDataFragment extends AssistanceDataFragment {
 

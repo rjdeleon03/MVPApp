@@ -2,7 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.Health.HealthCopingData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_COPING;
 
 public class HealthCopingDataFragment extends BaseQuestionFragment {
 

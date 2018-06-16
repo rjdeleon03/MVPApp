@@ -10,7 +10,7 @@ import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.GenInfoComponent.GEN_INFO_POPULATION;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_POPULATION;
 
 /**
  * A simple {@link Fragment} subclass.

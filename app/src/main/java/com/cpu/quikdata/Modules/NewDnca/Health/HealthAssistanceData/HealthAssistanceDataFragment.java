@@ -2,7 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.Health.HealthAssistanceData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_ASSISTANCE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_ASSISTANCE;
 
 public class HealthAssistanceDataFragment extends AssistanceDataFragment {
 

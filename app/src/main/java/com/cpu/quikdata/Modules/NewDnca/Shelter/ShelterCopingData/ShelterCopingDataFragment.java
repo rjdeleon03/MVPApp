@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.ShelterInfoComponent.SHELTER_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_COPING;
 
 /**
  * A simple {@link Fragment} subclass.

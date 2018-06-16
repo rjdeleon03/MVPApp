@@ -6,9 +6,8 @@ import android.view.View;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.Dialog.DiseasesInjuriesDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.Dialog.DiseasesInjuriesDialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.Row.DiseasesInjuriesRowViewModel;
 
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_DISEASES;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_DISEASES;
 
 /**
  * A simple {@link Fragment} subclass.

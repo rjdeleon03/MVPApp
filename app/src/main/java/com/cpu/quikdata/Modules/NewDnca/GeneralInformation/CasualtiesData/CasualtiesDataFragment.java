@@ -9,7 +9,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.GenInfoComponent.GEN_INFO_CASUALTIES;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_CASUALTIES;
 
 /**
  * A simple {@link Fragment} subclass.

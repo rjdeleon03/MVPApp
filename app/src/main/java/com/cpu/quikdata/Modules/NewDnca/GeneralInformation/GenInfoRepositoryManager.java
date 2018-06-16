@@ -7,8 +7,9 @@ import com.cpu.quikdata.Models.GeneralInformation.FamilyData;
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageData;
 import com.cpu.quikdata.Models.GeneralInformation.PopulationData;
 import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationData;
+import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 
-public interface GenInfoRepositoryManager {
+public interface GenInfoRepositoryManager extends RepositoryManager {
 
     CalamityDesc getCalamityDetails();
 

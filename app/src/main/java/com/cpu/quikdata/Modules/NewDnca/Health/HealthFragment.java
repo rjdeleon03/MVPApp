@@ -27,12 +27,12 @@ import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsViewMode
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
 
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_ASSISTANCE;
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_COPING;
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_DISEASES;
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_GAPS;
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_PSYCHOSOCIAL;
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_SPECIAL_NEEDS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_ASSISTANCE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_DISEASES;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_GAPS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_PSYCHOSOCIAL;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_SPECIAL_NEEDS;
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 
 /**
@@ -116,7 +116,7 @@ public class HealthFragment extends BaseMultiPageFragment {
      * @return
      */
     @NonNull
-    private Fragment findOrCreateViewFragment(AppConstants.HealthComponent fragmentType) {
+    private Fragment findOrCreateViewFragment(AppConstants.NewDncaComponent fragmentType) {
         BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
         if (selectedFragment == null) {
             switch(fragmentType) {
@@ -150,7 +150,7 @@ public class HealthFragment extends BaseMultiPageFragment {
      * @return
      */
     @NonNull
-    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.HealthComponent fragmentType) {
+    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.NewDncaComponent fragmentType) {
 
         NewDncaBaseViewModel viewModel = null;
         String tag = fragmentType.toString() + VIEWMODEL_TAG;

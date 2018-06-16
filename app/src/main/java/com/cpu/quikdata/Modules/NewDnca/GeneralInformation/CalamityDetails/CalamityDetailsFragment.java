@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.GenInfoComponent.GEN_INFO_CALAMITY;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_CALAMITY;
 
 
 /**

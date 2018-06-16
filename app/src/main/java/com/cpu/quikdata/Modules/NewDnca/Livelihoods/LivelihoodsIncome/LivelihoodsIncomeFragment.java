@@ -6,8 +6,6 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.FoodSecurityComponent.FOOD_GAPS;
-
 public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
 
     private LivelihoodsIncomeFragmentAdapter mLivelihoodsIncomeFragmentAdapter;

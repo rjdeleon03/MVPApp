@@ -7,7 +7,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.ShelterInfoComponent.SHELTER_NEEDS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_NEEDS;
 
 /**
  * A simple {@link Fragment} subclass.

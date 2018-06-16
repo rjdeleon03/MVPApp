@@ -1,6 +1,6 @@
 package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_INCOME_BEFORE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_INCOME_BEFORE;
 
 public class LivelihoodsIncomeBeforeFragment extends LivelihoodsIncomeFragment {
 

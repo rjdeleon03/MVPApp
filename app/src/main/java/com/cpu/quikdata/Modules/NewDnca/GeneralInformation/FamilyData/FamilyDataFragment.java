@@ -15,7 +15,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.FamilyDataFragmentBinding;
 
-import static com.cpu.quikdata.AppConstants.GenInfoComponent.GEN_INFO_FAMILY;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_FAMILY;
 
 /**
  * A simple {@link Fragment} subclass.

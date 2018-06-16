@@ -2,8 +2,8 @@ package com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_COPING;
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_GAPS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.WASH_GAPS;
 
 public class WashGapsDataFragment extends BaseQuestionFragment {
 

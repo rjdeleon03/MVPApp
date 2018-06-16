@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.HealthComponent.HEALTH_GAPS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.

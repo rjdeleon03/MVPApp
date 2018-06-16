@@ -2,8 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationCopingData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_COPING;
-import static com.cpu.quikdata.AppConstants.WashComponent.WASH_CONDITIONS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_COPING;
 
 public class EvacuationCopingDataFragment extends BaseQuestionFragment {
 

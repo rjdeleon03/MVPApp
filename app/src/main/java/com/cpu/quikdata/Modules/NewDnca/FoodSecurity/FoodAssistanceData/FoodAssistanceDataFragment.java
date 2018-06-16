@@ -2,7 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodAssistanceData;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataFragment;
 
-import static com.cpu.quikdata.AppConstants.FoodSecurityComponent.FOOD_ASSISTANCE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.FOOD_ASSISTANCE;
 
 public class FoodAssistanceDataFragment extends AssistanceDataFragment {
 

@@ -27,13 +27,13 @@ import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsNeedsData.Livelih
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
 
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_ASSISTANCE;
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_COPING;
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_DAMAGE;
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_GAPS;
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_INCOME_AFTER;
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_INCOME_BEFORE;
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_NEEDS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_ASSISTANCE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_DAMAGE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_GAPS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_INCOME_AFTER;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_INCOME_BEFORE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_NEEDS;
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 
 /**
@@ -131,7 +131,7 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
      * @return
      */
     @NonNull
-    private Fragment findOrCreateViewFragment(AppConstants.LivelihoodsComponent fragmentType) {
+    private Fragment findOrCreateViewFragment(AppConstants.NewDncaComponent fragmentType) {
         BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
         if (selectedFragment == null) {
             switch(fragmentType) {
@@ -168,7 +168,7 @@ public class LivelihoodsFragment extends BaseMultiPageFragment {
      * @return
      */
     @NonNull
-    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.LivelihoodsComponent fragmentType) {
+    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.NewDncaComponent fragmentType) {
 
         NewDncaBaseViewModel viewModel = null;
         String tag = fragmentType.toString() + VIEWMODEL_TAG;

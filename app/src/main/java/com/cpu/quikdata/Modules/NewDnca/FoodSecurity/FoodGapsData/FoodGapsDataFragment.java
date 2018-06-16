@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionFragment;
 
-import static com.cpu.quikdata.AppConstants.FoodSecurityComponent.FOOD_GAPS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.FOOD_GAPS;
 
 /**
  * A simple {@link Fragment} subclass.

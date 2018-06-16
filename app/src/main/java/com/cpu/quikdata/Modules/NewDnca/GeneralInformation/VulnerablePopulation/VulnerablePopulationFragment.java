@@ -8,7 +8,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.GenInfoComponent.GEN_INFO_VULNERABLE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_VULNERABLE;
 
 /**
  * A simple {@link Fragment} subclass.

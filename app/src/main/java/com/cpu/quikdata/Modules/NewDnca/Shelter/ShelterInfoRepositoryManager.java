@@ -5,8 +5,9 @@ import com.cpu.quikdata.Models.Shelter.ShelterGapsData;
 import com.cpu.quikdata.Models.Shelter.ShelterHouseDamageData;
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsData;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataContainer;
+import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 
-public interface ShelterInfoRepositoryManager extends AssistanceDataContainer {
+public interface ShelterInfoRepositoryManager extends RepositoryManager, AssistanceDataContainer {
 
     ShelterHouseDamageData getHouseDamageData();
 

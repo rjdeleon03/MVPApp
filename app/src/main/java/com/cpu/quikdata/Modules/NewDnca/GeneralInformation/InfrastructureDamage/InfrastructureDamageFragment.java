@@ -9,7 +9,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.GenInfoComponent.GEN_INFO_INFRASTRUCTURE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_INFRASTRUCTURE;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -28,14 +28,15 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationSiteData.Evacuation
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationWashData.EvacuationWashDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationWashData.EvacuationWashDataViewModel;
 import com.cpu.quikdata.Utils.ActivityUtils;
+import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_COPING;
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_FACILITIES;
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_POPULATION;
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_SECURITY;
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_SITE;
-import static com.cpu.quikdata.AppConstants.EvacuationComponent.EVACUATION_WASH;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_COPING;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_FACILITIES;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_POPULATION;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_SECURITY;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_SITE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_WASH;
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 
 /**
@@ -65,42 +66,48 @@ public class EvacuationFragment extends BaseMultiPageFragment {
 
         {
             // Setup evacuation site data fragment
-            EvacuationSiteDataFragment evacuationSiteDataFragment = (EvacuationSiteDataFragment)findOrCreateViewFragment(EVACUATION_SITE);
+            EvacuationSiteDataFragment evacuationSiteDataFragment =
+                    (EvacuationSiteDataFragment) ViewFactory.findOrCreateViewFragment(getChildFragmentManager(), EVACUATION_SITE);
             evacuationSiteDataFragment.setViewModel((EvacuationSiteDataViewModel)findOrCreateViewModel(EVACUATION_SITE));
             mAdapter.addFragment(evacuationSiteDataFragment);
         }
 
         {
             // Setup population data fragment
-            EvacuationPopulationFragment evacuationPopulationFragment = (EvacuationPopulationFragment)findOrCreateViewFragment(EVACUATION_POPULATION);
+            EvacuationPopulationFragment evacuationPopulationFragment =
+                    (EvacuationPopulationFragment) ViewFactory.findOrCreateViewFragment(getChildFragmentManager(), EVACUATION_POPULATION);
             evacuationPopulationFragment.setViewModel((EvacuationPopulationViewModel)findOrCreateViewModel(EVACUATION_POPULATION));
             mAdapter.addFragment(evacuationPopulationFragment);
         }
 
         {
             // Setup facilities data fragment
-            EvacuationFacilitiesDataFragment evacuationFacilitiesDataFragment = (EvacuationFacilitiesDataFragment)findOrCreateViewFragment(EVACUATION_FACILITIES);
+            EvacuationFacilitiesDataFragment evacuationFacilitiesDataFragment =
+                    (EvacuationFacilitiesDataFragment) ViewFactory.findOrCreateViewFragment(getChildFragmentManager(), EVACUATION_FACILITIES);
             evacuationFacilitiesDataFragment.setViewModel((EvacuationFacilitiesDataViewModel)findOrCreateViewModel(EVACUATION_FACILITIES));
             mAdapter.addFragment(evacuationFacilitiesDataFragment);
         }
 
         {
             // Setup wash data fragment
-            EvacuationWashDataFragment evacuationWashDataFragment = (EvacuationWashDataFragment)findOrCreateViewFragment(EVACUATION_WASH);
+            EvacuationWashDataFragment evacuationWashDataFragment =
+                    (EvacuationWashDataFragment) ViewFactory.findOrCreateViewFragment(getChildFragmentManager(), EVACUATION_WASH);
             evacuationWashDataFragment.setViewModel((EvacuationWashDataViewModel)findOrCreateViewModel(EVACUATION_WASH));
             mAdapter.addFragment(evacuationWashDataFragment);
         }
 
         {
             // Setup security data fragment
-            EvacuationSecurityDataFragment evacuationSecurityDataFragment = (EvacuationSecurityDataFragment)findOrCreateViewFragment(EVACUATION_SECURITY);
+            EvacuationSecurityDataFragment evacuationSecurityDataFragment =
+                    (EvacuationSecurityDataFragment) ViewFactory.findOrCreateViewFragment(getChildFragmentManager(), EVACUATION_SECURITY);
             evacuationSecurityDataFragment.setViewModel((EvacuationSecurityDataViewModel)findOrCreateViewModel(EVACUATION_SECURITY));
             mAdapter.addFragment(evacuationSecurityDataFragment);
         }
 
         {
             // Setup coping data fragment
-            EvacuationCopingDataFragment evacuationCopingDataFragment = (EvacuationCopingDataFragment)findOrCreateViewFragment(EVACUATION_COPING);
+            EvacuationCopingDataFragment evacuationCopingDataFragment = 
+                    (EvacuationCopingDataFragment) ViewFactory.findOrCreateViewFragment(getChildFragmentManager(), EVACUATION_COPING);
             evacuationCopingDataFragment.setViewModel((EvacuationCopingDataViewModel)findOrCreateViewModel(EVACUATION_COPING));
             mAdapter.addFragment(evacuationCopingDataFragment);
         }
@@ -112,47 +119,13 @@ public class EvacuationFragment extends BaseMultiPageFragment {
     }
 
     /**
-     * Finds the fragment of the specified type;
-     * Creates the fragment if it does not exist
-     * @param fragmentType
-     * @return
-     */
-    @NonNull
-    private Fragment findOrCreateViewFragment(AppConstants.EvacuationComponent fragmentType) {
-        BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(getChildFragmentManager(), fragmentType.toString());
-        if (selectedFragment == null) {
-            switch(fragmentType) {
-                case EVACUATION_SITE:
-                    selectedFragment = EvacuationSiteDataFragment.newInstance();
-                    break;
-                case EVACUATION_POPULATION:
-                    selectedFragment = EvacuationPopulationFragment.newInstance();
-                    break;
-                case EVACUATION_FACILITIES:
-                    selectedFragment = EvacuationFacilitiesDataFragment.newInstance();
-                    break;
-                case EVACUATION_WASH:
-                    selectedFragment = EvacuationWashDataFragment.newInstance();
-                    break;
-                case EVACUATION_SECURITY:
-                    selectedFragment = EvacuationSecurityDataFragment.newInstance();
-                    break;
-                case EVACUATION_COPING:
-                    selectedFragment = EvacuationCopingDataFragment.newInstance();
-                    break;
-            }
-        }
-        return selectedFragment;
-    }
-
-    /**
      * Finds the viewModel of the specified type;
      * Creates the viewModel if it does not exist
      * @param fragmentType
      * @return
      */
     @NonNull
-    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.EvacuationComponent fragmentType) {
+    private NewDncaBaseViewModel findOrCreateViewModel(AppConstants.NewDncaComponent fragmentType) {
 
         NewDncaBaseViewModel viewModel = null;
         String tag = fragmentType.toString() + VIEWMODEL_TAG;

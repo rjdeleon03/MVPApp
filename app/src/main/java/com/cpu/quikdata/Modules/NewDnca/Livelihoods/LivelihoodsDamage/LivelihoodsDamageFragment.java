@@ -6,7 +6,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogViewModel;
 
-import static com.cpu.quikdata.AppConstants.LivelihoodsComponent.LIVELIHOODS_DAMAGE;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_DAMAGE;
 
 public class LivelihoodsDamageFragment extends BaseEnumFragment {
 

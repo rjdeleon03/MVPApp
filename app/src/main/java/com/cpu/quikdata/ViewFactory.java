@@ -36,6 +36,9 @@ import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDa
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsFragment;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
@@ -130,6 +133,11 @@ public class ViewFactory {
         BaseSubFragment selectedFragment = ActivityUtils.findSubFragment(fragmentManager, fragmentType.toString());
         if (selectedFragment == null) {
             switch(fragmentType) {
+
+                // Form Details
+                case FORM_GEN_FORM_DETAILS:
+                    selectedFragment = GenFormDetailsFragment.newInstance();
+                    break;
 
                 // General Information
                 case GEN_INFO_CALAMITY:
@@ -290,6 +298,11 @@ public class ViewFactory {
             viewModel = retainedViewModel.getViewmodel();
         } else {
             switch (fragmentType) {
+
+                // Form Details
+                case FORM_GEN_FORM_DETAILS:
+                    viewModel = new GenFormDetailsViewModel(context, (FormDetailsRepositoryManager) repositoryManager);
+                    break;
 
                 // General Information
                 case GEN_INFO_CALAMITY:

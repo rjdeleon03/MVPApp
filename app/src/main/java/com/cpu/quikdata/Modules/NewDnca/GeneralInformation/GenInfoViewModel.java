@@ -43,6 +43,7 @@ public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoR
         mDeathCauseData = mDncaForm.getGenInfo().getDeathCauseData();
         mInfrastructureDamageData = mDncaForm.getGenInfo().getInfrastructureDamageData();
     }
+
     /**
      * Gets calamity details
      * @return

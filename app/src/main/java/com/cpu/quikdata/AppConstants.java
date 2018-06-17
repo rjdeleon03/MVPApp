@@ -13,6 +13,9 @@ public class AppConstants {
 
     public enum NewDncaComponent {
 
+        FORM_GEN_FORM_DETAILS,
+        FORM_INTERVIEW_DETAILS,
+
         GEN_INFO_CALAMITY,
         GEN_INFO_POPULATION,
         GEN_INFO_FAMILY,

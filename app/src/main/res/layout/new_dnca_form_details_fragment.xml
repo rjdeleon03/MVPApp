@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Modules.NewForm.FormDetails.NewFormDetailsFragment">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.cpu.quikdata.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel" />
-    </data>
-
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -51,7 +45,6 @@
                         android:layout_marginTop="4dp"
                         android:ems="10"
                         android:fontFamily="@font/lato_reg"
-                        android:text="@={viewModel.orgName}"
                         android:hint="Organization Name"
                         android:inputType="text"/>
 
@@ -93,7 +86,6 @@
                             android:layout_marginStart="16dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="@{viewModel.assessmentDate}"
                             android:textSize="20sp"
                             tools:text="2018/04/29" />
 
@@ -147,7 +139,6 @@
                                 android:layout_marginStart="16dp"
                                 android:ems="10"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="@={viewModel.sitio}"
                                 android:hint="Sitio/ Purok/ Zone"
                                 android:inputType="text" />
 
@@ -159,7 +150,6 @@
                                 android:layout_marginStart="16dp"
                                 android:ems="10"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="@={viewModel.barangay}"
                                 android:hint="Barangay"
                                 android:inputType="text" />
 
@@ -171,7 +161,6 @@
                                 android:layout_marginStart="16dp"
                                 android:ems="10"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="@={viewModel.city}"
                                 android:hint="Municipality/ City"
                                 android:inputType="text" />
 
@@ -183,7 +172,6 @@
                                 android:layout_marginStart="16dp"
                                 android:ems="10"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="@={viewModel.province}"
                                 android:hint="Province"
                                 android:inputType="text" />
 
@@ -232,7 +220,6 @@
                                 android:layout_marginStart="16dp"
                                 android:ems="10"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="@={viewModel.interviewer}"
                                 android:hint="Name"
                                 android:inputType="text"/>
 
@@ -244,7 +231,6 @@
                                 android:layout_marginStart="16dp"
                                 android:ems="10"
                                 android:fontFamily="@font/lato_reg"
-                                android:text="@={viewModel.interviewerNo}"
                                 android:hint="Contact Number"
                                 android:inputType="phone" />
 
@@ -257,9 +243,6 @@
             </ScrollView>
 
         </LinearLayout>
-
-        <include layout="@layout/base_save_button"
-                 viewModel="@{viewModel}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

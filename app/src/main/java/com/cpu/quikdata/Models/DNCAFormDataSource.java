@@ -41,8 +41,4 @@ public interface DNCAFormDataSource {
     void submitDncaForm(@NonNull SubmitDncaFormCallback callback);
 
     void uploadImages(@NonNull UploadImagesCallback callback);
-
-    void saveFormInfo(FormInfo formInfo);
-
-    void saveGenInfo(GenInfo genInfo);
 }

@@ -107,22 +107,4 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         oldImagesUrl.clear();
         oldImagesUrl.addAll(images);
     }
-
-    /**
-     * Saves form info to new DNCA form
-     * @param formInfo
-     */
-    @Override
-    public void saveFormInfo(FormInfo formInfo) {
-        mForm.setFormInfo(formInfo);
-    }
-
-    /**
-     * Saves gen info to new DNCA form
-     * @param genInfo
-     */
-    @Override
-    public void saveGenInfo(GenInfo genInfo) {
-        mForm.setGenInfo(genInfo);
-    }
 }

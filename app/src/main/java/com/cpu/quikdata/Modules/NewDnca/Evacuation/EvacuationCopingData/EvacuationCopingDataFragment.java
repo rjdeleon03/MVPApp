@@ -12,6 +12,5 @@ public class EvacuationCopingDataFragment extends BaseQuestionFragment {
 
     public EvacuationCopingDataFragment() {
         setFragmentTag(EVACUATION_COPING.toString());
-
     }
 }

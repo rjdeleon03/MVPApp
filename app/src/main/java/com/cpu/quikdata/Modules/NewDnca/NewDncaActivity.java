@@ -17,8 +17,8 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
-import com.cpu.quikdata.Modules.NewDnca.FormDetails.NewDncaFormDetailsFragment;
-import com.cpu.quikdata.Modules.NewDnca.FormDetails.NewDncaFormDetailsViewModel;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsFragment;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthFragment;
@@ -46,9 +46,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
 
-
-
-    private NewDncaFormDetailsViewModel mFormDetailsViewModel;
+    private FormDetailsViewModel mFormDetailsViewModel;
     private GenInfoViewModel mGenInfoViewModel;
     private ShelterInfoViewModel mShelterInfoViewModel;
     private FoodSecurityViewModel mFoodSecurityViewModel;
@@ -58,7 +56,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private EvacuationViewModel mEvacuationViewModel;
     private CaseStoriesViewModel mCaseStoriesViewModel;
 
-    private NewDncaFormDetailsFragment mFormDetailsFragment;
+    private FormDetailsFragment mFormDetailsFragment;
     private GenInfoFragment mGenInfoFragment;
     private ShelterInfoFragment mShelterInfoFragment;
     private FoodSecurityFragment mFoodSecurityFragment;
@@ -113,8 +111,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             if (currentFragment instanceof ViewModelHolder) continue;
 
             if(currentFragment.getTag().equals(NewDncaComponent.FORM_DETAILS.toString())) {
-                mFormDetailsFragment = (NewDncaFormDetailsFragment) currentFragment;
-                mFormDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
+                mFormDetailsFragment = (FormDetailsFragment) currentFragment;
+                mFormDetailsViewModel = (FormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
                 mFormDetailsFragment.setViewModel(mFormDetailsViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.GEN_INFO.toString())) {
@@ -175,8 +173,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onFormDetailsButtonPressed() {
-        NewDncaFormDetailsFragment formDetailsFragment = (NewDncaFormDetailsFragment) findOrCreateViewFragment(NewDncaComponent.FORM_DETAILS);
-        mFormDetailsViewModel = (NewDncaFormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
+        FormDetailsFragment formDetailsFragment = (FormDetailsFragment) findOrCreateViewFragment(NewDncaComponent.FORM_DETAILS);
+        mFormDetailsViewModel = (FormDetailsViewModel) findOrCreateViewModel(NewDncaComponent.FORM_DETAILS);
         formDetailsFragment.setViewModel(mFormDetailsViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formDetailsFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.FORM_DETAILS.toString());
@@ -331,8 +329,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case FORM_DETAILS:
-                if (fragment == null || !(fragment instanceof NewDncaFormDetailsFragment)) {
-                    fragment = NewDncaFormDetailsFragment.newInstance();
+                if (fragment == null || !(fragment instanceof FormDetailsFragment)) {
+                    fragment = FormDetailsFragment.newInstance();
                 }
                 break;
 
@@ -407,7 +405,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                     break;
 
                 case FORM_DETAILS:
-                    viewModel = new NewDncaFormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new FormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                     viewModel.setNewDncaNavigator(this);
                     break;
 

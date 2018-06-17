@@ -2,6 +2,7 @@ package com.cpu.quikdata.Models;
 
 import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Models.FoodSecurity.FoodSecurity;
+import com.cpu.quikdata.Models.FormDetails.FormDetails;
 import com.cpu.quikdata.Models.GeneralInformation.GenInfo;
 import com.cpu.quikdata.Models.Generics.NormalizableData;
 import com.cpu.quikdata.Models.Health.HealthInfo;
@@ -11,7 +12,7 @@ import com.cpu.quikdata.Models.Wash.WashInfo;
 
 public class DNCAForm implements NormalizableData {
 
-    private FormInfo formInfo;
+    private FormDetails formDetails;
     private GenInfo genInfo;
     private ShelterInfo shelterInfo;
     private FoodSecurity foodSecurity;
@@ -21,8 +22,8 @@ public class DNCAForm implements NormalizableData {
     private EvacuationInfo evacuationInfo;
     private CaseStories caseStories;
 
-    public DNCAForm(FormInfo formInfo, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo, EvacuationInfo evacuationInfo, CaseStories caseStories) {
-        this.formInfo = formInfo;
+    public DNCAForm(FormDetails formDetails, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo, EvacuationInfo evacuationInfo, CaseStories caseStories) {
+        this.formDetails = formDetails;
         this.genInfo = genInfo;
         this.shelterInfo = shelterInfo;
         this.foodSecurity = foodSecurity;
@@ -34,15 +35,15 @@ public class DNCAForm implements NormalizableData {
     }
 
     public DNCAForm() {
-        this(new FormInfo(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo(), new EvacuationInfo(), new CaseStories());
+        this(new FormDetails(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo(), new EvacuationInfo(), new CaseStories());
     }
 
-    public FormInfo getFormInfo() {
-        return formInfo;
+    public FormDetails getFormDetails() {
+        return formDetails;
     }
 
-    public void setFormInfo(FormInfo formInfo) {
-        this.formInfo = formInfo;
+    public void setFormDetails(FormDetails formDetails) {
+        this.formDetails = formDetails;
     }
 
     public GenInfo getGenInfo() {

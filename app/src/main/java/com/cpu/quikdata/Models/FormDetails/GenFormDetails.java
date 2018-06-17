@@ -1,8 +1,8 @@
-package com.cpu.quikdata.Models;
+package com.cpu.quikdata.Models.FormDetails;
 
 import com.cpu.quikdata.Models.Generics.SimpleDate;
 
-public class FormInfo {
+public class GenFormDetails {
     private String orgName;
     private SimpleDate assessmentDate;
     private String sitio;
@@ -11,8 +11,9 @@ public class FormInfo {
     private String province;
     private String interviewer;
     private String interviewerNo;
+    private String infoSources;
 
-    public FormInfo(String orgName, SimpleDate assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo) {
+    public GenFormDetails(String orgName, SimpleDate assessmentDate, String sitio, String barangay, String city, String province, String interviewer, String interviewerNo, String infoSources) {
         this.orgName = orgName;
         this.assessmentDate = assessmentDate;
         this.sitio = sitio;
@@ -21,17 +22,11 @@ public class FormInfo {
         this.province = province;
         this.interviewer = interviewer;
         this.interviewerNo = interviewerNo;
+        this.infoSources = infoSources;
     }
 
-    public FormInfo() {
-        this.orgName = "";
-        this.sitio = "";
-        this.barangay = "";
-        this.city = "";
-        this.province = "";
-        this.interviewer = "";
-        this.interviewerNo = "";
-        this.assessmentDate = new SimpleDate();
+    public GenFormDetails() {
+        this("", new SimpleDate(), "", "", "", "", "", "", "");
     }
 
     public String getOrgName() {
@@ -96,5 +91,13 @@ public class FormInfo {
 
     public void setInterviewerNo(String interviewerNo) {
         this.interviewerNo = interviewerNo;
+    }
+
+    public String getInfoSources() {
+        return infoSources;
+    }
+
+    public void setInfoSources(String infoSources) {
+        this.infoSources = infoSources;
     }
 }

@@ -1,0 +1,125 @@
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row.AssistanceRowViewModel" />
+    </data>
+    -->
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/nd_casualties_card"
+        android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="fill"
+        app:cardCornerRadius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
+                    android:paddingHorizontal="8dp"
+                    android:src="@drawable/ic_close_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/nd_health_diseases_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0">
+
+                    <!-- Name of Interviewee -->
+                    <TableRow
+                        android:layout_marginBottom="2dp">
+
+                        <LinearLayout
+                            android:layout_span="5"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_reg"
+                                android:textColor="@android:color/black"
+                                android:text="Name"/>
+
+                            <TextView
+                                android:layout_marginTop="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_reg"/>
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                    <!-- Contact Number of Interviewee -->
+                    <TableRow
+                        android:layout_marginBottom="2dp">
+
+                        <LinearLayout
+                            android:layout_span="5"
+                            android:orientation="vertical"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_reg"
+                                android:textColor="@android:color/black"
+                                android:text="Contact Number"/>
+
+                            <TextView
+                                android:layout_marginTop="4dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_reg"/>
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

@@ -11,8 +11,6 @@
     </data>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/nd_health_card"
-        android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -26,119 +24,63 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@color/colorAccent">
+            <include layout="@layout/base_enum_type_horizontal"
+                viewModel="@{viewModel}"/>
 
-                <TextView
-                    android:id="@+id/nd_health_special_needs_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:text="@{viewModel.type.toString()}"
-                    android:textColor="@color/backgroundColor"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
-                    android:paddingHorizontal="8dp"
-                    android:src="@drawable/ic_close_card"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/nd_health_diseases_row"
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:paddingTop="8dp">
+                android:layout_margin="16dp"
+                android:stretchColumns="1">
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:stretchColumns="1"
-                    android:layout_marginHorizontal="16dp">
+                <!-- Count -->
+                <TableRow>
 
-                    <!-- Count -->
-                    <TableRow
-                        android:layout_margin="0dp"
-                        android:layout_marginVertical="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Count"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginLeft="64dp"
+                        android:ems="10"
+                        android:gravity="right"
+                        android:text="@{viewModel.count}" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_margin="0dp"
+                    android:layout_marginVertical="2dp">
+
+                    <LinearLayout
+                        android:layout_span="2"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Count"
-                            android:textColor="@android:color/black" />
+                            android:layout_marginTop="8dp"
+                            android:textColor="@android:color/black"
+                            android:text="Health / Medical Needs"/>
 
                         <TextView
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="64dp"
-                            android:layout_marginLeft="64dp"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:text="@{viewModel.count}" />
+                            android:text="@{viewModel.needs}"/>
 
-                    </TableRow>
+                    </LinearLayout>
 
+                </TableRow>
 
-                    <TableRow
-                        android:layout_margin="0dp"
-                        android:layout_marginVertical="2dp">
-
-                        <LinearLayout
-                            android:layout_span="2"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:fontFamily="@font/lato_reg"
-                                android:textColor="@android:color/black"
-                                android:text="Health / Medical Needs"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
-                                android:textSize="12dp"
-                                android:text="@{viewModel.needs}"/>
-
-                        </LinearLayout>
-
-                    </TableRow>
-
-                </TableLayout>
-
-            </android.support.constraint.ConstraintLayout>
+            </TableLayout>
 
         </LinearLayout>
 

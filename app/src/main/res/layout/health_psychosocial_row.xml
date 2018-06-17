@@ -12,7 +12,6 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/nd_health_card"
-        android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -24,167 +23,116 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="65dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorAccent">
+            <include layout="@layout/base_enum_type_horizontal"
+                viewModel="@{viewModel}"/>
 
-                <TextView
-                    android:id="@+id/nd_psychosocial_age_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:maxWidth="53dp"
-                    android:text="@{viewModel.type.toString()}"
-                    android:textColor="@color/backgroundColor"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
-                    android:paddingHorizontal="8dp"
-                    android:src="@drawable/ic_close_card"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/nd_health_psychosocial_row"
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:paddingTop="8dp">
+                android:layout_margin="16dp"
+                android:stretchColumns="2,4">
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:stretchColumns="2,4"
-                    android:layout_marginHorizontal="16dp">
+                <!-- Manifestations -->
+                <TableRow
+                    android:layout_marginBottom="2dp">
 
-                    <!-- Manifestations -->
-                    <TableRow
-                        android:layout_marginBottom="2dp">
-
-                        <LinearLayout
-                            android:layout_span="5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
-                                android:textColor="@android:color/black"
-                                android:text="Manifestations of Mental Stress / Trauma"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
-                                android:inputType="textMultiLine"
-                                android:textSize="12dp"
-                                android:text="@{viewModel.manifestations}"/>
-
-                        </LinearLayout>
-
-                    </TableRow>
-
-                    <!-- Cases -->
-                    <TableRow
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="2dp">
+                    <LinearLayout
+                        android:layout_span="5"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="No. of Cases"
-                            android:textColor="@android:color/black" />
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center_vertical"
-                            app:srcCompat="@drawable/ic_male" />
+                            android:textColor="@android:color/black"
+                            android:text="Manifestations of Mental Stress / Trauma"/>
 
                         <TextView
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
                             android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.casesMale}" />
+                            android:text="@{viewModel.manifestations}"/>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center_vertical"
-                            app:srcCompat="@drawable/ic_female" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <!-- Cases -->
+                <TableRow
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="No. of Cases"
+                        android:textColor="@android:color/black" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_male" />
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.casesMale}" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_female" />
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.casesFemale}"
+                        android:textSize="12sp" />
+
+                </TableRow>
+
+                <!-- Needs -->
+                <TableRow
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_span="5"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:ems="10"
                             android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@{viewModel.casesFemale}"
-                            android:textSize="12sp" />
+                            android:textColor="@android:color/black"
+                            android:text="Needs"/>
 
-                    </TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_reg"
+                            android:text="@{viewModel.needs}"/>
 
-                    <!-- Needs -->
-                    <TableRow
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="2dp">
+                    </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_span="5"
-                            android:orientation="vertical">
+                </TableRow>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
-                                android:textColor="@android:color/black"
-                                android:text="Needs"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
-                                android:inputType="textMultiLine"
-                                android:textSize="12dp"
-                                android:text="@{viewModel.needs}"/>
-
-                        </LinearLayout>
-
-                    </TableRow>
-
-                </TableLayout>
-
-            </android.support.constraint.ConstraintLayout>
+            </TableLayout>
 
         </LinearLayout>
 

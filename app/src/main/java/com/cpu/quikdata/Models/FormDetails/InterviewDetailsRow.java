@@ -13,6 +13,10 @@ public class InterviewDetailsRow  extends GenericEnumDataRow {
         this.intervieweeNo = intervieweeNo;
     }
 
+    public InterviewDetailsRow() {
+        this("", "");
+    }
+
     public String getInterviewee() {
         return interviewee;
     }

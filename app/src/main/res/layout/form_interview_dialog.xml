@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
     <data>
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsItem.Dialog.InterviewDetailsDialogViewModel" />
     </data>
-    -->
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -115,6 +113,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_reg"
                                 android:inputType="textMultiLine"
+                                android:text="@={viewModel.interviewee}"
                                 android:textSize="12dp"/>
 
                         </LinearLayout>
@@ -141,6 +140,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato_reg"
                                 android:inputType="phone"
+                                android:text="@={viewModel.intervieweeNo}"
                                 android:textSize="12dp"/>
 
                         </LinearLayout>

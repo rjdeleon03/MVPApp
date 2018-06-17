@@ -21,281 +21,154 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/colorPrimary">
-
-                <ImageButton
-                    android:id="@+id/nd_casualties_dlg_cancel"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
-                    android:background="@drawable/round_button_cancel"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_close_card"
-                    app:borderWidth="0dp"
-                    app:fabSize="mini"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa_reg"
-                    android:text="@{viewModel.type.toString()}"
-                    android:textStyle="bold"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="@color/cardview_light_background"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageButton
-                    android:id="@+id/nd_casualties_dlg_ok"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
-                    android:background="@drawable/round_button_ok"
-                    android:src="@drawable/ic_check"
-                    app:borderWidth="0dp"
-                    app:fabSize="mini"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/nd_casualties_dlg"
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="8dp">
+                    android:stretchColumns="2,4"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="?dialogPreferredPadding"
+                    android:layout_marginStart="?dialogPreferredPadding"
+                    android:layout_marginRight="?dialogPreferredPadding"
+                    android:layout_marginEnd="?dialogPreferredPadding">
 
                     <!-- Dead -->
-                    <TextView
-                        android:id="@+id/nd_casualties_dlg_dead_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="Dead"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <TableRow
+                        android:layout_marginTop="2dp">
 
-                    <ImageView
-                        android:id="@+id/nd_casualties_dlg_chh_male_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="24dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_label"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_male" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="Dead"
+                            android:textColor="@android:color/black" />
 
-                    <EditText
-                        android:id="@+id/nd_casualties_dlg_chh_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:text="@={viewModel.deadMale}"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_chh_female_ic"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_male_ic"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/ic_male" />
 
-                    <ImageView
-                        android:id="@+id/nd_casualties_dlg_chh_female_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_chh_female"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_male"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_female" />
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.deadMale}"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/nd_casualties_dlg_chh_female"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:text="@={viewModel.deadFemale}"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_chh_female_ic"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/ic_female" />
+
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.deadFemale}"
+                            android:textSize="14sp" />
+                    </TableRow>
 
                     <!-- Missing -->
-                    <TextView
-                        android:id="@+id/nd_casualties_dlg_missing_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="Missing"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male" />
+                    <TableRow
+                        android:layout_marginTop="2dp">
 
-                    <ImageView
-                        android:id="@+id/nd_casualties_dlg_missing_male_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="24dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male"
-                        app:srcCompat="@drawable/ic_male" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="Missing"
+                            android:textColor="@android:color/black" />
 
-                    <EditText
-                        android:id="@+id/nd_casualties_dlg_missing_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:text="@={viewModel.missingMale}"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_missing_female_ic"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_missing_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_male" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/ic_male" />
 
-                    <ImageView
-                        android:id="@+id/nd_casualties_dlg_missing_female_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_missing_female"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_missing_male"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_female"
-                        app:srcCompat="@drawable/ic_female" />
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.missingMale}"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/nd_casualties_dlg_missing_female"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:text="@={viewModel.missingFemale}"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_missing_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_chh_female" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/ic_female" />
+
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.missingFemale}"
+                            android:textSize="14sp" />
+                    </TableRow>
 
                     <!-- Injured -->
-                    <TextView
-                        android:id="@+id/nd_casualties_dlg_injured_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="Injured"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_male" />
+                    <TableRow
+                        android:layout_marginTop="2dp">
 
-                    <ImageView
-                        android:id="@+id/nd_casualties_dlg_injured_male_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="24dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_label"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_male"
-                        app:srcCompat="@drawable/ic_male" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="Injured"
+                            android:textColor="@android:color/black" />
 
-                    <EditText
-                        android:id="@+id/nd_casualties_dlg_injured_male"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:text="@={viewModel.injuredMale}"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_injured_female_ic"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_male_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_male" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/ic_male" />
 
-                    <ImageView
-                        android:id="@+id/nd_casualties_dlg_injured_female_ic"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/nd_casualties_dlg_injured_female"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_male"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_female"
-                        app:srcCompat="@drawable/ic_female" />
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.injuredMale}"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/nd_casualties_dlg_injured_female"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:inputType="number"
-                        android:text="@={viewModel.injuredFemale}"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_casualties_dlg_injured_female_ic"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_casualties_dlg_missing_female" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/ic_female" />
 
-                </android.support.constraint.ConstraintLayout>
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.injuredFemale}"
+                            android:textSize="14sp" />
+                    </TableRow>
+
+                </TableLayout>
 
             </ScrollView>
 

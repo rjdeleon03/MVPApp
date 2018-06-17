@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
@@ -147,8 +148,7 @@ public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEn
     @Override
     public void onDialogOkButtonPressed() {
         refreshData();
-        mDialogFragment.dismiss();
-        mDialogFragment = null;
+        onDialogCloseButtonPressed();
     }
 
     /**

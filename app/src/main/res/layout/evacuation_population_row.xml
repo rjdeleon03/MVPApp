@@ -10,8 +10,6 @@
     </data>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/nd_population_card"
-        android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -23,255 +21,208 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="65dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorAccent">
+            <include layout="@layout/base_enum_type_horizontal"
+                viewModel="@{viewModel}"/>
 
-                <TextView
-                    android:id="@+id/nd_population_age_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:maxWidth="53dp"
-                    android:text="@{viewModel.type.toString()}"
-                    android:textColor="@color/backgroundColor"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{() -> viewModel.navigateOnDeleteCardButtonPressed()}"
-                    android:paddingHorizontal="8dp"
-                    android:src="@drawable/ic_close_card"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/nd_health_diseases_row"
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:paddingTop="8dp">
+                android:stretchColumns="1,3"
+                android:layout_margin="16dp">
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:stretchColumns="1,3"
-                    android:layout_marginHorizontal="16dp">
+                <!-- Male/Female -->
+                <TableRow>
 
-                    <!-- Male/Female -->
-                    <TableRow
-                        android:layout_marginTop="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Male"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Male"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:text="@{viewModel.male}" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:text="@={viewModel.male}" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:text="Female"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Female"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.female}" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@={viewModel.female}"
-                            android:textSize="12sp" />
+                </TableRow>
 
-                    </TableRow>
+                <!-- LGBT -->
+                <TableRow
+                    android:layout_marginTop="8dp">
 
-                    <!-- LGBT -->
-                    <TableRow
-                        android:layout_marginTop="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_span="2"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="LGBT"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_span="2"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="LGBT"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_span="2"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.lgbt}"
+                        android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_span="2"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@={viewModel.lgbt}"
-                            android:textSize="12sp" />
+                </TableRow>
 
-                    </TableRow>
+                <!-- Pregnant Women -->
+                <TableRow
+                    android:layout_marginTop="8dp">
 
-                    <!-- Pregnant Women -->
-                    <TableRow
-                        android:layout_marginTop="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_span="2"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Pregnant Women"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_span="2"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Pregnant Women"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_span="2"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.pregnant}"
+                        android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_span="2"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@={viewModel.pregnant}"
-                            android:textSize="12sp" />
+                </TableRow>
 
-                    </TableRow>
+                <!-- Lactating Mothers -->
+                <TableRow
+                    android:layout_marginTop="8dp">
 
-                    <!-- Lactating Mothers -->
-                    <TableRow
-                        android:layout_marginTop="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_span="2"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Lactating Mothers"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_span="2"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Lactating Mothers"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_span="2"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.lactating}"
+                        android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_span="2"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@={viewModel.lactating}"
-                            android:textSize="12sp" />
+                </TableRow>
 
-                    </TableRow>
+                <!-- Persons with Disabilities -->
+                <TableRow
+                    android:layout_marginTop="8dp">
 
-                    <!-- Persons with Disabilities -->
-                    <TableRow
-                        android:layout_marginTop="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_span="2"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Persons with Disabilities"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_span="2"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Persons with Disabilities"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_span="2"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.disabled}"
+                        android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_span="2"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@={viewModel.disabled}"
-                            android:textSize="12sp" />
+                </TableRow>
 
-                    </TableRow>
+                <!-- Sick -->
+                <TableRow
+                    android:layout_marginTop="8dp">
 
-                    <!-- Sick -->
-                    <TableRow
-                        android:layout_marginTop="4dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_span="2"
+                        android:fontFamily="@font/lato_reg"
+                        android:text="Sick"
+                        android:textColor="@android:color/black" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_span="2"
-                            android:fontFamily="@font/lato_reg"
-                            android:text="Sick"
-                            android:textColor="@android:color/black" />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_span="2"
+                        android:ems="10"
+                        android:fontFamily="@font/lato_reg"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="@{viewModel.sick}"
+                        android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_span="2"
-                            android:ems="10"
-                            android:fontFamily="@font/lato_reg"
-                            android:gravity="right"
-                            android:inputType="number"
-                            android:text="@={viewModel.sick}"
-                            android:textSize="12sp" />
+                </TableRow>
 
-                    </TableRow>
-
-                </TableLayout>
-
-            </android.support.constraint.ConstraintLayout>
+            </TableLayout>
 
         </LinearLayout>
 

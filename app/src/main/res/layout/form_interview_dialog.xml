@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!--
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -76,17 +77,18 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </android.support.constraint.ConstraintLayout>
+            -->
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/nd_health_diseases_row"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp"
-                android:paddingTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp">
+                android:paddingTop="16dp"
+                android:layout_marginStart="?dialogPreferredPadding"
+                android:layout_marginLeft="?dialogPreferredPadding"
+                android:layout_marginEnd="?dialogPreferredPadding"
+                android:layout_marginRight="?dialogPreferredPadding">
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -104,17 +106,15 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
                                 android:textColor="@android:color/black"
                                 android:text="Name"/>
 
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
                                 android:inputType="textMultiLine"
                                 android:text="@={viewModel.interviewee}"
-                                android:textSize="12dp"/>
+                                android:textSize="14sp"/>
 
                         </LinearLayout>
 
@@ -131,17 +131,15 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
                                 android:textColor="@android:color/black"
                                 android:text="Contact Number"/>
 
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/lato_reg"
                                 android:inputType="phone"
                                 android:text="@={viewModel.intervieweeNo}"
-                                android:textSize="12dp"/>
+                                android:textSize="14sp"/>
 
                         </LinearLayout>
 

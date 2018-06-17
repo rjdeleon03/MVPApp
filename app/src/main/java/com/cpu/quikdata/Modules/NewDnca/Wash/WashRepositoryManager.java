@@ -4,8 +4,9 @@ import com.cpu.quikdata.Models.Wash.WashConditionsData;
 import com.cpu.quikdata.Models.Wash.WashGapsData;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataContainer;
 import com.cpu.quikdata.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataContainer;
+import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 
-public interface WashRepositoryManager extends AssistanceDataContainer, GenericCopingDataContainer {
+public interface WashRepositoryManager extends RepositoryManager, AssistanceDataContainer, GenericCopingDataContainer {
 
     WashConditionsData getWashConditionsData();
 

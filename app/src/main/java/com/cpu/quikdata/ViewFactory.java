@@ -14,11 +14,18 @@ import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationCopingData.EvacuationCopingDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationCopingData.EvacuationCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationFacilitiesData.EvacuationFacilitiesDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationFacilitiesData.EvacuationFacilitiesDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.EvacuationPopulationFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.EvacuationPopulationViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationSecurityData.EvacuationSecurityDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationSecurityData.EvacuationSecurityDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationSiteData.EvacuationSiteDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationSiteData.EvacuationSiteDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationWashData.EvacuationWashDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationWashData.EvacuationWashDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodAssistanceData.FoodAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
@@ -80,6 +87,14 @@ import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataV
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashAssistanceData.WashAssistanceDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsFragment;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashCopingData.WashCopingDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashCopingData.WashCopingDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataFragment;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Wash.WashRepositoryManager;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
 import static com.cpu.quikdata.AppConstants.REQUEST_IMAGE_CAPTURE;
@@ -214,6 +229,20 @@ public class ViewFactory {
                     break;
                 case HEALTH_GAPS:
                     selectedFragment = HealthGapsDataFragment.newInstance();
+                    break;
+
+                // Water, Sanitation, and Hygiene
+                case WASH_CONDITIONS:
+                    selectedFragment = WashConditionsFragment.newInstance();
+                    break;
+                case WASH_COPING:
+                    selectedFragment = WashCopingDataFragment.newInstance();
+                    break;
+                case WASH_ASSISTANCE:
+                    selectedFragment = WashAssistanceDataFragment.newInstance();
+                    break;
+                case WASH_GAPS:
+                    selectedFragment = WashGapsDataFragment.newInstance();
                     break;
 
                 // Evacuation Centers
@@ -360,6 +389,40 @@ public class ViewFactory {
                     break;
                 case HEALTH_GAPS:
                     viewModel = new HealthGapsDataViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    break;
+                    
+                // Water, Sanitation, and Hygiene
+                case WASH_CONDITIONS:
+                    viewModel = new WashConditionsViewModel(context, (WashRepositoryManager)repositoryManager);
+                    break;
+                case WASH_COPING:
+                    viewModel = new WashCopingDataViewModel(context, (WashRepositoryManager)repositoryManager);
+                    break;
+                case WASH_ASSISTANCE:
+                    viewModel = new AssistanceDataViewModel(context, (WashRepositoryManager)repositoryManager);
+                    break;
+                case WASH_GAPS:
+                    viewModel = new WashGapsDataViewModel(context, (WashRepositoryManager)repositoryManager);
+                    break;
+
+                // Evacuation Centers
+                case EVACUATION_SITE:
+                    viewModel = new EvacuationSiteDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    break;
+                case EVACUATION_POPULATION:
+                    viewModel = new EvacuationPopulationViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    break;
+                case EVACUATION_FACILITIES:
+                    viewModel = new EvacuationFacilitiesDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    break;
+                case EVACUATION_WASH:
+                    viewModel = new EvacuationWashDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    break;
+                case EVACUATION_SECURITY:
+                    viewModel = new EvacuationSecurityDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    break;
+                case EVACUATION_COPING:
+                    viewModel = new EvacuationCopingDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
                     break;
             }
 

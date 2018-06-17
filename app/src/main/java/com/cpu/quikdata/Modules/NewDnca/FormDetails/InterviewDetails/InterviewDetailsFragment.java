@@ -3,29 +3,31 @@ package com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsItem.Dialog.InterviewDetailsDialogFragment;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsItem.Dialog.InterviewDetailsDialogViewModel;
+
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.FORM_INTERVIEW_DETAILS;
 
 public class InterviewDetailsFragment extends BaseEnumFragment {
 
-    private HouseDamageFragmentAdapter mHouseDamageAdapter;
+    private InterviewDetailsFragmentAdapter mInterviewDetailsAdapter;
 
-    public static HouseDamageFragment newInstance() {
-        return new HouseDamageFragment();
+    public static InterviewDetailsFragment newInstance() {
+        return new InterviewDetailsFragment();
     }
 
-    public HouseDamageFragment() {
-        setFragmentTag(SHELTER_HOUSE_DAMAGE.toString());
+    public InterviewDetailsFragment() {
+        setFragmentTag(FORM_INTERVIEW_DETAILS.toString());
     }
 
     @Override
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
-        HouseDamageDialogViewModel dialogViewModel = new HouseDamageDialogViewModel(
+        InterviewDetailsDialogViewModel dialogViewModel = new InterviewDetailsDialogViewModel(
                 getContext(),
-                (HouseDamageRepositoryManager) mViewModel,
-                mAgeGroupSpinner.getSelectedItemPosition(),
-                true);
+                (InterviewDetailsRepositoryManager) mViewModel);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = HouseDamageDialogFragment.newInstance();
+        mDialogFragment = InterviewDetailsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -33,13 +35,12 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
     @Override
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
-        HouseDamageDialogViewModel dialogViewModel = new HouseDamageDialogViewModel(
+        InterviewDetailsDialogViewModel dialogViewModel = new InterviewDetailsDialogViewModel(
                 getContext(),
-                (HouseDamageRepositoryManager) mViewModel,
-                rowIndex,
-                false);
+                (InterviewDetailsRepositoryManager) mViewModel,
+                rowIndex);
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = HouseDamageDialogFragment.newInstance();
+        mDialogFragment = InterviewDetailsDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
     }
@@ -50,7 +51,7 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
     @Override
     protected void refreshData() {
         super.refreshData();
-        mHouseDamageAdapter.notifyDataSetChanged();
+        mInterviewDetailsAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -60,10 +61,10 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mHouseDamageAdapter = new HouseDamageFragmentAdapter(
+        mInterviewDetailsAdapter = new InterviewDetailsFragmentAdapter(
                 getContext().getApplicationContext(),
                 this,
-                (HouseDamageViewModel) mViewModel);
-        mRowRecycler.setAdapter(mHouseDamageAdapter);
+                (InterviewDetailsViewModel) mViewModel);
+        mRowRecycler.setAdapter(mInterviewDetailsAdapter);
     }
 }

@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsViewModel;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsFragment;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsViewModel;
 import com.cpu.quikdata.ViewFactory;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.FORM_GEN_FORM_DETAILS;
+import static com.cpu.quikdata.AppConstants.NewDncaComponent.FORM_INTERVIEW_DETAILS;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,12 +50,21 @@ public class FormDetailsFragment extends BaseMultiPageFragment {
         Context appContext = getContext().getApplicationContext();
 
         {
-            // Setup evacuation site data fragment
+            // Setup general form details fragment
             GenFormDetailsFragment genFormDetailsFragment =
                     (GenFormDetailsFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, FORM_GEN_FORM_DETAILS);
             genFormDetailsFragment.setViewModel(
                     (GenFormDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, FORM_GEN_FORM_DETAILS, repositoryManager, appContext));
             mAdapter.addFragment(genFormDetailsFragment);
+        }
+
+        {
+            // Setup interview details fragment
+            InterviewDetailsFragment interviewDetailsFragment =
+                    (InterviewDetailsFragment) ViewFactory.findOrCreateViewFragment(fragmentManager, FORM_INTERVIEW_DETAILS);
+            interviewDetailsFragment.setViewModel(
+                    (InterviewDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, FORM_INTERVIEW_DETAILS, repositoryManager, appContext));
+            mAdapter.addFragment(interviewDetailsFragment);
         }
 
         // Call to parent class to setup the view pager

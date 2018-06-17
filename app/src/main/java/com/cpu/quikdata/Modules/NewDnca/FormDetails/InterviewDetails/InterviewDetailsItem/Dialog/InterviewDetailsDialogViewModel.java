@@ -30,9 +30,9 @@ public class InterviewDetailsDialogViewModel extends BaseEnumDialogViewModel {
 
         InterviewDetailsRow interviewDetailsRow;
         if (mRowIndex == -1) {
-            interviewDetailsRow = mInterviewDetailsRepositoryManager.getInterviewDetailsRow(mRowIndex);
-        } else {
             interviewDetailsRow = new InterviewDetailsRow();
+        } else {
+            interviewDetailsRow = mInterviewDetailsRepositoryManager.getInterviewDetailsRow(mRowIndex);
         }
         interviewee.set(interviewDetailsRow.getInterviewee());
         intervieweeNo.set(interviewDetailsRow.getIntervieweeNo());

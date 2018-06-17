@@ -39,6 +39,8 @@ import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityRepositoryManag
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsViewModel;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsFragment;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
@@ -137,6 +139,9 @@ public class ViewFactory {
                 // Form Details
                 case FORM_GEN_FORM_DETAILS:
                     selectedFragment = GenFormDetailsFragment.newInstance();
+                    break;
+                case FORM_INTERVIEW_DETAILS:
+                    selectedFragment = InterviewDetailsFragment.newInstance();
                     break;
 
                 // General Information
@@ -302,6 +307,9 @@ public class ViewFactory {
                 // Form Details
                 case FORM_GEN_FORM_DETAILS:
                     viewModel = new GenFormDetailsViewModel(context, (FormDetailsRepositoryManager) repositoryManager);
+                    break;
+                case FORM_INTERVIEW_DETAILS:
+                    viewModel = new InterviewDetailsViewModel(context, (FormDetailsRepositoryManager) repositoryManager);
                     break;
 
                 // General Information

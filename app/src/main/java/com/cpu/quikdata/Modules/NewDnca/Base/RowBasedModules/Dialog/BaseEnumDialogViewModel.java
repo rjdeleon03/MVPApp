@@ -42,6 +42,8 @@ public abstract class BaseEnumDialogViewModel {
      * Handles navigation when OK button is pressed
      */
     public void navigateOnOkButtonPressed() {
-        mBaseEnumNavigator.onDialogOkButtonPressed();
+        if (mBaseEnumNavigator != null) {
+            mBaseEnumNavigator.onDialogOkButtonPressed();
+        }
     }
 }

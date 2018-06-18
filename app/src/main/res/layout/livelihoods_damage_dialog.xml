@@ -12,200 +12,113 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:background="@color/backgroundColor"
         app:cardCornerRadius="6dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/colorPrimary">
-
-                <ImageButton
-                    android:id="@+id/nd_lh_damage_dlg_cancel"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:onClick="@{() -> viewModel.navigateOnCancelButtonPressed()}"
-                    android:background="@drawable/round_button_cancel"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_close_card"
-                    app:borderWidth="0dp"
-                    app:fabSize="mini"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa_reg"
-                    android:text="@{viewModel.type.toString()}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="@color/cardview_light_background"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageButton
-                    android:id="@+id/nd_lh_damage_dlg_ok"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:onClick="@{() -> viewModel.navigateOnOkButtonPressed()}"
-                    android:background="@drawable/round_button_ok"
-                    android:src="@drawable/ic_check"
-                    app:borderWidth="0dp"
-                    app:fabSize="mini"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </android.support.constraint.ConstraintLayout>
-
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/nd_lh_damage_dlg"
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="8dp">
+                    android:layout_marginLeft="?dialogPreferredPadding"
+                    android:layout_marginStart="?dialogPreferredPadding"
+                    android:layout_marginRight="?dialogPreferredPadding"
+                    android:layout_marginEnd="?dialogPreferredPadding"
+                    android:stretchColumns="1">
 
                     <!-- Estimated Cost -->
-                    <TextView
-                        android:id="@+id/nd_lh_damage_dlg_cost_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="Estimated Cost"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <TableRow>
 
-                    <EditText
-                        android:id="@+id/nd_lh_damage_dlg_cost"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:text="@={viewModel.damageCost}"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/lato_reg"
-                        android:inputType="number"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/nd_lh_damage_dlg_cost_label"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="Estimated Cost"
+                            android:textColor="@android:color/black" />
 
-                    <!-- Affected Livelihoods -->
-                    <TextView
-                        android:id="@+id/nd_lh_damage_dlg_checkbox_grid_label"
-                        android:layout_width="0dp"
-                        android:layout_height="21dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="Affected Livelihoods"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_cost"/>
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="64dp"
+                            android:layout_marginLeft="64dp"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="@={viewModel.damageCost}"
+                            android:textSize="14sp" />
 
-                    <!-- Checkbox RecyclerView -->
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/nd_lh_damage_dlg_checkbox_grid"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="2dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_checkbox_grid_label"/>
+                    </TableRow>
 
-                    <!-- Remarks -->
-                    <TextView
-                        android:id="@+id/nd_lh_damage_dlg_remarks_label"
-                        android:layout_width="0dp"
-                        android:layout_height="21dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="Remarks"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_checkbox_grid"/>
+                    <TableRow android:layout_marginTop="8dp">
 
-                    <TextView
-                        android:id="@+id/nd_lh_damage_dlg_remarks_ex_label"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/lato_reg"
-                        android:text="(Number of hectares damaged, lost assets, equipment, number of days not able to go back to work, etc)"
-                        android:textStyle="italic"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_remarks_label"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_span="2"
+                            android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/nd_lh_damage_dlg_remarks"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:ems="10"
-                        android:text="@={viewModel.remarks}"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/lato_reg"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nd_lh_damage_dlg_remarks_ex_label" />
+                            <!-- Affected Livelihoods -->
+                            <TextView
+                                android:id="@+id/nd_lh_damage_dlg_checkbox_grid_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Affected Livelihoods"
+                                android:textColor="@android:color/black"/>
 
-                </android.support.constraint.ConstraintLayout>
+                            <!-- Checkbox RecyclerView -->
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/nd_lh_damage_dlg_checkbox_grid"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                    <TableRow android:layout_marginTop="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_span="2"
+                            android:orientation="vertical">
+
+                            <!-- Remarks -->
+                            <TextView
+                                android:id="@+id/nd_lh_damage_dlg_remarks_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:text="Remarks"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:id="@+id/nd_lh_damage_dlg_remarks_ex_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="(Number of hectares damaged, lost assets, equipment, number of days not able to go back to work, etc)"
+                                android:textStyle="italic"
+                                android:textSize="13sp" />
+
+                            <EditText
+                                android:id="@+id/nd_lh_damage_dlg_remarks"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:text="@={viewModel.remarks}"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                </TableLayout>
 
             </ScrollView>
-
-        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

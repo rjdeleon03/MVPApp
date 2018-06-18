@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.DialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.EnumDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
@@ -33,6 +35,16 @@ public class PopulationDataFragment extends BaseEnumFragment {
     @Override
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
+        DialogViewModel dialogViewModel = new DialogViewModel(
+                getContext(),
+                (PopulationDataRepositoryManager) mViewModel,
+                mAgeGroupSpinner.getSelectedItemPosition(),
+                true);
+        EnumDialogFragment dialogFragment = EnumDialogFragment.newInstance();
+        dialogFragment.setViewModel(dialogViewModel);
+        dialogFragment.show(getChildFragmentManager(), "");
+
+        /*
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
                 (PopulationDataRepositoryManager) mViewModel,
@@ -42,6 +54,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
         mDialogFragment = PopulationDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(dialogViewModel);
         mDialogFragment.show(getChildFragmentManager(), "");
+        */
     }
 
     /**

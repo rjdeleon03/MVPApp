@@ -14,6 +14,10 @@ public abstract class BaseQuestionViewModel extends NewDncaBaseViewModel impleme
 
     protected List<QuestionItemViewModel> mQuestionsViewModels = new ArrayList<>();
 
+    /**
+     * Constructor
+     * @param context
+     */
     public BaseQuestionViewModel(Context context) {
         super(context);
     }

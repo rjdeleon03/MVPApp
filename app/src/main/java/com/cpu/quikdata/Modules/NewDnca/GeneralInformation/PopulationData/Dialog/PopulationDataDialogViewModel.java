@@ -13,8 +13,6 @@ public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
-    public final ObservableInt totalMale = new ObservableInt(0);
-    public final ObservableInt totalFemale = new ObservableInt(0);
     public final ObservableInt affectedMale = new ObservableInt(0);
     public final ObservableInt affectedFemale = new ObservableInt(0);
     public final ObservableInt displacedMale = new ObservableInt(0);
@@ -39,8 +37,6 @@ public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
         } else {
             PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
             type.set(populationDataRow.getType());
-            totalMale.set(populationDataRow.getTotal().male);
-            totalFemale.set(populationDataRow.getTotal().female);
             affectedMale.set(populationDataRow.getAffected().male);
             affectedFemale.set(populationDataRow.getAffected().female);
             displacedMale.set(populationDataRow.getDisplaced().male);
@@ -55,7 +51,8 @@ public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
     public void navigateOnOkButtonPressed() {
         PopulationDataRow populationDataRow = new PopulationDataRow(
                 (GenericEnumDataRow.AgeGroup) type.get(),
-                new GenderTuple(totalMale.get(), totalFemale.get()),
+                new GenderTuple(affectedMale.get() + displacedMale.get(),
+                        affectedFemale.get() + displacedFemale.get()),
                 new GenderTuple(affectedMale.get(), affectedFemale.get()),
                 new GenderTuple(displacedMale.get(), displacedFemale.get()));
 

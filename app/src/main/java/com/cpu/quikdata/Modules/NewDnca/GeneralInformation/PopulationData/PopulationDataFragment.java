@@ -5,10 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumDialogFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumDialogFragment;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_POPULATION;
 
@@ -33,26 +31,12 @@ public class PopulationDataFragment extends BaseEnumFragment {
     @Override
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
-        DialogViewModel dialogViewModel = new DialogViewModel(
-                getContext(),
-                (PopulationDataRepositoryManager) mViewModel,
-                mAgeGroupSpinner.getSelectedItemPosition(),
-                true);
-        EnumDialogFragment dialogFragment = EnumDialogFragment.newInstance();
-        dialogFragment.setViewModel(dialogViewModel);
-        dialogFragment.show(getChildFragmentManager(), "");
-
-        /*
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
                 getContext(),
                 (PopulationDataRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PopulationDataDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
-        */
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -67,10 +51,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
                 (PopulationDataRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PopulationDataDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

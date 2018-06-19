@@ -16,6 +16,8 @@ import android.widget.Spinner;
 
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumDialogFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
@@ -108,6 +110,17 @@ public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEn
     }
 
     /**
+     * Sets up the dialog fragment to be shown
+     * @param dialogViewModel
+     */
+    protected void setupDialog(DialogViewModel dialogViewModel) {
+        dialogViewModel.setBaseAgeGroupNavigator(this);
+        EnumDialogFragment dialogFragment = EnumDialogFragment.newInstance();
+        dialogFragment.setViewModel(dialogViewModel);
+        dialogFragment.show(getChildFragmentManager(), "");
+    }
+
+    /**
      * Checks if a dialog is already shown
      * @return
      */
@@ -130,7 +143,7 @@ public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEn
      */
     @Override
     public void onDialogCloseButtonPressed() {
-        mDialogFragment.dismiss();
+//        mDialogFragment.dismiss();
         mDialogFragment = null;
     }
 

@@ -13,11 +13,16 @@ import android.view.WindowManager;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.BaseEnumDialogBinding;
 import com.cpu.quikdata.databinding.BaseEnumGenderTupleBinding;
+import com.cpu.quikdata.databinding.BaseEnumSingleNumberBinding;
+import com.cpu.quikdata.databinding.BaseEnumRemarksBinding;
 
 public class EnumDialogFragment extends DialogFragment {
 
@@ -40,18 +45,36 @@ public class EnumDialogFragment extends DialogFragment {
         // Initialize view
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         mBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_dialog, null, false);
-        mBinding.setViewModel((DialogViewModel) mViewModel);
+        mBinding.setViewModel(mViewModel);
         View view = mBinding.getRoot();
 
+        // Add dialog items according to type
         TableLayout itemLayout = view.findViewById(R.id.base_enum_dialog_table);
-        for(DialogItemViewModelGenderTuple itemViewModel : mViewModel.getItemViewModels()) {
-            BaseEnumGenderTupleBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_gender_tuple, null, false);
-            itemBinding.setViewModel(itemViewModel);
+        for(DialogItemViewModel itemViewModel : mViewModel.getItemViewModels()) {
 
-            TableRow itemView = (TableRow)itemBinding.getRoot();
+            TableRow itemView = null;
+
+            if (itemViewModel instanceof  DialogItemViewModelGenderTuple) {
+                BaseEnumGenderTupleBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_gender_tuple, null, false);
+                itemBinding.setViewModel((DialogItemViewModelGenderTuple) itemViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
+            } else if (itemViewModel instanceof DialogItemViewModelSingleNumber) {
+                BaseEnumSingleNumberBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_single_number, null, false);
+                itemBinding.setViewModel((DialogItemViewModelSingleNumber) itemViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
+            } else if (itemViewModel instanceof DialogItemViewModelRemarks) {
+                BaseEnumRemarksBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_remarks, null, false);
+                itemBinding.setViewModel((DialogItemViewModelRemarks) itemViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
+            }
+
             itemLayout.addView(itemView);
         }
 
+        // Build dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
 

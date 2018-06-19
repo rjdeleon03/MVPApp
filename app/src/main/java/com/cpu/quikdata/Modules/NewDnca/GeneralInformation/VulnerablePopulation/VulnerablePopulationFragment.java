@@ -3,7 +3,6 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
@@ -36,10 +35,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
                 (VulnerablePopulationRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = VulnerablePopulationDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -54,10 +50,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
                 (VulnerablePopulationRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = VulnerablePopulationDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

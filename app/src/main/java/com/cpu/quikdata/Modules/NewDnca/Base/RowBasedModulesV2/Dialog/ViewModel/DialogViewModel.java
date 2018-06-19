@@ -8,6 +8,7 @@ import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
@@ -16,80 +17,50 @@ import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Popula
 import java.util.ArrayList;
 import java.util.List;
 
-public class DialogViewModel extends NewDncaBaseViewModel implements DialogItemDataSource {
+public abstract class DialogViewModel extends NewDncaBaseViewModel implements DialogItemDataSource {
 
     public final ObservableField<GenericEnum> type = new ObservableField<>();
-    protected List<DialogItemViewModelGenderTuple> mItemViewModels = new ArrayList<>();
-    private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
-
-    private String[] mQuestions = {
-            "Affected",
-            "Displaced"
-    };
+    protected List<DialogItemViewModel> mItemViewModels = new ArrayList<>();
+    protected BaseEnumNavigator mBaseEnumNavigator;
 
     /**
      * Constructor
      * @param context
      */
-    public DialogViewModel(Context context,
-                           PopulationDataRepositoryManager populationDataRepositoryManager,
-                           int ageGroupIndex,
-                           boolean isNewRow) {
+    public DialogViewModel(Context context) {
 
         super(context);
-        mPopulationDataRepositoryManager = populationDataRepositoryManager;
+    }
 
-        PopulationDataRow populationDataRow;
-        if (isNewRow) {
-            populationDataRow = new PopulationDataRow(mPopulationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
-        } else {
-            populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
-        }
-        type.set(populationDataRow.getType());
-        mItemViewModels.add(new DialogItemViewModelGenderTuple(
-                new DialogItemModelGenderTuple(mQuestions[0], populationDataRow.getAffected().male, populationDataRow.getAffected().female)));
-        mItemViewModels.add(new DialogItemViewModelGenderTuple(
-                new DialogItemModelGenderTuple(mQuestions[1], populationDataRow.getDisplaced().male, populationDataRow.getDisplaced().female)));
+    /**
+     * Sets the base age group navigator
+     * @param baseEnumNavigator
+     */
+    public void setBaseAgeGroupNavigator(BaseEnumNavigator baseEnumNavigator) {
+        mBaseEnumNavigator = baseEnumNavigator;
     }
 
     /**
      * Handles navigation when OK button is pressed
      */
     public void navigateOnOkButtonPressed() {
-        PopulationDataRow populationDataRow = new PopulationDataRow(
-                (GenericEnumDataRow.AgeGroup) type.get(),
-                new GenderTuple(
-                        mItemViewModels.get(0).value1.get() + mItemViewModels.get(1).value1.get(),
-                        mItemViewModels.get(0).value2.get() + mItemViewModels.get(1).value2.get()),
-                new GenderTuple(mItemViewModels.get(0).value1.get(), mItemViewModels.get(0).value2.get()),
-                new GenderTuple(mItemViewModels.get(1).value1.get(), mItemViewModels.get(1).value2.get()));
-        mPopulationDataRepositoryManager.addPopulationDataRow(populationDataRow);
+        mBaseEnumNavigator.onDialogOkButtonPressed();
     }
 
     /**
-     * Gets number of items
-     * @return
+     * Handles navigation when cancel button is pressed
      */
-    @Override
-    public int getItemCount() {
-        return 0;
+    public void navigateOnCancelButtonPressed() {
+        mBaseEnumNavigator.onDialogCloseButtonPressed();
     }
 
-    /**
-     * Gets item at specified index
-     * @return
-     */
-    @Override
-    public DialogItemViewModelGenderTuple getItemViewModel(int index) {
-        return null;
-    }
 
     /**
      * Gets all item viewModels
      * @return
      */
     @Override
-    public List<DialogItemViewModelGenderTuple> getItemViewModels() {
+    public List<DialogItemViewModel> getItemViewModels() {
         return mItemViewModels;
     }
 }

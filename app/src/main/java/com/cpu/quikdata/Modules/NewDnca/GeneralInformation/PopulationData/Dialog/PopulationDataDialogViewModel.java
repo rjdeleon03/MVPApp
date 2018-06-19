@@ -1,22 +1,23 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog;
 
 import android.content.Context;
-import android.databinding.ObservableInt;
 
 import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
-import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Generics.GenderTuple;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
-public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
+public class PopulationDataDialogViewModel extends DialogViewModel {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
-    public final ObservableInt affectedMale = new ObservableInt(0);
-    public final ObservableInt affectedFemale = new ObservableInt(0);
-    public final ObservableInt displacedMale = new ObservableInt(0);
-    public final ObservableInt displacedFemale = new ObservableInt(0);
+    private String[] mQuestions = {
+            "Affected",
+            "Displaced"
+    };
 
     /**
      * Constructor
@@ -25,23 +26,22 @@ public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public PopulationDataDialogViewModel(Context context,
-                                         PopulationDataRepositoryManager populationDataRepositoryManager,
-                                         int ageGroupIndex,
-                                         boolean isNewRow) {
+    public PopulationDataDialogViewModel(Context context, PopulationDataRepositoryManager populationDataRepositoryManager, int ageGroupIndex, boolean isNewRow) {
+
         super(context);
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
+        PopulationDataRow populationDataRow;
         if (isNewRow) {
-            type.set(mPopulationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
+            populationDataRow = new PopulationDataRow(mPopulationDataRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
         } else {
-            PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
-            type.set(populationDataRow.getType());
-            affectedMale.set(populationDataRow.getAffected().male);
-            affectedFemale.set(populationDataRow.getAffected().female);
-            displacedMale.set(populationDataRow.getDisplaced().male);
-            displacedFemale.set(populationDataRow.getDisplaced().female);
+            populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(ageGroupIndex);
         }
+        type.set(populationDataRow.getType());
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[0], populationDataRow.getAffected().male, populationDataRow.getAffected().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[1], populationDataRow.getDisplaced().male, populationDataRow.getDisplaced().female)));
     }
 
     /**
@@ -49,13 +49,16 @@ public class PopulationDataDialogViewModel extends BaseEnumDialogViewModel {
      */
     @Override
     public void navigateOnOkButtonPressed() {
+        DialogItemViewModelGenderTuple affectedViewModel = (DialogItemViewModelGenderTuple)mItemViewModels.get(0);
+        DialogItemViewModelGenderTuple displacedViewModel = (DialogItemViewModelGenderTuple)mItemViewModels.get(1);
+
         PopulationDataRow populationDataRow = new PopulationDataRow(
                 (GenericEnumDataRow.AgeGroup) type.get(),
-                new GenderTuple(affectedMale.get() + displacedMale.get(),
-                        affectedFemale.get() + displacedFemale.get()),
-                new GenderTuple(affectedMale.get(), affectedFemale.get()),
-                new GenderTuple(displacedMale.get(), displacedFemale.get()));
-
+                new GenderTuple(
+                        affectedViewModel.value1.get() + displacedViewModel.value1.get(),
+                        affectedViewModel.value2.get() + displacedViewModel.value2.get()),
+                new GenderTuple(affectedViewModel.value1.get(), affectedViewModel.value2.get()),
+                new GenderTuple(displacedViewModel.value1.get(), displacedViewModel.value2.get()));
         mPopulationDataRepositoryManager.addPopulationDataRow(populationDataRow);
         super.navigateOnOkButtonPressed();
     }

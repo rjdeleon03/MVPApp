@@ -14,11 +14,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelBoolean;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.R;
+import com.cpu.quikdata.databinding.BaseEnumBooleanBinding;
 import com.cpu.quikdata.databinding.BaseEnumDialogBinding;
 import com.cpu.quikdata.databinding.BaseEnumGenderTupleBinding;
 import com.cpu.quikdata.databinding.BaseEnumSingleNumberBinding;
@@ -55,16 +57,29 @@ public class EnumDialogFragment extends DialogFragment {
             TableRow itemView = null;
 
             if (itemViewModel instanceof  DialogItemViewModelGenderTuple) {
+
+                // If gender tuple field will be displayed
                 BaseEnumGenderTupleBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_gender_tuple, null, false);
                 itemBinding.setViewModel((DialogItemViewModelGenderTuple) itemViewModel);
                 itemView = (TableRow) itemBinding.getRoot();
 
             } else if (itemViewModel instanceof DialogItemViewModelSingleNumber) {
+
+                // If single number field will be displayed
                 BaseEnumSingleNumberBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_single_number, null, false);
                 itemBinding.setViewModel((DialogItemViewModelSingleNumber) itemViewModel);
                 itemView = (TableRow) itemBinding.getRoot();
 
+            } else if (itemViewModel instanceof DialogItemViewModelBoolean) {
+
+                // If boolean field will be displayed
+                BaseEnumBooleanBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_boolean, null, false);
+                itemBinding.setViewModel((DialogItemViewModelBoolean) itemViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
             } else if (itemViewModel instanceof DialogItemViewModelRemarks) {
+
+                // If remarks field will be displayed
                 BaseEnumRemarksBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_remarks, null, false);
                 itemBinding.setViewModel((DialogItemViewModelRemarks) itemViewModel);
                 itemView = (TableRow) itemBinding.getRoot();

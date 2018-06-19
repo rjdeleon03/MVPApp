@@ -4,9 +4,7 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog.CasualtiesDataDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_CASUALTIES;
@@ -37,10 +35,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
                 (CasualtiesDataRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = CasualtiesDataDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -55,10 +50,7 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
                 (CasualtiesDataRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = CasualtiesDataDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

@@ -4,9 +4,7 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog.DeathCauseDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog.DeathCauseDataDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_DEATH_CAUSE;
@@ -37,10 +35,7 @@ public class DeathCauseDataFragment extends BaseEnumFragment {
                 (DeathCauseRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DeathCauseDataDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -55,10 +50,7 @@ public class DeathCauseDataFragment extends BaseEnumFragment {
                 (DeathCauseRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = DeathCauseDataDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

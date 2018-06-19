@@ -4,9 +4,7 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_INFRASTRUCTURE;
@@ -37,10 +35,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
                 (InfrastructureDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InfrastructureDamageDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -55,10 +50,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
                 (InfrastructureDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InfrastructureDamageDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
 
     }
 

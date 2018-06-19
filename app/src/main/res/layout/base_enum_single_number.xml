@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@{viewModel.text}"
-            android:maxWidth="80dp"
+            android:maxWidth="90dp"
             android:textColor="@android:color/black" />
 
         <EditText

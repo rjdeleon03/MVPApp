@@ -8,15 +8,28 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelBoolean;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelBoolean;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
-public class InfrastructureDamageDialogViewModel extends BaseEnumDialogViewModel {
+public class InfrastructureDamageDialogViewModel extends DialogViewModel {
 
     private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
 
-    public final ObservableInt infraNumber = new ObservableInt(0);
-    public final ObservableBoolean status = new ObservableBoolean(false);
-    public final ObservableField<String> remarks = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Count",
+            "Functional?",
+            "Remarks"
+    };
+
+    private String[] mComments = {
+            "(Specify if intermittent electricity, communications, etc)"
+    };
 
     /**
      * Constructor
@@ -32,15 +45,20 @@ public class InfrastructureDamageDialogViewModel extends BaseEnumDialogViewModel
         super(context);
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
+        InfrastructureDamageDataRow infrastructureDamageDataRow;
         if (isNewRow) {
-            type.set(mInfrastructureDamageRepositoryManager.getInfrastructureDamageType(infaTypeIndex));
+            infrastructureDamageDataRow = new InfrastructureDamageDataRow(mInfrastructureDamageRepositoryManager.getInfrastructureDamageType(infaTypeIndex));
         } else {
-            InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(infaTypeIndex);
-            type.set(infrastructureDamageDataRow.getType());
-            infraNumber.set(infrastructureDamageDataRow.getDamaged());
-            status.set(infrastructureDamageDataRow.isFunctional());
-            remarks.set(infrastructureDamageDataRow.getRemarks());
+            infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(infaTypeIndex);
         }
+
+        type.set(infrastructureDamageDataRow.getType());
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[0], infrastructureDamageDataRow.getDamaged())));
+        mItemViewModels.add(new DialogItemViewModelBoolean(
+                new DialogItemModelBoolean(mQuestions[1], infrastructureDamageDataRow.isFunctional())));
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[2], mComments[0], infrastructureDamageDataRow.getRemarks())));
     }
 
     /**
@@ -50,9 +68,9 @@ public class InfrastructureDamageDialogViewModel extends BaseEnumDialogViewModel
     public void navigateOnOkButtonPressed() {
         InfrastructureDamageDataRow infrastructureDamageDataRow = new InfrastructureDamageDataRow(
                 (GenericEnumDataRow.InfraType) type.get(),
-                infraNumber.get(),
-                status.get(),
-                remarks.get()
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(0)).value1.get(),
+                ((DialogItemViewModelBoolean) mItemViewModels.get(1)).value1.get(),
+                ((DialogItemViewModelRemarks) mItemViewModels.get(2)).value1.get()
         );
         mInfrastructureDamageRepositoryManager.addInfrastructureDamageRow(infrastructureDamageDataRow);
         super.navigateOnOkButtonPressed();

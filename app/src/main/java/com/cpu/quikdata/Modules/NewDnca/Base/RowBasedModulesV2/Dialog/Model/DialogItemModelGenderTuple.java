@@ -1,23 +1,14 @@
-package com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog;
+package com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model;
 
-public class DialogItemModelGenderTuple {
+public class DialogItemModelGenderTuple extends DialogItemModel {
 
-    private String text;
     private int value1;
     private int value2;
 
     public DialogItemModelGenderTuple(String text, int value1, int value2) {
-        this.text = text;
+        super(text);
         this.value1 = value1;
         this.value2 = value2;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public int getValue1() {

@@ -4,11 +4,9 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.EnumDialogFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
 

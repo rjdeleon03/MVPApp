@@ -1,7 +1,9 @@
-package com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog;
+package com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel;
 
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
 
 public class DialogItemViewModelGenderTuple {
 

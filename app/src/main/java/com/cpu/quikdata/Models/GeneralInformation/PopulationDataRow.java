@@ -16,10 +16,7 @@ public class PopulationDataRow extends GenericEnumDataRow {
     }
 
     public PopulationDataRow(AgeGroup ageGroup) {
-        super(ageGroup);
-        this.total = new GenderTuple();
-        this.affected = new GenderTuple();
-        this.displaced = new GenderTuple();
+        this(ageGroup, new GenderTuple(), new GenderTuple(), new GenderTuple());
     }
 
     public GenderTuple getTotal() {

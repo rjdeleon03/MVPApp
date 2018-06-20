@@ -7,21 +7,29 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeRepositoryManager;
 
-public class LivelihoodsIncomeDialogViewModel extends BaseEnumDialogViewModel {
+public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
 
     private LivelihoodsIncomeRepositoryManager mLivelihoodsIncomeRepositoryManager;
     private boolean mIsNewRow;
     private int mRowIndex = -1;
 
-    public final ObservableField<String> source = new ObservableField<>("");
-    public final ObservableInt depHousehold= new ObservableInt(0);
-    public final ObservableInt depMale= new ObservableInt(0);
-    public final ObservableInt depFemale= new ObservableInt(0);
-    public final ObservableInt depBoys= new ObservableInt(0);
-    public final ObservableInt depGirls= new ObservableInt(0);
-    public final ObservableInt averageIncome= new ObservableInt(0);
+    private String[] mQuestions = {
+            "Source of Income",
+            "Number of Dependent Households",
+            "Dependent Males",
+            "Dependent Females",
+            "Dependent Boys",
+            "Dependent Girls",
+            "Average Monthly or Daily Income per Household (PHP)"
+    };
 
     /**
      * Constructor
@@ -38,21 +46,30 @@ public class LivelihoodsIncomeDialogViewModel extends BaseEnumDialogViewModel {
         mLivelihoodsIncomeRepositoryManager = livelihoodsIncomeRepositoryManager;
         mIsNewRow = isNewRow;
 
+        LivelihoodsIncomeDataRow incomeDataRow;
         if (mIsNewRow) {
-            type.set(mLivelihoodsIncomeRepositoryManager.getIncomeBeforeSourceType(incomeSourceTypeIndex));
+            incomeDataRow = new LivelihoodsIncomeDataRow(mLivelihoodsIncomeRepositoryManager.getIncomeBeforeSourceType(incomeSourceTypeIndex));
         } else {
             mRowIndex = incomeSourceTypeIndex;
-
-            LivelihoodsIncomeDataRow incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(incomeSourceTypeIndex);
-            type.set(incomeDataRow.getType());
-            source.set(incomeDataRow.getSource());
-            depHousehold.set(incomeDataRow.getDepHousehold());
-            depMale.set(incomeDataRow.getDepMale());
-            depFemale.set(incomeDataRow.getDepFemale());
-            depBoys.set(incomeDataRow.getDepBoys());
-            depGirls.set(incomeDataRow.getDepGirls());
-            averageIncome.set(incomeDataRow.getAverageIncome());
+            incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(incomeSourceTypeIndex);
         }
+
+        type.set(incomeDataRow.getType());
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[0], incomeDataRow.getSource())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], incomeDataRow.getDepHousehold(), true)));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[2], incomeDataRow.getDepMale())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[3], incomeDataRow.getDepFemale())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[4], incomeDataRow.getDepBoys())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[5], incomeDataRow.getDepGirls())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[6], incomeDataRow.getAverageIncome(), true)));
     }
 
     /**
@@ -62,13 +79,13 @@ public class LivelihoodsIncomeDialogViewModel extends BaseEnumDialogViewModel {
     public void navigateOnOkButtonPressed() {
         LivelihoodsIncomeDataRow livelihoodsIncomeDataRow = new LivelihoodsIncomeDataRow(
                 (GenericEnumDataRow.IncomeSourceType) type.get(),
-                source.get(),
-                depHousehold.get(),
-                depMale.get(),
-                depFemale.get(),
-                depBoys.get(),
-                depGirls.get(),
-                averageIncome.get());
+                ((DialogItemViewModelRemarks) mItemViewModels.get(0)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(1)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(2)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(3)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(4)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(5)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(6)).value1.get());
         mLivelihoodsIncomeRepositoryManager.addIncomeBeforeRow(livelihoodsIncomeDataRow, mRowIndex);
         super.navigateOnOkButtonPressed();
     }

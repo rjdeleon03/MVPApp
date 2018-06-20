@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_SPECIAL_NEEDS;
@@ -35,10 +34,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
                 (SpecialNeedsRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = SpecialNeedsDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -53,10 +49,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
                 (SpecialNeedsRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = SpecialNeedsDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

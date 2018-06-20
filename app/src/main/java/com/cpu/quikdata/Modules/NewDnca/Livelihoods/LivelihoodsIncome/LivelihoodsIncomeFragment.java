@@ -3,7 +3,6 @@ package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogViewModel;
 
 public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
@@ -21,10 +20,7 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
                 (LivelihoodsIncomeRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsIncomeDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     @Override
@@ -35,10 +31,7 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
                 (LivelihoodsIncomeRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsIncomeDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

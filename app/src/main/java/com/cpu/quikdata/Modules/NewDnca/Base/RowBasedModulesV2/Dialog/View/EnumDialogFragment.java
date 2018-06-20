@@ -23,6 +23,7 @@ import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.BaseEnumBooleanBinding;
 import com.cpu.quikdata.databinding.BaseEnumDialogBinding;
 import com.cpu.quikdata.databinding.BaseEnumGenderTupleBinding;
+import com.cpu.quikdata.databinding.BaseEnumSingleNumberAltBinding;
 import com.cpu.quikdata.databinding.BaseEnumSingleNumberBinding;
 import com.cpu.quikdata.databinding.BaseEnumRemarksBinding;
 
@@ -66,9 +67,19 @@ public class EnumDialogFragment extends DialogFragment {
             } else if (itemViewModel instanceof DialogItemViewModelSingleNumber) {
 
                 // If single number field will be displayed
-                BaseEnumSingleNumberBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_single_number, null, false);
-                itemBinding.setViewModel((DialogItemViewModelSingleNumber) itemViewModel);
-                itemView = (TableRow) itemBinding.getRoot();
+                DialogItemViewModelSingleNumber viewModelSingleNumber = (DialogItemViewModelSingleNumber) itemViewModel;
+
+                // Select layout
+                if (viewModelSingleNumber.displayAsMultLines.get()) {
+                    BaseEnumSingleNumberAltBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_single_number_alt, null, false);
+                    itemBinding.setViewModel(viewModelSingleNumber);
+                    itemView = (TableRow) itemBinding.getRoot();
+                } else {
+                    BaseEnumSingleNumberBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_single_number, null, false);
+                    itemBinding.setViewModel(viewModelSingleNumber);
+                    itemView = (TableRow) itemBinding.getRoot();
+                }
+
 
             } else if (itemViewModel instanceof DialogItemViewModelBoolean) {
 

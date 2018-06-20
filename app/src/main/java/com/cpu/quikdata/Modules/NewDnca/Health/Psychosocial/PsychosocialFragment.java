@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_PSYCHOSOCIAL;
@@ -35,10 +34,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
                 (PsychosocialRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PsychosocialDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -53,10 +49,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
                 (PsychosocialRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = PsychosocialDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

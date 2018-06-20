@@ -8,16 +8,28 @@ import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Health.PsychosocialDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialRepositoryManager;
 
-public class PsychosocialDialogViewModel extends BaseEnumDialogViewModel {
+public class PsychosocialDialogViewModel extends DialogViewModel {
 
     private PsychosocialRepositoryManager mPsychosocialRepositoryManager;
 
-    public final ObservableField<String> manifestations = new ObservableField<>("");
-    public final ObservableInt casesMale = new ObservableInt(0);
-    public final ObservableInt casesFemale = new ObservableInt(0);
-    public final ObservableField<String> needs = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Manifestations of Mental Stress or Trauma",
+            "Cases",
+            "Needs"
+    };
+
+    private String[] mComments = {
+            "(Blank stare, nightmares, sleep disorder, violent tendencies, etc.)",
+            "(Counselling, referrals, etc.)"
+    };
 
     /**
      * Constructor
@@ -33,16 +45,18 @@ public class PsychosocialDialogViewModel extends BaseEnumDialogViewModel {
         super(context);
         mPsychosocialRepositoryManager = psychosocialRepositoryManager;
 
+        PsychosocialDataRow psychosocialDataRow;
         if (isNewRow) {
-            type.set(mPsychosocialRepositoryManager.getPsychosocialDataAgeGroup(ageGroupIndex));
+            psychosocialDataRow = new PsychosocialDataRow(mPsychosocialRepositoryManager.getPsychosocialDataAgeGroup(ageGroupIndex));
         } else {
-            PsychosocialDataRow psychosocialDataRow = mPsychosocialRepositoryManager.getPsychosocialDataRow(ageGroupIndex);
-            type.set(psychosocialDataRow.getType());
-            manifestations.set(psychosocialDataRow.getManifestations());
-            casesMale.set(psychosocialDataRow.getCases().male);
-            casesFemale.set(psychosocialDataRow.getCases().female);
-            needs.set(psychosocialDataRow.getNeeds());
+            psychosocialDataRow = mPsychosocialRepositoryManager.getPsychosocialDataRow(ageGroupIndex);
         }
+
+        type.set(psychosocialDataRow.getType());
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], mComments[0], psychosocialDataRow.getManifestations())));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(new DialogItemModelGenderTuple(mQuestions[1], psychosocialDataRow.getCases().male, psychosocialDataRow.getCases().female)));
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[2], mComments[1], psychosocialDataRow.getNeeds())));
     }
 
     /**
@@ -50,11 +64,14 @@ public class PsychosocialDialogViewModel extends BaseEnumDialogViewModel {
      */
     @Override
     public void navigateOnOkButtonPressed() {
+
+        DialogItemViewModelGenderTuple cases = (DialogItemViewModelGenderTuple) mItemViewModels.get(1);
+
         PsychosocialDataRow psychosocialDataRow = new PsychosocialDataRow(
                 (GenericEnumDataRow.AgeGroup) type.get(),
-                manifestations.get(),
-                new GenderTuple(casesMale.get(), casesFemale.get()),
-                needs.get());
+                ((DialogItemViewModelRemarks) mItemViewModels.get(0)).value1.get(),
+                new GenderTuple(cases.value1.get(), cases.value2.get()),
+                ((DialogItemViewModelRemarks) mItemViewModels.get(2)).value1.get());
 
         mPsychosocialRepositoryManager.addPsychosocialDataRow(psychosocialDataRow);
         super.navigateOnOkButtonPressed();

@@ -42,8 +42,10 @@ public class ShelterNeedsDialogViewModel extends DialogViewModel {
         }
 
         type.set(shelterNeedsDataRow.getType());
-        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], shelterNeedsDataRow.getItems())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[1], shelterNeedsDataRow.getFamilyCount())));
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[0], shelterNeedsDataRow.getItems())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], shelterNeedsDataRow.getFamilyCount(), true)));
     }
 
     /**

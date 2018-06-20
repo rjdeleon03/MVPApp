@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.Dialog.EvacuationPopulationDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_POPULATION;
@@ -38,10 +37,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
                 (EvacuationPopulationRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = EvacuationPopulationDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -56,10 +52,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
                 (EvacuationPopulationRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = EvacuationPopulationDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

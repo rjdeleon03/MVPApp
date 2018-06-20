@@ -3,7 +3,6 @@ package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.LIVELIHOODS_DAMAGE;
@@ -28,11 +27,7 @@ public class LivelihoodsDamageFragment extends BaseEnumFragment {
                 (LivelihoodsDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsDamageDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getFragmentManager(), "");
-
+        setupDialog(dialogViewModel);
     }
 
     @Override
@@ -43,10 +38,7 @@ public class LivelihoodsDamageFragment extends BaseEnumFragment {
                 (LivelihoodsDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = LivelihoodsDamageDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getFragmentManager(), "");
+        setupDialog(dialogViewModel);
     }
 
     /**

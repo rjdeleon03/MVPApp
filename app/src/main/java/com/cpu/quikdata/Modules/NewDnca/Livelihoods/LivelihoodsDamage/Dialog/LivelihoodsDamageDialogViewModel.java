@@ -7,21 +7,34 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRecycler;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRecycler;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.Checkbox.LivelihoodsDamageCheckboxParentViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.Checkbox.LivelihoodsDamageCheckboxViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LivelihoodsDamageDialogViewModel extends BaseEnumDialogViewModel implements LivelihoodsDamageCheckboxParentViewModel {
+public class LivelihoodsDamageDialogViewModel extends DialogViewModel {
 
     private LivelihoodsDamageRepositoryManager mLivelihoodsDamageRepositoryManager;
-
-    private List<LivelihoodsDamageCheckboxViewModel> mCheckboxViewModels;
     private List<LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple> mAffectedLivelihoods = new ArrayList<>();
-    public final ObservableInt damageCost = new ObservableInt(0);
-    public final ObservableField<String> remarks = new ObservableField<>("");
+
+    private String[] mQuestions = {
+            "Kinds of Affected Livelihoods",
+            "Estimated Damage Cost (PHP)",
+            "Remarks"
+    };
+
+    private String[] mComments = {
+            "(Number of hectares damaged, lost assets, equipment, number of days not able to go back to work, etc)"
+    };
 
     /**
      * Constructor
@@ -41,15 +54,17 @@ public class LivelihoodsDamageDialogViewModel extends BaseEnumDialogViewModel im
         } else {
             damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(livelihoodsTypeIndex);
         }
-        type.set(damageDataRow.getType());
-        damageCost.set(damageDataRow.getDamageCost());
-        remarks.set(damageDataRow.getRemarks());
-        mAffectedLivelihoods.addAll(damageDataRow.getAffectedLivelihoods());
 
-        mCheckboxViewModels = new ArrayList<>();
-        for(LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple affectedLivelihood : mAffectedLivelihoods) {
-            mCheckboxViewModels.add(new LivelihoodsDamageCheckboxViewModel(affectedLivelihood));
-        }
+        mAffectedLivelihoods.addAll(damageDataRow.getAffectedLivelihoods());
+        type.set(damageDataRow.getType());
+
+        mItemViewModels.add(new DialogItemViewModelRecycler(
+                new DialogItemModelRecycler(mQuestions[0], damageDataRow.getAffectedLivelihoods())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], damageDataRow.getDamageCost(), true)));
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[2], mComments[0], damageDataRow.getRemarks())));
+
     }
 
     /**
@@ -59,35 +74,19 @@ public class LivelihoodsDamageDialogViewModel extends BaseEnumDialogViewModel im
     public void navigateOnOkButtonPressed() {
 
         // Update affected livelihoods
+        DialogItemViewModelRecycler affectedLivelihoods = (DialogItemViewModelRecycler) mItemViewModels.get(0);
         for (int i = 0; i < mAffectedLivelihoods.size(); i++) {
-            mAffectedLivelihoods.get(i).isAffected = mCheckboxViewModels.get(i).isAffected.get();
+            mAffectedLivelihoods.get(i).isAffected = affectedLivelihoods.getAffectedLivelihoodViewModel(i).isAffected.get();
         }
 
+        // Save row
         LivelihoodsDamageDataRow damageDataRow = new LivelihoodsDamageDataRow(
                 (GenericEnumDataRow.LivelihoodsType) type.get(),
                 mAffectedLivelihoods,
-                damageCost.get(),
-                remarks.get());
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(1)).value1.get(),
+                ((DialogItemViewModelRemarks) mItemViewModels.get(2)).value1.get());
+
         mLivelihoodsDamageRepositoryManager.addLivelihoodsDamageRow(damageDataRow);
         super.navigateOnOkButtonPressed();
-    }
-
-    /**
-     * Gets the affected livelihoods at the specified index
-     * @param index
-     * @return
-     */
-    @Override
-    public LivelihoodsDamageCheckboxViewModel getAffectedLivelihoodViewModel(int index) {
-        return mCheckboxViewModels.get(index);
-    }
-
-    /**
-     * Gets the number of affected livelihoods
-     * @return
-     */
-    @Override
-    public int getAffectedLivelihoodsCount() {
-        return mAffectedLivelihoods.size();
     }
 }

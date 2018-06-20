@@ -5,15 +5,20 @@ import android.databinding.ObservableField;
 
 import com.cpu.quikdata.Models.FormDetails.InterviewDetailsRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsRepositoryManager;
 
-public class InterviewDetailsDialogViewModel extends BaseEnumDialogViewModel {
+public class InterviewDetailsDialogViewModel extends DialogViewModel {
 
     private InterviewDetailsRepositoryManager mInterviewDetailsRepositoryManager;
     private int mRowIndex;
 
-    public final ObservableField<String> interviewee = new ObservableField<>("");
-    public final ObservableField<String> intervieweeNo = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Interviewee Name:",
+            "Contact Number:"
+    };
 
     /**
      * Constructor
@@ -34,8 +39,9 @@ public class InterviewDetailsDialogViewModel extends BaseEnumDialogViewModel {
         } else {
             interviewDetailsRow = mInterviewDetailsRepositoryManager.getInterviewDetailsRow(mRowIndex);
         }
-        interviewee.set(interviewDetailsRow.getInterviewee());
-        intervieweeNo.set(interviewDetailsRow.getIntervieweeNo());
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], interviewDetailsRow.getInterviewee())));
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[1], interviewDetailsRow.getIntervieweeNo())));
     }
 
     /**
@@ -54,8 +60,9 @@ public class InterviewDetailsDialogViewModel extends BaseEnumDialogViewModel {
     @Override
     public void navigateOnOkButtonPressed() {
         InterviewDetailsRow interviewDetailsRow = new InterviewDetailsRow(
-                interviewee.get(),
-                intervieweeNo.get());
+                ((DialogItemViewModelRemarks) mItemViewModels.get(0)).value1.get(),
+                ((DialogItemViewModelRemarks) mItemViewModels.get(1)).value1.get());
+
         mInterviewDetailsRepositoryManager.addInterviewDetailsRow(interviewDetailsRow, mRowIndex);
         super.navigateOnOkButtonPressed();
     }

@@ -3,7 +3,6 @@ package com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsItem.Dialog.InterviewDetailsDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsItem.Dialog.InterviewDetailsDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.FORM_INTERVIEW_DETAILS;
@@ -26,10 +25,7 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
         InterviewDetailsDialogViewModel dialogViewModel = new InterviewDetailsDialogViewModel(
                 getContext(),
                 (InterviewDetailsRepositoryManager) mViewModel);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InterviewDetailsDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        setupDialog(dialogViewModel);
     }
 
     @Override
@@ -39,10 +35,7 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
                 getContext(),
                 (InterviewDetailsRepositoryManager) mViewModel,
                 rowIndex);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = InterviewDetailsDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        setupDialog(dialogViewModel);
     }
 
     /**

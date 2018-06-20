@@ -3,9 +3,8 @@ package com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogFragment;
-import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,10 +26,7 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
                 getContext(),
                 (AssistanceDataRepositoryManager) mViewModel);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = AssistanceDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**
@@ -44,10 +40,7 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
                 getContext(),
                 (AssistanceDataRepositoryManager) mViewModel,
                 rowIndex);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = AssistanceDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

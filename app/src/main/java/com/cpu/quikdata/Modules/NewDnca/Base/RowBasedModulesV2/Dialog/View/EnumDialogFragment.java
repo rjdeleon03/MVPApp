@@ -1,5 +1,6 @@
 package com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
@@ -7,22 +8,34 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelBoolean;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelDate;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRecycler;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog.LivelihoodsDamageDialogFragmentAdapter;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.BaseEnumBooleanBinding;
+import com.cpu.quikdata.databinding.BaseEnumDateBinding;
 import com.cpu.quikdata.databinding.BaseEnumDialogBinding;
+import com.cpu.quikdata.databinding.BaseEnumDividerBinding;
 import com.cpu.quikdata.databinding.BaseEnumGenderTupleBinding;
+import com.cpu.quikdata.databinding.BaseEnumRecyclerBinding;
 import com.cpu.quikdata.databinding.BaseEnumSingleNumberAltBinding;
 import com.cpu.quikdata.databinding.BaseEnumSingleNumberBinding;
 import com.cpu.quikdata.databinding.BaseEnumRemarksBinding;
@@ -53,10 +66,15 @@ public class EnumDialogFragment extends DialogFragment {
 
         // Add dialog items according to type
         TableLayout itemLayout = view.findViewById(R.id.base_enum_dialog_table);
+        int index = 0;
         for(DialogItemViewModel itemViewModel : mViewModel.getItemViewModels()) {
 
-            TableRow itemView = null;
+            // If item index != 0, do not use top padding
+            int topPaddingValue = 0;
+            if (index != 0) topPaddingValue = 4;
+            index++;
 
+            TableRow itemView = null;
             if (itemViewModel instanceof  DialogItemViewModelGenderTuple) {
 
                 // If gender tuple field will be displayed
@@ -95,8 +113,45 @@ public class EnumDialogFragment extends DialogFragment {
                 itemBinding.setViewModel((DialogItemViewModelRemarks) itemViewModel);
                 itemView = (TableRow) itemBinding.getRoot();
 
+            } else if (itemViewModel instanceof DialogItemViewModelDate) {
+
+                // If date field will be displayed
+                final DialogItemViewModelDate dateViewModel = (DialogItemViewModelDate) itemViewModel;
+                BaseEnumDateBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_date, null, false);
+                itemBinding.setViewModel(dateViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
+                // Setup set date button listener
+                Button setDateButton = itemView.findViewById(R.id.nd_base_date_button);
+                setDateButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDatePickerDialog(v, dateViewModel);
+                    }
+                });
+
+            } else if (itemViewModel instanceof DialogItemViewModelRecycler) {
+
+                // If recycler view will be displayed
+                final DialogItemViewModelRecycler recyclerViewModel = (DialogItemViewModelRecycler) itemViewModel;
+                BaseEnumRecyclerBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_recycler, null, false);
+                itemBinding.setViewModel(recyclerViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+                setupRecyclerGrid(itemView, recyclerViewModel);
+
+            } else if (itemViewModel instanceof DialogItemViewModelDivider) {
+
+                // If item index != 0, padding for divider must be larger
+                if (index != 0) topPaddingValue = 12;
+
+                // If divider will be displayed
+                BaseEnumDividerBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_divider, null, false);
+                itemBinding.setViewModel((DialogItemViewModelDivider) itemViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
             }
 
+            itemView.setPadding(itemView.getPaddingLeft(), AppUtil.dpToPx(getContext(), topPaddingValue), itemView.getPaddingRight(), itemView.getPaddingBottom());
             itemLayout.addView(itemView);
         }
 
@@ -121,5 +176,39 @@ public class EnumDialogFragment extends DialogFragment {
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         return dialog;
+    }
+
+    /**
+     * Shows the DatePickerDialog if applicable
+     * @param view
+     * @param dateViewModel
+     */
+    private void showDatePickerDialog(View view, final DialogItemViewModelDate dateViewModel) {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        dateViewModel.onDateReceivedSet(year, month, dayOfMonth);
+                    }
+                },
+                dateViewModel.value1.get().getYear(),
+                dateViewModel.value1.get().getMonth(),
+                dateViewModel.value1.get().getDayOfMonth());
+        datePickerDialog.show();
+    }
+
+    /**
+     * Sets up the recycler grid if applicable
+     * @param view
+     * @param recyclerViewModel
+     */
+    private void setupRecyclerGrid(View view, final DialogItemViewModelRecycler recyclerViewModel) {
+        RecyclerView recycler = view.findViewById(R.id.nd_base_recycler);
+        recycler.setHasFixedSize(true);
+        recycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+        ((StaggeredGridLayoutManager) recycler.getLayoutManager()).setSpanCount(2);
+
+        // Setup adapter and use with fragment
+        recycler.setAdapter(new LivelihoodsDamageDialogFragmentAdapter(recyclerViewModel));
     }
 }

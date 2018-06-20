@@ -11,6 +11,10 @@ public class DialogItemModelRemarks extends DialogItemModel {
         this.value1 = value1;
     }
 
+    public DialogItemModelRemarks(String text, String value1) {
+        this(text, "", value1);
+    }
+
     public String getNote() {
         return note;
     }

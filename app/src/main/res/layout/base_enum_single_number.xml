@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_span="2"
+            android:layout_span="3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -23,12 +23,10 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:layout_span="3"
+            android:layout_column="4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:ems="10"
             android:gravity="right"
             android:inputType="number"

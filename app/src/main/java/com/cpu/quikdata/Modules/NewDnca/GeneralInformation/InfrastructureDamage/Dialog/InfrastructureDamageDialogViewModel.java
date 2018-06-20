@@ -22,7 +22,7 @@ public class InfrastructureDamageDialogViewModel extends DialogViewModel {
     private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
 
     private String[] mQuestions = {
-            "Count",
+            "Infrastructure Count",
             "Functional?",
             "Remarks"
     };

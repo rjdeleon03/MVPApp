@@ -7,14 +7,21 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsRepositoryManager;
 
-public class ShelterNeedsDialogViewModel extends BaseEnumDialogViewModel {
+public class ShelterNeedsDialogViewModel extends DialogViewModel {
 
     private ShelterNeedsRepositoryManager mShelterNeedsRepositoryManager;
 
-    public final ObservableField<String> items = new ObservableField<>("");
-    public final ObservableInt familyCount = new ObservableInt(0);
+    private String[] mQuestions = {
+            "Identify Specific Items",
+            "Number of Families in Need"
+    };
 
     /**
      * Constructor
@@ -27,16 +34,17 @@ public class ShelterNeedsDialogViewModel extends BaseEnumDialogViewModel {
         super(context);
         mShelterNeedsRepositoryManager = shelterNeedsRepositoryManager;
 
+        ShelterNeedsDataRow shelterNeedsDataRow;
         if (isNewRow) {
-            type.set(mShelterNeedsRepositoryManager.getShelterNeedsDataType(needsTypeIndex));
+            shelterNeedsDataRow = new ShelterNeedsDataRow(mShelterNeedsRepositoryManager.getShelterNeedsDataType(needsTypeIndex));
         } else {
-            ShelterNeedsDataRow shelterNeedsDataRow = mShelterNeedsRepositoryManager.getShelterNeedsDataRow(needsTypeIndex);
-            type.set(shelterNeedsDataRow.getType());
-            items.set(shelterNeedsDataRow.getItems());
-            familyCount.set(shelterNeedsDataRow.getFamilyCount());
+            shelterNeedsDataRow = mShelterNeedsRepositoryManager.getShelterNeedsDataRow(needsTypeIndex);
         }
-    }
 
+        type.set(shelterNeedsDataRow.getType());
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], shelterNeedsDataRow.getItems())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[1], shelterNeedsDataRow.getFamilyCount())));
+    }
 
     /**
      * Handles navigation when OK button is pressed
@@ -45,8 +53,9 @@ public class ShelterNeedsDialogViewModel extends BaseEnumDialogViewModel {
     public void navigateOnOkButtonPressed() {
         ShelterNeedsDataRow shelterNeedsDataRow = new ShelterNeedsDataRow(
                 (GenericEnumDataRow.NeedsType) type.get(),
-                items.get(),
-                familyCount.get());
+                ((DialogItemViewModelRemarks) mItemViewModels.get(0)).value1.get(),
+                ((DialogItemViewModelSingleNumber) mItemViewModels.get(1)).value1.get());
+
         mShelterNeedsRepositoryManager.addShelterNeedsDataRow(shelterNeedsDataRow);
         super.navigateOnOkButtonPressed();
     }

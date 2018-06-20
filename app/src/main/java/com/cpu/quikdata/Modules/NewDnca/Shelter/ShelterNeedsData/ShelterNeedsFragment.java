@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_NEEDS;
@@ -32,10 +31,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
                 (ShelterNeedsRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = ShelterNeedsDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     @Override
@@ -46,10 +42,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
                 (ShelterNeedsRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = ShelterNeedsDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

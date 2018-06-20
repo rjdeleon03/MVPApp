@@ -5,6 +5,7 @@ import android.databinding.InverseBindingAdapter;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -23,6 +24,16 @@ import com.cpu.quikdata.Modules.DNCAList.DNCAListAdapter;
 import java.util.List;
 
 public class BindingUtils {
+
+    @BindingAdapter("hidableText")
+    public static void bindHidableText(TextView view, String text)
+    {
+        if (text.trim().length() == 0) {
+            view.setVisibility(View.GONE);
+        } else {
+            view.setText(text);
+        }
+    }
 
     @BindingAdapter("android:text")
     public static void bindIntegerInText(EditText view, int value)

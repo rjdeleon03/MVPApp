@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragmentAdapter;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_HOUSE_DAMAGE;
@@ -34,10 +31,7 @@ public class HouseDamageFragment extends BaseEnumFragment {
                 (HouseDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = HouseDamageDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     @Override
@@ -48,10 +42,7 @@ public class HouseDamageFragment extends BaseEnumFragment {
                 (HouseDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);
-        dialogViewModel.setBaseAgeGroupNavigator(this);
-        mDialogFragment = HouseDamageDialogFragment.newInstance();
-        mDialogFragment.setViewModel(dialogViewModel);
-        mDialogFragment.show(getChildFragmentManager(), "");
+        super.setupDialog(dialogViewModel);
     }
 
     /**

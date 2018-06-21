@@ -8,15 +8,25 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelBoolean;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelBoolean;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
-public class InfrastructureDamageRowViewModel extends BaseEnumRowViewModel {
+public class InfrastructureDamageRowViewModel extends RowViewModel {
 
     private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
 
-    public final ObservableInt infraNumber = new ObservableInt(0);
-    public final ObservableBoolean status = new ObservableBoolean(false);
-    public final ObservableField<String> remarks = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Infrastructure Count",
+            "Functional?",
+            "Remarks"
+    };
+
 
     /**
      * Constructor
@@ -35,10 +45,16 @@ public class InfrastructureDamageRowViewModel extends BaseEnumRowViewModel {
 
         InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(rowIndex);
         type.set(infrastructureDamageDataRow.getType());
-        infraNumber.set(infrastructureDamageDataRow.getDamaged());
-        status.set(infrastructureDamageDataRow.isFunctional());
-        remarks.set(infrastructureDamageDataRow.getRemarks());
-        shouldShowRemarks.set(remarks.get().trim().length() > 0);
+
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[0], infrastructureDamageDataRow.getDamaged())));
+        mItemViewModels.add(new DialogItemViewModelBoolean(
+                new DialogItemModelBoolean(mQuestions[1], infrastructureDamageDataRow.isFunctional())));
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[2], infrastructureDamageDataRow.getRemarks())));
+
+        // TODO: Hide remarks if empty
+//        shouldShowRemarks.set(remarks.get().trim().length() > 0);
     }
 
     /**

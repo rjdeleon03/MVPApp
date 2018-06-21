@@ -2,44 +2,28 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row.VulnerablePopulationRowViewHolder;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowViewHolder;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row.VulnerablePopulationRowViewModel;
-import com.cpu.quikdata.databinding.VulnerablePopulationRowBinding;
-import com.cpu.quikdata.R;
 
-public class VulnerablePopulationFragmentAdapter extends RecyclerView.Adapter<VulnerablePopulationRowViewHolder> {
+public class VulnerablePopulationFragmentAdapter extends EnumRowAdapter {
 
-    private BaseEnumNavigator mBaseEnumNavigator;
     private VulnerablePopulationViewModel mViewModel;
-    private Context mContext;
 
     public VulnerablePopulationFragmentAdapter(Context context,
                                                BaseEnumNavigator baseEnumNavigator,
                                                VulnerablePopulationViewModel viewModel) {
 
-        mContext = context;
-        mBaseEnumNavigator = baseEnumNavigator;
+        super(context, baseEnumNavigator);
         mViewModel = viewModel;
     }
 
-    @NonNull
     @Override
-    public VulnerablePopulationRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View root = inflater.inflate(R.layout.vulnerable_population_row, parent, false);
-        VulnerablePopulationRowBinding binding = VulnerablePopulationRowBinding.bind(root);
-        return new VulnerablePopulationRowViewHolder(binding);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull VulnerablePopulationRowViewHolder holder, int position) {
-        VulnerablePopulationRowViewModel vulnerablePopulationRowViewModel = new VulnerablePopulationRowViewModel(mContext, mViewModel, mBaseEnumNavigator, position);
+    public void onBindViewHolder(@NonNull EnumRowViewHolder holder, int position) {
+        VulnerablePopulationRowViewModel vulnerablePopulationRowViewModel =
+                new VulnerablePopulationRowViewModel(mContext, mViewModel, mBaseEnumNavigator, position);
         holder.bind(vulnerablePopulationRowViewModel);
     }
 

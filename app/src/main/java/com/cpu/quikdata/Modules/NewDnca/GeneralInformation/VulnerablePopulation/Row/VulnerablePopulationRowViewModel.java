@@ -9,24 +9,30 @@ import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.DialogItemDataSource;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
 
-public class VulnerablePopulationRowViewModel extends BaseEnumRowViewModel {
+public class VulnerablePopulationRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private VulnerablePopulationRepositoryManager mVulnerablePopulationRepositoryManager;
 
-    public final ObservableInt pregnant = new ObservableInt(0);
-    public final ObservableInt lactating = new ObservableInt(0);
-    public final ObservableInt lgbt = new ObservableInt(0);
-    public final ObservableInt femaleHeaded = new ObservableInt(0);
-    public final ObservableInt childHeadedMale = new ObservableInt(0);
-    public final ObservableInt childHeadedFemale = new ObservableInt(0);
-    public final ObservableInt indigenousMale = new ObservableInt(0);
-    public final ObservableInt indigenousFemale = new ObservableInt(0);
-    public final ObservableInt disabledMale = new ObservableInt(0);
-    public final ObservableInt disabledFemale = new ObservableInt(0);
-    public final ObservableField<String> remarks = new ObservableField<>("");
-    public final ObservableBoolean shouldShowOtherFields = new ObservableBoolean(false);
+    private String[] mQuestions = {
+            "Pregnant Women",
+            "Lactating Mothers",
+            "LGBT",
+            "Female-headed Households",
+            "Child-headed Households",
+            "Indigenous People",
+            "Persons with Disabilities",
+            "Remarks"
+    };
 
     /**
      * Constructor
@@ -45,21 +51,27 @@ public class VulnerablePopulationRowViewModel extends BaseEnumRowViewModel {
 
         VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(mRowIndex);
         type.set(vulnerablePopulationDataRow.getType());
-        pregnant.set(vulnerablePopulationDataRow.getPregnant());
-        lactating.set(vulnerablePopulationDataRow.getLactating());
-        lgbt.set(vulnerablePopulationDataRow.getLgbt());
-        femaleHeaded.set(vulnerablePopulationDataRow.getFemaleHeadedHouseholds());
-        childHeadedMale.set(vulnerablePopulationDataRow.getChildHeadedHouseholds().male);
-        childHeadedFemale.set(vulnerablePopulationDataRow.getChildHeadedHouseholds().female);
-        indigenousMale.set(vulnerablePopulationDataRow.getIndigenous().male);
-        indigenousFemale.set(vulnerablePopulationDataRow.getIndigenous().female);
-        disabledMale.set(vulnerablePopulationDataRow.getDisabled().male);
-        disabledFemale.set(vulnerablePopulationDataRow.getDisabled().female);
-        remarks.set(vulnerablePopulationDataRow.getRemarks());
 
-        // Set visibility of fields such as pregnant, lactating, and lgbt
-        shouldShowOtherFields.set(type.get().getOrdinal() >= GenericEnumDataRow.AgeGroup.AGE_10_12.getOrdinal());
-        shouldShowRemarks.set(remarks.get().trim().length() > 0);
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[0], vulnerablePopulationDataRow.getPregnant())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], vulnerablePopulationDataRow.getLactating())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[2], vulnerablePopulationDataRow.getLgbt())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[3], vulnerablePopulationDataRow.getFemaleHeadedHouseholds())));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[4], vulnerablePopulationDataRow.getChildHeadedHouseholds().male, vulnerablePopulationDataRow.getChildHeadedHouseholds().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[5], vulnerablePopulationDataRow.getIndigenous().male, vulnerablePopulationDataRow.getIndigenous().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[6], vulnerablePopulationDataRow.getDisabled().male, vulnerablePopulationDataRow.getDisabled().female)));
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[7], vulnerablePopulationDataRow.getRemarks())));
+
+        // TODO: Set visibility of fields such as pregnant, lactating, and lgbt, remarks (if empty)
+//        shouldShowOtherFields.set(type.get().getOrdinal() >= GenericEnumDataRow.AgeGroup.AGE_10_12.getOrdinal());
+//        shouldShowRemarks.set(remarks.get().trim().length() > 0);
     }
 
     /**

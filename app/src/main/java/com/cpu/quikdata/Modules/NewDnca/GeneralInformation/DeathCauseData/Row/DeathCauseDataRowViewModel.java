@@ -6,30 +6,26 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.GeneralInformation.DeathCauseDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
 
-public class DeathCauseDataRowViewModel extends BaseEnumRowViewModel {
+public class DeathCauseDataRowViewModel extends RowViewModel {
 
     private DeathCauseRepositoryManager mDeathCauseRepositoryManager;
 
-    public final ObservableInt measlesMale = new ObservableInt(0);
-    public final ObservableInt measlesFemale = new ObservableInt(0);
-    public final ObservableInt diarrheaMale = new ObservableInt(0);
-    public final ObservableInt diarrheaFemale = new ObservableInt(0);
-    public final ObservableInt pneumoniaMale = new ObservableInt(0);
-    public final ObservableInt pneumoniaFemale = new ObservableInt(0);
-    public final ObservableInt dengueMale = new ObservableInt(0);
-    public final ObservableInt dengueFemale = new ObservableInt(0);
-    public final ObservableInt drowningMale = new ObservableInt(0);
-    public final ObservableInt drowningFemale = new ObservableInt(0);
-    public final ObservableInt heartAttackMale = new ObservableInt(0);
-    public final ObservableInt heartAttackFemale = new ObservableInt(0);
-    public final ObservableInt electrocutionMale = new ObservableInt(0);
-    public final ObservableInt electrocutionFemale = new ObservableInt(0);
-    public final ObservableInt collapsedMale = new ObservableInt(0);
-    public final ObservableInt collapsedFemale = new ObservableInt(0);
-    public final ObservableInt othersMale = new ObservableInt(0);
-    public final ObservableInt othersFemale = new ObservableInt(0);
+    private String[] mQuestions = {
+            "Measles",
+            "Diarrhea",
+            "Pneumonia",
+            "Dengue",
+            "Drowning",
+            "Heart Attack",
+            "Electrocution",
+            "Collapsed building",
+            "Others"
+    };
 
     /**
      * Constructor
@@ -48,24 +44,25 @@ public class DeathCauseDataRowViewModel extends BaseEnumRowViewModel {
 
         DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(mRowIndex);
         type.set(deathCauseDataRow.getType());
-        measlesMale.set(deathCauseDataRow.getMeasles().male);
-        measlesFemale.set(deathCauseDataRow.getMeasles().female);
-        diarrheaMale.set(deathCauseDataRow.getDiarrhea().male);
-        diarrheaFemale.set(deathCauseDataRow.getDiarrhea().female);
-        pneumoniaMale.set(deathCauseDataRow.getPneumonia().male);
-        pneumoniaFemale.set(deathCauseDataRow.getPneumonia().female);
-        dengueMale.set(deathCauseDataRow.getDengue().male);
-        dengueFemale.set(deathCauseDataRow.getDengue().female);
-        drowningMale.set(deathCauseDataRow.getDrowning().male);
-        drowningFemale.set(deathCauseDataRow.getDrowning().female);
-        heartAttackMale.set(deathCauseDataRow.getHeartAttack().male);
-        heartAttackFemale.set(deathCauseDataRow.getHeartAttack().female);
-        electrocutionMale.set(deathCauseDataRow.getElectrocution().male);
-        electrocutionFemale.set(deathCauseDataRow.getElectrocution().female);
-        collapsedMale.set(deathCauseDataRow.getCollapsedBuilding().male);
-        collapsedFemale.set(deathCauseDataRow.getCollapsedBuilding().female);
-        othersMale.set(deathCauseDataRow.getOthers().male);
-        othersFemale.set(deathCauseDataRow.getOthers().female);
+
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[0], deathCauseDataRow.getMeasles().male, deathCauseDataRow.getMeasles().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[1], deathCauseDataRow.getDiarrhea().male, deathCauseDataRow.getDiarrhea().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[2], deathCauseDataRow.getPneumonia().male, deathCauseDataRow.getPneumonia().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[3], deathCauseDataRow.getDengue().male, deathCauseDataRow.getDengue().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[4], deathCauseDataRow.getDrowning().male, deathCauseDataRow.getDrowning().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[5], deathCauseDataRow.getHeartAttack().male, deathCauseDataRow.getHeartAttack().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[6], deathCauseDataRow.getElectrocution().male, deathCauseDataRow.getElectrocution().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[7], deathCauseDataRow.getCollapsedBuilding().male, deathCauseDataRow.getCollapsedBuilding().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[8], deathCauseDataRow.getOthers().male, deathCauseDataRow.getOthers().female)));
     }
 
     /**

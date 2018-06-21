@@ -29,8 +29,7 @@
             android:layout_gravity="center_vertical"
             android:ems="10"
             android:gravity="end"
-            android:text="@{viewModel.value1}"
-            android:textSize="14sp" />
+            android:text="@{viewModel.value1}" />
 
     </TableRow>
 

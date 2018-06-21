@@ -2,42 +2,26 @@ package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Row.LivelihoodsDamageRowViewHolder;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowViewHolder;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Row.LivelihoodsDamageRowViewModel;
-import com.cpu.quikdata.databinding.LivelihoodsDamageRowBinding;
-import com.cpu.quikdata.R;
 
-public class LivelihoodsDamageFragmentAdapter extends RecyclerView.Adapter<LivelihoodsDamageRowViewHolder> {
+public class LivelihoodsDamageFragmentAdapter extends EnumRowAdapter {
 
-    private Context mContext;
-    private BaseEnumNavigator mBaseEnumNavigator;
     private LivelihoodsDamageViewModel mViewModel;
 
     public LivelihoodsDamageFragmentAdapter(Context context,
                                             BaseEnumNavigator baseEnumNavigator,
                                             LivelihoodsDamageViewModel viewModel) {
-        mContext = context;
-        mBaseEnumNavigator = baseEnumNavigator;
+
+        super(context, baseEnumNavigator);
         mViewModel = viewModel;
     }
 
-    @NonNull
     @Override
-    public LivelihoodsDamageRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View root = inflater.inflate(R.layout.livelihoods_damage_row, parent, false);
-        LivelihoodsDamageRowBinding binding = LivelihoodsDamageRowBinding.bind(root);
-        return new LivelihoodsDamageRowViewHolder(binding);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull LivelihoodsDamageRowViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EnumRowViewHolder holder, int position) {
         LivelihoodsDamageRowViewModel livelihoodsDamageRowViewModel = new LivelihoodsDamageRowViewModel(
                 mContext,
                 mViewModel,

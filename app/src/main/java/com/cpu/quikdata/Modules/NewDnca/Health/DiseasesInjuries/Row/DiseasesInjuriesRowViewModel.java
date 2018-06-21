@@ -6,30 +6,30 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Health.DiseasesInjuriesDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelDivider;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelDivider;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesRepositoryManager;
 
-public class DiseasesInjuriesRowViewModel extends BaseEnumRowViewModel {
+public class DiseasesInjuriesRowViewModel extends RowViewModel {
 
     private DiseasesInjuriesRepositoryManager mDiseasesInjuriesRepositoryManager;
 
-    public final ObservableInt measlesMale = new ObservableInt(0);
-    public final ObservableInt measlesFemale = new ObservableInt(0);
-    public final ObservableInt diarrheaMale = new ObservableInt(0);
-    public final ObservableInt diarrheaFemale = new ObservableInt(0);
-    public final ObservableInt pneumoniaMale = new ObservableInt(0);
-    public final ObservableInt pneumoniaFemale = new ObservableInt(0);
-    public final ObservableInt dengueMale = new ObservableInt(0);
-    public final ObservableInt dengueFemale = new ObservableInt(0);
-    public final ObservableInt illOthersMale = new ObservableInt(0);
-    public final ObservableInt illOthersFemale = new ObservableInt(0);
-    public final ObservableInt checkUpMale = new ObservableInt(0);
-    public final ObservableInt checkUpFemale = new ObservableInt(0);
-    public final ObservableInt hospitalizationMale = new ObservableInt(0);
-    public final ObservableInt hospitalizationFemale = new ObservableInt(0);
-    public final ObservableInt medicinesMale = new ObservableInt(0);
-    public final ObservableInt medicinesFemale = new ObservableInt(0);
-    public final ObservableInt medOthersMale = new ObservableInt(0);
-    public final ObservableInt medOthersFemale = new ObservableInt(0);
+    private String[] mQuestions = {
+            "NUMBER OF CASES OF ILLNESSES",
+            "Diarrhea",
+            "Pneumonia",
+            "Dengue",
+            "Measles",
+            "Others",
+            "MEDICAL NEEDS",
+            "Check-up",
+            "Hospitalization",
+            "Medicines",
+            "Others"
+    };
 
     /**
      * Constructor
@@ -46,24 +46,29 @@ public class DiseasesInjuriesRowViewModel extends BaseEnumRowViewModel {
 
         DiseasesInjuriesDataRow diseasesInjuriesDataRow = mDiseasesInjuriesRepositoryManager.getDiseasesInjuriesDataRow(rowIndex);
         type.set(diseasesInjuriesDataRow.getType());
-        measlesMale.set(diseasesInjuriesDataRow.getMeasles().male);
-        measlesFemale.set(diseasesInjuriesDataRow.getMeasles().female);
-        diarrheaMale.set(diseasesInjuriesDataRow.getDiarrhea().male);
-        diarrheaFemale.set(diseasesInjuriesDataRow.getDiarrhea().female);
-        pneumoniaMale.set(diseasesInjuriesDataRow.getPneumonia().male);
-        pneumoniaFemale.set(diseasesInjuriesDataRow.getPneumonia().female);
-        dengueMale.set(diseasesInjuriesDataRow.getDengue().male);
-        dengueFemale.set(diseasesInjuriesDataRow.getDengue().female);
-        illOthersMale.set(diseasesInjuriesDataRow.getIllOthers().male);
-        illOthersFemale.set(diseasesInjuriesDataRow.getIllOthers().female);
-        checkUpMale.set(diseasesInjuriesDataRow.getCheckUp().male);
-        checkUpFemale.set(diseasesInjuriesDataRow.getCheckUp().female);
-        hospitalizationMale.set(diseasesInjuriesDataRow.getHospitalization().male);
-        hospitalizationFemale.set(diseasesInjuriesDataRow.getHospitalization().female);
-        medicinesMale.set(diseasesInjuriesDataRow.getMedicines().male);
-        medicinesFemale.set(diseasesInjuriesDataRow.getMedicines().female);
-        medOthersMale.set(diseasesInjuriesDataRow.getMedOthers().male);
-        medOthersFemale.set(diseasesInjuriesDataRow.getMedOthers().female);
+
+        mItemViewModels.add(new DialogItemViewModelDivider(
+                new DialogItemModelDivider(mQuestions[0], true)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[1], diseasesInjuriesDataRow.getMeasles().male, diseasesInjuriesDataRow.getMeasles().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[2], diseasesInjuriesDataRow.getDiarrhea().male, diseasesInjuriesDataRow.getDiarrhea().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[3], diseasesInjuriesDataRow.getPneumonia().male, diseasesInjuriesDataRow.getPneumonia().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[4], diseasesInjuriesDataRow.getDengue().male, diseasesInjuriesDataRow.getDengue().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[5], diseasesInjuriesDataRow.getIllOthers().male, diseasesInjuriesDataRow.getIllOthers().female)));
+        mItemViewModels.add(new DialogItemViewModelDivider(
+                new DialogItemModelDivider(mQuestions[6], true)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[7], diseasesInjuriesDataRow.getCheckUp().male, diseasesInjuriesDataRow.getCheckUp().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[8], diseasesInjuriesDataRow.getHospitalization().male, diseasesInjuriesDataRow.getHospitalization().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[9], diseasesInjuriesDataRow.getMedicines().male, diseasesInjuriesDataRow.getMedicines().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[10], diseasesInjuriesDataRow.getMedOthers().male, diseasesInjuriesDataRow.getMedOthers().female)));
     }
 
     /**

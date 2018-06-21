@@ -9,15 +9,24 @@ import android.databinding.ObservableList;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRecycler;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRecycler;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
 
-public class LivelihoodsDamageRowViewModel extends BaseEnumRowViewModel {
+public class LivelihoodsDamageRowViewModel extends RowViewModel {
 
     private LivelihoodsDamageRepositoryManager mLivelihoodsDamageRepositoryManager;
 
-    public final ObservableList<LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple> affectedLivelihoods = new ObservableArrayList<>();
-    public final ObservableInt damageCost = new ObservableInt(0);
-    public final ObservableField<String> remarks = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Kinds of Affected Livelihoods",
+            "Estimated Damage Cost (PHP)",
+            "Remarks"
+    };
 
     /**
      * Constructor
@@ -35,10 +44,16 @@ public class LivelihoodsDamageRowViewModel extends BaseEnumRowViewModel {
 
         LivelihoodsDamageDataRow damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(rowIndex);
         type.set(damageDataRow.getType());
-        damageCost.set(damageDataRow.getDamageCost());
-        remarks.set(damageDataRow.getRemarks());
-        affectedLivelihoods.addAll(damageDataRow.getAffectedLivelihoods());
-        shouldShowRemarks.set(remarks.get().trim().length() > 0);
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[0], damageDataRow.getAffectedLivelihoodsString())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], damageDataRow.getDamageCost(), true)));
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[2], damageDataRow.getRemarks())));
+
+        // TODO: Hide remarks if empty
+//        shouldShowRemarks.set(remarks.get().trim().length() > 0);
     }
 
     /**

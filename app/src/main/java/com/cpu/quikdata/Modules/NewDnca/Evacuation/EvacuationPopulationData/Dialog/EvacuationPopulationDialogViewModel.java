@@ -47,13 +47,20 @@ public class EvacuationPopulationDialogViewModel extends DialogViewModel {
         }
         type.set(evacuationPopulationDataRow.getType());
 
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[0], evacuationPopulationDataRow.getMale())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[1], evacuationPopulationDataRow.getFemale())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[2], evacuationPopulationDataRow.getLgbt())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[3], evacuationPopulationDataRow.getPregnant())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[4], evacuationPopulationDataRow.getLactating())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[5], evacuationPopulationDataRow.getDisabled())));
-        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[6], evacuationPopulationDataRow.getSick())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[0], evacuationPopulationDataRow.getMale())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], evacuationPopulationDataRow.getFemale())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[2], evacuationPopulationDataRow.getLgbt())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[3], evacuationPopulationDataRow.getPregnant())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[4], evacuationPopulationDataRow.getLactating())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[5], evacuationPopulationDataRow.getDisabled())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[6], evacuationPopulationDataRow.getSick())));
     }
 
     /**

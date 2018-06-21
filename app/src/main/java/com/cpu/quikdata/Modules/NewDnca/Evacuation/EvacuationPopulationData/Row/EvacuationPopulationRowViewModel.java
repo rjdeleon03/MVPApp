@@ -6,19 +6,24 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationPopulationData.EvacuationPopulationRepositoryManager;
 
-public class EvacuationPopulationRowViewModel extends BaseEnumRowViewModel {
+public class EvacuationPopulationRowViewModel extends RowViewModel {
 
     private EvacuationPopulationRepositoryManager mEvacuationPopulationRepositoryManager;
 
-    public final ObservableInt male = new ObservableInt(0);
-    public final ObservableInt female = new ObservableInt(0);
-    public final ObservableInt lgbt = new ObservableInt(0);
-    public final ObservableInt pregnant = new ObservableInt(0);
-    public final ObservableInt lactating = new ObservableInt(0);
-    public final ObservableInt disabled = new ObservableInt(0);
-    public final ObservableInt sick = new ObservableInt(0);
+    private String[] mQuestions = {
+            "Male",
+            "Female",
+            "LGBT",
+            "Pregnant Women",
+            "Lactating Mothers",
+            "Persons with Disabilities",
+            "Sick"
+    };
 
     /**
      * Constructor
@@ -36,13 +41,21 @@ public class EvacuationPopulationRowViewModel extends BaseEnumRowViewModel {
 
         EvacuationPopulationDataRow evacuationPopulationDataRow = mEvacuationPopulationRepositoryManager.getEvacuationPopulationDataRow(mRowIndex);
         type.set(evacuationPopulationDataRow.getType());
-        male.set(evacuationPopulationDataRow.getMale());
-        female.set(evacuationPopulationDataRow.getFemale());
-        lgbt.set(evacuationPopulationDataRow.getLgbt());
-        pregnant.set(evacuationPopulationDataRow.getPregnant());
-        lactating.set(evacuationPopulationDataRow.getLactating());
-        disabled.set(evacuationPopulationDataRow.getDisabled());
-        sick.set(evacuationPopulationDataRow.getSick());
+
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[0], evacuationPopulationDataRow.getMale())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], evacuationPopulationDataRow.getFemale())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[2], evacuationPopulationDataRow.getLgbt())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[3], evacuationPopulationDataRow.getPregnant())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[4], evacuationPopulationDataRow.getLactating())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[5], evacuationPopulationDataRow.getDisabled())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[6], evacuationPopulationDataRow.getSick())));
     }
 
     /**

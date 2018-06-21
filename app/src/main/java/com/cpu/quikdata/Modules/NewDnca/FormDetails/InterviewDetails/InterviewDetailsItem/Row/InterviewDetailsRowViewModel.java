@@ -6,14 +6,19 @@ import android.databinding.ObservableField;
 import com.cpu.quikdata.Models.FormDetails.InterviewDetailsRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsRepositoryManager;
 
-public class InterviewDetailsRowViewModel extends BaseEnumRowViewModel {
+public class InterviewDetailsRowViewModel extends RowViewModel {
 
     private InterviewDetailsRepositoryManager mInterviewDetailsRepositoryManager;
 
-    public final ObservableField<String> interviewee = new ObservableField<>("");
-    public final ObservableField<String> intervieweeNo = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Interviewee Name:",
+            "Contact Number:"
+    };
 
     /**
      * Constructor
@@ -30,8 +35,9 @@ public class InterviewDetailsRowViewModel extends BaseEnumRowViewModel {
         mInterviewDetailsRepositoryManager = interviewDetailsRepositoryManager;
 
         InterviewDetailsRow interviewDetailsRow = mInterviewDetailsRepositoryManager.getInterviewDetailsRow(mRowIndex);
-        interviewee.set(interviewDetailsRow.getInterviewee());
-        intervieweeNo.set(interviewDetailsRow.getIntervieweeNo());
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], interviewDetailsRow.getInterviewee())));
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[1], interviewDetailsRow.getIntervieweeNo())));
     }
 
     /**

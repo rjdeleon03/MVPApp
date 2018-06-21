@@ -110,7 +110,7 @@ public class LivelihoodsDamageDataRow extends GenericEnumDataRow {
 
     private List<LivelihoodsEnumBoolTuple> initAffectedLivelihoodsList() {
         LivelihoodsEnum subTypeList[] = null;
-        switch((LivelihoodsType) getType()) {
+        switch ((LivelihoodsType) getType()) {
             case FISHING:
                 subTypeList = FishingType.values();
                 break;
@@ -129,7 +129,7 @@ public class LivelihoodsDamageDataRow extends GenericEnumDataRow {
                 break;
         }
         List<LivelihoodsEnumBoolTuple> subTypeTupleList = new ArrayList<>();
-        for(LivelihoodsEnum subType : subTypeList) {
+        for (LivelihoodsEnum subType : subTypeList) {
             subTypeTupleList.add(new LivelihoodsEnumBoolTuple(subType, false));
         }
         return subTypeTupleList;
@@ -137,6 +137,23 @@ public class LivelihoodsDamageDataRow extends GenericEnumDataRow {
 
     public List<LivelihoodsEnumBoolTuple> getAffectedLivelihoods() {
         return affectedLivelihoods;
+    }
+
+    public String getAffectedLivelihoodsString() {
+
+        String text = "";
+        for (int i = 0; i < affectedLivelihoods.size(); i++) {
+            if (affectedLivelihoods.get(i).isAffected) {
+                text += affectedLivelihoods.get(i).subType.toString() + ", ";
+            }
+        }
+        if (text.isEmpty()) {
+            text = "None";
+        } else {
+            // Remove last comma and space
+            text = text.substring(0, text.length() - 2);
+        }
+        return text;
     }
 
     public void setAffectedLivelihoods(List<LivelihoodsEnumBoolTuple> affectedLivelihoods) {

@@ -7,14 +7,21 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Health.SpecialNeedsDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsRepositoryManager;
 
-public class SpecialNeedsRowViewModel extends BaseEnumRowViewModel {
+public class SpecialNeedsRowViewModel extends RowViewModel {
 
     private SpecialNeedsRepositoryManager mSpecialNeedsRepositoryManager;
 
-    public final ObservableInt count = new ObservableInt(0);
-    public final ObservableField<String> needs = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Number of People with Special Needs",
+            "Health/Medical Needs"
+    };
 
     /**
      * Constructor
@@ -33,8 +40,9 @@ public class SpecialNeedsRowViewModel extends BaseEnumRowViewModel {
 
         SpecialNeedsDataRow specialNeedsDataRow = mSpecialNeedsRepositoryManager.getSpecialNeedsDataRow(rowIndex);
         type.set(specialNeedsDataRow.getType());
-        count.set(specialNeedsDataRow.getCount());
-        needs.set(specialNeedsDataRow.getNeeds());
+
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[0], specialNeedsDataRow.getCount(), true)));
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[1], specialNeedsDataRow.getNeeds())));
     }
 
     /**

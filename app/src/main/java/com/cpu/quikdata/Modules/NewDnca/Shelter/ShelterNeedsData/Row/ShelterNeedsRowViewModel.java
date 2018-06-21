@@ -7,14 +7,21 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsRepositoryManager;
 
-public class ShelterNeedsRowViewModel extends BaseEnumRowViewModel {
+public class ShelterNeedsRowViewModel extends RowViewModel {
 
     private ShelterNeedsRepositoryManager mShelterNeedsRepositoryManager;
 
-    public final ObservableField<String> items = new ObservableField<>("");
-    public final ObservableInt familyCount = new ObservableInt(0);
+    private String[] mQuestions = {
+            "Identify Specific Items",
+            "Number of Families in Need"
+    };
 
     /**
      * Constructor
@@ -32,8 +39,11 @@ public class ShelterNeedsRowViewModel extends BaseEnumRowViewModel {
 
         ShelterNeedsDataRow shelterNeedsDataRow = mShelterNeedsRepositoryManager.getShelterNeedsDataRow(rowIndex);
         type.set(shelterNeedsDataRow.getType());
-        items.set(shelterNeedsDataRow.getItems());
-        familyCount.set(shelterNeedsDataRow.getFamilyCount());
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(
+                new DialogItemModelRemarks(mQuestions[0], shelterNeedsDataRow.getItems())));
+        mItemViewModels.add(new DialogItemViewModelSingleNumber(
+                new DialogItemModelSingleNumber(mQuestions[1], shelterNeedsDataRow.getFamilyCount(), true)));
     }
 
     /**

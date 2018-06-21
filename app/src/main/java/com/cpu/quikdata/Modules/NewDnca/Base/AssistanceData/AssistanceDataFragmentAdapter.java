@@ -2,43 +2,26 @@ package com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row.AssistanceRowViewHolder;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row.AssistanceRowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.cpu.quikdata.R;
-import com.cpu.quikdata.databinding.AssistanceRowBinding;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowViewHolder;
 
-public class AssistanceDataFragmentAdapter extends RecyclerView.Adapter<AssistanceRowViewHolder> {
+public class AssistanceDataFragmentAdapter extends EnumRowAdapter {
 
-    private BaseEnumNavigator mBaseEnumNavigator;
     private AssistanceDataViewModel mViewModel;
-    private Context mContext;
 
     public AssistanceDataFragmentAdapter(Context context,
                                          BaseEnumNavigator baseEnumNavigator,
                                          AssistanceDataViewModel viewModel) {
 
-        mContext = context;
-        mBaseEnumNavigator = baseEnumNavigator;
+        super(context, baseEnumNavigator);
         mViewModel = viewModel;
     }
 
-    @NonNull
     @Override
-    public AssistanceRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View root = inflater.inflate(R.layout.assistance_row, parent, false);
-        AssistanceRowBinding binding = AssistanceRowBinding.bind(root);
-        return new AssistanceRowViewHolder(binding);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull AssistanceRowViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EnumRowViewHolder holder, int position) {
         AssistanceRowViewModel assistanceRowViewModel = new AssistanceRowViewModel(
                 mContext,
                 mViewModel,

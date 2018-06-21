@@ -11,6 +11,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelBoolean;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelSingleNumber;
@@ -18,10 +19,12 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.BaseEnumBooleanBinding;
+import com.cpu.quikdata.databinding.BaseEnumDividerBinding;
 import com.cpu.quikdata.databinding.BaseEnumRowBinding;
 import com.cpu.quikdata.databinding.BaseEnumRowBooleanBinding;
 import com.cpu.quikdata.databinding.BaseEnumRowGenderTupleBinding;
 import com.cpu.quikdata.databinding.BaseEnumRowRemarksBinding;
+import com.cpu.quikdata.databinding.BaseEnumRowSingleNumberAltBinding;
 import com.cpu.quikdata.databinding.BaseEnumRowSingleNumberBinding;
 
 public class EnumRowViewHolder extends RecyclerView.ViewHolder {
@@ -68,9 +71,9 @@ public class EnumRowViewHolder extends RecyclerView.ViewHolder {
 
                 // Select layout
                 if (viewModelSingleNumber.displayAsMultLines.get()) {
-//                    BaseEnumSingleNumberAltBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_single_number_alt, null, false);
-//                    itemBinding.setViewModel(viewModelSingleNumber);
-//                    itemView = (TableRow) itemBinding.getRoot();
+                    BaseEnumRowSingleNumberAltBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_row_single_number_alt, null, false);
+                    itemBinding.setViewModel(viewModelSingleNumber);
+                    itemView = (TableRow) itemBinding.getRoot();
                 } else {
                     BaseEnumRowSingleNumberBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_row_single_number, null, false);
                     itemBinding.setViewModel(viewModelSingleNumber);
@@ -91,8 +94,17 @@ public class EnumRowViewHolder extends RecyclerView.ViewHolder {
                 itemBinding.setViewModel((DialogItemViewModelBoolean) itemViewModel);
                 itemView = (TableRow) itemBinding.getRoot();
 
-            }
+            } else if (itemViewModel instanceof DialogItemViewModelDivider) {
 
+                // If item index != 0, padding for divider must be larger
+                if (index != 0) topPaddingValue = 12;
+
+                // If divider will be displayed
+                BaseEnumDividerBinding itemBinding = DataBindingUtil.inflate(inflater, R.layout.base_enum_divider, null, false);
+                itemBinding.setViewModel((DialogItemViewModelDivider) itemViewModel);
+                itemView = (TableRow) itemBinding.getRoot();
+
+            }
 
             if (itemView.getParent() == null) {
                 itemView.setPadding(itemView.getPaddingLeft(), AppUtil.dpToPx(mBinding.getRoot().getContext(), topPaddingValue), itemView.getPaddingRight(), itemView.getPaddingBottom());

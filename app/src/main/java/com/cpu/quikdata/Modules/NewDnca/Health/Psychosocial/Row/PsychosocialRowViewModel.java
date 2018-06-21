@@ -7,16 +7,22 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Health.PsychosocialDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialRepositoryManager;
 
-public class PsychosocialRowViewModel extends BaseEnumRowViewModel {
+public class PsychosocialRowViewModel extends RowViewModel {
 
     private PsychosocialRepositoryManager mPsychosocialRepositoryManager;
 
-    public final ObservableField<String> manifestations = new ObservableField<>("");
-    public final ObservableInt casesMale = new ObservableInt(0);
-    public final ObservableInt casesFemale = new ObservableInt(0);
-    public final ObservableField<String> needs = new ObservableField<>("");
+    private String[] mQuestions = {
+            "Manifestations of Mental Stress or Trauma",
+            "Cases",
+            "Needs"
+    };
 
     /**
      * Constructor
@@ -34,10 +40,10 @@ public class PsychosocialRowViewModel extends BaseEnumRowViewModel {
 
         PsychosocialDataRow psychosocialDataRow = mPsychosocialRepositoryManager.getPsychosocialDataRow(rowIndex);
         type.set(psychosocialDataRow.getType());
-        manifestations.set(psychosocialDataRow.getManifestations());
-        casesMale.set(psychosocialDataRow.getCases().male);
-        casesFemale.set(psychosocialDataRow.getCases().female);
-        needs.set(psychosocialDataRow.getNeeds());
+
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], psychosocialDataRow.getManifestations())));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(new DialogItemModelGenderTuple(mQuestions[1], psychosocialDataRow.getCases().male, psychosocialDataRow.getCases().female)));
+        mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[2], psychosocialDataRow.getNeeds())));
     }
 
     /**

@@ -7,20 +7,6 @@ import java.util.List;
 
 public interface DialogItemDataSource {
 
-
-    /**
-     * Gets number of items
-     * @return
-     *
-    int getItemCount();
-
-    /**
-     * Gets item at specified index
-     * @return
-     *
-    DialogItemViewModelGenderTuple getItemViewModel(int index);
-    */
-
     /**
      * Gets all item viewModels
      * @return

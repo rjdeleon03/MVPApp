@@ -26,8 +26,7 @@ import java.util.List;
 public class BindingUtils {
 
     @BindingAdapter("hidableText")
-    public static void bindHidableText(TextView view, String text)
-    {
+    public static void bindHidableText(TextView view, String text) {
         if (text.trim().length() == 0) {
             view.setVisibility(View.GONE);
         } else {
@@ -36,8 +35,12 @@ public class BindingUtils {
     }
 
     @BindingAdapter("android:text")
-    public static void bindIntegerInText(EditText view, int value)
-    {
+    public static void bindGenericEnumTypeInText(TextView view, GenericEnum genericEnum) {
+        view.setText(genericEnum.toString());
+    }
+
+    @BindingAdapter("android:text")
+    public static void bindIntegerInText(EditText view, int value) {
         view.setText(String.valueOf(value));
 
         // Set the cursor to the end of the text

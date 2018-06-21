@@ -6,18 +6,25 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Row.BaseEnumRowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.DialogItemDataSource;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.Model.DialogItemModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelGenderTuple;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.RowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
-public class PopulationDataRowViewModel extends BaseEnumRowViewModel {
+import java.util.List;
+
+public class PopulationDataRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
-    public final ObservableInt totalMale = new ObservableInt(0);
-    public final ObservableInt totalFemale = new ObservableInt(0);
-    public final ObservableInt affectedMale = new ObservableInt(0);
-    public final ObservableInt affectedFemale = new ObservableInt(0);
-    public final ObservableInt displacedMale = new ObservableInt(0);
-    public final ObservableInt displacedFemale = new ObservableInt(0);
+    private String[] mQuestions = {
+            "Total",
+            "Affected",
+            "Displaced"
+    };
 
     /**
      * Constructor
@@ -34,14 +41,15 @@ public class PopulationDataRowViewModel extends BaseEnumRowViewModel {
         super(context, baseEnumNavigator, rowIndex);
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
-        PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(mRowIndex);
+        PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(rowIndex);
         type.set(populationDataRow.getType());
-        totalMale.set(populationDataRow.getTotal().male);
-        totalFemale.set(populationDataRow.getTotal().female);
-        affectedMale.set(populationDataRow.getAffected().male);
-        affectedFemale.set(populationDataRow.getAffected().female);
-        displacedMale.set(populationDataRow.getDisplaced().male);
-        displacedFemale.set(populationDataRow.getDisplaced().female);
+
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[0], populationDataRow.getTotal().male, populationDataRow.getTotal().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[1], populationDataRow.getAffected().male, populationDataRow.getAffected().female)));
+        mItemViewModels.add(new DialogItemViewModelGenderTuple(
+                new DialogItemModelGenderTuple(mQuestions[2], populationDataRow.getDisplaced().male, populationDataRow.getDisplaced().female)));
     }
 
     /**

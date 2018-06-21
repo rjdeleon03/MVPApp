@@ -244,8 +244,8 @@ public abstract class GenericEnumDataRow {
     }
 
     public enum SpecialNeedsType implements GenericEnum {
-        PREGNANT,
-        LACTATING,
+        PREGNANT_WOMEN,
+        LACTATING_MOTHERS,
         PHYSICALLY_CHALLENGED,
         MENTALLY_CHALLENGED,
         CHILDREN,
@@ -260,8 +260,8 @@ public abstract class GenericEnumDataRow {
 
         public static List<SpecialNeedsType> asList() {
             List<SpecialNeedsType> list = new ArrayList<>();
-            list.add(PREGNANT);
-            list.add(LACTATING);
+            list.add(PREGNANT_WOMEN);
+            list.add(LACTATING_MOTHERS);
             list.add(PHYSICALLY_CHALLENGED);
             list.add(MENTALLY_CHALLENGED);
             list.add(CHILDREN);

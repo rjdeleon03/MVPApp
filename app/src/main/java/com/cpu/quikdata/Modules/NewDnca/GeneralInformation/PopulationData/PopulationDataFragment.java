@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumDialogFragment;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_POPULATION;
 

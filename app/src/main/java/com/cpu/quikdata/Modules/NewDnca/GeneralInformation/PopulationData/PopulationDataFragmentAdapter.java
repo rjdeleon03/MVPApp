@@ -2,19 +2,13 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowAdapter;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowViewHolder;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowViewHolder;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel;
-import com.cpu.quikdata.R;
-import com.cpu.quikdata.databinding.BaseEnumRowBinding;
 
-public class PopulationDataFragmentAdapter extends EnumRowAdapter {
+public class PopulationDataFragmentAdapter extends BaseEnumRowAdapter {
 
     private PopulationDataViewModel mViewModel;
 
@@ -27,7 +21,7 @@ public class PopulationDataFragmentAdapter extends EnumRowAdapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EnumRowViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
                 mContext,
                 mViewModel,

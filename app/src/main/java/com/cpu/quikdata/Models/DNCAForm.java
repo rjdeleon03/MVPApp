@@ -10,6 +10,9 @@ import com.cpu.quikdata.Models.Livelihoods.Livelihoods;
 import com.cpu.quikdata.Models.Shelter.ShelterInfo;
 import com.cpu.quikdata.Models.Wash.WashInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DNCAForm implements NormalizableData {
 
     private FormDetails formDetails;
@@ -19,10 +22,19 @@ public class DNCAForm implements NormalizableData {
     private Livelihoods livelihoods;
     private HealthInfo healthInfo;
     private WashInfo washInfo;
-    private EvacuationInfo evacuationInfo;
+    private List<EvacuationInfo> evacuationInfos;
     private CaseStories caseStories;
 
-    public DNCAForm(FormDetails formDetails, GenInfo genInfo, ShelterInfo shelterInfo, FoodSecurity foodSecurity, Livelihoods livelihoods, HealthInfo healthInfo, WashInfo washInfo, EvacuationInfo evacuationInfo, CaseStories caseStories) {
+    public DNCAForm(FormDetails formDetails,
+                    GenInfo genInfo,
+                    ShelterInfo shelterInfo,
+                    FoodSecurity foodSecurity,
+                    Livelihoods livelihoods,
+                    HealthInfo healthInfo,
+                    WashInfo washInfo,
+                    List<EvacuationInfo> evacuationInfos,
+                    CaseStories caseStories) {
+
         this.formDetails = formDetails;
         this.genInfo = genInfo;
         this.shelterInfo = shelterInfo;
@@ -30,12 +42,20 @@ public class DNCAForm implements NormalizableData {
         this.livelihoods = livelihoods;
         this.healthInfo = healthInfo;
         this.washInfo = washInfo;
-        this.evacuationInfo = evacuationInfo;
+        this.evacuationInfos = evacuationInfos;
         this.caseStories = caseStories;
     }
 
     public DNCAForm() {
-        this(new FormDetails(), new GenInfo(), new ShelterInfo(), new FoodSecurity(), new Livelihoods(), new HealthInfo(), new WashInfo(), new EvacuationInfo(), new CaseStories());
+        this(new FormDetails(),
+                new GenInfo(),
+                new ShelterInfo(),
+                new FoodSecurity(),
+                new Livelihoods(),
+                new HealthInfo(),
+                new WashInfo(),
+                new ArrayList<EvacuationInfo>(),
+                new CaseStories());
     }
 
     public FormDetails getFormDetails() {
@@ -94,12 +114,12 @@ public class DNCAForm implements NormalizableData {
         this.washInfo = washInfo;
     }
 
-    public EvacuationInfo getEvacuationInfo() {
-        return evacuationInfo;
+    public List<EvacuationInfo> getEvacuationInfos() {
+        return evacuationInfos;
     }
 
-    public void setEvacuationInfo(EvacuationInfo evacuationInfo) {
-        this.evacuationInfo = evacuationInfo;
+    public void setEvacuationInfo(List<EvacuationInfo> evacuationInfos) {
+        this.evacuationInfos = evacuationInfos;
     }
 
     public CaseStories getCaseStories() {

@@ -5,10 +5,10 @@ import android.support.annotation.NonNull;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row.AssistanceRowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowAdapter;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowViewHolder;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowViewHolder;
 
-public class AssistanceDataFragmentAdapter extends EnumRowAdapter {
+public class AssistanceDataFragmentAdapter extends BaseEnumRowAdapter {
 
     private AssistanceDataViewModel mViewModel;
 
@@ -21,7 +21,7 @@ public class AssistanceDataFragmentAdapter extends EnumRowAdapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EnumRowViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         AssistanceRowViewModel assistanceRowViewModel = new AssistanceRowViewModel(
                 mContext,
                 mViewModel,

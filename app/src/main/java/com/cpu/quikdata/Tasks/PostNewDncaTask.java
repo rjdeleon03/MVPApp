@@ -151,8 +151,8 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         Livelihoods livelihoods = new Livelihoods();
         HealthInfo  healthInfo = new HealthInfo();
         WashInfo washInfo = new WashInfo();
-        EvacuationInfo evacuationInfo = new EvacuationInfo();
+        List<EvacuationInfo> evacuationInfos = new ArrayList<>();
         CaseStories caseStories = new CaseStories();
-        return new DNCAForm(formDetails, genInfo, shelterInfo, foodSecurity, livelihoods, healthInfo, washInfo, evacuationInfo, caseStories);
+        return new DNCAForm(formDetails, genInfo, shelterInfo, foodSecurity, livelihoods, healthInfo, washInfo, evacuationInfos, caseStories);
     }
 }

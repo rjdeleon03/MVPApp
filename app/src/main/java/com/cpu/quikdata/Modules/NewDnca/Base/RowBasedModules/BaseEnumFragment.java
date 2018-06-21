@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -14,13 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumDialogFragment;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Dialog.BaseEnumDialogFragment;
 import com.cpu.quikdata.databinding.BaseRowFragmentBinding;
 
 public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEnumNavigator {
@@ -115,9 +111,9 @@ public abstract class BaseEnumFragment extends BaseSubFragment implements BaseEn
      */
     protected void setupDialog(DialogViewModel dialogViewModel) {
         dialogViewModel.setBaseAgeGroupNavigator(this);
-        EnumDialogFragment dialogFragment = EnumDialogFragment.newInstance();
-        dialogFragment.setViewModel(dialogViewModel);
-        dialogFragment.show(getChildFragmentManager(), "");
+        mDialogFragment = BaseEnumDialogFragment.newInstance();
+        mDialogFragment.setViewModel(dialogViewModel);
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**

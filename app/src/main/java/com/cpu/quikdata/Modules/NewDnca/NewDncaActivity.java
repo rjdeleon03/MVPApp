@@ -13,8 +13,8 @@ import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesFragment;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesNavigator;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationFragment;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsFragment;
@@ -257,11 +257,13 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onEvacuationButtonPressed() {
-        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
-        mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
-        evacuationFragment.setViewModel(mEvacuationViewModel);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
-                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
+        ViewFactory.startEvacuationListActivity(this);
+
+//        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
+//        mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+//        evacuationFragment.setViewModel(mEvacuationViewModel);
+//        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
+//                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
     }
 
     /**

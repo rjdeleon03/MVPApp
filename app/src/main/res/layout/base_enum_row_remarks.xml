@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.ViewModel.DialogItemViewModelRemarks" />
+            type="com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks" />
     </data>
 
     <TableRow

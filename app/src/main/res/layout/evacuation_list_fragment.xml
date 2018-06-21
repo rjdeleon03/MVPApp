@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Modules.DNCAList.DNCAListFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- items="@{viewModel.dncaListItems}" -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/dnca_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+
+        <!-- android:onClick="@{() -> viewModel.navigateOnNewDncaButtonPressed()}" -->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/dnca_list_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/colorAccent" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

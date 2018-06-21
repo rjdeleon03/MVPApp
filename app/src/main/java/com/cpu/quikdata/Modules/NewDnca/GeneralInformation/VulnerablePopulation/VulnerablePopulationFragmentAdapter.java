@@ -4,11 +4,11 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowAdapter;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModulesV2.Dialog.View.EnumRowViewHolder;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowViewHolder;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row.VulnerablePopulationRowViewModel;
 
-public class VulnerablePopulationFragmentAdapter extends EnumRowAdapter {
+public class VulnerablePopulationFragmentAdapter extends BaseEnumRowAdapter {
 
     private VulnerablePopulationViewModel mViewModel;
 
@@ -21,7 +21,7 @@ public class VulnerablePopulationFragmentAdapter extends EnumRowAdapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EnumRowViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         VulnerablePopulationRowViewModel vulnerablePopulationRowViewModel =
                 new VulnerablePopulationRowViewModel(mContext, mViewModel, mBaseEnumNavigator, position);
         holder.bind(vulnerablePopulationRowViewModel);

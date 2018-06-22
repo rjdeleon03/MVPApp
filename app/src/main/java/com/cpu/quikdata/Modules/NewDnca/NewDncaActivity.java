@@ -14,7 +14,7 @@ import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesFragment;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesNavigator;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFragment;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsFragment;
@@ -41,7 +41,7 @@ import java.util.List;
 import static com.cpu.quikdata.AppConstants.REQUEST_IMAGE_CAPTURE;
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 
-public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator, CaseStoriesNavigator {
+public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavigator, CaseStoriesNavigator {
 
     private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
@@ -53,7 +53,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private LivelihoodsViewModel mLivelihoodsViewModel;
     private HealthViewModel mHealthViewModel;
     private WashViewModel mWashViewModel;
-    private EvacuationViewModel mEvacuationViewModel;
+    private EvacuationItemViewModel mEvacuationViewModel;
     private CaseStoriesViewModel mCaseStoriesViewModel;
 
     private FormDetailsFragment mFormDetailsFragment;
@@ -147,7 +147,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.EVACUATION.toString())) {
                 mEvacuationFragment = (EvacuationFragment) currentFragment;
-                mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+                mEvacuationViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
                 mEvacuationFragment.setViewModel(mEvacuationViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.CASE_STORIES.toString())) {
@@ -260,7 +260,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         ViewFactory.startEvacuationListActivity(this);
 
 //        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
-//        mEvacuationViewModel = (EvacuationViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+//        mEvacuationViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
 //        evacuationFragment.setViewModel(mEvacuationViewModel);
 //        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
 //                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
@@ -442,7 +442,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                     break;
 
                 case EVACUATION:
-                    viewModel = new EvacuationViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new EvacuationItemViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                     viewModel.setNewDncaNavigator(this);
                     break;
 

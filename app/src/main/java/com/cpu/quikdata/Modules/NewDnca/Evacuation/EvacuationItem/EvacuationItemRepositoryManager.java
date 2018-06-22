@@ -8,7 +8,7 @@ import com.cpu.quikdata.Models.Evacuation.EvacuationWashData;
 import com.cpu.quikdata.Modules.NewDnca.Base.GenericCopingData.GenericCopingDataContainer;
 import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 
-public interface EvacuationRepositoryManager extends RepositoryManager, GenericCopingDataContainer {
+public interface EvacuationItemRepositoryManager extends RepositoryManager, GenericCopingDataContainer {
 
     EvacuationSiteData getSiteData();
 

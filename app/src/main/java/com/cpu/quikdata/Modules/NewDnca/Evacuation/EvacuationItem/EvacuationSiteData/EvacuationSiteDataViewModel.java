@@ -11,7 +11,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.Quest
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelInt;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 
 import java.util.Arrays;
 
@@ -33,12 +33,12 @@ public class EvacuationSiteDataViewModel extends EvacuationBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param evacuationRepositoryManager
+     * @param evacuationItemRepositoryManager
      */
-    public EvacuationSiteDataViewModel(Context context, EvacuationRepositoryManager evacuationRepositoryManager) {
-        super(context, evacuationRepositoryManager);
+    public EvacuationSiteDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(context, evacuationItemRepositoryManager);
 
-        EvacuationSiteData siteData = mEvacuationRepositoryManager.getSiteData();
+        EvacuationSiteData siteData = mEvacuationItemRepositoryManager.getSiteData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], siteData.getName())));
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[1], siteData.getLocation())));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[2], siteData.isDisplaced()), "Displaced", "Non-displaced"));
@@ -67,6 +67,6 @@ public class EvacuationSiteDataViewModel extends EvacuationBaseViewModel {
                 ((QuestionItemViewModelDate) mQuestionsViewModels.get(7)).answer.get(),
                 ((QuestionItemViewModelFloat) mQuestionsViewModels.get(8)).answer.get(),
                 ((QuestionItemViewModelInt) mQuestionsViewModels.get(9)).answer.get());
-        mEvacuationRepositoryManager.saveSiteData(siteData);
+        mEvacuationItemRepositoryManager.saveSiteData(siteData);
     }
 }

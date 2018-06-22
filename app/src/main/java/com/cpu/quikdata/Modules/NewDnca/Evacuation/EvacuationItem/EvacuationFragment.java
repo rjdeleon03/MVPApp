@@ -54,7 +54,7 @@ public class EvacuationFragment extends BaseMultiPageFragment {
         }
 
         // Setup specific repository manager
-        EvacuationRepositoryManager repositoryManager = (EvacuationRepositoryManager) mViewModel;
+        EvacuationItemRepositoryManager repositoryManager = (EvacuationItemRepositoryManager) mViewModel;
 
         // Obtain fragment manager and context
         FragmentManager fragmentManager = getChildFragmentManager();

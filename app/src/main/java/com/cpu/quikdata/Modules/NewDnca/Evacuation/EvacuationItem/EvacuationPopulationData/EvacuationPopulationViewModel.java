@@ -6,7 +6,7 @@ import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationData;
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationEnumBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 
 import java.util.List;
 
@@ -15,11 +15,11 @@ public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel i
     /**
      * Constructor
      * @param context
-     * @param evacuationRepositoryManager
+     * @param evacuationItemRepositoryManager
      */
-    public EvacuationPopulationViewModel(Context context, EvacuationRepositoryManager evacuationRepositoryManager) {
-        super(context, evacuationRepositoryManager, GenericEnumDataRow.AgeGroup.class);
-        mGenericEnumDataRows.addAll(mEvacuationRepositoryManager.getPopulationData().getEvacuationPopulationDataRows());
+    public EvacuationPopulationViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(context, evacuationItemRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+        mGenericEnumDataRows.addAll(mEvacuationItemRepositoryManager.getPopulationData().getEvacuationPopulationDataRows());
         super.updateAgeGroupList();
     }
 
@@ -29,7 +29,7 @@ public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel i
     @Override
     public void navigateOnSaveButtonPressed() {
         EvacuationPopulationData evacuationPopulationData = new EvacuationPopulationData((List<EvacuationPopulationDataRow>)(Object) mGenericEnumDataRows);
-        mEvacuationRepositoryManager.savePopulationData(evacuationPopulationData);
+        mEvacuationItemRepositoryManager.savePopulationData(evacuationPopulationData);
     }
 
     /**

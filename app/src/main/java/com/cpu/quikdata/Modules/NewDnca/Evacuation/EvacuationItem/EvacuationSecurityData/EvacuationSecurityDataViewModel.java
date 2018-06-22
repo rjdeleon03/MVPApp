@@ -8,7 +8,7 @@ import com.cpu.quikdata.Models.Generics.BoolRemarksTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +34,12 @@ public class EvacuationSecurityDataViewModel extends EvacuationBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param evacuationRepositoryManager
+     * @param evacuationItemRepositoryManager
      */
-    public EvacuationSecurityDataViewModel(Context context, EvacuationRepositoryManager evacuationRepositoryManager) {
-        super(context, evacuationRepositoryManager);
+    public EvacuationSecurityDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(context, evacuationItemRepositoryManager);
 
-        EvacuationSecurityData securityData = mEvacuationRepositoryManager.getSecurityData();
+        EvacuationSecurityData securityData = mEvacuationItemRepositoryManager.getSecurityData();
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0], securityData.getUnaccompaniedChildren().isYes), securityData.getUnaccompaniedChildren().remarks, "Number of Unaccompanied Children"));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[1], securityData.getToiletLocks().isYes), securityData.getToiletLocks().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[2], securityData.getSegregatedToilet().isYes), securityData.getSegregatedToilet().remarks));
@@ -80,6 +80,6 @@ public class EvacuationSecurityDataViewModel extends EvacuationBaseViewModel {
                 new BoolRemarksTuple(booleansList.get(11).answer.get(), booleansList.get(11).remarks.get()),
                 new BoolRemarksTuple(booleansList.get(12).answer.get(), booleansList.get(12).remarks.get()));
 
-        mEvacuationRepositoryManager.saveSecurityData(securityData);
+        mEvacuationItemRepositoryManager.saveSecurityData(securityData);
     }
 }

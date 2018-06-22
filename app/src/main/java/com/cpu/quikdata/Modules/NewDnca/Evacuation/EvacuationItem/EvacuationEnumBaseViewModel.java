@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 public abstract class EvacuationEnumBaseViewModel extends BaseEnumViewModel {
 
-    protected EvacuationRepositoryManager mEvacuationRepositoryManager;
+    protected EvacuationItemRepositoryManager mEvacuationItemRepositoryManager;
 
     /**
      * Constructor
@@ -16,9 +16,9 @@ public abstract class EvacuationEnumBaseViewModel extends BaseEnumViewModel {
      * @param enumClass
      */
     protected EvacuationEnumBaseViewModel(Context context,
-                                          EvacuationRepositoryManager evacuationRepositoryManager,
+                                          EvacuationItemRepositoryManager evacuationItemRepositoryManager,
                                           @Nullable Class<? extends Enum> enumClass) {
         super(context, enumClass);
-        mEvacuationRepositoryManager = evacuationRepositoryManager;
+        mEvacuationItemRepositoryManager = evacuationItemRepositoryManager;
     }
 }

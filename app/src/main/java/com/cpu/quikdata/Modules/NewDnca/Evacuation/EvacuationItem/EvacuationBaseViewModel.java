@@ -6,15 +6,15 @@ import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionVie
 
 public abstract class EvacuationBaseViewModel extends BaseQuestionViewModel {
 
-    protected EvacuationRepositoryManager mEvacuationRepositoryManager;
+    protected EvacuationItemRepositoryManager mEvacuationItemRepositoryManager;
 
     /**
      * Constructor
      * @param context
-     * @param evacuationRepositoryManager
+     * @param evacuationItemRepositoryManager
      */
-    public EvacuationBaseViewModel(Context context, EvacuationRepositoryManager evacuationRepositoryManager) {
+    public EvacuationBaseViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
         super(context);
-        mEvacuationRepositoryManager = evacuationRepositoryManager;
+        mEvacuationItemRepositoryManager = evacuationItemRepositoryManager;
     }
 }

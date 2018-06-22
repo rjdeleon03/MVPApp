@@ -20,7 +20,7 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFaci
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFacilitiesData.EvacuationFacilitiesDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSecurityData.EvacuationSecurityDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSecurityData.EvacuationSecurityDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSiteData.EvacuationSiteDataFragment;
@@ -434,22 +434,22 @@ public class ViewFactory {
 
                 // Evacuation Centers
                 case EVACUATION_SITE:
-                    viewModel = new EvacuationSiteDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationSiteDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_POPULATION:
-                    viewModel = new EvacuationPopulationViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationPopulationViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_FACILITIES:
-                    viewModel = new EvacuationFacilitiesDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationFacilitiesDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_WASH:
-                    viewModel = new EvacuationWashDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationWashDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_SECURITY:
-                    viewModel = new EvacuationSecurityDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationSecurityDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_COPING:
-                    viewModel = new EvacuationCopingDataViewModel(context, (EvacuationRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationCopingDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;
             }
 

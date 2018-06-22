@@ -7,7 +7,7 @@ import com.cpu.quikdata.Models.Generics.BoolRemarksTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +27,12 @@ public class EvacuationWashDataViewModel extends EvacuationBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param evacuationRepositoryManager
+     * @param evacuationItemRepositoryManager
      */
-    public EvacuationWashDataViewModel(Context context, EvacuationRepositoryManager evacuationRepositoryManager) {
-        super(context, evacuationRepositoryManager);
+    public EvacuationWashDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(context, evacuationItemRepositoryManager);
 
-        EvacuationWashData washData = mEvacuationRepositoryManager.getWashData();
+        EvacuationWashData washData = mEvacuationItemRepositoryManager.getWashData();
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0], washData.getCleanFoodPrepSpace().isYes), washData.getCleanFoodPrepSpace().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[1], washData.getCleanWaterSource().isYes), washData.getCleanWaterSource().remarks));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[2], washData.getCleanToilets().isYes), washData.getCleanToilets().remarks));
@@ -61,6 +61,6 @@ public class EvacuationWashDataViewModel extends EvacuationBaseViewModel {
                 new BoolRemarksTuple(booleansList.get(5).answer.get(), booleansList.get(5).remarks.get()),
                 new BoolRemarksTuple(booleansList.get(6).answer.get(), booleansList.get(6).remarks.get()));
 
-        mEvacuationRepositoryManager.saveWashData(washData);
+        mEvacuationItemRepositoryManager.saveWashData(washData);
     }
 }

@@ -11,7 +11,7 @@ import com.cpu.quikdata.Models.Evacuation.EvacuationWashData;
 import com.cpu.quikdata.Models.Generics.GenericCopingData;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
 
-public class EvacuationViewModel extends BaseMultiPageViewModel implements EvacuationRepositoryManager {
+public class EvacuationItemViewModel extends BaseMultiPageViewModel implements EvacuationItemRepositoryManager {
 
     private EvacuationSiteData mSiteData;
     private EvacuationPopulationData mPopulationData;
@@ -25,7 +25,7 @@ public class EvacuationViewModel extends BaseMultiPageViewModel implements Evacu
      * @param context
      * @param dncaFormRepository
      */
-    public EvacuationViewModel(Context context, DNCAFormRepository dncaFormRepository) {
+    public EvacuationItemViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context, dncaFormRepository);
     }
 

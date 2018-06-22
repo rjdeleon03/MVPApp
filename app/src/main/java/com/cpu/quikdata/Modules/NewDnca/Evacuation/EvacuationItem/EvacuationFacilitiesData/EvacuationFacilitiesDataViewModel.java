@@ -9,7 +9,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelBoolean;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelInt;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +28,12 @@ public class EvacuationFacilitiesDataViewModel extends EvacuationBaseViewModel {
     /**
      * Constructor
      * @param context
-     * @param evacuationRepositoryManager
+     * @param evacuationItemRepositoryManager
      */
-    public EvacuationFacilitiesDataViewModel(Context context, EvacuationRepositoryManager evacuationRepositoryManager) {
-        super(context, evacuationRepositoryManager);
+    public EvacuationFacilitiesDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(context, evacuationItemRepositoryManager);
 
-        EvacuationFacilitiesData facilitiesData = mEvacuationRepositoryManager.getFacilitiesData();
+        EvacuationFacilitiesData facilitiesData = mEvacuationItemRepositoryManager.getFacilitiesData();
         mQuestionsViewModels.add(new QuestionItemViewModelInt(new BaseQuestion(mQuestions[0], facilitiesData.getCapacity())));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[1], facilitiesData.getToilets().isYes), facilitiesData.getToilets().remarks, "Number of Toilets"));
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[2], facilitiesData.getWideEntrance().isYes), facilitiesData.getWideEntrance().remarks));
@@ -60,6 +60,6 @@ public class EvacuationFacilitiesDataViewModel extends EvacuationBaseViewModel {
                 new BoolRemarksTuple(booleansList.get(3).answer.get(), booleansList.get(3).remarks.get()),
                 new BoolRemarksTuple(booleansList.get(4).answer.get(), booleansList.get(4).remarks.get()));
 
-        mEvacuationRepositoryManager.saveFacilitiesData(facilitiesData);
+        mEvacuationItemRepositoryManager.saveFacilitiesData(facilitiesData);
     }
 }

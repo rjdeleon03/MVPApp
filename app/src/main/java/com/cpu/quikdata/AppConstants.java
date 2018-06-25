@@ -56,6 +56,7 @@ public class AppConstants {
         WASH_ASSISTANCE,
         WASH_GAPS,
 
+        EVACUATION_LIST,
         EVACUATION_SITE,
         EVACUATION_POPULATION,
         EVACUATION_FACILITIES,

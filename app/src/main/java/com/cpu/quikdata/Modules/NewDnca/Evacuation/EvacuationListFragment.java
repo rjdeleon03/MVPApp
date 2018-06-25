@@ -7,13 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EvacuationListFragment extends Fragment {
+public class EvacuationListFragment extends BaseSubFragment {
 
+    private EvacuationListViewModel mViewModel;
+
+    public static EvacuationListFragment newInstance() {
+        return new EvacuationListFragment();
+    }
 
     public EvacuationListFragment() {
         // Required empty public constructor
@@ -25,6 +31,15 @@ public class EvacuationListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.evacuation_list_fragment, container, false);
+    }
+
+
+    /**
+     * Set the viewModel
+     * @param evacuationListViewModel
+     */
+    public void setViewModel(EvacuationListViewModel evacuationListViewModel) {
+        mViewModel = evacuationListViewModel;
     }
 
 }

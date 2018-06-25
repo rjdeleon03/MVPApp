@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Modules.NewDnca.Evacuation.EvacuationActivity">
 
+    <include layout="@layout/custom_toolbar_list" />
+
 </android.support.constraint.ConstraintLayout>

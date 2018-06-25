@@ -8,11 +8,12 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EvacuationListViewModel extends BaseMultiPageViewModel implements EvacuationRepositoryManager {
 
-    public final ObservableList<EvacuationInfo> evacuationList = new ObservableArrayList<>();
+    public ObservableList<EvacuationInfo> evacuationList;
 
     /**
      * Constructor
@@ -28,6 +29,9 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
+        if (evacuationList == null) {
+            evacuationList = new ObservableArrayList<>();
+        }
         evacuationList.addAll(mDncaForm.getEvacuationInfos());
     }
 

@@ -15,6 +15,7 @@ import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesNavigator;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsFragment;
@@ -442,7 +443,7 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
                     break;
 
                 case EVACUATION:
-                    viewModel = new EvacuationItemViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new EvacuationListViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
                     viewModel.setNewDncaNavigator(this);
                     break;
 

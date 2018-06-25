@@ -11,6 +11,8 @@ public class DNCAListItemViewModel {
 
     private Context mContext;
     private DNCAFormRepository mDncaFormRepository;
+
+    // TODO: Change all activity references to a weak reference
     // This navigator is s wrapped in a WeakReference to avoid leaks because it has references to an
     // activity. There's no straightforward way to clear it for each item in a list adapter.
     @Nullable

@@ -16,6 +16,7 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopi
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopingData.EvacuationCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFacilitiesData.EvacuationFacilitiesDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFacilitiesData.EvacuationFacilitiesDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemActivity;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
@@ -123,6 +124,11 @@ public class ViewFactory {
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
+    }
+
+    public static void startEvacuationItemActivity(AppCompatActivity activity) {
+        Intent intent = new Intent(activity, EvacuationItemActivity.class);
+        activity.startActivity(intent);
     }
 
     /**

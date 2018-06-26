@@ -9,7 +9,8 @@ import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
 import java.util.List;
 
-public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback, DNCAFormDataSource.SubmitDncaFormCallback, DNCAFormDataSource.UploadImagesCallback {
+public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback,
+        DNCAFormDataSource.SubmitDncaFormCallback, DNCAFormDataSource.UploadImagesCallback {
 
     private DNCAFormRepository mDncaFormRepository;
 
@@ -111,6 +112,8 @@ public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDa
     public void navigateOnCaseStoriesButtonPressed() {
         mNewDncaNavigator.onCaseStoriesButtonPressed();
     }
+
+
 
     /**
      * Callback for when form has been created

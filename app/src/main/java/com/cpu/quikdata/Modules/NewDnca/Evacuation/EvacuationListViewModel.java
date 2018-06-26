@@ -3,17 +3,24 @@ package com.cpu.quikdata.Modules.NewDnca.Evacuation;
 import android.content.Context;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
+import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
+import com.cpu.quikdata.Modules.NewDnca.NewDncaNavigator;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EvacuationListViewModel extends BaseMultiPageViewModel implements EvacuationRepositoryManager {
 
     private List<EvacuationInfo> mEvacuationList;
+
+    @Nullable
+    private WeakReference<NewDncaNavigator> mNavigator;
+
 
     /**
      * Constructor
@@ -22,6 +29,14 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     public EvacuationListViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context, dncaFormRepository);
+    }
+
+    /**
+     * Sets the navigator
+     * @param navigator
+     */
+    public void setNavigator(NewDncaNavigator navigator) {
+        mNavigator = new WeakReference<>(navigator);
     }
 
     /**
@@ -68,5 +83,12 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveEvacuationInfo(int index) {
 
+    }
+
+    /**
+     * Handles navigation when evacuation add button is pressed
+     */
+    public void navigateOnEvacuationAddButtonPressed() {
+        mNavigator.get().onEvacuationAddButtonPressed();
     }
 }

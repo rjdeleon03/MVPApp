@@ -20,5 +20,7 @@ public interface NewDncaNavigator {
 
     void onEvacuationButtonPressed();
 
+    void onEvacuationAddButtonPressed();
+
     void onCaseStoriesButtonPressed();
 }

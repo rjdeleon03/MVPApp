@@ -8,14 +8,13 @@
 
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.Modules.DNCAList.Item.DNCAListItemViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.EvacuationList.EvacuationListItem.EvacuationListItemViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{() -> viewModel.navigateOnDncaListItemClicked()}">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/dnca_item_img"
@@ -37,17 +36,15 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/dnca_item_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Header"
+                android:text="@{viewModel.head}"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
             <TextView
-                android:id="@+id/dnca_item_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description"/>
+                android:text="@{viewModel.text}" />
         </LinearLayout>
 
         <ImageButton

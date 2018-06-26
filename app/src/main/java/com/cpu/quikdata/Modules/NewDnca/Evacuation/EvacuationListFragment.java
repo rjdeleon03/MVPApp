@@ -8,12 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.cpu.quikdata.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EvacuationListFragment extends BaseSubFragment {
+public class EvacuationListFragment extends BaseMultiPageFragment {
 
     private EvacuationListViewModel mViewModel;
 

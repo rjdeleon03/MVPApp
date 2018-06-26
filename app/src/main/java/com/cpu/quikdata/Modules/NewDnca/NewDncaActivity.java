@@ -15,6 +15,7 @@ import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesNavigator;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityViewModel;
@@ -54,7 +55,7 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
     private LivelihoodsViewModel mLivelihoodsViewModel;
     private HealthViewModel mHealthViewModel;
     private WashViewModel mWashViewModel;
-    private EvacuationItemViewModel mEvacuationViewModel;
+    private EvacuationListViewModel mEvacuationListViewModel;
     private CaseStoriesViewModel mCaseStoriesViewModel;
 
     private FormDetailsFragment mFormDetailsFragment;
@@ -64,7 +65,7 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
     private LivelihoodsFragment mLivelihoodsFragment;
     private HealthFragment mHealthFragment;
     private WashFragment mWashFragment;
-    private EvacuationFragment mEvacuationFragment;
+    private EvacuationListFragment mEvacuationListFragment;
     private CaseStoriesFragment mCaseStoriesFragment;
 
     private CameraOwner mCameraOwner = null;
@@ -147,9 +148,9 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
                 mWashFragment.setViewModel(mWashViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.EVACUATION.toString())) {
-                mEvacuationFragment = (EvacuationFragment) currentFragment;
-                mEvacuationViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
-                mEvacuationFragment.setViewModel(mEvacuationViewModel);
+                mEvacuationListFragment = (EvacuationListFragment) currentFragment;
+                mEvacuationListViewModel = (EvacuationListViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+                mEvacuationListFragment.setViewModel(mEvacuationListViewModel);
 
             } else if(currentFragment.getTag().equals(NewDncaComponent.CASE_STORIES.toString())) {
                 mCaseStoriesFragment = (CaseStoriesFragment) currentFragment;
@@ -258,13 +259,13 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
      */
     @Override
     public void onEvacuationButtonPressed() {
-        ViewFactory.startEvacuationListActivity(this);
+//        ViewFactory.startEvacuationListActivity(this);
 
-//        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
-//        mEvacuationViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
-//        evacuationFragment.setViewModel(mEvacuationViewModel);
-//        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
-//                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
+        EvacuationListFragment evacuationListFragment = (EvacuationListFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
+        mEvacuationListViewModel = (EvacuationListViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
+        evacuationListFragment.setViewModel(mEvacuationListViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationListFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
     }
 
     /**
@@ -374,8 +375,8 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
                 break;
 
             case EVACUATION:
-                if (fragment == null || !(fragment instanceof EvacuationFragment)) {
-                    fragment = EvacuationFragment.newInstance();
+                if (fragment == null || !(fragment instanceof EvacuationListFragment)) {
+                    fragment = EvacuationListFragment.newInstance();
                 }
                 break;
 

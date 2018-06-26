@@ -8,13 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Modules.DNCAList.DNCAListActivity;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
-import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationActivity;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopingData.EvacuationCopingDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopingData.EvacuationCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFacilitiesData.EvacuationFacilitiesDataFragment;
@@ -126,11 +123,6 @@ public class ViewFactory {
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
-    }
-
-    public static void startEvacuationListActivity(Context context) {
-        Intent intent = new Intent(context, EvacuationActivity.class);
-        context.startActivity(intent);
     }
 
     /**
@@ -268,9 +260,6 @@ public class ViewFactory {
                     break;
 
                 // Evacuation Centers
-                case EVACUATION_LIST:
-                    selectedFragment = EvacuationListFragment.newInstance();
-                    break;
                 case EVACUATION_SITE:
                     selectedFragment = EvacuationSiteDataFragment.newInstance();
                     break;
@@ -439,9 +428,6 @@ public class ViewFactory {
                     break;
 
                 // Evacuation Centers
-                case EVACUATION_LIST:
-                    viewModel = new EvacuationListViewModel(context, Injection.provideDncaRepository(context));
-                    break;
                 case EVACUATION_SITE:
                     viewModel = new EvacuationSiteDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
                     break;

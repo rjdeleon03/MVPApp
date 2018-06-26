@@ -29,9 +29,6 @@
             android:name=".Modules.NewDnca.NewDncaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".Modules.NewDnca.Evacuation.EvacuationActivity"/>
-        <activity android:name=".Modules.NewDnca.EvacuationList.EvacuationListActivity">
-        </activity>
     </application>
 
 </manifest>

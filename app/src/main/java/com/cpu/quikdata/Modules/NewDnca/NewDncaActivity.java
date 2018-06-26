@@ -43,7 +43,7 @@ import java.util.List;
 import static com.cpu.quikdata.AppConstants.REQUEST_IMAGE_CAPTURE;
 import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 
-public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavigator, CaseStoriesNavigator {
+public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigator, CaseStoriesNavigator {
 
     private NewDncaFragment mNewDncaFragment;
     private NewDncaViewModel mMainViewModel;
@@ -266,6 +266,14 @@ public class   NewDncaActivity extends AppCompatActivity implements NewDncaNavig
         evacuationListFragment.setViewModel(mEvacuationListViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationListFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION.toString());
+    }
+
+    /**
+     * Show evacuation item fragment
+     */
+    @Override
+    public void onEvacuationAddButtonPressed() {
+        ViewFactory.startEvacuationItemActivity(this);
     }
 
     /**

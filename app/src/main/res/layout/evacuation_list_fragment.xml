@@ -32,7 +32,6 @@
 
         </FrameLayout>
 
-        <!-- android:onClick="@{() -> viewModel.navigateOnNewDncaButtonPressed()}" -->
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/dnca_list_add"
             android:layout_width="50dp"

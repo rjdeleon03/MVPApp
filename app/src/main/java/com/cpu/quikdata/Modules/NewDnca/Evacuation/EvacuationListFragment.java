@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageFragment;
 import com.cpu.quikdata.R;
+import com.cpu.quikdata.databinding.EvacuationListFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +32,10 @@ public class EvacuationListFragment extends BaseMultiPageFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.evacuation_list_fragment, container, false);
+        View root = inflater.inflate(R.layout.evacuation_list_fragment, container, false);
+        EvacuationListFragmentBinding binding = EvacuationListFragmentBinding.bind(root);
+        binding.setViewModel(mViewModel);
+        return binding.getRoot();
     }
 
 

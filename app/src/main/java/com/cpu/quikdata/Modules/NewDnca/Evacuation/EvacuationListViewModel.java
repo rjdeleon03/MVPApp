@@ -18,9 +18,6 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
 
     private List<EvacuationInfo> mEvacuationList;
 
-    @Nullable
-    private WeakReference<NewDncaNavigator> mNavigator;
-
 
     /**
      * Constructor
@@ -29,14 +26,6 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     public EvacuationListViewModel(Context context, DNCAFormRepository dncaFormRepository) {
         super(context, dncaFormRepository);
-    }
-
-    /**
-     * Sets the navigator
-     * @param navigator
-     */
-    public void setNavigator(NewDncaNavigator navigator) {
-        mNavigator = new WeakReference<>(navigator);
     }
 
     /**
@@ -89,6 +78,6 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      * Handles navigation when evacuation add button is pressed
      */
     public void navigateOnEvacuationAddButtonPressed() {
-        mNavigator.get().onEvacuationAddButtonPressed();
+        mNewDncaNavigator.onEvacuationAddButtonPressed();
     }
 }

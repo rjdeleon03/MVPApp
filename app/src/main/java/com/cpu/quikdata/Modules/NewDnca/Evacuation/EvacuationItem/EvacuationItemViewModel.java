@@ -4,12 +4,14 @@ import android.content.Context;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Evacuation.EvacuationFacilitiesData;
+import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationData;
 import com.cpu.quikdata.Models.Evacuation.EvacuationSecurityData;
 import com.cpu.quikdata.Models.Evacuation.EvacuationSiteData;
 import com.cpu.quikdata.Models.Evacuation.EvacuationWashData;
 import com.cpu.quikdata.Models.Generics.GenericCopingData;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationRepositoryManager;
 
 public class EvacuationItemViewModel extends BaseMultiPageViewModel implements EvacuationItemRepositoryManager {
 
@@ -25,21 +27,25 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
      * @param context
      * @param dncaFormRepository
      */
-    public EvacuationItemViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
-    }
+    public EvacuationItemViewModel(Context context,
+                                   DNCAFormRepository dncaFormRepository,
+                                   EvacuationRepositoryManager parentRepositoryManager,
+                                   int itemIndex) {
 
-    /**
-     * Override parent method to handle DNCA form data when loaded
-     */
-    @Override
-    public void retrieveDataAfterFormLoaded() {
-//        mSiteData = mDncaForm.getEvacuationInfo().getSiteData();
-//        mPopulationData = mDncaForm.getEvacuationInfo().getPopulationData();
-//        mFacilitiesData = mDncaForm.getEvacuationInfo().getFacilitiesData();
-//        mWashData = mDncaForm.getEvacuationInfo().getWashData();
-//        mSecurityData = mDncaForm.getEvacuationInfo().getSecurityData();
-//        mCopingData = mDncaForm.getEvacuationInfo().getCopingData();
+        super(context, dncaFormRepository);
+
+        EvacuationInfo evacuationInfo;
+        if (itemIndex == -1) {
+            evacuationInfo = new EvacuationInfo();
+        } else {
+            evacuationInfo = parentRepositoryManager.getEvacuationInfo(itemIndex);
+        }
+        mSiteData = evacuationInfo.getSiteData();
+        mPopulationData = evacuationInfo.getPopulationData();
+        mFacilitiesData = evacuationInfo.getFacilitiesData();
+        mWashData = evacuationInfo.getWashData();
+        mSecurityData = evacuationInfo.getSecurityData();
+        mCopingData = evacuationInfo.getCopingData();
     }
 
     /**

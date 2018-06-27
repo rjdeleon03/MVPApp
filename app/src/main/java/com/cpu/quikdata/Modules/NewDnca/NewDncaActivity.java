@@ -56,6 +56,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private HealthViewModel mHealthViewModel;
     private WashViewModel mWashViewModel;
     private EvacuationListViewModel mEvacuationListViewModel;
+    private EvacuationItemViewModel mEvacuationItemViewModel;
     private CaseStoriesViewModel mCaseStoriesViewModel;
 
     private FormDetailsFragment mFormDetailsFragment;
@@ -66,6 +67,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private HealthFragment mHealthFragment;
     private WashFragment mWashFragment;
     private EvacuationListFragment mEvacuationListFragment;
+    private EvacuationFragment mEvacuationItemFragment;
     private CaseStoriesFragment mCaseStoriesFragment;
 
     private CameraOwner mCameraOwner = null;
@@ -81,6 +83,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         HEALTH,
         WASH,
         EVACUATION,
+        EVACUATION_ITEM,
         CASE_STORIES
     }
 
@@ -259,8 +262,6 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onEvacuationButtonPressed() {
-//        ViewFactory.startEvacuationListActivity(this);
-
         EvacuationListFragment evacuationListFragment = (EvacuationListFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION);
         mEvacuationListViewModel = (EvacuationListViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION);
         evacuationListFragment.setViewModel(mEvacuationListViewModel);
@@ -273,7 +274,13 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      */
     @Override
     public void onEvacuationAddButtonPressed() {
-        ViewFactory.startEvacuationItemActivity(this);
+//        ViewFactory.startEvacuationListActivity(this);
+        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION_ITEM);
+        mEvacuationItemViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION_ITEM);
+        evacuationFragment.setViewModel(mEvacuationItemViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
+                R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION_ITEM.toString());
+
     }
 
     /**
@@ -388,6 +395,12 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 }
                 break;
 
+            case EVACUATION_ITEM:
+                if (fragment == null || !(fragment instanceof EvacuationFragment)) {
+                    fragment = EvacuationFragment.newInstance();
+                }
+                break;
+
             case CASE_STORIES:
                 if (fragment == null || !(fragment instanceof CaseStoriesFragment)) {
                     fragment = CaseStoriesFragment.newInstance();
@@ -413,54 +426,50 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
             switch (fragmentType) {
                 case MENU:
                     viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case FORM_DETAILS:
                     viewModel = new FormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case GEN_INFO:
                     viewModel = new GenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case SHELTER_INFO:
                     viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case FOOD_SECURITY:
                     viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case LIVELIHOODS:
                     viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case HEALTH:
                     viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case WASH:
                     viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
                     break;
 
                 case EVACUATION:
                     viewModel = new EvacuationListViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
-                    viewModel.setNewDncaNavigator(this);
+                    break;
+
+                case EVACUATION_ITEM:
+                    viewModel = new EvacuationItemViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()), mEvacuationListViewModel, -1);
                     break;
 
                 case CASE_STORIES:
                     viewModel = new CaseStoriesViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()), this);
-                    viewModel.setNewDncaNavigator(this);
                     break;
             }
+
+            viewModel.setNewDncaNavigator(this);
 
             if (retainedViewModel != null) {
                 // If container already exists, just inject viewModel into container

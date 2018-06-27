@@ -13,5 +13,5 @@ public interface EvacuationRepositoryManager extends RepositoryManager {
 
     void saveEvacuationInfos (List<EvacuationInfo> evacuationInfos);
 
-    void saveEvacuationInfo(int index);
+    void saveEvacuationInfo(EvacuationInfo evacuationInfo, int index);
 }

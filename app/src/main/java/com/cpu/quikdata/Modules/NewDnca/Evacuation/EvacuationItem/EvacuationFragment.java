@@ -119,4 +119,10 @@ public class EvacuationFragment extends BaseMultiPageFragment {
 
         return root;
     }
+
+    @Override
+    public void onDestroyView() {
+        ((EvacuationItemRepositoryManager) mViewModel).saveEvacuationInfo();
+        super.onDestroyView();
+    }
 }

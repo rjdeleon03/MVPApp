@@ -29,4 +29,6 @@ public interface EvacuationItemRepositoryManager extends RepositoryManager, Gene
     void saveWashData(EvacuationWashData washData);
 
     void saveSecurityData(EvacuationSecurityData securityData);
+
+    void saveEvacuationInfo();
 }

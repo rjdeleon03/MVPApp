@@ -67,11 +67,16 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
 
     /**
      * Saves evacuation info at specified index
+     * @param evacuationInfo
      * @param index
      */
     @Override
-    public void saveEvacuationInfo(int index) {
-
+    public void saveEvacuationInfo(EvacuationInfo evacuationInfo, int index) {
+        if (index > -1) {
+            mEvacuationList.set(index, evacuationInfo);
+        } else {
+            mEvacuationList.add(evacuationInfo);
+        }
     }
 
     /**

@@ -23,22 +23,30 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     private EvacuationSecurityData mSecurityData;
     private GenericCopingData mCopingData;
 
+    private EvacuationRepositoryManager mParentRepositoryManager;
+    private int mItemIndex;
+
     /**
      * Constructor
      * @param context
      * @param dncaFormRepository
+     * @param parentRepositoryManager
+     * @param itemIndex
      */
     public EvacuationItemViewModel(Context context,
                                    DNCAFormRepository dncaFormRepository,
                                    EvacuationRepositoryManager parentRepositoryManager,
                                    int itemIndex) {
 
+        // TODO: Eliminate usage of context and DNCAFormRepository if not necessar
         super(context, dncaFormRepository);
+        mItemIndex = itemIndex;
+        mParentRepositoryManager = parentRepositoryManager;
 
-        if (itemIndex == -1) {
+        if (mItemIndex == -1) {
             mEvacuationInfo = new EvacuationInfo();
         } else {
-            mEvacuationInfo = parentRepositoryManager.getEvacuationInfo(itemIndex);
+            mEvacuationInfo = parentRepositoryManager.getEvacuationInfo(mItemIndex);
         }
         mSiteData = mEvacuationInfo.getSiteData();
         mPopulationData = mEvacuationInfo.getPopulationData();
@@ -160,5 +168,11 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     public void saveGenericCopingData(GenericCopingData copingData) {
         mCopingData = copingData;
         mEvacuationInfo.setCopingData(mCopingData);
+    }
+
+    @Override
+    public void saveEvacuationInfo()
+    {
+        mParentRepositoryManager.saveEvacuationInfo(mEvacuationInfo, mItemIndex);
     }
 }

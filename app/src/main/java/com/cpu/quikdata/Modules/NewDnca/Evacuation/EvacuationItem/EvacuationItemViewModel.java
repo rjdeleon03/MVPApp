@@ -15,6 +15,7 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationRepositoryManager;
 
 public class EvacuationItemViewModel extends BaseMultiPageViewModel implements EvacuationItemRepositoryManager {
 
+    private EvacuationInfo mEvacuationInfo;
     private EvacuationSiteData mSiteData;
     private EvacuationPopulationData mPopulationData;
     private EvacuationFacilitiesData mFacilitiesData;
@@ -34,18 +35,17 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
 
         super(context, dncaFormRepository);
 
-        EvacuationInfo evacuationInfo;
         if (itemIndex == -1) {
-            evacuationInfo = new EvacuationInfo();
+            mEvacuationInfo = new EvacuationInfo();
         } else {
-            evacuationInfo = parentRepositoryManager.getEvacuationInfo(itemIndex);
+            mEvacuationInfo = parentRepositoryManager.getEvacuationInfo(itemIndex);
         }
-        mSiteData = evacuationInfo.getSiteData();
-        mPopulationData = evacuationInfo.getPopulationData();
-        mFacilitiesData = evacuationInfo.getFacilitiesData();
-        mWashData = evacuationInfo.getWashData();
-        mSecurityData = evacuationInfo.getSecurityData();
-        mCopingData = evacuationInfo.getCopingData();
+        mSiteData = mEvacuationInfo.getSiteData();
+        mPopulationData = mEvacuationInfo.getPopulationData();
+        mFacilitiesData = mEvacuationInfo.getFacilitiesData();
+        mWashData = mEvacuationInfo.getWashData();
+        mSecurityData = mEvacuationInfo.getSecurityData();
+        mCopingData = mEvacuationInfo.getCopingData();
     }
 
     /**
@@ -109,7 +109,7 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveSiteData(EvacuationSiteData siteData) {
         mSiteData = siteData;
-//        mDncaForm.getEvacuationInfo().setSiteData(mSiteData);
+        mEvacuationInfo.setSiteData(mSiteData);
     }
 
     /**
@@ -119,7 +119,7 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void savePopulationData(EvacuationPopulationData populationData) {
         mPopulationData = populationData;
-//        mDncaForm.getEvacuationInfo().setPopulationData(mPopulationData);
+        mEvacuationInfo.setPopulationData(mPopulationData);
     }
 
     /**
@@ -129,7 +129,7 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveFacilitiesData(EvacuationFacilitiesData facilitiesData) {
         mFacilitiesData = facilitiesData;
-//        mDncaForm.getEvacuationInfo().setFacilitiesData(mFacilitiesData);
+        mEvacuationInfo.setFacilitiesData(mFacilitiesData);
     }
 
     /**
@@ -139,7 +139,7 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveWashData(EvacuationWashData washData) {
         mWashData = washData;
-//        mDncaForm.getEvacuationInfo().setWashData(mWashData);
+        mEvacuationInfo.setWashData(mWashData);
     }
 
     /**
@@ -149,7 +149,7 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveSecurityData(EvacuationSecurityData securityData) {
         mSecurityData = securityData;
-//        mDncaForm.getEvacuationInfo().setSecurityData(mSecurityData);
+        mEvacuationInfo.setSecurityData(mSecurityData);
     }
 
     /**
@@ -159,6 +159,6 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveGenericCopingData(GenericCopingData copingData) {
         mCopingData = copingData;
-//        mDncaForm.getEvacuationInfo().setCopingData(mCopingData);
+        mEvacuationInfo.setCopingData(mCopingData);
     }
 }

@@ -73,7 +73,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private CameraOwner mCameraOwner = null;
     private NewDncaActivityBinding mMainBinding;
 
-    private enum NewDncaComponent {
+    public enum NewDncaComponent {
         MENU,
         FORM_DETAILS,
         GEN_INFO,

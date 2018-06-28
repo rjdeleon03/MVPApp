@@ -21,6 +21,7 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSite
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSiteData.EvacuationSiteDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationWashData.EvacuationWashDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationWashData.EvacuationWashDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.NewDncaActivity;
 import com.cpu.quikdata.ViewFactory;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_COPING;
@@ -123,6 +124,7 @@ public class EvacuationFragment extends BaseMultiPageFragment {
     @Override
     public void onDestroyView() {
         ((EvacuationItemRepositoryManager) mViewModel).saveEvacuationInfo();
+        ViewFactory.findAndUnbindViewModel(getActivity().getSupportFragmentManager(), NewDncaActivity.NewDncaComponent.EVACUATION_ITEM);
         super.onDestroyView();
     }
 }

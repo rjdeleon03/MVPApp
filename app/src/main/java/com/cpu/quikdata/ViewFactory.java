@@ -290,6 +290,22 @@ public class ViewFactory {
     }
 
     /**
+     * Finds a viewModel and unbinds it if it exists
+     * @param fragmentManager
+     * @param fragmentType
+     */
+    public static void findAndUnbindViewModel(FragmentManager fragmentManager,
+                                              NewDncaActivity.NewDncaComponent fragmentType) {
+
+        String tag = fragmentType.toString() + VIEWMODEL_TAG;
+
+        ViewModelHolder<NewDncaBaseViewModel> retainedViewModel = (ViewModelHolder<NewDncaBaseViewModel>) fragmentManager.findFragmentByTag(tag);
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+            fragmentManager.beginTransaction().remove(retainedViewModel).commit();
+        }
+    }
+
+    /**
      * Finds the viewModel of the specified type;
      * Creates the viewModel if it does not exist
      * @param fragmentType

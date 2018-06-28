@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.Modules.NewDnca.EvacuationList.EvacuationListItem.EvacuationListItemViewModel" />
+            type="com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListItemViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.cpu.quikdata.Modules.NewDnca.EvacuationList.EvacuationListItem;
+package com.cpu.quikdata.Modules.NewDnca.Evacuation;
 
 import android.content.Context;
 import android.databinding.ObservableField;

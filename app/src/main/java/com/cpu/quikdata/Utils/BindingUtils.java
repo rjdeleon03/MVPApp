@@ -15,11 +15,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Models.DNCAListItem;
+import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Models.Generics.SimpleDate;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageDataRow;
 import com.cpu.quikdata.Models.Wash.WaterLevelRemarksTuple;
 import com.cpu.quikdata.Modules.DNCAList.DNCAListAdapter;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListAdapter;
 
 import java.util.List;
 
@@ -110,8 +112,17 @@ public class BindingUtils {
     }
 
     @BindingAdapter("items")
-    public static void setItems(RecyclerView recyclerView, List<DNCAListItem> items) {
+    public static void bindDncaItemsToRecycler(RecyclerView recyclerView, List<DNCAListItem> items) {
         DNCAListAdapter adapter = (DNCAListAdapter) recyclerView.getAdapter();
+        if (adapter != null)
+        {
+            adapter.replaceItems(items);
+        }
+    }
+
+    @BindingAdapter("items")
+    public static void bindEvacItemsToRecycler(RecyclerView recyclerView, List<EvacuationInfo> items) {
+        EvacuationListAdapter adapter = (EvacuationListAdapter) recyclerView.getAdapter();
         if (adapter != null)
         {
             adapter.replaceItems(items);

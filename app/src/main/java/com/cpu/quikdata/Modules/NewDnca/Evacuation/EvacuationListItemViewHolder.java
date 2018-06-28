@@ -1,4 +1,4 @@
-package com.cpu.quikdata.Modules.NewDnca.EvacuationList.EvacuationListItem;
+package com.cpu.quikdata.Modules.NewDnca.Evacuation;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,5 +12,9 @@ public class EvacuationListItemViewHolder extends RecyclerView.ViewHolder {
     public EvacuationListItemViewHolder(EvacuationListItemBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
+    }
+
+    public void bind(EvacuationListItemViewModel viewModel) {
+        mBinding.setViewModel(viewModel);
     }
 }

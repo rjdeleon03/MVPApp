@@ -16,7 +16,7 @@ import java.util.List;
 
 public class EvacuationListViewModel extends BaseMultiPageViewModel implements EvacuationRepositoryManager {
 
-    private List<EvacuationInfo> mEvacuationList;
+    public ObservableList<EvacuationInfo> mEvacuationList;
 
 
     /**
@@ -33,7 +33,8 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
-        mEvacuationList = new ArrayList<>(mDncaForm.getEvacuationInfos());
+        mEvacuationList = new ObservableArrayList<>();
+        mEvacuationList.addAll(mDncaForm.getEvacuationInfos());
     }
 
     /**
@@ -61,7 +62,8 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public void saveEvacuationInfos(List<EvacuationInfo> evacuationInfos) {
-        mEvacuationList = evacuationInfos;
+        mEvacuationList.clear();
+        mEvacuationList.addAll(evacuationInfos);
         mDncaForm.setEvacuationInfo(mEvacuationList);
     }
 

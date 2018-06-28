@@ -29,12 +29,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                items="@{viewModel.getEvacuationInfos()}"/>
+                items="@{viewModel.evacuationList}"/>
 
         </FrameLayout>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/dnca_list_add"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="bottom|end"

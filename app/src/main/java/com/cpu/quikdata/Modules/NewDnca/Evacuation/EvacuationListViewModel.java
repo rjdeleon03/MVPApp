@@ -16,8 +16,7 @@ import java.util.List;
 
 public class EvacuationListViewModel extends BaseMultiPageViewModel implements EvacuationRepositoryManager {
 
-    public ObservableList<EvacuationInfo> mEvacuationList;
-
+    public ObservableList<EvacuationInfo> evacuationList;
 
     /**
      * Constructor
@@ -33,8 +32,8 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public void retrieveDataAfterFormLoaded() {
-        mEvacuationList = new ObservableArrayList<>();
-        mEvacuationList.addAll(mDncaForm.getEvacuationInfos());
+        evacuationList = new ObservableArrayList<>();
+        evacuationList.addAll(mDncaForm.getEvacuationInfos());
     }
 
     /**
@@ -43,7 +42,7 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public List<EvacuationInfo> getEvacuationInfos() {
-        return mEvacuationList;
+        return evacuationList;
     }
 
     /**
@@ -53,7 +52,7 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public EvacuationInfo getEvacuationInfo(int index) {
-        return mEvacuationList.get(index);
+        return evacuationList.get(index);
     }
 
     /**
@@ -62,9 +61,9 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
      */
     @Override
     public void saveEvacuationInfos(List<EvacuationInfo> evacuationInfos) {
-        mEvacuationList.clear();
-        mEvacuationList.addAll(evacuationInfos);
-        mDncaForm.setEvacuationInfo(mEvacuationList);
+        evacuationList.clear();
+        evacuationList.addAll(evacuationInfos);
+        mDncaForm.setEvacuationInfo(evacuationList);
     }
 
     /**
@@ -75,9 +74,9 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void saveEvacuationInfo(EvacuationInfo evacuationInfo, int index) {
         if (index > -1) {
-            mEvacuationList.set(index, evacuationInfo);
+            evacuationList.set(index, evacuationInfo);
         } else {
-            mEvacuationList.add(evacuationInfo);
+            evacuationList.add(evacuationInfo);
         }
     }
 

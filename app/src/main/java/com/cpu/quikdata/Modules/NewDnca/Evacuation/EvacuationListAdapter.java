@@ -16,7 +16,6 @@ import java.util.List;
 public class EvacuationListAdapter extends RecyclerView.Adapter<EvacuationListItemViewHolder>{
 
     private com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel mViewModel;
-    private List<EvacuationInfo> mItems;
 
     public EvacuationListAdapter(EvacuationListViewModel viewModel) {
         mViewModel = viewModel;
@@ -28,20 +27,18 @@ public class EvacuationListAdapter extends RecyclerView.Adapter<EvacuationListIt
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View root = inflater.inflate(R.layout.evacuation_list_item, parent, false);
         EvacuationListItemBinding binding = EvacuationListItemBinding.bind(root);
-
-        EvacuationListItemViewModel viewModel = new EvacuationListItemViewModel(parent.getContext().getApplicationContext());
-        binding.setViewModel(viewModel);
         return new EvacuationListItemViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull EvacuationListItemViewHolder holder, int position) {
-        EvacuationInfo evacuationInfo = mItems.get(position);
+        EvacuationListItemViewModel viewModel = new EvacuationListItemViewModel(mViewModel.getEvacuationInfo(position));
+        holder.bind(viewModel);
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return mViewModel.getEvacuationInfos().size();
     }
 
     /**
@@ -49,7 +46,7 @@ public class EvacuationListAdapter extends RecyclerView.Adapter<EvacuationListIt
      * @param items
      */
     public void replaceItems(List<EvacuationInfo> items) {
-        mItems = items;
+        mViewModel.saveEvacuationInfos(items);
         notifyDataSetChanged();
     }
 }

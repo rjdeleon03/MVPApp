@@ -125,7 +125,7 @@ public class BindingUtils {
         EvacuationListAdapter adapter = (EvacuationListAdapter) recyclerView.getAdapter();
         if (adapter != null)
         {
-            adapter.replaceItems(items);
+            adapter.notifyDataSetChanged();
         }
     }
 

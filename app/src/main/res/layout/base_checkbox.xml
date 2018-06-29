@@ -18,8 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="@={viewModel.isAffected}"
-            android:text="@{viewModel.text}"
-            android:fontFamily="@font/lato_reg"/>
+            android:text="@{viewModel.text}"/>
 
     </LinearLayout>
 

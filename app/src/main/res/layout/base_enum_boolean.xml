@@ -29,8 +29,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="Yes"
-            android:checked="@={viewModel.value1}"
-            android:fontFamily="@font/lato_reg"/>
+            android:checked="@={viewModel.value1}"/>
 
         <RadioButton
             android:layout_column="4"
@@ -39,8 +38,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="No"
-            android:checked="@={!viewModel.value1}"
-            android:fontFamily="@font/lato_reg"/>
+            android:checked="@={!viewModel.value1}"/>
 
     </TableRow>
 

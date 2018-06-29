@@ -23,9 +23,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
                 android:text="@{viewModel.question}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,8 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.yesText}"
-                        android:checked="@={viewModel.answer}"
-                        android:fontFamily="@font/lato_reg"/>
+                        android:checked="@={viewModel.answer}"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -52,8 +51,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginStart="16dp"
                         android:text="@{viewModel.noText}"
-                        android:checked="@={!viewModel.answer}"
-                        android:fontFamily="@font/lato_reg"/>
+                        android:checked="@={!viewModel.answer}"/>
 
                 </LinearLayout>
 
@@ -62,10 +60,10 @@
                     android:layout_height="wrap_content"
                     android:visibility="@{(viewModel.shouldShowRemarks || viewModel.shouldShowRemarksInt) ? View.VISIBLE : View.GONE}"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/lato_bold"
                     android:text="@{viewModel.remarksText}"
                     android:textSize="13dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -74,7 +72,6 @@
                     android:ems="10"
                     android:text="@={viewModel.remarks}"
                     android:textSize="14dp"
-                    android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
                 <EditText
@@ -84,7 +81,6 @@
                     android:ems="10"
                     android:text="@={viewModel.remarksInt}"
                     android:textSize="14dp"
-                    android:fontFamily="@font/lato_reg"
                     android:inputType="number" />
 
             </LinearLayout>

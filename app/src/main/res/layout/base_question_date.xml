@@ -24,9 +24,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
                 android:text="@{viewModel.question}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,7 +49,6 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="@{viewModel.answer}"
-                    android:fontFamily="@font/lato_reg"
                     tools:text="2018/04/29" />
 
                 <Button
@@ -58,8 +57,7 @@
                     android:layout_height="match_parent"
                     android:padding="0dp"
                     android:layout_margin="0dp"
-                    android:text="Set Date"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:text="Set Date"/>
 
             </LinearLayout>
 

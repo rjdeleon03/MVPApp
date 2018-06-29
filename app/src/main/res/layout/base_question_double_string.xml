@@ -22,9 +22,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_bold"
                 android:text="@{viewModel.question}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,7 +36,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_bold"
                     android:text="@{viewModel.subQuestion1}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -46,13 +45,11 @@
                     android:ems="10"
                     android:text="@={viewModel.answer1}"
                     android:textSize="14dp"
-                    android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_bold"
                     android:text="@{viewModel.subQuestion2}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -62,7 +59,6 @@
                     android:ems="10"
                     android:text="@={viewModel.answer2}"
                     android:textSize="14dp"
-                    android:fontFamily="@font/lato_reg"
                     android:inputType="textMultiLine" />
 
             </LinearLayout>

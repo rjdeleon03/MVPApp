@@ -27,9 +27,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_bold"
                     android:text="@{viewModel.question}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,8 +48,7 @@
                             android:id="@+id/nd_wash_radio_level1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Level 1"
-                            android:fontFamily="@font/lato_reg"/>
+                            android:text="Level 1"/>
 
                         <RadioButton
                             android:id="@+id/nd_wash_radio_level2"
@@ -57,8 +56,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:layout_marginStart="16dp"
-                            android:text="Level 2"
-                            android:fontFamily="@font/lato_reg"/>
+                            android:text="Level 2"/>
 
                         <RadioButton
                             android:id="@+id/nd_wash_radio_level3"
@@ -66,8 +64,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:layout_marginStart="16dp"
-                            android:text="Level 3"
-                            android:fontFamily="@font/lato_reg"/>
+                            android:text="Level 3"/>
 
                         </RadioGroup>
 
@@ -75,7 +72,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/lato_bold"
                         android:text="Remarks"
                         android:textSize="13dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -86,7 +82,6 @@
                         android:ems="10"
                         android:text="@={viewModel.answerRemarks}"
                         android:textSize="14dp"
-                        android:fontFamily="@font/lato_reg"
                         android:inputType="textMultiLine" />
 
                 </LinearLayout>

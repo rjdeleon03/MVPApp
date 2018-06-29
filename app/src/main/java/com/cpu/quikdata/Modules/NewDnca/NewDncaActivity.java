@@ -13,7 +13,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesFragment;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesNavigator;
 import com.cpu.quikdata.Modules.NewDnca.CaseStories.CaseStoriesViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFragment;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel;
@@ -67,7 +67,7 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     private HealthFragment mHealthFragment;
     private WashFragment mWashFragment;
     private EvacuationListFragment mEvacuationListFragment;
-    private EvacuationFragment mEvacuationItemFragment;
+    private EvacuationItemFragment mEvacuationItemFragment;
     private CaseStoriesFragment mCaseStoriesFragment;
 
     private CameraOwner mCameraOwner = null;
@@ -275,10 +275,10 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
     @Override
     public void onEvacuationAddButtonPressed() {
 //        ViewFactory.startEvacuationListActivity(this);
-        EvacuationFragment evacuationFragment = (EvacuationFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION_ITEM);
+        EvacuationItemFragment evacuationItemFragment = (EvacuationItemFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION_ITEM);
         mEvacuationItemViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION_ITEM);
-        evacuationFragment.setViewModel(mEvacuationItemViewModel);
-        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationFragment,
+        evacuationItemFragment.setViewModel(mEvacuationItemViewModel);
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationItemFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION_ITEM.toString());
 
     }
@@ -396,8 +396,8 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
                 break;
 
             case EVACUATION_ITEM:
-                if (fragment == null || !(fragment instanceof EvacuationFragment)) {
-                    fragment = EvacuationFragment.newInstance();
+                if (fragment == null || !(fragment instanceof EvacuationItemFragment)) {
+                    fragment = EvacuationItemFragment.newInstance();
                 }
                 break;
 

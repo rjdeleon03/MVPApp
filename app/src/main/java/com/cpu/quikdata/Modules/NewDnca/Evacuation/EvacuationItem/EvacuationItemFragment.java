@@ -34,13 +34,13 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_WASH;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EvacuationFragment extends BaseMultiPageFragment {
+public class EvacuationItemFragment extends BaseMultiPageFragment {
 
-    public static EvacuationFragment newInstance() {
-        return new EvacuationFragment();
+    public static EvacuationItemFragment newInstance() {
+        return new EvacuationItemFragment();
     }
 
-    public EvacuationFragment() {
+    public EvacuationItemFragment() {
         // Required empty public constructor
     }
 

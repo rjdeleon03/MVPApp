@@ -20,11 +20,10 @@ public class LivelihoodsNeedsDataViewModel extends LivelihoodsBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsRepositoryManager
      */
-    public LivelihoodsNeedsDataViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
-        super(context, livelihoodsRepositoryManager);
+    public LivelihoodsNeedsDataViewModel(LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
+        super(livelihoodsRepositoryManager);
 
         LivelihoodsNeedsData needsData = mLivelihoodsRepositoryManager.getLivelihoodsNeedsData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], needsData.getAssistanceToFillGap())));

@@ -23,7 +23,6 @@ public class SpecialNeedsFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         SpecialNeedsRowViewModel specialNeedsRowViewModel = new SpecialNeedsRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

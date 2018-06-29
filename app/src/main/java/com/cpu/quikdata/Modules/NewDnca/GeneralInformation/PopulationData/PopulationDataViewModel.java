@@ -15,11 +15,10 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Constructor
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public PopulationDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+    public PopulationDataViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
         mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getPopulationData().getPopulationDataRows());
         super.updateAgeGroupList();
     }

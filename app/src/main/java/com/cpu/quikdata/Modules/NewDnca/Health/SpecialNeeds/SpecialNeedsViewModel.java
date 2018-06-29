@@ -14,11 +14,10 @@ public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements Sp
 
     /**
      * Constructor
-     * @param context
      * @param healthRepositoryManager
      */
-    public SpecialNeedsViewModel(Context context, HealthRepositoryManager healthRepositoryManager) {
-        super(context, healthRepositoryManager, GenericEnumDataRow.SpecialNeedsType.class);
+    public SpecialNeedsViewModel(HealthRepositoryManager healthRepositoryManager) {
+        super(healthRepositoryManager, GenericEnumDataRow.SpecialNeedsType.class);
         mGenericEnumDataRows.addAll(mHealthRepositoryManager.getSpecialNeedsData().getSpecialNeedsDataRows());
         super.updateAgeGroupList();
     }

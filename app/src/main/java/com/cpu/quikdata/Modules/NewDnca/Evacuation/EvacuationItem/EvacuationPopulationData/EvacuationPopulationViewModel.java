@@ -14,11 +14,10 @@ public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel i
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationPopulationViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context, evacuationItemRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+    public EvacuationPopulationViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(evacuationItemRepositoryManager, GenericEnumDataRow.AgeGroup.class);
         mGenericEnumDataRows.addAll(mEvacuationItemRepositoryManager.getPopulationData().getEvacuationPopulationDataRows());
         super.updateAgeGroupList();
     }

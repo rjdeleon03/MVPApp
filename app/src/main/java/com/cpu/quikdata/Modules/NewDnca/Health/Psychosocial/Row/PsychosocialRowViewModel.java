@@ -23,16 +23,14 @@ public class PsychosocialRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param psychosocialRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public PsychosocialRowViewModel(Context context,
-                                    PsychosocialRepositoryManager psychosocialRepositoryManager,
+    public PsychosocialRowViewModel(PsychosocialRepositoryManager psychosocialRepositoryManager,
                                     BaseEnumNavigator baseEnumNavigator, int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mPsychosocialRepositoryManager = psychosocialRepositoryManager;
 
         PsychosocialDataRow psychosocialDataRow = mPsychosocialRepositoryManager.getPsychosocialDataRow(rowIndex);

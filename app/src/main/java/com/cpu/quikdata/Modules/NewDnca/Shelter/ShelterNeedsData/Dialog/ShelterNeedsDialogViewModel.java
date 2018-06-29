@@ -22,13 +22,14 @@ public class ShelterNeedsDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
+     * @param shelterNeedsRepositoryManager
+     * @param needsTypeIndex
+     * @param isNewRow
      */
-    public ShelterNeedsDialogViewModel(Context context,
-                                       ShelterNeedsRepositoryManager shelterNeedsRepositoryManager,
+    public ShelterNeedsDialogViewModel(ShelterNeedsRepositoryManager shelterNeedsRepositoryManager,
                                        int needsTypeIndex,
                                        boolean isNewRow) {
-        super(context);
+        super();
         mShelterNeedsRepositoryManager = shelterNeedsRepositoryManager;
 
         ShelterNeedsDataRow shelterNeedsDataRow;

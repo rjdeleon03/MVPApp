@@ -15,11 +15,10 @@ public class InfrastructureDamageViewModel extends GenInfoEnumBaseViewModel impl
 
     /**
      * Constructor
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public InfrastructureDamageViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context, genInfoRepositoryManager, GenericEnumDataRow.InfraType.class);
+    public InfrastructureDamageViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(genInfoRepositoryManager, GenericEnumDataRow.InfraType.class);
         mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getInfrastructureDamageData().getInfrastructureDamageDataRows());
         super.updateAgeGroupList();
     }

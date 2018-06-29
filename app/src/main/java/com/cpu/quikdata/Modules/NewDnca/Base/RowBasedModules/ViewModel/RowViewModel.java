@@ -11,15 +11,13 @@ public abstract class RowViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public RowViewModel(Context context,
-                        BaseEnumNavigator baseEnumNavigator,
+    public RowViewModel(BaseEnumNavigator baseEnumNavigator,
                         int rowIndex) {
 
-        super(context);
+        super();
         mBaseEnumNavigator = baseEnumNavigator;
         mRowIndex = rowIndex;
     }

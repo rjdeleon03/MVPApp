@@ -18,11 +18,10 @@ public class FoodCopingDataViewModel extends FoodSecurityBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param foodSecurityRepositoryManager
      */
-    public FoodCopingDataViewModel(Context context, FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
-        super(context, foodSecurityRepositoryManager);
+    public FoodCopingDataViewModel(FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
+        super(foodSecurityRepositoryManager);
 
         GenericCopingData genericCopingData = mFoodSecurityRepositoryManager.getGenericCopingData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], genericCopingData.getCopingStrategies())));

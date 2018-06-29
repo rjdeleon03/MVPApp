@@ -16,11 +16,10 @@ public class EvacuationCopingDataViewModel extends EvacuationBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationCopingDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context, evacuationItemRepositoryManager);
+    public EvacuationCopingDataViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(evacuationItemRepositoryManager);
 
         GenericCopingData genericCopingData = mEvacuationItemRepositoryManager.getGenericCopingData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], genericCopingData.getCopingStrategies())));

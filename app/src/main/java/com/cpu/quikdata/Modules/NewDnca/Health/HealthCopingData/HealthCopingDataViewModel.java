@@ -18,11 +18,10 @@ public class HealthCopingDataViewModel extends HealthBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param healthRepositoryManager
      */
-    public HealthCopingDataViewModel(Context context, HealthRepositoryManager healthRepositoryManager) {
-        super(context, healthRepositoryManager);
+    public HealthCopingDataViewModel(HealthRepositoryManager healthRepositoryManager) {
+        super(healthRepositoryManager);
 
         GenericCopingData genericCopingData = mHealthRepositoryManager.getGenericCopingData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], genericCopingData.getCopingStrategies())));

@@ -27,7 +27,6 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         DiseasesInjuriesDialogViewModel dialogViewModel = new DiseasesInjuriesDialogViewModel(
-                getContext(),
                 (DiseasesInjuriesRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -38,7 +37,6 @@ public class DiseasesInjuriesFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         DiseasesInjuriesDialogViewModel dialogViewModel = new DiseasesInjuriesDialogViewModel(
-                getContext(),
                 (DiseasesInjuriesRepositoryManager) mViewModel,
                 rowIndex,
                 false);

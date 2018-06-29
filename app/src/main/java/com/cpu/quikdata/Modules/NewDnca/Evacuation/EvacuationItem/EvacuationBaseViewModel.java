@@ -10,11 +10,10 @@ public abstract class EvacuationBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationBaseViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context);
+    public EvacuationBaseViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super();
         mEvacuationItemRepositoryManager = evacuationItemRepositoryManager;
     }
 }

@@ -21,11 +21,10 @@ public class FoodGapsDataViewModel extends FoodSecurityBaseViewModel {
     
     /**
      * Constructor
-     * @param context
      * @param foodSecurityRepositoryManager
      */
-    public FoodGapsDataViewModel(Context context, FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
-        super(context, foodSecurityRepositoryManager);
+    public FoodGapsDataViewModel(FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
+        super(foodSecurityRepositoryManager);
 
         FoodGapsData foodGapsData = mFoodSecurityRepositoryManager.getFoodGapsData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], foodGapsData.getIsAssistanceAppropriate())));

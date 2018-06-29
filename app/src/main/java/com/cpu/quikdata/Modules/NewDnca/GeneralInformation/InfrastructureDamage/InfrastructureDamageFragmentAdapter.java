@@ -23,7 +23,6 @@ public class InfrastructureDamageFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         InfrastructureDamageRowViewModel infrastructureDamageRowViewModel = new InfrastructureDamageRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

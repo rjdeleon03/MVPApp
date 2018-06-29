@@ -20,11 +20,10 @@ public class LivelihoodsCopingDataViewModel extends LivelihoodsBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsRepositoryManager
      */
-    public LivelihoodsCopingDataViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
-        super(context, livelihoodsRepositoryManager);
+    public LivelihoodsCopingDataViewModel(LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
+        super(livelihoodsRepositoryManager);
 
         LivelihoodsCopingData copingData = mLivelihoodsRepositoryManager.getLivelihoodsCopingData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], copingData.getCopingStrategies())));

@@ -33,14 +33,12 @@ public class AssistanceDialogViewModel extends DialogViewModel {
 
     /**
      * Default constructor
-     * @param context
      * @param assistanceDataRepositoryManager
      * @param rowIndex
      */
-    public AssistanceDialogViewModel(Context context,
-                                     AssistanceDataRepositoryManager assistanceDataRepositoryManager,
+    public AssistanceDialogViewModel(AssistanceDataRepositoryManager assistanceDataRepositoryManager,
                                      int rowIndex) {
-        super(context);
+        super();
         mAssistanceDataRepositoryManager = assistanceDataRepositoryManager;
         mRowIndex = rowIndex;
 
@@ -73,12 +71,10 @@ public class AssistanceDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor for new rows
-     * @param context
      * @param assistanceDataRepositoryManager
      */
-    public AssistanceDialogViewModel(Context context,
-                                     AssistanceDataRepositoryManager assistanceDataRepositoryManager) {
-        this(context, assistanceDataRepositoryManager, -1);
+    public AssistanceDialogViewModel(AssistanceDataRepositoryManager assistanceDataRepositoryManager) {
+        this(assistanceDataRepositoryManager, -1);
     }
 
     /**

@@ -23,7 +23,6 @@ public class DiseasesInjuriesFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         DiseasesInjuriesRowViewModel diseasesInjuriesRowViewModel = new DiseasesInjuriesRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

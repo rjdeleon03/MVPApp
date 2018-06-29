@@ -37,11 +37,10 @@ public class FoodImpactDataViewModel extends FoodSecurityBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param foodSecurityRepositoryManager
      */
-    public FoodImpactDataViewModel(Context context, FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
-        super(context, foodSecurityRepositoryManager);
+    public FoodImpactDataViewModel(FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
+        super(foodSecurityRepositoryManager);
 
         FoodImpactData foodImpactData = mFoodSecurityRepositoryManager.getFoodImpactData();
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0],

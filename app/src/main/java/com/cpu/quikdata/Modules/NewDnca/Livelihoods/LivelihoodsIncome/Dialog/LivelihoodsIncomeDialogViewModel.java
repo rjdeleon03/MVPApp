@@ -29,16 +29,14 @@ public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsIncomeRepositoryManager
      * @param incomeSourceTypeIndex
      * @param isNewRow
      */
-    public LivelihoodsIncomeDialogViewModel(Context context,
-                                            LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
+    public LivelihoodsIncomeDialogViewModel(LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
                                             int incomeSourceTypeIndex,
                                             boolean isNewRow) {
-        super(context);
+        super();
         mLivelihoodsIncomeRepositoryManager = livelihoodsIncomeRepositoryManager;
         mIsNewRow = isNewRow;
 

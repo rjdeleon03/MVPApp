@@ -26,12 +26,11 @@ public class CaseStoriesViewModel extends BaseMultiPageViewModel implements
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      * @param caseStoriesNavigator
      */
-    public CaseStoriesViewModel(Context context, DNCAFormRepository dncaFormRepository, CaseStoriesNavigator caseStoriesNavigator) {
-        super(context, dncaFormRepository);
+    public CaseStoriesViewModel(DNCAFormRepository dncaFormRepository, CaseStoriesNavigator caseStoriesNavigator) {
+        super(dncaFormRepository);
         mCaseStoriesNavigator = caseStoriesNavigator;
     }
 

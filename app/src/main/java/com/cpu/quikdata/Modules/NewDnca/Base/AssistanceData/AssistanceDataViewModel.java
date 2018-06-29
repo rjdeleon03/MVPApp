@@ -14,11 +14,9 @@ public class AssistanceDataViewModel extends BaseEnumViewModel implements Assist
 
     /**
      * Constructor
-     *
-     * @param context
      */
-    public AssistanceDataViewModel(Context context, AssistanceDataContainer assistanceDataContainer) {
-        super(context, null);
+    public AssistanceDataViewModel(AssistanceDataContainer assistanceDataContainer) {
+        super(null);
         mAssistanceDataContainer = assistanceDataContainer;
         mGenericEnumDataRows.addAll(mAssistanceDataContainer.getAssistanceData().getAssistanceDataRows());
     }

@@ -12,13 +12,11 @@ public abstract class EvacuationEnumBaseViewModel extends BaseEnumViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param enumClass
      */
-    protected EvacuationEnumBaseViewModel(Context context,
-                                          EvacuationItemRepositoryManager evacuationItemRepositoryManager,
+    protected EvacuationEnumBaseViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager,
                                           @Nullable Class<? extends Enum> enumClass) {
-        super(context, enumClass);
+        super(enumClass);
         mEvacuationItemRepositoryManager = evacuationItemRepositoryManager;
     }
 }

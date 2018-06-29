@@ -29,16 +29,14 @@ public class HouseDamageDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param houseDamageRepositoryManager
      * @param houseTypeIndex
      * @param isNewRow
      */
-    public HouseDamageDialogViewModel(Context context,
-                                      HouseDamageRepositoryManager houseDamageRepositoryManager,
+    public HouseDamageDialogViewModel(HouseDamageRepositoryManager houseDamageRepositoryManager,
                                       int houseTypeIndex,
                                       boolean isNewRow) {
-        super(context);
+        super();
         mHouseDamageRepositoryManager = houseDamageRepositoryManager;
 
         ShelterHouseDamageDataRow houseDamageDataRow;

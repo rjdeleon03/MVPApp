@@ -33,14 +33,14 @@ public class LivelihoodsDamageDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     *
-     * @param context
+     * @param livelihoodsDamageRepositoryManager
+     * @param livelihoodsTypeIndex
+     * @param isNewRow
      */
-    public LivelihoodsDamageDialogViewModel(Context context,
-                                            LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
+    public LivelihoodsDamageDialogViewModel(LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
                                             int livelihoodsTypeIndex,
                                             boolean isNewRow) {
-        super(context);
+        super();
         mLivelihoodsDamageRepositoryManager = livelihoodsDamageRepositoryManager;
 
         LivelihoodsDamageDataRow damageDataRow;

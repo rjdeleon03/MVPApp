@@ -4,7 +4,7 @@ import com.cpu.quikdata.Models.FormDetails.GenFormDetails;
 import com.cpu.quikdata.Models.FormDetails.InterviewDetails;
 import com.cpu.quikdata.Modules.NewDnca.Base.RepositoryManager;
 
-public interface FormDetailsRepositoryManager extends RepositoryManager {
+public interface IFormDetailsViewModel extends RepositoryManager {
 
     GenFormDetails getGenFormDetails();
 

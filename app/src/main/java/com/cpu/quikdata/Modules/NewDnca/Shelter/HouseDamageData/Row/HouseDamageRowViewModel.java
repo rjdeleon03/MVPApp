@@ -29,16 +29,14 @@ public class HouseDamageRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param houseDamageRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public HouseDamageRowViewModel(Context context,
-                                   HouseDamageRepositoryManager houseDamageRepositoryManager,
+    public HouseDamageRowViewModel(HouseDamageRepositoryManager houseDamageRepositoryManager,
                                    BaseEnumNavigator baseEnumNavigator,
                                    int rowIndex) {
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mHouseDamageRepositoryManager = houseDamageRepositoryManager;
 
         ShelterHouseDamageDataRow houseDamageDataRow = mHouseDamageRepositoryManager.getHouseDamageDataRow(mRowIndex);

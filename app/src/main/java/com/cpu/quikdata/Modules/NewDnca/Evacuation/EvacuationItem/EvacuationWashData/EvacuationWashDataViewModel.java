@@ -26,11 +26,10 @@ public class EvacuationWashDataViewModel extends EvacuationBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationWashDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context, evacuationItemRepositoryManager);
+    public EvacuationWashDataViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(evacuationItemRepositoryManager);
 
         EvacuationWashData washData = mEvacuationItemRepositoryManager.getWashData();
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0], washData.getCleanFoodPrepSpace().isYes), washData.getCleanFoodPrepSpace().remarks));

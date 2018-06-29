@@ -16,10 +16,9 @@ public abstract class BaseQuestionViewModel extends NewDncaBaseViewModel impleme
 
     /**
      * Constructor
-     * @param context
      */
-    public BaseQuestionViewModel(Context context) {
-        super(context);
+    public BaseQuestionViewModel() {
+        super();
     }
 
     /**

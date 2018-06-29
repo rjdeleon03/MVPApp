@@ -33,7 +33,7 @@ public class CaseStoriesFragmentAdapter extends RecyclerView.Adapter<CaseStories
 
     @Override
     public void onBindViewHolder(@NonNull CaseStoriesImageViewHolder holder, int position) {
-        CaseStoriesImageViewModel caseStoriesImageViewModel = new CaseStoriesImageViewModel(mContext, mViewModel, position);
+        CaseStoriesImageViewModel caseStoriesImageViewModel = new CaseStoriesImageViewModel(mViewModel, position);
         holder.bind(caseStoriesImageViewModel);
     }
 

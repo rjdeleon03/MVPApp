@@ -425,47 +425,47 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
         } else {
             switch (fragmentType) {
                 case MENU:
-                    viewModel = new NewDncaViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new NewDncaViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case FORM_DETAILS:
-                    viewModel = new FormDetailsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new FormDetailsViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case GEN_INFO:
-                    viewModel = new GenInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new GenInfoViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case SHELTER_INFO:
-                    viewModel = new ShelterInfoViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new ShelterInfoViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case FOOD_SECURITY:
-                    viewModel = new FoodSecurityViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new FoodSecurityViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case LIVELIHOODS:
-                    viewModel = new LivelihoodsViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new LivelihoodsViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case HEALTH:
-                    viewModel = new HealthViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new HealthViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case WASH:
-                    viewModel = new WashViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new WashViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case EVACUATION:
-                    viewModel = new EvacuationListViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()));
+                    viewModel = new EvacuationListViewModel(Injection.provideDncaRepository(getApplicationContext()));
                     break;
 
                 case EVACUATION_ITEM:
-                    viewModel = new EvacuationItemViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()), mEvacuationListViewModel, -1);
+                    viewModel = new EvacuationItemViewModel(Injection.provideDncaRepository(getApplicationContext()), mEvacuationListViewModel, -1);
                     break;
 
                 case CASE_STORIES:
-                    viewModel = new CaseStoriesViewModel(getApplicationContext(), Injection.provideDncaRepository(getApplicationContext()), this);
+                    viewModel = new CaseStoriesViewModel(Injection.provideDncaRepository(getApplicationContext()), this);
                     break;
             }
 

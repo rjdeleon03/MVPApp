@@ -27,7 +27,6 @@ public class HouseDamageFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         HouseDamageDialogViewModel dialogViewModel = new HouseDamageDialogViewModel(
-                getContext(),
                 (HouseDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -38,7 +37,6 @@ public class HouseDamageFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         HouseDamageDialogViewModel dialogViewModel = new HouseDamageDialogViewModel(
-                getContext(),
                 (HouseDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);

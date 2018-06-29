@@ -16,11 +16,10 @@ public class WashCopingDataViewModel extends WashBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param washRepositoryManager
      */
-    public WashCopingDataViewModel(Context context, WashRepositoryManager washRepositoryManager) {
-        super(context, washRepositoryManager);
+    public WashCopingDataViewModel(WashRepositoryManager washRepositoryManager) {
+        super(washRepositoryManager);
 
         GenericCopingData genericCopingData = mWashRepositoryManager.getGenericCopingData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], genericCopingData.getCopingStrategies())));

@@ -28,18 +28,16 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      * @param parentRepositoryManager
      * @param itemIndex
      */
-    public EvacuationItemViewModel(Context context,
-                                   DNCAFormRepository dncaFormRepository,
+    public EvacuationItemViewModel(DNCAFormRepository dncaFormRepository,
                                    EvacuationRepositoryManager parentRepositoryManager,
                                    int itemIndex) {
 
         // TODO: Eliminate usage of context and DNCAFormRepository if not necessar
-        super(context, dncaFormRepository);
+        super(dncaFormRepository);
         mItemIndex = itemIndex;
         mParentRepositoryManager = parentRepositoryManager;
 

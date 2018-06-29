@@ -33,17 +33,15 @@ public class AssistanceRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param assistanceDataRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public AssistanceRowViewModel(Context context,
-                                  AssistanceDataRepositoryManager assistanceDataRepositoryManager,
+    public AssistanceRowViewModel(AssistanceDataRepositoryManager assistanceDataRepositoryManager,
                                   BaseEnumNavigator baseEnumNavigator,
                                   int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mAssistanceDataRepositoryManager = assistanceDataRepositoryManager;
 
         AssistanceDataRow assistanceDataRow = mAssistanceDataRepositoryManager.getAssistanceDataRow(rowIndex);

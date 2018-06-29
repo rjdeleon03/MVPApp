@@ -23,16 +23,14 @@ public class SpecialNeedsDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param specialNeedsRepositoryManager
      * @param specialNeedsIndex
      * @param isNewRow
      */
-    public SpecialNeedsDialogViewModel(Context context,
-                                       SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
+    public SpecialNeedsDialogViewModel(SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
                                        int specialNeedsIndex,
                                        boolean isNewRow) {
-        super(context);
+        super();
         mSpecialNeedsRepositoryManager = specialNeedsRepositoryManager;
 
         SpecialNeedsDataRow specialNeedsDataRow;

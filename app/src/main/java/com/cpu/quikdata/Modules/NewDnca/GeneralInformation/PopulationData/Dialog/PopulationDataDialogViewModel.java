@@ -21,14 +21,13 @@ public class PopulationDataDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param populationDataRepositoryManager
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public PopulationDataDialogViewModel(Context context, PopulationDataRepositoryManager populationDataRepositoryManager, int ageGroupIndex, boolean isNewRow) {
+    public PopulationDataDialogViewModel(PopulationDataRepositoryManager populationDataRepositoryManager, int ageGroupIndex, boolean isNewRow) {
 
-        super(context);
+        super();
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         PopulationDataRow populationDataRow;

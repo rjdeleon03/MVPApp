@@ -22,14 +22,14 @@ public class CasualtiesDataDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     *
-     * @param context
+     * @param casualtiesDataRepositoryManager
+     * @param ageGroupIndex
+     * @param isNewRow
      */
-    public CasualtiesDataDialogViewModel(Context context,
-                                         CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
+    public CasualtiesDataDialogViewModel(CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
                                          int ageGroupIndex,
                                          boolean isNewRow) {
-        super(context);
+        super();
         mCasualtiesDataRepositoryManager = casualtiesDataRepositoryManager;
 
         CasualtiesDataRow casualtiesDataRow;

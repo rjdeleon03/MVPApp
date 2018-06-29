@@ -23,7 +23,6 @@ public class HouseDamageFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         HouseDamageRowViewModel houseDamageRowViewModel = new HouseDamageRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

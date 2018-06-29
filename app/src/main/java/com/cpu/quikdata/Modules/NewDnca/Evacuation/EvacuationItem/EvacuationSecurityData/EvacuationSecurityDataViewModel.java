@@ -33,11 +33,10 @@ public class EvacuationSecurityDataViewModel extends EvacuationBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationSecurityDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context, evacuationItemRepositoryManager);
+    public EvacuationSecurityDataViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(evacuationItemRepositoryManager);
 
         EvacuationSecurityData securityData = mEvacuationItemRepositoryManager.getSecurityData();
         mQuestionsViewModels.add(new QuestionItemViewModelBoolean(new BaseQuestion(mQuestions[0], securityData.getUnaccompaniedChildren().isYes), securityData.getUnaccompaniedChildren().remarks, "Number of Unaccompanied Children"));

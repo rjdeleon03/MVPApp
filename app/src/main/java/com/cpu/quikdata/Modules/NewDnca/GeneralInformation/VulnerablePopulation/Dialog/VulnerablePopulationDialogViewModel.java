@@ -35,17 +35,15 @@ public class VulnerablePopulationDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param vulnerablePopulationRepositoryManager
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public VulnerablePopulationDialogViewModel(Context context,
-                                               VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
+    public VulnerablePopulationDialogViewModel(VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
                                                int ageGroupIndex,
                                                boolean isNewRow) {
 
-        super(context);
+        super();
         mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
 
         VulnerablePopulationDataRow vulnerablePopulationDataRow;

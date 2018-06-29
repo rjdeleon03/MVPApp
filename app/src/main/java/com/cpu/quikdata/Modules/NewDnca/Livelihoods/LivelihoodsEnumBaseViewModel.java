@@ -12,14 +12,12 @@ public abstract class LivelihoodsEnumBaseViewModel extends BaseEnumViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsRepositoryManager
      * @param enumClass
      */
-    public LivelihoodsEnumBaseViewModel(Context context,
-                                        LivelihoodsRepositoryManager livelihoodsRepositoryManager,
+    public LivelihoodsEnumBaseViewModel(LivelihoodsRepositoryManager livelihoodsRepositoryManager,
                                         @Nullable Class<? extends Enum> enumClass) {
-        super(context, enumClass);
+        super(enumClass);
         mLivelihoodsRepositoryManager = livelihoodsRepositoryManager;
     }
 }

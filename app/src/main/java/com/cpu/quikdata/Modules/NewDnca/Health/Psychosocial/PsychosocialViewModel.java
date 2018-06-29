@@ -14,12 +14,10 @@ public class PsychosocialViewModel extends HealthEnumBaseViewModel implements Ps
 
     /**
      * Constructor
-     *
-     * @param context
      * @param healthRepositoryManager
      */
-    public PsychosocialViewModel(Context context, HealthRepositoryManager healthRepositoryManager) {
-        super(context, healthRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+    public PsychosocialViewModel(HealthRepositoryManager healthRepositoryManager) {
+        super(healthRepositoryManager, GenericEnumDataRow.AgeGroup.class);
         mGenericEnumDataRows.addAll(mHealthRepositoryManager.getPsychosocialData().getPsychosocialDataRows());
         super.updateAgeGroupList();
     }

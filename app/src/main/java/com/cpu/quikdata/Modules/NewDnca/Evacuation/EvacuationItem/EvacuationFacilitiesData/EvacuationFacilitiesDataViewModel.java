@@ -27,11 +27,10 @@ public class EvacuationFacilitiesDataViewModel extends EvacuationBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationFacilitiesDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context, evacuationItemRepositoryManager);
+    public EvacuationFacilitiesDataViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(evacuationItemRepositoryManager);
 
         EvacuationFacilitiesData facilitiesData = mEvacuationItemRepositoryManager.getFacilitiesData();
         mQuestionsViewModels.add(new QuestionItemViewModelInt(new BaseQuestion(mQuestions[0], facilitiesData.getCapacity())));

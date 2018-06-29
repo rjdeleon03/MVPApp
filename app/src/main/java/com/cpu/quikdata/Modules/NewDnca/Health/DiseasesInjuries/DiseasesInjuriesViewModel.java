@@ -16,11 +16,10 @@ public class DiseasesInjuriesViewModel extends HealthEnumBaseViewModel implement
 
     /**
      * Constructor
-     * @param context
      * @param healthRepositoryManager
      */
-    public DiseasesInjuriesViewModel(Context context, HealthRepositoryManager healthRepositoryManager) {
-        super(context, healthRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+    public DiseasesInjuriesViewModel(HealthRepositoryManager healthRepositoryManager) {
+        super(healthRepositoryManager, GenericEnumDataRow.AgeGroup.class);
         mGenericEnumDataRows.addAll(mHealthRepositoryManager.getDiseasesInjuriesData().getDiseasesInjuriesDataRows());
     }
 

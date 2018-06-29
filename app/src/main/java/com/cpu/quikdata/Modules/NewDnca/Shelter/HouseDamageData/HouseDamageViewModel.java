@@ -14,11 +14,10 @@ public class HouseDamageViewModel extends ShelterInfoEnumBaseViewModel implement
 
     /**
      * Constructor
-     * @param context
      * @param shelterInfoRepositoryManager
      */
-    public HouseDamageViewModel(Context context, ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
-        super(context, shelterInfoRepositoryManager, GenericEnumDataRow.HouseType.class);
+    public HouseDamageViewModel(ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
+        super(shelterInfoRepositoryManager, GenericEnumDataRow.HouseType.class);
         mGenericEnumDataRows.addAll(mShelterInfoRepositoryManager.getHouseDamageData().getShelterHouseDamageDataRows());
         super.updateAgeGroupList();
     }

@@ -21,11 +21,10 @@ public class HealthGapsDataViewModel extends HealthBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param healthRepositoryManager
      */
-    public HealthGapsDataViewModel(Context context, HealthRepositoryManager healthRepositoryManager) {
-        super(context, healthRepositoryManager);
+    public HealthGapsDataViewModel(HealthRepositoryManager healthRepositoryManager) {
+        super(healthRepositoryManager);
 
         HealthGapsData healthGapsData = mHealthRepositoryManager.getHealthGapsData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], healthGapsData.getNearestHospital())));

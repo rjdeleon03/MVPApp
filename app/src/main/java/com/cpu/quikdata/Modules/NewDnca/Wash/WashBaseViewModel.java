@@ -10,11 +10,10 @@ public abstract class WashBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param washRepositoryManager
      */
-    public WashBaseViewModel(Context context, WashRepositoryManager washRepositoryManager) {
-        super(context);
+    public WashBaseViewModel(WashRepositoryManager washRepositoryManager) {
+        super();
         mWashRepositoryManager = washRepositoryManager;
     }
 }

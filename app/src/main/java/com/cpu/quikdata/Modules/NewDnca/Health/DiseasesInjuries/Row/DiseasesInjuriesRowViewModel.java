@@ -31,15 +31,13 @@ public class DiseasesInjuriesRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public DiseasesInjuriesRowViewModel(Context context,
-                                        DiseasesInjuriesRepositoryManager diseasesInjuriesRepositoryManager,
+    public DiseasesInjuriesRowViewModel(DiseasesInjuriesRepositoryManager diseasesInjuriesRepositoryManager,
                                         BaseEnumNavigator baseEnumNavigator,
                                         int rowIndex) {
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mDiseasesInjuriesRepositoryManager = diseasesInjuriesRepositoryManager;
 
         DiseasesInjuriesDataRow diseasesInjuriesDataRow = mDiseasesInjuriesRepositoryManager.getDiseasesInjuriesDataRow(rowIndex);

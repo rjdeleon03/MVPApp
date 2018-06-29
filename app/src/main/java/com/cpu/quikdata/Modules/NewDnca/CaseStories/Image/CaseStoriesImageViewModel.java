@@ -15,14 +15,12 @@ public class CaseStoriesImageViewModel extends NewDncaBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param caseStoriesRepositoryManager
      * @param index
      */
-    public CaseStoriesImageViewModel(Context context,
-                                     CaseStoriesRepositoryManager caseStoriesRepositoryManager,
+    public CaseStoriesImageViewModel(CaseStoriesRepositoryManager caseStoriesRepositoryManager,
                                      int index) {
-        super(context);
+        super();
         mIndex = index;
         mCaseStoriesRepositoryManager = caseStoriesRepositoryManager;
         imagePath.set(mCaseStoriesRepositoryManager.getImagePath(index));

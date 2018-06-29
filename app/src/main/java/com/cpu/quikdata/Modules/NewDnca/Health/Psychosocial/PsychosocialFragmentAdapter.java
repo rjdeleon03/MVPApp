@@ -23,7 +23,6 @@ public class PsychosocialFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         PsychosocialRowViewModel specialNeedsRowViewModel = new PsychosocialRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

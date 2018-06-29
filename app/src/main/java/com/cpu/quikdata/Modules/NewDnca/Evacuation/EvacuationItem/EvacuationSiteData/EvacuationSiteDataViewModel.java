@@ -32,11 +32,10 @@ public class EvacuationSiteDataViewModel extends EvacuationBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationItemRepositoryManager
      */
-    public EvacuationSiteDataViewModel(Context context, EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
-        super(context, evacuationItemRepositoryManager);
+    public EvacuationSiteDataViewModel(EvacuationItemRepositoryManager evacuationItemRepositoryManager) {
+        super(evacuationItemRepositoryManager);
 
         EvacuationSiteData siteData = mEvacuationItemRepositoryManager.getSiteData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], siteData.getName())));

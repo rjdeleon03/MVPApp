@@ -11,15 +11,13 @@ public abstract class GenInfoEnumBaseViewModel extends BaseEnumViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param genInfoRepositoryManager
      * @param enumClass
      */
-    public GenInfoEnumBaseViewModel(Context context,
-                                    GenInfoRepositoryManager genInfoRepositoryManager,
+    public GenInfoEnumBaseViewModel(GenInfoRepositoryManager genInfoRepositoryManager,
                                     Class<? extends Enum> enumClass) {
 
-        super(context, enumClass);
+        super(enumClass);
         mGenInfoRepositoryManager = genInfoRepositoryManager;
     }
 }

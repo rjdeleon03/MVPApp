@@ -22,17 +22,15 @@ public class SpecialNeedsRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param specialNeedsRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public SpecialNeedsRowViewModel(Context context,
-                                    SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
+    public SpecialNeedsRowViewModel(SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
                                     BaseEnumNavigator baseEnumNavigator,
                                     int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mSpecialNeedsRepositoryManager = specialNeedsRepositoryManager;
 
         SpecialNeedsDataRow specialNeedsDataRow = mSpecialNeedsRepositoryManager.getSpecialNeedsDataRow(rowIndex);

@@ -23,7 +23,6 @@ public class LivelihoodsDamageFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         LivelihoodsDamageDialogViewModel dialogViewModel = new LivelihoodsDamageDialogViewModel(
-                getContext(),
                 (LivelihoodsDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -34,7 +33,6 @@ public class LivelihoodsDamageFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         LivelihoodsDamageDialogViewModel dialogViewModel = new LivelihoodsDamageDialogViewModel(
-                getContext(),
                 (LivelihoodsDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);

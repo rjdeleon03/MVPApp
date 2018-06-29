@@ -10,11 +10,10 @@ public abstract class HealthBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param healthRepositoryManager
      */
-    public HealthBaseViewModel(Context context, HealthRepositoryManager healthRepositoryManager) {
-        super(context);
+    public HealthBaseViewModel(HealthRepositoryManager healthRepositoryManager) {
+        super();
         mHealthRepositoryManager = healthRepositoryManager;
     }
 }

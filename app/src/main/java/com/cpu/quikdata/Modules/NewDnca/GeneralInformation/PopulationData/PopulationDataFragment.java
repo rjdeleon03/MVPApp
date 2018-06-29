@@ -31,7 +31,6 @@ public class PopulationDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-                getContext(),
                 (PopulationDataRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -46,7 +45,6 @@ public class PopulationDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-                getContext(),
                 (PopulationDataRepositoryManager) mViewModel,
                 rowIndex,
                 false);

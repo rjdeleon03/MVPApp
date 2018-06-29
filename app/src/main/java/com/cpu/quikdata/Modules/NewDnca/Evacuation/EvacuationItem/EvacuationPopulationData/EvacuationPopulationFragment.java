@@ -33,7 +33,6 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         EvacuationPopulationDialogViewModel dialogViewModel = new EvacuationPopulationDialogViewModel(
-                getContext(),
                 (EvacuationPopulationRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -48,7 +47,6 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         EvacuationPopulationDialogViewModel dialogViewModel = new EvacuationPopulationDialogViewModel(
-                getContext(),
                 (EvacuationPopulationRepositoryManager) mViewModel,
                 rowIndex,
                 false);

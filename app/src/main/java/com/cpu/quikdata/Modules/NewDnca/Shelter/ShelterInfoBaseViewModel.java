@@ -12,11 +12,10 @@ public abstract class ShelterInfoBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param shelterInfoRepositoryManager
      */
-    public ShelterInfoBaseViewModel(Context context, ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
-        super(context);
+    public ShelterInfoBaseViewModel(ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
+        super();
         mShelterInfoRepositoryManager = shelterInfoRepositoryManager;
     }
 }

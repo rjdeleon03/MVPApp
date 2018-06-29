@@ -12,13 +12,11 @@ public abstract class HealthEnumBaseViewModel extends BaseEnumViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param enumClass
      */
-    protected HealthEnumBaseViewModel(Context context,
-                                      HealthRepositoryManager healthRepositoryManager,
+    protected HealthEnumBaseViewModel(HealthRepositoryManager healthRepositoryManager,
                                       @Nullable Class<? extends Enum> enumClass) {
-        super(context, enumClass);
+        super(enumClass);
         mHealthRepositoryManager = healthRepositoryManager;
     }
 }

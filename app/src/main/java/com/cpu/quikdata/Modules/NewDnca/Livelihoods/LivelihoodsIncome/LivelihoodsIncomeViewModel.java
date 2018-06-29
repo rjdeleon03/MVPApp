@@ -16,11 +16,10 @@ public class LivelihoodsIncomeViewModel extends LivelihoodsEnumBaseViewModel imp
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsRepositoryManager
      */
-    public LivelihoodsIncomeViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager, boolean willSaveAsIncomeBefore) {
-        super(context, livelihoodsRepositoryManager, GenericEnumDataRow.IncomeSourceType.class);
+    public LivelihoodsIncomeViewModel(LivelihoodsRepositoryManager livelihoodsRepositoryManager, boolean willSaveAsIncomeBefore) {
+        super(livelihoodsRepositoryManager, GenericEnumDataRow.IncomeSourceType.class);
         mWillSaveAsIncomeBefore = willSaveAsIncomeBefore;
 
         if (mWillSaveAsIncomeBefore) {

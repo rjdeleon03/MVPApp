@@ -15,12 +15,10 @@ public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Constructor
-     *
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public CasualtiesDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+    public CasualtiesDataViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
         mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getCasualtiesData().getCasualtiesDataRows());
         super.updateAgeGroupList();
     }

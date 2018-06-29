@@ -32,16 +32,14 @@ public class DiseasesInjuriesDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param diseasesInjuriesRepositoryManager
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public DiseasesInjuriesDialogViewModel(Context context,
-                                           DiseasesInjuriesRepositoryManager diseasesInjuriesRepositoryManager,
+    public DiseasesInjuriesDialogViewModel(DiseasesInjuriesRepositoryManager diseasesInjuriesRepositoryManager,
                                            int ageGroupIndex,
                                            boolean isNewRow) {
-        super(context);
+        super();
         mDiseasesInjuriesRepositoryManager = diseasesInjuriesRepositoryManager;
 
         DiseasesInjuriesDataRow diseasesInjuriesDataRow;

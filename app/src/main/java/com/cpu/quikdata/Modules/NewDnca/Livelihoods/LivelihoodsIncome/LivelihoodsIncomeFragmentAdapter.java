@@ -22,7 +22,6 @@ public class LivelihoodsIncomeFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         LivelihoodsIncomeRowViewModel livelihoodsIncomeRowViewModel = new LivelihoodsIncomeRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

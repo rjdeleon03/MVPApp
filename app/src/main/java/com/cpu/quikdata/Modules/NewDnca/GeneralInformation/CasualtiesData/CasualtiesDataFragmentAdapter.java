@@ -23,7 +23,6 @@ public class CasualtiesDataFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         CasualtiesDataRowViewModel casualtiesDataRowViewModel = new CasualtiesDataRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

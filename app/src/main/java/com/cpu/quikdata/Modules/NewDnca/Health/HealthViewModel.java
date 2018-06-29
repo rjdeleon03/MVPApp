@@ -22,11 +22,10 @@ public class HealthViewModel extends BaseMultiPageViewModel implements HealthRep
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public HealthViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public HealthViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

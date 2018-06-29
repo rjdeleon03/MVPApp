@@ -16,7 +16,6 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         LivelihoodsIncomeDialogViewModel dialogViewModel = new LivelihoodsIncomeDialogViewModel(
-                getContext(),
                 (LivelihoodsIncomeRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -27,7 +26,6 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         LivelihoodsIncomeDialogViewModel dialogViewModel = new LivelihoodsIncomeDialogViewModel(
-                getContext(),
                 (LivelihoodsIncomeRepositoryManager) mViewModel,
                 rowIndex,
                 false);

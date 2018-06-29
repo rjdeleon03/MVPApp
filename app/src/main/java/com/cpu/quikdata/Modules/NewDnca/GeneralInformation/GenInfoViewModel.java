@@ -24,10 +24,10 @@ public class GenInfoViewModel extends BaseMultiPageViewModel implements GenInfoR
 
     /**
      * Constructor
-     * @param context
+     * @param dncaFormRepository
      */
-    public GenInfoViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public GenInfoViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

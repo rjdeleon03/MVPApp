@@ -27,17 +27,14 @@ public class DeathCauseDataRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     *
-     * @param context
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public DeathCauseDataRowViewModel(Context context,
-                                      DeathCauseRepositoryManager deathCauseRepositoryManager,
+    public DeathCauseDataRowViewModel(DeathCauseRepositoryManager deathCauseRepositoryManager,
                                       BaseEnumNavigator baseEnumNavigator,
                                       int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mDeathCauseRepositoryManager = deathCauseRepositoryManager;
 
         DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(mRowIndex);

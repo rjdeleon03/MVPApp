@@ -21,17 +21,14 @@ public class CasualtiesDataRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     *
-     * @param context
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public CasualtiesDataRowViewModel(Context context,
-                                      CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
+    public CasualtiesDataRowViewModel(CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
                                       BaseEnumNavigator baseEnumNavigator,
                                       int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mCasualtiesDataRepositoryManager = casualtiesDataRepositoryManager;
 
         CasualtiesDataRow casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(mRowIndex);

@@ -23,11 +23,10 @@ public class WashGapsDataViewModel extends WashBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param washRepositoryManager
      */
-    public WashGapsDataViewModel(Context context, WashRepositoryManager washRepositoryManager) {
-        super(context, washRepositoryManager);
+    public WashGapsDataViewModel(WashRepositoryManager washRepositoryManager) {
+        super(washRepositoryManager);
 
         WashGapsData washGapsData = mWashRepositoryManager.getGapsData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], washGapsData.getIsAssistanceEnough())));

@@ -31,7 +31,6 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         InfrastructureDamageDialogViewModel dialogViewModel = new InfrastructureDamageDialogViewModel(
-                getContext(),
                 (InfrastructureDamageRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -46,7 +45,6 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         InfrastructureDamageDialogViewModel dialogViewModel = new InfrastructureDamageDialogViewModel(
-                getContext(),
                 (InfrastructureDamageRepositoryManager) mViewModel,
                 rowIndex,
                 false);

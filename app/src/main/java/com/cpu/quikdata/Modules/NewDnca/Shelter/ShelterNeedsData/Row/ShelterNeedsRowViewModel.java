@@ -22,16 +22,14 @@ public class ShelterNeedsRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param shelterNeedsRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public ShelterNeedsRowViewModel(Context context,
-                                    ShelterNeedsRepositoryManager shelterNeedsRepositoryManager,
+    public ShelterNeedsRowViewModel(ShelterNeedsRepositoryManager shelterNeedsRepositoryManager,
                                     BaseEnumNavigator baseEnumNavigator,
                                     int rowIndex) {
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mShelterNeedsRepositoryManager = shelterNeedsRepositoryManager;
 
         ShelterNeedsDataRow shelterNeedsDataRow = mShelterNeedsRepositoryManager.getShelterNeedsDataRow(rowIndex);

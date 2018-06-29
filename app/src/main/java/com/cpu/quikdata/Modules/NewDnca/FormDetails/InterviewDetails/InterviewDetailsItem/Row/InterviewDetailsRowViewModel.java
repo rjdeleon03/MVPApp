@@ -20,16 +20,14 @@ public class InterviewDetailsRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public InterviewDetailsRowViewModel(Context context,
-                                        InterviewDetailsRepositoryManager interviewDetailsRepositoryManager,
+    public InterviewDetailsRowViewModel(InterviewDetailsRepositoryManager interviewDetailsRepositoryManager,
                                         BaseEnumNavigator baseEnumNavigator,
                                         int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mInterviewDetailsRepositoryManager = interviewDetailsRepositoryManager;
 
         InterviewDetailsRow interviewDetailsRow = mInterviewDetailsRepositoryManager.getInterviewDetailsRow(mRowIndex);

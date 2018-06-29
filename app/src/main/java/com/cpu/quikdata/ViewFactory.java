@@ -16,7 +16,6 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopi
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopingData.EvacuationCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFacilitiesData.EvacuationFacilitiesDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationFacilitiesData.EvacuationFacilitiesDataViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemActivity;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
@@ -26,8 +25,6 @@ import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSite
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationSiteData.EvacuationSiteDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationWashData.EvacuationWashDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationWashData.EvacuationWashDataViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListFragment;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodAssistanceData.FoodAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodCopingData.FoodCopingDataViewModel;
@@ -38,7 +35,7 @@ import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodImpactData.FoodImpactDa
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodNeedsData.FoodNeedsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FoodSecurity.FoodSecurityRepositoryManager;
-import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.IFormDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsFragment;
@@ -124,11 +121,6 @@ public class ViewFactory {
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
-    }
-
-    public static void startEvacuationItemActivity(AppCompatActivity activity) {
-        Intent intent = new Intent(activity, EvacuationItemActivity.class);
-        activity.startActivity(intent);
     }
 
     /**
@@ -329,144 +321,144 @@ public class ViewFactory {
 
                 // Form Details
                 case FORM_GEN_FORM_DETAILS:
-                    viewModel = new GenFormDetailsViewModel(context, (FormDetailsRepositoryManager) repositoryManager);
+                    viewModel = new GenFormDetailsViewModel((IFormDetailsViewModel) repositoryManager);
                     break;
                 case FORM_INTERVIEW_DETAILS:
-                    viewModel = new InterviewDetailsViewModel(context, (FormDetailsRepositoryManager) repositoryManager);
+                    viewModel = new InterviewDetailsViewModel((IFormDetailsViewModel) repositoryManager);
                     break;
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-                    viewModel = new CalamityDetailsViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new CalamityDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_POPULATION:
-                    viewModel = new PopulationDataViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new PopulationDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_FAMILY:
-                    viewModel = new FamilyDataViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new FamilyDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_VULNERABLE:
-                    viewModel = new VulnerablePopulationViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new VulnerablePopulationViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_CASUALTIES:
-                    viewModel = new CasualtiesDataViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new CasualtiesDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_DEATH_CAUSE:
-                    viewModel = new DeathCauseDataViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new DeathCauseDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_INFRASTRUCTURE:
-                    viewModel = new InfrastructureDamageViewModel(context, (GenInfoRepositoryManager)repositoryManager);
+                    viewModel = new InfrastructureDamageViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                     
                 // Shelter and Non-Food Items
                 case SHELTER_HOUSE_DAMAGE:
-                    viewModel = new HouseDamageViewModel(context, (ShelterInfoRepositoryManager)repositoryManager);
+                    viewModel = new HouseDamageViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_NEEDS:
-                    viewModel = new ShelterNeedsViewModel(context, (ShelterInfoRepositoryManager)repositoryManager);
+                    viewModel = new ShelterNeedsViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_COPING:
-                    viewModel = new ShelterCopingDataViewModel(context, (ShelterInfoRepositoryManager)repositoryManager);
+                    viewModel = new ShelterCopingDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel(context, (ShelterInfoRepositoryManager)repositoryManager);
+                    viewModel = new AssistanceDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_GAPS:
-                    viewModel = new ShelterGapsDataViewModel(context, (ShelterInfoRepositoryManager)repositoryManager);
+                    viewModel = new ShelterGapsDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                     
                 // Food Security
                 case FOOD_IMPACT:
-                    viewModel = new FoodImpactDataViewModel(context, (FoodSecurityRepositoryManager)repositoryManager);
+                    viewModel = new FoodImpactDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_COPING:
-                    viewModel = new FoodCopingDataViewModel(context, (FoodSecurityRepositoryManager)repositoryManager);
+                    viewModel = new FoodCopingDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_NEEDS:
-                    viewModel = new FoodNeedsDataViewModel(context, (FoodSecurityRepositoryManager)repositoryManager);
+                    viewModel = new FoodNeedsDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel(context, (FoodSecurityRepositoryManager)repositoryManager);
+                    viewModel = new AssistanceDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_GAPS:
-                    viewModel = new FoodGapsDataViewModel(context, (FoodSecurityRepositoryManager)repositoryManager);
+                    viewModel = new FoodGapsDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                     
                 // Livelihoods
                 case LIVELIHOODS_INCOME_BEFORE:
-                    viewModel = new LivelihoodsIncomeViewModel(context, (LivelihoodsRepositoryManager)repositoryManager, true);
+                    viewModel = new LivelihoodsIncomeViewModel((LivelihoodsRepositoryManager)repositoryManager, true);
                     break;
                 case LIVELIHOODS_INCOME_AFTER:
-                    viewModel = new LivelihoodsIncomeViewModel(context, (LivelihoodsRepositoryManager)repositoryManager, false);
+                    viewModel = new LivelihoodsIncomeViewModel((LivelihoodsRepositoryManager)repositoryManager, false);
                     break;
                 case LIVELIHOODS_DAMAGE:
-                    viewModel = new LivelihoodsDamageViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    viewModel = new LivelihoodsDamageViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_COPING:
-                    viewModel = new LivelihoodsCopingDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    viewModel = new LivelihoodsCopingDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_NEEDS:
-                    viewModel = new LivelihoodsNeedsDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    viewModel = new LivelihoodsNeedsDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    viewModel = new AssistanceDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_GAPS:
-                    viewModel = new LivelihoodsGapsDataViewModel(context, (LivelihoodsRepositoryManager)repositoryManager);
+                    viewModel = new LivelihoodsGapsDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
 
                 // Health
                 case HEALTH_DISEASES:
-                    viewModel = new DiseasesInjuriesViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    viewModel = new DiseasesInjuriesViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_SPECIAL_NEEDS:
-                    viewModel = new SpecialNeedsViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    viewModel = new SpecialNeedsViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_PSYCHOSOCIAL:
-                    viewModel = new PsychosocialViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    viewModel = new PsychosocialViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_COPING:
-                    viewModel = new HealthCopingDataViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    viewModel = new HealthCopingDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    viewModel = new AssistanceDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_GAPS:
-                    viewModel = new HealthGapsDataViewModel(context, (HealthRepositoryManager)repositoryManager);
+                    viewModel = new HealthGapsDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                     
                 // Water, Sanitation, and Hygiene
                 case WASH_CONDITIONS:
-                    viewModel = new WashConditionsViewModel(context, (WashRepositoryManager)repositoryManager);
+                    viewModel = new WashConditionsViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_COPING:
-                    viewModel = new WashCopingDataViewModel(context, (WashRepositoryManager)repositoryManager);
+                    viewModel = new WashCopingDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel(context, (WashRepositoryManager)repositoryManager);
+                    viewModel = new AssistanceDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_GAPS:
-                    viewModel = new WashGapsDataViewModel(context, (WashRepositoryManager)repositoryManager);
+                    viewModel = new WashGapsDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
 
                 // Evacuation Centers
                 case EVACUATION_SITE:
-                    viewModel = new EvacuationSiteDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationSiteDataViewModel((EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_POPULATION:
-                    viewModel = new EvacuationPopulationViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationPopulationViewModel((EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_FACILITIES:
-                    viewModel = new EvacuationFacilitiesDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationFacilitiesDataViewModel((EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_WASH:
-                    viewModel = new EvacuationWashDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationWashDataViewModel((EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_SECURITY:
-                    viewModel = new EvacuationSecurityDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationSecurityDataViewModel((EvacuationItemRepositoryManager)repositoryManager);
                     break;
                 case EVACUATION_COPING:
-                    viewModel = new EvacuationCopingDataViewModel(context, (EvacuationItemRepositoryManager)repositoryManager);
+                    viewModel = new EvacuationCopingDataViewModel((EvacuationItemRepositoryManager)repositoryManager);
                     break;
             }
 

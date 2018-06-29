@@ -19,11 +19,9 @@ public abstract class DialogViewModel extends NewDncaBaseViewModel implements Di
 
     /**
      * Constructor
-     * @param context
      */
-    public DialogViewModel(Context context) {
-
-        super(context);
+    public DialogViewModel() {
+        super();
     }
 
     /**

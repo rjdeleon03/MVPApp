@@ -16,11 +16,10 @@ public abstract class BaseMultiPageViewModel extends NewDncaBaseViewModel implem
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public BaseMultiPageViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context);
+    public BaseMultiPageViewModel(DNCAFormRepository dncaFormRepository) {
+        super();
         mDncaFormRepository = dncaFormRepository;
         mDncaFormRepository.retrieveNewDncaForm(this);
         viewPagerIndex = new ObservableInt(0);

@@ -25,16 +25,14 @@ public class EvacuationPopulationDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationPopulationRepositoryManager
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public EvacuationPopulationDialogViewModel(Context context,
-                                               EvacuationPopulationRepositoryManager evacuationPopulationRepositoryManager,
+    public EvacuationPopulationDialogViewModel(EvacuationPopulationRepositoryManager evacuationPopulationRepositoryManager,
                                                int ageGroupIndex,
                                                boolean isNewRow) {
-        super(context);
+        super();
         mEvacuationPopulationRepositoryManager = evacuationPopulationRepositoryManager;
 
         EvacuationPopulationDataRow evacuationPopulationDataRow;

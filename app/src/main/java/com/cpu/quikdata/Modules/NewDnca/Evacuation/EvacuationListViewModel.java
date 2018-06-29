@@ -20,11 +20,10 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public EvacuationListViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public EvacuationListViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

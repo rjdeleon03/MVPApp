@@ -23,7 +23,6 @@ public class AssistanceDataFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         AssistanceRowViewModel assistanceRowViewModel = new AssistanceRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

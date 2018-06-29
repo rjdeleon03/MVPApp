@@ -11,15 +11,13 @@ public abstract class ShelterInfoEnumBaseViewModel extends BaseEnumViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param shelterInfoRepositoryManager
      * @param enumClass
      */
-    public ShelterInfoEnumBaseViewModel(Context context,
-                                        ShelterInfoRepositoryManager shelterInfoRepositoryManager,
+    public ShelterInfoEnumBaseViewModel(ShelterInfoRepositoryManager shelterInfoRepositoryManager,
                                         Class<? extends Enum> enumClass) {
 
-        super(context, enumClass);
+        super(enumClass);
         mShelterInfoRepositoryManager = shelterInfoRepositoryManager;
     }
 }

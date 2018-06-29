@@ -30,7 +30,6 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         SpecialNeedsDialogViewModel dialogViewModel = new SpecialNeedsDialogViewModel(
-                getContext(),
                 (SpecialNeedsRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -45,7 +44,6 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         SpecialNeedsDialogViewModel dialogViewModel = new SpecialNeedsDialogViewModel(
-                getContext(),
                 (SpecialNeedsRepositoryManager) mViewModel,
                 rowIndex,
                 false);

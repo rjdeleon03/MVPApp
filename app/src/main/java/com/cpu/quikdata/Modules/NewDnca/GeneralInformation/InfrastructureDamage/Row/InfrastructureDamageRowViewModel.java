@@ -26,17 +26,15 @@ public class InfrastructureDamageRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param infrastructureDamageRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public InfrastructureDamageRowViewModel(Context context,
-                                            InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
+    public InfrastructureDamageRowViewModel(InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
                                             BaseEnumNavigator baseEnumNavigator,
                                             int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
         InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(rowIndex);

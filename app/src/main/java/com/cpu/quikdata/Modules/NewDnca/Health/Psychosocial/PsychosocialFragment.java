@@ -30,7 +30,6 @@ public class PsychosocialFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         PsychosocialDialogViewModel dialogViewModel = new PsychosocialDialogViewModel(
-                getContext(),
                 (PsychosocialRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -45,7 +44,6 @@ public class PsychosocialFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         PsychosocialDialogViewModel dialogViewModel = new PsychosocialDialogViewModel(
-                getContext(),
                 (PsychosocialRepositoryManager) mViewModel,
                 rowIndex,
                 false);

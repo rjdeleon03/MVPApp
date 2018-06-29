@@ -23,7 +23,6 @@ public class EvacuationPopulationFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         EvacuationPopulationRowViewModel evacuationPopulationRowViewModel = new EvacuationPopulationRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

@@ -7,7 +7,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestion;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelDate;
 import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.Questions.QuestionItemViewModelString;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.IFormDetailsViewModel;
 
 public class GenFormDetailsViewModel extends FormDetailsBaseViewModel {
 
@@ -25,13 +25,12 @@ public class GenFormDetailsViewModel extends FormDetailsBaseViewModel {
 
     /**
      * Constructor
-     * @param context
-     * @param formDetailsRepositoryManager
+     * @param IFormDetailsViewModel
      */
-    public GenFormDetailsViewModel(Context context, FormDetailsRepositoryManager formDetailsRepositoryManager) {
-        super(context, formDetailsRepositoryManager);
+    public GenFormDetailsViewModel(IFormDetailsViewModel IFormDetailsViewModel) {
+        super(IFormDetailsViewModel);
 
-        GenFormDetails genFormDetails = mFormDetailsRepositoryManager.getGenFormDetails();
+        GenFormDetails genFormDetails = mIFormDetailsViewModel.getGenFormDetails();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], genFormDetails.getOrgName())));
         mQuestionsViewModels.add(new QuestionItemViewModelDate(new BaseQuestion(mQuestions[1], genFormDetails.getAssessmentDate())));
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[2], genFormDetails.getSitio())));
@@ -58,6 +57,6 @@ public class GenFormDetailsViewModel extends FormDetailsBaseViewModel {
                 ((QuestionItemViewModelString) mQuestionsViewModels.get(6)).answer.get(),
                 ((QuestionItemViewModelString) mQuestionsViewModels.get(7)).answer.get(),
                 ((QuestionItemViewModelString) mQuestionsViewModels.get(8)).answer.get());
-        mFormDetailsRepositoryManager.saveGenFormDetails(genFormDetails);
+        mIFormDetailsViewModel.saveGenFormDetails(genFormDetails);
     }
 }

@@ -27,7 +27,6 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         ShelterNeedsDialogViewModel dialogViewModel = new ShelterNeedsDialogViewModel(
-                getContext(),
                 (ShelterNeedsRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -38,7 +37,6 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         ShelterNeedsDialogViewModel dialogViewModel = new ShelterNeedsDialogViewModel(
-                getContext(),
                 (ShelterNeedsRepositoryManager) mViewModel,
                 rowIndex,
                 false);

@@ -29,16 +29,14 @@ public class PsychosocialDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param psychosocialRepositoryManager
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public PsychosocialDialogViewModel(Context context,
-                                       PsychosocialRepositoryManager psychosocialRepositoryManager,
+    public PsychosocialDialogViewModel(PsychosocialRepositoryManager psychosocialRepositoryManager,
                                        int ageGroupIndex,
                                        boolean isNewRow) {
-        super(context);
+        super();
         mPsychosocialRepositoryManager = psychosocialRepositoryManager;
 
         PsychosocialDataRow psychosocialDataRow;

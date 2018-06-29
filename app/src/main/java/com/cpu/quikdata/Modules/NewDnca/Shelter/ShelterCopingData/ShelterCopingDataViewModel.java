@@ -21,11 +21,10 @@ public class ShelterCopingDataViewModel extends ShelterInfoBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param shelterInfoRepositoryManager
      */
-    public ShelterCopingDataViewModel(Context context, ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
-        super(context, shelterInfoRepositoryManager);
+    public ShelterCopingDataViewModel(ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
+        super(shelterInfoRepositoryManager);
 
         ShelterCopingData copingData = mShelterInfoRepositoryManager.getShelterCopingData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], copingData.getEvacuationSitesLocation())));

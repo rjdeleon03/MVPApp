@@ -11,11 +11,10 @@ public abstract class LivelihoodsBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsRepositoryManager
      */
-    public LivelihoodsBaseViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
-        super(context);
+    public LivelihoodsBaseViewModel(LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
+        super();
         mLivelihoodsRepositoryManager = livelihoodsRepositoryManager;
     }
 }

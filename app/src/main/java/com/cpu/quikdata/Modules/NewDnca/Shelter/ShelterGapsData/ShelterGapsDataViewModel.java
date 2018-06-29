@@ -25,11 +25,10 @@ public class ShelterGapsDataViewModel extends ShelterInfoBaseViewModel {
     
     /**
      * Constructor
-     * @param context
      * @param shelterInfoRepositoryManager
      */
-    public ShelterGapsDataViewModel(Context context, ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
-        super(context, shelterInfoRepositoryManager);
+    public ShelterGapsDataViewModel(ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
+        super(shelterInfoRepositoryManager);
 
         ShelterGapsData shelterGapsData = mShelterInfoRepositoryManager.getShelterGapsData();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], shelterGapsData.getHasSeparateCubicles())));

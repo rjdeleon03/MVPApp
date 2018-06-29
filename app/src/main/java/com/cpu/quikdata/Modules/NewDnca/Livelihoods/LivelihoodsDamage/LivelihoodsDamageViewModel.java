@@ -14,11 +14,10 @@ public class LivelihoodsDamageViewModel extends LivelihoodsEnumBaseViewModel imp
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsRepositoryManager
      */
-    public LivelihoodsDamageViewModel(Context context, LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
-        super(context, livelihoodsRepositoryManager, GenericEnumDataRow.LivelihoodsType.class);
+    public LivelihoodsDamageViewModel(LivelihoodsRepositoryManager livelihoodsRepositoryManager) {
+        super(livelihoodsRepositoryManager, GenericEnumDataRow.LivelihoodsType.class);
         mGenericEnumDataRows.addAll(mLivelihoodsRepositoryManager.getLivelihoodsDamageData().getLivelihoodsDamageDataRows());
         super.updateAgeGroupList();
     }

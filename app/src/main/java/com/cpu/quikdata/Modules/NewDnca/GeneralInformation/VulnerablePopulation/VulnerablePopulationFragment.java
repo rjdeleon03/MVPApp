@@ -30,7 +30,6 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
-                getContext(),
                 (VulnerablePopulationRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -45,7 +44,6 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
-                getContext(),
                 (VulnerablePopulationRepositoryManager) mViewModel,
                 rowIndex,
                 false);

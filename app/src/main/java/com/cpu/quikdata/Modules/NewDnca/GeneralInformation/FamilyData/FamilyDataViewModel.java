@@ -19,11 +19,10 @@ public class FamilyDataViewModel extends GenInfoBaseViewModel implements NonEnum
 
     /**
      * Constructor
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public FamilyDataViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context, genInfoRepositoryManager);
+    public FamilyDataViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(genInfoRepositoryManager);
 
         FamilyData familyData = mGenInfoRepositoryManager.getFamilyData();
         totalFamilies.set(familyData.getTotalFamilies());

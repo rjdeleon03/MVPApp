@@ -23,11 +23,10 @@ public class LivelihoodsViewModel extends BaseMultiPageViewModel implements Live
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public LivelihoodsViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public LivelihoodsViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

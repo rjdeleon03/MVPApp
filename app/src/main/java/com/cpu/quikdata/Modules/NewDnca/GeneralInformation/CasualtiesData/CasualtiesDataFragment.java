@@ -31,7 +31,6 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         CasualtiesDataDialogViewModel dialogViewModel = new CasualtiesDataDialogViewModel(
-                getContext(),
                 (CasualtiesDataRepositoryManager) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
@@ -46,7 +45,6 @@ public class CasualtiesDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         CasualtiesDataDialogViewModel dialogViewModel = new CasualtiesDataDialogViewModel(
-                getContext(),
                 (CasualtiesDataRepositoryManager) mViewModel,
                 rowIndex,
                 false);

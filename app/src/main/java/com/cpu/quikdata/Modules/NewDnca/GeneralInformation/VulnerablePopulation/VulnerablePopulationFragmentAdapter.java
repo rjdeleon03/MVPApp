@@ -23,7 +23,7 @@ public class VulnerablePopulationFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         VulnerablePopulationRowViewModel vulnerablePopulationRowViewModel =
-                new VulnerablePopulationRowViewModel(mContext, mViewModel, mBaseEnumNavigator, position);
+                new VulnerablePopulationRowViewModel(mViewModel, mBaseEnumNavigator, position);
         holder.bind(vulnerablePopulationRowViewModel);
     }
 

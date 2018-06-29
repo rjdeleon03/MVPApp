@@ -11,11 +11,10 @@ public abstract class GenInfoBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public GenInfoBaseViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context);
+    public GenInfoBaseViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super();
         mGenInfoRepositoryManager = genInfoRepositoryManager;
     }
 }

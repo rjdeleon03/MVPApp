@@ -31,17 +31,15 @@ public class VulnerablePopulationRowViewModel extends RowViewModel implements Di
 
     /**
      * Constructor
-     * @param context
      * @param vulnerablePopulationRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public VulnerablePopulationRowViewModel(Context context,
-                                            VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
+    public VulnerablePopulationRowViewModel(VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
                                             BaseEnumNavigator baseEnumNavigator,
                                             int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
 
         VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(mRowIndex);

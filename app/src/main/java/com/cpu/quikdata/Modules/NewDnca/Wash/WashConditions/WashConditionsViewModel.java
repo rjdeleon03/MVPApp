@@ -41,11 +41,10 @@ public class WashConditionsViewModel extends WashBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param washRepositoryManager
      */
-    public WashConditionsViewModel(Context context, WashRepositoryManager washRepositoryManager) {
-        super(context, washRepositoryManager);
+    public WashConditionsViewModel(WashRepositoryManager washRepositoryManager) {
+        super(washRepositoryManager);
 
         WashConditionsData washConditionsData = mWashRepositoryManager.getWashConditionsData();
         mQuestionsViewModels.add(new QuestionItemViewModelLevels(new BaseQuestion(mQuestions[0],

@@ -7,18 +7,17 @@ import com.cpu.quikdata.Models.FormDetails.GenFormDetails;
 import com.cpu.quikdata.Models.FormDetails.InterviewDetails;
 import com.cpu.quikdata.Modules.NewDnca.Base.MultiPageFragment.BaseMultiPageViewModel;
 
-public class FormDetailsViewModel extends BaseMultiPageViewModel implements FormDetailsRepositoryManager {
+public class FormDetailsViewModel extends BaseMultiPageViewModel implements IFormDetailsViewModel {
 
     private GenFormDetails mGenFormDetails;
     private InterviewDetails mInterviewDetails;
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public FormDetailsViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public FormDetailsViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

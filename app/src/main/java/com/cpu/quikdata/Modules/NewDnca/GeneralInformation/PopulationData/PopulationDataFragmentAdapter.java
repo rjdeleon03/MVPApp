@@ -23,7 +23,6 @@ public class PopulationDataFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         PopulationDataRowViewModel populationDataRowViewModel = new PopulationDataRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

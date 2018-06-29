@@ -5,7 +5,7 @@ import android.content.Context;
 import com.cpu.quikdata.Models.FormDetails.InterviewDetails;
 import com.cpu.quikdata.Models.FormDetails.InterviewDetailsRow;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsEnumBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.FormDetails.FormDetailsRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.FormDetails.IFormDetailsViewModel;
 
 import java.util.List;
 
@@ -13,12 +13,11 @@ public class InterviewDetailsViewModel extends FormDetailsEnumBaseViewModel impl
 
     /**
      * Constructor
-     * @param context
-     * @param formDetailsRepositoryManager
+     * @param IFormDetailsViewModel
      */
-    public InterviewDetailsViewModel(Context context, FormDetailsRepositoryManager formDetailsRepositoryManager) {
-        super(context, formDetailsRepositoryManager);
-        mGenericEnumDataRows.addAll(mFormDetailsRepositoryManager.getInterviewDetails().getInterviewDetailsRows());
+    public InterviewDetailsViewModel(IFormDetailsViewModel IFormDetailsViewModel) {
+        super(IFormDetailsViewModel);
+        mGenericEnumDataRows.addAll(mIFormDetailsViewModel.getInterviewDetails().getInterviewDetailsRows());
     }
 
     /**
@@ -28,7 +27,7 @@ public class InterviewDetailsViewModel extends FormDetailsEnumBaseViewModel impl
     public void navigateOnSaveButtonPressed() {
         InterviewDetails interviewDetails = new InterviewDetails();
         interviewDetails.setInterviewDetailsRows((List<InterviewDetailsRow>)(Object) mGenericEnumDataRows);
-        mFormDetailsRepositoryManager.saveInterviewDetails(interviewDetails);
+        mIFormDetailsViewModel.saveInterviewDetails(interviewDetails);
     }
 
     /**

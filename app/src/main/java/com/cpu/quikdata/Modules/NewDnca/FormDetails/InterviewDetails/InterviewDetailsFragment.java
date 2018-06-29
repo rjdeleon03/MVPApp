@@ -23,7 +23,6 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         InterviewDetailsDialogViewModel dialogViewModel = new InterviewDetailsDialogViewModel(
-                getContext(),
                 (InterviewDetailsRepositoryManager) mViewModel);
         setupDialog(dialogViewModel);
     }
@@ -32,7 +31,6 @@ public class InterviewDetailsFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         InterviewDetailsDialogViewModel dialogViewModel = new InterviewDetailsDialogViewModel(
-                getContext(),
                 (InterviewDetailsRepositoryManager) mViewModel,
                 rowIndex);
         setupDialog(dialogViewModel);

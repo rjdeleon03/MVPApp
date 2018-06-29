@@ -18,11 +18,10 @@ public class WashViewModel extends BaseMultiPageViewModel implements WashReposit
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public WashViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public WashViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

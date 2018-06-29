@@ -20,11 +20,10 @@ public class ShelterInfoViewModel extends BaseMultiPageViewModel implements Shel
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public ShelterInfoViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public ShelterInfoViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

@@ -15,12 +15,10 @@ public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel impl
 
     /**
      * Constructor
-     *
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public VulnerablePopulationViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context, genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
+    public VulnerablePopulationViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(genInfoRepositoryManager, GenericEnumDataRow.AgeGroup.class);
         mGenericEnumDataRows.addAll(mGenInfoRepositoryManager.getVulnerablePopulation().getVulnerablePopulationDataRows());
         super.updateAgeGroupList();
     }

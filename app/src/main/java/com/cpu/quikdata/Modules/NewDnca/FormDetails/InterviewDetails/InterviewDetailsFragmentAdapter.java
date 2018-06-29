@@ -23,7 +23,6 @@ public class InterviewDetailsFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         InterviewDetailsRowViewModel interviewDetailsRowViewModel = new InterviewDetailsRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

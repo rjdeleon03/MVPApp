@@ -27,16 +27,14 @@ public class LivelihoodsIncomeRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsIncomeRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public LivelihoodsIncomeRowViewModel(Context context,
-                                         LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
+    public LivelihoodsIncomeRowViewModel(LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
                                          BaseEnumNavigator baseEnumNavigator,
                                          int rowIndex) {
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mLivelihoodsIncomeRepositoryManager = livelihoodsIncomeRepositoryManager;
 
         LivelihoodsIncomeDataRow incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(rowIndex);

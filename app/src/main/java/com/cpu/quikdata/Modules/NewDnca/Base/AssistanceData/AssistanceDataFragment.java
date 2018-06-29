@@ -24,7 +24,6 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
-                getContext(),
                 (AssistanceDataRepositoryManager) mViewModel);
         super.setupDialog(dialogViewModel);
     }
@@ -37,7 +36,6 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
-                getContext(),
                 (AssistanceDataRepositoryManager) mViewModel,
                 rowIndex);
         super.setupDialog(dialogViewModel);

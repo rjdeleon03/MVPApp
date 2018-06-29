@@ -15,11 +15,10 @@ public class ShelterNeedsViewModel extends ShelterInfoEnumBaseViewModel implemen
 
     /**
      * Constructor
-     * @param context
      * @param shelterInfoRepositoryManager
      */
-    public ShelterNeedsViewModel(Context context, ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
-        super(context, shelterInfoRepositoryManager, GenericEnumDataRow.NeedsType.class);
+    public ShelterNeedsViewModel(ShelterInfoRepositoryManager shelterInfoRepositoryManager) {
+        super(shelterInfoRepositoryManager, GenericEnumDataRow.NeedsType.class);
         mGenericEnumDataRows.addAll(mShelterInfoRepositoryManager.getShelterNeedsData().getShelterNeedsDataRows());
         super.updateAgeGroupList();
     }

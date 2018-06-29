@@ -20,14 +20,12 @@ public class InterviewDetailsDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param interviewDetailsRepositoryManager
      * @param rowIndex
      */
-    public InterviewDetailsDialogViewModel(Context context,
-                                           InterviewDetailsRepositoryManager interviewDetailsRepositoryManager,
+    public InterviewDetailsDialogViewModel(InterviewDetailsRepositoryManager interviewDetailsRepositoryManager,
                                            int rowIndex) {
-        super(context);
+        super();
         mInterviewDetailsRepositoryManager = interviewDetailsRepositoryManager;
         mRowIndex = rowIndex;
 
@@ -44,12 +42,10 @@ public class InterviewDetailsDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor for new rows
-     * @param context
      * @param interviewDetailsRepositoryManager
      */
-    public InterviewDetailsDialogViewModel(Context context,
-                                           InterviewDetailsRepositoryManager interviewDetailsRepositoryManager) {
-        this(context, interviewDetailsRepositoryManager, -1);
+    public InterviewDetailsDialogViewModel(InterviewDetailsRepositoryManager interviewDetailsRepositoryManager) {
+        this(interviewDetailsRepositoryManager, -1);
     }
 
     /**

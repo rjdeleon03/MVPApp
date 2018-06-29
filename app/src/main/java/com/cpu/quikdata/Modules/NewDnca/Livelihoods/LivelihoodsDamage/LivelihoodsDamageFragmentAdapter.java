@@ -23,7 +23,6 @@ public class LivelihoodsDamageFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         LivelihoodsDamageRowViewModel livelihoodsDamageRowViewModel = new LivelihoodsDamageRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

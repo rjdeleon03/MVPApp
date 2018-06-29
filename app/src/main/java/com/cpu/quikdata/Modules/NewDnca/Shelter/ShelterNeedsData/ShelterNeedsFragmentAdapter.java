@@ -23,7 +23,6 @@ public class ShelterNeedsFragmentAdapter extends BaseEnumRowAdapter {
     @Override
     public void onBindViewHolder(@NonNull BaseEnumRowViewHolder holder, int position) {
         ShelterNeedsRowViewModel shelterNeedsRowViewModel = new ShelterNeedsRowViewModel(
-                mContext,
                 mViewModel,
                 mBaseEnumNavigator,
                 position);

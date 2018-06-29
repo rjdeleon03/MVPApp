@@ -23,11 +23,10 @@ public class CalamityDetailsViewModel extends GenInfoBaseViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param genInfoRepositoryManager
      */
-    public CalamityDetailsViewModel(Context context, GenInfoRepositoryManager genInfoRepositoryManager) {
-        super(context, genInfoRepositoryManager);
+    public CalamityDetailsViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
+        super(genInfoRepositoryManager);
 
         CalamityDesc calamityDesc = mGenInfoRepositoryManager.getCalamityDetails();
         mQuestionsViewModels.add(new QuestionItemViewModelString(new BaseQuestion(mQuestions[0], calamityDesc.getCalamityType())));

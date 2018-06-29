@@ -29,16 +29,14 @@ public class InfrastructureDamageDialogViewModel extends DialogViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param infrastructureDamageRepositoryManager
      * @param infaTypeIndex
      * @param isNewRow
      */
-    public InfrastructureDamageDialogViewModel(Context context,
-                                               InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
+    public InfrastructureDamageDialogViewModel(InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
                                                int infaTypeIndex,
                                                boolean isNewRow) {
-        super(context);
+        super();
         mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
 
         InfrastructureDamageDataRow infrastructureDamageDataRow;

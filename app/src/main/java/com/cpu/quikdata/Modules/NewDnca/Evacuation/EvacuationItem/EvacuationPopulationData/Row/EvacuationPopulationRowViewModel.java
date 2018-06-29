@@ -25,16 +25,14 @@ public class EvacuationPopulationRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param evacuationPopulationRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public EvacuationPopulationRowViewModel(Context context,
-                                            EvacuationPopulationRepositoryManager evacuationPopulationRepositoryManager,
+    public EvacuationPopulationRowViewModel(EvacuationPopulationRepositoryManager evacuationPopulationRepositoryManager,
                                             BaseEnumNavigator baseEnumNavigator,
                                             int rowIndex) {
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mEvacuationPopulationRepositoryManager = evacuationPopulationRepositoryManager;
 
         EvacuationPopulationDataRow evacuationPopulationDataRow = mEvacuationPopulationRepositoryManager.getEvacuationPopulationDataRow(mRowIndex);

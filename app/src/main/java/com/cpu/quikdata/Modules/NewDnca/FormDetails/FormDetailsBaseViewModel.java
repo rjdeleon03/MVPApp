@@ -6,15 +6,14 @@ import com.cpu.quikdata.Modules.NewDnca.Base.QuestionOnlyModules.BaseQuestionVie
 
 public abstract class FormDetailsBaseViewModel extends BaseQuestionViewModel {
 
-    protected FormDetailsRepositoryManager mFormDetailsRepositoryManager;
+    protected IFormDetailsViewModel mIFormDetailsViewModel;
 
     /**
      * Constructor
-     * @param context
-     * @param formDetailsRepositoryManager
+     * @param iFormDetailsViewModel
      */
-    public FormDetailsBaseViewModel(Context context, FormDetailsRepositoryManager formDetailsRepositoryManager) {
-        super(context);
-        mFormDetailsRepositoryManager = formDetailsRepositoryManager;
+    public FormDetailsBaseViewModel(IFormDetailsViewModel iFormDetailsViewModel) {
+        super();
+        mIFormDetailsViewModel = iFormDetailsViewModel;
     }
 }

@@ -10,11 +10,10 @@ public abstract class FoodSecurityBaseViewModel extends BaseQuestionViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param foodSecurityRepositoryManager
      */
-    public FoodSecurityBaseViewModel(Context context, FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
-        super(context);
+    public FoodSecurityBaseViewModel(FoodSecurityRepositoryManager foodSecurityRepositoryManager) {
+        super();
         mFoodSecurityRepositoryManager = foodSecurityRepositoryManager;
     }
 }

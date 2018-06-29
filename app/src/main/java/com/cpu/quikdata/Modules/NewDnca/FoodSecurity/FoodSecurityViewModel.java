@@ -20,11 +20,10 @@ public class FoodSecurityViewModel extends BaseMultiPageViewModel implements Foo
 
     /**
      * Constructor
-     * @param context
      * @param dncaFormRepository
      */
-    public FoodSecurityViewModel(Context context, DNCAFormRepository dncaFormRepository) {
-        super(context, dncaFormRepository);
+    public FoodSecurityViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
     }
 
     /**

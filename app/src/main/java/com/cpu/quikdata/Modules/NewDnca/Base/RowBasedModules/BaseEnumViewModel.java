@@ -27,11 +27,11 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
 
     /**
      * Constructor
-     * @param context
+     * @param enumClass
      */
-    protected BaseEnumViewModel(Context context, @Nullable Class<? extends Enum> enumClass) {
+    protected BaseEnumViewModel(@Nullable Class<? extends Enum> enumClass) {
 
-        super(context);
+        super();
         if (enumClass == null) {
             return;
         }

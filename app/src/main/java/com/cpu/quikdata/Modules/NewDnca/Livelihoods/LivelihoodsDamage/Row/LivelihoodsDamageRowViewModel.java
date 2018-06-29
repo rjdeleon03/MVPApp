@@ -23,16 +23,14 @@ public class LivelihoodsDamageRowViewModel extends RowViewModel {
 
     /**
      * Constructor
-     * @param context
      * @param livelihoodsDamageRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public LivelihoodsDamageRowViewModel(Context context,
-                                         LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
+    public LivelihoodsDamageRowViewModel(LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
                                          BaseEnumNavigator baseEnumNavigator,
                                          int rowIndex) {
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mLivelihoodsDamageRepositoryManager = livelihoodsDamageRepositoryManager;
 
         LivelihoodsDamageDataRow damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(rowIndex);

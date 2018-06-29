@@ -43,7 +43,7 @@ public class FormDetailsFragment extends BaseMultiPageFragment {
         }
 
         // Setup specific repository manager
-        FormDetailsRepositoryManager repositoryManager = (FormDetailsRepositoryManager) mViewModel;
+        IFormDetailsViewModel repositoryManager = (IFormDetailsViewModel) mViewModel;
 
         // Obtain fragment manager and context
         FragmentManager fragmentManager = getChildFragmentManager();

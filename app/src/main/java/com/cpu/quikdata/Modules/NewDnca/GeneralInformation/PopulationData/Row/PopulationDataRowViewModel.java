@@ -22,17 +22,15 @@ public class PopulationDataRowViewModel extends RowViewModel implements DialogIt
 
     /**
      * Constructor
-     * @param context
      * @param populationDataRepositoryManager
      * @param baseEnumNavigator
      * @param rowIndex
      */
-    public PopulationDataRowViewModel(Context context,
-                                      PopulationDataRepositoryManager populationDataRepositoryManager,
+    public PopulationDataRowViewModel(PopulationDataRepositoryManager populationDataRepositoryManager,
                                       BaseEnumNavigator baseEnumNavigator,
                                       int rowIndex) {
 
-        super(context, baseEnumNavigator, rowIndex);
+        super(baseEnumNavigator, rowIndex);
         mPopulationDataRepositoryManager = populationDataRepositoryManager;
 
         PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(rowIndex);

@@ -32,7 +32,7 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
     protected BaseEnumViewModel(@Nullable Class<? extends Enum> enumClass) {
 
         super();
-        if (enumClass == null) {
+        if (enumClass == null || enumClass == GenericEnumDataRow.Assistance.class) {
             return;
         }
 

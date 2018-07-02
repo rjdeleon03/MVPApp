@@ -36,7 +36,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-                (BaseEnumRepositoryManager< PopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
+                (BaseEnumRepositoryManager<PopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -50,7 +50,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-                (BaseEnumRepositoryManager< PopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
+                (BaseEnumRepositoryManager<PopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);

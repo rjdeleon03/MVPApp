@@ -5,13 +5,14 @@ import android.content.Context;
 import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationData;
 import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel implements VulnerablePopulationRepositoryManager {
+public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel implements BaseEnumRepositoryManager<VulnerablePopulationDataRow, GenericEnumDataRow.AgeGroup> {
 
     /**
      * Constructor
@@ -35,11 +36,11 @@ public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel impl
 
     /**
      * Adds vulnerable population data row
-     * @param vulnerablePopulationDataRow
+     * @param row
      */
     @Override
-    public void addVulnerablePopulationRow(VulnerablePopulationDataRow vulnerablePopulationDataRow) {
-        super.addAgeGroupDataRow(vulnerablePopulationDataRow);
+    public void addRow(VulnerablePopulationDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
 
     /**
@@ -47,7 +48,7 @@ public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel impl
      * @param rowIndex
      */
     @Override
-    public void deleteVulnerablePopulationRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
@@ -56,17 +57,17 @@ public class VulnerablePopulationViewModel extends GenInfoEnumBaseViewModel impl
      * @param rowIndex
      */
     @Override
-    public VulnerablePopulationDataRow getVulnerablePopulationRow(int rowIndex) {
+    public VulnerablePopulationDataRow getRow(int rowIndex) {
         return (VulnerablePopulationDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
      * Gets age group based on index
-     * @param ageGroupIndex
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.AgeGroup getVulnerablePopulationAgeGroup(int ageGroupIndex) {
-        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(typeIndex);
     }
 }

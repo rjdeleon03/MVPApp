@@ -1,17 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.CasualtiesData;
 import com.cpu.quikdata.Models.GeneralInformation.CasualtiesDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements CasualtiesDataRepositoryManager {
+public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements BaseEnumRepositoryManager<CasualtiesDataRow, GenericEnumDataRow.AgeGroup> {
 
     /**
      * Constructor
@@ -35,11 +33,11 @@ public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Adds casualties data row
-     * @param casualtiesDataRow
+     * @param row
      */
     @Override
-    public void addCasualtiesDataRow(CasualtiesDataRow casualtiesDataRow) {
-        super.addAgeGroupDataRow(casualtiesDataRow);
+    public void addRow(CasualtiesDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
 
     /**
@@ -47,7 +45,7 @@ public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements
      * @param rowIndex
      */
     @Override
-    public void deleteCasualtiesDataRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
@@ -56,17 +54,17 @@ public class CasualtiesDataViewModel extends GenInfoEnumBaseViewModel implements
      * @param rowIndex
      */
     @Override
-    public CasualtiesDataRow getCasualtiesDataRow(int rowIndex) {
+    public CasualtiesDataRow getRow(int rowIndex) {
         return (CasualtiesDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
      * Gets age group based on index
-     * @param ageGroupIndex
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.AgeGroup getCasualtiesDataAgeGroup(int ageGroupIndex) {
-        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(typeIndex);
     }
 }

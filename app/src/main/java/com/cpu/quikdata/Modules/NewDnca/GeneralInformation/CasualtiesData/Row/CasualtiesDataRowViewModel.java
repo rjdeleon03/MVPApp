@@ -1,17 +1,14 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.CasualtiesDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataRepositoryManager;
 
-public class CasualtiesDataRowViewModel extends RowViewModel {
-
-    private CasualtiesDataRepositoryManager mCasualtiesDataRepositoryManager;
+public class CasualtiesDataRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "Dead",
@@ -20,31 +17,47 @@ public class CasualtiesDataRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static CasualtiesDataRowViewModel newInstance() {
+        return new CasualtiesDataRowViewModel();
+    }
+
+    /**
      * Constructor
+     * @return
+     */
+    public CasualtiesDataRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public CasualtiesDataRowViewModel(CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
-                                      BaseEnumNavigator baseEnumNavigator,
-                                      int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mCasualtiesDataRepositoryManager = casualtiesDataRepositoryManager;
-
-        CasualtiesDataRow casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(mRowIndex);
+        CasualtiesDataRow casualtiesDataRow = (CasualtiesDataRow) mRepositoryManager.getRow(mRowIndex);
         type.set(casualtiesDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelGenderTuple(new DialogItemModelGenderTuple(mQuestions[0], casualtiesDataRow.getDead().male, casualtiesDataRow.getDead().female)));
         mItemViewModels.add(new DialogItemViewModelGenderTuple(new DialogItemModelGenderTuple(mQuestions[1], casualtiesDataRow.getMissing().male, casualtiesDataRow.getMissing().female)));
         mItemViewModels.add(new DialogItemViewModelGenderTuple(new DialogItemModelGenderTuple(mQuestions[2], casualtiesDataRow.getInjured().male, casualtiesDataRow.getInjured().female)));
+
     }
 
     /**
      * Handle navigation when card is deleted
      */
     @Override
+    // TODO: Refactor this
     public void navigateOnDeleteCardButtonPressed() {
-        mCasualtiesDataRepositoryManager.deleteCasualtiesDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

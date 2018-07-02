@@ -198,4 +198,12 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
     public void navigateOnSaveButtonPressed() {
 
     }
+
+    /**
+     * Gets the number of data rows
+     * @return
+     */
+    public int getRowsCount() {
+        return mGenericEnumDataRows.size();
+    }
 }

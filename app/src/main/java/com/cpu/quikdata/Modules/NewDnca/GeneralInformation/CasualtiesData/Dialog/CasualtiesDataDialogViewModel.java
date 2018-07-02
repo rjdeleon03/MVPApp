@@ -1,18 +1,16 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.CasualtiesDataRow;
 import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataRepositoryManager;
 
 public class CasualtiesDataDialogViewModel extends DialogViewModel {
 
-    private CasualtiesDataRepositoryManager mCasualtiesDataRepositoryManager;
+    private BaseEnumRepositoryManager<CasualtiesDataRow, GenericEnumDataRow.AgeGroup> mCasualtiesDataRepositoryManager;
 
     private String[] mQuestions = {
             "Dead",
@@ -26,7 +24,7 @@ public class CasualtiesDataDialogViewModel extends DialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public CasualtiesDataDialogViewModel(CasualtiesDataRepositoryManager casualtiesDataRepositoryManager,
+    public CasualtiesDataDialogViewModel(BaseEnumRepositoryManager<CasualtiesDataRow, GenericEnumDataRow.AgeGroup> casualtiesDataRepositoryManager,
                                          int ageGroupIndex,
                                          boolean isNewRow) {
         super();
@@ -34,9 +32,9 @@ public class CasualtiesDataDialogViewModel extends DialogViewModel {
 
         CasualtiesDataRow casualtiesDataRow;
         if (isNewRow) {
-            casualtiesDataRow = new CasualtiesDataRow(mCasualtiesDataRepositoryManager.getCasualtiesDataAgeGroup(ageGroupIndex));
+            casualtiesDataRow = new CasualtiesDataRow(mCasualtiesDataRepositoryManager.getEnumType(ageGroupIndex));
         } else {
-            casualtiesDataRow = mCasualtiesDataRepositoryManager.getCasualtiesDataRow(ageGroupIndex);
+            casualtiesDataRow = mCasualtiesDataRepositoryManager.getRow(ageGroupIndex);
         }
 
         type.set(casualtiesDataRow.getType());
@@ -63,7 +61,7 @@ public class CasualtiesDataDialogViewModel extends DialogViewModel {
                 new GenderTuple(missing.value1.get(), missing.value2.get()),
                 new GenderTuple(injured.value1.get(), injured.value2.get())
         );
-        mCasualtiesDataRepositoryManager.addCasualtiesDataRow(casualtiesDataRow);
+        mCasualtiesDataRepositoryManager.addRow(casualtiesDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

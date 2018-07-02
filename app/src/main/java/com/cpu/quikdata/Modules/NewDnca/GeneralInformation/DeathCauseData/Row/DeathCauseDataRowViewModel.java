@@ -1,18 +1,13 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.DeathCauseDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
 
 public class DeathCauseDataRowViewModel extends RowViewModel {
-
-    private DeathCauseRepositoryManager mDeathCauseRepositoryManager;
-
     private String[] mQuestions = {
             "Measles",
             "Diarrhea",
@@ -26,18 +21,32 @@ public class DeathCauseDataRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static DeathCauseDataRowViewModel newInstance() {
+        return new DeathCauseDataRowViewModel();
+    }
+
+    /**
      * Constructor
+     * @return
+     */
+    public DeathCauseDataRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public DeathCauseDataRowViewModel(DeathCauseRepositoryManager deathCauseRepositoryManager,
-                                      BaseEnumNavigator baseEnumNavigator,
-                                      int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mDeathCauseRepositoryManager = deathCauseRepositoryManager;
-
-        DeathCauseDataRow deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(mRowIndex);
+        DeathCauseDataRow deathCauseDataRow = (DeathCauseDataRow) mRepositoryManager.getRow(mRowIndex);
         type.set(deathCauseDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelGenderTuple(
@@ -65,7 +74,7 @@ public class DeathCauseDataRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mDeathCauseRepositoryManager.deleteDeathCauseDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 

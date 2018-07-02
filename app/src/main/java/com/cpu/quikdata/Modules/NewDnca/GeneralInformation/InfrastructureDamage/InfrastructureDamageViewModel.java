@@ -5,13 +5,14 @@ import android.content.Context;
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageData;
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.List;
 
-public class InfrastructureDamageViewModel extends GenInfoEnumBaseViewModel implements InfrastructureDamageRepositoryManager {
+public class InfrastructureDamageViewModel extends GenInfoEnumBaseViewModel implements BaseEnumRepositoryManager<InfrastructureDamageDataRow, GenericEnumDataRow.InfraType> {
 
     /**
      * Constructor
@@ -32,20 +33,22 @@ public class InfrastructureDamageViewModel extends GenInfoEnumBaseViewModel impl
         infrastructureDamageData.setInfrastructureDamageDataRows((List<InfrastructureDamageDataRow>)(Object) mGenericEnumDataRows);
         mGenInfoRepositoryManager.saveInfrastructureDamageData(infrastructureDamageData);
     }
+
     /**
      * Adds infrastructure damage data row
-     * @param infrastructureDamageDataRow
+     * @param row
      */
     @Override
-    public void addInfrastructureDamageRow(InfrastructureDamageDataRow infrastructureDamageDataRow) {
-        super.addAgeGroupDataRow(infrastructureDamageDataRow);
+    public void addRow(InfrastructureDamageDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
+
     /**
      * Deletes infrastructure damage data row
      * @param rowIndex
      */
     @Override
-    public void deleteInfrastructureDamageRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
@@ -54,17 +57,17 @@ public class InfrastructureDamageViewModel extends GenInfoEnumBaseViewModel impl
      * @param rowIndex
      */
     @Override
-    public InfrastructureDamageDataRow getInfrastructureDamageRow(int rowIndex) {
+    public InfrastructureDamageDataRow getRow(int rowIndex) {
         return (InfrastructureDamageDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
-     * Gets infrasture type based on index
-     * @param infraTypeIndex
+     * Gets infrastructure type based on index
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.InfraType getInfrastructureDamageType(int infraTypeIndex) {
-        return (GenericEnumDataRow.InfraType) ageGroupList.get(infraTypeIndex);
+    public GenericEnumDataRow.InfraType getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.InfraType) ageGroupList.get(typeIndex);
     }
 }

@@ -17,6 +17,7 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Constructor
+     *
      * @param genInfoRepositoryManager
      */
     public PopulationDataViewModel(GenInfoRepositoryManager genInfoRepositoryManager) {
@@ -30,12 +31,13 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
      */
     @Override
     public void navigateOnSaveButtonPressed() {
-        PopulationData populationData = new PopulationData((List<PopulationDataRow>)(Object) mGenericEnumDataRows);
+        PopulationData populationData = new PopulationData((List<PopulationDataRow>) (Object) mGenericEnumDataRows);
         mGenInfoRepositoryManager.savePopulationData(populationData);
     }
 
     /**
      * Adds population data row
+     *
      * @param row
      */
     @Override
@@ -46,6 +48,7 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Deletes population data row
+     *
      * @param rowIndex
      */
     @Override
@@ -55,6 +58,7 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Gets population data row
+     *
      * @param rowIndex
      */
     @Override
@@ -64,16 +68,12 @@ public class PopulationDataViewModel extends GenInfoEnumBaseViewModel implements
 
     /**
      * Gets age group based on index
+     *
      * @param typeIndex
      * @return
      */
     @Override
     public GenericEnumDataRow.AgeGroup getEnumType(int typeIndex) {
         return (GenericEnumDataRow.AgeGroup) ageGroupList.get(typeIndex);
-    }
-
-    @Override
-    public int getRowsCount() {
-        return mGenericEnumDataRows.size();
     }
 }

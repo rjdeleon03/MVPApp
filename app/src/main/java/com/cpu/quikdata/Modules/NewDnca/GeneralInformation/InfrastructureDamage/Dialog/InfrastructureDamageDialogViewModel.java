@@ -1,9 +1,8 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelBoolean;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
@@ -11,11 +10,10 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogIte
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
 public class InfrastructureDamageDialogViewModel extends DialogViewModel {
 
-    private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
+    private BaseEnumRepositoryManager<InfrastructureDamageDataRow, GenericEnumDataRow.InfraType> mInfrastructureDamageRepositoryManager;
 
     private String[] mQuestions = {
             "Infrastructure Count",
@@ -33,7 +31,7 @@ public class InfrastructureDamageDialogViewModel extends DialogViewModel {
      * @param infaTypeIndex
      * @param isNewRow
      */
-    public InfrastructureDamageDialogViewModel(InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
+    public InfrastructureDamageDialogViewModel(BaseEnumRepositoryManager<InfrastructureDamageDataRow, GenericEnumDataRow.InfraType> infrastructureDamageRepositoryManager,
                                                int infaTypeIndex,
                                                boolean isNewRow) {
         super();
@@ -41,9 +39,9 @@ public class InfrastructureDamageDialogViewModel extends DialogViewModel {
 
         InfrastructureDamageDataRow infrastructureDamageDataRow;
         if (isNewRow) {
-            infrastructureDamageDataRow = new InfrastructureDamageDataRow(mInfrastructureDamageRepositoryManager.getInfrastructureDamageType(infaTypeIndex));
+            infrastructureDamageDataRow = new InfrastructureDamageDataRow(mInfrastructureDamageRepositoryManager.getEnumType(infaTypeIndex));
         } else {
-            infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(infaTypeIndex);
+            infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getRow(infaTypeIndex);
         }
 
         type.set(infrastructureDamageDataRow.getType());
@@ -66,7 +64,7 @@ public class InfrastructureDamageDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelBoolean) mItemViewModels.get(1)).value1.get(),
                 ((DialogItemViewModelRemarks) mItemViewModels.get(2)).value1.get()
         );
-        mInfrastructureDamageRepositoryManager.addInfrastructureDamageRow(infrastructureDamageDataRow);
+        mInfrastructureDamageRepositoryManager.addRow(infrastructureDamageDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

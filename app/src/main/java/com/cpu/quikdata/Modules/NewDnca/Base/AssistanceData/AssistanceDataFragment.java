@@ -6,6 +6,7 @@ import android.view.View;
 import com.cpu.quikdata.Models.Generics.AssistanceDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row.AssistanceRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogViewModel;
@@ -29,7 +30,7 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
-                (BaseEnumRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance>) mViewModel);
+                (BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance>) mViewModel);
         super.setupDialog(dialogViewModel);
     }
 
@@ -41,7 +42,7 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
-                (BaseEnumRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance>) mViewModel,
+                (BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance>) mViewModel,
                 rowIndex);
         super.setupDialog(dialogViewModel);
     }

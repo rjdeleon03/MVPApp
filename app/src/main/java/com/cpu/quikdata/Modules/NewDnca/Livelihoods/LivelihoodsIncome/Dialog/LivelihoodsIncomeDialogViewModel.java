@@ -2,6 +2,7 @@ package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog;
 
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
@@ -12,7 +13,7 @@ import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Livelihood
 
 public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
 
-    private BaseEnumRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> mLivelihoodsIncomeRepositoryManager;
+    private BaseEnumNoTypeRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> mLivelihoodsIncomeRepositoryManager;
     private boolean mIsNewRow;
     private int mRowIndex = -1;
 
@@ -32,7 +33,7 @@ public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
      * @param incomeSourceTypeIndex
      * @param isNewRow
      */
-    public LivelihoodsIncomeDialogViewModel(BaseEnumRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> livelihoodsIncomeRepositoryManager,
+    public LivelihoodsIncomeDialogViewModel(BaseEnumNoTypeRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> livelihoodsIncomeRepositoryManager,
                                             int incomeSourceTypeIndex,
                                             boolean isNewRow) {
         super();
@@ -80,8 +81,7 @@ public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(5)).value1.get(),
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(6)).value1.get());
 
-        // TODO: Refactor this
-        ((LivelihoodsIncomeViewModel) mLivelihoodsIncomeRepositoryManager).addRow(livelihoodsIncomeDataRow, mRowIndex);
+        mLivelihoodsIncomeRepositoryManager.addRow(livelihoodsIncomeDataRow, mRowIndex);
 
         super.navigateOnOkButtonPressed();
     }

@@ -5,13 +5,14 @@ import android.content.Context;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeData;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager;
 
 import java.util.List;
 
-public class LivelihoodsIncomeViewModel extends LivelihoodsEnumBaseViewModel implements BaseEnumRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> {
+public class LivelihoodsIncomeViewModel extends LivelihoodsEnumBaseViewModel implements BaseEnumNoTypeRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> {
 
     private boolean mWillSaveAsIncomeBefore = false;
 

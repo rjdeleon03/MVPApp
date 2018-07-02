@@ -3,12 +3,13 @@ package com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData;
 import com.cpu.quikdata.Models.Generics.AssistanceData;
 import com.cpu.quikdata.Models.Generics.AssistanceDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 
 import java.util.List;
 
-public class AssistanceDataViewModel extends BaseEnumViewModel implements BaseEnumRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance> {
+public class AssistanceDataViewModel extends BaseEnumViewModel implements BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance> {
 
     private AssistanceDataContainer mAssistanceDataContainer;
 
@@ -36,14 +37,19 @@ public class AssistanceDataViewModel extends BaseEnumViewModel implements BaseEn
      * @param row
      */
     @Override
-    // TODO: Add subclassed interface for non-type specific rows
     public void addRow(AssistanceDataRow row) {
         mGenericEnumDataRows.add(row);
     }
 
+    /**
+     * Sets the assistance data row at the specified index
+     * @param row
+     * @param rowIndex
+     */
+    @Override
     public void addRow(AssistanceDataRow row, int rowIndex) {
         if (rowIndex == -1) {
-            mGenericEnumDataRows.add(row);
+            addRow(row);
         } else {
             mGenericEnumDataRows.set(rowIndex, row);
         }

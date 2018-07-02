@@ -71,7 +71,7 @@ public class QuestionItemAdapter extends RecyclerView.Adapter<QuestionItemViewHo
     public QuestionItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        // TODO: Set layout based on question value type
+        // Set layout based on question value type
         View root = inflater.inflate(viewType, parent, false);
 
         ViewDataBinding binding = null;

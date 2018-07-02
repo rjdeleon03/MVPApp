@@ -3,8 +3,13 @@ package com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Models.Shelter.ShelterNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog.ShelterNeedsDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Row.ShelterNeedsRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_NEEDS;
 
@@ -13,7 +18,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_NEEDS;
  */
 public class ShelterNeedsFragment extends BaseEnumFragment {
 
-    private ShelterNeedsFragmentAdapter mShelterNeedsFragmentAdapter;
+    private BaseEnumRowAdapter<ShelterNeedsRowViewModel> mShelterNeedsFragmentAdapter;
 
     public static ShelterNeedsFragment newInstance() {
         return new ShelterNeedsFragment();
@@ -27,7 +32,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         ShelterNeedsDialogViewModel dialogViewModel = new ShelterNeedsDialogViewModel(
-                (ShelterNeedsRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<ShelterNeedsDataRow, GenericEnumDataRow.NeedsType>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -37,7 +42,7 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         ShelterNeedsDialogViewModel dialogViewModel = new ShelterNeedsDialogViewModel(
-                (ShelterNeedsRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<ShelterNeedsDataRow, GenericEnumDataRow.NeedsType>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -59,8 +64,9 @@ public class ShelterNeedsFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mShelterNeedsFragmentAdapter = new ShelterNeedsFragmentAdapter(
+        mShelterNeedsFragmentAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                ShelterNeedsRowViewModel.class,
                 this,
                 (ShelterNeedsViewModel) mViewModel);
         mRowRecycler.setAdapter(mShelterNeedsFragmentAdapter);

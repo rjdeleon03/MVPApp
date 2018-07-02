@@ -1,13 +1,9 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.PopulationData;
 import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
-import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 

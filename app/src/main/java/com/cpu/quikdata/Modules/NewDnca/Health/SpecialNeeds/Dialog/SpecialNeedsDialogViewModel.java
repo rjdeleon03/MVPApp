@@ -1,19 +1,17 @@
 package com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Health.SpecialNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsRepositoryManager;
 
 public class SpecialNeedsDialogViewModel extends DialogViewModel {
 
-    private SpecialNeedsRepositoryManager mSpecialNeedsRepositoryManager;
+    private BaseEnumRepositoryManager<SpecialNeedsDataRow, GenericEnumDataRow.SpecialNeedsType> mSpecialNeedsRepositoryManager;
 
     private String[] mQuestions = {
         "Number of People with Special Needs",
@@ -27,7 +25,7 @@ public class SpecialNeedsDialogViewModel extends DialogViewModel {
      * @param specialNeedsIndex
      * @param isNewRow
      */
-    public SpecialNeedsDialogViewModel(SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
+    public SpecialNeedsDialogViewModel(BaseEnumRepositoryManager<SpecialNeedsDataRow, GenericEnumDataRow.SpecialNeedsType> specialNeedsRepositoryManager,
                                        int specialNeedsIndex,
                                        boolean isNewRow) {
         super();
@@ -35,9 +33,9 @@ public class SpecialNeedsDialogViewModel extends DialogViewModel {
 
         SpecialNeedsDataRow specialNeedsDataRow;
         if (isNewRow) {
-            specialNeedsDataRow = new SpecialNeedsDataRow(mSpecialNeedsRepositoryManager.getSpecialNeedsDataType(specialNeedsIndex));
+            specialNeedsDataRow = new SpecialNeedsDataRow(mSpecialNeedsRepositoryManager.getEnumType(specialNeedsIndex));
         } else {
-            specialNeedsDataRow = mSpecialNeedsRepositoryManager.getSpecialNeedsDataRow(specialNeedsIndex);
+            specialNeedsDataRow = mSpecialNeedsRepositoryManager.getRow(specialNeedsIndex);
         }
 
         type.set(specialNeedsDataRow.getType());
@@ -55,7 +53,7 @@ public class SpecialNeedsDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(0)).value1.get(),
                 ((DialogItemViewModelRemarks) mItemViewModels.get(1)).value1.get());
 
-        mSpecialNeedsRepositoryManager.addSpecialNeedsDataRow(specialNeedsDataRow);
+        mSpecialNeedsRepositoryManager.addRow(specialNeedsDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

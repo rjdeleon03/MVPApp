@@ -1,17 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsData;
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoRepositoryManager;
 
 import java.util.List;
 
-public class ShelterNeedsViewModel extends ShelterInfoEnumBaseViewModel implements ShelterNeedsRepositoryManager {
-
+public class ShelterNeedsViewModel extends ShelterInfoEnumBaseViewModel implements BaseEnumRepositoryManager<ShelterNeedsDataRow, GenericEnumDataRow.NeedsType> {
 
     /**
      * Constructor
@@ -35,19 +33,18 @@ public class ShelterNeedsViewModel extends ShelterInfoEnumBaseViewModel implemen
 
     /**
      * Adds shelter needs data row
-     * @param shelterNeedsDataRow
+     * @param row
      */
     @Override
-    public void addShelterNeedsDataRow(ShelterNeedsDataRow shelterNeedsDataRow) {
-        super.addAgeGroupDataRow(shelterNeedsDataRow);
+    public void addRow(ShelterNeedsDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
-
     /**
      * Deletes shelter needs data row
      * @param rowIndex
      */
     @Override
-    public void deleteShelterNeedsDataRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
@@ -57,17 +54,17 @@ public class ShelterNeedsViewModel extends ShelterInfoEnumBaseViewModel implemen
      * @return
      */
     @Override
-    public ShelterNeedsDataRow getShelterNeedsDataRow(int rowIndex) {
+    public ShelterNeedsDataRow getRow(int rowIndex) {
         return (ShelterNeedsDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
      * Gets needs type based on index
-     * @param needsTypeIndex
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.NeedsType getShelterNeedsDataType(int needsTypeIndex) {
-        return (GenericEnumDataRow.NeedsType) ageGroupList.get(needsTypeIndex);
+    public GenericEnumDataRow.NeedsType getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.NeedsType) ageGroupList.get(typeIndex);
     }
 }

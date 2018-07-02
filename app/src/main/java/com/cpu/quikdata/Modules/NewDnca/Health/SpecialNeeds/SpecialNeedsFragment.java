@@ -3,8 +3,13 @@ package com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Models.Health.SpecialNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Dialog.SpecialNeedsDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Row.SpecialNeedsRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_SPECIAL_NEEDS;
 
@@ -13,7 +18,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_SPECIAL_NEED
  */
 public class SpecialNeedsFragment extends BaseEnumFragment {
 
-    private SpecialNeedsFragmentAdapter mSpecialNeedsAdapter;
+    private BaseEnumRowAdapter<SpecialNeedsRowViewModel> mSpecialNeedsAdapter;
 
     public static SpecialNeedsFragment newInstance() {
         return new SpecialNeedsFragment();
@@ -30,7 +35,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         SpecialNeedsDialogViewModel dialogViewModel = new SpecialNeedsDialogViewModel(
-                (SpecialNeedsRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<SpecialNeedsDataRow, GenericEnumDataRow.SpecialNeedsType>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -44,7 +49,7 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         SpecialNeedsDialogViewModel dialogViewModel = new SpecialNeedsDialogViewModel(
-                (SpecialNeedsRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<SpecialNeedsDataRow, GenericEnumDataRow.SpecialNeedsType>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -66,8 +71,9 @@ public class SpecialNeedsFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mSpecialNeedsAdapter = new SpecialNeedsFragmentAdapter(
+        mSpecialNeedsAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                SpecialNeedsRowViewModel.class,
                 this,
                 (SpecialNeedsViewModel) mViewModel);
         mRowRecycler.setAdapter(mSpecialNeedsAdapter);

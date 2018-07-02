@@ -3,8 +3,13 @@ package com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Models.Health.PsychosocialDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Dialog.PsychosocialDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Row.PsychosocialRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_PSYCHOSOCIAL;
 
@@ -13,7 +18,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.HEALTH_PSYCHOSOCIAL
  */
 public class PsychosocialFragment extends BaseEnumFragment {
 
-    private PsychosocialFragmentAdapter mPsychosocialAdapter;
+    private BaseEnumRowAdapter<PsychosocialRowViewModel> mPsychosocialAdapter;
 
     public static PsychosocialFragment newInstance() {
         return new PsychosocialFragment();
@@ -30,7 +35,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         PsychosocialDialogViewModel dialogViewModel = new PsychosocialDialogViewModel(
-                (PsychosocialRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<PsychosocialDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -44,7 +49,7 @@ public class PsychosocialFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         PsychosocialDialogViewModel dialogViewModel = new PsychosocialDialogViewModel(
-                (PsychosocialRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<PsychosocialDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -66,8 +71,9 @@ public class PsychosocialFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mPsychosocialAdapter = new PsychosocialFragmentAdapter(
+        mPsychosocialAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                PsychosocialRowViewModel.class,
                 this,
                 (PsychosocialViewModel) mViewModel);
         mRowRecycler.setAdapter(mPsychosocialAdapter);

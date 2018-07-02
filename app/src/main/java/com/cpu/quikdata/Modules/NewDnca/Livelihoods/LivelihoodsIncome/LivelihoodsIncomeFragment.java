@@ -2,12 +2,17 @@ package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome;
 
 import android.view.View;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog.LivelihoodsIncomeDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row.LivelihoodsIncomeRowViewModel;
 
 public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
 
-    private LivelihoodsIncomeFragmentAdapter mLivelihoodsIncomeFragmentAdapter;
+    private BaseEnumRowAdapter<LivelihoodsIncomeRowViewModel> mLivelihoodsIncomeFragmentAdapter;
 
     public LivelihoodsIncomeFragment() {
     }
@@ -16,7 +21,7 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         LivelihoodsIncomeDialogViewModel dialogViewModel = new LivelihoodsIncomeDialogViewModel(
-                (LivelihoodsIncomeRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -26,7 +31,7 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         LivelihoodsIncomeDialogViewModel dialogViewModel = new LivelihoodsIncomeDialogViewModel(
-                (LivelihoodsIncomeRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -48,8 +53,9 @@ public abstract class LivelihoodsIncomeFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mLivelihoodsIncomeFragmentAdapter = new LivelihoodsIncomeFragmentAdapter(
+        mLivelihoodsIncomeFragmentAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                LivelihoodsIncomeRowViewModel.class,
                 this,
                 (LivelihoodsIncomeViewModel) mViewModel);
         mRowRecycler.setAdapter(mLivelihoodsIncomeFragmentAdapter);

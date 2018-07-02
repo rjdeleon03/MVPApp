@@ -4,8 +4,13 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Dialog.PopulationDataDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_POPULATION;
 
@@ -14,7 +19,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_POPULATION
  */
 public class PopulationDataFragment extends BaseEnumFragment {
 
-    private PopulationDataFragmentAdapter mPopulationDataAdapter;
+    private BaseEnumRowAdapter<PopulationDataRowViewModel> mPopulationDataAdapter;
 
     public static PopulationDataFragment newInstance() {
         return new PopulationDataFragment();
@@ -31,7 +36,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-                (PopulationDataRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager< PopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -45,7 +50,7 @@ public class PopulationDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         PopulationDataDialogViewModel dialogViewModel = new PopulationDataDialogViewModel(
-                (PopulationDataRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager< PopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -67,8 +72,9 @@ public class PopulationDataFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mPopulationDataAdapter = new PopulationDataFragmentAdapter(
+        mPopulationDataAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                PopulationDataRowViewModel.class,
                 this,
                 (PopulationDataViewModel) mViewModel);
         mRowRecycler.setAdapter(mPopulationDataAdapter);

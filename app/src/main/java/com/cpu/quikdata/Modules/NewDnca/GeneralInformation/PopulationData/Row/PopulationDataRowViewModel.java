@@ -1,18 +1,14 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataRepositoryManager;
 
 public class PopulationDataRowViewModel extends RowViewModel implements DialogItemDataSource {
-
-    private PopulationDataRepositoryManager mPopulationDataRepositoryManager;
 
     private String[] mQuestions = {
             "Total",
@@ -21,19 +17,32 @@ public class PopulationDataRowViewModel extends RowViewModel implements DialogIt
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static PopulationDataRowViewModel newInstance() {
+        return new PopulationDataRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param populationDataRepositoryManager
+     * @return
+     */
+    public PopulationDataRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public PopulationDataRowViewModel(PopulationDataRepositoryManager populationDataRepositoryManager,
-                                      BaseEnumNavigator baseEnumNavigator,
-                                      int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mPopulationDataRepositoryManager = populationDataRepositoryManager;
-
-        PopulationDataRow populationDataRow = mPopulationDataRepositoryManager.getPopulationDataRow(rowIndex);
+        PopulationDataRow populationDataRow = (PopulationDataRow) mRepositoryManager.getRow(mRowIndex);
         type.set(populationDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelGenderTuple(
@@ -49,7 +58,7 @@ public class PopulationDataRowViewModel extends RowViewModel implements DialogIt
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mPopulationDataRepositoryManager.deletePopulationDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

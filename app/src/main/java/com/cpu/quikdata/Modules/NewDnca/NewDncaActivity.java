@@ -273,10 +273,11 @@ public class NewDncaActivity extends AppCompatActivity implements NewDncaNavigat
      * Show evacuation item fragment
      */
     @Override
-    public void onEvacuationAddButtonPressed() {
+    public void onEvacuationAddButtonPressed(int index) {
 //        ViewFactory.startEvacuationListActivity(this);
         EvacuationItemFragment evacuationItemFragment = (EvacuationItemFragment) findOrCreateViewFragment(NewDncaComponent.EVACUATION_ITEM);
         mEvacuationItemViewModel = (EvacuationItemViewModel) findOrCreateViewModel(NewDncaComponent.EVACUATION_ITEM);
+        mEvacuationItemViewModel.setItemIndex(index);
         evacuationItemFragment.setViewModel(mEvacuationItemViewModel);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), evacuationItemFragment,
                 R.id.new_dnca_fragment_container, true, NewDncaComponent.EVACUATION_ITEM.toString());

@@ -1,16 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationData;
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemRepositoryManager;
 
 import java.util.List;
 
-public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel implements EvacuationPopulationRepositoryManager {
+public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel implements BaseEnumRepositoryManager<EvacuationPopulationDataRow, GenericEnumDataRow.AgeGroup> {
 
     /**
      * Constructor
@@ -33,11 +32,11 @@ public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel i
 
     /**
      * Adds evacuation population data row
-     * @param evacuationPopulationDataRow
+     * @param row
      */
     @Override
-    public void addEvacuationPopulationDataRow(EvacuationPopulationDataRow evacuationPopulationDataRow) {
-        super.addAgeGroupDataRow(evacuationPopulationDataRow);
+    public void addRow(EvacuationPopulationDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
 
     /**
@@ -45,27 +44,26 @@ public class EvacuationPopulationViewModel extends EvacuationEnumBaseViewModel i
      * @param rowIndex
      */
     @Override
-    public void deleteEvacuationPopulationDataRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
-
     /**
      * Gets evacuation population data row
      * @param rowIndex
      * @return
      */
     @Override
-    public EvacuationPopulationDataRow getEvacuationPopulationDataRow(int rowIndex) {
+    public EvacuationPopulationDataRow getRow(int rowIndex) {
         return (EvacuationPopulationDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
      * Gets age group based on index
-     * @param ageGroupIndex
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.AgeGroup getEvacuationPopulationDataAgeGroup(int ageGroupIndex) {
-        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(typeIndex);
     }
 }

@@ -1,17 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationRepositoryManager;
 
 public class EvacuationPopulationDialogViewModel extends DialogViewModel {
 
-    private EvacuationPopulationRepositoryManager mEvacuationPopulationRepositoryManager;
+    private BaseEnumRepositoryManager<EvacuationPopulationDataRow, GenericEnumDataRow.AgeGroup> mEvacuationPopulationRepositoryManager;
 
     private String[] mQuestions = {
             "Male",
@@ -29,7 +27,7 @@ public class EvacuationPopulationDialogViewModel extends DialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public EvacuationPopulationDialogViewModel(EvacuationPopulationRepositoryManager evacuationPopulationRepositoryManager,
+    public EvacuationPopulationDialogViewModel(BaseEnumRepositoryManager<EvacuationPopulationDataRow, GenericEnumDataRow.AgeGroup> evacuationPopulationRepositoryManager,
                                                int ageGroupIndex,
                                                boolean isNewRow) {
         super();
@@ -37,9 +35,9 @@ public class EvacuationPopulationDialogViewModel extends DialogViewModel {
 
         EvacuationPopulationDataRow evacuationPopulationDataRow;
         if (isNewRow) {
-            evacuationPopulationDataRow = new EvacuationPopulationDataRow(mEvacuationPopulationRepositoryManager.getEvacuationPopulationDataAgeGroup(ageGroupIndex));
+            evacuationPopulationDataRow = new EvacuationPopulationDataRow(mEvacuationPopulationRepositoryManager.getEnumType(ageGroupIndex));
         } else {
-            evacuationPopulationDataRow = mEvacuationPopulationRepositoryManager.getEvacuationPopulationDataRow(ageGroupIndex);
+            evacuationPopulationDataRow = mEvacuationPopulationRepositoryManager.getRow(ageGroupIndex);
         }
         type.set(evacuationPopulationDataRow.getType());
 
@@ -74,7 +72,7 @@ public class EvacuationPopulationDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(5)).value1.get(),
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(6)).value1.get());
 
-        mEvacuationPopulationRepositoryManager.addEvacuationPopulationDataRow(evacuationPopulationDataRow);
+        mEvacuationPopulationRepositoryManager.addRow(evacuationPopulationDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

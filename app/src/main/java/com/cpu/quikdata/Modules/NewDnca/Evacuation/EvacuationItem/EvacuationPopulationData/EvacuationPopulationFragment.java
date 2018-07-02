@@ -3,8 +3,13 @@ package com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPop
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationDataRow;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.Dialog.EvacuationPopulationDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.Row.EvacuationPopulationRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_POPULATION;
 
@@ -13,7 +18,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.EVACUATION_POPULATI
  */
 public class EvacuationPopulationFragment extends BaseEnumFragment {
 
-    private EvacuationPopulationFragmentAdapter mEvacuationPopulationAdapter;
+    private BaseEnumRowAdapter<EvacuationPopulationRowViewModel> mEvacuationPopulationAdapter;
 
     public static EvacuationPopulationFragment newInstance() {
         return new EvacuationPopulationFragment();
@@ -33,7 +38,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         EvacuationPopulationDialogViewModel dialogViewModel = new EvacuationPopulationDialogViewModel(
-                (EvacuationPopulationRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<EvacuationPopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -47,7 +52,7 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         EvacuationPopulationDialogViewModel dialogViewModel = new EvacuationPopulationDialogViewModel(
-                (EvacuationPopulationRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<EvacuationPopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -69,8 +74,9 @@ public class EvacuationPopulationFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mEvacuationPopulationAdapter = new EvacuationPopulationFragmentAdapter(
+        mEvacuationPopulationAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                EvacuationPopulationRowViewModel.class,
                 this,
                 (EvacuationPopulationViewModel) mViewModel);
         mRowRecycler.setAdapter(mEvacuationPopulationAdapter);

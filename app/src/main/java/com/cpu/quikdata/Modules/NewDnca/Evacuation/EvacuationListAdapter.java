@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.cpu.quikdata.Models.DNCAListItem;
 import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
+import com.cpu.quikdata.Modules.NewDnca.NewDncaNavigator;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.EvacuationListItemBinding;
 
@@ -15,10 +16,11 @@ import java.util.List;
 
 public class EvacuationListAdapter extends RecyclerView.Adapter<EvacuationListItemViewHolder>{
 
-    private com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationListViewModel mViewModel;
+    private EvacuationRepositoryManager mRepositoryManager;
 
-    public EvacuationListAdapter(EvacuationListViewModel viewModel) {
-        mViewModel = viewModel;
+    // TODO: Replace all viewModel references in adapters with repository manager interfaces
+    public EvacuationListAdapter(EvacuationRepositoryManager repositoryManager) {
+        mRepositoryManager = repositoryManager;
     }
 
     @NonNull
@@ -32,21 +34,12 @@ public class EvacuationListAdapter extends RecyclerView.Adapter<EvacuationListIt
 
     @Override
     public void onBindViewHolder(@NonNull EvacuationListItemViewHolder holder, int position) {
-        EvacuationListItemViewModel viewModel = new EvacuationListItemViewModel(mViewModel.getEvacuationInfo(position));
+        EvacuationListItemViewModel viewModel = new EvacuationListItemViewModel(mRepositoryManager, position);
         holder.bind(viewModel);
     }
 
     @Override
     public int getItemCount() {
-        return mViewModel.getEvacuationInfos().size();
-    }
-
-    /**
-     * Replace DNCA list items to update
-     * @param items
-     */
-    public void replaceItems(List<EvacuationInfo> items) {
-        mViewModel.saveEvacuationInfos(items);
-        notifyDataSetChanged();
+        return mRepositoryManager.getEvacuationInfos().size();
     }
 }

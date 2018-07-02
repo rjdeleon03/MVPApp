@@ -8,8 +8,6 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;

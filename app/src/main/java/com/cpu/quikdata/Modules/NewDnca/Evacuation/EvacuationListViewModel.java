@@ -80,9 +80,28 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
     }
 
     /**
+     * Handles navigation when evacuation item is pressed
+     * @param index
+     */
+    @Override
+    public void navigateOnEvacuationItemPressed(int index) {
+        mNewDncaNavigator.onEvacuationAddButtonPressed(index);
+    }
+
+    /**
+     * Handles navigation when evacuation item's delete button is pressed
+     * @param index
+     */
+    @Override
+    public void navigateOnEvacuationItemDeletePressed(int index) {
+        evacuationList.remove(index);
+    }
+
+    /**
      * Handles navigation when evacuation add button is pressed
      */
     public void navigateOnEvacuationAddButtonPressed() {
-        mNewDncaNavigator.onEvacuationAddButtonPressed();
+        evacuationList.add(new EvacuationInfo());
+        navigateOnEvacuationItemPressed(evacuationList.size() - 1);
     }
 }

@@ -3,6 +3,7 @@ package com.cpu.quikdata.Tasks;
 import android.os.AsyncTask;
 
 import com.cpu.quikdata.Models.CaseStories;
+import com.cpu.quikdata.Models.Evacuation.EvacuationList;
 import com.cpu.quikdata.Models.FormDetails.FormDetails;
 import com.google.gson.Gson;
 import com.cpu.quikdata.Models.DNCAForm;
@@ -151,8 +152,8 @@ public class PostNewDncaTask extends AsyncTask<String, Void, String> {
         Livelihoods livelihoods = new Livelihoods();
         HealthInfo  healthInfo = new HealthInfo();
         WashInfo washInfo = new WashInfo();
-        List<EvacuationInfo> evacuationInfos = new ArrayList<>();
+        EvacuationList evacuationList = new EvacuationList();
         CaseStories caseStories = new CaseStories();
-        return new DNCAForm(formDetails, genInfo, shelterInfo, foodSecurity, livelihoods, healthInfo, washInfo, evacuationInfos, caseStories);
+        return new DNCAForm(formDetails, genInfo, shelterInfo, foodSecurity, livelihoods, healthInfo, washInfo, evacuationList, caseStories);
     }
 }

@@ -1,6 +1,7 @@
 package com.cpu.quikdata.Models;
 
 import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
+import com.cpu.quikdata.Models.Evacuation.EvacuationList;
 import com.cpu.quikdata.Models.FoodSecurity.FoodSecurity;
 import com.cpu.quikdata.Models.FormDetails.FormDetails;
 import com.cpu.quikdata.Models.GeneralInformation.GenInfo;
@@ -22,7 +23,7 @@ public class DNCAForm implements NormalizableData {
     private Livelihoods livelihoods;
     private HealthInfo healthInfo;
     private WashInfo washInfo;
-    private List<EvacuationInfo> evacuationInfos;
+    private EvacuationList evacuationList;
     private CaseStories caseStories;
 
     public DNCAForm(FormDetails formDetails,
@@ -32,7 +33,7 @@ public class DNCAForm implements NormalizableData {
                     Livelihoods livelihoods,
                     HealthInfo healthInfo,
                     WashInfo washInfo,
-                    List<EvacuationInfo> evacuationInfos,
+                    EvacuationList evacuationList,
                     CaseStories caseStories) {
 
         this.formDetails = formDetails;
@@ -42,7 +43,7 @@ public class DNCAForm implements NormalizableData {
         this.livelihoods = livelihoods;
         this.healthInfo = healthInfo;
         this.washInfo = washInfo;
-        this.evacuationInfos = evacuationInfos;
+        this.evacuationList = evacuationList;
         this.caseStories = caseStories;
     }
 
@@ -54,7 +55,7 @@ public class DNCAForm implements NormalizableData {
                 new Livelihoods(),
                 new HealthInfo(),
                 new WashInfo(),
-                new ArrayList<EvacuationInfo>(),
+                new EvacuationList(),
                 new CaseStories());
     }
 
@@ -114,12 +115,12 @@ public class DNCAForm implements NormalizableData {
         this.washInfo = washInfo;
     }
 
-    public List<EvacuationInfo> getEvacuationInfos() {
-        return evacuationInfos;
+    public EvacuationList getEvacuationList() {
+        return evacuationList;
     }
 
-    public void setEvacuationInfo(List<EvacuationInfo> evacuationInfos) {
-        this.evacuationInfos = evacuationInfos;
+    public void setEvacuationList(EvacuationList evacuationList) {
+        this.evacuationList = evacuationList;
     }
 
     public CaseStories getCaseStories() {

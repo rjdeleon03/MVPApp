@@ -32,7 +32,7 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
     @Override
     public void retrieveDataAfterFormLoaded() {
         evacuationList = new ObservableArrayList<>();
-        evacuationList.addAll(mDncaForm.getEvacuationInfos());
+        evacuationList.addAll(mDncaForm.getEvacuationList().getEvacuationInfos());
     }
 
     /**
@@ -62,7 +62,7 @@ public class EvacuationListViewModel extends BaseMultiPageViewModel implements E
     public void saveEvacuationInfos(List<EvacuationInfo> evacuationInfos) {
         evacuationList.clear();
         evacuationList.addAll(evacuationInfos);
-        mDncaForm.setEvacuationInfo(evacuationList);
+        mDncaForm.getEvacuationList().setEvacuationInfos(evacuationList);
     }
 
     /**

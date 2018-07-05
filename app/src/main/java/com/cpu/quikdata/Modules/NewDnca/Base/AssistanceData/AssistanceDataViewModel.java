@@ -4,7 +4,6 @@ import com.cpu.quikdata.Models.Generics.AssistanceData;
 import com.cpu.quikdata.Models.Generics.AssistanceDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
-import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumViewModel;
 
 import java.util.List;

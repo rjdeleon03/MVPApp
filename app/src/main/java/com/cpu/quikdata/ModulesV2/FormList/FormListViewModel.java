@@ -47,7 +47,9 @@ public class FormListViewModel implements IFormListParentViewModel {
      */
     public RealmResults<DncaForm> getAllForms() {
         if (mForms == null) {
-            mForms = Realm.getDefaultInstance().where(DncaForm.class).findAll();
+            Realm realm = Realm.getDefaultInstance();
+            mForms = realm.where(DncaForm.class).findAll();
+            realm.close();
         }
         return mForms;
     }

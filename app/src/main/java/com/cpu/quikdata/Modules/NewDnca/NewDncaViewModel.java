@@ -9,6 +9,8 @@ import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 
 import java.util.List;
 
+import io.realm.Realm;
+
 public class NewDncaViewModel extends NewDncaBaseViewModel implements DNCAFormDataSource.GetDncaFormCallback,
         DNCAFormDataSource.SubmitDncaFormCallback, DNCAFormDataSource.UploadImagesCallback {
 

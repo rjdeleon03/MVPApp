@@ -7,12 +7,17 @@ import com.cpu.quikdata.Models.GeneralInformation.CalamityDesc;
 import com.cpu.quikdata.Models.GeneralInformation.GenInfo;
 import com.cpu.quikdata.Models.GeneralInformation.PopulationData;
 import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
+import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.Tasks.GetAllDncaTask;
 import com.cpu.quikdata.Tasks.PostNewDncaTask;
 import com.cpu.quikdata.Tasks.SubmitNewDncaTask;
 import com.cpu.quikdata.Tasks.UploadImagesTask;
+import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.UUID;
+
+import io.realm.Realm;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -21,6 +26,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     private static DNCAFormRepository INSTANCE = null;
     private final DNCAFormDataSource mDncaFormLocalDataSource;
     private DNCAForm mForm;
+    private static Realm mRealm;
 
     /**
      * Private constructor
@@ -38,6 +44,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         if (INSTANCE == null) {
             INSTANCE = new DNCAFormRepository(dncaFormLocalDataSource);
         }
+        if (mRealm == null) {
+            mRealm = Realm.getDefaultInstance();
+        }
         return INSTANCE;
     }
 
@@ -46,6 +55,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
      */
     public static void destroyInstance() {
         INSTANCE = null;
+        mRealm.close();
     }
 
     /**
@@ -80,9 +90,26 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     public void submitDncaForm(@NonNull SubmitDncaFormCallback callback) {
         checkNotNull(callback);
 
+        // Normalize DNCA form data first
+        mForm.normalize();
+
+        // Serialize to JSON
+        Gson formJson = new Gson();
+        final String jsonData = formJson.toJson(mForm);
+
+        mRealm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Form form = realm.createObject(Form.class, UUID.randomUUID().toString());
+                form.setData(jsonData);
+                realm.insertOrUpdate(form);
+            }
+        });
+
         // Submit DNCA form
-        SubmitNewDncaTask task = new SubmitNewDncaTask(mForm, callback);
-        task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
+        // TODO: If there is internet, submit the form immediately
+//        SubmitNewDncaTask task = new SubmitNewDncaTask(mForm, callback);
+//        task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 
     /**

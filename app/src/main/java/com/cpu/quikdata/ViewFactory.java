@@ -99,6 +99,7 @@ import com.cpu.quikdata.Modules.NewDnca.Wash.WashCopingData.WashCopingDataViewMo
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashRepositoryManager;
+import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
 import static com.cpu.quikdata.AppConstants.REQUEST_IMAGE_CAPTURE;
@@ -107,7 +108,7 @@ import static com.cpu.quikdata.AppConstants.VIEWMODEL_TAG;
 public class ViewFactory {
 
     public static void startDNCAListActivity(Context context) {
-        Intent intent = new Intent(context, DNCAListActivity.class);
+        Intent intent = new Intent(context, FormListActivity.class);
         context.startActivity(intent);
     }
 

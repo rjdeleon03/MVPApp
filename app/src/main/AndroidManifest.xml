@@ -29,7 +29,8 @@
             android:name=".Modules.NewDnca.NewDncaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemActivity"></activity>
+        <activity android:name=".Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemActivity" />
+        <activity android:name=".ModulesV2.FormList.FormListActivity" />
     </application>
 
 </manifest>

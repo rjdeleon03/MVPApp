@@ -7,8 +7,9 @@ import android.os.Bundle;
 import com.cpu.quikdata.Modules.DNCAList.DNCAListFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
+import com.cpu.quikdata.ViewModelHolder;
 
-public class FormListActivity extends AppCompatActivity {
+public class FormListActivity extends AppCompatActivity implements IFormListActivity {
 
     public static final String FORM_LIST_VIEWMODEL_TAG = "FORM_LIST_VIEWMODEL_TAG";
 
@@ -18,6 +19,9 @@ public class FormListActivity extends AppCompatActivity {
         setContentView(R.layout.form_list_activity);
 
         FormListFragment formListFragment = findOrCreateViewFragment();
+        FormListViewModel formListViewModel = findOrCreateViewModel();
+        formListFragment.setViewModel(formListViewModel);
+
     }
 
     /**
@@ -36,5 +40,42 @@ public class FormListActivity extends AppCompatActivity {
         }
 
         return formListFragment;
+    }
+
+    /**
+     * Finds or creates the viewModel
+     * @return
+     */
+    @NonNull
+    private FormListViewModel findOrCreateViewModel() {
+
+        ViewModelHolder<FormListViewModel> retainedViewModel = (ViewModelHolder<FormListViewModel>) getSupportFragmentManager().findFragmentByTag(FORM_LIST_VIEWMODEL_TAG);
+
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+
+            // Return viewModel if retained
+            return retainedViewModel.getViewmodel();
+        } else {
+
+            // Create viewModel if it does not exist yet
+            FormListViewModel formListViewModel = new FormListViewModel();
+            formListViewModel.setFormListActivity(this);
+
+            // Bind viewModel to activity
+            ActivityUtils.addFragmentToActivity(
+                    getSupportFragmentManager(),
+                    ViewModelHolder.createContainer(formListViewModel),
+                    FORM_LIST_VIEWMODEL_TAG);
+
+            return formListViewModel;
+        }
+    }
+
+    /**
+     * Handles add button pressed event
+     */
+    @Override
+    public void onAddButtonPressed() {
+
     }
 }

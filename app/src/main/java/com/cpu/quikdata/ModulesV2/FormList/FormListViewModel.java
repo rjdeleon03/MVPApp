@@ -3,6 +3,7 @@ package com.cpu.quikdata.ModulesV2.FormList;
 import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.ModelsV2.Form.DncaForm;
+import com.cpu.quikdata.ModelsV2.Form.Form;
 
 import java.lang.ref.WeakReference;
 
@@ -14,7 +15,7 @@ public class FormListViewModel implements IFormListParentViewModel {
     @Nullable
     private WeakReference<IFormListActivity> mIFormListActivity;
 
-    private RealmResults<DncaForm> mForms = null;
+    private RealmResults<Form> mForms = null;
 
 
     /**
@@ -45,17 +46,17 @@ public class FormListViewModel implements IFormListParentViewModel {
      * Gets all forms
      * @return
      */
-    public RealmResults<DncaForm> getAllForms() {
+    public RealmResults<Form> getAllForms() {
         if (mForms == null) {
             Realm realm = Realm.getDefaultInstance();
-            mForms = realm.where(DncaForm.class).findAll();
-            realm.close();
+            mForms = realm.where(Form.class).findAll();
+//            realm.close();
         }
         return mForms;
     }
 
     @Override
-    public DncaForm getFormAtIndex(int index) {
+    public Form getFormAtIndex(int index) {
         return mForms.get(index);
     }
 }

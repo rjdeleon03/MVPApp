@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.ModelsV2.Form.DncaForm;
+import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewHolder;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel;
 import com.cpu.quikdata.R;
@@ -15,11 +16,11 @@ import com.cpu.quikdata.R;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
-public class FormListAdapter extends RealmRecyclerViewAdapter<DncaForm, FormListItemViewHolder>{
+public class FormListAdapter extends RealmRecyclerViewAdapter<Form, FormListItemViewHolder>{
 
     private IFormListParentViewModel mParentViewModel;
 
-    public FormListAdapter(@Nullable OrderedRealmCollection<DncaForm> data, boolean autoUpdate,
+    public FormListAdapter(@Nullable OrderedRealmCollection<Form> data, boolean autoUpdate,
                            IFormListParentViewModel parentViewModel) {
         super(data, autoUpdate);
         mParentViewModel = parentViewModel;

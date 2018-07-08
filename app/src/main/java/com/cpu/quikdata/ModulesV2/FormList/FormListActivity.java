@@ -38,7 +38,7 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
     @NonNull
     private FormListFragment findOrCreateViewFragment() {
 
-        FormListFragment formListFragment = (FormListFragment) getSupportFragmentManager().findFragmentByTag(FORM_LIST_VIEWMODEL_TAG);
+        FormListFragment formListFragment = (FormListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
         if (formListFragment == null) {
             formListFragment = FormListFragment.newInstance();

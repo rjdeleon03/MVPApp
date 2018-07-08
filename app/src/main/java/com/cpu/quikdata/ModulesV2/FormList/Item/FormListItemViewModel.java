@@ -2,8 +2,12 @@ package com.cpu.quikdata.ModulesV2.FormList.Item;
 
 import android.databinding.ObservableField;
 
+import com.cpu.quikdata.Models.DNCAForm;
 import com.cpu.quikdata.ModelsV2.Form.DncaForm;
+import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListParentViewModel;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class FormListItemViewModel {
 
@@ -23,8 +27,10 @@ public class FormListItemViewModel {
         mIFormListParentViewModel = iFormListParentViewModel;
         mIndex = index;
 
-        DncaForm form = mIFormListParentViewModel.getFormAtIndex(mIndex);
-        sitio.set(form.getFormDetails().getSitio() + " Sitio");
+        Form form = mIFormListParentViewModel.getFormAtIndex(mIndex);
+        Gson gson = new Gson();
+//        DNCAForm dncaForm = gson.fromJson(form.getData(), DNCAForm.class);
+        sitio.set(form.getData());
 
     }
 }

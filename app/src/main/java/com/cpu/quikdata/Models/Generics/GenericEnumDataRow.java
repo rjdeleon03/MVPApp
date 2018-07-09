@@ -16,6 +16,7 @@ public abstract class GenericEnumDataRow {
         AGE_60_PLUS,
         ALL;
 
+        /*
         @Override
         public String toString() {
             String str = "Ages ";
@@ -35,6 +36,7 @@ public abstract class GenericEnumDataRow {
             }
             return null;
         }
+        */
 
         public static List<AgeGroup> asList() {
             List<AgeGroup> list = new ArrayList<>();

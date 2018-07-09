@@ -4,17 +4,23 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.DncaForm;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.Modules.DNCAList.DNCAListFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 
 public class FormListActivity extends AppCompatActivity implements IFormListActivity {
 
@@ -83,16 +89,25 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
      */
     @Override
     public void onAddButtonPressed() {
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.executeTransactionAsync(new Realm.Transaction() {
-//            @Override
-//            public void execute(Realm realm) {
-//                FormDetails tempFormDetails = realm.createObject(FormDetails.class, UUID.randomUUID().toString());
-//                tempFormDetails.setSitio("Sitio Something");
-//                realm.createObject(DncaForm.class, UUID.randomUUID().toString()).setFormDetails(tempFormDetails);
-//            }
-//        });
-//        realm.close();
-        ViewFactory.startNewDncaActivity(this);
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                BaselinePopulation baselinePopulation = realm.createObject(BaselinePopulation.class, UUID.randomUUID().toString());
+
+                RealmList<BaselinePopulationRow> rows = new RealmList<>();
+                for (GenericEnumDataRow.AgeGroup ageGroup: GenericEnumDataRow.AgeGroup.values()) {
+                    BaselinePopulationRow row = realm.createObject(BaselinePopulationRow.class, UUID.randomUUID().toString());
+                    row.setAgeGroup(ageGroup.toString());
+                    row.setMale(13);
+                    row.setFemale(25);
+                    rows.add(row);
+                }
+                baselinePopulation.setRows(rows);
+                realm.insertOrUpdate(baselinePopulation);
+            }
+        });
+        realm.close();
+//        ViewFactory.startNewDncaActivity(this);
     }
 }

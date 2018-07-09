@@ -6,23 +6,11 @@ import io.realm.annotations.Required;
 
 public class PrefilledData extends RealmObject {
 
-    @Required
-    @PrimaryKey
-    private String id;
-
     private BaselinePopulation baselinePopulation;
 
     private BaselineFamilies baselineFamilies;
 
     private BaselineHouses baselineHouses;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public BaselinePopulation getBaselinePopulation() {
         return baselinePopulation;

@@ -98,46 +98,4 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
 //        ViewFactory.startNewDncaActivity(this);
         ViewFactory.startPrefilledActivity(this);
     }
-
-    private void seedData(Realm realm) {
-
-        PrefilledData prefilledData = realm.createObject(PrefilledData.class, AppUtil.generateId());
-
-        {
-            BaselinePopulation baselinePopulation = realm.createObject(BaselinePopulation.class, AppUtil.generateId());
-            RealmList<BaselinePopulationRow> rows = new RealmList<>();
-            for (GenericEnumDataRow.AgeGroup ageGroup : GenericEnumDataRow.AgeGroup.values()) {
-                if (ageGroup == GenericEnumDataRow.AgeGroup.ALL) continue;
-
-                BaselinePopulationRow row = realm.createObject(BaselinePopulationRow.class, AppUtil.generateId());
-                row.setAgeGroup(ageGroup.toString());
-                row.setMale(13);
-                row.setFemale(25);
-                rows.add(row);
-            }
-            baselinePopulation.setRows(rows);
-            prefilledData.setBaselinePopulation(baselinePopulation);
-        }
-
-        {
-            BaselineFamilies baselineFamilies = realm.createObject(BaselineFamilies.class, AppUtil.generateId());
-            baselineFamilies.setFamilies(11);
-            baselineFamilies.setHouseholds(22);
-            prefilledData.setBaselineFamilies(baselineFamilies);
-        }
-
-        {
-            BaselineHouses baselineHouses = realm.createObject(BaselineHouses.class, AppUtil.generateId());
-            RealmList<BaselineHousesRow> rows = new RealmList<>();
-            for (GenericEnumDataRow.HouseType houseType : GenericEnumDataRow.HouseType.values()) {
-                if (houseType == GenericEnumDataRow.HouseType.ALL) continue;
-
-                BaselineHousesRow row = realm.createObject(BaselineHousesRow.class, AppUtil.generateId());
-                row.setNumber(33);
-                rows.add(row);
-            }
-            baselineHouses.setRows(rows);
-            prefilledData.setBaselineHouses(baselineHouses);
-        }
-    }
 }

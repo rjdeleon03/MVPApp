@@ -14,6 +14,7 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
+import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 
 import io.realm.Realm;
@@ -86,15 +87,16 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
      */
     @Override
     public void onAddButtonPressed() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                seedData(realm);
-            }
-        });
-        realm.close();
+//        Realm realm = Realm.getDefaultInstance();
+//        realm.executeTransactionAsync(new Realm.Transaction() {
+//            @Override
+//            public void execute(Realm realm) {
+//                seedData(realm);
+//            }
+//        });
+//        realm.close();
 //        ViewFactory.startNewDncaActivity(this);
+        ViewFactory.startPrefilledActivity(this);
     }
 
     private void seedData(Realm realm) {

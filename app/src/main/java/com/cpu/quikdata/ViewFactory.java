@@ -100,6 +100,7 @@ import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashRepositoryManager;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
 import static com.cpu.quikdata.AppConstants.REQUEST_IMAGE_CAPTURE;
@@ -122,6 +123,11 @@ public class ViewFactory {
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
+    }
+
+    public static void startPrefilledActivity(Context context) {
+        Intent intent = new Intent(context, PrefilledDataActivity.class);
+        context.startActivity(intent);
     }
 
     /**

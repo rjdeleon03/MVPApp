@@ -4,20 +4,17 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
-import com.cpu.quikdata.ModelsV2.Form.DncaForm;
-import com.cpu.quikdata.ModelsV2.Form.FormDetails;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
-import com.cpu.quikdata.Modules.DNCAList.DNCAListFragment;
+import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
-import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -93,21 +90,52 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                BaselinePopulation baselinePopulation = realm.createObject(BaselinePopulation.class, UUID.randomUUID().toString());
-
-                RealmList<BaselinePopulationRow> rows = new RealmList<>();
-                for (GenericEnumDataRow.AgeGroup ageGroup: GenericEnumDataRow.AgeGroup.values()) {
-                    BaselinePopulationRow row = realm.createObject(BaselinePopulationRow.class, UUID.randomUUID().toString());
-                    row.setAgeGroup(ageGroup.toString());
-                    row.setMale(13);
-                    row.setFemale(25);
-                    rows.add(row);
-                }
-                baselinePopulation.setRows(rows);
-                realm.insertOrUpdate(baselinePopulation);
+                seedData(realm);
             }
         });
         realm.close();
 //        ViewFactory.startNewDncaActivity(this);
+    }
+
+    private void seedData(Realm realm) {
+
+        PrefilledData prefilledData = realm.createObject(PrefilledData.class, AppUtil.generateId());
+
+        {
+            BaselinePopulation baselinePopulation = realm.createObject(BaselinePopulation.class, AppUtil.generateId());
+            RealmList<BaselinePopulationRow> rows = new RealmList<>();
+            for (GenericEnumDataRow.AgeGroup ageGroup : GenericEnumDataRow.AgeGroup.values()) {
+                if (ageGroup == GenericEnumDataRow.AgeGroup.ALL) continue;
+
+                BaselinePopulationRow row = realm.createObject(BaselinePopulationRow.class, AppUtil.generateId());
+                row.setAgeGroup(ageGroup.toString());
+                row.setMale(13);
+                row.setFemale(25);
+                rows.add(row);
+            }
+            baselinePopulation.setRows(rows);
+            prefilledData.setBaselinePopulation(baselinePopulation);
+        }
+
+        {
+            BaselineFamilies baselineFamilies = realm.createObject(BaselineFamilies.class, AppUtil.generateId());
+            baselineFamilies.setFamilies(11);
+            baselineFamilies.setHouseholds(22);
+            prefilledData.setBaselineFamilies(baselineFamilies);
+        }
+
+        {
+            BaselineHouses baselineHouses = realm.createObject(BaselineHouses.class, AppUtil.generateId());
+            RealmList<BaselineHousesRow> rows = new RealmList<>();
+            for (GenericEnumDataRow.HouseType houseType : GenericEnumDataRow.HouseType.values()) {
+                if (houseType == GenericEnumDataRow.HouseType.ALL) continue;
+
+                BaselineHousesRow row = realm.createObject(BaselineHousesRow.class, AppUtil.generateId());
+                row.setNumber(33);
+                rows.add(row);
+            }
+            baselineHouses.setRows(rows);
+            prefilledData.setBaselineHouses(baselineHouses);
+        }
     }
 }

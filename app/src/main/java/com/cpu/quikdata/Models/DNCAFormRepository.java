@@ -197,7 +197,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 }
 
                 if(callback != null) {
-                  callback.onPrefilledDataRetrieved(prefilledData);
+                    callback.onPrefilledDataRetrieved(prefilledData);
                 }
             }
         });

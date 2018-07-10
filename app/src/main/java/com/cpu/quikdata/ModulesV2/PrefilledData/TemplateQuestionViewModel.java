@@ -4,7 +4,9 @@ import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
+import com.cpu.quikdata.ModulesV2.Base.QuestionModel;
 
 import java.lang.ref.WeakReference;
 
@@ -39,6 +41,25 @@ public class TemplateQuestionViewModel implements IPrefilledDataManager {
     @Override
     public void onPrefilledDataRetrieved(PrefilledData prefilledData) {
         mPrefilledData = prefilledData;
-        BaselinePopulation baselinePopulation = prefilledData.getBaselinePopulation();
+    }
+
+    /**
+     * Gets question viewModel
+     * @param index
+     * @return
+     */
+    @Override
+    public QuestionModel getQuestionModel(int index) {
+        BaselinePopulationRow row = mPrefilledData.getBaselinePopulation().getRows().get(index);
+        return new QuestionModel(row.getAgeGroup(), row.getMale(), row.getFemale());
+    }
+
+    /**
+     * Gets number of question items
+     * @return
+     */
+    @Override
+    public int getItemsCount() {
+        return mPrefilledData.getBaselinePopulation().getRows().size();
     }
 }

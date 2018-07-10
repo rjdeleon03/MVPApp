@@ -187,6 +187,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                             if (houseType == GenericEnumDataRow.HouseType.ALL) continue;
 
                             BaselineHousesRow row = realm.createObject(BaselineHousesRow.class, AppUtil.generateId());
+                            row.setHouseType(houseType.toString());
                             row.setNumber(33);
                             rows.add(row);
                         }

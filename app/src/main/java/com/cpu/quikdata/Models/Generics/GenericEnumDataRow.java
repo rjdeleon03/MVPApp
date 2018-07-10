@@ -121,10 +121,12 @@ public abstract class GenericEnumDataRow {
         LIGHT_MATERIALS,
         ALL;
 
+        /*
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
         }
+        */
 
         public static List<HouseType> asList() {
             List<HouseType> list = new ArrayList<>();

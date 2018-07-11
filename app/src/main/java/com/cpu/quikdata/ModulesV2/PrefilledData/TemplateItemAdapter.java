@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.QuestionModel;
 import com.cpu.quikdata.R;
 
@@ -27,12 +28,16 @@ public class TemplateItemAdapter extends RecyclerView.Adapter<TemplateItemViewHo
 
     @Override
     public void onBindViewHolder(@NonNull TemplateItemViewHolder holder, int position) {
-        QuestionModel model = mIPrefilledDataManager.getQuestionModel(position);
-
+        QuestionModel model = mIPrefilledDataManager.getQuestions().get(position);
+        holder.setViewModel(new DialogItemViewModelGenderTuple(model));
     }
 
     @Override
     public int getItemCount() {
         return mIPrefilledDataManager.getItemsCount();
+    }
+
+    public void updateData() {
+        notifyDataSetChanged();
     }
 }

@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData;
 
+import android.databinding.DataBindingComponent;
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ public class PrefilledDataActivity extends AppCompatActivity implements IPrefill
         TemplateQuestionFragment templateQuestionFragment = findOrCreateViewFragment();
         TemplateQuestionViewModel templateQuestionViewModel = findOrCreateViewModel();
         templateQuestionFragment.setViewModel(templateQuestionViewModel);
+
     }
 
     /**

@@ -11,7 +11,7 @@ import java.util.List;
 public class BindingUtilsV2 {
 
     @BindingAdapter({"app:adapter", "app:data"})
-    public void bind(RecyclerView recyclerView, TemplateItemAdapter adapter, List<QuestionModel> data) {
+    public static void bind(RecyclerView recyclerView, TemplateItemAdapter adapter, List<QuestionModel> data) {
         recyclerView.setAdapter(adapter);
         adapter.updateData();
     }

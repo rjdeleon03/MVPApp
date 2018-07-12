@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData;
 
+import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.annotation.Nullable;
 
@@ -10,10 +11,11 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.Base.QuestionModel;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class TemplateQuestionViewModel extends Observable implements IPrefilledDataManager {
+public class TemplateQuestionViewModel extends BaseObservable implements IPrefilledDataManager {
 
     @Nullable
     private WeakReference<IPrefilledDataActivity> mIPrefilledDataActivity;
@@ -22,7 +24,7 @@ public class TemplateQuestionViewModel extends Observable implements IPrefilledD
     private PrefilledData mPrefilledData;
     private TemplateItemAdapter mAdapter;
 
-    private List<QuestionModel> mQuestions;
+    private List<QuestionModel> mQuestions = new ArrayList<>();
 
     /**
      * Constructor

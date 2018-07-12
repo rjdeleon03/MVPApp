@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.databinding.TemplateQuestionFragmentBinding;
 import com.cpu.quikdata.R;
 
 /**
@@ -41,7 +42,10 @@ public class TemplateQuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.template_question_fragment, container, false);
+        View view = inflater.inflate(R.layout.template_question_fragment, container, false);
+        TemplateQuestionFragmentBinding binding = TemplateQuestionFragmentBinding.bind(view);
+        binding.setViewModel(mViewModel);
+        return view;
     }
 
 }

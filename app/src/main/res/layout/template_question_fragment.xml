@@ -18,6 +18,7 @@
             android:id="@+id/template_question_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             app:adapter="@{viewModel.adapter}"
             app:data="@{viewModel.questions}">
 

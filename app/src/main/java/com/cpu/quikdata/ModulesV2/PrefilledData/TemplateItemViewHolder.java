@@ -4,16 +4,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
-import com.cpu.quikdata.databinding.BaseEnumGenderTupleBinding;
+import com.cpu.quikdata.databinding.TemplateQuestionGenderTupleBinding;
 
 public class TemplateItemViewHolder extends RecyclerView.ViewHolder {
 
-    private BaseEnumGenderTupleBinding mBinding;
+    private TemplateQuestionGenderTupleBinding mBinding;
 
     public TemplateItemViewHolder(View itemView) {
         super(itemView);
         if (mBinding == null) {
-            mBinding = BaseEnumGenderTupleBinding.bind(itemView);
+            mBinding = TemplateQuestionGenderTupleBinding.bind(itemView);
         }
     }
 
@@ -23,7 +23,7 @@ public class TemplateItemViewHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    public void setViewModel(DialogItemViewModelGenderTuple itemViewModel) {
+    public void setViewModel(TemplateItemViewModel itemViewModel) {
         if (mBinding != null) {
             mBinding.setViewModel(itemViewModel);
         }

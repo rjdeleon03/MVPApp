@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData.Models;
 
+import com.cpu.quikdata.AppConstants;
+
 public abstract class QuestionItemModel {
 
     protected String question;
@@ -15,4 +17,6 @@ public abstract class QuestionItemModel {
     public void setQuestion(String question) {
         this.question = question;
     }
+
+    public abstract AppConstants.QuestionItemType getType();
 }

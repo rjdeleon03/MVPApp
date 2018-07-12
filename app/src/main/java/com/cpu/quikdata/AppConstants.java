@@ -11,6 +11,11 @@ public class AppConstants {
     public static final int MAX_IMAGE_COUNT = 5;
     public static final int REQUEST_IMAGE_CAPTURE = 100;
 
+    public enum QuestionItemType {
+        GENDER_TUPLE,
+        SINGLE_NUMBER
+    }
+
     public enum NewDncaComponent {
 
         FORM_GEN_FORM_DETAILS,

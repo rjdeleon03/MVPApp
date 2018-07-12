@@ -5,6 +5,8 @@ import android.databinding.Bindable;
 import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
+import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
@@ -61,6 +63,11 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
         // Families and Households
         mQuestions.add(new QuestionItemModelSingleNumber("Families", mPrefilledData.getBaselineFamilies().getFamilies()));
         mQuestions.add(new QuestionItemModelSingleNumber("Households", mPrefilledData.getBaselineFamilies().getHouseholds()));
+
+        // Baseline Houses
+        for (BaselineHousesRow house : mPrefilledData.getBaselineHouses().getHouses()) {
+            mQuestions.add(new QuestionItemModelSingleNumber(house.getHouseType(), house.getNumber()));
+        }
     }
 
     /**

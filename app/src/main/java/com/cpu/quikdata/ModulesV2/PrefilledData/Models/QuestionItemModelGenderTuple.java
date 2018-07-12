@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData.Models;
 
+import com.cpu.quikdata.AppConstants;
+
 public class QuestionItemModelGenderTuple extends QuestionItemModel {
 
     private int male;
@@ -25,5 +27,10 @@ public class QuestionItemModelGenderTuple extends QuestionItemModel {
 
     public void setFemale(int female) {
         this.female = female;
+    }
+
+    @Override
+    public AppConstants.QuestionItemType getType() {
+        return AppConstants.QuestionItemType.GENDER_TUPLE;
     }
 }

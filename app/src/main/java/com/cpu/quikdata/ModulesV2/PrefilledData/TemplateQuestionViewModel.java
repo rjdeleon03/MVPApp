@@ -83,6 +83,6 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
      */
     @Override
     public int getItemsCount() {
-        return mPrefilledData.getBaselinePopulation().getRows().size();
+        return mQuestions.size();
     }
 }

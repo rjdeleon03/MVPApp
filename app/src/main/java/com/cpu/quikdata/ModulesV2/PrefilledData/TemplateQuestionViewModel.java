@@ -5,15 +5,14 @@ import android.databinding.Bindable;
 import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
-import com.cpu.quikdata.ModulesV2.Base.QuestionModel;
+import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
+import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModelGenderTuple;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 public class TemplateQuestionViewModel extends BaseObservable implements IPrefilledDataManager {
 
@@ -24,7 +23,7 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
     private PrefilledData mPrefilledData;
     private TemplateItemAdapter mAdapter;
 
-    private List<QuestionModel> mQuestions = new ArrayList<>();
+    private List<QuestionItemModel> mQuestions = new ArrayList<>();
 
     /**
      * Constructor
@@ -51,7 +50,7 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
     public void onPrefilledDataRetrieved(PrefilledData prefilledData) {
         mPrefilledData = prefilledData;
         for (BaselinePopulationRow row : prefilledData.getBaselinePopulation().getRows()) {
-            mQuestions.add(new QuestionModel(row.getAgeGroup().toString(),
+            mQuestions.add(new QuestionItemModelGenderTuple(row.getAgeGroup().toString(),
                     row.getMale(),
                     row.getFemale()));
         }
@@ -63,7 +62,7 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
      */
     @Bindable
     @Override
-    public List<QuestionModel> getQuestions() {
+    public List<QuestionItemModel> getQuestions() {
         return mQuestions;
     }
 

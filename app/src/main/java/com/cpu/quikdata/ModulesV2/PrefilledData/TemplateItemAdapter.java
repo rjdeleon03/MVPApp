@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
-import com.cpu.quikdata.ModulesV2.Base.QuestionModel;
+import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
+import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.PrefilledData.ViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.PrefilledData.ViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.R;
 
 public class TemplateItemAdapter extends RecyclerView.Adapter<TemplateItemViewHolder> {
@@ -28,8 +30,8 @@ public class TemplateItemAdapter extends RecyclerView.Adapter<TemplateItemViewHo
 
     @Override
     public void onBindViewHolder(@NonNull TemplateItemViewHolder holder, int position) {
-        QuestionModel model = mIPrefilledDataManager.getQuestions().get(position);
-        holder.setViewModel(new TemplateItemViewModel(model));
+        QuestionItemModelGenderTuple model = (QuestionItemModelGenderTuple) mIPrefilledDataManager.getQuestions().get(position);
+        holder.setViewModel(new TemplateQuestionItemViewModelGenderTuple(model));
     }
 
     @Override

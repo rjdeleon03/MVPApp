@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.ModulesV2.PrefilledData.TemplateItemViewModel" />
+            type="com.cpu.quikdata.ModulesV2.PrefilledData.ViewModels.TemplateQuestionItemViewModelGenderTuple" />
     </data>
 
     <TableLayout

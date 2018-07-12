@@ -1,12 +1,9 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData;
 
-import android.databinding.DataBindingComponent;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.cpu.quikdata.Injection;

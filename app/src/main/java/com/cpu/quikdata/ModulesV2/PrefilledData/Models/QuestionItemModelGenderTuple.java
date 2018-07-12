@@ -2,28 +2,28 @@ package com.cpu.quikdata.ModulesV2.PrefilledData.Models;
 
 public class QuestionItemModelGenderTuple extends QuestionItemModel {
 
-    private int value1;
-    private int value2;
+    private int male;
+    private int female;
 
-    public QuestionItemModelGenderTuple(String question, int value1, int value2) {
+    public QuestionItemModelGenderTuple(String question, int male, int female) {
         super(question);
-        this.value1 = value1;
-        this.value2 = value2;
+        this.male = male;
+        this.female = female;
     }
 
-    public int getValue1() {
-        return value1;
+    public int getMale() {
+        return male;
     }
 
-    public void setValue1(int value1) {
-        this.value1 = value1;
+    public void setMale(int male) {
+        this.male = male;
     }
 
-    public int getValue2() {
-        return value2;
+    public int getFemale() {
+        return female;
     }
 
-    public void setValue2(int value2) {
-        this.value2 = value2;
+    public void setFemale(int female) {
+        this.female = female;
     }
 }

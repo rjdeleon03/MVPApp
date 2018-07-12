@@ -9,6 +9,7 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModelSingleNumber;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -49,11 +50,17 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
     @Override
     public void onPrefilledDataRetrieved(PrefilledData prefilledData) {
         mPrefilledData = prefilledData;
-        for (BaselinePopulationRow row : prefilledData.getBaselinePopulation().getRows()) {
+
+        // Baseline Population
+        for (BaselinePopulationRow row : mPrefilledData.getBaselinePopulation().getRows()) {
             mQuestions.add(new QuestionItemModelGenderTuple(row.getAgeGroup().toString(),
                     row.getMale(),
                     row.getFemale()));
         }
+
+        // Families and Households
+        mQuestions.add(new QuestionItemModelSingleNumber("Families", mPrefilledData.getBaselineFamilies().getFamilies()));
+        mQuestions.add(new QuestionItemModelSingleNumber("Households", mPrefilledData.getBaselineFamilies().getHouseholds()));
     }
 
     /**

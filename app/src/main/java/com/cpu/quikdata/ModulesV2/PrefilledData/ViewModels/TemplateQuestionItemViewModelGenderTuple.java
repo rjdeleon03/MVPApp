@@ -11,7 +11,7 @@ public class TemplateQuestionItemViewModelGenderTuple extends TemplateQuestionIt
 
     public TemplateQuestionItemViewModelGenderTuple(QuestionItemModelGenderTuple model) {
         super(model.getQuestion());
-        male.set(model.getValue1());
-        female.set(model.getValue2());
+        male.set(model.getMale());
+        female.set(model.getFemale());
     }
 }

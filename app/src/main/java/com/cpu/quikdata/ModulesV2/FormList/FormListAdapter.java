@@ -1,13 +1,11 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
-import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cpu.quikdata.ModelsV2.Form.DncaForm;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewHolder;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel;
@@ -18,10 +16,10 @@ import io.realm.RealmRecyclerViewAdapter;
 
 public class FormListAdapter extends RealmRecyclerViewAdapter<Form, FormListItemViewHolder>{
 
-    private IFormListParentViewModel mParentViewModel;
+    private IFormListDataManager mParentViewModel;
 
     public FormListAdapter(@Nullable OrderedRealmCollection<Form> data, boolean autoUpdate,
-                           IFormListParentViewModel parentViewModel) {
+                           IFormListDataManager parentViewModel) {
         super(data, autoUpdate);
         mParentViewModel = parentViewModel;
     }

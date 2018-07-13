@@ -62,11 +62,11 @@
                     app:fontFamily="@font/comfortaa_reg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/dnca_list_back_button"
-                    app:layout_constraintStart_toEndOf="@+id/dnca_list_new_button"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar_settings"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/dnca_list_new_button"
+                    android:id="@+id/toolbar_settings"
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="left|center_vertical"

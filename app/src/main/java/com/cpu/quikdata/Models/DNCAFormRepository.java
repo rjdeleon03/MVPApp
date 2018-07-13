@@ -65,7 +65,6 @@ public class DNCAFormRepository implements DNCAFormDataSource {
      */
     public static void destroyInstance() {
         INSTANCE = null;
-        mRealm.close();
     }
 
     /**

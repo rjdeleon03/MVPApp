@@ -3,6 +3,8 @@ package com.cpu.quikdata.ModulesV2.FormList;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
@@ -30,9 +32,16 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
         setContentView(R.layout.form_list_activity);
 
         FormListFragment formListFragment = findOrCreateViewFragment();
-        FormListViewModel formListViewModel = findOrCreateViewModel();
+        final FormListViewModel formListViewModel = findOrCreateViewModel();
         formListFragment.setViewModel(formListViewModel);
 
+        ImageButton settingsButton = findViewById(R.id.toolbar_settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                formListViewModel.navigateOnSettingsButtonPressed();
+            }
+        });
     }
 
     /**
@@ -95,7 +104,14 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
 //            }
 //        });
 //        realm.close();
-//        ViewFactory.startNewDncaActivity(this);
+        ViewFactory.startNewDncaActivity(this);
+    }
+
+    /**
+     * Handles settings button pressed event
+     */
+    @Override
+    public void onSettingsButtonPressed() {
         ViewFactory.startPrefilledActivity(this);
     }
 }

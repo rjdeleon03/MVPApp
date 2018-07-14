@@ -1,7 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
-import java.util.List;
-
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -12,7 +11,7 @@ public class PopulationData extends RealmObject {
     @PrimaryKey
     private String id;
 
-    private List<PopulationDataRow> rows;
+    private RealmList<PopulationDataRow> rows;
 
     public String getId() {
         return id;
@@ -22,11 +21,11 @@ public class PopulationData extends RealmObject {
         this.id = id;
     }
 
-    public List<PopulationDataRow> getRows() {
+    public RealmList<PopulationDataRow> getRows() {
         return rows;
     }
 
-    public void setRows(List<PopulationDataRow> rows) {
+    public void setRows(RealmList<PopulationDataRow> rows) {
         this.rows = rows;
     }
 }

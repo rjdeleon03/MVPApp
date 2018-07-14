@@ -4,10 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
-import com.cpu.quikdata.Models.GeneralInformation.CalamityDesc;
-import com.cpu.quikdata.Models.GeneralInformation.GenInfo;
-import com.cpu.quikdata.Models.GeneralInformation.PopulationData;
-import com.cpu.quikdata.Models.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
@@ -17,10 +13,8 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
-import com.cpu.quikdata.ModulesV2.PrefilledData.IPrefilledDataManager;
+import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 import com.cpu.quikdata.Tasks.GetAllDncaTask;
-import com.cpu.quikdata.Tasks.PostNewDncaTask;
-import com.cpu.quikdata.Tasks.SubmitNewDncaTask;
 import com.cpu.quikdata.Tasks.UploadImagesTask;
 import com.google.gson.Gson;
 
@@ -151,7 +145,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         callback.onFormListDataRetrieved(mRealm.where(Form.class).findAll());
         mRealm.commitTransaction();
     }
-    public void getPrefilledData(final IPrefilledDataManager callback) {
+    public void getPrefilledData(final IBaseDataManager<PrefilledData> callback) {
 
         mRealm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -202,7 +196,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 }
 
                 if(callback != null) {
-                    callback.onPrefilledDataRetrieved(prefilledData);
+                    callback.onDataReceived(prefilledData);
                 }
             }
         });

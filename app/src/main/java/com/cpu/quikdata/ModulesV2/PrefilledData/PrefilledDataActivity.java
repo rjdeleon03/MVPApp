@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionFragment;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
@@ -74,7 +76,7 @@ public class PrefilledDataActivity extends AppCompatActivity implements IPrefill
         } else {
 
             // Create viewModel if it does not exist yet
-            TemplateQuestionViewModel formListViewModel = new TemplateQuestionViewModel(Injection.provideDncaRepository(this));
+            PrefilledDataViewModel formListViewModel = new PrefilledDataViewModel(Injection.provideDncaRepository(this));
             formListViewModel.setActivity(this);
 
             // Bind viewModel to activity

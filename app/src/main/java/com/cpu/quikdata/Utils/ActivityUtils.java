@@ -27,7 +27,7 @@ public class ActivityUtils {
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (addToBackstack) {
-            Fragment previousFragment = fragmentManager.findFragmentById(R.id.new_dnca_fragment_container);
+            Fragment previousFragment = fragmentManager.findFragmentById(R.id.new_form_fragment_container);
             if (previousFragment != null) {
                 transaction.hide(previousFragment);
             }

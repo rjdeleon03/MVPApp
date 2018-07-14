@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.PrefilledData.ViewHolders;
+package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.PrefilledData.Models;
+package com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models;
 
 import com.cpu.quikdata.AppConstants;
 

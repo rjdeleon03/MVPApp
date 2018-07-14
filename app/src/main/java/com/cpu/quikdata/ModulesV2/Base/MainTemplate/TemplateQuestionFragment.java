@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.PrefilledData;
+package com.cpu.quikdata.ModulesV2.Base.MainTemplate;
 
 
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel;
 import com.cpu.quikdata.databinding.TemplateQuestionFragmentBinding;
 import com.cpu.quikdata.R;
 

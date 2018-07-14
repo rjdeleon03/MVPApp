@@ -13,7 +13,8 @@ public class AppConstants {
 
     public enum QuestionItemType {
         GENDER_TUPLE,
-        SINGLE_NUMBER
+        SINGLE_NUMBER,
+        STRING
     }
 
     public enum NewDncaComponent {

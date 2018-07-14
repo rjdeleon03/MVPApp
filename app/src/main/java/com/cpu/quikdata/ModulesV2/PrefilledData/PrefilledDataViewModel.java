@@ -1,57 +1,49 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
-import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
-import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModelGenderTuple;
-import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateItemAdapter;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TemplateQuestionViewModel extends BaseObservable implements IPrefilledDataManager {
+public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilledDataActivity, PrefilledData> {
 
-    @Nullable
-    private WeakReference<IPrefilledDataActivity> mIPrefilledDataActivity;
-
-    private DNCAFormRepository mFormRepository;
     private PrefilledData mPrefilledData;
-    private TemplateItemAdapter mAdapter;
 
     private List<QuestionItemModel> mQuestions = new ArrayList<>();
 
     /**
      * Constructor
      */
-    public TemplateQuestionViewModel(DNCAFormRepository dncaFormRepository) {
-        mFormRepository = dncaFormRepository;
+    public PrefilledDataViewModel(DNCAFormRepository dncaFormRepository) {
+        super(dncaFormRepository);
         mFormRepository.getPrefilledData(this);
         mAdapter = new TemplateItemAdapter(this);
     }
 
-    /**
-     * Sets the form list activity interface
-     * @param iPrefilledDataActivity
-     */
-    public void setActivity(IPrefilledDataActivity iPrefilledDataActivity) {
-        mIPrefilledDataActivity = new WeakReference<>(iPrefilledDataActivity);
+    @Override
+    public void setActivity(IPrefilledDataActivity activity) {
+        mActivity = new WeakReference<>(activity);
     }
 
     /**
      * Handles reception of prefilled data
-     * @param prefilledData
+     * @param data
      */
     @Override
-    public void onPrefilledDataRetrieved(PrefilledData prefilledData) {
-        mPrefilledData = prefilledData;
+    public void onDataReceived(PrefilledData data) {
+        mPrefilledData = data;
 
         // Baseline Population
         for (BaselinePopulationRow row : mPrefilledData.getBaselinePopulation().getRows()) {
@@ -68,6 +60,7 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
         for (BaselineHousesRow house : mPrefilledData.getBaselineHouses().getHouses()) {
             mQuestions.add(new QuestionItemModelSingleNumber(house.getHouseType(), house.getNumber()));
         }
+
     }
 
     /**
@@ -86,7 +79,7 @@ public class TemplateQuestionViewModel extends BaseObservable implements IPrefil
      */
     @Bindable
     @Override
-    public TemplateItemAdapter getAdapter() {
+    public RecyclerView.Adapter getAdapter() {
         return mAdapter;
     }
 

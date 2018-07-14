@@ -4,17 +4,16 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
-import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
-import com.cpu.quikdata.ModulesV2.PrefilledData.TemplateItemAdapter;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
 
 import java.util.List;
 
 public class BindingUtilsV2 {
 
     @BindingAdapter({"app:adapter", "app:data"})
-    public static void bind(RecyclerView recyclerView, TemplateItemAdapter adapter, List<QuestionItemModel> data) {
+    public static void bind(RecyclerView recyclerView, RecyclerView.Adapter adapter, List<QuestionItemModel> data) {
         recyclerView.setAdapter(adapter);
-        adapter.updateData();
+        adapter.notifyDataSetChanged();
     }
 
     @BindingAdapter({"app:adapter"})

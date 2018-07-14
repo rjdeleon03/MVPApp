@@ -1,9 +1,6 @@
-package com.cpu.quikdata.ModulesV2.PrefilledData.ViewModels;
+package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels;
 
 import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
-
-import com.cpu.quikdata.ModulesV2.PrefilledData.Models.QuestionItemModel;
 
 public abstract class TemplateQuestionItemViewModel {
 

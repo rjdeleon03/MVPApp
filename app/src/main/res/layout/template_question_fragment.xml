@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
-             tools:context=".ModulesV2.PrefilledData.TemplateQuestionFragment">
+             tools:context=".ModulesV2.Base.MainTemplate.TemplateQuestionFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.ModulesV2.PrefilledData.TemplateQuestionViewModel" />
+            type="com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel" />
     </data>
 
     <FrameLayout

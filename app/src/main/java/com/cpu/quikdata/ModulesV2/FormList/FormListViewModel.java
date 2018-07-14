@@ -32,10 +32,10 @@ public class FormListViewModel extends BaseObservable implements IFormListDataMa
 
     /**
      * Sets the form list activity interface
-     * @param iFormListActivity
+     * @param formListActivity
      */
-    public void setFormListActivity(IFormListActivity iFormListActivity) {
-        mFormListActivity = new WeakReference<>(iFormListActivity);
+    public void setFormListActivity(IFormListActivity formListActivity) {
+        mFormListActivity = new WeakReference<>(formListActivity);
     }
 
     /**

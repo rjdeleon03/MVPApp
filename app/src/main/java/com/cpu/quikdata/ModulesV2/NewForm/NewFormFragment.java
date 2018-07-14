@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.databinding.NewFormFragmentBinding;
 import com.cpu.quikdata.R;
 
 /**
@@ -14,17 +15,36 @@ import com.cpu.quikdata.R;
  */
 public class NewFormFragment extends Fragment {
 
+    private NewFormViewModel mViewModel;
 
     public NewFormFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Gets new instance
+     * @return
+     */
+    public static NewFormFragment newInstance() {
+        return new NewFormFragment();
+    }
+
+    /**
+     * Sets the viewModel
+     * @param newFormViewModel
+     */
+    public void setViewModel(NewFormViewModel newFormViewModel) {
+        mViewModel = newFormViewModel;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.new_form_fragment, container, false);
+        View view = inflater.inflate(R.layout.new_form_fragment, container, false);
+        NewFormFragmentBinding binding = NewFormFragmentBinding.bind(view);
+        binding.setViewModel(mViewModel);
+        return view;
     }
 
 }

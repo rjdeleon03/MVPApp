@@ -100,6 +100,7 @@ import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashRepositoryManager;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
@@ -127,6 +128,11 @@ public class ViewFactory {
 
     public static void startPrefilledActivity(Context context) {
         Intent intent = new Intent(context, PrefilledDataActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startNewFormActivity(Context context) {
+        Intent intent = new Intent(context, NewFormActivity.class);
         context.startActivity(intent);
     }
 

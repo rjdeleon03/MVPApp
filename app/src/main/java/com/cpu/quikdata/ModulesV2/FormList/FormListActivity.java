@@ -97,7 +97,7 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
      */
     @Override
     public void onAddButtonPressed() {
-        ViewFactory.startNewDncaActivity(this);
+        ViewFactory.startNewFormActivity(this);
     }
 
     /**

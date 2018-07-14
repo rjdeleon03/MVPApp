@@ -53,17 +53,9 @@ public class FormListFragment extends Fragment {
         FormListFragmentBinding binding = FormListFragmentBinding.bind(view);
         binding.setViewModel(mViewModel);
 
-        // Setup adapter
-        setupAdapter(view);
-        return view;
-    }
-
-    private void setupAdapter(View view) {
-        FormListAdapter adapter = new FormListAdapter(mViewModel.getAllForms(), true, mViewModel);
-
+        // Setup recyclerView
         RecyclerView rv = view.findViewById(R.id.form_list_view);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv.setAdapter(adapter);
+        return view;
     }
-
 }

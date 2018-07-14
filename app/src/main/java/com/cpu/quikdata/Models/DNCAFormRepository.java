@@ -16,6 +16,7 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
+import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IPrefilledDataManager;
 import com.cpu.quikdata.Tasks.GetAllDncaTask;
 import com.cpu.quikdata.Tasks.PostNewDncaTask;
@@ -145,6 +146,11 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     /** NEW METHODS ================================================= */
+    public void getAllForms(final IFormListDataManager callback) {
+        mRealm.beginTransaction();
+        callback.onFormListDataRetrieved(mRealm.where(Form.class).findAll());
+        mRealm.commitTransaction();
+    }
     public void getPrefilledData(final IPrefilledDataManager callback) {
 
         mRealm.executeTransactionAsync(new Realm.Transaction() {

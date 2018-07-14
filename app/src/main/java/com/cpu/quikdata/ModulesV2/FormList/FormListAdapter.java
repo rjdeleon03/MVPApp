@@ -16,12 +16,12 @@ import io.realm.RealmRecyclerViewAdapter;
 
 public class FormListAdapter extends RealmRecyclerViewAdapter<Form, FormListItemViewHolder>{
 
-    private IFormListDataManager mParentViewModel;
+    private IFormListDataManager mFormListDataManager;
 
     public FormListAdapter(@Nullable OrderedRealmCollection<Form> data, boolean autoUpdate,
-                           IFormListDataManager parentViewModel) {
+                           IFormListDataManager formListDataManager) {
         super(data, autoUpdate);
-        mParentViewModel = parentViewModel;
+        mFormListDataManager = formListDataManager;
     }
 
     @NonNull
@@ -34,6 +34,11 @@ public class FormListAdapter extends RealmRecyclerViewAdapter<Form, FormListItem
 
     @Override
     public void onBindViewHolder(@NonNull FormListItemViewHolder holder, int position) {
-        holder.bind(new FormListItemViewModel(mParentViewModel, position));
+        holder.setViewModel(new FormListItemViewModel(mFormListDataManager.getForms().get(position)));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFormListDataManager.getItemsCount();
     }
 }

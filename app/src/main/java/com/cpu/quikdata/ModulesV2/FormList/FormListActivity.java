@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
@@ -78,7 +79,7 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
         } else {
 
             // Create viewModel if it does not exist yet
-            FormListViewModel formListViewModel = new FormListViewModel();
+            FormListViewModel formListViewModel = new FormListViewModel(Injection.provideDncaRepository(this));
             formListViewModel.setFormListActivity(this);
 
             // Bind viewModel to activity
@@ -96,14 +97,6 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
      */
     @Override
     public void onAddButtonPressed() {
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.executeTransactionAsync(new Realm.Transaction() {
-//            @Override
-//            public void execute(Realm realm) {
-//                seedData(realm);
-//            }
-//        });
-//        realm.close();
         ViewFactory.startNewDncaActivity(this);
     }
 

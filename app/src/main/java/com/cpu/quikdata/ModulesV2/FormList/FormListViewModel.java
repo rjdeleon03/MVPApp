@@ -1,7 +1,10 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.support.annotation.Nullable;
 
+import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 
 import java.lang.ref.WeakReference;
@@ -9,19 +12,22 @@ import java.lang.ref.WeakReference;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class FormListViewModel implements IFormListDataManager {
+public class FormListViewModel extends BaseObservable implements IFormListDataManager {
 
     @Nullable
     private WeakReference<IFormListActivity> mFormListActivity;
 
     private RealmResults<Form> mForms = null;
+    private DNCAFormRepository mDncaFormRepository;
+    private FormListAdapter mAdapter;
 
 
     /**
      * Constructor
      */
-    public FormListViewModel() {
-
+    public FormListViewModel(DNCAFormRepository dncaFormRepository) {
+        mDncaFormRepository = dncaFormRepository;
+        mDncaFormRepository.getAllForms(this);
     }
 
     /**
@@ -30,6 +36,44 @@ public class FormListViewModel implements IFormListDataManager {
      */
     public void setFormListActivity(IFormListActivity iFormListActivity) {
         mFormListActivity = new WeakReference<>(iFormListActivity);
+    }
+
+    /**
+     * Handles reception of forms
+     * @param forms
+     */
+    @Override
+    public void onFormListDataRetrieved(RealmResults<Form> forms) {
+        mForms = forms;
+        mAdapter = new FormListAdapter(mForms, true, this);
+    }
+
+    /**
+     * Gets all forms
+     * @return
+     */
+    @Bindable
+    @Override
+    public RealmResults<Form> getForms() {
+        return mForms;
+    }
+
+    /**
+     * Gets adapter
+     * @return
+     */
+    @Override
+    public FormListAdapter getAdapter() {
+        return mAdapter;
+    }
+
+    /**
+     * Gets the number of items
+     * @return
+     */
+    @Override
+    public int getItemsCount() {
+        return mForms.size();
     }
 
     /**
@@ -48,23 +92,5 @@ public class FormListViewModel implements IFormListDataManager {
         if (mFormListActivity.get() != null) {
             mFormListActivity.get().onSettingsButtonPressed();
         }
-    }
-
-    /**
-     * Gets all forms
-     * @return
-     */
-    public RealmResults<Form> getAllForms() {
-        if (mForms == null) {
-            Realm realm = Realm.getDefaultInstance();
-            mForms = realm.where(Form.class).findAll();
-//            realm.close();
-        }
-        return mForms;
-    }
-
-    @Override
-    public Form getFormAtIndex(int index) {
-        return mForms.get(index);
     }
 }

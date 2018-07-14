@@ -7,7 +7,7 @@ import com.cpu.quikdata.databinding.FormListItemBinding;
 
 public class FormListItemViewHolder extends RecyclerView.ViewHolder {
 
-    private View mItemView;
+    private FormListItemBinding mFormListItemBinding;
 
     /**
      * Constructor
@@ -15,15 +15,21 @@ public class FormListItemViewHolder extends RecyclerView.ViewHolder {
      */
     public FormListItemViewHolder(View itemView) {
         super(itemView);
-        mItemView = itemView;
+        bind(itemView);
+    }
+
+    /**
+     * Initializes binding
+     */
+    public void bind(View itemView) {
+        mFormListItemBinding = FormListItemBinding.bind(itemView);
     }
 
     /**
      * Binds viewModel to view
      * @param viewModel
      */
-    public void bind(FormListItemViewModel viewModel) {
-        FormListItemBinding formListItemBinding = FormListItemBinding.bind(mItemView);
-        formListItemBinding.setViewModel(viewModel);
+    public void setViewModel(FormListItemViewModel viewModel) {
+        mFormListItemBinding.setViewModel(viewModel);
     }
 }

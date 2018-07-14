@@ -8,25 +8,13 @@ import com.google.gson.Gson;
 
 public class FormListItemViewModel {
 
-    private IFormListDataManager mIFormListDataManager;
-    private int mIndex;
-
     public final ObservableField<String> sitio = new ObservableField<>("");
 
     /**
      * Constructor
-     * @param iFormListDataManager
-     * @param index
+     * @param form
      */
-    public FormListItemViewModel(IFormListDataManager iFormListDataManager,
-                                 int index) {
-
-        mIFormListDataManager = iFormListDataManager;
-        mIndex = index;
-
-        Form form = mIFormListDataManager.getFormAtIndex(mIndex);
-        Gson gson = new Gson();
-//        DNCAForm dncaForm = gson.fromJson(form.getData(), DNCAForm.class);
+    public FormListItemViewModel(Form form) {
         sitio.set(form.getData());
 
     }

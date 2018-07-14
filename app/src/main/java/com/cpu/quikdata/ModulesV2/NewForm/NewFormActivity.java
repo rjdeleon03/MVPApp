@@ -13,6 +13,20 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     public static final String NEW_FORM_VIEWMODEL_TAG = "NEW_FORM_VIEWMODEL_TAG";
 
+    public enum NewFormComponent {
+        MENU,
+        FORM_DETAILS,
+        GEN_INFO,
+        SHELTER_INFO,
+        FOOD_SECURITY,
+        LIVELIHOODS,
+        HEALTH,
+        WASH,
+        EVACUATION,
+        EVACUATION_ITEM,
+        CASE_STORIES
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

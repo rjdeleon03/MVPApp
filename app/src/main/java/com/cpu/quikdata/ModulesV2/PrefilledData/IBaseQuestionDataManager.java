@@ -6,7 +6,11 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
 
 import java.util.List;
 
-public interface IBaseDataManager<D> {
+public interface IBaseQuestionDataManager<D> extends IBaseDataManager<D>{
 
-    void onDataReceived(D data);
+    List<QuestionItemModel> getQuestions();
+
+    RecyclerView.Adapter getAdapter();
+
+    int getItemsCount();
 }

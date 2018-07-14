@@ -13,6 +13,8 @@ public class Form extends RealmObject {
     @Required
     private String data;
 
+    private FormDetails formDetails;
+
     public String getId() {
         return id;
     }
@@ -27,5 +29,13 @@ public class Form extends RealmObject {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public FormDetails getFormDetails() {
+        return formDetails;
+    }
+
+    public void setFormDetails(FormDetails formDetails) {
+        this.formDetails = formDetails;
     }
 }

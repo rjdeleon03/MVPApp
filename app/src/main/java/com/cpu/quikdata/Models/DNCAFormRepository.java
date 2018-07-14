@@ -6,6 +6,7 @@ import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
@@ -30,8 +31,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     private static DNCAFormRepository INSTANCE = null;
     private final DNCAFormDataSource mDncaFormLocalDataSource;
-    private DNCAForm mForm;
+    private DNCAForm mDncaForm;
+
     private static Realm mRealm;
+    private Form mForm;
 
     /**
      * Private constructor
@@ -80,10 +83,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     public void retrieveNewDncaForm(@NonNull GetDncaFormCallback callback) {
         checkNotNull(callback);
 
-        if (mForm == null) {
-            mForm = new DNCAForm();
+        if (mDncaForm == null) {
+            mDncaForm = new DNCAForm();
         }
-        callback.onDncaFormLoaded(mForm);
+        callback.onDncaFormLoaded(mDncaForm);
     }
 
     /**
@@ -95,11 +98,11 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         checkNotNull(callback);
 
         // Normalize DNCA form data first
-        mForm.normalize();
+        mDncaForm.normalize();
 
         // Serialize to JSON
         Gson formJson = new Gson();
-        final String jsonData = formJson.toJson(mForm);
+        final String jsonData = formJson.toJson(mDncaForm);
 
         mRealm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -112,7 +115,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
         // Submit DNCA form
         // TODO: If there is internet, submit the form immediately
-//        SubmitNewDncaTask task = new SubmitNewDncaTask(mForm, callback);
+//        SubmitNewDncaTask task = new SubmitNewDncaTask(mDncaForm, callback);
 //        task.execute(AppConstants.URL + AppConstants.ROUTE_DNCA);
     }
 
@@ -125,7 +128,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         checkNotNull(callback);
 
         // Submit images first
-        UploadImagesTask task = new UploadImagesTask(mForm.getCaseStories().getImages(), callback);
+        UploadImagesTask task = new UploadImagesTask(mDncaForm.getCaseStories().getImages(), callback);
         task.execute(AppConstants.URL + AppConstants.ROUTE_IMAGES);
     }
 
@@ -134,7 +137,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
      * @param images
      */
     public void uploadDncaImageUrls(List<String> images) {
-        List<String> oldImagesUrl = mForm.getCaseStories().getImages();
+        List<String> oldImagesUrl = mDncaForm.getCaseStories().getImages();
         oldImagesUrl.clear();
         oldImagesUrl.addAll(images);
     }
@@ -145,6 +148,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         callback.onFormListDataRetrieved(mRealm.where(Form.class).findAll());
         mRealm.commitTransaction();
     }
+
     public void getPrefilledData(final IBaseDataManager<PrefilledData> callback) {
 
         mRealm.executeTransactionAsync(new Realm.Transaction() {
@@ -200,5 +204,20 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 }
             }
         });
+    }
+
+    public void getForm(final IBaseDataManager<Form> callback) {
+        mRealm.beginTransaction();
+
+        mForm = mRealm.createObject(Form.class, AppUtil.generateId());
+        FormDetails formDetails = mRealm.createObject(FormDetails.class, AppUtil.generateId());
+        mForm.setFormDetails(formDetails);
+        callback.onDataReceived(mForm);
+
+        mRealm.commitTransaction();
+    }
+
+    public void getFormDetails(final IBaseDataManager<FormDetails> callback) {
+        callback.onDataReceived(mForm.getFormDetails());
     }
 }

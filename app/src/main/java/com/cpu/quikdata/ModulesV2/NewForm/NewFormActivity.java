@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.Base.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.R;
@@ -42,17 +43,17 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
     }
 
     /** TEMP CODE **/
-    private TemplateMultiPageFragment findOrCreateFormDetailsFragment() {
+    private TemplateQuestionFragment findOrCreateFormDetailsFragment() {
 
-        TemplateMultiPageFragment multiPageFragment = null;
+        TemplateQuestionFragment multiPageFragment = null;
 
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.new_form_fragment_container);
-        if(fragment instanceof TemplateMultiPageFragment) {
-            multiPageFragment = (TemplateMultiPageFragment)fragment;
+        if(fragment instanceof TemplateQuestionFragment) {
+            multiPageFragment = (TemplateQuestionFragment)fragment;
         }
 
         if (multiPageFragment == null) {
-            multiPageFragment = TemplateMultiPageFragment.newInstance();
+            multiPageFragment = TemplateQuestionFragment.newInstance();
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), multiPageFragment, R.id.new_form_fragment_container, true);
         }
@@ -70,8 +71,8 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         } else {
 
             // Create viewModel if it does not exist yet
-            FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel();
-//            formDetailsViewModel.setNewFormActivity(this);
+            FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(this));
+//            formDetailsViewModel.setActivity(this);
 
             // Bind viewModel to activity
             ActivityUtils.addFragmentToActivity(
@@ -133,7 +134,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onFormDetailsButtonPressed() {
-        TemplateMultiPageFragment formDetailsFragment = findOrCreateFormDetailsFragment();
+        TemplateQuestionFragment formDetailsFragment = findOrCreateFormDetailsFragment();
         final FormDetailsViewModel formDetailsViewModel = findOrCreateFormDetailsViewModel();
         formDetailsFragment.setViewModel(formDetailsViewModel);
     }

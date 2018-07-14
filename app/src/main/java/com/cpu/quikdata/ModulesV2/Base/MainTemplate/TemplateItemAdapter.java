@@ -8,23 +8,27 @@ import android.view.ViewGroup;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolderGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolderString;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
+import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseQuestionDataManager;
 import com.cpu.quikdata.R;
 
 public class TemplateItemAdapter extends RecyclerView.Adapter<TemplateItemViewHolder> {
 
-    private IBaseDataManager<PrefilledData> mIPrefilledDataManager;
+    private IBaseQuestionDataManager<PrefilledData> mBaseQuestionDataManager;
 
-    public TemplateItemAdapter(IBaseDataManager iPrefilledDataManager) {
-        mIPrefilledDataManager = iPrefilledDataManager;
+    public TemplateItemAdapter(IBaseQuestionDataManager baseQuestionDataManager) {
+        mBaseQuestionDataManager = baseQuestionDataManager;
     }
 
     @NonNull
@@ -41,33 +45,34 @@ public class TemplateItemAdapter extends RecyclerView.Adapter<TemplateItemViewHo
             case SINGLE_NUMBER:
                 view = inflater.inflate(R.layout.template_question_single_number, parent, false);
                 return new TemplateItemViewHolderSingleNumber(view);
+            case STRING:
+                view = inflater.inflate(R.layout.template_question_string, parent, false);
+                return new TemplateItemViewHolderString(view);
         }
         return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull TemplateItemViewHolder holder, int position) {
-        QuestionItemModel model = mIPrefilledDataManager.getQuestions().get(position);
+        QuestionItemModel model = mBaseQuestionDataManager.getQuestions().get(position);
 
         if (model instanceof QuestionItemModelGenderTuple) {
             holder.setViewModel(new TemplateQuestionItemViewModelGenderTuple((QuestionItemModelGenderTuple) model));
         } else if (model instanceof QuestionItemModelSingleNumber) {
             holder.setViewModel(new TemplateQuestionItemViewModelSingleNumber((QuestionItemModelSingleNumber) model));
+        } else if (model instanceof QuestionItemModelString) {
+            holder.setViewModel(new TemplateQuestionItemViewModelString((QuestionItemModelString) model));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mIPrefilledDataManager.getItemsCount();
+        return mBaseQuestionDataManager.getItemsCount();
     }
 
     @Override
     public int getItemViewType(int position) {
-        AppConstants.QuestionItemType qType = mIPrefilledDataManager.getQuestions().get(position).getType();
+        AppConstants.QuestionItemType qType = mBaseQuestionDataManager.getQuestions().get(position).getType();
         return qType.ordinal();
-    }
-
-    public void updateData() {
-        notifyDataSetChanged();
     }
 }

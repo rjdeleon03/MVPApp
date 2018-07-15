@@ -1,19 +1,17 @@
 package com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsRepositoryManager;
 
 public class ShelterNeedsDialogViewModel extends DialogViewModel {
 
-    private ShelterNeedsRepositoryManager mShelterNeedsRepositoryManager;
+    private BaseEnumRepositoryManager<ShelterNeedsDataRow, GenericEnumDataRow.NeedsType> mShelterNeedsRepositoryManager;
 
     private String[] mQuestions = {
             "Identify Specific Items",
@@ -26,7 +24,7 @@ public class ShelterNeedsDialogViewModel extends DialogViewModel {
      * @param needsTypeIndex
      * @param isNewRow
      */
-    public ShelterNeedsDialogViewModel(ShelterNeedsRepositoryManager shelterNeedsRepositoryManager,
+    public ShelterNeedsDialogViewModel(BaseEnumRepositoryManager<ShelterNeedsDataRow, GenericEnumDataRow.NeedsType> shelterNeedsRepositoryManager,
                                        int needsTypeIndex,
                                        boolean isNewRow) {
         super();
@@ -34,9 +32,9 @@ public class ShelterNeedsDialogViewModel extends DialogViewModel {
 
         ShelterNeedsDataRow shelterNeedsDataRow;
         if (isNewRow) {
-            shelterNeedsDataRow = new ShelterNeedsDataRow(mShelterNeedsRepositoryManager.getShelterNeedsDataType(needsTypeIndex));
+            shelterNeedsDataRow = new ShelterNeedsDataRow(mShelterNeedsRepositoryManager.getEnumType(needsTypeIndex));
         } else {
-            shelterNeedsDataRow = mShelterNeedsRepositoryManager.getShelterNeedsDataRow(needsTypeIndex);
+            shelterNeedsDataRow = mShelterNeedsRepositoryManager.getRow(needsTypeIndex);
         }
 
         type.set(shelterNeedsDataRow.getType());
@@ -56,7 +54,7 @@ public class ShelterNeedsDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelRemarks) mItemViewModels.get(0)).value1.get(),
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(1)).value1.get());
 
-        mShelterNeedsRepositoryManager.addShelterNeedsDataRow(shelterNeedsDataRow);
+        mShelterNeedsRepositoryManager.addRow(shelterNeedsDataRow);
         super.navigateOnOkButtonPressed();
     }
 

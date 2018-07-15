@@ -1,20 +1,18 @@
 package com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Health.DiseasesInjuriesDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesRepositoryManager;
 
 public class DiseasesInjuriesDialogViewModel extends DialogViewModel {
 
-    private DiseasesInjuriesRepositoryManager mDiseasesInjuriesRepositoryManager;
+    private BaseEnumRepositoryManager<DiseasesInjuriesDataRow, GenericEnumDataRow.AgeGroup> mDiseasesInjuriesRepositoryManager;
 
     private String[] mQuestions = {
             "NUMBER OF CASES OF ILLNESSES",
@@ -36,7 +34,7 @@ public class DiseasesInjuriesDialogViewModel extends DialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public DiseasesInjuriesDialogViewModel(DiseasesInjuriesRepositoryManager diseasesInjuriesRepositoryManager,
+    public DiseasesInjuriesDialogViewModel(BaseEnumRepositoryManager<DiseasesInjuriesDataRow, GenericEnumDataRow.AgeGroup> diseasesInjuriesRepositoryManager,
                                            int ageGroupIndex,
                                            boolean isNewRow) {
         super();
@@ -44,9 +42,9 @@ public class DiseasesInjuriesDialogViewModel extends DialogViewModel {
 
         DiseasesInjuriesDataRow diseasesInjuriesDataRow;
         if (isNewRow) {
-            diseasesInjuriesDataRow = new DiseasesInjuriesDataRow(mDiseasesInjuriesRepositoryManager.getDiseasesInjuriesAgeGroup(ageGroupIndex));
+            diseasesInjuriesDataRow = new DiseasesInjuriesDataRow(mDiseasesInjuriesRepositoryManager.getEnumType(ageGroupIndex));
         } else {
-            diseasesInjuriesDataRow = mDiseasesInjuriesRepositoryManager.getDiseasesInjuriesDataRow(ageGroupIndex);
+            diseasesInjuriesDataRow = mDiseasesInjuriesRepositoryManager.getRow(ageGroupIndex);
         }
 
         type.set(diseasesInjuriesDataRow.getType());
@@ -102,7 +100,7 @@ public class DiseasesInjuriesDialogViewModel extends DialogViewModel {
                 new GenderTuple(medicines.value1.get(), medicines.value2.get()),
                 new GenderTuple(medOthers.value1.get(), medOthers.value2.get()));
 
-        mDiseasesInjuriesRepositoryManager.addDiseasesInjuriesDataRow(diseasesInjuriesDataRow);
+        mDiseasesInjuriesRepositoryManager.addRow(diseasesInjuriesDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

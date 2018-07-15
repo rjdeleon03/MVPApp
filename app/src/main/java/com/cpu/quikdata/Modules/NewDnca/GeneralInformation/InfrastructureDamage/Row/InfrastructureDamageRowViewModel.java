@@ -1,9 +1,9 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelBoolean;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
@@ -11,11 +11,8 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogIte
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageRepositoryManager;
 
-public class InfrastructureDamageRowViewModel extends RowViewModel {
-
-    private InfrastructureDamageRepositoryManager mInfrastructureDamageRepositoryManager;
+public class InfrastructureDamageRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "Infrastructure Count",
@@ -23,21 +20,33 @@ public class InfrastructureDamageRowViewModel extends RowViewModel {
             "Remarks"
     };
 
+    /**
+     * Generates new instance
+     * @return
+     */
+    public static InfrastructureDamageRowViewModel newInstance() {
+        return new InfrastructureDamageRowViewModel();
+    }
 
     /**
      * Constructor
-     * @param infrastructureDamageRepositoryManager
+     * @return
+     */
+    public InfrastructureDamageRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public InfrastructureDamageRowViewModel(InfrastructureDamageRepositoryManager infrastructureDamageRepositoryManager,
-                                            BaseEnumNavigator baseEnumNavigator,
-                                            int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mInfrastructureDamageRepositoryManager = infrastructureDamageRepositoryManager;
-
-        InfrastructureDamageDataRow infrastructureDamageDataRow = mInfrastructureDamageRepositoryManager.getInfrastructureDamageRow(rowIndex);
+        InfrastructureDamageDataRow infrastructureDamageDataRow = (InfrastructureDamageDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(infrastructureDamageDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelSingleNumber(
@@ -56,7 +65,7 @@ public class InfrastructureDamageRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mInfrastructureDamageRepositoryManager.deleteInfrastructureDamageRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

@@ -286,6 +286,31 @@ public abstract class GenericEnumDataRow {
         }
     }
 
+    public enum Assistance implements GenericEnum {
+        ASSISTANCE;
+
+        @Override
+        public String toString() {
+            return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
+
+        public static List<Assistance> asList() {
+            List<Assistance> list = new ArrayList<>();
+            list.add(ASSISTANCE);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
+
     private GenericEnum type;
 
     public GenericEnumDataRow(GenericEnum type) {

@@ -1,19 +1,16 @@
 package com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Health.DiseasesInjuriesDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesRepositoryManager;
 
-public class DiseasesInjuriesRowViewModel extends RowViewModel {
-
-    private DiseasesInjuriesRepositoryManager mDiseasesInjuriesRepositoryManager;
+public class DiseasesInjuriesRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "NUMBER OF CASES OF ILLNESSES",
@@ -30,17 +27,32 @@ public class DiseasesInjuriesRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static DiseasesInjuriesRowViewModel newInstance() {
+        return new DiseasesInjuriesRowViewModel();
+    }
+
+    /**
      * Constructor
+     * @return
+     */
+    public DiseasesInjuriesRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public DiseasesInjuriesRowViewModel(DiseasesInjuriesRepositoryManager diseasesInjuriesRepositoryManager,
-                                        BaseEnumNavigator baseEnumNavigator,
-                                        int rowIndex) {
-        super(baseEnumNavigator, rowIndex);
-        mDiseasesInjuriesRepositoryManager = diseasesInjuriesRepositoryManager;
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        DiseasesInjuriesDataRow diseasesInjuriesDataRow = mDiseasesInjuriesRepositoryManager.getDiseasesInjuriesDataRow(rowIndex);
+        DiseasesInjuriesDataRow diseasesInjuriesDataRow = (DiseasesInjuriesDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(diseasesInjuriesDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelDivider(
@@ -72,7 +84,7 @@ public class DiseasesInjuriesRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mDiseasesInjuriesRepositoryManager.deleteDiseasesInjuriesDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

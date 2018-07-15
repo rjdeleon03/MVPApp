@@ -5,12 +5,13 @@ import android.content.Context;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Health.SpecialNeedsData;
 import com.cpu.quikdata.Models.Health.SpecialNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthRepositoryManager;
 
 import java.util.List;
 
-public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements SpecialNeedsRepositoryManager {
+public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements BaseEnumRepositoryManager<SpecialNeedsDataRow, GenericEnumDataRow.SpecialNeedsType> {
 
     /**
      * Constructor
@@ -33,11 +34,11 @@ public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements Sp
 
     /**
      * Adds special needs data row
-     * @param specialNeedsDataRow
+     * @param row
      */
     @Override
-    public void addSpecialNeedsDataRow(SpecialNeedsDataRow specialNeedsDataRow) {
-        super.addAgeGroupDataRow(specialNeedsDataRow);
+    public void addRow(SpecialNeedsDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
 
     /**
@@ -45,7 +46,7 @@ public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements Sp
      * @param rowIndex
      */
     @Override
-    public void deleteSpecialNeedsDataRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
@@ -55,17 +56,17 @@ public class SpecialNeedsViewModel extends HealthEnumBaseViewModel implements Sp
      * @return
      */
     @Override
-    public SpecialNeedsDataRow getSpecialNeedsDataRow(int rowIndex) {
+    public SpecialNeedsDataRow getRow(int rowIndex) {
         return (SpecialNeedsDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
      * Gets special needs type based on index
-     * @param specialNeedsIndex
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.SpecialNeedsType getSpecialNeedsDataType(int specialNeedsIndex) {
-        return (GenericEnumDataRow.SpecialNeedsType) ageGroupList.get(specialNeedsIndex);
+    public GenericEnumDataRow.SpecialNeedsType getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.SpecialNeedsType) ageGroupList.get(typeIndex);
     }
 }

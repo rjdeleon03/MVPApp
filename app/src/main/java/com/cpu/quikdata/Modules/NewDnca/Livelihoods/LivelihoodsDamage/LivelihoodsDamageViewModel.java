@@ -5,12 +5,13 @@ import android.content.Context;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageData;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager;
 
 import java.util.List;
 
-public class LivelihoodsDamageViewModel extends LivelihoodsEnumBaseViewModel implements LivelihoodsDamageRepositoryManager {
+public class LivelihoodsDamageViewModel extends LivelihoodsEnumBaseViewModel implements BaseEnumRepositoryManager<LivelihoodsDamageDataRow, GenericEnumDataRow.LivelihoodsType> {
 
     /**
      * Constructor
@@ -32,23 +33,45 @@ public class LivelihoodsDamageViewModel extends LivelihoodsEnumBaseViewModel imp
         mLivelihoodsRepositoryManager.saveLivelihoodsDamageData(damageData);
     }
 
+    /**
+     * Adds livelihood damage row
+     *
+     * @param row
+     */
     @Override
-    public void addLivelihoodsDamageRow(LivelihoodsDamageDataRow damageDataRow) {
-        super.addAgeGroupDataRow(damageDataRow);
+    public void addRow(LivelihoodsDamageDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
 
+    /**
+     * Deletes livelihood damage row
+     *
+     * @param rowIndex
+     */
     @Override
-    public void deleteLivelihoodsDamageRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
+    /**
+     * Gets livelihoods damage row
+     *
+     * @param rowIndex
+     * @return
+     */
     @Override
-    public LivelihoodsDamageDataRow getLivelihoodsDamageRow(int rowIndex) {
+    public LivelihoodsDamageDataRow getRow(int rowIndex) {
         return (LivelihoodsDamageDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
+    /**
+     * Gets livelihoods type based on index
+     *
+     * @param typeIndex
+     * @return
+     */
     @Override
-    public GenericEnumDataRow.LivelihoodsType getLivelihoodsType(int livelihoodsTypeIndex) {
-        return (GenericEnumDataRow.LivelihoodsType) ageGroupList.get(livelihoodsTypeIndex);
+    public GenericEnumDataRow.LivelihoodsType getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.LivelihoodsType) ageGroupList.get(typeIndex);
     }
 }

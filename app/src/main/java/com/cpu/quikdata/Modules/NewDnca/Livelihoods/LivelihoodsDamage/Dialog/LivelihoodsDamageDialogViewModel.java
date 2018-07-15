@@ -1,9 +1,8 @@
 package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRecycler;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
@@ -11,14 +10,13 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogIte
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LivelihoodsDamageDialogViewModel extends DialogViewModel {
 
-    private LivelihoodsDamageRepositoryManager mLivelihoodsDamageRepositoryManager;
+    private BaseEnumRepositoryManager<LivelihoodsDamageDataRow, GenericEnumDataRow.LivelihoodsType> mLivelihoodsDamageRepositoryManager;
     private List<LivelihoodsDamageDataRow.LivelihoodsEnumBoolTuple> mAffectedLivelihoods = new ArrayList<>();
 
     private String[] mQuestions = {
@@ -37,7 +35,7 @@ public class LivelihoodsDamageDialogViewModel extends DialogViewModel {
      * @param livelihoodsTypeIndex
      * @param isNewRow
      */
-    public LivelihoodsDamageDialogViewModel(LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
+    public LivelihoodsDamageDialogViewModel(BaseEnumRepositoryManager<LivelihoodsDamageDataRow, GenericEnumDataRow.LivelihoodsType> livelihoodsDamageRepositoryManager,
                                             int livelihoodsTypeIndex,
                                             boolean isNewRow) {
         super();
@@ -45,9 +43,9 @@ public class LivelihoodsDamageDialogViewModel extends DialogViewModel {
 
         LivelihoodsDamageDataRow damageDataRow;
         if (isNewRow) {
-            damageDataRow = new LivelihoodsDamageDataRow(mLivelihoodsDamageRepositoryManager.getLivelihoodsType(livelihoodsTypeIndex));
+            damageDataRow = new LivelihoodsDamageDataRow(mLivelihoodsDamageRepositoryManager.getEnumType(livelihoodsTypeIndex));
         } else {
-            damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(livelihoodsTypeIndex);
+            damageDataRow = mLivelihoodsDamageRepositoryManager.getRow(livelihoodsTypeIndex);
         }
 
         mAffectedLivelihoods.addAll(damageDataRow.getAffectedLivelihoods());
@@ -81,7 +79,7 @@ public class LivelihoodsDamageDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(1)).value1.get(),
                 ((DialogItemViewModelRemarks) mItemViewModels.get(2)).value1.get());
 
-        mLivelihoodsDamageRepositoryManager.addLivelihoodsDamageRow(damageDataRow);
+        mLivelihoodsDamageRepositoryManager.addRow(damageDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

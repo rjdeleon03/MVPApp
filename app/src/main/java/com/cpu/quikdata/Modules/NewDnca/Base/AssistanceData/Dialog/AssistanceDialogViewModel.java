@@ -1,9 +1,9 @@
 package com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.AssistanceDataRow;
-import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataRepositoryManager;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelDate;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
@@ -16,7 +16,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogVie
 
 public class AssistanceDialogViewModel extends DialogViewModel {
 
-    private AssistanceDataRepositoryManager mAssistanceDataRepositoryManager;
+    private BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance> mAssistanceDataRepositoryManager;
     private int mRowIndex;
 
     private String[] mQuestions = {
@@ -36,7 +36,7 @@ public class AssistanceDialogViewModel extends DialogViewModel {
      * @param assistanceDataRepositoryManager
      * @param rowIndex
      */
-    public AssistanceDialogViewModel(AssistanceDataRepositoryManager assistanceDataRepositoryManager,
+    public AssistanceDialogViewModel(BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance> assistanceDataRepositoryManager,
                                      int rowIndex) {
         super();
         mAssistanceDataRepositoryManager = assistanceDataRepositoryManager;
@@ -46,7 +46,7 @@ public class AssistanceDialogViewModel extends DialogViewModel {
         if (mRowIndex == -1) {
             assistanceDataRow = new AssistanceDataRow();
         } else {
-            assistanceDataRow = mAssistanceDataRepositoryManager.getAssistanceDataRow(rowIndex);
+            assistanceDataRow = mAssistanceDataRepositoryManager.getRow(rowIndex);
         }
 
         mItemViewModels.add(new DialogItemViewModelRemarks(
@@ -73,7 +73,7 @@ public class AssistanceDialogViewModel extends DialogViewModel {
      * Constructor for new rows
      * @param assistanceDataRepositoryManager
      */
-    public AssistanceDialogViewModel(AssistanceDataRepositoryManager assistanceDataRepositoryManager) {
+    public AssistanceDialogViewModel(BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance> assistanceDataRepositoryManager) {
         this(assistanceDataRepositoryManager, -1);
     }
 
@@ -92,7 +92,7 @@ public class AssistanceDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(7)).value1.get(),
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(8)).value1.get());
 
-        mAssistanceDataRepositoryManager.addAssistanceDataRow(assistanceDataRow, mRowIndex);
+        mAssistanceDataRepositoryManager.addRow(assistanceDataRow, mRowIndex);
         super.navigateOnOkButtonPressed();
     }
 }

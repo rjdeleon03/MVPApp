@@ -14,13 +14,9 @@
     <android.support.constraint.ConstraintLayout
         android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/dnca_item_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:onClick="@{() -> viewModel.navigateOnEvacuationItemPressed()}">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,7 +28,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/dnca_item_dl_button"
-            app:layout_constraintStart_toEndOf="@+id/dnca_item_img"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -58,7 +54,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_download" />
+            app:srcCompat="@drawable/ic_download"
+            android:onClick="@{() -> viewModel.navigateOnEvacuationItemDeletePressed()}"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

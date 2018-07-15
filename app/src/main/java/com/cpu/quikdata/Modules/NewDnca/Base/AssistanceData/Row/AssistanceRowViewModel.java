@@ -1,10 +1,9 @@
 package com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.AssistanceDataRow;
-import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelDate;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelDivider;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
@@ -15,9 +14,7 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogIte
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
 
-public class AssistanceRowViewModel extends RowViewModel {
-
-    private AssistanceDataRepositoryManager mAssistanceDataRepositoryManager;
+public class AssistanceRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "Name of Organization or Agency",
@@ -32,19 +29,32 @@ public class AssistanceRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static AssistanceRowViewModel newInstance() {
+        return new AssistanceRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param assistanceDataRepositoryManager
+     * @return
+     */
+    public AssistanceRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public AssistanceRowViewModel(AssistanceDataRepositoryManager assistanceDataRepositoryManager,
-                                  BaseEnumNavigator baseEnumNavigator,
-                                  int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mAssistanceDataRepositoryManager = assistanceDataRepositoryManager;
-
-        AssistanceDataRow assistanceDataRow = mAssistanceDataRepositoryManager.getAssistanceDataRow(rowIndex);
+        AssistanceDataRow assistanceDataRow = (AssistanceDataRow) mRepositoryManager.getRow(rowIndex);
 
         mItemViewModels.add(new DialogItemViewModelRemarks(
                 new DialogItemModelRemarks(mQuestions[0], assistanceDataRow.getOrgName())));
@@ -71,7 +81,7 @@ public class AssistanceRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mAssistanceDataRepositoryManager.deleteAssistanceDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

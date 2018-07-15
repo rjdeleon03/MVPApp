@@ -3,15 +3,21 @@ package com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.Generics.AssistanceDataRow;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Row.AssistanceRowViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.Dialog.AssistanceDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public abstract class AssistanceDataFragment extends BaseEnumFragment {
 
-    private AssistanceDataFragmentAdapter mAssistanceDataAdapter;
+    private BaseEnumRowAdapter<AssistanceRowViewModel> mAssistanceDataAdapter;
 
     public AssistanceDataFragment() {
         // Required empty public constructor
@@ -24,7 +30,7 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
-                (AssistanceDataRepositoryManager) mViewModel);
+                (BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance>) mViewModel);
         super.setupDialog(dialogViewModel);
     }
 
@@ -36,7 +42,7 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         AssistanceDialogViewModel dialogViewModel = new AssistanceDialogViewModel(
-                (AssistanceDataRepositoryManager) mViewModel,
+                (BaseEnumNoTypeRepositoryManager<AssistanceDataRow, GenericEnumDataRow.Assistance>) mViewModel,
                 rowIndex);
         super.setupDialog(dialogViewModel);
     }
@@ -57,8 +63,9 @@ public abstract class AssistanceDataFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mAssistanceDataAdapter = new AssistanceDataFragmentAdapter(
+        mAssistanceDataAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                AssistanceRowViewModel.class,
                 this,
                 (AssistanceDataViewModel) mViewModel);
         mRowRecycler.setAdapter(mAssistanceDataAdapter);

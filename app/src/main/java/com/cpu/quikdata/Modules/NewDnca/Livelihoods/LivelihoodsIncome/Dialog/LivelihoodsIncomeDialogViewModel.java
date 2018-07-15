@@ -1,19 +1,19 @@
 package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumNoTypeRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeRepositoryManager;
+import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeViewModel;
 
 public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
 
-    private LivelihoodsIncomeRepositoryManager mLivelihoodsIncomeRepositoryManager;
+    private BaseEnumNoTypeRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> mLivelihoodsIncomeRepositoryManager;
     private boolean mIsNewRow;
     private int mRowIndex = -1;
 
@@ -33,7 +33,7 @@ public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
      * @param incomeSourceTypeIndex
      * @param isNewRow
      */
-    public LivelihoodsIncomeDialogViewModel(LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
+    public LivelihoodsIncomeDialogViewModel(BaseEnumNoTypeRepositoryManager<LivelihoodsIncomeDataRow, GenericEnumDataRow.IncomeSourceType> livelihoodsIncomeRepositoryManager,
                                             int incomeSourceTypeIndex,
                                             boolean isNewRow) {
         super();
@@ -42,10 +42,10 @@ public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
 
         LivelihoodsIncomeDataRow incomeDataRow;
         if (mIsNewRow) {
-            incomeDataRow = new LivelihoodsIncomeDataRow(mLivelihoodsIncomeRepositoryManager.getIncomeBeforeSourceType(incomeSourceTypeIndex));
+            incomeDataRow = new LivelihoodsIncomeDataRow(mLivelihoodsIncomeRepositoryManager.getEnumType(incomeSourceTypeIndex));
         } else {
             mRowIndex = incomeSourceTypeIndex;
-            incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(incomeSourceTypeIndex);
+            incomeDataRow = mLivelihoodsIncomeRepositoryManager.getRow(incomeSourceTypeIndex);
         }
 
         type.set(incomeDataRow.getType());
@@ -80,7 +80,9 @@ public class LivelihoodsIncomeDialogViewModel extends DialogViewModel {
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(4)).value1.get(),
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(5)).value1.get(),
                 ((DialogItemViewModelSingleNumber) mItemViewModels.get(6)).value1.get());
-        mLivelihoodsIncomeRepositoryManager.addIncomeBeforeRow(livelihoodsIncomeDataRow, mRowIndex);
+
+        mLivelihoodsIncomeRepositoryManager.addRow(livelihoodsIncomeDataRow, mRowIndex);
+
         super.navigateOnOkButtonPressed();
     }
 }

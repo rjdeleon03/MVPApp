@@ -1,18 +1,16 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.DeathCauseDataRow;
 import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseRepositoryManager;
 
 public class DeathCauseDataDialogViewModel extends DialogViewModel {
 
-    private DeathCauseRepositoryManager mDeathCauseRepositoryManager;
+    private BaseEnumRepositoryManager<DeathCauseDataRow, GenericEnumDataRow.AgeGroup> mDeathCauseRepositoryManager;
 
     private String[] mQuestions = {
             "Measles",
@@ -32,7 +30,7 @@ public class DeathCauseDataDialogViewModel extends DialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public DeathCauseDataDialogViewModel(DeathCauseRepositoryManager deathCauseRepositoryManager,
+    public DeathCauseDataDialogViewModel(BaseEnumRepositoryManager<DeathCauseDataRow, GenericEnumDataRow.AgeGroup> deathCauseRepositoryManager,
                                          int ageGroupIndex,
                                          boolean isNewRow) {
         super();
@@ -40,9 +38,9 @@ public class DeathCauseDataDialogViewModel extends DialogViewModel {
 
         DeathCauseDataRow deathCauseDataRow;
         if (isNewRow) {
-            deathCauseDataRow = new DeathCauseDataRow(mDeathCauseRepositoryManager.getPopulationDataAgeGroup(ageGroupIndex));
+            deathCauseDataRow = new DeathCauseDataRow(mDeathCauseRepositoryManager.getEnumType(ageGroupIndex));
         } else {
-            deathCauseDataRow = mDeathCauseRepositoryManager.getDeathCauseDataRow(ageGroupIndex);
+            deathCauseDataRow = mDeathCauseRepositoryManager.getRow(ageGroupIndex);
         }
         type.set(deathCauseDataRow.getType());
         mItemViewModels.add(new DialogItemViewModelGenderTuple(
@@ -92,7 +90,7 @@ public class DeathCauseDataDialogViewModel extends DialogViewModel {
                 new GenderTuple(collapsedBuilding.value1.get(), collapsedBuilding.value2.get()),
                 new GenderTuple(others.value1.get(), others.value2.get())
         );
-        mDeathCauseRepositoryManager.addDeathCauseDataRow(deathCauseDataRow);
+        mDeathCauseRepositoryManager.addRow(deathCauseDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

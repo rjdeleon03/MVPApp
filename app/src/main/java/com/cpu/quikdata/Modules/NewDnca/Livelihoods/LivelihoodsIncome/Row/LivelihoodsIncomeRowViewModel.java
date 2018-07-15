@@ -1,19 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsIncomeDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsIncome.LivelihoodsIncomeRepositoryManager;
 
 public class LivelihoodsIncomeRowViewModel extends RowViewModel {
-
-    private LivelihoodsIncomeRepositoryManager mLivelihoodsIncomeRepositoryManager;
 
     private String[] mQuestions = {
             "Source of Income",
@@ -26,18 +22,32 @@ public class LivelihoodsIncomeRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static LivelihoodsIncomeRowViewModel newInstance() {
+        return new LivelihoodsIncomeRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param livelihoodsIncomeRepositoryManager
+     * @return
+     */
+    public LivelihoodsIncomeRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public LivelihoodsIncomeRowViewModel(LivelihoodsIncomeRepositoryManager livelihoodsIncomeRepositoryManager,
-                                         BaseEnumNavigator baseEnumNavigator,
-                                         int rowIndex) {
-        super(baseEnumNavigator, rowIndex);
-        mLivelihoodsIncomeRepositoryManager = livelihoodsIncomeRepositoryManager;
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        LivelihoodsIncomeDataRow incomeDataRow = mLivelihoodsIncomeRepositoryManager.getIncomeBeforeRow(rowIndex);
+        LivelihoodsIncomeDataRow incomeDataRow = (LivelihoodsIncomeDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(incomeDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelRemarks(
@@ -61,7 +71,7 @@ public class LivelihoodsIncomeRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mLivelihoodsIncomeRepositoryManager.deleteIncomeBeforeRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

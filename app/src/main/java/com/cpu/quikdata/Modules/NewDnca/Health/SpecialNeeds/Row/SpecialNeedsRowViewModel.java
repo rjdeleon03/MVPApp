@@ -1,19 +1,16 @@
 package com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Health.SpecialNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsRepositoryManager;
 
-public class SpecialNeedsRowViewModel extends RowViewModel {
-
-    private SpecialNeedsRepositoryManager mSpecialNeedsRepositoryManager;
+public class SpecialNeedsRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "Number of People with Special Needs",
@@ -21,19 +18,32 @@ public class SpecialNeedsRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static SpecialNeedsRowViewModel newInstance() {
+        return new SpecialNeedsRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param specialNeedsRepositoryManager
+     * @return
+     */
+    public SpecialNeedsRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public SpecialNeedsRowViewModel(SpecialNeedsRepositoryManager specialNeedsRepositoryManager,
-                                    BaseEnumNavigator baseEnumNavigator,
-                                    int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mSpecialNeedsRepositoryManager = specialNeedsRepositoryManager;
-
-        SpecialNeedsDataRow specialNeedsDataRow = mSpecialNeedsRepositoryManager.getSpecialNeedsDataRow(rowIndex);
+        SpecialNeedsDataRow specialNeedsDataRow = (SpecialNeedsDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(specialNeedsDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelSingleNumber(new DialogItemModelSingleNumber(mQuestions[0], specialNeedsDataRow.getCount(), true)));
@@ -45,7 +55,7 @@ public class SpecialNeedsRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mSpecialNeedsRepositoryManager.deleteSpecialNeedsDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

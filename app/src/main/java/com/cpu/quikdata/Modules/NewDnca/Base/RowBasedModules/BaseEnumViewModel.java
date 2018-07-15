@@ -8,8 +8,6 @@ import android.databinding.ObservableInt;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoBaseViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,7 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
     protected BaseEnumViewModel(@Nullable Class<? extends Enum> enumClass) {
 
         super();
-        if (enumClass == null) {
+        if (enumClass == null || enumClass == GenericEnumDataRow.Assistance.class) {
             return;
         }
 
@@ -197,5 +195,13 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
      */
     public void navigateOnSaveButtonPressed() {
 
+    }
+
+    /**
+     * Gets the number of data rows
+     * @return
+     */
+    public int getRowsCount() {
+        return mGenericEnumDataRows.size();
     }
 }

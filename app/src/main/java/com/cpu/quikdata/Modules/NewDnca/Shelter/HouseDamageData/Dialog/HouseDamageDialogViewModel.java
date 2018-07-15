@@ -1,17 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Shelter.ShelterHouseDamageDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageRepositoryManager;
 
 public class HouseDamageDialogViewModel extends DialogViewModel {
 
-    private HouseDamageRepositoryManager mHouseDamageRepositoryManager;
+    private BaseEnumRepositoryManager<ShelterHouseDamageDataRow, GenericEnumDataRow.HouseType> mHouseDamageRepositoryManager;
 
     private String[] mQuestions = {
             "Number of Houses",
@@ -33,7 +31,7 @@ public class HouseDamageDialogViewModel extends DialogViewModel {
      * @param houseTypeIndex
      * @param isNewRow
      */
-    public HouseDamageDialogViewModel(HouseDamageRepositoryManager houseDamageRepositoryManager,
+    public HouseDamageDialogViewModel(BaseEnumRepositoryManager<ShelterHouseDamageDataRow, GenericEnumDataRow.HouseType> houseDamageRepositoryManager,
                                       int houseTypeIndex,
                                       boolean isNewRow) {
         super();
@@ -41,9 +39,9 @@ public class HouseDamageDialogViewModel extends DialogViewModel {
 
         ShelterHouseDamageDataRow houseDamageDataRow;
         if (isNewRow) {
-            houseDamageDataRow = new ShelterHouseDamageDataRow(mHouseDamageRepositoryManager.getHouseDamageDataHouseType(houseTypeIndex));
+            houseDamageDataRow = new ShelterHouseDamageDataRow(mHouseDamageRepositoryManager.getEnumType(houseTypeIndex));
         } else {
-            houseDamageDataRow = mHouseDamageRepositoryManager.getHouseDamageDataRow(houseTypeIndex);
+            houseDamageDataRow = mHouseDamageRepositoryManager.getRow(houseTypeIndex);
         }
 
         type.set(houseDamageDataRow.getType());
@@ -79,7 +77,7 @@ public class HouseDamageDialogViewModel extends DialogViewModel {
                ((DialogItemViewModelSingleNumber) mItemViewModels.get(9)).value1.get(),
                ((DialogItemViewModelSingleNumber) mItemViewModels.get(10)).value1.get());
 
-        mHouseDamageRepositoryManager.addHouseDamageDataRow(houseDamageDataRow);
+        mHouseDamageRepositoryManager.addRow(houseDamageDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

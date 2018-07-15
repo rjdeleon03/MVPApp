@@ -1,19 +1,16 @@
 package com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Livelihoods.LivelihoodsDamageDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageRepositoryManager;
 
-public class LivelihoodsDamageRowViewModel extends RowViewModel {
-
-    private LivelihoodsDamageRepositoryManager mLivelihoodsDamageRepositoryManager;
+public class LivelihoodsDamageRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "Kinds of Affected Livelihoods",
@@ -22,18 +19,32 @@ public class LivelihoodsDamageRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static LivelihoodsDamageRowViewModel newInstance() {
+        return new LivelihoodsDamageRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param livelihoodsDamageRepositoryManager
+     * @return
+     */
+    public LivelihoodsDamageRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public LivelihoodsDamageRowViewModel(LivelihoodsDamageRepositoryManager livelihoodsDamageRepositoryManager,
-                                         BaseEnumNavigator baseEnumNavigator,
-                                         int rowIndex) {
-        super(baseEnumNavigator, rowIndex);
-        mLivelihoodsDamageRepositoryManager = livelihoodsDamageRepositoryManager;
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        LivelihoodsDamageDataRow damageDataRow = mLivelihoodsDamageRepositoryManager.getLivelihoodsDamageRow(rowIndex);
+        LivelihoodsDamageDataRow damageDataRow = (LivelihoodsDamageDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(damageDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelRemarks(
@@ -52,7 +63,7 @@ public class LivelihoodsDamageRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mLivelihoodsDamageRepositoryManager.deleteLivelihoodsDamageRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

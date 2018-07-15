@@ -3,8 +3,13 @@ package com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Models.Shelter.ShelterHouseDamageDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Dialog.HouseDamageDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.Row.HouseDamageRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_HOUSE_DAMAGE;
 
@@ -13,7 +18,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.SHELTER_HOUSE_DAMAG
  */
 public class HouseDamageFragment extends BaseEnumFragment {
 
-    private HouseDamageFragmentAdapter mHouseDamageAdapter;
+    private BaseEnumRowAdapter<HouseDamageRowViewModel> mHouseDamageAdapter;
 
     public static HouseDamageFragment newInstance() {
         return new HouseDamageFragment();
@@ -27,7 +32,7 @@ public class HouseDamageFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         HouseDamageDialogViewModel dialogViewModel = new HouseDamageDialogViewModel(
-                (HouseDamageRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<ShelterHouseDamageDataRow, GenericEnumDataRow.HouseType>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -37,7 +42,7 @@ public class HouseDamageFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         HouseDamageDialogViewModel dialogViewModel = new HouseDamageDialogViewModel(
-                (HouseDamageRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<ShelterHouseDamageDataRow, GenericEnumDataRow.HouseType>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -59,8 +64,9 @@ public class HouseDamageFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mHouseDamageAdapter = new HouseDamageFragmentAdapter(
+        mHouseDamageAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                HouseDamageRowViewModel.class,
                 this,
                 (HouseDamageViewModel) mViewModel);
         mRowRecycler.setAdapter(mHouseDamageAdapter);

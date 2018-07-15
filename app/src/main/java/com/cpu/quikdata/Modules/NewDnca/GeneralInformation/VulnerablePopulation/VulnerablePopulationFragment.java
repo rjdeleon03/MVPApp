@@ -3,8 +3,14 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationDataRow;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
+import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.Row.PopulationDataRowViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog.VulnerablePopulationDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row.VulnerablePopulationRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_VULNERABLE;
 
@@ -13,7 +19,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_VULNERABLE
  */
 public class VulnerablePopulationFragment extends BaseEnumFragment {
 
-    private VulnerablePopulationFragmentAdapter mVulnerablePopulationAdapter;
+    private BaseEnumRowAdapter<VulnerablePopulationRowViewModel> mVulnerablePopulationAdapter;
 
     public static VulnerablePopulationFragment newInstance() {
         return new VulnerablePopulationFragment();
@@ -30,7 +36,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
-                (VulnerablePopulationRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<VulnerablePopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -44,7 +50,7 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         VulnerablePopulationDialogViewModel dialogViewModel = new VulnerablePopulationDialogViewModel(
-                (VulnerablePopulationRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<VulnerablePopulationDataRow, GenericEnumDataRow.AgeGroup>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -66,8 +72,9 @@ public class VulnerablePopulationFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mVulnerablePopulationAdapter = new VulnerablePopulationFragmentAdapter(
+        mVulnerablePopulationAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                VulnerablePopulationRowViewModel.class,
                 this,
                 (VulnerablePopulationViewModel) mViewModel);
         mRowRecycler.setAdapter(mVulnerablePopulationAdapter);

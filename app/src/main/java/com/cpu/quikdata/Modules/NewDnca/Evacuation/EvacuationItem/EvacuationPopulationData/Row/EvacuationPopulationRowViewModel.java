@@ -1,17 +1,14 @@
 package com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Evacuation.EvacuationPopulationDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationPopulationData.EvacuationPopulationRepositoryManager;
 
-public class EvacuationPopulationRowViewModel extends RowViewModel {
-
-    private EvacuationPopulationRepositoryManager mEvacuationPopulationRepositoryManager;
+public class EvacuationPopulationRowViewModel extends RowViewModel implements DialogItemDataSource {
 
     private String[] mQuestions = {
             "Male",
@@ -24,18 +21,32 @@ public class EvacuationPopulationRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static EvacuationPopulationRowViewModel newInstance() {
+        return new EvacuationPopulationRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param evacuationPopulationRepositoryManager
+     * @return
+     */
+    public EvacuationPopulationRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public EvacuationPopulationRowViewModel(EvacuationPopulationRepositoryManager evacuationPopulationRepositoryManager,
-                                            BaseEnumNavigator baseEnumNavigator,
-                                            int rowIndex) {
-        super(baseEnumNavigator, rowIndex);
-        mEvacuationPopulationRepositoryManager = evacuationPopulationRepositoryManager;
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        EvacuationPopulationDataRow evacuationPopulationDataRow = mEvacuationPopulationRepositoryManager.getEvacuationPopulationDataRow(mRowIndex);
+        EvacuationPopulationDataRow evacuationPopulationDataRow = (EvacuationPopulationDataRow) mRepositoryManager.getRow(mRowIndex);
         type.set(evacuationPopulationDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelSingleNumber(
@@ -59,7 +70,7 @@ public class EvacuationPopulationRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mEvacuationPopulationRepositoryManager.deleteEvacuationPopulationDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

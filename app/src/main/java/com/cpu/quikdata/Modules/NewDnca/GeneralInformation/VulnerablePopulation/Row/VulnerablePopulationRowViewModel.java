@@ -1,8 +1,7 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.DialogItemDataSource;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
@@ -12,11 +11,8 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogIte
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
 
 public class VulnerablePopulationRowViewModel extends RowViewModel implements DialogItemDataSource {
-
-    private VulnerablePopulationRepositoryManager mVulnerablePopulationRepositoryManager;
 
     private String[] mQuestions = {
             "Pregnant Women",
@@ -30,19 +26,32 @@ public class VulnerablePopulationRowViewModel extends RowViewModel implements Di
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static VulnerablePopulationRowViewModel newInstance() {
+        return new VulnerablePopulationRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param vulnerablePopulationRepositoryManager
+     * @return
+     */
+    public VulnerablePopulationRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public VulnerablePopulationRowViewModel(VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
-                                            BaseEnumNavigator baseEnumNavigator,
-                                            int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mVulnerablePopulationRepositoryManager = vulnerablePopulationRepositoryManager;
-
-        VulnerablePopulationDataRow vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(mRowIndex);
+        VulnerablePopulationDataRow vulnerablePopulationDataRow = (VulnerablePopulationDataRow) mRepositoryManager.getRow(mRowIndex);
         type.set(vulnerablePopulationDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelSingleNumber(
@@ -72,7 +81,7 @@ public class VulnerablePopulationRowViewModel extends RowViewModel implements Di
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mVulnerablePopulationRepositoryManager.deleteVulnerablePopulationRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

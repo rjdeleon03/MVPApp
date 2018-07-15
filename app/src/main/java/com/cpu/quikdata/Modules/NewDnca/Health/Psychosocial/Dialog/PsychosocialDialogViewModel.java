@@ -1,20 +1,18 @@
 package com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Health.PsychosocialDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialRepositoryManager;
 
 public class PsychosocialDialogViewModel extends DialogViewModel {
 
-    private PsychosocialRepositoryManager mPsychosocialRepositoryManager;
+    private BaseEnumRepositoryManager<PsychosocialDataRow, GenericEnumDataRow.AgeGroup> mPsychosocialRepositoryManager;
 
     private String[] mQuestions = {
             "Manifestations of Mental Stress or Trauma",
@@ -33,7 +31,7 @@ public class PsychosocialDialogViewModel extends DialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public PsychosocialDialogViewModel(PsychosocialRepositoryManager psychosocialRepositoryManager,
+    public PsychosocialDialogViewModel(BaseEnumRepositoryManager<PsychosocialDataRow, GenericEnumDataRow.AgeGroup> psychosocialRepositoryManager,
                                        int ageGroupIndex,
                                        boolean isNewRow) {
         super();
@@ -41,9 +39,9 @@ public class PsychosocialDialogViewModel extends DialogViewModel {
 
         PsychosocialDataRow psychosocialDataRow;
         if (isNewRow) {
-            psychosocialDataRow = new PsychosocialDataRow(mPsychosocialRepositoryManager.getPsychosocialDataAgeGroup(ageGroupIndex));
+            psychosocialDataRow = new PsychosocialDataRow(mPsychosocialRepositoryManager.getEnumType(ageGroupIndex));
         } else {
-            psychosocialDataRow = mPsychosocialRepositoryManager.getPsychosocialDataRow(ageGroupIndex);
+            psychosocialDataRow = mPsychosocialRepositoryManager.getRow(ageGroupIndex);
         }
 
         type.set(psychosocialDataRow.getType());
@@ -67,7 +65,7 @@ public class PsychosocialDialogViewModel extends DialogViewModel {
                 new GenderTuple(cases.value1.get(), cases.value2.get()),
                 ((DialogItemViewModelRemarks) mItemViewModels.get(2)).value1.get());
 
-        mPsychosocialRepositoryManager.addPsychosocialDataRow(psychosocialDataRow);
+        mPsychosocialRepositoryManager.addRow(psychosocialDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

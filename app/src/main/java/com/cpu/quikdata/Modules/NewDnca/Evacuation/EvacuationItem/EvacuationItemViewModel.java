@@ -36,15 +36,22 @@ public class EvacuationItemViewModel extends BaseMultiPageViewModel implements E
                                    EvacuationRepositoryManager parentRepositoryManager,
                                    int itemIndex) {
 
-        // TODO: Eliminate usage of context and DNCAFormRepository if not necessar
         super(dncaFormRepository);
         mItemIndex = itemIndex;
         mParentRepositoryManager = parentRepositoryManager;
+    }
+
+    /**
+     * Sets the index of the item and retrieves the corresponding data
+     * @param itemIndex
+     */
+    public void setItemIndex(int itemIndex) {
+        mItemIndex = itemIndex;
 
         if (mItemIndex == -1) {
             mEvacuationInfo = new EvacuationInfo();
         } else {
-            mEvacuationInfo = parentRepositoryManager.getEvacuationInfo(mItemIndex);
+            mEvacuationInfo = mParentRepositoryManager.getEvacuationInfo(mItemIndex);
         }
         mSiteData = mEvacuationInfo.getSiteData();
         mPopulationData = mEvacuationInfo.getPopulationData();

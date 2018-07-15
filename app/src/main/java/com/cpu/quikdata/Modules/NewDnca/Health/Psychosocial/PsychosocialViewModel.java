@@ -5,12 +5,13 @@ import android.content.Context;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.Models.Health.PsychosocialData;
 import com.cpu.quikdata.Models.Health.PsychosocialDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthEnumBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthRepositoryManager;
 
 import java.util.List;
 
-public class PsychosocialViewModel extends HealthEnumBaseViewModel implements PsychosocialRepositoryManager {
+public class PsychosocialViewModel extends HealthEnumBaseViewModel implements BaseEnumRepositoryManager<PsychosocialDataRow, GenericEnumDataRow.AgeGroup> {
 
     /**
      * Constructor
@@ -33,11 +34,11 @@ public class PsychosocialViewModel extends HealthEnumBaseViewModel implements Ps
 
     /**
      * Adds psychosocial data row
-     * @param psychosocialDataRow
+     * @param row
      */
     @Override
-    public void addPsychosocialDataRow(PsychosocialDataRow psychosocialDataRow) {
-        super.addAgeGroupDataRow(psychosocialDataRow);
+    public void addRow(PsychosocialDataRow row) {
+        super.addAgeGroupDataRow(row);
     }
 
     /**
@@ -45,7 +46,7 @@ public class PsychosocialViewModel extends HealthEnumBaseViewModel implements Ps
      * @param rowIndex
      */
     @Override
-    public void deletePsychosocialDataRow(int rowIndex) {
+    public void deleteRow(int rowIndex) {
         super.deleteAgeGroupDataRow(rowIndex);
     }
 
@@ -55,17 +56,17 @@ public class PsychosocialViewModel extends HealthEnumBaseViewModel implements Ps
      * @return
      */
     @Override
-    public PsychosocialDataRow getPsychosocialDataRow(int rowIndex) {
+    public PsychosocialDataRow getRow(int rowIndex) {
         return (PsychosocialDataRow) mGenericEnumDataRows.get(rowIndex);
     }
 
     /**
      * Gets age group based on index
-     * @param ageGroupIndex
+     * @param typeIndex
      * @return
      */
     @Override
-    public GenericEnumDataRow.AgeGroup getPsychosocialDataAgeGroup(int ageGroupIndex) {
-        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(ageGroupIndex);
+    public GenericEnumDataRow.AgeGroup getEnumType(int typeIndex) {
+        return (GenericEnumDataRow.AgeGroup) ageGroupList.get(typeIndex);
     }
 }

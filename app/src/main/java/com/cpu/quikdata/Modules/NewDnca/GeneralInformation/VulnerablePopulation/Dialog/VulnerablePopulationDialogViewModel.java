@@ -1,10 +1,9 @@
 package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.Dialog;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.GeneralInformation.VulnerablePopulationDataRow;
 import com.cpu.quikdata.Models.Generics.GenderTuple;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
@@ -12,11 +11,10 @@ import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogIte
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationRepositoryManager;
 
 public class VulnerablePopulationDialogViewModel extends DialogViewModel {
 
-    private VulnerablePopulationRepositoryManager mVulnerablePopulationRepositoryManager;
+    private BaseEnumRepositoryManager<VulnerablePopulationDataRow, GenericEnumDataRow.AgeGroup> mVulnerablePopulationRepositoryManager;
 
     private String[] mQuestions = {
             "Pregnant Women",
@@ -39,7 +37,7 @@ public class VulnerablePopulationDialogViewModel extends DialogViewModel {
      * @param ageGroupIndex
      * @param isNewRow
      */
-    public VulnerablePopulationDialogViewModel(VulnerablePopulationRepositoryManager vulnerablePopulationRepositoryManager,
+    public VulnerablePopulationDialogViewModel(BaseEnumRepositoryManager<VulnerablePopulationDataRow, GenericEnumDataRow.AgeGroup> vulnerablePopulationRepositoryManager,
                                                int ageGroupIndex,
                                                boolean isNewRow) {
 
@@ -48,9 +46,9 @@ public class VulnerablePopulationDialogViewModel extends DialogViewModel {
 
         VulnerablePopulationDataRow vulnerablePopulationDataRow;
         if (isNewRow) {
-            vulnerablePopulationDataRow = new VulnerablePopulationDataRow(mVulnerablePopulationRepositoryManager.getVulnerablePopulationAgeGroup(ageGroupIndex));
+            vulnerablePopulationDataRow = new VulnerablePopulationDataRow(mVulnerablePopulationRepositoryManager.getEnumType(ageGroupIndex));
         } else {
-            vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getVulnerablePopulationRow(ageGroupIndex);
+            vulnerablePopulationDataRow = mVulnerablePopulationRepositoryManager.getRow(ageGroupIndex);
         }
 
         type.set(vulnerablePopulationDataRow.getType());
@@ -98,7 +96,7 @@ public class VulnerablePopulationDialogViewModel extends DialogViewModel {
                 new GenderTuple(disabled.value1.get(), disabled.value2.get()),
                 ((DialogItemViewModelRemarks) mItemViewModels.get(7)).value1.get()
         );
-        mVulnerablePopulationRepositoryManager.addVulnerablePopulationRow(vulnerablePopulationDataRow);
+        mVulnerablePopulationRepositoryManager.addRow(vulnerablePopulationDataRow);
         super.navigateOnOkButtonPressed();
     }
 }

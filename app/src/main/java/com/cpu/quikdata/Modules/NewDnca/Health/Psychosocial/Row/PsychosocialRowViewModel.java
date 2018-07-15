@@ -1,19 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Health.PsychosocialDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelGenderTuple;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialRepositoryManager;
 
 public class PsychosocialRowViewModel extends RowViewModel {
-
-    private PsychosocialRepositoryManager mPsychosocialRepositoryManager;
 
     private String[] mQuestions = {
             "Manifestations of Mental Stress or Trauma",
@@ -22,18 +18,32 @@ public class PsychosocialRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static PsychosocialRowViewModel newInstance() {
+        return new PsychosocialRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param psychosocialRepositoryManager
+     * @return
+     */
+    public PsychosocialRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public PsychosocialRowViewModel(PsychosocialRepositoryManager psychosocialRepositoryManager,
-                                    BaseEnumNavigator baseEnumNavigator, int rowIndex) {
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        super(baseEnumNavigator, rowIndex);
-        mPsychosocialRepositoryManager = psychosocialRepositoryManager;
-
-        PsychosocialDataRow psychosocialDataRow = mPsychosocialRepositoryManager.getPsychosocialDataRow(rowIndex);
+        PsychosocialDataRow psychosocialDataRow = (PsychosocialDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(psychosocialDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelRemarks(new DialogItemModelRemarks(mQuestions[0], psychosocialDataRow.getManifestations())));
@@ -46,7 +56,7 @@ public class PsychosocialRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mPsychosocialRepositoryManager.deletePsychosocialDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

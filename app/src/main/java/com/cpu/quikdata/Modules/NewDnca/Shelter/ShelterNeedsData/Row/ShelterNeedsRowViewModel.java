@@ -1,19 +1,15 @@
 package com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.Row;
 
-import android.content.Context;
-
 import com.cpu.quikdata.Models.Shelter.ShelterNeedsDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumNavigator;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.Model.DialogItemModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelRemarks;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.DialogItemViewModelSingleNumber;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.ViewModel.RowViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsRepositoryManager;
 
 public class ShelterNeedsRowViewModel extends RowViewModel {
-
-    private ShelterNeedsRepositoryManager mShelterNeedsRepositoryManager;
 
     private String[] mQuestions = {
             "Identify Specific Items",
@@ -21,18 +17,32 @@ public class ShelterNeedsRowViewModel extends RowViewModel {
     };
 
     /**
+     * Generates new instance
+     * @return
+     */
+    public static ShelterNeedsRowViewModel newInstance() {
+        return new ShelterNeedsRowViewModel();
+    }
+
+    /**
      * Constructor
-     * @param shelterNeedsRepositoryManager
+     * @return
+     */
+    public ShelterNeedsRowViewModel() {
+        super();
+    }
+
+    /**
+     * Sets the relevant variables to obtain data row
      * @param baseEnumNavigator
+     * @param repositoryManager
      * @param rowIndex
      */
-    public ShelterNeedsRowViewModel(ShelterNeedsRepositoryManager shelterNeedsRepositoryManager,
-                                    BaseEnumNavigator baseEnumNavigator,
-                                    int rowIndex) {
-        super(baseEnumNavigator, rowIndex);
-        mShelterNeedsRepositoryManager = shelterNeedsRepositoryManager;
+    @Override
+    public void setData(BaseEnumNavigator baseEnumNavigator, BaseEnumRepositoryManager repositoryManager, int rowIndex) {
+        super.setData(baseEnumNavigator, repositoryManager, rowIndex);
 
-        ShelterNeedsDataRow shelterNeedsDataRow = mShelterNeedsRepositoryManager.getShelterNeedsDataRow(rowIndex);
+        ShelterNeedsDataRow shelterNeedsDataRow = (ShelterNeedsDataRow) mRepositoryManager.getRow(rowIndex);
         type.set(shelterNeedsDataRow.getType());
 
         mItemViewModels.add(new DialogItemViewModelRemarks(
@@ -46,7 +56,7 @@ public class ShelterNeedsRowViewModel extends RowViewModel {
      */
     @Override
     public void navigateOnDeleteCardButtonPressed() {
-        mShelterNeedsRepositoryManager.deleteShelterNeedsDataRow(mRowIndex);
+        mRepositoryManager.deleteRow(mRowIndex);
         super.navigateOnDeleteCardButtonPressed();
     }
 }

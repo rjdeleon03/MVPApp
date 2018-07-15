@@ -4,8 +4,13 @@ package com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.cpu.quikdata.Models.GeneralInformation.InfrastructureDamageDataRow;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.Modules.NewDnca.Base.BaseEnumRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumFragment;
+import com.cpu.quikdata.Modules.NewDnca.Base.RowBasedModules.BaseEnumRowAdapter;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Dialog.InfrastructureDamageDialogViewModel;
+import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.Row.InfrastructureDamageRowViewModel;
 
 import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_INFRASTRUCTURE;
 
@@ -14,7 +19,7 @@ import static com.cpu.quikdata.AppConstants.NewDncaComponent.GEN_INFO_INFRASTRUC
  */
 public class InfrastructureDamageFragment extends BaseEnumFragment {
 
-    private InfrastructureDamageFragmentAdapter mInfrastructureAdapter;
+    private BaseEnumRowAdapter<InfrastructureDamageRowViewModel> mInfrastructureAdapter;
 
     public static InfrastructureDamageFragment newInstance() {
         return new InfrastructureDamageFragment();
@@ -31,7 +36,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     public void onAddButtonPressed() {
         if (super.dialogIsAlreadyShown()) return;
         InfrastructureDamageDialogViewModel dialogViewModel = new InfrastructureDamageDialogViewModel(
-                (InfrastructureDamageRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<InfrastructureDamageDataRow, GenericEnumDataRow.InfraType>) mViewModel,
                 mAgeGroupSpinner.getSelectedItemPosition(),
                 true);
         super.setupDialog(dialogViewModel);
@@ -45,7 +50,7 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     public void onCardSelected(int rowIndex) {
         if (super.dialogIsAlreadyShown()) return;
         InfrastructureDamageDialogViewModel dialogViewModel = new InfrastructureDamageDialogViewModel(
-                (InfrastructureDamageRepositoryManager) mViewModel,
+                (BaseEnumRepositoryManager<InfrastructureDamageDataRow, GenericEnumDataRow.InfraType>) mViewModel,
                 rowIndex,
                 false);
         super.setupDialog(dialogViewModel);
@@ -68,8 +73,9 @@ public class InfrastructureDamageFragment extends BaseEnumFragment {
     @Override
     protected void setupRecyclerGrid(View view) {
         super.setupRecyclerGrid(view);
-        mInfrastructureAdapter = new InfrastructureDamageFragmentAdapter(
+        mInfrastructureAdapter = new BaseEnumRowAdapter(
                 getContext().getApplicationContext(),
+                InfrastructureDamageRowViewModel.class,
                 this,
                 (InfrastructureDamageViewModel) mViewModel);
         mRowRecycler.setAdapter(mInfrastructureAdapter);

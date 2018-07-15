@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,6 @@ import com.cpu.quikdata.databinding.TemplateEnumDataDialogFragmentBinding;
  */
 public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateEnumDataDialogViewModel> {
 
-    private View mView;
-
 
     public TemplateEnumDataDialogFragment() {
         // Required empty public constructor
@@ -38,24 +38,23 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
         return new TemplateEnumDataDialogFragment();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.template_enum_data_dialog_fragment, container, false);
-        TemplateEnumDataDialogFragmentBinding binding = TemplateEnumDataDialogFragmentBinding.bind(mView);
-        binding.setViewModel(mViewModel);
-        return mView;
-    }
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View view = inflater.inflate(R.layout.template_enum_data_dialog_fragment, null, false);
+        TemplateEnumDataDialogFragmentBinding binding = TemplateEnumDataDialogFragmentBinding.bind(view);
+        binding.setViewModel(mViewModel);
+
         // Build dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(mView);
+        builder.setView(view);
 
 //        if (mViewModel.type.get() != null) builder.setTitle(mViewModel.type.get().toString());
+
+        RecyclerView recyclerView = view.findViewById(R.id.template_question_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

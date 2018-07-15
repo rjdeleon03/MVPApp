@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
@@ -41,7 +42,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
     @Override
     public void getNewRow(IBaseDataManager<PopulationDataRow> callback) {
         callback.onDataReceived(new PopulationDataRow());
-    }
+}
 
     /**
      * Gets all rows

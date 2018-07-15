@@ -16,11 +16,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TemplateQuestionViewModel<AC, D> extends BaseViewModel implements IBaseQuestionDataManager<D> {
+public abstract class TemplateQuestionViewModel<AC, D> extends BaseViewModel<AC> implements IBaseQuestionDataManager<D> {
 
-    @Nullable
-    protected WeakReference<AC> mActivity;
-    protected DNCAFormRepository mFormRepository;
     protected RecyclerView.Adapter mAdapter;
     protected List<QuestionItemModel> mQuestions = new ArrayList<>();
 
@@ -29,18 +26,9 @@ public abstract class TemplateQuestionViewModel<AC, D> extends BaseViewModel imp
      * @param dncaFormRepository
      */
     public TemplateQuestionViewModel(DNCAFormRepository dncaFormRepository) {
-        mFormRepository = dncaFormRepository;
+        super(dncaFormRepository);
         mAdapter = new TemplateItemAdapter(this);
     }
-
-    /**
-     * Sets the activity interface
-     * @param activity
-     */
-    public void setActivity(AC activity) {
-        mActivity = new WeakReference<>(activity);
-    }
-
     /**
      * Gets the questions
      * @return

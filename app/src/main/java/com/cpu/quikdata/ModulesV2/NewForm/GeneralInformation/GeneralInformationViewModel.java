@@ -2,17 +2,17 @@ package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
+import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
-import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseQuestionDataManager;
 
-public class GeneralInformationViewModel implements IBaseDataManager<GeneralInformation> {
+public class GeneralInformationViewModel extends BaseViewModel<INewFormActivity> implements IBaseDataManager<GeneralInformation> {
 
     private GeneralInformation mGeneralInformation;
-    protected DNCAFormRepository mFormRepository;
 
     public GeneralInformationViewModel(DNCAFormRepository dncaFormRepository)
     {
-        mFormRepository = dncaFormRepository;
+        super(dncaFormRepository);
         mFormRepository.getGeneralInformation(this);
     }
 

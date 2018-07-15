@@ -9,37 +9,43 @@ import java.lang.ref.WeakReference;
 
 import javax.annotation.Nullable;
 
-public class NewFormViewModel extends BaseViewModel implements IBaseDataManager<Form> {
+public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements IBaseDataManager<Form> {
 
-    @Nullable
-    WeakReference<INewFormActivity> mNewFormActivity;
-
-    private DNCAFormRepository mFormRepository;
     private Form mForm;
 
+    /**
+     * Constructor
+     * @param dncaFormRepository
+     */
     public NewFormViewModel(DNCAFormRepository dncaFormRepository) {
-        mFormRepository = dncaFormRepository;
+        super(dncaFormRepository);
         mFormRepository.getForm(this);
     }
 
+    /**
+     * Handles reception of form data
+     * @param data
+     */
     @Override
     public void onDataReceived(Form data) {
         mForm = data;
     }
 
-    public void setNewFormActivity(INewFormActivity newFormActivity) {
-        mNewFormActivity = new WeakReference<>(newFormActivity);
-    }
-
+    /**
+     * Handles navigation when form details button is pressed
+     */
     public void navigateOnFormDetailsButtonPressed() {
-        if (mNewFormActivity != null) {
-            mNewFormActivity.get().onFormDetailsButtonPressed();
+        if (mActivity != null) {
+            mActivity.get().onFormDetailsButtonPressed();
         }
     }
 
+    /**
+     * Handles navigation when general information button is pressed
+     */
     public void navigateOnGenInfoButtonPressed() {
-        if (mNewFormActivity != null) {
-            mNewFormActivity.get().onGenInfoButtonPressed();
+        if (mActivity != null) {
+            mActivity.get().onGenInfoButtonPressed();
         }
     }
 }

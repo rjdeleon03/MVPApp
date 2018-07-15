@@ -11,6 +11,8 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.Base.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
@@ -60,6 +62,8 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
                 case FORM_DETAILS:
                     fragment = FormDetailsFragment.newInstance();
                     break;
+                case GEN_INFO:
+                    fragment = GeneralInformationFragment.newInstance();
             }
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_form_fragment_container, addToBackstack, component.toString());
@@ -90,14 +94,20 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
             switch (component) {
                 case MENU:
                     NewFormViewModel newFormViewModel = new NewFormViewModel(Injection.provideDncaRepository(this));
-                    newFormViewModel.setNewFormActivity(this);
+                    newFormViewModel.setActivity(this);
                     baseViewModel = newFormViewModel;
                     break;
+
                 case FORM_DETAILS:
                     FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(this));
-//            formDetailsViewModel.setActivity(this);
+//                    formDetailsViewModel.setActivity(this);
                     baseViewModel = formDetailsViewModel;
                     break;
+
+                case GEN_INFO:
+                    GeneralInformationViewModel generalInformationViewModel = new GeneralInformationViewModel(Injection.provideDncaRepository(this));
+                    generalInformationViewModel.setActivity(this);
+                    baseViewModel = generalInformationViewModel;
 
             }
 
@@ -120,6 +130,8 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onGenInfoButtonPressed() {
-
+        GeneralInformationFragment generalInformationFragment = (GeneralInformationFragment) findOrCreateFragment(NewFormComponent.GEN_INFO);
+        final GeneralInformationViewModel generalInformationViewModel = (GeneralInformationViewModel) findOrCreateViewModel(NewFormComponent.GEN_INFO);
+        generalInformationFragment.setViewModel(generalInformationViewModel);
     }
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
+import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewModelHolder;
 
@@ -76,6 +77,27 @@ public class ActivityUtils {
 
             selectedFragment = (BaseSubFragment)fragment;
             if ((selectedFragment.getFragmentTag().equals(tag))) {
+                break;
+            }
+            selectedFragment = null;
+        }
+        return selectedFragment;
+    }
+
+    /**
+     * Finds a fragment with the given tag
+     * @param fragmentManager
+     * @param tag
+     * @return
+     */
+    public static BaseFragment findFragment(FragmentManager fragmentManager, String tag) {
+        List<Fragment> fragments = fragmentManager.getFragments();
+        BaseFragment selectedFragment = null;
+        for(Fragment fragment : fragments) {
+            if (!(fragment instanceof BaseFragment)) continue;
+
+            selectedFragment = (BaseFragment)fragment;
+            if ((selectedFragment.getType().equals(tag))) {
                 break;
             }
             selectedFragment = null;

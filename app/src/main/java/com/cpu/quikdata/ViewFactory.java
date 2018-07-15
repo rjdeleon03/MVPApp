@@ -40,8 +40,6 @@ import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetail
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.CasualtiesData.CasualtiesDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
@@ -99,8 +97,19 @@ import com.cpu.quikdata.Modules.NewDnca.Wash.WashCopingData.WashCopingDataViewMo
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashRepositoryManager;
+import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
+import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
@@ -136,6 +145,100 @@ public class ViewFactory {
         context.startActivity(intent);
     }
 
+    @NonNull
+    public static BaseFragment findOrCreateFragment(FragmentManager fragmentManager,
+                                                    NewFormActivity.NewFormComponent fragmentType) {
+
+        return findOrCreateFragment(fragmentManager, fragmentType, -1);
+    }
+    @NonNull
+    public static BaseFragment findOrCreateFragment(FragmentManager fragmentManager,
+                                                    NewFormActivity.NewFormComponent fragmentType,
+                                                    int fragmentContainer) {
+
+        BaseFragment fragment = ActivityUtils.findFragment(fragmentManager, fragmentType.toString());
+        boolean addToBackstack = true;
+
+        if (fragment == null) {
+            switch (fragmentType) {
+                case MENU:
+                    fragment = NewFormFragment.newInstance();
+                    addToBackstack = false;
+                    break;
+                case FORM_DETAILS:
+                    fragment = FormDetailsFragment.newInstance();
+                    break;
+                case GEN_INFO:
+                    fragment = GeneralInformationFragment.newInstance();
+                    break;
+                case GEN_INFO_CALAMITY:
+                    fragment = CalamityDetailsFragment.newInstance();
+                    break;
+            }
+
+            // Do not search for view fragment container if id == -1
+            if (fragmentContainer != -1) {
+                ActivityUtils.addFragmentToActivity(fragmentManager, fragment, fragmentContainer, addToBackstack, fragmentType.toString());
+            }
+        }
+        return fragment;
+    }
+
+    @NonNull
+    public static BaseViewModel findOrCreateViewModel(FragmentManager fragmentManager,
+                                                      NewFormActivity.NewFormComponent fragmentType,
+                                                      INewFormActivity activity,
+                                                      Context context) {
+
+        String vmTag = fragmentType.toString() + "_VIEWMODEL";
+
+        ViewModelHolder<BaseViewModel> retainedViewModel = (ViewModelHolder<BaseViewModel>) fragmentManager.findFragmentByTag(vmTag);
+
+        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
+
+            // Return viewModel if retained
+            return retainedViewModel.getViewmodel();
+        } else {
+
+            BaseViewModel baseViewModel = null;
+
+            switch (fragmentType) {
+                case MENU:
+                    NewFormViewModel newFormViewModel = new NewFormViewModel(Injection.provideDncaRepository(context));
+                    newFormViewModel.setActivity(activity);
+                    baseViewModel = newFormViewModel;
+                    break;
+
+                case FORM_DETAILS:
+                    FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(context));
+//                    formDetailsViewModel.setActivity(this);
+                    baseViewModel = formDetailsViewModel;
+                    break;
+
+                case GEN_INFO:
+                    GeneralInformationViewModel generalInformationViewModel = new GeneralInformationViewModel(Injection.provideDncaRepository(context));
+                    generalInformationViewModel.setActivity(activity);
+                    baseViewModel = generalInformationViewModel;
+                    break;
+
+                case GEN_INFO_CALAMITY:
+                    CalamityDetailsViewModel calamityDetailsViewModel = new CalamityDetailsViewModel(Injection.provideDncaRepository(context));
+                    calamityDetailsViewModel.setActivity(activity);
+                    baseViewModel = calamityDetailsViewModel;
+                    break;
+
+            }
+
+            // Bind viewModel to activity
+            ActivityUtils.addFragmentToActivity(
+                    fragmentManager,
+                    ViewModelHolder.createContainer(baseViewModel),
+                    vmTag);
+
+            return baseViewModel;
+        }
+    }
+
     /**
      * Finds the fragment of the specified type;
      * Creates the fragment if it does not exist
@@ -158,7 +261,7 @@ public class ViewFactory {
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-                    selectedFragment = CalamityDetailsFragment.newInstance();
+//                    selectedFragment = CalamityDetailsFragment.newInstance();
                     break;
                 case GEN_INFO_POPULATION:
                     selectedFragment = PopulationDataFragment.newInstance();
@@ -342,7 +445,7 @@ public class ViewFactory {
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-                    viewModel = new CalamityDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
+//                    viewModel = new CalamityDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_POPULATION:
                     viewModel = new PopulationDataViewModel((GenInfoRepositoryManager)repositoryManager);

@@ -7,6 +7,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
@@ -214,6 +215,14 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         FormDetails formDetails = mRealm.createObject(FormDetails.class, AppUtil.generateId());
         mForm.setFormDetails(formDetails);
         callback.onDataReceived(mForm);
+
+        GeneralInformation generalInformation = mRealm.createObject(GeneralInformation.class, AppUtil.generateId());
+        CalamityDetails calamityDetails = mRealm.createObject(CalamityDetails.class, AppUtil.generateId());
+        calamityDetails.setCalamityType("Calamity Type");
+        calamityDetails.setEventDesc("Event Description");
+        calamityDetails.setAreaDesc("Area Description");
+        generalInformation.setCalamityDetails(calamityDetails);
+        mForm.setGeneralInformation(generalInformation);
 
         mRealm.commitTransaction();
     }

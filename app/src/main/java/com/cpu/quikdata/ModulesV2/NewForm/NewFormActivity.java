@@ -15,6 +15,7 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationF
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
+import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 
 public class NewFormActivity extends AppCompatActivity implements INewFormActivity {
@@ -22,7 +23,10 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
     public enum NewFormComponent {
         MENU,
         FORM_DETAILS,
+
         GEN_INFO,
+        GEN_INFO_CALAMITY,
+
         SHELTER_INFO,
         FOOD_SECURITY,
         LIVELIHOODS,
@@ -33,105 +37,29 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         CASE_STORIES
     }
 
+    private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
 
-        NewFormFragment newFormFragment = (NewFormFragment) findOrCreateFragment(NewFormComponent.MENU);
-        final NewFormViewModel newFormViewModel = (NewFormViewModel) findOrCreateViewModel(NewFormComponent.MENU);
+        NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
+        final NewFormViewModel newFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
         newFormFragment.setViewModel(newFormViewModel);
-    }
-
-    /**
-     * Finds or creates the fragment
-     * @return
-     */
-    @NonNull
-    private Fragment findOrCreateFragment(NewFormComponent component) {
-
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(component.toString());
-        boolean addToBackstack = true;
-
-        if (fragment == null) {
-            switch (component) {
-                case MENU:
-                    fragment = NewFormFragment.newInstance();
-                    addToBackstack = false;
-                    break;
-                case FORM_DETAILS:
-                    fragment = FormDetailsFragment.newInstance();
-                    break;
-                case GEN_INFO:
-                    fragment = GeneralInformationFragment.newInstance();
-            }
-
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_form_fragment_container, addToBackstack, component.toString());
-        }
-        return fragment;
-
-    }
-
-    /**
-     * Finds or creates the viewModel
-     * @return
-     */
-    @NonNull
-    private BaseViewModel findOrCreateViewModel(NewFormComponent component) {
-
-        String vmTag = component.toString() + "_VIEWMODEL";
-
-        ViewModelHolder<BaseViewModel> retainedViewModel = (ViewModelHolder<BaseViewModel>) getSupportFragmentManager().findFragmentByTag(vmTag);
-
-        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-
-            // Return viewModel if retained
-            return retainedViewModel.getViewmodel();
-        } else {
-
-            BaseViewModel baseViewModel = null;
-
-            switch (component) {
-                case MENU:
-                    NewFormViewModel newFormViewModel = new NewFormViewModel(Injection.provideDncaRepository(this));
-                    newFormViewModel.setActivity(this);
-                    baseViewModel = newFormViewModel;
-                    break;
-
-                case FORM_DETAILS:
-                    FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(this));
-//                    formDetailsViewModel.setActivity(this);
-                    baseViewModel = formDetailsViewModel;
-                    break;
-
-                case GEN_INFO:
-                    GeneralInformationViewModel generalInformationViewModel = new GeneralInformationViewModel(Injection.provideDncaRepository(this));
-                    generalInformationViewModel.setActivity(this);
-                    baseViewModel = generalInformationViewModel;
-
-            }
-
-            // Bind viewModel to activity
-            ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(),
-                    ViewModelHolder.createContainer(baseViewModel),
-                    vmTag);
-
-            return baseViewModel;
-        }
     }
 
     @Override
     public void onFormDetailsButtonPressed() {
-        FormDetailsFragment formDetailsFragment = (FormDetailsFragment) findOrCreateFragment(NewFormComponent.FORM_DETAILS);
-        final FormDetailsViewModel formDetailsViewModel = (FormDetailsViewModel) findOrCreateViewModel(NewFormComponent.FORM_DETAILS);
+        FormDetailsFragment formDetailsFragment = (FormDetailsFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.FORM_DETAILS, FRAGMENT_CONTAINER);
+        final FormDetailsViewModel formDetailsViewModel = (FormDetailsViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.FORM_DETAILS, this, this);
         formDetailsFragment.setViewModel(formDetailsViewModel);
     }
 
     @Override
     public void onGenInfoButtonPressed() {
-        GeneralInformationFragment generalInformationFragment = (GeneralInformationFragment) findOrCreateFragment(NewFormComponent.GEN_INFO);
-        final GeneralInformationViewModel generalInformationViewModel = (GeneralInformationViewModel) findOrCreateViewModel(NewFormComponent.GEN_INFO);
+        GeneralInformationFragment generalInformationFragment = (GeneralInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.GEN_INFO, FRAGMENT_CONTAINER);
+        final GeneralInformationViewModel generalInformationViewModel = (GeneralInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.GEN_INFO, this, this);
         generalInformationFragment.setViewModel(generalInformationViewModel);
     }
 }

@@ -2,23 +2,31 @@ package com.cpu.quikdata.ModulesV2.NewForm.Base;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
 import com.cpu.quikdata.R;
+import com.cpu.quikdata.databinding.TemplateMultiPageFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class TemplateMultiPageFragment<VM> extends BaseFragment {
+public abstract class TemplateMultiPageFragment<VM extends TemplateMultiPageViewModel> extends BaseFragment {
+
+    private TemplateMultiPageFragmentBinding mBinding;
 
     protected VM mViewModel;
+    protected TemplateMultiPageFragmentAdapter mAdapter;
+    protected ViewPager mPager;
 
     public TemplateMultiPageFragment() {
         // Required empty public constructor
@@ -36,8 +44,61 @@ public abstract class TemplateMultiPageFragment<VM> extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.template_multi_page_fragment, container, false);
+
+        View view = inflater.inflate(R.layout.template_multi_page_fragment, container, false);
+
+        // Bind viewModel to view
+        if (mBinding == null) {
+            mBinding = TemplateMultiPageFragmentBinding.bind(view);
+        }
+        mBinding.setViewModel(mViewModel);
+
+        // Initialize adapter
+        mAdapter = new TemplateMultiPageFragmentAdapter(getChildFragmentManager());
+
+        // Setup the custom view and viewPager
+        setupCustomView(view);
+        setupViewPager(view);
+
+        return view;
     }
 
+    /**
+     * Sets up the view pager
+     * @param view
+     */
+    protected void setupViewPager(View view) {
+
+        // Initialize viewPager
+        mPager = view.findViewById(R.id.nd_multi_page_pager);
+        mPager.setAdapter(mAdapter);
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        AppUtil.hideSoftKeyboard(getActivity());
+                    }
+                }, 300);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    /**
+     * Sets up the custom view for whichever fragment extends this class
+     * @param view
+     */
+    protected abstract void setupCustomView(View view);
 }

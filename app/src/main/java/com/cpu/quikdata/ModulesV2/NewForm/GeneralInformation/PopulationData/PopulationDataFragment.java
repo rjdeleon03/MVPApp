@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 
+import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 
@@ -17,5 +19,17 @@ public class PopulationDataFragment extends TemplateEnumDataFragment<PopulationD
     public static PopulationDataFragment newInstance() {
 
         return new PopulationDataFragment();
+    }
+
+    /**
+     * Sets up the viewModel of the dialog
+     * @return
+     */
+    @Override
+    protected TemplateEnumDataDialogViewModel setupDialogViewModel() {
+        PopulationDataDialogViewModel populationDataDialogViewModel =
+                new PopulationDataDialogViewModel(Injection.provideDncaRepository(getActivity()));
+        populationDataDialogViewModel.setActivity(mViewModel);
+        return populationDataDialogViewModel;
     }
 }

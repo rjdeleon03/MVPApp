@@ -3,10 +3,15 @@ package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
+import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
-public class PopulationDataViewModel extends TemplateEnumDataViewModel<INewFormActivity, GeneralInformation> {
+import io.realm.RealmList;
+
+public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation> implements IPopulationDataManager {
 
     private PopulationData mPopulationData;
 
@@ -27,5 +32,23 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<INewFormA
     @Override
     public void onDataReceived(GeneralInformation data) {
         mPopulationData = data.getPopulationData();
+    }
+
+    /**
+     * Gets a new row
+     * @param callback
+     */
+    @Override
+    public void getNewRow(IBaseDataManager<PopulationDataRow> callback) {
+        callback.onDataReceived(new PopulationDataRow());
+    }
+
+    /**
+     * Gets all rows
+     * @param callback
+     */
+    @Override
+    public void getAllRows(IBaseDataManager<RealmList<PopulationDataRow>> callback) {
+        callback.onDataReceived(mPopulationData.getRows());
     }
 }

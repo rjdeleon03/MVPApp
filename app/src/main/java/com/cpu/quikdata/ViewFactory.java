@@ -97,6 +97,8 @@ import com.cpu.quikdata.Modules.NewDnca.Wash.WashGapsData.WashGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashRepositoryManager;
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
+import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
@@ -190,7 +192,7 @@ public class ViewFactory {
     @NonNull
     public static BaseViewModel findOrCreateViewModel(FragmentManager fragmentManager,
                                                       NewFormActivity.NewFormComponent fragmentType,
-                                                      INewFormActivity activity,
+                                                      IBaseInterface baseInterface,
                                                       Context context) {
 
         String vmTag = fragmentType.toString() + "_VIEWMODEL";
@@ -208,7 +210,7 @@ public class ViewFactory {
             switch (fragmentType) {
                 case MENU:
                     NewFormViewModel newFormViewModel = new NewFormViewModel(Injection.provideDncaRepository(context));
-                    newFormViewModel.setActivity(activity);
+                    newFormViewModel.setActivity((INewFormActivity) baseInterface);
                     baseViewModel = newFormViewModel;
                     break;
 
@@ -220,19 +222,19 @@ public class ViewFactory {
 
                 case GEN_INFO:
                     GeneralInformationViewModel generalInformationViewModel = new GeneralInformationViewModel(Injection.provideDncaRepository(context));
-                    generalInformationViewModel.setActivity(activity);
+                    generalInformationViewModel.setActivity((INewFormActivity) baseInterface);
                     baseViewModel = generalInformationViewModel;
                     break;
 
                 case GEN_INFO_CALAMITY:
                     CalamityDetailsViewModel calamityDetailsViewModel = new CalamityDetailsViewModel(Injection.provideDncaRepository(context));
-                    calamityDetailsViewModel.setActivity(activity);
+                    calamityDetailsViewModel.setActivity((INewFormActivity) baseInterface);
                     baseViewModel = calamityDetailsViewModel;
                     break;
 
                 case GEN_INFO_POPULATION:
                     PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context));
-                    populationDataViewModel.setActivity(activity);
+                    populationDataViewModel.setActivity((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = populationDataViewModel;
                     break;
 

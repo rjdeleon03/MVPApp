@@ -1,6 +1,8 @@
 package com.cpu.quikdata.ModulesV2.NewForm;
 
-public interface INewFormActivity {
+import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
+
+public interface INewFormActivity extends IBaseInterface {
 
     void onFormDetailsButtonPressed();
 

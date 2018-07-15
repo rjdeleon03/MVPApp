@@ -1,22 +1,19 @@
-package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel;
+package com.cpu.quikdata.ModulesV2.Base.MainTemplate;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateItemAdapter;
-import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
+import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseQuestionDataManager;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TemplateQuestionViewModel<AC, D> extends BaseViewModel<AC> implements IBaseQuestionDataManager<D> {
+public abstract class TemplateQuestionViewModel<AC extends IBaseInterface, D>
+        extends BaseViewModel<AC> implements IBaseQuestionDataManager<D> {
 
     protected RecyclerView.Adapter mAdapter;
     protected List<QuestionItemModel> mQuestions = new ArrayList<>();

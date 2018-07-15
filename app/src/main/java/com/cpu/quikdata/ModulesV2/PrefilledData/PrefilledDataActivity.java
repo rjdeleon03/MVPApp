@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionFragment;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;

@@ -10,39 +10,100 @@
             type="com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel" />
     </data>
 
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:cardCornerRadius="6dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:cardCornerRadius="6dp">
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/template_enum_list"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:paddingEnd="8dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingStart="8dp"
-                    android:paddingBottom="80dp"
-                    app:reverseLayout="true"
-                    app:stackFromEnd="true" />
+                    android:layout_height="match_parent">
 
-            </ScrollView>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/template_enum_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingEnd="8dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingStart="8dp"
+                        android:paddingBottom="80dp"
+                        app:reverseLayout="true"
+                        app:stackFromEnd="true" />
+
+                </ScrollView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="6dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--
+                    android:selectedItemPosition="@={viewModel.spinnerValue}"
+                    android:visibility="@{viewModel.shouldShowSpinner ? View.VISIBLE : View.GONE}"
+                -->
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp">
+
+                </android.support.v7.widget.AppCompatSpinner>
+
+                <!--
+                    android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
+                    enumList="@{viewModel.ageGroupList}"
+                    spinnerVisibility="@{viewModel.shouldShowSpinner}"
+                -->
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_add"
+                    android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
+                    app:backgroundTint="@color/colorAccent"
+                    app:elevation="0dp"/>
+
+                <!--
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_check"
+                    android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
+                    app:backgroundTint="@android:color/holo_green_light"
+                    app:elevation="0dp"/>
+                -->
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </layout>

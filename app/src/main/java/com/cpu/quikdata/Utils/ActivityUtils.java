@@ -97,7 +97,7 @@ public class ActivityUtils {
             if (!(fragment instanceof BaseFragment)) continue;
 
             selectedFragment = (BaseFragment)fragment;
-            if ((selectedFragment.getType().equals(tag))) {
+            if (selectedFragment.getType() != null && (selectedFragment.getType().equals(tag))) {
                 break;
             }
             selectedFragment = null;

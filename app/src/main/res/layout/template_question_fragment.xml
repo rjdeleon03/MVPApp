@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel" />
+            type="com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel" />
     </data>
 
     <FrameLayout

@@ -14,9 +14,7 @@ import com.cpu.quikdata.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewFormFragment extends BaseFragment {
-
-    private NewFormViewModel mViewModel;
+public class NewFormFragment extends BaseFragment<NewFormViewModel> {
 
     public NewFormFragment() {
         // Required empty public constructor
@@ -29,14 +27,6 @@ public class NewFormFragment extends BaseFragment {
      */
     public static NewFormFragment newInstance() {
         return new NewFormFragment();
-    }
-
-    /**
-     * Sets the viewModel
-     * @param newFormViewModel
-     */
-    public void setViewModel(NewFormViewModel newFormViewModel) {
-        mViewModel = newFormViewModel;
     }
 
     @Override

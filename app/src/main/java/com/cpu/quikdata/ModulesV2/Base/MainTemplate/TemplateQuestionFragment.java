@@ -17,22 +17,11 @@ import com.cpu.quikdata.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class TemplateQuestionFragment extends BaseFragment {
-
-    private TemplateQuestionViewModel mViewModel;
+public abstract class TemplateQuestionFragment extends BaseFragment<TemplateQuestionViewModel> {
 
     public TemplateQuestionFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Sets the viewModel
-     * @param templateQuestionViewModel
-     */
-    public void setViewModel(TemplateQuestionViewModel templateQuestionViewModel) {
-        mViewModel = templateQuestionViewModel;
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

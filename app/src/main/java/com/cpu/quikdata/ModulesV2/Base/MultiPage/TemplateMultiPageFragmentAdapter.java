@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.NewForm.Base;
+package com.cpu.quikdata.ModulesV2.Base.MultiPage;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

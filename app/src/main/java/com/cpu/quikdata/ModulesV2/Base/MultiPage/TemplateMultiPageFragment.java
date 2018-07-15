@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.NewForm.Base;
+package com.cpu.quikdata.ModulesV2.Base.MultiPage;
 
 
 import android.os.Bundle;
@@ -11,35 +11,22 @@ import android.view.ViewGroup;
 
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
-import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.TemplateMultiPageFragmentBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public abstract class TemplateMultiPageFragment<VM extends TemplateMultiPageViewModel> extends BaseFragment {
+public abstract class TemplateMultiPageFragment<VM extends TemplateMultiPageViewModel> extends BaseFragment<VM> {
 
     private TemplateMultiPageFragmentBinding mBinding;
 
-    protected VM mViewModel;
     protected TemplateMultiPageFragmentAdapter mAdapter;
     protected ViewPager mPager;
 
     public TemplateMultiPageFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Sets the viewModel
-     * @param viewModel
-     */
-    public void setViewModel(VM viewModel) {
-        mViewModel = viewModel;
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

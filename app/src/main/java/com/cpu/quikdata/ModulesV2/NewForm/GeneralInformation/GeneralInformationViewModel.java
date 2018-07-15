@@ -2,8 +2,7 @@ package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
-import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
-import com.cpu.quikdata.ModulesV2.NewForm.Base.TemplateMultiPageViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 

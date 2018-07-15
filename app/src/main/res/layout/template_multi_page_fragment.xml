@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ModulesV2.NewForm.Base.TemplateMultiPageFragment">
+    tools:context=".ModulesV2.Base.MultiPage.TemplateMultiPageFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.cpu.quikdata.ModulesV2.NewForm.Base.TemplateMultiPageViewModel" />
+            type="com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

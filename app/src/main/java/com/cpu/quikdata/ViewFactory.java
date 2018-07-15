@@ -49,8 +49,6 @@ import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.FamilyData.FamilyData
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.InfrastructureDamage.InfrastructureDamageViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
@@ -106,6 +104,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.Cal
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
@@ -174,6 +174,9 @@ public class ViewFactory {
                 case GEN_INFO_CALAMITY:
                     fragment = CalamityDetailsFragment.newInstance();
                     break;
+                case GEN_INFO_POPULATION:
+                    fragment = PopulationDataFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -227,6 +230,12 @@ public class ViewFactory {
                     baseViewModel = calamityDetailsViewModel;
                     break;
 
+                case GEN_INFO_POPULATION:
+                    PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context));
+                    populationDataViewModel.setActivity(activity);
+                    baseViewModel = populationDataViewModel;
+                    break;
+
             }
 
             // Bind viewModel to activity
@@ -264,7 +273,7 @@ public class ViewFactory {
 //                    selectedFragment = CalamityDetailsFragment.newInstance();
                     break;
                 case GEN_INFO_POPULATION:
-                    selectedFragment = PopulationDataFragment.newInstance();
+//                    selectedFragment = PopulationDataFragment.newInstance();
                     break;
                 case GEN_INFO_FAMILY:
                     selectedFragment = FamilyDataFragment.newInstance();
@@ -448,7 +457,7 @@ public class ViewFactory {
 //                    viewModel = new CalamityDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_POPULATION:
-                    viewModel = new PopulationDataViewModel((GenInfoRepositoryManager)repositoryManager);
+//                    viewModel = new PopulationDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_FAMILY:
                     viewModel = new FamilyDataViewModel((GenInfoRepositoryManager)repositoryManager);

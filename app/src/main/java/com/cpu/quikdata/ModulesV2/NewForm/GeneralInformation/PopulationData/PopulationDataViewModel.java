@@ -3,11 +3,10 @@ package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
-import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
-import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
-public class PopulationDataViewModel extends BaseViewModel<INewFormActivity> implements IBaseDataManager<GeneralInformation> {
+public class PopulationDataViewModel extends TemplateEnumDataViewModel<INewFormActivity, GeneralInformation> {
 
     private PopulationData mPopulationData;
 
@@ -16,7 +15,7 @@ public class PopulationDataViewModel extends BaseViewModel<INewFormActivity> imp
      *
      * @param dncaFormRepository
      */
-    protected PopulationDataViewModel(DNCAFormRepository dncaFormRepository) {
+    public PopulationDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         mFormRepository.getGeneralInformation(this);
     }

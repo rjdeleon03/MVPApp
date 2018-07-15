@@ -19,6 +19,8 @@ import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
+import com.novoda.merlin.Merlin;
+import com.novoda.merlin.registerable.connection.Connectable;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -26,6 +28,8 @@ import io.realm.RealmList;
 public class FormListActivity extends AppCompatActivity implements IFormListActivity {
 
     public static final String FORM_LIST_VIEWMODEL_TAG = "FORM_LIST_VIEWMODEL_TAG";
+
+    private Merlin mMerlin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,28 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
                 formListViewModel.navigateOnSettingsButtonPressed();
             }
         });
+
+        // Setup network change listener (Merlin)
+        mMerlin = new Merlin.Builder().withConnectableCallbacks().build(this);
+        mMerlin.registerConnectable(new Connectable() {
+            @Override
+            public void onConnect() {
+                // call DNCA form repository for syncing files to server
+                // Do something you haz internet!
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMerlin.bind();
+    }
+
+    @Override
+    protected void onPause() {
+        mMerlin.unbind();
+        super.onPause();
     }
 
     /**

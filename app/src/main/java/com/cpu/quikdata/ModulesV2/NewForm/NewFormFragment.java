@@ -7,18 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.databinding.NewFormFragmentBinding;
 import com.cpu.quikdata.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewFormFragment extends Fragment {
+public class NewFormFragment extends BaseFragment {
 
     private NewFormViewModel mViewModel;
 
     public NewFormFragment() {
         // Required empty public constructor
+        mTag = NewFormActivity.NewFormComponent.MENU.toString();
     }
 
     /**

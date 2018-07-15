@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateItemAdapter;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
@@ -15,7 +16,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TemplateQuestionViewModel<AC, D> extends BaseObservable implements IBaseQuestionDataManager<D> {
+public abstract class TemplateQuestionViewModel<AC, D> extends BaseViewModel implements IBaseQuestionDataManager<D> {
 
     @Nullable
     protected WeakReference<AC> mActivity;

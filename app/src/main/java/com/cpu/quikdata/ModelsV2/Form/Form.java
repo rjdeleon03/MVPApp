@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -14,6 +16,8 @@ public class Form extends RealmObject {
     private String data;
 
     private FormDetails formDetails;
+
+    private GeneralInformation generalInformation;
 
     public String getId() {
         return id;
@@ -37,5 +41,13 @@ public class Form extends RealmObject {
 
     public void setFormDetails(FormDetails formDetails) {
         this.formDetails = formDetails;
+    }
+
+    public GeneralInformation getGeneralInformation() {
+        return generalInformation;
+    }
+
+    public void setGeneralInformation(GeneralInformation generalInformation) {
+        this.generalInformation = generalInformation;
     }
 }

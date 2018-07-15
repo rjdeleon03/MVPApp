@@ -2,13 +2,14 @@ package com.cpu.quikdata.ModulesV2.NewForm;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.lang.ref.WeakReference;
 
 import javax.annotation.Nullable;
 
-public class NewFormViewModel implements IBaseDataManager<Form> {
+public class NewFormViewModel extends BaseViewModel implements IBaseDataManager<Form> {
 
     @Nullable
     WeakReference<INewFormActivity> mNewFormActivity;

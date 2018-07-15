@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewModel.TemplateQuestionViewModel;
 import com.cpu.quikdata.databinding.TemplateQuestionFragmentBinding;
 import com.cpu.quikdata.R;
@@ -16,20 +17,12 @@ import com.cpu.quikdata.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TemplateQuestionFragment extends Fragment {
+public abstract class TemplateQuestionFragment extends BaseFragment {
 
     private TemplateQuestionViewModel mViewModel;
 
     public TemplateQuestionFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Gets new instance
-     * @return
-     */
-    public static TemplateQuestionFragment newInstance() {
-        return new TemplateQuestionFragment();
     }
 
     /**

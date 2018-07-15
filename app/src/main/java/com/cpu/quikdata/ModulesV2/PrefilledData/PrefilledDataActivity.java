@@ -47,12 +47,12 @@ public class PrefilledDataActivity extends AppCompatActivity implements IPrefill
      * @return
      */
     @NonNull
-    private TemplateQuestionFragment findOrCreateViewFragment() {
+    private PrefilledDataFragment findOrCreateViewFragment() {
 
-        TemplateQuestionFragment formListFragment = (TemplateQuestionFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        PrefilledDataFragment formListFragment = (PrefilledDataFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
         if (formListFragment == null) {
-            formListFragment = TemplateQuestionFragment.newInstance();
+            formListFragment = PrefilledDataFragment.newInstance();
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, R.id.fragment_container, false);
         }

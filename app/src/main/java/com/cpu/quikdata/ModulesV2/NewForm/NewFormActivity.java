@@ -6,17 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.Base.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
 
 public class NewFormActivity extends AppCompatActivity implements INewFormActivity {
-
-    public static final String NEW_FORM_VIEWMODEL_TAG = "NEW_FORM_VIEWMODEL_TAG";
-    public static final String FORM_DETAILS_VIEWMODEL_TAG = "FORM_DETAILS_VIEWMODEL_TAG";
 
     public enum NewFormComponent {
         MENU,
@@ -37,70 +36,36 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
 
-        NewFormFragment newFormFragment = findOrCreateViewFragment();
-        final NewFormViewModel newFormViewModel = findOrCreateViewModel();
+        NewFormFragment newFormFragment = (NewFormFragment) findOrCreateFragment(NewFormComponent.MENU);
+        final NewFormViewModel newFormViewModel = (NewFormViewModel) findOrCreateViewModel(NewFormComponent.MENU);
         newFormFragment.setViewModel(newFormViewModel);
     }
-
-    /** TEMP CODE **/
-    private TemplateQuestionFragment findOrCreateFormDetailsFragment() {
-
-        TemplateQuestionFragment multiPageFragment = null;
-
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.new_form_fragment_container);
-        if(fragment instanceof TemplateQuestionFragment) {
-            multiPageFragment = (TemplateQuestionFragment)fragment;
-        }
-
-        if (multiPageFragment == null) {
-            multiPageFragment = TemplateQuestionFragment.newInstance();
-
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), multiPageFragment, R.id.new_form_fragment_container, true);
-        }
-        return multiPageFragment;
-    }
-
-    private FormDetailsViewModel findOrCreateFormDetailsViewModel() {
-
-        ViewModelHolder<FormDetailsViewModel> retainedViewModel = (ViewModelHolder<FormDetailsViewModel>) getSupportFragmentManager().findFragmentByTag(FORM_DETAILS_VIEWMODEL_TAG);
-
-        if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
-
-            // Return viewModel if retained
-            return retainedViewModel.getViewmodel();
-        } else {
-
-            // Create viewModel if it does not exist yet
-            FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(this));
-//            formDetailsViewModel.setActivity(this);
-
-            // Bind viewModel to activity
-            ActivityUtils.addFragmentToActivity(
-                    getSupportFragmentManager(),
-                    ViewModelHolder.createContainer(formDetailsViewModel),
-                    FORM_DETAILS_VIEWMODEL_TAG);
-
-            return formDetailsViewModel;
-        }
-    }
-    /** --------- **/
 
     /**
      * Finds or creates the fragment
      * @return
      */
     @NonNull
-    private NewFormFragment findOrCreateViewFragment() {
+    private Fragment findOrCreateFragment(NewFormComponent component) {
 
-        NewFormFragment formListFragment = (NewFormFragment) getSupportFragmentManager().findFragmentById(R.id.new_form_fragment_container);
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(component.toString());
+        boolean addToBackstack = true;
 
-        if (formListFragment == null) {
-            formListFragment = NewFormFragment.newInstance();
+        if (fragment == null) {
+            switch (component) {
+                case MENU:
+                    fragment = NewFormFragment.newInstance();
+                    addToBackstack = false;
+                    break;
+                case FORM_DETAILS:
+                    fragment = FormDetailsFragment.newInstance();
+                    break;
+            }
 
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, R.id.new_form_fragment_container, false);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.new_form_fragment_container, addToBackstack, component.toString());
         }
+        return fragment;
 
-        return formListFragment;
     }
 
     /**
@@ -108,9 +73,11 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
      * @return
      */
     @NonNull
-    private NewFormViewModel findOrCreateViewModel() {
+    private BaseViewModel findOrCreateViewModel(NewFormComponent component) {
 
-        ViewModelHolder<NewFormViewModel> retainedViewModel = (ViewModelHolder<NewFormViewModel>) getSupportFragmentManager().findFragmentByTag(NEW_FORM_VIEWMODEL_TAG);
+        String vmTag = component.toString() + "_VIEWMODEL";
+
+        ViewModelHolder<BaseViewModel> retainedViewModel = (ViewModelHolder<BaseViewModel>) getSupportFragmentManager().findFragmentByTag(vmTag);
 
         if (retainedViewModel != null && retainedViewModel.getViewmodel() != null) {
 
@@ -118,24 +85,36 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
             return retainedViewModel.getViewmodel();
         } else {
 
-            // Create viewModel if it does not exist yet
-            NewFormViewModel newFormViewModel = new NewFormViewModel(Injection.provideDncaRepository(this));
-            newFormViewModel.setNewFormActivity(this);
+            BaseViewModel baseViewModel = null;
+
+            switch (component) {
+                case MENU:
+                    NewFormViewModel newFormViewModel = new NewFormViewModel(Injection.provideDncaRepository(this));
+                    newFormViewModel.setNewFormActivity(this);
+                    baseViewModel = newFormViewModel;
+                    break;
+                case FORM_DETAILS:
+                    FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(this));
+//            formDetailsViewModel.setActivity(this);
+                    baseViewModel = formDetailsViewModel;
+                    break;
+
+            }
 
             // Bind viewModel to activity
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(),
-                    ViewModelHolder.createContainer(newFormViewModel),
-                    NEW_FORM_VIEWMODEL_TAG);
+                    ViewModelHolder.createContainer(baseViewModel),
+                    vmTag);
 
-            return newFormViewModel;
+            return baseViewModel;
         }
     }
 
     @Override
     public void onFormDetailsButtonPressed() {
-        TemplateQuestionFragment formDetailsFragment = findOrCreateFormDetailsFragment();
-        final FormDetailsViewModel formDetailsViewModel = findOrCreateFormDetailsViewModel();
+        FormDetailsFragment formDetailsFragment = (FormDetailsFragment) findOrCreateFragment(NewFormComponent.FORM_DETAILS);
+        final FormDetailsViewModel formDetailsViewModel = (FormDetailsViewModel) findOrCreateViewModel(NewFormComponent.FORM_DETAILS);
         formDetailsFragment.setViewModel(formDetailsViewModel);
     }
 

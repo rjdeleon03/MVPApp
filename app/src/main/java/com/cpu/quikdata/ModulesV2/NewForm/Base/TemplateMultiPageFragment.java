@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
@@ -15,28 +16,20 @@ import com.cpu.quikdata.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TemplateMultiPageFragment extends Fragment {
+public abstract class TemplateMultiPageFragment<VM> extends BaseFragment {
 
-    private FormDetailsViewModel mViewModel;
+    protected VM mViewModel;
 
     public TemplateMultiPageFragment() {
         // Required empty public constructor
     }
 
     /**
-     * Gets new instance
-     * @return
-     */
-    public static TemplateMultiPageFragment newInstance() {
-        return new TemplateMultiPageFragment();
-    }
-
-    /**
      * Sets the viewModel
-     * @param newFormViewModel
+     * @param viewModel
      */
-    public void setViewModel(FormDetailsViewModel newFormViewModel) {
-        mViewModel = newFormViewModel;
+    public void setViewModel(VM viewModel) {
+        mViewModel = viewModel;
     }
 
 

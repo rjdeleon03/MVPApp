@@ -1,5 +1,8 @@
 package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
@@ -22,10 +25,23 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
      *
      * @param dncaFormRepository
      */
-    public PopulationDataViewModel(DNCAFormRepository dncaFormRepository) {
+    public PopulationDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
         mTypeList = GenericEnumDataRow.AgeGroup.asList();
         mFormRepository.getGeneralInformation(this);
+        mAdapter = new ArrayAdapter<>(
+                context,
+                android.R.layout.simple_spinner_dropdown_item,
+                mTypeList);
+    }
+
+    /**
+     * Retrieves flag for showing spinner
+     * @return
+     */
+    @Override
+    public boolean getShouldShowSpinner() {
+        return mTypeList.size() > 0;
     }
 
     /**
@@ -43,7 +59,9 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
      */
     @Override
     public void getNewRow(IBaseDataManager<PopulationDataRow> callback) {
-        callback.onDataReceived(new PopulationDataRow());
+        PopulationDataRow row = new PopulationDataRow();
+        row.setAgeGroup(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        callback.onDataReceived(row);
     }
 
     /**

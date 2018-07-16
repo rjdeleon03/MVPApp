@@ -34,6 +34,7 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
     @Override
     public void onDataReceived(PopulationDataRow data) {
         mRow = data;
+        mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
 
         mQuestions.add(new QuestionItemModelGenderTuple("Affected", mRow.getAffectedMale(), mRow.getAffectedFemale()));
         mQuestions.add(new QuestionItemModelGenderTuple("Displaced", mRow.getAffectedMale(), mRow.getAffectedFemale()));

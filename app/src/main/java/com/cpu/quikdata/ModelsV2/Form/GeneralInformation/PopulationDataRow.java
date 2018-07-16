@@ -10,10 +10,19 @@ public class PopulationDataRow extends RealmObject {
     @PrimaryKey
     private String id;
 
+    private String ageGroup;
     private int affectedMale;
     private int affectedFemale;
     private int displacedMale;
     private int displacedFemale;
+
+    public String getAgeGroup() {
+        return ageGroup;
+    }
+
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
+    }
 
     public String getId() {
         return id;

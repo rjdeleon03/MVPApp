@@ -5,6 +5,7 @@
     tools:context=".ModulesV2.Base.EnumData.TemplateEnumDataFragment">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel" />
@@ -71,7 +72,10 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp">
+                    android:layout_marginStart="8dp"
+                    android:visibility="@{viewModel.shouldShowSpinner ? View.VISIBLE : View.GONE}"
+                    android:selectedItemPosition="@={viewModel.spinnerSelectedIndex}"
+                    app:adapter="@{viewModel.adapter}">
 
                 </android.support.v7.widget.AppCompatSpinner>
 

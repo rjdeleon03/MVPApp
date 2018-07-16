@@ -51,7 +51,7 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view);
 
-//        if (mViewModel.type.get() != null) builder.setTitle(mViewModel.type.get().toString());
+        if (mViewModel.getType() != null) builder.setTitle(mViewModel.getType().toString());
 
         RecyclerView recyclerView = view.findViewById(R.id.template_question_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -233,7 +233,7 @@ public class ViewFactory {
                     break;
 
                 case GEN_INFO_POPULATION:
-                    PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context));
+                    PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context), context);
                     populationDataViewModel.setActivity((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = populationDataViewModel;
                     break;

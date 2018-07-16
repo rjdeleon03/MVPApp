@@ -31,12 +31,15 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemActivity" />
+
         <activity android:name=".ModulesV2.FormList.FormListActivity"
                   android:screenOrientation="portrait"/>
+
         <activity android:name=".ModulesV2.PrefilledData.PrefilledDataActivity"
                   android:screenOrientation="portrait"></activity>
+
         <activity android:name=".ModulesV2.NewForm.NewFormActivity"
-                  android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

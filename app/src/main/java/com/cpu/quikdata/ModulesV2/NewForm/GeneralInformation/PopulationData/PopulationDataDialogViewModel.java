@@ -4,7 +4,10 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+
+import java.util.List;
 
 public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewModel<IPopulationDataManager, PopulationDataRow, GenericEnumDataRow.AgeGroup> {
 
@@ -38,5 +41,21 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
 
         mQuestions.add(new QuestionItemModelGenderTuple("Affected", mRow.getAffectedMale(), mRow.getAffectedFemale()));
         mQuestions.add(new QuestionItemModelGenderTuple("Displaced", mRow.getAffectedMale(), mRow.getAffectedFemale()));
+    }
+
+    /**
+     * Handles navigation when OK button is pressed
+     */
+    @Override
+    public void navigateOnOkButtonPressed() {
+        List<TemplateQuestionItemViewModel> itemViewModels = mAdapter.getItemViewModels();
+
+        QuestionItemModelGenderTuple affectedVM = (QuestionItemModelGenderTuple) itemViewModels.get(0).getModel();
+        mRow.setAffectedMale(affectedVM.getMale());
+        mRow.setAffectedFemale(affectedVM.getFemale());
+
+        QuestionItemModelGenderTuple displacedVM = (QuestionItemModelGenderTuple) itemViewModels.get(1).getModel();
+        mRow.setDisplacedMale(displacedVM.getMale());
+        mRow.setDisplacedFemale(displacedVM.getFemale());
     }
 }

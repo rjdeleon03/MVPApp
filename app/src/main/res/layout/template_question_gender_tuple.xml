@@ -24,17 +24,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@={viewModel.question}"
-                android:maxWidth="100dp"
                 android:textColor="@android:color/black" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_male" />
 
             <EditText
-                android:layout_width="75dp"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="10"
@@ -44,13 +43,13 @@
                 android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_female" />
 
             <EditText
-                android:layout_width="75dp"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="10"

@@ -28,4 +28,9 @@ public abstract class TemplateEnumDataDialogViewModel<AC extends IBaseInterface,
     public E getType() {
         return mType;
     }
+
+    /**
+     * Handles navigation when OK button is pressed
+     */
+    public abstract void navigateOnOkButtonPressed();
 }

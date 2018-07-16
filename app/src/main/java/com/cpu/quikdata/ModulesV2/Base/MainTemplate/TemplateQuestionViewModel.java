@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class TemplateQuestionViewModel<AC extends IBaseInterface, D>
         extends BaseViewModel<AC> implements IBaseQuestionDataManager<D> {
 
-    protected RecyclerView.Adapter mAdapter;
+    protected TemplateItemAdapter mAdapter;
     protected List<QuestionItemModel> mQuestions = new ArrayList<>();
 
     /**
@@ -24,7 +24,7 @@ public abstract class TemplateQuestionViewModel<AC extends IBaseInterface, D>
      */
     public TemplateQuestionViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mAdapter = new TemplateItemAdapter(this);
+        mAdapter = new TemplateItemAdapter<D>(this);
     }
     /**
      * Gets the questions

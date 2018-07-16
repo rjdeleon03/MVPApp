@@ -9,6 +9,7 @@ import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
@@ -233,5 +234,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getGeneralInformation(final IBaseDataManager<GeneralInformation> callback) {
         callback.onDataReceived(mForm.getGeneralInformation());
+    }
+
+    public void createPopulationDataRow(PopulationDataRow row) {
+
     }
 }

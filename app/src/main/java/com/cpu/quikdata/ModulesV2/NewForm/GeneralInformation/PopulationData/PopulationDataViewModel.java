@@ -1,6 +1,7 @@
 package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
@@ -12,7 +13,7 @@ import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import io.realm.RealmList;
 
-public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation> implements IPopulationDataManager {
+public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup> implements IPopulationDataManager {
 
     private PopulationData mPopulationData;
 
@@ -23,6 +24,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
      */
     public PopulationDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
+        mTypeList = GenericEnumDataRow.AgeGroup.asList();
         mFormRepository.getGeneralInformation(this);
     }
 
@@ -42,7 +44,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
     @Override
     public void getNewRow(IBaseDataManager<PopulationDataRow> callback) {
         callback.onDataReceived(new PopulationDataRow());
-}
+    }
 
     /**
      * Gets all rows

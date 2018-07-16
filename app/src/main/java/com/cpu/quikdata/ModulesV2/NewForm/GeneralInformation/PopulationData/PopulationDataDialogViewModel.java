@@ -1,11 +1,12 @@
 package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
-public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewModel<IPopulationDataManager, PopulationDataRow> {
+public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewModel<IPopulationDataManager, PopulationDataRow, GenericEnumDataRow.AgeGroup> {
 
     private PopulationDataRow mRow;
 

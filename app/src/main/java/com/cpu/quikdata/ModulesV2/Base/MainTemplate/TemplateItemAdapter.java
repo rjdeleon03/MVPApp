@@ -27,7 +27,7 @@ import com.cpu.quikdata.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TemplateItemAdapter<D> extends RecyclerView.Adapter<TemplateItemViewHolder> {
+public abstract class TemplateItemAdapter<D> extends RecyclerView.Adapter<TemplateItemViewHolder> {
 
     private IBaseQuestionDataManager<D> mBaseQuestionDataManager;
     private List<TemplateQuestionItemViewModel> mItemViewModels = new ArrayList<>();
@@ -40,28 +40,25 @@ public class TemplateItemAdapter<D> extends RecyclerView.Adapter<TemplateItemVie
     @Override
     public TemplateItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view;
 
         AppConstants.QuestionItemType qType = AppConstants.QuestionItemType.values()[viewType];
-        switch (qType) {
-            case GENDER_TUPLE:
-                view = inflater.inflate(R.layout.template_question_gender_tuple, parent, false);
-                return new TemplateItemViewHolderGenderTuple(view);
-            case SINGLE_NUMBER:
-                view = inflater.inflate(R.layout.template_question_single_number, parent, false);
-                return new TemplateItemViewHolderSingleNumber(view);
-            case STRING:
-                view = inflater.inflate(R.layout.template_question_string, parent, false);
-                return new TemplateItemViewHolderString(view);
-        }
-        return null;
+        return initViewHolder(inflater, parent, qType);
     }
+
+    /**
+     * Initializes the viewHolder for the item
+     * @param inflater
+     * @param parent
+     * @param questionItemType
+     * @return
+     */
+    protected abstract TemplateItemViewHolder initViewHolder(LayoutInflater inflater, ViewGroup parent, AppConstants.QuestionItemType questionItemType);
 
     @Override
     public void onBindViewHolder(@NonNull TemplateItemViewHolder holder, int position) {
         QuestionItemModel model = mBaseQuestionDataManager.getQuestions().get(position);
-        TemplateQuestionItemViewModel itemViewModel = null;
 
+        TemplateQuestionItemViewModel itemViewModel = null;
         if (model instanceof QuestionItemModelGenderTuple) {
             itemViewModel = new TemplateQuestionItemViewModelGenderTuple((QuestionItemModelGenderTuple) model);
         } else if (model instanceof QuestionItemModelSingleNumber) {

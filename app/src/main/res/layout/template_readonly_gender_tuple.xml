@@ -12,7 +12,9 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="0">
+        android:stretchColumns="0"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
 
         <TableRow
             android:layout_marginBottom="2dp"
@@ -32,14 +34,12 @@
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_male" />
 
-            <EditText
+            <TextView
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="10"
-                android:inputType="number"
-                android:text="@={viewModel.male}"
-                android:textSize="14sp" />
+                android:text="@={viewModel.male}"/>
 
             <ImageView
                 android:layout_width="25dp"
@@ -47,14 +47,12 @@
                 android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/ic_female" />
 
-            <EditText
+            <TextView
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:ems="10"
-                android:inputType="number"
-                android:text="@={viewModel.female}"
-                android:textSize="14sp" />
+                android:text="@={viewModel.female}" />
 
         </TableRow>
     </TableLayout>

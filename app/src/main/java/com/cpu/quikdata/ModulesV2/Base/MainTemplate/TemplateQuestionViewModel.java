@@ -24,7 +24,7 @@ public abstract class TemplateQuestionViewModel<AC extends IBaseInterface, D>
      */
     public TemplateQuestionViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mAdapter = new TemplateItemAdapter<D>(this);
+        mAdapter = new TemplateQuestionAdapter(this);
     }
     /**
      * Gets the questions

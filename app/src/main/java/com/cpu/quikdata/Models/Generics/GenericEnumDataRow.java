@@ -1,5 +1,7 @@
 package com.cpu.quikdata.Models.Generics;
 
+import android.databinding.ObservableArrayList;
+
 import org.apache.commons.text.WordUtils;
 
 import java.util.ArrayList;
@@ -40,6 +42,17 @@ public abstract class GenericEnumDataRow {
 
         public static List<AgeGroup> asList() {
             List<AgeGroup> list = new ArrayList<>();
+            list.add(AGE_0_5);
+            list.add(AGE_6_9);
+            list.add(AGE_10_12);
+            list.add(AGE_13_17);
+            list.add(AGE_18_59);
+            list.add(AGE_60_PLUS);
+            return list;
+        }
+
+        public static ObservableArrayList<AgeGroup> asObservableList() {
+            ObservableArrayList<AgeGroup> list = new ObservableArrayList<>();
             list.add(AGE_0_5);
             list.add(AGE_6_9);
             list.add(AGE_10_12);

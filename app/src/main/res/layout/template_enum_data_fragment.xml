@@ -75,7 +75,8 @@
                     android:layout_marginStart="8dp"
                     android:visibility="@{viewModel.shouldShowSpinner ? View.VISIBLE : View.GONE}"
                     android:selectedItemPosition="@={viewModel.spinnerSelectedIndex}"
-                    app:adapter="@{viewModel.adapter}">
+                    app:adapter="@{viewModel.adapter}"
+                    app:typeItems="@{viewModel.typeList}">
 
                 </android.support.v7.widget.AppCompatSpinner>
 
@@ -91,7 +92,8 @@
                     android:src="@drawable/ic_add"
                     android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
                     app:backgroundTint="@color/colorAccent"
-                    app:elevation="0dp"/>
+                    app:elevation="0dp"
+                    app:enabled="@{viewModel.shouldShowSpinner}"/>
 
                 <!--
                 <android.support.design.widget.FloatingActionButton

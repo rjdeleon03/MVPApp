@@ -2,6 +2,9 @@ package com.cpu.quikdata.Utils;
 
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableList;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
@@ -19,25 +22,20 @@ public class BindingUtilsV2 {
      * @param spinner
      * @param adapter
      */
-    @BindingAdapter({"app:adapter"})
-    public static void bind(AppCompatSpinner spinner, ArrayAdapter adapter) {
+    @BindingAdapter({"app:adapter", "app:typeItems"})
+    public static void bind(AppCompatSpinner spinner, ArrayAdapter adapter, List typeItems) {
         spinner.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
     /**
-     * Bind spinner selected index
-     * @param spinner
-     * @param index
+     * Bind boolean to enabled property of button
+     * @param button
+     * @param isEnabled
      */
-    @BindingAdapter({"app:selectedIndex"})
-    public static void bind(AppCompatSpinner spinner, int index) {
-        spinner.setSelection(index);
-    }
-
-    @InverseBindingAdapter(attribute = "app:selectedIndex")
-    public static int inverseBind(AppCompatSpinner spinner) {
-        return spinner.getSelectedItemPosition();
+    @BindingAdapter({"app:enabled"})
+    public static void bind(FloatingActionButton button, boolean isEnabled) {
+        button.setEnabled(isEnabled);
     }
 
     @BindingAdapter({"app:adapter", "app:data"})

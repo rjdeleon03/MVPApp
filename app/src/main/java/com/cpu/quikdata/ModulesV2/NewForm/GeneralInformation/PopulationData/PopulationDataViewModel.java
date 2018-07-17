@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
@@ -12,8 +13,12 @@ import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmList;
+
+import com.cpu.quikdata.BR;
 
 public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup> implements IEnumDataManager<PopulationDataRow> {
 
@@ -26,7 +31,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
      */
     public PopulationDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.AgeGroup.asList();
+        mTypeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);
         mAdapter = new ArrayAdapter<>(
                 context,
@@ -78,60 +83,76 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
      */
     @Override
     public void saveRow(final PopulationDataRow row) {
-        mFormRepository.insertToDb(row);
+
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransactionAsync(new Realm.Transaction() {
+
             @Override
             public void execute(Realm realm) {
-                mPopulationData.getRows().add(row);
+
+                RealmList<PopulationDataRow> rows = mPopulationData.getRows();
+
+                // If list is empty, add new row right away
+                if (rows.size() == 0 ) {
+                    realm.insert(row);
+                    rows.add(row);
+
+                } else {
+
+                    // Else, select correct position
+                    for (int i = 0; i < rows.size(); i++) {
+
+                        PopulationDataRow currRow = rows.get(i);
+                        int currAgeGroupOrdinal = GenericEnumDataRow.AgeGroup.valueOf(currRow.getAgeGroup()).getOrdinal();
+                        int tempAgeGroupOrdinal = GenericEnumDataRow.AgeGroup.valueOf(row.getAgeGroup()).getOrdinal();
+
+                        if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
+
+                            // TODO: add abstract function for copying one enum row to another
+                            // If age group already exists, update its values
+//                            rows.set(i, row);
+                            currRow.setAffectedMale(row.getAffectedMale());
+                            currRow.setAffectedFemale(row.getAffectedFemale());
+                            currRow.setDisplacedMale(row.getDisplacedMale());
+                            currRow.setDisplacedFemale(row.getDisplacedFemale());
+                            realm.insertOrUpdate(currRow);
+                            break;
+
+                        } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                                (i == 0 || tempAgeGroupOrdinal > GenericEnumDataRow.AgeGroup.valueOf(rows.get(i - 1).getAgeGroup()).getOrdinal())) {
+
+                            // If row must be inserted somewhere in the middle, find its correct position
+                            realm.insert(row);
+                            rows.add(i, row);
+                            break;
+
+                        } else if (rows.size() == i + 1) {
+
+                            // If end of list has been reached, add row
+                            realm.insert(row);
+                            rows.add(row);
+                            break;
+
+                        }
+                    }
+                }
+
                 realm.insertOrUpdate(mPopulationData);
+
+                // Delete age group from list
+                for(GenericEnum type : mTypeList) {
+                    if (type.getOrdinal() == GenericEnumDataRow.AgeGroup.valueOf(row.getAgeGroup()).getOrdinal()) {
+                        mTypeList.remove(type);
+                        notifyPropertyChanged(BR.typeList);
+                        notifyPropertyChanged(BR.shouldShowSpinner);
+                        return;
+                    }
+                }
             }
         });
 
         /*
-        // If list is empty, add new row right away
-        if (mGenericEnumDataRows.size() == 0 ) {
-            mGenericEnumDataRows.add(genericEnumDataRow);
-
-        } else {
-
-            // Else, select correct position
-            for (int i = 0; i < mGenericEnumDataRows.size(); i++) {
-
-                GenericEnumDataRow row = mGenericEnumDataRows.get(i);
-                int currAgeGroupOrdinal = row.getType().getOrdinal();
-                int tempAgeGroupOrdinal = genericEnumDataRow.getType().getOrdinal();
-
-                if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
-
-                    // If age group already exists, update its values
-                    mGenericEnumDataRows.set(i, genericEnumDataRow);
-                    break;
-
-                } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                        (i == 0 || tempAgeGroupOrdinal > mGenericEnumDataRows.get(i - 1).getType().getOrdinal())) {
-
-                    // If row must be inserted somewhere in the middle, find its correct position
-                    mGenericEnumDataRows.add(i, genericEnumDataRow);
-                    break;
-
-                } else if (mGenericEnumDataRows.size() == i + 1) {
-
-                    // If end of list has been reached, add row
-                    mGenericEnumDataRows.add(genericEnumDataRow);
-                    break;
-
-                }
-            }
-        }
-
-        // Delete age group from list
-        for(GenericEnum ageGroup : ageGroupList) {
-            if (ageGroup.getOrdinal() == genericEnumDataRow.getType().getOrdinal()) {
-                ageGroupList.remove(ageGroup);
-                return;
-            }
-        }
+        /
          */
     }
 }

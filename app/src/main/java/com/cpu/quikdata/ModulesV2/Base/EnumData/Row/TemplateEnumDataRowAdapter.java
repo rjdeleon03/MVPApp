@@ -4,8 +4,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-public class TemplateEnumDataRowAdapter extends RecyclerView.Adapter<TemplateEnumDataRowViewHolder> {
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataViewModel;
+import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
+import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseQuestionDataManager;
 
+public class TemplateEnumDataRowAdapter<D> extends RecyclerView.Adapter<TemplateEnumDataRowViewHolder> {
+
+
+    private ITemplateEnumDataViewModel<D> mEnumDataViewModel;
 
     @NonNull
     @Override

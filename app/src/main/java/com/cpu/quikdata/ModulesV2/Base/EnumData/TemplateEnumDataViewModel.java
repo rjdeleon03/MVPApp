@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateReadonlyAdapter;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
@@ -20,6 +21,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     protected List<E> mTypeList;
     protected boolean mShouldShowSpinner;
     protected ArrayAdapter<E> mAdapter;
+    protected TemplateEnumDataRowAdapter<D> mRowAdapter;
 
     /**
      * Constructor
@@ -28,7 +30,6 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
      */
     protected TemplateEnumDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mRowAdapter = new TemplateReadonlyAdapter<>()
     }
 
     /**

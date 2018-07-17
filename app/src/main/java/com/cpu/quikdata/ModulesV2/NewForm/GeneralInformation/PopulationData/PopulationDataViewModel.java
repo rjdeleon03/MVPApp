@@ -10,13 +10,12 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
-import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 
-public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup> implements IPopulationDataManager {
+public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup> implements IEnumDataManager<PopulationDataRow> {
 
     private PopulationData mPopulationData;
 
@@ -71,5 +70,68 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
     @Override
     public void getAllRows(IBaseDataManager<RealmList<PopulationDataRow>> callback) {
         callback.onDataReceived(mPopulationData.getRows());
+    }
+
+    /**
+     * Saves the row
+     * @param row
+     */
+    @Override
+    public void saveRow(final PopulationDataRow row) {
+        mFormRepository.insertToDb(row);
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                mPopulationData.getRows().add(row);
+                realm.insertOrUpdate(mPopulationData);
+            }
+        });
+
+        /*
+        // If list is empty, add new row right away
+        if (mGenericEnumDataRows.size() == 0 ) {
+            mGenericEnumDataRows.add(genericEnumDataRow);
+
+        } else {
+
+            // Else, select correct position
+            for (int i = 0; i < mGenericEnumDataRows.size(); i++) {
+
+                GenericEnumDataRow row = mGenericEnumDataRows.get(i);
+                int currAgeGroupOrdinal = row.getType().getOrdinal();
+                int tempAgeGroupOrdinal = genericEnumDataRow.getType().getOrdinal();
+
+                if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
+
+                    // If age group already exists, update its values
+                    mGenericEnumDataRows.set(i, genericEnumDataRow);
+                    break;
+
+                } else if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                        (i == 0 || tempAgeGroupOrdinal > mGenericEnumDataRows.get(i - 1).getType().getOrdinal())) {
+
+                    // If row must be inserted somewhere in the middle, find its correct position
+                    mGenericEnumDataRows.add(i, genericEnumDataRow);
+                    break;
+
+                } else if (mGenericEnumDataRows.size() == i + 1) {
+
+                    // If end of list has been reached, add row
+                    mGenericEnumDataRows.add(genericEnumDataRow);
+                    break;
+
+                }
+            }
+        }
+
+        // Delete age group from list
+        for(GenericEnum ageGroup : ageGroupList) {
+            if (ageGroup.getOrdinal() == genericEnumDataRow.getType().getOrdinal()) {
+                ageGroupList.remove(ageGroup);
+                return;
+            }
+        }
+         */
     }
 }

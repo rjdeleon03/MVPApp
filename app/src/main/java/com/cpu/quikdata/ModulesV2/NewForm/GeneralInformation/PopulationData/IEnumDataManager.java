@@ -7,9 +7,11 @@ import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import io.realm.RealmList;
 
-public interface IPopulationDataManager extends IBaseInterface {
+public interface IEnumDataManager<R> extends IBaseInterface {
 
-    void getNewRow(IBaseDataManager<PopulationDataRow> callback);
+    void getNewRow(IBaseDataManager<R> callback);
 
-    void getAllRows(IBaseDataManager<RealmList<PopulationDataRow>> callback);
+    void getAllRows(IBaseDataManager<RealmList<R>> callback);
+
+    void saveRow(final R row);
 }

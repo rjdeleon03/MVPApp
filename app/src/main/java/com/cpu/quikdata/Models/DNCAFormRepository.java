@@ -9,6 +9,7 @@ import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
@@ -27,6 +28,7 @@ import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmObject;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -210,22 +212,33 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     public void getForm(final IBaseDataManager<Form> callback) {
-        mRealm.beginTransaction();
+        final Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Form form = realm.createObject(Form.class, AppUtil.generateId());
+                FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
+                form.setFormDetails(formDetails);
 
-        mForm = mRealm.createObject(Form.class, AppUtil.generateId());
-        FormDetails formDetails = mRealm.createObject(FormDetails.class, AppUtil.generateId());
-        mForm.setFormDetails(formDetails);
-        callback.onDataReceived(mForm);
+                GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
+                CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
+                calamityDetails.setCalamityType("Calamity Type");
+                calamityDetails.setEventDesc("Event Description");
+                calamityDetails.setAreaDesc("Area Description");
+                generalInformation.setCalamityDetails(calamityDetails);
 
-        GeneralInformation generalInformation = mRealm.createObject(GeneralInformation.class, AppUtil.generateId());
-        CalamityDetails calamityDetails = mRealm.createObject(CalamityDetails.class, AppUtil.generateId());
-        calamityDetails.setCalamityType("Calamity Type");
-        calamityDetails.setEventDesc("Event Description");
-        calamityDetails.setAreaDesc("Area Description");
-        generalInformation.setCalamityDetails(calamityDetails);
-        mForm.setGeneralInformation(generalInformation);
+                PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());
+                generalInformation.setPopulationData(populationData);
 
-        mRealm.commitTransaction();
+                form.setGeneralInformation(generalInformation);
+                mForm = realm.copyFromRealm(form);
+                callback.onDataReceived(mForm);
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+            }
+        });
     }
 
     public void getFormDetails(final IBaseDataManager<FormDetails> callback) {
@@ -236,7 +249,13 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         callback.onDataReceived(mForm.getGeneralInformation());
     }
 
-    public void createPopulationDataRow(PopulationDataRow row) {
+    public void insertToDb(RealmObject object) {
+        mRealm.beginTransaction();
+        mRealm.insert(object);
+        mRealm.commitTransaction();
+    }
 
+    public Realm getRealm() {
+        return mRealm;
     }
 }

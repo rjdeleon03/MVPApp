@@ -13,6 +13,10 @@ public class PopulationData extends RealmObject {
 
     private RealmList<PopulationDataRow> rows;
 
+    public PopulationData() {
+        rows = new RealmList<>();
+    }
+
     public String getId() {
         return id;
     }

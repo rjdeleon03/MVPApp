@@ -7,11 +7,13 @@ import android.widget.ArrayAdapter;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateReadonlyAdapter;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
 
-public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum> extends BaseViewModel<AC> implements IBaseDataManager<D> {
+public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum>
+        extends BaseViewModel<AC> implements IBaseDataManager<D> {
 
     public final ObservableInt spinnerSelectedIndex = new ObservableInt(0);
 
@@ -26,6 +28,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
      */
     protected TemplateEnumDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
+        mRowAdapter = new TemplateReadonlyAdapter<>()
     }
 
     /**

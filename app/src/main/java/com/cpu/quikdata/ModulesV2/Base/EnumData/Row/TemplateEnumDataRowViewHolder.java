@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.Base.EnumData.Row;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TableLayout;
 
 import com.cpu.quikdata.databinding.TemplateEnumDataRowBinding;
 
@@ -18,7 +19,8 @@ public class TemplateEnumDataRowViewHolder<VM extends TemplateEnumDataRowViewMod
         mBinding = TemplateEnumDataRowBinding.bind(itemView);
     }
 
-    public void setViewModel(VM viewModel) {
+    public View setViewModel(VM viewModel) {
         mBinding.setViewModel(viewModel);
+        return mBinding.getRoot();
     }
 }

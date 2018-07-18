@@ -103,6 +103,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
@@ -178,6 +180,9 @@ public class ViewFactory {
                 case GEN_INFO_POPULATION:
                     fragment = PopulationDataFragment.newInstance();
                     break;
+                case GEN_INFO_FAMILY:
+                    fragment = FamilyDetailsFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -235,6 +240,12 @@ public class ViewFactory {
                     PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context), context);
                     populationDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = populationDataViewModel;
+                    break;
+
+                case GEN_INFO_FAMILY:
+                    FamilyDetailsViewModel familyDetailsViewModel = new FamilyDetailsViewModel(Injection.provideDncaRepository(context));
+                    familyDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = familyDetailsViewModel;
                     break;
 
             }

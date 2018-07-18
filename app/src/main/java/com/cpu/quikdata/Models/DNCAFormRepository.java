@@ -8,6 +8,7 @@ import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.FamilyDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
@@ -229,6 +230,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                 PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());
                 generalInformation.setPopulationData(populationData);
+
+                FamilyDetails familyDetails = realm.createObject(FamilyDetails.class, AppUtil.generateId());
+                generalInformation.setFamilyDetails(familyDetails);
 
                 form.setGeneralInformation(generalInformation);
                 mForm = realm.copyFromRealm(form);

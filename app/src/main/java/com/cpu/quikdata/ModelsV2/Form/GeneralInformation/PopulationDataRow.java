@@ -1,12 +1,13 @@
 package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class PopulationDataRow extends RealmObject {
+public class PopulationDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
 
     @Required
     @PrimaryKey
@@ -26,7 +27,8 @@ public class PopulationDataRow extends RealmObject {
         this.ageGroup = ageGroup;
     }
 
-    public GenericEnumDataRow.AgeGroup getActualAgeGroup() {
+    @Override
+    public GenericEnumDataRow.AgeGroup getActualType() {
         return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
     }
 

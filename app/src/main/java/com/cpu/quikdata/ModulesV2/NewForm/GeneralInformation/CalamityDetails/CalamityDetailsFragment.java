@@ -6,7 +6,7 @@ import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 public class CalamityDetailsFragment extends TemplateQuestionFragment {
 
     public CalamityDetailsFragment() {
-        // Required empty public constructor\
+        // Required empty public constructor
         mTag = NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY.toString();
     }
 

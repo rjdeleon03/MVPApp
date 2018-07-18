@@ -6,6 +6,8 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
@@ -44,6 +46,14 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
             populationDataViewModel.setViewComponent(populationDataFragment);
             populationDataFragment.setViewModel(populationDataViewModel);
             mAdapter.addFragment(populationDataFragment);
+        }
+        {
+            // Setup family details fragment
+            FamilyDetailsFragment familyDetailsFragment =
+                    (FamilyDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_FAMILY);
+            familyDetailsFragment.setViewModel(
+                    (FamilyDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_FAMILY, null, getContext()));
+            mAdapter.addFragment(familyDetailsFragment);
         }
     }
 

@@ -12,6 +12,8 @@ public class GeneralInformation extends RealmObject {
 
     private CalamityDetails calamityDetails;
     private PopulationData populationData;
+    private FamilyDetails familyDetails;
+    private VulnerableData vulnerableData;
 
     public String getId() {
         return id;
@@ -35,5 +37,21 @@ public class GeneralInformation extends RealmObject {
 
     public void setPopulationData(PopulationData populationData) {
         this.populationData = populationData;
+    }
+
+    public FamilyDetails getFamilyDetails() {
+        return familyDetails;
+    }
+
+    public void setFamilyDetails(FamilyDetails familyDetails) {
+        this.familyDetails = familyDetails;
+    }
+
+    public VulnerableData getVulnerableData() {
+        return vulnerableData;
+    }
+
+    public void setVulnerableData(VulnerableData vulnerableData) {
+        this.vulnerableData = vulnerableData;
     }
 }

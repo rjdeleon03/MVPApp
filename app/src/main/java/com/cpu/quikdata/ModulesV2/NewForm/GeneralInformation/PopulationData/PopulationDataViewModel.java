@@ -85,7 +85,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
         // Remove items from type list if type is already in use
         for (PopulationDataRow row : mPopulationData.getRows()) {
             for (GenericEnum ageGroup : mTypeList) {
-                if (ageGroup.getOrdinal() == row.getActualAgeGroup().getOrdinal()) {
+                if (ageGroup.getOrdinal() == row.getActualType().getOrdinal()) {
                     mTypeList.remove(ageGroup);
                     break;
                 }
@@ -226,7 +226,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                 PopulationDataRow row = mPopulationData.getRows().get(rowIndex);
                 if (row == null) return;
 
-                GenericEnumDataRow.AgeGroup type = row.getActualAgeGroup();
+                GenericEnumDataRow.AgeGroup type = row.getActualType();
 
                 // If list is empty, add new row right away
                 if (mTypeList.size() == 0) {

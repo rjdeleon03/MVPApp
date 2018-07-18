@@ -52,7 +52,7 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
      */
     @Override
     public void navigateOnOkButtonPressed() {
-        mRow.setId(AppUtil.generateId());
+        if (mRowIndex == -1) mRow.setId(AppUtil.generateId());
 
         QuestionItemModelGenderTuple affectedVM = (QuestionItemModelGenderTuple) mQuestions.get(0).getModel();
         mRow.setAffectedMale(affectedVM.getMale());

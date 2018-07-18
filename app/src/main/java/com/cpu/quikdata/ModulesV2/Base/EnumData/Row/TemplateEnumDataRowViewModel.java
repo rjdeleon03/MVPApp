@@ -23,6 +23,7 @@ public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataF
      */
     public TemplateEnumDataRowViewModel(DNCAFormRepository dncaFormRepository, int rowIndex) {
         super(dncaFormRepository);
+        mRowIndex = rowIndex;
     }
 
     /**

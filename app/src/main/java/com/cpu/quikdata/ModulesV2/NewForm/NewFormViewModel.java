@@ -35,8 +35,8 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
      * Handles navigation when form details button is pressed
      */
     public void navigateOnFormDetailsButtonPressed() {
-        if (mActivity != null) {
-            mActivity.get().onFormDetailsButtonPressed();
+        if (mViewComponent != null) {
+            mViewComponent.get().onFormDetailsButtonPressed();
         }
     }
 
@@ -44,8 +44,8 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
      * Handles navigation when general information button is pressed
      */
     public void navigateOnGenInfoButtonPressed() {
-        if (mActivity != null) {
-            mActivity.get().onGenInfoButtonPressed();
+        if (mViewComponent != null) {
+            mViewComponent.get().onGenInfoButtonPressed();
         }
     }
 }

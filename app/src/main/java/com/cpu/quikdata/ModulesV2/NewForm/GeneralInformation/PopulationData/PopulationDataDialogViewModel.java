@@ -18,15 +18,19 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
      *
      * @param dncaFormRepository
      */
-    public PopulationDataDialogViewModel(DNCAFormRepository dncaFormRepository) {
-        super(dncaFormRepository);
+    public PopulationDataDialogViewModel(DNCAFormRepository dncaFormRepository, int rowIndex) {
+        super(dncaFormRepository, rowIndex);
     }
 
     @Override
-    public void setActivity(ITemplateEnumDataManager activity) {
-        super.setActivity(activity);
-        if (mActivity.get() != null) {
-            mActivity.get().getNewRow(this);
+    public void setViewComponent(ITemplateEnumDataManager activity) {
+        super.setViewComponent(activity);
+        if (mViewComponent.get() != null) {
+            if (mRowIndex == -1) {
+                mViewComponent.get().getNewRow(this);
+            } else {
+                mViewComponent.get().getRowAtIndex(this, mRowIndex);
+            }
         }
     }
 
@@ -58,8 +62,8 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
         mRow.setDisplacedMale(displacedVM.getMale());
         mRow.setDisplacedFemale(displacedVM.getFemale());
 
-        if (mActivity.get() != null) {
-            mActivity.get().saveRow(mRow);
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().saveRow(mRow);
         }
     }
 }

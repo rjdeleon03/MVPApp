@@ -4,12 +4,11 @@ import android.databinding.Bindable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
-import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
-import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateReadonlyViewModel;
 
-public abstract class TemplateEnumDataRowViewModel<AC extends IBaseInterface, D, E extends GenericEnum, DM extends ITemplateEnumDataManager>
+public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, DM extends ITemplateEnumDataManager>
         extends TemplateReadonlyViewModel<AC, D> {
 
     protected E mType;
@@ -48,13 +47,13 @@ public abstract class TemplateEnumDataRowViewModel<AC extends IBaseInterface, D,
      * Handles navigation when card is selected
      */
     public void navigateOnCardSelected() {
-
+        mDataManager.selectedRowAtIndex(mRowIndex);
     }
 
     /**
      * Handles navigation when delete card button is pressed
      */
     public void navigateOnDeleteCardButtonPressed() {
-
+        mDataManager.deletedRowAtIndex(mRowIndex);
     }
 }

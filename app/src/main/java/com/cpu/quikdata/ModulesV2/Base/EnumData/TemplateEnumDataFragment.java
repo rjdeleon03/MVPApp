@@ -43,20 +43,32 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
     @Override
     public void onAddButtonPressed() {
         TemplateEnumDataDialogFragment dialogFragment = TemplateEnumDataDialogFragment.newInstance();
-        dialogFragment.setViewModel(setupDialogViewModel());
+        dialogFragment.setViewModel(setupDialogViewModel(-1));
         dialogFragment.show(getChildFragmentManager(), "");
     }
 
+    /**
+     * Navigate on card selected event
+     */
     @Override
-    public void onCardSelected() {
+    public void onCardSelected(int index) {
         TemplateEnumDataDialogFragment dialogFragment = TemplateEnumDataDialogFragment.newInstance();
-        dialogFragment.setViewModel(setupDialogViewModel());
+        dialogFragment.setViewModel(setupDialogViewModel(index));
         dialogFragment.show(getChildFragmentManager(), "");
+    }
+
+    /**
+     * Navigate on delete button pressed event
+     */
+    @Override
+    public void onDeleteCardButtonPressed() {
+        // TODO: Add confirmation dialog
+
     }
 
     /**
      * Sets up the viewModel of the dialog
      * @return
      */
-    protected abstract TemplateEnumDataDialogViewModel setupDialogViewModel();
+    protected abstract TemplateEnumDataDialogViewModel setupDialogViewModel(int index);
 }

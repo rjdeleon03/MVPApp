@@ -33,11 +33,26 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     }
 
     /**
+     * Sets the view component
+     * @param viewComponent
+     */
+    @Override
+    public void setViewComponent(AC viewComponent) {
+        super.setViewComponent(viewComponent);
+        setupAdapter();
+    }
+
+    /**
+     * Sets up the adapter
+     */
+    public abstract void setupAdapter();
+
+    /**
      * Handles navigation when add button is pressed
      */
     public void navigateOnAddButtonPressed() {
-        if (mActivity.get() != null) {
-            mActivity.get().onAddButtonPressed();
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onAddButtonPressed();
         }
     }
 

@@ -39,9 +39,15 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                 context,
                 android.R.layout.simple_spinner_dropdown_item,
                 mTypeList);
-        mRowAdapter = new PopulationDataRowAdapter(mActivity.get(),this);
     }
 
+    /**
+     * Sets up the adapter
+     */
+    @Override
+    public void setupAdapter() {
+        mRowAdapter = new PopulationDataRowAdapter(mViewComponent.get(),this);
+    }
 
     /**
      * Retrieves the list of rows
@@ -177,5 +183,17 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
         /*
         /
          */
+    }
+
+    @Override
+    public void selectedRowAtIndex(int rowIndex) {
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onCardSelected(rowIndex);
+        }
+    }
+
+    @Override
+    public void deletedRowAtIndex(int rowIndex) {
+
     }
 }

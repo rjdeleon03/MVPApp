@@ -8,13 +8,13 @@ import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowViewModel
 public class PopulationDataRowAdapter extends TemplateEnumDataRowAdapter<PopulationDataRow> {
 
     public PopulationDataRowAdapter(ITemplateEnumDataFragment enumDataFragment, ITemplateEnumDataManager enumDataManager) {
-        super(enumDataManager);
+        super(enumDataFragment, enumDataManager);
     }
 
     @Override
     protected TemplateEnumDataRowViewModel initRowViewModel(int position) {
         PopulationDataRowViewModel rowViewModel = new PopulationDataRowViewModel(null, position);
-        rowViewModel.setActivity(mEnumDataFragment);
+        rowViewModel.setViewComponent(mEnumDataFragment);
         rowViewModel.setDataManager(mEnumDataManager);
         return rowViewModel;
     }

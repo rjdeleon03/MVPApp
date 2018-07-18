@@ -12,4 +12,8 @@ public interface ITemplateEnumDataManager<R> extends IBaseInterface {
     int getRowsCount();
 
     void saveRow(final R row);
+
+    void selectedRowAtIndex(int rowIndex);
+
+    void deletedRowAtIndex(int rowIndex);
 }

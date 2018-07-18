@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 public abstract class BaseViewModel<AC extends IBaseInterface> extends BaseObservable {
 
     @Nullable
-    protected WeakReference<AC> mActivity;
+    protected WeakReference<AC> mViewComponent;
     protected DNCAFormRepository mFormRepository;
 
     /**
@@ -23,10 +23,10 @@ public abstract class BaseViewModel<AC extends IBaseInterface> extends BaseObser
 
     /**
      * Sets the activity interface
-     * @param activity
+     * @param viewComponent
      */
-    public void setActivity(AC activity) {
-        mActivity = new WeakReference<>(activity);
+    public void setViewComponent(AC viewComponent) {
+        mViewComponent = new WeakReference<>(viewComponent);
     }
 
 }

@@ -41,7 +41,7 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
                     (PopulationDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
             PopulationDataViewModel populationDataViewModel =
                     (PopulationDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
-            populationDataViewModel.setActivity(populationDataFragment);
+            populationDataViewModel.setViewComponent(populationDataFragment);
             populationDataFragment.setViewModel(populationDataViewModel);
             mAdapter.addFragment(populationDataFragment);
         }

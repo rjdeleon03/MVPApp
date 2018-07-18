@@ -77,7 +77,7 @@ public class PrefilledDataActivity extends AppCompatActivity implements IPrefill
 
             // Create viewModel if it does not exist yet
             PrefilledDataViewModel formListViewModel = new PrefilledDataViewModel(Injection.provideDncaRepository(this));
-            formListViewModel.setActivity(this);
+            formListViewModel.setViewComponent(this);
 
             // Bind viewModel to activity
             ActivityUtils.addFragmentToActivity(

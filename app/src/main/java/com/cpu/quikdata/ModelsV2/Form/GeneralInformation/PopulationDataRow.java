@@ -7,7 +7,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class PopulationDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
+public class PopulationDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, PopulationDataRow> {
 
     @Required
     @PrimaryKey
@@ -30,6 +30,14 @@ public class PopulationDataRow extends RealmObject implements IEnumDataRow<Gener
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
         return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
+    }
+
+    @Override
+    public void update(PopulationDataRow newRow) {
+        affectedMale = newRow.getAffectedMale();
+        affectedFemale = newRow.getAffectedFemale();
+        displacedMale = newRow.getDisplacedMale();
+        displacedFemale = newRow.getDisplacedFemale();
     }
 
     public String getId() {

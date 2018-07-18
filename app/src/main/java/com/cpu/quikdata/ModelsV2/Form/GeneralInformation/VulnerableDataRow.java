@@ -7,7 +7,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class VulnerableDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
+public class VulnerableDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, VulnerableDataRow> {
 
     @Required
     @PrimaryKey
@@ -46,6 +46,21 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
         return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
+    }
+
+    @Override
+    public void update(VulnerableDataRow newRow) {
+        pregnant = newRow.getPregnant();
+        lactating = newRow.getLactating();
+        lgbt = newRow.getLgbt();
+        femaleHeadedHouseholds = newRow.getFemaleHeadedHouseholds();
+        childHeadedHouseholdsMale = newRow.getChildHeadedHouseholdsMale();
+        childHeadedHouseholdsFemale = newRow.getChildHeadedHouseholdsFemale();
+        indigenousMale = newRow.getIndigenousMale();
+        indigenousFemale = newRow.getIndigenousFemale();
+        disabledMale = newRow.getDisabledMale();
+        disabledFemale = newRow.getDisabledFemale();
+        remarks = newRow.getRemarks();
     }
 
     public int getPregnant() {

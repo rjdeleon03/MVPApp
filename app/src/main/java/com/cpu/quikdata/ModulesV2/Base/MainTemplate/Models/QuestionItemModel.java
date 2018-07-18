@@ -17,6 +17,4 @@ public abstract class QuestionItemModel {
     public void setQuestion(String question) {
         this.question = question;
     }
-
-    public abstract AppConstants.QuestionItemType getType();
 }

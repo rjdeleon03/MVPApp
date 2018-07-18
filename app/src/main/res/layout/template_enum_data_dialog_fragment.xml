@@ -11,20 +11,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:descendantFocusability="beforeDescendants">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/template_question_list"
-            android:descendantFocusability="beforeDescendants"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingTop="8dp"
-            android:paddingLeft="24dp"
-            android:paddingStart="24dp"
-            android:paddingRight="24dp"
-            android:paddingEnd="24dp"
-            app:adapter="@{viewModel.adapter}"/>
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:stretchColumns="2,4"
+                app:questionItems="@{viewModel.questions}">
+
+            </TableLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 

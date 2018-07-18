@@ -1,23 +1,27 @@
 package com.cpu.quikdata.Utils;
 
 import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableList;
+import android.databinding.DataBindingUtil;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.TableLayout;
 
-import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateItemAdapter;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
+import com.cpu.quikdata.databinding.TemplateQuestionGenderTupleBinding;
+import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
+import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
+import com.cpu.quikdata.R;
 
 import java.util.List;
-
-import io.realm.RealmList;
 
 public class BindingUtilsV2 {
 
@@ -44,6 +48,37 @@ public class BindingUtilsV2 {
         adapter.notifyDataSetChanged();
     }
 
+    @BindingAdapter({"app:questionItems"})
+    public static void bindQuestions(TableLayout tableLayout, List<TemplateQuestionItemViewModel> questionItems) {
+        LayoutInflater inflater = LayoutInflater.from(tableLayout.getContext());
+
+        for(Object questionModel : questionItems) {
+
+            View itemView = null;
+
+            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
+                TemplateQuestionGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_gender_tuple, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
+                itemView = binding.getRoot();
+                
+            } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
+                TemplateQuestionStringBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_string, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelString) questionModel);
+                itemView = binding.getRoot();
+            
+            } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
+                TemplateQuestionSingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_single_number, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
+                itemView = binding.getRoot();
+
+            }
+
+            if (itemView != null) {
+                tableLayout.addView(itemView);
+            }
+        }
+    }
+
     /**
      * Bind boolean to enabled property of button
      * @param button
@@ -55,7 +90,7 @@ public class BindingUtilsV2 {
     }
 
     @BindingAdapter({"app:adapter", "app:data"})
-    public static void bind(RecyclerView recyclerView, RecyclerView.Adapter adapter, List<QuestionItemModel> data) {
+    public static void bind(RecyclerView recyclerView, RecyclerView.Adapter adapter, List<TemplateQuestionItemViewModel> data) {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

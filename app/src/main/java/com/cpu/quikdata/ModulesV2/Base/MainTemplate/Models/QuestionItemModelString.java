@@ -18,9 +18,4 @@ public class QuestionItemModelString extends QuestionItemModel {
     public void setValue(String value) {
         this.value = value;
     }
-
-    @Override
-    public AppConstants.QuestionItemType getType() {
-        return AppConstants.QuestionItemType.STRING;
-    }
 }

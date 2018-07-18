@@ -11,6 +11,5 @@ public abstract class TemplateReadonlyViewModel<AC extends IBaseInterface, D> ex
      */
     protected TemplateReadonlyViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mAdapter = new TemplateReadonlyAdapter(this);
     }
 }

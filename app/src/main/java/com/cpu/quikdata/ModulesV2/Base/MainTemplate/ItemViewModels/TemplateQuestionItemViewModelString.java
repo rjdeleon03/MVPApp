@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels;
 
 import android.databinding.ObservableField;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
 public class TemplateQuestionItemViewModelString extends TemplateQuestionItemViewModel<QuestionItemModelString> {
@@ -16,5 +17,10 @@ public class TemplateQuestionItemViewModelString extends TemplateQuestionItemVie
     @Override
     public QuestionItemModelString getModel() {
         return new QuestionItemModelString(question.get(), value.get());
+    }
+
+    @Override
+    public AppConstants.QuestionItemType getType() {
+        return AppConstants.QuestionItemType.STRING;
     }
 }

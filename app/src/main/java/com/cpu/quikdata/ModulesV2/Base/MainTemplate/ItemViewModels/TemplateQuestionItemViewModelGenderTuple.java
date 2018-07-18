@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels;
 
 import android.databinding.ObservableInt;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
 public class TemplateQuestionItemViewModelGenderTuple extends TemplateQuestionItemViewModel<QuestionItemModelGenderTuple> {
@@ -18,5 +19,10 @@ public class TemplateQuestionItemViewModelGenderTuple extends TemplateQuestionIt
     @Override
     public QuestionItemModelGenderTuple getModel() {
         return new QuestionItemModelGenderTuple(question.get(), male.get(), female.get());
+    }
+
+    @Override
+    public AppConstants.QuestionItemType getType() {
+        return AppConstants.QuestionItemType.GENDER_TUPLE;
     }
 }

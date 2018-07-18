@@ -4,6 +4,7 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
 public class PopulationDataRowViewModel extends TemplateEnumDataRowViewModel<IEnumDataManager, PopulationDataRow, GenericEnumDataRow.AgeGroup> {
@@ -37,7 +38,7 @@ public class PopulationDataRowViewModel extends TemplateEnumDataRowViewModel<IEn
     public void onDataReceived(PopulationDataRow data) {
         mRow = data;
         mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
-        mQuestions.add(new QuestionItemModelGenderTuple("Affected", mRow.getAffectedMale(), mRow.getAffectedFemale()));
-        mQuestions.add(new QuestionItemModelGenderTuple("Displaced", mRow.getDisplacedMale(), mRow.getDisplacedFemale()));
+        mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Affected", mRow.getAffectedMale(), mRow.getAffectedFemale())));
+        mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Displaced", mRow.getDisplacedMale(), mRow.getDisplacedFemale())));
     }
 }

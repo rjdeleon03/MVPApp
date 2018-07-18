@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels;
 
 import android.databinding.ObservableField;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseQuestionDataManager;
 
 public abstract class TemplateQuestionItemViewModel<M> {
@@ -13,4 +14,6 @@ public abstract class TemplateQuestionItemViewModel<M> {
     }
 
     public abstract M getModel();
+
+    public abstract AppConstants.QuestionItemType getType();
 }

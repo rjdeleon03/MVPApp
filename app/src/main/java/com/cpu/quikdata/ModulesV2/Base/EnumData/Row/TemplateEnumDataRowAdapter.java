@@ -42,12 +42,12 @@ public abstract class TemplateEnumDataRowAdapter<D> extends RecyclerView.Adapter
         LayoutInflater inflater = LayoutInflater.from(view.getContext());
 
         TableLayout tableLayout = view.findViewById(R.id.template_question_table);
-        for(Object question : rowViewModel.getQuestions()) {
+        for(Object questionModel : rowViewModel.getQuestions()) {
 
             View itemView = null;
-            if (question instanceof QuestionItemModelGenderTuple) {
+            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
                 TemplateReadonlyGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_gender_tuple, null, false);
-                binding.setViewModel(new TemplateQuestionItemViewModelGenderTuple((QuestionItemModelGenderTuple) question));
+                binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
                 itemView = binding.getRoot();
             }
 

@@ -18,9 +18,4 @@ public class QuestionItemModelSingleNumber extends QuestionItemModel {
     public void setValue(int value) {
         this.value = value;
     }
-
-    @Override
-    public AppConstants.QuestionItemType getType() {
-        return AppConstants.QuestionItemType.SINGLE_NUMBER;
-    }
 }

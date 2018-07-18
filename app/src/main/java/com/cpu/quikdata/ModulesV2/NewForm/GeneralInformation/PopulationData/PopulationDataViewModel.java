@@ -13,14 +13,15 @@ import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
-import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmList;
 
 import com.cpu.quikdata.BR;
 
-public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup> implements IEnumDataManager<PopulationDataRow> {
+import java.util.List;
+
+public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup, PopulationDataRow>
+        implements IEnumDataManager<PopulationDataRow> {
 
     private PopulationData mPopulationData;
 
@@ -33,10 +34,21 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
         super(dncaFormRepository);
         mTypeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);
-        mAdapter = new ArrayAdapter<>(
+        mSpinnerAdapter = new ArrayAdapter<>(
                 context,
                 android.R.layout.simple_spinner_dropdown_item,
                 mTypeList);
+        mRowAdapter = new PopulationDataRowAdapter(this);
+    }
+
+
+    /**
+     * Retrieves the list of rows
+     * @return
+     */
+    @Override
+    public List<PopulationDataRow> getRowList() {
+        return mPopulationData.getRows();
     }
 
     /**
@@ -69,12 +81,22 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
     }
 
     /**
-     * Gets all rows
+     * Gets row at the specified index
      * @param callback
+     * @param rowIndex
      */
     @Override
-    public void getAllRows(IBaseDataManager<RealmList<PopulationDataRow>> callback) {
-        callback.onDataReceived(mPopulationData.getRows());
+    public void getRowAtIndex(IBaseDataManager<PopulationDataRow> callback, int rowIndex) {
+        callback.onDataReceived(mPopulationData.getRows().get(rowIndex));
+    }
+
+    /**
+     * Gets the number of rows
+     * @return
+     */
+    @Override
+    public int getRowsCount() {
+        return mPopulationData.getRows().size();
     }
 
     /**
@@ -123,7 +145,6 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
 
                             // If row must be inserted somewhere in the middle, find its correct position
                             realm.insert(row);
-                            rows.add(i, row);
                             break;
 
                         } else if (rows.size() == i + 1) {
@@ -138,6 +159,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                 }
 
                 realm.insertOrUpdate(mPopulationData);
+                notifyPropertyChanged(BR.rowList);
 
                 // Delete age group from list
                 for(GenericEnum type : mTypeList) {

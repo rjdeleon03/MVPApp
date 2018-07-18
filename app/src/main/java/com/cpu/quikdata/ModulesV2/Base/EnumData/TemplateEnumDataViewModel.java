@@ -8,20 +8,20 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateReadonlyAdapter;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
 
-public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum>
+import io.realm.RealmList;
+
+public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, R>
         extends BaseViewModel<AC> implements IBaseDataManager<D> {
 
     public final ObservableInt spinnerSelectedIndex = new ObservableInt(0);
 
     protected List<E> mTypeList;
-    protected boolean mShouldShowSpinner;
-    protected ArrayAdapter<E> mAdapter;
-    protected TemplateEnumDataRowAdapter<D> mRowAdapter;
+    protected ArrayAdapter<E> mSpinnerAdapter;
+    protected TemplateEnumDataRowAdapter mRowAdapter;
 
     /**
      * Constructor
@@ -51,12 +51,28 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     }
 
     /**
-     * Retrieves the adapter
+     * Retrieves the spinner adapter
      * @return
      */
     @Bindable
-    public ArrayAdapter<E> getAdapter() {
-        return mAdapter;
+    public ArrayAdapter<E> getSpinnerAdapter() {
+        return mSpinnerAdapter;
+    }
+
+    /**
+     * Retrieves the list of rows
+     * @return
+     */
+    @Bindable
+    public abstract List<R> getRowList();
+
+    /**
+     * Retrieves the row adapter
+     * @return
+     */
+    @Bindable
+    public TemplateEnumDataRowAdapter<R> getRowAdapter() {
+        return mRowAdapter;
     }
 
     /**

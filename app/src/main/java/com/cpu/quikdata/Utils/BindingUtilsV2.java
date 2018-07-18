@@ -10,10 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 
 import com.cpu.quikdata.Models.Generics.GenericEnum;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateItemAdapter;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
 
 import java.util.List;
+
+import io.realm.RealmList;
 
 public class BindingUtilsV2 {
 
@@ -25,6 +29,12 @@ public class BindingUtilsV2 {
     @BindingAdapter({"app:adapter", "app:typeItems"})
     public static void bind(AppCompatSpinner spinner, ArrayAdapter adapter, List typeItems) {
         spinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    @BindingAdapter({"app:rowAdapter", "app:rowItems"})
+    public static void bindRows(RecyclerView recyclerView, TemplateEnumDataRowAdapter adapter, List rowItems) {
+        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 

@@ -3,6 +3,8 @@ package com.cpu.quikdata.ModulesV2.Base.EnumData;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,9 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.template_enum_data_fragment, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.template_enum_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         TemplateEnumDataFragmentBinding binding = TemplateEnumDataFragmentBinding.bind(view);
         binding.setViewModel(mViewModel);
         return view;

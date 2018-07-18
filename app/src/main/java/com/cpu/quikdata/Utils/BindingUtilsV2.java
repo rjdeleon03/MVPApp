@@ -32,6 +32,12 @@ public class BindingUtilsV2 {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Bind rows to recycler view
+     * @param recyclerView
+     * @param adapter
+     * @param rowItems
+     */
     @BindingAdapter({"app:rowAdapter", "app:rowItems"})
     public static void bindRows(RecyclerView recyclerView, TemplateEnumDataRowAdapter adapter, List rowItems) {
         recyclerView.setAdapter(adapter);

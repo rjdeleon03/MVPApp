@@ -3,11 +3,9 @@ package com.cpu.quikdata.ModulesV2.Base.MainTemplate;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.AppConstants;
-import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModel;
@@ -15,14 +13,9 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolder;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolderGenderTuple;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolderString;
-import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseQuestionDataManager;
-import com.cpu.quikdata.R;
 
 import java.util.ArrayList;
 import java.util.List;

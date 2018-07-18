@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class TemplateQuestionViewModel<AC extends IBaseInterface, D>
-        extends BaseViewModel<AC> implements IBaseQuestionDataManager<D> {
-
-    protected TemplateItemAdapter mAdapter;
-    protected List<QuestionItemModel> mQuestions = new ArrayList<>();
+        extends TemplateMainViewModel<AC, D> {
 
     /**
      * Constructor
@@ -25,33 +22,5 @@ public abstract class TemplateQuestionViewModel<AC extends IBaseInterface, D>
     public TemplateQuestionViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         mAdapter = new TemplateQuestionAdapter(this);
-    }
-    /**
-     * Gets the questions
-     * @return
-     */
-    @Bindable
-    @Override
-    public List<QuestionItemModel> getQuestions() {
-        return mQuestions;
-    }
-
-    /**
-     * Gets the adapter
-     * @return
-     */
-    @Bindable
-    @Override
-    public RecyclerView.Adapter getAdapter() {
-        return mAdapter;
-    }
-
-    /**
-     * Gets number of question items
-     * @return
-     */
-    @Override
-    public int getItemsCount() {
-        return mQuestions.size();
     }
 }

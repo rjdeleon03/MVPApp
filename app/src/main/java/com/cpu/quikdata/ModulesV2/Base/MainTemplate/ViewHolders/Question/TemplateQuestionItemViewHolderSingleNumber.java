@@ -1,15 +1,16 @@
-package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders;
+package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.Question;
 
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ViewHolders.TemplateItemViewHolder;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
 
-public class TemplateItemViewHolderSingleNumber extends TemplateItemViewHolder<TemplateQuestionItemViewModelSingleNumber> {
+public class TemplateQuestionItemViewHolderSingleNumber extends TemplateItemViewHolder<TemplateQuestionItemViewModelSingleNumber> {
 
     private TemplateQuestionSingleNumberBinding mBinding;
 
-    public TemplateItemViewHolderSingleNumber(View itemView) {
+    public TemplateQuestionItemViewHolderSingleNumber(View itemView) {
         super(itemView);
     }
 

@@ -20,8 +20,6 @@ import com.cpu.quikdata.R;
  */
 public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewModel> extends BaseFragment<VM> implements ITemplateEnumDataFragment {
 
-    protected TemplateEnumDataDialogViewModel mDialogViewModel;
-
     public TemplateEnumDataFragment() {
         // Required empty public constructor
     }

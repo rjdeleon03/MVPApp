@@ -14,6 +14,8 @@ public class PopulationDataRowAdapter extends TemplateEnumDataRowAdapter<Populat
 
     @Override
     public void onBindViewHolder(@NonNull TemplateEnumDataRowViewHolder holder, int position) {
-        holder.setViewModel(new PopulationDataRowViewModel(null, position));
+        PopulationDataRowViewModel rowViewModel = new PopulationDataRowViewModel(null, position);
+        rowViewModel.setActivity(mEnumDataManager);
+        holder.setViewModel(rowViewModel);
     }
 }

@@ -66,7 +66,6 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
             public void onClick(DialogInterface dialog, int which) { }
         });
 
-        /*
         Dialog dialog = builder.create();
         dialog.show();
 
@@ -75,9 +74,6 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
             window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         }
-        */
-        Dialog dialog = builder.create();
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         return dialog;
     }

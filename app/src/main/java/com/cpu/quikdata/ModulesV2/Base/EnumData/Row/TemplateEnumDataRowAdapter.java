@@ -1,25 +1,23 @@
 package com.cpu.quikdata.ModulesV2.Base.EnumData.Row;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
-import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.IEnumDataManager;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.R;
-import com.cpu.quikdata.databinding.TemplateReadonlyGenderTupleBinding;
 
 public abstract class TemplateEnumDataRowAdapter<D> extends RecyclerView.Adapter<TemplateEnumDataRowViewHolder> {
 
-    protected IEnumDataManager<D> mEnumDataManager;
+    protected ITemplateEnumDataFragment mEnumDataFragment;
+    protected ITemplateEnumDataManager<D> mEnumDataManager;
 
-    public TemplateEnumDataRowAdapter(IEnumDataManager enumDataManager) {
+    public TemplateEnumDataRowAdapter(ITemplateEnumDataFragment enumDataFragment, ITemplateEnumDataManager enumDataManager) {
+        mEnumDataFragment = enumDataFragment;
         mEnumDataManager = enumDataManager;
         setHasStableIds(true);
     }
@@ -38,23 +36,7 @@ public abstract class TemplateEnumDataRowAdapter<D> extends RecyclerView.Adapter
     @Override
     public void onBindViewHolder(@NonNull TemplateEnumDataRowViewHolder holder, int position) {
         TemplateEnumDataRowViewModel rowViewModel = initRowViewModel(position);
-        View view = holder.setViewModel(rowViewModel);
-        LayoutInflater inflater = LayoutInflater.from(view.getContext());
-
-        TableLayout tableLayout = view.findViewById(R.id.template_question_table);
-        for(Object questionModel : rowViewModel.getQuestions()) {
-
-            View itemView = null;
-            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
-                TemplateReadonlyGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_gender_tuple, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
-                itemView = binding.getRoot();
-            }
-
-            if (itemView != null) {
-                tableLayout.addView(itemView);
-            }
-        }
+        holder.setViewModel(rowViewModel);
     }
 
     @Override

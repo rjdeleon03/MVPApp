@@ -9,6 +9,7 @@ import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
@@ -21,7 +22,7 @@ import com.cpu.quikdata.BR;
 import java.util.List;
 
 public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup, PopulationDataRow>
-        implements IEnumDataManager<PopulationDataRow> {
+        implements ITemplateEnumDataManager<PopulationDataRow> {
 
     private PopulationData mPopulationData;
 
@@ -38,7 +39,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                 context,
                 android.R.layout.simple_spinner_dropdown_item,
                 mTypeList);
-        mRowAdapter = new PopulationDataRowAdapter(this);
+        mRowAdapter = new PopulationDataRowAdapter(mActivity.get(),this);
     }
 
 

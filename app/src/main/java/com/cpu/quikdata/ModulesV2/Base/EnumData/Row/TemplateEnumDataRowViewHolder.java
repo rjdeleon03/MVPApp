@@ -19,8 +19,7 @@ public class TemplateEnumDataRowViewHolder<VM extends TemplateEnumDataRowViewMod
         mBinding = TemplateEnumDataRowBinding.bind(itemView);
     }
 
-    public View setViewModel(VM viewModel) {
+    public void setViewModel(VM viewModel) {
         mBinding.setViewModel(viewModel);
-        return mBinding.getRoot();
     }
 }

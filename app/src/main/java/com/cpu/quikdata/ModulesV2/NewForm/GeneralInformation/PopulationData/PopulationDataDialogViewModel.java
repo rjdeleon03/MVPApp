@@ -5,13 +5,11 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
-import java.util.List;
-
-public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewModel<IEnumDataManager, PopulationDataRow, GenericEnumDataRow.AgeGroup> {
+public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewModel<ITemplateEnumDataManager, PopulationDataRow, GenericEnumDataRow.AgeGroup> {
 
     private PopulationDataRow mRow;
 
@@ -25,7 +23,7 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
     }
 
     @Override
-    public void setActivity(IEnumDataManager activity) {
+    public void setActivity(ITemplateEnumDataManager activity) {
         super.setActivity(activity);
         if (mActivity.get() != null) {
             mActivity.get().getNewRow(this);

@@ -47,6 +47,13 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
         dialogFragment.show(getChildFragmentManager(), "");
     }
 
+    @Override
+    public void onCardSelected() {
+        TemplateEnumDataDialogFragment dialogFragment = TemplateEnumDataDialogFragment.newInstance();
+        dialogFragment.setViewModel(setupDialogViewModel());
+        dialogFragment.show(getChildFragmentManager(), "");
+    }
+
     /**
      * Sets up the viewModel of the dialog
      * @return

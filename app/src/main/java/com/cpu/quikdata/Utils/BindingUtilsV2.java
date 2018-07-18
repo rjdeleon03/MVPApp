@@ -19,6 +19,7 @@ import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
 import com.cpu.quikdata.databinding.TemplateQuestionGenderTupleBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
+import com.cpu.quikdata.databinding.TemplateReadonlyGenderTupleBinding;
 import com.cpu.quikdata.R;
 
 import java.util.List;
@@ -48,6 +49,11 @@ public class BindingUtilsV2 {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Bind questions to table layout
+     * @param tableLayout
+     * @param questionItems
+     */
     @BindingAdapter({"app:questionItems"})
     public static void bindQuestions(TableLayout tableLayout, List<TemplateQuestionItemViewModel> questionItems) {
         LayoutInflater inflater = LayoutInflater.from(tableLayout.getContext());
@@ -72,6 +78,37 @@ public class BindingUtilsV2 {
                 itemView = binding.getRoot();
 
             }
+
+            if (itemView != null) {
+                tableLayout.addView(itemView);
+            }
+        }
+    }
+
+    @BindingAdapter({"app:readonlyItems"})
+    public static void bindReadonlyItems(TableLayout tableLayout, List<TemplateQuestionItemViewModel> questionItems) {
+        LayoutInflater inflater = LayoutInflater.from(tableLayout.getContext());
+
+        for(Object questionModel : questionItems) {
+
+            View itemView = null;
+
+            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
+                TemplateReadonlyGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_gender_tuple, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
+                itemView = binding.getRoot();
+            }
+//            } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
+//                TemplateQuestionStringBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_string, null, false);
+//                binding.setViewModel((TemplateQuestionItemViewModelString) questionModel);
+//                itemView = binding.getRoot();
+//
+//            } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
+//                TemplateQuestionSingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_single_number, null, false);
+//                binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
+//                itemView = binding.getRoot();
+//
+//            }
 
             if (itemView != null) {
                 tableLayout.addView(itemView);

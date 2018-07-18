@@ -9,29 +9,39 @@
             type="com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString" />
     </data>
 
-    <LinearLayout
+    <TableRow
+        android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@={viewModel.question}"
-            android:maxWidth="100dp"
-            android:textColor="@android:color/black" />
+            android:layout_marginBottom="4dp"
+            android:layout_span="5"
+            android:orientation="vertical">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:ems="10"
-            android:inputType="number"
-            android:text="@={viewModel.value}"
-            android:textSize="14sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@={viewModel.question}"
+                android:maxWidth="100dp"
+                android:textColor="@android:color/black" />
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ems="10"
+                android:inputType="number"
+                android:text="@={viewModel.value}"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+
 
 </layout>

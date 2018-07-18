@@ -1,9 +1,9 @@
-package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
+package com.cpu.quikdata.ModulesV2.Base.EnumData;
 
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
-public interface IEnumDataManager<R> extends IBaseInterface {
+public interface ITemplateEnumDataManager<R> extends IBaseInterface {
 
     void getNewRow(IBaseDataManager<R> callback);
 

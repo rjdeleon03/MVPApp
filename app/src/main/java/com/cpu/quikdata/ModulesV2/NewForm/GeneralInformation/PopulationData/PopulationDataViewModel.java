@@ -74,6 +74,25 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
     @Override
     public void onDataReceived(GeneralInformation data) {
         mPopulationData = data.getPopulationData();
+        updateTypeList();
+    }
+
+    /**
+     * Updates the age group list
+     */
+    protected void updateTypeList() {
+
+        // Remove items from type list if type is already in use
+        for (PopulationDataRow row : mPopulationData.getRows()) {
+            for (GenericEnum ageGroup : mTypeList) {
+                if (ageGroup.getOrdinal() == row.getActualAgeGroup().getOrdinal()) {
+                    mTypeList.remove(ageGroup);
+                    break;
+                }
+            }
+        }
+        notifyPropertyChanged(BR.typeList);
+        notifyPropertyChanged(BR.shouldShowSpinner);
     }
 
     /**
@@ -123,7 +142,7 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
 
                 // If list is empty, add new row right away
                 if (rows.size() == 0 ) {
-                    realm.insert(row);
+                    realm.insertOrUpdate(row);
                     rows.add(row);
 
                 } else {
@@ -151,13 +170,14 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                                 (i == 0 || tempAgeGroupOrdinal > GenericEnumDataRow.AgeGroup.valueOf(rows.get(i - 1).getAgeGroup()).getOrdinal())) {
 
                             // If row must be inserted somewhere in the middle, find its correct position
-                            realm.insert(row);
+                            realm.insertOrUpdate(row);
+                            rows.add(i, row);
                             break;
 
                         } else if (rows.size() == i + 1) {
 
                             // If end of list has been reached, add row
-                            realm.insert(row);
+                            realm.insertOrUpdate(row);
                             rows.add(row);
                             break;
 
@@ -179,12 +199,12 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                 }
             }
         });
-
-        /*
-        /
-         */
     }
 
+    /**
+     * Opens the selected row for editing
+     * @param rowIndex
+     */
     @Override
     public void selectedRowAtIndex(int rowIndex) {
         if (mViewComponent.get() != null) {
@@ -192,8 +212,65 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
         }
     }
 
+    /**
+     * Deletes the selected row
+     * @param rowIndex
+     */
     @Override
-    public void deletedRowAtIndex(int rowIndex) {
+    public void deletedRowAtIndex(final int rowIndex) {
 
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                PopulationDataRow row = mPopulationData.getRows().get(rowIndex);
+                if (row == null) return;
+
+                GenericEnumDataRow.AgeGroup type = row.getActualAgeGroup();
+
+                // If list is empty, add new row right away
+                if (mTypeList.size() == 0) {
+                    mTypeList.add(type);
+
+                } else {
+
+                    // Else, select correct position
+                    for (int i = 0; i < mTypeList.size(); i++) {
+
+                        int currAgeGroupOrdinal = mTypeList.get(i).getOrdinal();
+                        int tempAgeGroupOrdinal = type.getOrdinal();
+
+                        if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                                (i == 0 || tempAgeGroupOrdinal > mTypeList.get(i - 1).getOrdinal())) {
+
+                            // If row must be inserted somewhere in the middle, find its correct position
+                            mTypeList.add(i, type);
+                            break;
+
+                        } else if (mTypeList.size() == i + 1) {
+
+                            // If end of list has been reached, add row
+                            mTypeList.add(type);
+                            break;
+
+                        }
+                    }
+                }
+
+
+                PopulationDataRow rowToDelete = realm.where(PopulationDataRow.class).equalTo("id", row.getId()).findFirst();
+                try {
+                    rowToDelete.deleteFromRealm();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                mPopulationData.getRows().remove(rowIndex);
+                realm.insertOrUpdate(mPopulationData);
+                notifyPropertyChanged(BR.rowList);
+                notifyPropertyChanged(BR.typeList);
+                notifyPropertyChanged(BR.shouldShowSpinner);
+            }
+        });
     }
 }

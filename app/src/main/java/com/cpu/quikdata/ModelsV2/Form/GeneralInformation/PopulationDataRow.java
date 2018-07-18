@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -22,6 +24,10 @@ public class PopulationDataRow extends RealmObject {
 
     public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
+    }
+
+    public GenericEnumDataRow.AgeGroup getActualAgeGroup() {
+        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
     }
 
     public String getId() {

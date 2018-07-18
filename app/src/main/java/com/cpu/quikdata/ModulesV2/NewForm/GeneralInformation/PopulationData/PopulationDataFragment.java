@@ -28,8 +28,9 @@ public class PopulationDataFragment extends TemplateEnumDataFragment<PopulationD
     @Override
     protected TemplateEnumDataDialogViewModel setupDialogViewModel(int index) {
         PopulationDataDialogViewModel populationDataDialogViewModel =
-                new PopulationDataDialogViewModel(Injection.provideDncaRepository(getActivity()), index);
-        populationDataDialogViewModel.setViewComponent(mViewModel);
+                new PopulationDataDialogViewModel(Injection.provideDncaRepository(getContext()), index);
+        populationDataDialogViewModel.setViewComponent(this);
+        populationDataDialogViewModel.setDataManager(mViewModel);
         return populationDataDialogViewModel;
     }
 }

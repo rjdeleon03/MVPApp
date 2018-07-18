@@ -5,11 +5,13 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
-public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewModel<ITemplateEnumDataManager, PopulationDataRow, GenericEnumDataRow.AgeGroup> {
+public class PopulationDataDialogViewModel
+        extends TemplateEnumDataDialogViewModel<ITemplateEnumDataFragment, PopulationDataRow, GenericEnumDataRow.AgeGroup, ITemplateEnumDataManager> {
 
     private PopulationDataRow mRow;
 
@@ -20,18 +22,6 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
      */
     public PopulationDataDialogViewModel(DNCAFormRepository dncaFormRepository, int rowIndex) {
         super(dncaFormRepository, rowIndex);
-    }
-
-    @Override
-    public void setViewComponent(ITemplateEnumDataManager activity) {
-        super.setViewComponent(activity);
-        if (mViewComponent.get() != null) {
-            if (mRowIndex == -1) {
-                mViewComponent.get().getNewRow(this);
-            } else {
-                mViewComponent.get().getRowAtIndex(this, mRowIndex);
-            }
-        }
     }
 
     /**
@@ -62,8 +52,6 @@ public class PopulationDataDialogViewModel extends TemplateEnumDataDialogViewMod
         mRow.setDisplacedMale(displacedVM.getMale());
         mRow.setDisplacedFemale(displacedVM.getFemale());
 
-        if (mViewComponent.get() != null) {
-            mViewComponent.get().saveRow(mRow);
-        }
+        mDataManager.saveRow(mRow);
     }
 }

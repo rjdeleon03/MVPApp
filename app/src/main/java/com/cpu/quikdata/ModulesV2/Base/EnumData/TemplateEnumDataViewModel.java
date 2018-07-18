@@ -20,14 +20,14 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 
-public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, R extends IEnumDataRow<E, R>, RH extends IEnumDataRowHolder>
+public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, R extends IEnumDataRow<E, R>, RH extends IEnumDataRowHolder<R>>
         extends BaseViewModel<AC> implements IBaseDataManager<D>, ITemplateEnumDataManager<R> {
 
     public final ObservableInt spinnerSelectedIndex = new ObservableInt(0);
 
     protected List<E> mTypeList;
     protected ArrayAdapter<E> mSpinnerAdapter;
-    protected TemplateEnumDataRowAdapter mRowAdapter;
+    protected TemplateEnumDataRowAdapter<R> mRowAdapter;
     protected RH mRowHolder;
 
     /**
@@ -48,6 +48,33 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
         super.setViewComponent(viewComponent);
         setupAdapter();
     }
+
+    /**
+     * Handles data reception
+     * @param data
+     */
+    @Override
+    public void onDataReceived(D data) {
+        processReceivedData(data);
+
+        // Remove items from type list if type is already in use
+        for (R row : mRowHolder.getRows()) {
+            for (GenericEnum ageGroup : mTypeList) {
+                if (ageGroup.getOrdinal() == row.getActualType().getOrdinal()) {
+                    mTypeList.remove(ageGroup);
+                    break;
+                }
+            }
+        }
+        notifyPropertyChanged(BR.typeList);
+        notifyPropertyChanged(BR.shouldShowSpinner);
+    }
+
+    /**
+     * Handles specialized processing for received data
+     * @param data
+     */
+    protected abstract void processReceivedData(D data);
 
     /**
      * Sets up the adapter
@@ -82,11 +109,13 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     }
 
     /**
-     * Retrieves the list of rows
+     * Retrieves flag for showing spinner
      * @return
      */
     @Bindable
-    public abstract List<R> getRowList();
+    public boolean getShouldShowSpinner() {
+        return mTypeList.size() > 0;
+    }
 
     /**
      * Retrieves the row adapter
@@ -98,14 +127,48 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     }
 
     /**
-     * Retrieves flag for showing spinner
+     * Retrieves the list of rows
      * @return
      */
     @Bindable
-    public abstract boolean getShouldShowSpinner();
+    public List<R> getRowList() {
+        return mRowHolder.getRows();
+    }
 
-    // Test implem for saving rows
+    /**
+     * Gets the row at the specified index
+     * @param callback
+     * @param rowIndex
+     */
+    @Override
+    public void getRowAtIndex(IBaseDataManager<R> callback, int rowIndex) {
+        callback.onDataReceived(mRowHolder.getRows().get(rowIndex));
+    }
 
+    /**
+     * Gets the number of rows
+     * @return
+     */
+    @Override
+    public int getRowsCount() {
+        return mRowHolder.getRows().size();
+    }
+
+    /**
+     * Handles row selected event
+     * @param rowIndex
+     */
+    @Override
+    public void selectedRowAtIndex(int rowIndex) {
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onCardSelected(rowIndex);
+        }
+    }
+
+    /**
+     * Handles saving of row
+     * @param row
+     */
     @Override
     public void saveRow(final R row) {
         Realm realm = Realm.getDefaultInstance();
@@ -171,4 +234,67 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
             }
         });
     }
+
+    /**
+     * Deletes the selected row
+     * @param rowIndex
+     */
+    @Override
+    public void deletedRowAtIndex(final int rowIndex) {
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                R row = mRowHolder.getRows().get(rowIndex);
+                if (row == null) return;
+
+                E type = row.getActualType();
+
+                // If list is empty, add new row right away
+                if (mTypeList.size() == 0) {
+                    mTypeList.add(type);
+
+                } else {
+
+                    // Else, select correct position
+                    for (int i = 0; i < mTypeList.size(); i++) {
+
+                        int currAgeGroupOrdinal = mTypeList.get(i).getOrdinal();
+                        int tempAgeGroupOrdinal = type.getOrdinal();
+
+                        if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                                (i == 0 || tempAgeGroupOrdinal > mTypeList.get(i - 1).getOrdinal())) {
+
+                            // If row must be inserted somewhere in the middle, find its correct position
+                            mTypeList.add(i, type);
+                            break;
+
+                        } else if (mTypeList.size() == i + 1) {
+
+                            // If end of list has been reached, add row
+                            mTypeList.add(type);
+                            break;
+
+                        }
+                    }
+                }
+
+                deleteRowFromDb(row, realm);
+
+                mRowHolder.getRows().remove(rowIndex);
+                realm.insertOrUpdate(mRowHolder);
+                notifyPropertyChanged(BR.rowList);
+                notifyPropertyChanged(BR.typeList);
+                notifyPropertyChanged(BR.shouldShowSpinner);
+            }
+        });
+    }
+
+    /**
+     * Deletes the specified row from the database with the given realm instance
+     * @param row
+     * @param realm
+     */
+    protected abstract void deleteRowFromDb(R row, Realm realm);
 }

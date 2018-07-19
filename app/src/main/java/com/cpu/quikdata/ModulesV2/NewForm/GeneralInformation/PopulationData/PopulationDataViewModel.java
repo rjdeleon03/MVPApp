@@ -12,6 +12,9 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import io.realm.Realm;
@@ -19,6 +22,7 @@ import io.realm.RealmList;
 
 import com.cpu.quikdata.BR;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup, PopulationDataRow, PopulationData> {
@@ -79,5 +83,18 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
         PopulationDataRow row = new PopulationDataRow();
         row.setAgeGroup(mTypeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
+    }
+
+    /**
+     * Gets question based on the selected row
+     * @param questionList
+     * @param row
+     */
+    @Override
+    public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, PopulationDataRow row) {
+        if (questionList == null) return;
+
+        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Affected", row.getAffectedMale(), row.getAffectedFemale())));
+        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Displaced", row.getAffectedMale(), row.getAffectedFemale())));
     }
 }

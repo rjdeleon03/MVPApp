@@ -11,7 +11,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
 public class PopulationDataDialogViewModel
-        extends TemplateEnumDataDialogViewModel<ITemplateEnumDataFragment, PopulationDataRow, GenericEnumDataRow.AgeGroup, ITemplateEnumDataManager> {
+        extends TemplateEnumDataDialogViewModel<ITemplateEnumDataFragment, PopulationDataRow, GenericEnumDataRow.AgeGroup, ITemplateEnumDataManager<PopulationDataRow>> {
 
     private PopulationDataRow mRow;
 
@@ -33,8 +33,7 @@ public class PopulationDataDialogViewModel
         mRow = data;
         mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
 
-        mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Affected", mRow.getAffectedMale(), mRow.getAffectedFemale())));
-        mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Displaced", mRow.getAffectedMale(), mRow.getAffectedFemale())));
+        mDataManager.generateQuestions(mQuestions, mRow);
     }
 
     /**

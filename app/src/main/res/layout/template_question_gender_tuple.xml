@@ -15,6 +15,8 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -29,7 +31,7 @@
             app:srcCompat="@drawable/ic_male" />
 
         <EditText
-            android:layout_width="65dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:ems="10"
@@ -44,7 +46,7 @@
             app:srcCompat="@drawable/ic_female" />
 
         <EditText
-            android:layout_width="65dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:ems="10"

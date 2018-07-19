@@ -51,7 +51,7 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
 
         // Build dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(view);
+        builder.setView(binding.getRoot());
 
         if (mViewModel.getType() != null) builder.setTitle(mViewModel.getType().toString());
 
@@ -66,14 +66,17 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
             public void onClick(DialogInterface dialog, int which) { }
         });
 
-        Dialog dialog = builder.create();
-        dialog.show();
+//        Dialog dialog = builder.create();
+//        Window window = dialog.getWindow();
+//        if (window != null) {
+////            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+////            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+//            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        }
 
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        }
+
+        Dialog dialog = builder.create();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         return dialog;
     }

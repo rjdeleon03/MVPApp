@@ -39,7 +39,8 @@
                   android:screenOrientation="portrait"></activity>
 
         <activity android:name=".ModulesV2.NewForm.NewFormActivity"
-            android:screenOrientation="portrait"></activity>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

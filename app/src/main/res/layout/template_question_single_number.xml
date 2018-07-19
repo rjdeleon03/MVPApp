@@ -15,19 +15,21 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:maxWidth="100dp"
-            android:text="@={viewModel.question}"
-            android:textColor="@android:color/black" />
-
-        <EditText
+            android:layout_span="3"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_column="2"
-            android:layout_span="3"
+            android:text="@{viewModel.question}"
+            android:maxWidth="100dp"
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:layout_column="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:ems="10"
             android:inputType="number"
             android:text="@={viewModel.value}"

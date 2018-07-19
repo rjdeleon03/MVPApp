@@ -12,40 +12,30 @@
     <TableRow
         android:layout_marginBottom="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:descendantFocusability="afterDescendants">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_span="5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_span="5">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@={viewModel.question}"
-                android:maxWidth="100dp"
-                android:textColor="@android:color/black" />
+                android:text="@{viewModel.question}"
+                android:textColor="@android:color/black"/>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:ems="10"
-                android:inputType="textMultiLine"
-                android:singleLine="false"
                 android:minLines="1"
-                android:maxLines="10"
-                android:text="@={viewModel.value}"
-                android:textSize="14sp" />
+                android:singleLine="false"
+                android:text="@{viewModel.value}" />
 
         </LinearLayout>
 
     </TableRow>
-
-
 
 </layout>

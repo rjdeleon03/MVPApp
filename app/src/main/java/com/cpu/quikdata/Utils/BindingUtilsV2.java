@@ -21,6 +21,8 @@ import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyGenderTupleBinding;
 import com.cpu.quikdata.R;
+import com.cpu.quikdata.databinding.TemplateReadonlySingleNumberBinding;
+import com.cpu.quikdata.databinding.TemplateReadonlyStringBinding;
 
 import java.util.List;
 
@@ -97,18 +99,18 @@ public class BindingUtilsV2 {
                 TemplateReadonlyGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_gender_tuple, null, false);
                 binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
                 itemView = binding.getRoot();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
+                TemplateReadonlyStringBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_string, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelString) questionModel);
+                itemView = binding.getRoot();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
+                TemplateReadonlySingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_single_number, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
+                itemView = binding.getRoot();
+
             }
-//            } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
-//                TemplateQuestionStringBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_string, null, false);
-//                binding.setViewModel((TemplateQuestionItemViewModelString) questionModel);
-//                itemView = binding.getRoot();
-//
-//            } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
-//                TemplateQuestionSingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_single_number, null, false);
-//                binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
-//                itemView = binding.getRoot();
-//
-//            }
 
             if (itemView != null) {
                 tableLayout.addView(itemView);

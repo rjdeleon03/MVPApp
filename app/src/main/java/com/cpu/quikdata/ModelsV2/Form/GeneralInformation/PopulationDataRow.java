@@ -19,33 +19,20 @@ public class PopulationDataRow extends RealmObject implements IEnumDataRow<Gener
     private int displacedMale;
     private int displacedFemale;
 
-    public String getAgeGroup() {
-        return ageGroup;
-    }
-
-    public void setAgeGroup(String ageGroup) {
-        this.ageGroup = ageGroup;
-    }
-
-    @Override
-    public GenericEnumDataRow.AgeGroup getActualType() {
-        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
-    }
-
-    @Override
-    public void update(PopulationDataRow newRow) {
-        affectedMale = newRow.getAffectedMale();
-        affectedFemale = newRow.getAffectedFemale();
-        displacedMale = newRow.getDisplacedMale();
-        displacedFemale = newRow.getDisplacedFemale();
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAgeGroup() {
+        return ageGroup;
+    }
+
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
     }
 
     public int getAffectedMale() {
@@ -79,4 +66,18 @@ public class PopulationDataRow extends RealmObject implements IEnumDataRow<Gener
     public void setDisplacedFemale(int displacedFemale) {
         this.displacedFemale = displacedFemale;
     }
+
+    @Override
+    public GenericEnumDataRow.AgeGroup getActualType() {
+        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
+    }
+
+    @Override
+    public void update(PopulationDataRow newRow) {
+        affectedMale = newRow.getAffectedMale();
+        affectedFemale = newRow.getAffectedFemale();
+        displacedMale = newRow.getDisplacedMale();
+        displacedFemale = newRow.getDisplacedFemale();
+    }
+
 }

@@ -13,7 +13,6 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 public class PopulationDataDialogViewModel
         extends TemplateEnumDataDialogViewModel<ITemplateEnumDataFragment, PopulationDataRow, GenericEnumDataRow.AgeGroup, ITemplateEnumDataManager<PopulationDataRow>> {
 
-    private PopulationDataRow mRow;
 
     /**
      * Constructor
@@ -31,7 +30,7 @@ public class PopulationDataDialogViewModel
     @Override
     public void onDataReceived(PopulationDataRow data) {
         mRow = data;
-        mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
+        mType = mRow.getActualType();
 
         mDataManager.generateQuestions(mQuestions, mRow);
     }

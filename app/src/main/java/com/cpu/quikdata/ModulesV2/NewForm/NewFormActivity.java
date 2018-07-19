@@ -20,6 +20,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         GEN_INFO_CALAMITY,
         GEN_INFO_POPULATION,
         GEN_INFO_FAMILY,
+        GEN_INFO_VULNERABLE,
 
         SHELTER_INFO,
         FOOD_SECURITY,

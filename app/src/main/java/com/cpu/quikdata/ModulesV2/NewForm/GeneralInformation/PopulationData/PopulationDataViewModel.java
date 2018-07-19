@@ -25,7 +25,8 @@ import com.cpu.quikdata.BR;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup, PopulationDataRow, PopulationData> {
+public class PopulationDataViewModel
+        extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, GeneralInformation, GenericEnumDataRow.AgeGroup, PopulationDataRow, PopulationData> {
 
     /**
      * Constructor
@@ -40,6 +41,15 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
                 context,
                 android.R.layout.simple_spinner_dropdown_item,
                 mTypeList);
+    }
+
+    /**
+     * Handles processing of received general information data
+     * @param data
+     */
+    @Override
+    protected void processReceivedData(GeneralInformation data) {
+        mRowHolder = data.getPopulationData();
     }
 
     /**
@@ -63,15 +73,6 @@ public class PopulationDataViewModel extends TemplateEnumDataViewModel<ITemplate
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-
-    /**
-     * Handles processing of received general information data
-     * @param data
-     */
-    @Override
-    protected void processReceivedData(GeneralInformation data) {
-        mRowHolder = data.getPopulationData();
     }
 
     /**

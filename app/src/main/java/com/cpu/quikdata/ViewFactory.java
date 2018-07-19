@@ -109,6 +109,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationF
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
@@ -183,6 +185,9 @@ public class ViewFactory {
                 case GEN_INFO_FAMILY:
                     fragment = FamilyDetailsFragment.newInstance();
                     break;
+                case GEN_INFO_VULNERABLE:
+                    fragment = VulnerableDataFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -246,6 +251,12 @@ public class ViewFactory {
                     FamilyDetailsViewModel familyDetailsViewModel = new FamilyDetailsViewModel(Injection.provideDncaRepository(context));
                     familyDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = familyDetailsViewModel;
+                    break;
+
+                case GEN_INFO_VULNERABLE:
+                    VulnerableDataViewModel vulnerableDataViewModel = new VulnerableDataViewModel(Injection.provideDncaRepository(context), context);
+                    vulnerableDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = vulnerableDataViewModel;
                     break;
 
             }

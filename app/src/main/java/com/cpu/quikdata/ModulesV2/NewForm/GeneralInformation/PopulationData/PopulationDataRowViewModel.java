@@ -12,8 +12,6 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 public class PopulationDataRowViewModel
         extends TemplateEnumDataRowViewModel<ITemplateEnumDataFragment, PopulationDataRow, GenericEnumDataRow.AgeGroup, ITemplateEnumDataManager<PopulationDataRow>> {
 
-    private PopulationDataRow mRow;
-
     /**
      * Constructor
      *

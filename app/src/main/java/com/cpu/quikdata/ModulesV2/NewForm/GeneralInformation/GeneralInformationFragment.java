@@ -10,6 +10,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.Famil
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ViewFactory;
 
@@ -54,6 +56,16 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
             familyDetailsFragment.setViewModel(
                     (FamilyDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_FAMILY, null, getContext()));
             mAdapter.addFragment(familyDetailsFragment);
+        }
+        {
+            // Setup vulnerable data fragment
+            VulnerableDataFragment vulnerableDataFragment =
+                    (VulnerableDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_VULNERABLE);
+            VulnerableDataViewModel vulnerableDataViewModel =
+                    (VulnerableDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_VULNERABLE, null, getContext());
+            vulnerableDataViewModel.setViewComponent(vulnerableDataFragment);
+            vulnerableDataFragment.setViewModel(vulnerableDataViewModel);
+            mAdapter.addFragment(vulnerableDataFragment);
         }
     }
 

@@ -12,6 +12,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.FamilyDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
@@ -233,6 +234,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                 FamilyDetails familyDetails = realm.createObject(FamilyDetails.class, AppUtil.generateId());
                 generalInformation.setFamilyDetails(familyDetails);
+
+                VulnerableData vulnerableData = realm.createObject(VulnerableData.class, AppUtil.generateId());
+                generalInformation.setVulnerableData(vulnerableData);
 
                 form.setGeneralInformation(generalInformation);
                 mForm = realm.copyFromRealm(form);

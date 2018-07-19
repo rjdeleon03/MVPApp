@@ -17,7 +17,7 @@ public abstract class BaseViewModel<AC extends IBaseInterface> extends BaseObser
      * Constructor
      * @param dncaFormRepository
      */
-    protected BaseViewModel(DNCAFormRepository dncaFormRepository) {
+    public BaseViewModel(DNCAFormRepository dncaFormRepository) {
         mFormRepository = dncaFormRepository;
     }
 

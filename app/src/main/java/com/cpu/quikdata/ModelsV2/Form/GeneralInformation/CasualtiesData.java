@@ -7,15 +7,15 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class DeathCauseData extends RealmObject implements IEnumDataRowHolder<DeathCauseDataRow> {
+public class CasualtiesData extends RealmObject implements IEnumDataRowHolder<CasualtiesDataRow> {
 
     @Required
     @PrimaryKey
     private String id;
 
-    private RealmList<DeathCauseDataRow> rows;
+    private RealmList<CasualtiesDataRow> rows;
 
-    public DeathCauseData() {
+    public CasualtiesData() {
         rows = new RealmList<>();
     }
 
@@ -28,12 +28,12 @@ public class DeathCauseData extends RealmObject implements IEnumDataRowHolder<De
     }
 
     @Override
-    public RealmList<DeathCauseDataRow> getRows() {
+    public RealmList<CasualtiesDataRow> getRows() {
         return rows;
     }
 
     @Override
-    public void setRows(RealmList<DeathCauseDataRow> rows) {
+    public void setRows(RealmList<CasualtiesDataRow> rows) {
         this.rows = rows;
     }
 }

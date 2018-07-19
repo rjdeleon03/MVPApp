@@ -35,7 +35,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
      *
      * @param dncaFormRepository
      */
-    protected TemplateEnumDataViewModel(DNCAFormRepository dncaFormRepository) {
+    public TemplateEnumDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
     }
 

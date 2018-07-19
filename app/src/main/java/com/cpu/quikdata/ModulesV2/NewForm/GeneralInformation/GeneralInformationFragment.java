@@ -6,6 +6,8 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
@@ -66,6 +68,16 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
             vulnerableDataViewModel.setViewComponent(vulnerableDataFragment);
             vulnerableDataFragment.setViewModel(vulnerableDataViewModel);
             mAdapter.addFragment(vulnerableDataFragment);
+        }
+        {
+            // Setup casualties data fragment
+            CasualtiesDataFragment casualtiesDataFragment =
+                    (CasualtiesDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CASUALTIES);
+            CasualtiesDataViewModel casualtiesDataViewModel =
+                    (CasualtiesDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CASUALTIES, null, getContext());
+            casualtiesDataViewModel.setViewComponent(casualtiesDataFragment);
+            casualtiesDataFragment.setViewModel(casualtiesDataViewModel);
+            mAdapter.addFragment(casualtiesDataFragment);
         }
     }
 

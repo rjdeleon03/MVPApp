@@ -7,7 +7,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class DeathCauseDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, com.cpu.quikdata.Models.GeneralInformation.DeathCauseDataRow> {
+public class CasualtiesDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, CasualtiesDataRow> {
 
     @Required
     @PrimaryKey
@@ -87,11 +87,16 @@ public class DeathCauseDataRow extends RealmObject implements IEnumDataRow<Gener
 
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
-        return null;
+        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
     }
 
     @Override
-    public void update(com.cpu.quikdata.Models.GeneralInformation.DeathCauseDataRow newRow) {
-
+    public void update(CasualtiesDataRow newRow) {
+        deadMale = newRow.getDeadMale();
+        deadFemale = newRow.getDeadFemale();
+        missingMale = newRow.getMissingMale();
+        missingFemale = newRow.getMissingFemale();
+        injuredMale = newRow.getInjuredMale();
+        injuredFemale = newRow.getInjuredFemale();
     }
 }

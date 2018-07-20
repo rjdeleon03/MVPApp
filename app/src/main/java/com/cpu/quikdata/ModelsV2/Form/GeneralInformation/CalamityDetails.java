@@ -17,10 +17,6 @@ public class CalamityDetails extends RealmObject implements IFieldHolder {
 
     private RealmList<QuestionItemModelString> stringFields;
 
-    private String calamityType;
-    private String eventDesc;
-    private String areaDesc;
-
     public String getId() {
         return id;
     }
@@ -39,30 +35,6 @@ public class CalamityDetails extends RealmObject implements IFieldHolder {
 
     public void setStringFields(RealmList<QuestionItemModelString> stringFields) {
         this.stringFields = stringFields;
-    }
-
-    public String getCalamityType() {
-        return calamityType;
-    }
-
-    public void setCalamityType(String calamityType) {
-        this.calamityType = calamityType;
-    }
-
-    public String getEventDesc() {
-        return eventDesc;
-    }
-
-    public void setEventDesc(String eventDesc) {
-        this.eventDesc = eventDesc;
-    }
-
-    public String getAreaDesc() {
-        return areaDesc;
-    }
-
-    public void setAreaDesc(String areaDesc) {
-        this.areaDesc = areaDesc;
     }
 
     @Override

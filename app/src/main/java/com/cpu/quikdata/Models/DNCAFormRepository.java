@@ -225,9 +225,6 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                 GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
                 CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
-                calamityDetails.setCalamityType("Calamity Type");
-                calamityDetails.setEventDesc("Event Description");
-                calamityDetails.setAreaDesc("Area Description");
                 generalInformation.setCalamityDetails(calamityDetails);
 
                 PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());

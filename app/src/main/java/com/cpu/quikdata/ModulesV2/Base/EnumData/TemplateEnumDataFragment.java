@@ -44,7 +44,7 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
      */
     @Override
     public void onAddButtonPressed() {
-        if (mDialogFragment != null && mDialogFragment.getDialog().isShowing()) return;
+        if (mDialogFragment != null && mDialogFragment.getDialog() != null && mDialogFragment.getDialog().isShowing()) return;
         mDialogFragment = TemplateEnumDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(setupDialogViewModel(-1));
         mDialogFragment.show(getChildFragmentManager(), "");
@@ -55,7 +55,7 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
      */
     @Override
     public void onCardSelected(int index) {
-        if (mDialogFragment != null && mDialogFragment.getDialog().isShowing()) return;
+        if (mDialogFragment != null && mDialogFragment.getDialog() != null && mDialogFragment.getDialog().isShowing()) return;
         mDialogFragment = TemplateEnumDataDialogFragment.newInstance();
         mDialogFragment.setViewModel(setupDialogViewModel(index));
         mDialogFragment.show(getChildFragmentManager(), "");

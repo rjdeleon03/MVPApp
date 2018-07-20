@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
@@ -42,13 +43,9 @@ public class PopulationDataDialogViewModel
     public void navigateOnOkButtonPressed() {
         if (mRowIndex == -1) mRow.setId(AppUtil.generateId());
 
-        QuestionItemModelGenderTuple affectedVM = (QuestionItemModelGenderTuple) mQuestions.get(0).getModel();
-        mRow.setAffectedMale(affectedVM.getMale());
-        mRow.setAffectedFemale(affectedVM.getFemale());
-
-        QuestionItemModelGenderTuple displacedVM = (QuestionItemModelGenderTuple) mQuestions.get(1).getModel();
-        mRow.setDisplacedMale(displacedVM.getMale());
-        mRow.setDisplacedFemale(displacedVM.getFemale());
+        for(TemplateQuestionItemViewModel model : mQuestions) {
+            ((TemplateQuestionItemViewModelGenderTuple) model).updateModel();
+        }
 
         mDataManager.saveRow(mRow);
     }

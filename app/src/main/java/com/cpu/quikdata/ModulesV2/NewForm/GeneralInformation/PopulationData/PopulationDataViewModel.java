@@ -95,7 +95,8 @@ public class PopulationDataViewModel
     public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, PopulationDataRow row) {
         if (questionList == null) return;
 
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Affected", row.getAffectedMale(), row.getAffectedFemale())));
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Displaced", row.getAffectedMale(), row.getAffectedFemale())));
+        for(QuestionItemModelGenderTuple model : row.getGenderTupleFields()) {
+            questionList.add(new TemplateQuestionItemViewModelGenderTuple(model));
+        }
     }
 }

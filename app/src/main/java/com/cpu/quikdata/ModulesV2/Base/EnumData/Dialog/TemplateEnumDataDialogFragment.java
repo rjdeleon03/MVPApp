@@ -69,7 +69,7 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         super.onDismiss(dialog);
     }
 }

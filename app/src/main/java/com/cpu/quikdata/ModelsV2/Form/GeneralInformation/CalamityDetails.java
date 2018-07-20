@@ -67,8 +67,10 @@ public class CalamityDetails extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
+        if (stringFields != null && !stringFields.isEmpty()) return;
         stringFields = new RealmList<>();
-
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"calamityType", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"eventDesc", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"areaDesc", ""));
     }
 }

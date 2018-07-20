@@ -20,6 +20,8 @@ import com.cpu.quikdata.R;
  */
 public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewModel> extends BaseFragment<VM> implements ITemplateEnumDataFragment {
 
+    private TemplateEnumDataDialogFragment mDialogFragment;
+
     public TemplateEnumDataFragment() {
         // Required empty public constructor
     }
@@ -42,9 +44,10 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
      */
     @Override
     public void onAddButtonPressed() {
-        TemplateEnumDataDialogFragment dialogFragment = TemplateEnumDataDialogFragment.newInstance();
-        dialogFragment.setViewModel(setupDialogViewModel(-1));
-        dialogFragment.show(getChildFragmentManager(), "");
+        if (mDialogFragment != null && mDialogFragment.getDialog().isShowing()) return;
+        mDialogFragment = TemplateEnumDataDialogFragment.newInstance();
+        mDialogFragment.setViewModel(setupDialogViewModel(-1));
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**
@@ -52,9 +55,10 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
      */
     @Override
     public void onCardSelected(int index) {
-        TemplateEnumDataDialogFragment dialogFragment = TemplateEnumDataDialogFragment.newInstance();
-        dialogFragment.setViewModel(setupDialogViewModel(index));
-        dialogFragment.show(getChildFragmentManager(), "");
+        if (mDialogFragment != null && mDialogFragment.getDialog().isShowing()) return;
+        mDialogFragment = TemplateEnumDataDialogFragment.newInstance();
+        mDialogFragment.setViewModel(setupDialogViewModel(index));
+        mDialogFragment.show(getChildFragmentManager(), "");
     }
 
     /**

@@ -40,12 +40,12 @@ public class FormDetails extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
+        if (stringFields != null && !stringFields.isEmpty()) return;
         stringFields = new RealmList<>();
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"orgName", ""));
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"sitio", ""));
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"barangay", ""));
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"city", ""));
-        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"orgName", ""));
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"province", ""));
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"interviewer", ""));
         stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"interviewerNo", ""));

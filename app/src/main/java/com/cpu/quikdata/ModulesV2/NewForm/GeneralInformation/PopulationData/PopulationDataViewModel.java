@@ -69,6 +69,7 @@ public class PopulationDataViewModel
     protected void deleteRowFromDb(PopulationDataRow row, Realm realm) {
         PopulationDataRow rowToDelete = realm.where(PopulationDataRow.class).equalTo("id", row.getId()).findFirst();
         try {
+            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
             rowToDelete.deleteFromRealm();
         } catch (Exception ex) {
             ex.printStackTrace();

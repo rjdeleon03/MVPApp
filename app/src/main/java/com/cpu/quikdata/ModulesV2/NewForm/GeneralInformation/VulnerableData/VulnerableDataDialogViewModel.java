@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
@@ -40,24 +41,9 @@ public class VulnerableDataDialogViewModel
     public void navigateOnOkButtonPressed() {
         if (mRowIndex == -1) mRow.setId(AppUtil.generateId());
 
-        mRow.setPregnant(((QuestionItemModelSingleNumber) mQuestions.get(0).getModel()).getValue());
-        mRow.setLactating(((QuestionItemModelSingleNumber) mQuestions.get(1).getModel()).getValue());
-        mRow.setLgbt(((QuestionItemModelSingleNumber) mQuestions.get(2).getModel()).getValue());
-        mRow.setFemaleHeadedHouseholds(((QuestionItemModelSingleNumber) mQuestions.get(3).getModel()).getValue());
-
-        QuestionItemModelGenderTuple childHeadedVM = (QuestionItemModelGenderTuple) mQuestions.get(4).getModel();
-        mRow.setChildHeadedHouseholdsMale(childHeadedVM.getMale());
-        mRow.setChildHeadedHouseholdsFemale(childHeadedVM.getFemale());
-
-        QuestionItemModelGenderTuple indigenousVM = (QuestionItemModelGenderTuple) mQuestions.get(5).getModel();
-        mRow.setIndigenousMale(indigenousVM.getMale());
-        mRow.setIndigenousFemale(indigenousVM.getFemale());
-
-        QuestionItemModelGenderTuple disabledVM = (QuestionItemModelGenderTuple) mQuestions.get(6).getModel();
-        mRow.setDisabledMale(disabledVM.getMale());
-        mRow.setDisabledFemale(disabledVM.getFemale());
-
-        mRow.setRemarks(((QuestionItemModelString) mQuestions.get(7).getModel()).getValue());
+        for(TemplateQuestionItemViewModel model : mQuestions) {
+            model.updateModel();
+        }
 
         mDataManager.saveRow(mRow);
     }

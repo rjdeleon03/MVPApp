@@ -10,8 +10,9 @@ public class TemplateQuestionItemViewModelString extends TemplateQuestionItemVie
     public final ObservableField<String> value = new ObservableField<>("");
 
     public TemplateQuestionItemViewModelString(QuestionItemModelString model) {
-        super(model.getQuestion());
-        value.set(model.getValue());
+        super(model);
+        question.set(mModel.getQuestion());
+        value.set(mModel.getValue());
     }
 
     @Override
@@ -22,5 +23,10 @@ public class TemplateQuestionItemViewModelString extends TemplateQuestionItemVie
     @Override
     public AppConstants.QuestionItemType getType() {
         return AppConstants.QuestionItemType.STRING;
+    }
+
+    @Override
+    public void updateModel() {
+        mModel.setValue(value.get());
     }
 }

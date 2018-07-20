@@ -1,13 +1,19 @@
 package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class VulnerableDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, VulnerableDataRow> {
+public class VulnerableDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, VulnerableDataRow>, IFieldHolder {
 
     @Required
     @PrimaryKey
@@ -15,17 +21,13 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
 
     private String ageGroup;
 
-    private int pregnant;
-    private int lactating;
-    private int lgbt;
-    private int femaleHeadedHouseholds;
-    private int childHeadedHouseholdsMale;
-    private int childHeadedHouseholdsFemale;
-    private int indigenousMale;
-    private int indigenousFemale;
-    private int disabledMale;
-    private int disabledFemale;
-    private String remarks;
+    private RealmList<QuestionItemModelSingleNumber> numberFields;
+    private RealmList<QuestionItemModelGenderTuple> genderTupleFields;
+    private RealmList<QuestionItemModelString> stringFields;
+
+    public VulnerableDataRow() {
+        setupFields();
+    }
 
     public String getId() {
         return id;
@@ -43,6 +45,30 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
         this.ageGroup = ageGroup;
     }
 
+    public RealmList<QuestionItemModelSingleNumber> getNumberFields() {
+        return numberFields;
+    }
+
+    public void setNumberFields(RealmList<QuestionItemModelSingleNumber> numberFields) {
+        this.numberFields = numberFields;
+    }
+
+    public RealmList<QuestionItemModelGenderTuple> getGenderTupleFields() {
+        return genderTupleFields;
+    }
+
+    public void setGenderTupleFields(RealmList<QuestionItemModelGenderTuple> genderTupleFields) {
+        this.genderTupleFields = genderTupleFields;
+    }
+
+    public RealmList<QuestionItemModelString> getStringFields() {
+        return stringFields;
+    }
+
+    public void setStringFields(RealmList<QuestionItemModelString> stringFields) {
+        this.stringFields = stringFields;
+    }
+
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
         return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
@@ -50,104 +76,35 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
 
     @Override
     public void update(VulnerableDataRow newRow) {
-        pregnant = newRow.getPregnant();
-        lactating = newRow.getLactating();
-        lgbt = newRow.getLgbt();
-        femaleHeadedHouseholds = newRow.getFemaleHeadedHouseholds();
-        childHeadedHouseholdsMale = newRow.getChildHeadedHouseholdsMale();
-        childHeadedHouseholdsFemale = newRow.getChildHeadedHouseholdsFemale();
-        indigenousMale = newRow.getIndigenousMale();
-        indigenousFemale = newRow.getIndigenousFemale();
-        disabledMale = newRow.getDisabledMale();
-        disabledFemale = newRow.getDisabledFemale();
-        remarks = newRow.getRemarks();
     }
 
-    public int getPregnant() {
-        return pregnant;
-    }
+    @Override
+    public void setupFields() {
 
-    public void setPregnant(int pregnant) {
-        this.pregnant = pregnant;
-    }
+        if (numberFields == null) {
+            numberFields = new RealmList<>();
+        }
+        if (numberFields.isEmpty()) {
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "pregnant", 0));
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "lactating", 0));
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "lgbt", 0));
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "femaleHeadedHouseholds", 0));
+        }
 
-    public int getLactating() {
-        return lactating;
-    }
+        if (genderTupleFields == null) {
+            genderTupleFields = new RealmList<>();
+        }
+        if (genderTupleFields.isEmpty()) {
+            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "childHeadedHouseholdsMale", 0, 0));
+            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "indigenous", 0, 0));
+            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "disabled", 0, 0));
+        }
 
-    public void setLactating(int lactating) {
-        this.lactating = lactating;
-    }
-
-    public int getLgbt() {
-        return lgbt;
-    }
-
-    public void setLgbt(int lgbt) {
-        this.lgbt = lgbt;
-    }
-
-    public int getFemaleHeadedHouseholds() {
-        return femaleHeadedHouseholds;
-    }
-
-    public void setFemaleHeadedHouseholds(int femaleHeadedHouseholds) {
-        this.femaleHeadedHouseholds = femaleHeadedHouseholds;
-    }
-
-    public int getChildHeadedHouseholdsMale() {
-        return childHeadedHouseholdsMale;
-    }
-
-    public void setChildHeadedHouseholdsMale(int childHeadedHouseholdsMale) {
-        this.childHeadedHouseholdsMale = childHeadedHouseholdsMale;
-    }
-
-    public int getChildHeadedHouseholdsFemale() {
-        return childHeadedHouseholdsFemale;
-    }
-
-    public void setChildHeadedHouseholdsFemale(int childHeadedHouseholdsFemale) {
-        this.childHeadedHouseholdsFemale = childHeadedHouseholdsFemale;
-    }
-
-    public int getIndigenousMale() {
-        return indigenousMale;
-    }
-
-    public void setIndigenousMale(int indigenousMale) {
-        this.indigenousMale = indigenousMale;
-    }
-
-    public int getIndigenousFemale() {
-        return indigenousFemale;
-    }
-
-    public void setIndigenousFemale(int indigenousFemale) {
-        this.indigenousFemale = indigenousFemale;
-    }
-
-    public int getDisabledMale() {
-        return disabledMale;
-    }
-
-    public void setDisabledMale(int disabledMale) {
-        this.disabledMale = disabledMale;
-    }
-
-    public int getDisabledFemale() {
-        return disabledFemale;
-    }
-
-    public void setDisabledFemale(int disabledFemale) {
-        this.disabledFemale = disabledFemale;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+        if (stringFields == null) {
+            stringFields = new RealmList<>();
+        }
+        if (stringFields.isEmpty()) {
+            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "remarks", ""));
+        }
     }
 }

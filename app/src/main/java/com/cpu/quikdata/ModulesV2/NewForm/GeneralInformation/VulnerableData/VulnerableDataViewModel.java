@@ -69,6 +69,9 @@ public class VulnerableDataViewModel
     protected void deleteRowFromDb(VulnerableDataRow row, Realm realm) {
         VulnerableDataRow rowToDelete = realm.where(VulnerableDataRow.class).equalTo("id", row.getId()).findFirst();
         try {
+            rowToDelete.getNumberFields().deleteAllFromRealm();
+            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
+            rowToDelete.getStringFields().deleteAllFromRealm();
             rowToDelete.deleteFromRealm();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -95,13 +98,14 @@ public class VulnerableDataViewModel
     public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, VulnerableDataRow row) {
         if (questionList == null) return;
 
-        questionList.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Pregnant Women", row.getPregnant())));
-        questionList.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Lactating Mothers", row.getLactating())));
-        questionList.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("LGBT", row.getLgbt())));
-        questionList.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Female-Headed Households", row.getFemaleHeadedHouseholds())));
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Child Headed Households", row.getChildHeadedHouseholdsMale(), row.getChildHeadedHouseholdsFemale())));
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Indigenous People", row.getIndigenousMale(), row.getIndigenousFemale())));
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Disabled", row.getDisabledMale(), row.getDisabledFemale())));
-        questionList.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Remarks", row.getRemarks())));
+        for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
+            questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
+        }
+        for(QuestionItemModelGenderTuple model : row.getGenderTupleFields()) {
+            questionList.add(new TemplateQuestionItemViewModelGenderTuple(model));
+        }
+        for(QuestionItemModelString model : row.getStringFields()) {
+            questionList.add(new TemplateQuestionItemViewModelString(model));
+        }
     }
 }

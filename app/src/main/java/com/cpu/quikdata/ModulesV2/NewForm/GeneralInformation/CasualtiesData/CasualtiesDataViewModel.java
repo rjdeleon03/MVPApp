@@ -89,8 +89,8 @@ public class CasualtiesDataViewModel
     public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, CasualtiesDataRow row) {
         if (questionList == null) return;
 
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Dead", row.getDeadMale(), row.getDeadFemale())));
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Missing", row.getMissingMale(), row.getMissingFemale())));
-        questionList.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple("Injured", row.getInjuredMale(), row.getInjuredFemale())));
+        for(QuestionItemModelGenderTuple model : row.getGenderTupleFields()) {
+            questionList.add(new TemplateQuestionItemViewModelGenderTuple(model));
+        }
     }
 }

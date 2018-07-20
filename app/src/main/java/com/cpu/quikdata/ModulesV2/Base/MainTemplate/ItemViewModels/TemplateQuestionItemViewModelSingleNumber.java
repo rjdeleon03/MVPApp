@@ -10,8 +10,9 @@ public class TemplateQuestionItemViewModelSingleNumber extends TemplateQuestionI
     public final ObservableInt value = new ObservableInt(0);
 
     public TemplateQuestionItemViewModelSingleNumber(QuestionItemModelSingleNumber model) {
-        super(model.getQuestion());
-        value.set(model.getValue());
+        super(model);
+        question.set(mModel.getQuestion());
+        value.set(mModel.getValue());
     }
 
     @Override
@@ -22,5 +23,10 @@ public class TemplateQuestionItemViewModelSingleNumber extends TemplateQuestionI
     @Override
     public AppConstants.QuestionItemType getType() {
         return AppConstants.QuestionItemType.SINGLE_NUMBER;
+    }
+
+    @Override
+    public void updateModel() {
+        mModel.setValue(value.get());
     }
 }

@@ -44,7 +44,7 @@ public class PopulationDataDialogViewModel
         if (mRowIndex == -1) mRow.setId(AppUtil.generateId());
 
         for(TemplateQuestionItemViewModel model : mQuestions) {
-            ((TemplateQuestionItemViewModelGenderTuple) model).updateModel();
+            model.updateModel();
         }
 
         mDataManager.saveRow(mRow);

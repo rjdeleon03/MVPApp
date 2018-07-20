@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CasualtiesDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
 public class CasualtiesDataDialogViewModel
@@ -41,17 +42,9 @@ public class CasualtiesDataDialogViewModel
     public void navigateOnOkButtonPressed() {
         if (mRowIndex == -1) mRow.setId(AppUtil.generateId());
 
-        QuestionItemModelGenderTuple deadVM = (QuestionItemModelGenderTuple) mQuestions.get(0).getModel();
-        mRow.setDeadMale(deadVM.getMale());
-        mRow.setDeadFemale(deadVM.getFemale());
-
-        QuestionItemModelGenderTuple missingVM = (QuestionItemModelGenderTuple) mQuestions.get(1).getModel();
-        mRow.setMissingMale(missingVM.getMale());
-        mRow.setMissingFemale(missingVM.getFemale());
-
-        QuestionItemModelGenderTuple injuredVM = (QuestionItemModelGenderTuple) mQuestions.get(2).getModel();
-        mRow.setInjuredMale(injuredVM.getMale());
-        mRow.setInjuredFemale(injuredVM.getFemale());
+        for(TemplateQuestionItemViewModel model : mQuestions) {
+            model.updateModel();
+        }
 
         mDataManager.saveRow(mRow);
     }

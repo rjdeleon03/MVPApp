@@ -39,8 +39,6 @@ import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetail
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.GenFormDetails.GenFormDetailsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsFragment;
 import com.cpu.quikdata.Modules.NewDnca.FormDetails.InterviewDetails.InterviewDetailsViewModel;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
-import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.FamilyData.FamilyDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.GenInfoRepositoryManager;
@@ -103,6 +101,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.Cal
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
@@ -191,6 +191,9 @@ public class ViewFactory {
                 case GEN_INFO_CASUALTIES:
                     fragment = CasualtiesDataFragment.newInstance();
                     break;
+                case GEN_INFO_DEATH_CAUSE:
+                    fragment = DeathCauseDataFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -268,6 +271,12 @@ public class ViewFactory {
                     baseViewModel = casualtiesDataViewModel;
                     break;
 
+                case GEN_INFO_DEATH_CAUSE:
+                    DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(Injection.provideDncaRepository(context), context);
+                    deathCauseDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = deathCauseDataViewModel;
+                    break;
+
             }
 
             // Bind viewModel to activity
@@ -305,7 +314,7 @@ public class ViewFactory {
 //                    selectedFragment = CalamityDetailsFragment.newInstance();
                     break;
                 case GEN_INFO_POPULATION:
-//                    selectedFragment = PopulationDataFragment.newInstance();
+//                    selectedFragment = DeathCauseDataFragment.newInstance();
                     break;
                 case GEN_INFO_FAMILY:
                     selectedFragment = FamilyDataFragment.newInstance();
@@ -317,7 +326,7 @@ public class ViewFactory {
 //                    selectedFragment = CasualtiesDataFragment.newInstance();
                     break;
                 case GEN_INFO_DEATH_CAUSE:
-                    selectedFragment = DeathCauseDataFragment.newInstance();
+//                    selectedFragment = DeathCauseDataFragment.newInstance();
                     break;
                 case GEN_INFO_INFRASTRUCTURE:
                     selectedFragment = InfrastructureDamageFragment.newInstance();
@@ -489,7 +498,7 @@ public class ViewFactory {
 //                    viewModel = new CalamityDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_POPULATION:
-//                    viewModel = new PopulationDataViewModel((GenInfoRepositoryManager)repositoryManager);
+//                    viewModel = new DeathCauseDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_FAMILY:
                     viewModel = new FamilyDataViewModel((GenInfoRepositoryManager)repositoryManager);
@@ -501,7 +510,7 @@ public class ViewFactory {
 //                    viewModel = new CasualtiesDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_DEATH_CAUSE:
-                    viewModel = new DeathCauseDataViewModel((GenInfoRepositoryManager)repositoryManager);
+//                    viewModel = new DeathCauseDataViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_INFRASTRUCTURE:
                     viewModel = new InfrastructureDamageViewModel((GenInfoRepositoryManager)repositoryManager);

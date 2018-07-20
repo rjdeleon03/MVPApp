@@ -9,6 +9,7 @@ import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CasualtiesData;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.DeathCauseData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.FamilyDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
@@ -238,6 +239,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                 CasualtiesData casualtiesData = realm.createObject(CasualtiesData.class, AppUtil.generateId());
                 generalInformation.setCasualtiesData(casualtiesData);
+
+                DeathCauseData deathCauseData = realm.createObject(DeathCauseData.class, AppUtil.generateId());
+                generalInformation.setDeathCauseData(deathCauseData);
 
                 form.setGeneralInformation(generalInformation);
                 mForm = realm.copyFromRealm(form);

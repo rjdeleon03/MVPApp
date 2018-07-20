@@ -8,6 +8,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.Cal
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.DeathCauseData.DeathCauseDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
@@ -78,6 +80,16 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
             casualtiesDataViewModel.setViewComponent(casualtiesDataFragment);
             casualtiesDataFragment.setViewModel(casualtiesDataViewModel);
             mAdapter.addFragment(casualtiesDataFragment);
+        }
+        {
+            // Setup deathCause data fragment
+            DeathCauseDataFragment deathCauseDataFragment =
+                    (DeathCauseDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_DEATH_CAUSE);
+            DeathCauseDataViewModel deathCauseDataViewModel =
+                    (DeathCauseDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_DEATH_CAUSE, null, getContext());
+            deathCauseDataViewModel.setViewComponent(deathCauseDataFragment);
+            deathCauseDataFragment.setViewModel(deathCauseDataViewModel);
+            mAdapter.addFragment(deathCauseDataFragment);
         }
     }
 

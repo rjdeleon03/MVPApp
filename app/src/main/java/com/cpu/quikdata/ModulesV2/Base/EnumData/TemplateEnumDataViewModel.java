@@ -196,7 +196,6 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
                         if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
 
                             // If age group already exists, update its values
-                            currRow.update(row);
                             realm.insertOrUpdate(currRow);
                             break;
 

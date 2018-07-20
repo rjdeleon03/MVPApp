@@ -1,23 +1,22 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
+import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+
+import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class FormDetails extends RealmObject {
+public class FormDetails extends RealmObject implements IFieldHolder {
 
     @Required
     @PrimaryKey
     private String id;
 
-    private String orgName;
-    private String sitio;
-    private String barangay;
-    private String city;
-    private String province;
-    private String interviewer;
-    private String interviewerNo;
-    private String infoSources;
+    private RealmList<QuestionItemModelString> stringFields;
 
     public String getId() {
         return id;
@@ -27,67 +26,29 @@ public class FormDetails extends RealmObject {
         this.id = id;
     }
 
-    public String getOrgName() {
-        return orgName;
+    public FormDetails() {
+        setupFields();
     }
 
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
+    public RealmList<QuestionItemModelString> getStringFields() {
+        return stringFields;
     }
 
-    public String getSitio() {
-        return sitio;
+    public void setStringFields(RealmList<QuestionItemModelString> stringFields) {
+        this.stringFields = stringFields;
     }
 
-    public void setSitio(String sitio) {
-        this.sitio = sitio;
-    }
-
-    public String getBarangay() {
-        return barangay;
-    }
-
-    public void setBarangay(String barangay) {
-        this.barangay = barangay;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getInterviewer() {
-        return interviewer;
-    }
-
-    public void setInterviewer(String interviewer) {
-        this.interviewer = interviewer;
-    }
-
-    public String getInterviewerNo() {
-        return interviewerNo;
-    }
-
-    public void setInterviewerNo(String interviewerNo) {
-        this.interviewerNo = interviewerNo;
-    }
-
-    public String getInfoSources() {
-        return infoSources;
-    }
-
-    public void setInfoSources(String infoSources) {
-        this.infoSources = infoSources;
+    @Override
+    public void setupFields() {
+        stringFields = new RealmList<>();
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"orgName", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"sitio", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"barangay", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"city", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"orgName", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"province", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"interviewer", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"interviewerNo", ""));
+        stringFields.add(new QuestionItemModelString(AppUtil.generateId(),"infoSources", ""));
     }
 }

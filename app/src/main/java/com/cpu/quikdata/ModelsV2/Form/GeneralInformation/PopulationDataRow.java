@@ -2,7 +2,9 @@ package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.IQuestionItemModel;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;

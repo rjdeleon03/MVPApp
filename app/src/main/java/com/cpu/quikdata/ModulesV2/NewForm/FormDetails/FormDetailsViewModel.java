@@ -28,13 +28,8 @@ public class FormDetailsViewModel extends TemplateQuestionViewModel<INewFormData
     public void onDataReceived(FormDetails data) {
         mFormDetails = data;
 
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Organization Name: ", mFormDetails.getOrgName())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Sitio/Purok/Zone: ", mFormDetails.getSitio())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Barangay: ", mFormDetails.getBarangay())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Municipality/City: ", mFormDetails.getCity())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Province: ", mFormDetails.getProvince())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Name of Interviewer: ", mFormDetails.getInterviewer())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Interviewer Contact Number: ", mFormDetails.getInterviewerNo())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Sources of Information: ", mFormDetails.getInfoSources())));
+        for(QuestionItemModelString model : data.getStringFields()) {
+            mQuestions.add(new TemplateQuestionItemViewModelString(model));
+        }
     }
 }

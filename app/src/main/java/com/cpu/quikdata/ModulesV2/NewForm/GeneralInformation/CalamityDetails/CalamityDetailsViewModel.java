@@ -30,8 +30,8 @@ public class CalamityDetailsViewModel extends TemplateQuestionViewModel<INewForm
     public void onDataReceived(GeneralInformation data) {
         mCalamityDetails = data.getCalamityDetails();
 
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Calamity Type: ", mCalamityDetails.getCalamityType())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Event Description: ", mCalamityDetails.getEventDesc())));
-        mQuestions.add(new TemplateQuestionItemViewModelString(new QuestionItemModelString("Area Description: ", mCalamityDetails.getAreaDesc())));
+        for(QuestionItemModelString model : mCalamityDetails.getStringFields()) {
+            mQuestions.add(new TemplateQuestionItemViewModelString(model));
+        }
     }
 }

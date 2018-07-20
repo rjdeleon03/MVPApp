@@ -75,10 +75,6 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
     }
 
     @Override
-    public void update(VulnerableDataRow newRow) {
-    }
-
-    @Override
     public void setupFields() {
 
         if (numberFields == null) {
@@ -95,7 +91,7 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
             genderTupleFields = new RealmList<>();
         }
         if (genderTupleFields.isEmpty()) {
-            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "childHeadedHouseholdsMale", 0, 0));
+            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "childHeadedHouseholds", 0, 0));
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "indigenous", 0, 0));
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "disabled", 0, 0));
         }

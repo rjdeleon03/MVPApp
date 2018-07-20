@@ -56,10 +56,6 @@ public class PopulationDataRow extends RealmObject implements IEnumDataRow<Gener
     }
 
     @Override
-    public void update(PopulationDataRow newRow) {
-    }
-
-    @Override
     public void setupFields() {
 
         if (genderTupleFields == null) {

@@ -47,54 +47,6 @@ public class CasualtiesDataRow extends RealmObject implements IEnumDataRow<Gener
         this.ageGroup = ageGroup;
     }
 
-    public int getDeadMale() {
-        return deadMale;
-    }
-
-    public void setDeadMale(int deadMale) {
-        this.deadMale = deadMale;
-    }
-
-    public int getDeadFemale() {
-        return deadFemale;
-    }
-
-    public void setDeadFemale(int deadFemale) {
-        this.deadFemale = deadFemale;
-    }
-
-    public int getMissingMale() {
-        return missingMale;
-    }
-
-    public void setMissingMale(int missingMale) {
-        this.missingMale = missingMale;
-    }
-
-    public int getMissingFemale() {
-        return missingFemale;
-    }
-
-    public void setMissingFemale(int missingFemale) {
-        this.missingFemale = missingFemale;
-    }
-
-    public int getInjuredMale() {
-        return injuredMale;
-    }
-
-    public void setInjuredMale(int injuredMale) {
-        this.injuredMale = injuredMale;
-    }
-
-    public int getInjuredFemale() {
-        return injuredFemale;
-    }
-
-    public void setInjuredFemale(int injuredFemale) {
-        this.injuredFemale = injuredFemale;
-    }
-
     public RealmList<QuestionItemModelGenderTuple> getGenderTupleFields() {
         return genderTupleFields;
     }
@@ -106,10 +58,6 @@ public class CasualtiesDataRow extends RealmObject implements IEnumDataRow<Gener
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
         return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
-    }
-
-    @Override
-    public void update(CasualtiesDataRow newRow) {
     }
 
     @Override

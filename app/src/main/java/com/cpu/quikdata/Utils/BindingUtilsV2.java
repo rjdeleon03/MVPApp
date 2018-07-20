@@ -12,13 +12,16 @@ import android.widget.TableLayout;
 
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
+import com.cpu.quikdata.databinding.TemplateQuestionBooleanBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionGenderTupleBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
+import com.cpu.quikdata.databinding.TemplateReadonlyBooleanBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyGenderTupleBinding;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.TemplateReadonlySingleNumberBinding;
@@ -79,6 +82,11 @@ public class BindingUtilsV2 {
                 binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
                 itemView = binding.getRoot();
 
+            } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
+                TemplateQuestionBooleanBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_boolean, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelBoolean) questionModel);
+                itemView = binding.getRoot();
+
             }
 
             if (itemView != null) {
@@ -108,6 +116,11 @@ public class BindingUtilsV2 {
             } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
                 TemplateReadonlySingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_single_number, null, false);
                 binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
+                itemView = binding.getRoot();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
+                TemplateReadonlyBooleanBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_boolean, null, false);
+                binding.setViewModel((TemplateQuestionItemViewModelBoolean) questionModel);
                 itemView = binding.getRoot();
 
             }

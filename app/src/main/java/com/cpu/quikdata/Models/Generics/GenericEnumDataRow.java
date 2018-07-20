@@ -18,7 +18,7 @@ public abstract class GenericEnumDataRow {
         AGE_60_PLUS,
         ALL;
 
-        /*
+        /**
         @Override
         public String toString() {
             String str = "Ages ";
@@ -91,13 +91,36 @@ public abstract class GenericEnumDataRow {
         LIVELIHOOD_FACILITIES,
         OTHERS;
 
+        /**
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
         }
+        */
 
         public static List<InfraType> asList() {
             List<InfraType> list = new ArrayList<>();
+            list.add(SCHOOL);
+            list.add(CHURCH);
+            list.add(COVERED_COURT);
+            list.add(BRGY_HALL);
+            list.add(BRGY_HEALTH_STATION);
+            list.add(EVACUATION_CENTER);
+            list.add(BRIDGES);
+            list.add(ROADS);
+            list.add(MARKET);
+            list.add(ELECTRICITY);
+            list.add(WATER);
+            list.add(HOSPITAL);
+            list.add(SEAPORT_AIRPORT);
+            list.add(COMMUNICATION_LINES);
+            list.add(LIVELIHOOD_FACILITIES);
+            list.add(OTHERS);
+            return list;
+        }
+
+        public static ObservableArrayList<InfraType> asObservableList() {
+            ObservableArrayList<InfraType> list = new ObservableArrayList<>();
             list.add(SCHOOL);
             list.add(CHURCH);
             list.add(COVERED_COURT);

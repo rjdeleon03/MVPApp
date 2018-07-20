@@ -29,6 +29,7 @@ public class CasualtiesDataRow extends RealmObject implements IEnumDataRow<Gener
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }

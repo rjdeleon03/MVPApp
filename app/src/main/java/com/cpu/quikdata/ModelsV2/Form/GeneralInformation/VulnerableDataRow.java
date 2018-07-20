@@ -33,6 +33,7 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
@@ -100,7 +101,7 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
             stringFields = new RealmList<>();
         }
         if (stringFields.isEmpty()) {
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "remarks", ""));
+            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "vulnerableRemarks", ""));
         }
     }
 }

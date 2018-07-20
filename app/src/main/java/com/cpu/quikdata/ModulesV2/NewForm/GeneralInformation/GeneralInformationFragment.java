@@ -12,6 +12,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.DeathCauseData.Deat
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.DeathCauseData.DeathCauseDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.InfrastructureData.InfrastructureDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.InfrastructureData.InfrastructureDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataFragment;
@@ -90,6 +92,16 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
             deathCauseDataViewModel.setViewComponent(deathCauseDataFragment);
             deathCauseDataFragment.setViewModel(deathCauseDataViewModel);
             mAdapter.addFragment(deathCauseDataFragment);
+        }
+        {
+            // Setup infrastructure data fragment
+            InfrastructureDataFragment infrastructureDataFragment =
+                    (InfrastructureDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_INFRASTRUCTURE);
+            InfrastructureDataViewModel infrastructureDataViewModel =
+                    (InfrastructureDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_INFRASTRUCTURE, null, getContext());
+            infrastructureDataViewModel.setViewComponent(infrastructureDataFragment);
+            infrastructureDataFragment.setViewModel(infrastructureDataViewModel);
+            mAdapter.addFragment(infrastructureDataFragment);
         }
     }
 

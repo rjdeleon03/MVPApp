@@ -107,6 +107,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.Famil
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.FamilyDetails.FamilyDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.InfrastructureData.InfrastructureDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.InfrastructureData.InfrastructureDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataFragment;
@@ -194,6 +196,9 @@ public class ViewFactory {
                 case GEN_INFO_DEATH_CAUSE:
                     fragment = DeathCauseDataFragment.newInstance();
                     break;
+                case GEN_INFO_INFRASTRUCTURE:
+                    fragment = InfrastructureDataFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -275,6 +280,12 @@ public class ViewFactory {
                     DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(Injection.provideDncaRepository(context), context);
                     deathCauseDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = deathCauseDataViewModel;
+                    break;
+
+                case GEN_INFO_INFRASTRUCTURE:
+                    InfrastructureDataViewModel infrastructureDataViewModel = new InfrastructureDataViewModel(Injection.provideDncaRepository(context), context);
+                    infrastructureDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = infrastructureDataViewModel;
                     break;
 
             }

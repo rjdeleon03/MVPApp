@@ -18,16 +18,4 @@ public class CasualtiesDataRowViewModel
     public CasualtiesDataRowViewModel(DNCAFormRepository dncaFormRepository, int rowIndex) {
         super(dncaFormRepository, rowIndex);
     }
-
-    /**
-     * Handles reception of population data row
-     * @param data
-     */
-    @Override
-    public void onDataReceived(CasualtiesDataRow data) {
-        mRow = data;
-        mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
-
-        mDataManager.generateQuestions(mQuestions, mRow);
-    }
 }

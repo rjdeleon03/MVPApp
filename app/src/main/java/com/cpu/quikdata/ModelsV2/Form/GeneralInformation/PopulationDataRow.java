@@ -12,7 +12,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class PopulationDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, PopulationDataRow>, IFieldHolder {
+public class PopulationDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
 
     @Required
     @PrimaryKey

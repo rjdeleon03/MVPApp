@@ -20,16 +20,4 @@ public class PopulationDataRowViewModel
     public PopulationDataRowViewModel(DNCAFormRepository dncaFormRepository, int rowIndex) {
         super(dncaFormRepository, rowIndex);
     }
-
-    /**
-     * Handles reception of population data row
-     * @param data
-     */
-    @Override
-    public void onDataReceived(PopulationDataRow data) {
-        mRow = data;
-        mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
-
-        mDataManager.generateQuestions(mQuestions, mRow);
-    }
 }

@@ -13,7 +13,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class VulnerableDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, VulnerableDataRow>, IFieldHolder {
+public class VulnerableDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
 
     @Required
     @PrimaryKey

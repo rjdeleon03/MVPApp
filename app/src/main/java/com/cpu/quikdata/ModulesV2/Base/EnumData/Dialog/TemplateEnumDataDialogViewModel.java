@@ -2,18 +2,22 @@ package com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog;
 
 import android.databinding.Bindable;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
 
-public abstract class TemplateEnumDataDialogViewModel<AC extends IBaseInterface, D, E extends GenericEnum, DM extends ITemplateEnumDataManager> extends TemplateQuestionViewModel<AC, D> {
+public abstract class TemplateEnumDataDialogViewModel<AC extends IBaseInterface, R extends IEnumDataRow<E>, E extends GenericEnum, DM extends ITemplateEnumDataManager<R>> extends TemplateQuestionViewModel<AC, R> {
 
     protected E mType;
     protected int mRowIndex;
     protected DM mDataManager;
-    protected D mRow;
+    protected R mRow;
 
     /**
      * Constructor
@@ -39,6 +43,18 @@ public abstract class TemplateEnumDataDialogViewModel<AC extends IBaseInterface,
     }
 
     /**
+     * Handles reception of population data row
+     * @param data
+     */
+    @Override
+    public void onDataReceived(R data) {
+        mRow = data;
+        mType = mRow.getActualType();
+
+        mDataManager.generateQuestions(mQuestions, mRow);
+    }
+
+    /**
      * Gets the type
      * @return
      */
@@ -50,5 +66,13 @@ public abstract class TemplateEnumDataDialogViewModel<AC extends IBaseInterface,
     /**
      * Handles navigation when OK button is pressed
      */
-    public abstract void navigateOnOkButtonPressed();
+    public void navigateOnOkButtonPressed() {
+        if (mRowIndex == -1) mRow.setId(AppUtil.generateId());
+
+        for(TemplateQuestionItemViewModel model : mQuestions) {
+            model.updateModel();
+        }
+
+        mDataManager.saveRow(mRow);
+    }
 }

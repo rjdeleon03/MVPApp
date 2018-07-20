@@ -11,19 +11,13 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class CasualtiesDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup, CasualtiesDataRow>, IFieldHolder {
+public class CasualtiesDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
 
     @Required
     @PrimaryKey
     private String id;
 
     private String ageGroup;
-    private int deadMale;
-    private int deadFemale;
-    private int missingMale;
-    private int missingFemale;
-    private int injuredMale;
-    private int injuredFemale;
 
     private RealmList<QuestionItemModelGenderTuple> genderTupleFields;
 

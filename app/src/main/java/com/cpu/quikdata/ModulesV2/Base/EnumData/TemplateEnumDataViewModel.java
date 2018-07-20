@@ -20,7 +20,7 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 
-public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, R extends IEnumDataRow<E, R>, RH extends IEnumDataRowHolder<R>>
+public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, R extends IEnumDataRow<E>, RH extends IEnumDataRowHolder<R>>
         extends BaseViewModel<AC> implements IBaseDataManager<D>, ITemplateEnumDataManager<R> {
 
     public final ObservableInt spinnerSelectedIndex = new ObservableInt(0);

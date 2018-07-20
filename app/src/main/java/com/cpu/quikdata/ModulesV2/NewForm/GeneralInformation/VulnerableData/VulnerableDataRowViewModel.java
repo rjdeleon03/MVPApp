@@ -19,16 +19,4 @@ public class VulnerableDataRowViewModel
     public VulnerableDataRowViewModel(DNCAFormRepository dncaFormRepository, int rowIndex) {
         super(dncaFormRepository, rowIndex);
     }
-
-    /**
-     * Handles reception of vulnerable data row
-     * @param data
-     */
-    @Override
-    public void onDataReceived(VulnerableDataRow data) {
-        mRow = data;
-        mType = GenericEnumDataRow.AgeGroup.valueOf(mRow.getAgeGroup());
-
-        mDataManager.generateQuestions(mQuestions, mRow);
-    }
 }

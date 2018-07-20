@@ -4,17 +4,19 @@ import android.databinding.Bindable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateReadonlyViewModel;
 
-public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, DM extends ITemplateEnumDataManager>
-        extends TemplateReadonlyViewModel<AC, D> {
+public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataFragment, R extends IEnumDataRow<E>, E extends GenericEnum, DM extends ITemplateEnumDataManager<R>>
+        extends TemplateReadonlyViewModel<AC, R> {
 
     protected E mType;
     protected int mRowIndex;
     protected DM mDataManager;
-    protected D mRow;
+    protected R mRow;
 
     /**
      * Constructor
@@ -33,6 +35,18 @@ public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataF
     public void setDataManager(DM dataManager) {
         mDataManager = dataManager;
         mDataManager.getRowAtIndex(this, mRowIndex);
+    }
+
+    /**
+     * Handles reception of population data row
+     * @param data
+     */
+    @Override
+    public void onDataReceived(R data) {
+        mRow = data;
+        mType = mRow.getActualType();
+
+        mDataManager.generateQuestions(mQuestions, mRow);
     }
 
     /**

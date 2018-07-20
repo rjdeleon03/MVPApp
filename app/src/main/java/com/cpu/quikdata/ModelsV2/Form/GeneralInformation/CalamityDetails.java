@@ -17,16 +17,16 @@ public class CalamityDetails extends RealmObject implements IFieldHolder {
 
     private RealmList<QuestionItemModelString> stringFields;
 
+    public CalamityDetails() {
+        setupFields();
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public CalamityDetails() {
-        setupFields();
     }
 
     public RealmList<QuestionItemModelString> getStringFields() {

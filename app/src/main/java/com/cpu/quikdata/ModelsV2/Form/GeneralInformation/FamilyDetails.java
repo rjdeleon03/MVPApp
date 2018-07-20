@@ -1,19 +1,25 @@
 package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
+import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class FamilyDetails extends RealmObject {
+public class FamilyDetails extends RealmObject implements IFieldHolder {
 
     @Required
     @PrimaryKey
     private String id;
 
-    private int affectedFamilies;
-    private int affectedHouseholds;
-    private int displacedFamilies;
-    private int displacedHouseholds;
+    private RealmList<QuestionItemModelSingleNumber> numberFields;
+
+    public FamilyDetails() {
+        setupFields();
+    }
 
     public String getId() {
         return id;
@@ -23,35 +29,21 @@ public class FamilyDetails extends RealmObject {
         this.id = id;
     }
 
-    public int getAffectedFamilies() {
-        return affectedFamilies;
+    public RealmList<QuestionItemModelSingleNumber> getNumberFields() {
+        return numberFields;
     }
 
-    public void setAffectedFamilies(int affectedFamilies) {
-        this.affectedFamilies = affectedFamilies;
+    public void setNumberFields(RealmList<QuestionItemModelSingleNumber> numberFields) {
+        this.numberFields = numberFields;
     }
 
-    public int getAffectedHouseholds() {
-        return affectedHouseholds;
-    }
-
-    public void setAffectedHouseholds(int affectedHouseholds) {
-        this.affectedHouseholds = affectedHouseholds;
-    }
-
-    public int getDisplacedFamilies() {
-        return displacedFamilies;
-    }
-
-    public void setDisplacedFamilies(int displacedFamilies) {
-        this.displacedFamilies = displacedFamilies;
-    }
-
-    public int getDisplacedHouseholds() {
-        return displacedHouseholds;
-    }
-
-    public void setDisplacedHouseholds(int displacedHouseholds) {
-        this.displacedHouseholds = displacedHouseholds;
+    @Override
+    public void setupFields() {
+        if (numberFields != null && !numberFields.isEmpty()) return;
+        numberFields = new RealmList<>();
+        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "affectedFamilies", 0));
+        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "affectedHouseholds", 0));
+        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "displacedFamilies", 0));
+        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "displacedHouseholds", 0));
     }
 }

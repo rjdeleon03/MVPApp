@@ -30,9 +30,8 @@ public class FamilyDetailsViewModel extends TemplateQuestionViewModel<INewFormAc
     public void onDataReceived(GeneralInformation data) {
         mFamilyDetails = data.getFamilyDetails();
 
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Affected Families", mFamilyDetails.getAffectedFamilies())));
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Affected Households", mFamilyDetails.getAffectedHouseholds())));
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Displaced Families", mFamilyDetails.getDisplacedFamilies())));
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Displaced Households", mFamilyDetails.getDisplacedHouseholds())));
+        for(QuestionItemModelSingleNumber model : mFamilyDetails.getNumberFields()) {
+            mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(model));
+        }
     }
 }

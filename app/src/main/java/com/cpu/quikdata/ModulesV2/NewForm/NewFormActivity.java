@@ -3,6 +3,7 @@ package com.cpu.quikdata.ModulesV2.NewForm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
@@ -45,6 +46,12 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
         final NewFormViewModel newFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
         newFormFragment.setViewModel(newFormViewModel);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Injection.provideDncaRepository(this).submitForm();
+        super.onBackPressed();
     }
 
     @Override

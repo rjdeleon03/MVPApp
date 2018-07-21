@@ -2,10 +2,14 @@ package com.cpu.quikdata;
 
 import android.app.Application;
 
+import com.cpu.quikdata.Interfaces.RetrofitClient;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 public class QuikDataApplication extends Application {
+
+    public static RetrofitClient retrofitClient;
 
     @Override
     public void onCreate() {
@@ -17,5 +21,8 @@ public class QuikDataApplication extends Application {
                 .schemaVersion(0)
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
+
+        retrofitClient = RetrofitClient.getInstance();
+
     }
 }

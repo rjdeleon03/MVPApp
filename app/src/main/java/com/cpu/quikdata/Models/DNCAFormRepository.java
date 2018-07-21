@@ -24,6 +24,7 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
+import com.cpu.quikdata.QuikDataApplication;
 import com.cpu.quikdata.Tasks.GetAllDncaTask;
 import com.cpu.quikdata.Tasks.UploadImagesTask;
 import com.google.gson.Gson;
@@ -34,6 +35,9 @@ import java.util.UUID;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -264,6 +268,20 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getGeneralInformation(final IBaseDataManager<GeneralInformation> callback) {
         callback.onDataReceived(mForm.getGeneralInformation());
+    }
+
+    public void submitForm() {
+        QuikDataApplication.retrofitClient.submitForm(mForm, new Callback<Form>() {
+            @Override
+            public void onResponse(Call<Form> call, Response<Form> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Form> call, Throwable t) {
+
+            }
+        });
     }
 
     public void insertToDb(RealmObject object) {

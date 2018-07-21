@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        app:cardCornerRadius="6dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="?dialogPreferredPadding"
+                android:layout_marginStart="?dialogPreferredPadding"
+                android:layout_marginRight="?dialogPreferredPadding"
+                android:layout_marginEnd="?dialogPreferredPadding"
+                android:stretchColumns="2,4"
+                app:questionItems="@{viewModel.questions}">
+
+            </TableLayout>
+
+        </ScrollView>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

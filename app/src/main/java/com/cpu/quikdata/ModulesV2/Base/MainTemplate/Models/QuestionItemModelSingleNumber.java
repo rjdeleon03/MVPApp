@@ -1,14 +1,47 @@
 package com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models;
 
-import com.cpu.quikdata.AppConstants;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
-public class QuestionItemModelSingleNumber extends QuestionItemModel {
+public class QuestionItemModelSingleNumber extends RealmObject implements IQuestionItemModel {
 
+    @Required
+    @PrimaryKey
+    private String id;
+    private String question;
     private int value;
 
-    public QuestionItemModelSingleNumber(String question, int value) {
-        super(question);
+    public QuestionItemModelSingleNumber() {};
+
+    public QuestionItemModelSingleNumber(String id, String question, int value) {
+        this.id = id;
+        this.question = question;
         this.value = value;
+    }
+
+    public QuestionItemModelSingleNumber(String question, int value) {
+        this.id = id;
+        this.question = question;
+        this.value = value;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getQuestion() {
+        return question;
+    }
+
+    @Override
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public int getValue() {
@@ -17,10 +50,5 @@ public class QuestionItemModelSingleNumber extends QuestionItemModel {
 
     public void setValue(int value) {
         this.value = value;
-    }
-
-    @Override
-    public AppConstants.QuestionItemType getType() {
-        return AppConstants.QuestionItemType.SINGLE_NUMBER;
     }
 }

@@ -1,57 +1,71 @@
 package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
 
+import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.IQuestionItemModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class PopulationDataRow extends RealmObject {
+public class PopulationDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
 
     @Required
     @PrimaryKey
     private String id;
 
-    private int affectedMale;
-    private int affectedFemale;
-    private int displacedMale;
-    private int displacedFemale;
+    private String ageGroup;
+
+    private RealmList<QuestionItemModelGenderTuple> genderTupleFields;
+
+    public PopulationDataRow() {
+        setupFields();
+    }
 
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
 
-    public int getAffectedMale() {
-        return affectedMale;
+    public String getAgeGroup() {
+        return ageGroup;
     }
 
-    public void setAffectedMale(int affectedMale) {
-        this.affectedMale = affectedMale;
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
     }
 
-    public int getAffectedFemale() {
-        return affectedFemale;
+    public RealmList<QuestionItemModelGenderTuple> getGenderTupleFields() {
+        return genderTupleFields;
     }
 
-    public void setAffectedFemale(int affectedFemale) {
-        this.affectedFemale = affectedFemale;
+    public void setGenderTupleFields(RealmList<QuestionItemModelGenderTuple> genderTupleFields) {
+        this.genderTupleFields = genderTupleFields;
     }
 
-    public int getDisplacedMale() {
-        return displacedMale;
+    @Override
+    public GenericEnumDataRow.AgeGroup getActualType() {
+        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
     }
 
-    public void setDisplacedMale(int displacedMale) {
-        this.displacedMale = displacedMale;
-    }
+    @Override
+    public void setupFields() {
 
-    public int getDisplacedFemale() {
-        return displacedFemale;
-    }
-
-    public void setDisplacedFemale(int displacedFemale) {
-        this.displacedFemale = displacedFemale;
+        if (genderTupleFields == null) {
+            genderTupleFields = new RealmList<>();
+        }
+        if (genderTupleFields.isEmpty()) {
+            genderTupleFields = new RealmList<>();
+            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "affected", 0, 0));
+            genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "displaced", 0, 0));
+        }
     }
 }

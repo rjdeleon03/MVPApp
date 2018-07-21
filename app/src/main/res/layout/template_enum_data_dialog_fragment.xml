@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -10,18 +8,31 @@
             type="com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel" />
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        app:cardCornerRadius="6dp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/nd_row_layout_grid"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:padding="8dp"
-            app:adapter="@{viewModel.adapter}"/>
+            android:paddingTop="16dp">
 
-    </LinearLayout>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="?dialogPreferredPadding"
+                android:layout_marginStart="?dialogPreferredPadding"
+                android:layout_marginRight="?dialogPreferredPadding"
+                android:layout_marginEnd="?dialogPreferredPadding"
+                android:stretchColumns="2,4"
+                app:questionItems="@{viewModel.questions}">
+
+            </TableLayout>
+
+        </ScrollView>
+
+    </android.support.v7.widget.CardView>
 
 </layout>

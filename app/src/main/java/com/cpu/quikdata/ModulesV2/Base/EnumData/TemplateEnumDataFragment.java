@@ -3,6 +3,8 @@ package com.cpu.quikdata.ModulesV2.Base.EnumData;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ import com.cpu.quikdata.R;
  */
 public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewModel> extends BaseFragment<VM> implements ITemplateEnumDataFragment {
 
-    protected TemplateEnumDataDialogViewModel mDialogViewModel;
+    private TemplateEnumDataDialogFragment mDialogFragment;
 
     public TemplateEnumDataFragment() {
         // Required empty public constructor
@@ -29,6 +31,9 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.template_enum_data_fragment, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.template_enum_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         TemplateEnumDataFragmentBinding binding = TemplateEnumDataFragmentBinding.bind(view);
         binding.setViewModel(mViewModel);
         return view;
@@ -39,14 +44,35 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
      */
     @Override
     public void onAddButtonPressed() {
-        TemplateEnumDataDialogFragment dialogFragment = TemplateEnumDataDialogFragment.newInstance();
-        dialogFragment.setViewModel(setupDialogViewModel());
-        dialogFragment.show(getChildFragmentManager(), "");
+        if (mDialogFragment != null && mDialogFragment.getDialog() != null && mDialogFragment.getDialog().isShowing()) return;
+        mDialogFragment = TemplateEnumDataDialogFragment.newInstance();
+        mDialogFragment.setViewModel(setupDialogViewModel(-1));
+        mDialogFragment.show(getChildFragmentManager(), "");
+    }
+
+    /**
+     * Navigate on card selected event
+     */
+    @Override
+    public void onCardSelected(int index) {
+        if (mDialogFragment != null && mDialogFragment.getDialog() != null && mDialogFragment.getDialog().isShowing()) return;
+        mDialogFragment = TemplateEnumDataDialogFragment.newInstance();
+        mDialogFragment.setViewModel(setupDialogViewModel(index));
+        mDialogFragment.show(getChildFragmentManager(), "");
+    }
+
+    /**
+     * Navigate on delete button pressed event
+     */
+    @Override
+    public void onDeleteCardButtonPressed() {
+        // TODO: Add confirmation dialog
+
     }
 
     /**
      * Sets up the viewModel of the dialog
      * @return
      */
-    protected abstract TemplateEnumDataDialogViewModel setupDialogViewModel();
+    protected abstract TemplateEnumDataDialogViewModel setupDialogViewModel(int index);
 }

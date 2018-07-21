@@ -5,25 +5,20 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.cpu.quikdata.ModulesV2.Base.BaseDialogFragment;
-import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.R;
-import com.cpu.quikdata.databinding.TemplateEnumDataDialogFragmentBinding;
+import com.cpu.quikdata.databinding.TemplateEnumDataDialogBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateEnumDataDialogViewModel> {
-
-    private View mView;
 
 
     public TemplateEnumDataDialogFragment() {
@@ -38,29 +33,25 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
         return new TemplateEnumDataDialogFragment();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.template_enum_data_dialog_fragment, container, false);
-        TemplateEnumDataDialogFragmentBinding binding = TemplateEnumDataDialogFragmentBinding.bind(mView);
-        binding.setViewModel(mViewModel);
-        return mView;
-    }
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View view = inflater.inflate(R.layout.template_enum_data_dialog, null, false);
+        TemplateEnumDataDialogBinding binding = TemplateEnumDataDialogBinding.bind(view);
+        binding.setViewModel(mViewModel);
+
         // Build dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(mView);
+        builder.setView(binding.getRoot());
 
-//        if (mViewModel.type.get() != null) builder.setTitle(mViewModel.type.get().toString());
+        if (mViewModel.getType() != null) builder.setTitle(mViewModel.getType().toString());
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                mViewModel.navigateOnOkButtonPressed();
+                mViewModel.navigateOnOkButtonPressed();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -68,9 +59,17 @@ public class TemplateEnumDataDialogFragment extends BaseDialogFragment<TemplateE
             public void onClick(DialogInterface dialog, int which) { }
         });
 
-        Dialog dialog = builder.create();
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         return dialog;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        super.onDismiss(dialog);
     }
 }

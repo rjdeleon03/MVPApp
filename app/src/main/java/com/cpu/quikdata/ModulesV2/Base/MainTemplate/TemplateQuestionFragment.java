@@ -29,9 +29,6 @@ public abstract class TemplateQuestionFragment extends BaseFragment<TemplateQues
         View view = inflater.inflate(R.layout.template_question_fragment, container, false);
         TemplateQuestionFragmentBinding binding = TemplateQuestionFragmentBinding.bind(view);
         binding.setViewModel(mViewModel);
-
-        RecyclerView recyclerView = view.findViewById(R.id.template_question_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 

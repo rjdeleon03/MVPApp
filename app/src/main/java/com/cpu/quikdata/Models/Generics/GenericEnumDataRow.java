@@ -1,5 +1,7 @@
 package com.cpu.quikdata.Models.Generics;
 
+import android.databinding.ObservableArrayList;
+
 import org.apache.commons.text.WordUtils;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public abstract class GenericEnumDataRow {
         AGE_60_PLUS,
         ALL;
 
-        /*
+        /**
         @Override
         public String toString() {
             String str = "Ages ";
@@ -40,6 +42,17 @@ public abstract class GenericEnumDataRow {
 
         public static List<AgeGroup> asList() {
             List<AgeGroup> list = new ArrayList<>();
+            list.add(AGE_0_5);
+            list.add(AGE_6_9);
+            list.add(AGE_10_12);
+            list.add(AGE_13_17);
+            list.add(AGE_18_59);
+            list.add(AGE_60_PLUS);
+            return list;
+        }
+
+        public static ObservableArrayList<AgeGroup> asObservableList() {
+            ObservableArrayList<AgeGroup> list = new ObservableArrayList<>();
             list.add(AGE_0_5);
             list.add(AGE_6_9);
             list.add(AGE_10_12);
@@ -78,13 +91,36 @@ public abstract class GenericEnumDataRow {
         LIVELIHOOD_FACILITIES,
         OTHERS;
 
+        /**
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
         }
+        */
 
         public static List<InfraType> asList() {
             List<InfraType> list = new ArrayList<>();
+            list.add(SCHOOL);
+            list.add(CHURCH);
+            list.add(COVERED_COURT);
+            list.add(BRGY_HALL);
+            list.add(BRGY_HEALTH_STATION);
+            list.add(EVACUATION_CENTER);
+            list.add(BRIDGES);
+            list.add(ROADS);
+            list.add(MARKET);
+            list.add(ELECTRICITY);
+            list.add(WATER);
+            list.add(HOSPITAL);
+            list.add(SEAPORT_AIRPORT);
+            list.add(COMMUNICATION_LINES);
+            list.add(LIVELIHOOD_FACILITIES);
+            list.add(OTHERS);
+            return list;
+        }
+
+        public static ObservableArrayList<InfraType> asObservableList() {
+            ObservableArrayList<InfraType> list = new ObservableArrayList<>();
             list.add(SCHOOL);
             list.add(CHURCH);
             list.add(COVERED_COURT);

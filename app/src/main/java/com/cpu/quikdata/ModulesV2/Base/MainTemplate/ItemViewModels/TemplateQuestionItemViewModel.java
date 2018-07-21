@@ -2,11 +2,20 @@ package com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels;
 
 import android.databinding.ObservableField;
 
-public abstract class TemplateQuestionItemViewModel {
+import com.cpu.quikdata.AppConstants;
 
+public abstract class TemplateQuestionItemViewModel<M> {
+
+    protected final M mModel;
     public final ObservableField<String> question = new ObservableField<>("");
 
-    public TemplateQuestionItemViewModel(String question) {
-        this.question.set(question);
+    public TemplateQuestionItemViewModel(M model) {
+        this.mModel = model;
     }
+
+    public abstract M getModel();
+
+    public abstract AppConstants.QuestionItemType getType();
+
+    public abstract void updateModel();
 }

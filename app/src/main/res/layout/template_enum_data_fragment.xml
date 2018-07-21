@@ -5,6 +5,7 @@
     tools:context=".ModulesV2.Base.EnumData.TemplateEnumDataFragment">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel" />
@@ -40,7 +41,9 @@
                         android:paddingStart="8dp"
                         android:paddingBottom="80dp"
                         app:reverseLayout="true"
-                        app:stackFromEnd="true" />
+                        app:stackFromEnd="true"
+                        app:rowAdapter="@{viewModel.rowAdapter}"
+                        app:rowItems="@{viewModel.rowList}"/>
 
                 </ScrollView>
 
@@ -71,7 +74,11 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp">
+                    android:layout_marginStart="8dp"
+                    android:visibility="@{viewModel.shouldShowSpinner ? View.VISIBLE : View.GONE}"
+                    android:selectedItemPosition="@={viewModel.spinnerSelectedIndex}"
+                    app:adapter="@{viewModel.spinnerAdapter}"
+                    app:typeItems="@{viewModel.typeList}">
 
                 </android.support.v7.widget.AppCompatSpinner>
 
@@ -87,7 +94,8 @@
                     android:src="@drawable/ic_add"
                     android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
                     app:backgroundTint="@color/colorAccent"
-                    app:elevation="0dp"/>
+                    app:elevation="0dp"
+                    app:enabled="@{viewModel.shouldShowSpinner}"/>
 
                 <!--
                 <android.support.design.widget.FloatingActionButton

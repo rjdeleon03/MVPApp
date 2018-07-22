@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cpu.quikdata">
+          package="com.cpu.quikdata">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -18,13 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Modules.Home.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Modules.Home.HomeActivity" />
         <activity android:name=".Modules.DNCAList.DNCAListActivity" />
         <activity
             android:name=".Modules.NewDnca.NewDncaActivity"
@@ -32,14 +26,24 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".Modules.NewDnca.Evacuation.EvacuationItem.EvacuationItemActivity" />
 
+
+        <!-- New activities -->
         <activity android:name=".ModulesV2.FormList.FormListActivity"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <activity android:name=".ModulesV2.PrefilledData.PrefilledDataActivity"
                   android:screenOrientation="portrait"></activity>
 
         <activity android:name=".ModulesV2.NewForm.NewFormActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+                  android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>

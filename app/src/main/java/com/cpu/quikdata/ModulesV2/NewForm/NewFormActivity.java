@@ -50,7 +50,9 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onBackPressed() {
-        Injection.provideDncaRepository(this).submitForm();
+        if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Injection.provideDncaRepository(this).submitForm();
+        }
         super.onBackPressed();
     }
 

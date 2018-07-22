@@ -32,4 +32,18 @@ public abstract class TemplateQuestionFragment extends BaseFragment<TemplateQues
         return view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // Inform viewModel that view has been paused and
+        // models need to be updated
+        mViewModel.onViewPaused();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
 }

@@ -11,6 +11,7 @@ public class TemplateQuestionItemViewModelString extends TemplateQuestionItemVie
 
     public TemplateQuestionItemViewModelString(QuestionItemModelString model) {
         super(model);
+//        question.set(TextUtils.textMap.get(mModel.getQuestion()));
         question.set(mModel.getQuestion());
         value.set(mModel.getValue());
     }

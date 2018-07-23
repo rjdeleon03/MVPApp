@@ -16,13 +16,19 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderString;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
 import com.cpu.quikdata.databinding.TemplateQuestionBooleanBinding;
-import com.cpu.quikdata.databinding.TemplateQuestionGenderTupleBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyBooleanBinding;
-import com.cpu.quikdata.databinding.TemplateReadonlyGenderTupleBinding;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.TemplateReadonlySingleNumberBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyStringBinding;
@@ -68,24 +74,17 @@ public class BindingUtilsV2 {
             View itemView = null;
 
             if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
-                TemplateQuestionGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_gender_tuple, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateQuestionItemViewHolderGenderTuple(inflater, (TemplateQuestionItemViewModelGenderTuple) questionModel).getView();
                 
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
-                TemplateQuestionStringBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_string, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelString) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateQuestionItemViewHolderString(inflater, (TemplateQuestionItemViewModelString) questionModel).getView();
+
             
             } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
-                TemplateQuestionSingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_single_number, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateQuestionItemViewHolderSingleNumber(inflater, (TemplateQuestionItemViewModelSingleNumber) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
-                TemplateQuestionBooleanBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_boolean, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelBoolean) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateQuestionItemViewHolderBoolean(inflater, (TemplateQuestionItemViewModelBoolean) questionModel).getView();
 
             }
 
@@ -104,24 +103,16 @@ public class BindingUtilsV2 {
             View itemView = null;
 
             if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
-                TemplateReadonlyGenderTupleBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_gender_tuple, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelGenderTuple) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateReadonlyItemViewHolderGenderTuple(inflater, (TemplateQuestionItemViewModelGenderTuple) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
-                TemplateReadonlyStringBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_string, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelString) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateReadonlyItemViewHolderString(inflater, (TemplateQuestionItemViewModelString) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
-                TemplateReadonlySingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_single_number, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelSingleNumber) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateReadonlyItemViewHolderSingleNumber(inflater, (TemplateQuestionItemViewModelSingleNumber) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
-                TemplateReadonlyBooleanBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_readonly_boolean, null, false);
-                binding.setViewModel((TemplateQuestionItemViewModelBoolean) questionModel);
-                itemView = binding.getRoot();
+                itemView = new TemplateReadonlyItemViewHolderBoolean(inflater, (TemplateQuestionItemViewModelBoolean) questionModel).getView();
 
             }
 

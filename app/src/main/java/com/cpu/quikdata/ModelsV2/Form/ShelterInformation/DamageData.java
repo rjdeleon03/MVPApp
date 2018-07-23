@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModelsV2.Form.GeneralInformation;
+package com.cpu.quikdata.ModelsV2.Form.ShelterInformation;
 
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
 
@@ -7,15 +7,15 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class InfrastructureData extends RealmObject implements IEnumDataRowHolder<InfrastructureDataRow> {
+public class DamageData extends RealmObject implements IEnumDataRowHolder<DamageDataRow> {
 
     @Required
     @PrimaryKey
     private String id;
 
-    private RealmList<InfrastructureDataRow> rows;
+    private RealmList<DamageDataRow> rows;
 
-    public InfrastructureData() {
+    public DamageData() {
         if (rows == null) rows = new RealmList<>();
     }
 
@@ -28,12 +28,12 @@ public class InfrastructureData extends RealmObject implements IEnumDataRowHolde
     }
 
     @Override
-    public RealmList<InfrastructureDataRow> getRows() {
+    public RealmList<DamageDataRow> getRows() {
         return rows;
     }
 
     @Override
-    public void setRows(RealmList<InfrastructureDataRow> rows) {
+    public void setRows(RealmList<DamageDataRow> rows) {
         this.rows = rows;
     }
 }

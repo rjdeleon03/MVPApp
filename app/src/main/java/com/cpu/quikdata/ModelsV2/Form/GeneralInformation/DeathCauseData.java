@@ -15,6 +15,10 @@ public class DeathCauseData extends RealmObject implements IEnumDataRowHolder<De
 
     private RealmList<DeathCauseDataRow> rows;
 
+    public DeathCauseData() {
+        if (rows == null) rows = new RealmList<>();
+    }
+
     public String getId() {
         return id;
     }

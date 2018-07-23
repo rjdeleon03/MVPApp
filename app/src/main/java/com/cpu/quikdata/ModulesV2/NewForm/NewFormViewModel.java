@@ -48,4 +48,13 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
             mViewComponent.get().onGenInfoButtonPressed();
         }
     }
+
+    /**
+     * Handles navigation when shelter information button is pressed
+     */
+    public void navigateOnShelterInfoButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onGenInfoButtonPressed();
+        }
+    }
 }

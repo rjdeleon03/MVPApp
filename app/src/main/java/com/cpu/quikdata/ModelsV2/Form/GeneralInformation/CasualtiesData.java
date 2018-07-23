@@ -16,7 +16,7 @@ public class CasualtiesData extends RealmObject implements IEnumDataRowHolder<Ca
     private RealmList<CasualtiesDataRow> rows;
 
     public CasualtiesData() {
-        rows = new RealmList<>();
+        if (rows == null) rows = new RealmList<>();
     }
 
     public String getId() {

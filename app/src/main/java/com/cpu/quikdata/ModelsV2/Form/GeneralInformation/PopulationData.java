@@ -16,7 +16,7 @@ public class PopulationData extends RealmObject implements IEnumDataRowHolder<Po
     private RealmList<PopulationDataRow> rows;
 
     public PopulationData() {
-        rows = new RealmList<>();
+        if (rows == null) rows = new RealmList<>();
     }
 
     public String getId() {

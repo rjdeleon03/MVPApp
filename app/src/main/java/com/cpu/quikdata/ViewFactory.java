@@ -79,7 +79,6 @@ import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingD
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashAssistanceData.WashAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsFragment;
@@ -120,6 +119,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDa
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataFragment;
@@ -215,8 +216,11 @@ public class ViewFactory {
                 case SHELTER_INFO_COPING:
                     fragment = ShelterCopingDetailsFragment.newInstance();
                     break;
-                case SHELTER_NEEDS:
+                case SHELTER_INFO_NEEDS:
                     fragment = ShelterNeedsDataFragment.newInstance();
+                    break;
+                case SHELTER_INFO_GAPS:
+                    fragment = ShelterGapsDetailsFragment.newInstance();
                     break;
             }
 
@@ -325,10 +329,16 @@ public class ViewFactory {
                     baseViewModel = shelterCopingDetailsViewModel;
                     break;
 
-                case SHELTER_NEEDS:
+                case SHELTER_INFO_NEEDS:
                     ShelterNeedsDataViewModel shelterNeedsDataViewModel = new ShelterNeedsDataViewModel(Injection.provideDncaRepository(context), context);
                     shelterNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = shelterNeedsDataViewModel;
+                    break;
+
+                case SHELTER_INFO_GAPS:
+                    ShelterGapsDetailsViewModel shelterGapsDetailsViewModel = new ShelterGapsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    shelterGapsDetailsViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = shelterGapsDetailsViewModel;
                     break;
                     
             }
@@ -365,7 +375,7 @@ public class ViewFactory {
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-//                    selectedFragment = ShelterCopingDetailsFragment.newInstance();
+//                    selectedFragment = ShelterGapsDetailsFragment.newInstance();
                     break;
                 case GEN_INFO_POPULATION:
 //                    selectedFragment = DeathCauseDataFragment.newInstance();
@@ -549,7 +559,7 @@ public class ViewFactory {
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-//                    viewModel = new ShelterCopingDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
+//                    viewModel = new ShelterGapsDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_POPULATION:
 //                    viewModel = new DeathCauseDataViewModel((GenInfoRepositoryManager)repositoryManager);

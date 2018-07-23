@@ -9,6 +9,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDa
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
 import com.cpu.quikdata.ViewFactory;
@@ -59,12 +61,21 @@ public class ShelterInformationFragment extends TemplateMultiPageFragment<Shelte
         {
             // Setup shelter needs data fragment
             ShelterNeedsDataFragment shelterNeedsDataFragment =
-                    (ShelterNeedsDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_NEEDS);
+                    (ShelterNeedsDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_NEEDS);
             ShelterNeedsDataViewModel shelterNeedsDataViewModel =
-                    (ShelterNeedsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_NEEDS, null, getContext());
+                    (ShelterNeedsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_NEEDS, null, getContext());
             shelterNeedsDataViewModel.setViewComponent(shelterNeedsDataFragment);
             shelterNeedsDataFragment.setViewModel(shelterNeedsDataViewModel);
             mAdapter.addFragment(shelterNeedsDataFragment);
+        }
+
+        {
+            // Setup shelter gaps details fragment
+            ShelterGapsDetailsFragment shelterGapsDetailsFragment =
+                    (ShelterGapsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_GAPS);
+            shelterGapsDetailsFragment.setViewModel(
+                    (ShelterGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_GAPS, null, getContext()));
+            mAdapter.addFragment(shelterGapsDetailsFragment);
         }
     }
 }

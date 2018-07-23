@@ -9,7 +9,7 @@ public class ShelterNeedsDataFragment extends TemplateEnumDataFragment<ShelterNe
 
     public ShelterNeedsDataFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.SHELTER_NEEDS.toString();
+        mTag = NewFormActivity.NewFormComponent.SHELTER_INFO_NEEDS.toString();
     }
 
     /**

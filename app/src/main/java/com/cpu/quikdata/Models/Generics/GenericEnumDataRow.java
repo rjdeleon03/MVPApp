@@ -172,6 +172,14 @@ public abstract class GenericEnumDataRow {
             return list;
         }
 
+        public static ObservableArrayList<HouseType> asObservableList() {
+            ObservableArrayList<HouseType> list = new ObservableArrayList<>();
+            list.add(CONCRETE);
+            list.add(SEMI_CONCRETE);
+            list.add(LIGHT_MATERIALS);
+            return list;
+        }
+
         @Override
         public Object getValue() {
             return this;

@@ -118,6 +118,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
@@ -204,6 +206,9 @@ public class ViewFactory {
                     break;
                 case SHELTER_INFO:
                     fragment = ShelterInformationFragment.newInstance();
+                    break;
+                case SHELTER_INFO_DAMAGE:
+                    fragment = DamageDataFragment.newInstance();
                     break;
             }
 
@@ -298,6 +303,12 @@ public class ViewFactory {
                     ShelterInformationViewModel shelterInformationViewModel = new ShelterInformationViewModel(Injection.provideDncaRepository(context));
                     shelterInformationViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = shelterInformationViewModel;
+                    break;
+
+                case SHELTER_INFO_DAMAGE:
+                    DamageDataViewModel damageDataViewModel = new DamageDataViewModel(Injection.provideDncaRepository(context), context);
+                    damageDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = damageDataViewModel;
                     break;
             }
 

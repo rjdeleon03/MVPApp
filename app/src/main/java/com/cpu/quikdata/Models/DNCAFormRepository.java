@@ -16,6 +16,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.InfrastructureData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
+import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.DamageData;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
@@ -230,29 +231,39 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
                 form.setFormDetails(formDetails);
 
-                GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
-                CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
-                generalInformation.setCalamityDetails(calamityDetails);
+                {
+                    GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
+                    CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
+                    generalInformation.setCalamityDetails(calamityDetails);
 
-                PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());
-                generalInformation.setPopulationData(populationData);
+                    PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());
+                    generalInformation.setPopulationData(populationData);
 
-                FamilyDetails familyDetails = realm.createObject(FamilyDetails.class, AppUtil.generateId());
-                generalInformation.setFamilyDetails(familyDetails);
+                    FamilyDetails familyDetails = realm.createObject(FamilyDetails.class, AppUtil.generateId());
+                    generalInformation.setFamilyDetails(familyDetails);
 
-                VulnerableData vulnerableData = realm.createObject(VulnerableData.class, AppUtil.generateId());
-                generalInformation.setVulnerableData(vulnerableData);
+                    VulnerableData vulnerableData = realm.createObject(VulnerableData.class, AppUtil.generateId());
+                    generalInformation.setVulnerableData(vulnerableData);
 
-                CasualtiesData casualtiesData = realm.createObject(CasualtiesData.class, AppUtil.generateId());
-                generalInformation.setCasualtiesData(casualtiesData);
+                    CasualtiesData casualtiesData = realm.createObject(CasualtiesData.class, AppUtil.generateId());
+                    generalInformation.setCasualtiesData(casualtiesData);
 
-                DeathCauseData deathCauseData = realm.createObject(DeathCauseData.class, AppUtil.generateId());
-                generalInformation.setDeathCauseData(deathCauseData);
+                    DeathCauseData deathCauseData = realm.createObject(DeathCauseData.class, AppUtil.generateId());
+                    generalInformation.setDeathCauseData(deathCauseData);
 
-                InfrastructureData infrastructureData = realm.createObject(InfrastructureData.class, AppUtil.generateId());
-                generalInformation.setInfrastructureData(infrastructureData);
+                    InfrastructureData infrastructureData = realm.createObject(InfrastructureData.class, AppUtil.generateId());
+                    generalInformation.setInfrastructureData(infrastructureData);
 
-                form.setGeneralInformation(generalInformation);
+                    form.setGeneralInformation(generalInformation);
+                }
+
+                {
+                    ShelterInformation shelterInformation = realm.createObject(ShelterInformation.class, AppUtil.generateId());
+                    DamageData damageData = realm.createObject(DamageData.class, AppUtil.generateId());
+                    shelterInformation.setDamageData(damageData);
+
+                    form.setShelterInformation(shelterInformation);
+                }
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
             }

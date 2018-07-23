@@ -13,10 +13,12 @@ import android.widget.TableLayout;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
@@ -85,6 +87,9 @@ public class BindingUtilsV2 {
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
                 itemView = new TemplateQuestionItemViewHolderBoolean(inflater, (TemplateQuestionItemViewModelBoolean) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelDate) {
+                itemView = new TemplateQuestionItemViewHolderDate(inflater, (TemplateQuestionItemViewModelDate) questionModel).getView();
 
             }
 

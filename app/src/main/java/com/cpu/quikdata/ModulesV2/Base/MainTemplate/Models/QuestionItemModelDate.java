@@ -16,7 +16,12 @@ public class QuestionItemModelDate extends RealmObject implements IQuestionItemM
     private int month = Calendar.getInstance().get(Calendar.MONTH);
     private int dayOfMonth = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
-    public QuestionItemModelDate() {};
+    public QuestionItemModelDate() {}
+
+    public QuestionItemModelDate(String id, String question) {
+        this.id = id;
+        this.question = question;
+    }
 
     public QuestionItemModelDate(String id, String question, int year, int month, int dayOfMonth) {
         this.id = id;

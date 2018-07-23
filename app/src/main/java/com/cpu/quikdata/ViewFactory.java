@@ -120,6 +120,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
@@ -209,6 +211,9 @@ public class ViewFactory {
                     break;
                 case SHELTER_INFO_DAMAGE:
                     fragment = DamageDataFragment.newInstance();
+                    break;
+                case SHELTER_INFO_COPING:
+                    fragment = ShelterCopingDetailsFragment.newInstance();
                     break;
             }
 
@@ -310,6 +315,13 @@ public class ViewFactory {
                     damageDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = damageDataViewModel;
                     break;
+                    
+                case SHELTER_INFO_COPING:
+                    ShelterCopingDetailsViewModel shelterCopingDetailsViewModel = new ShelterCopingDetailsViewModel(Injection.provideDncaRepository(context));
+                    shelterCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = shelterCopingDetailsViewModel;
+                    break;
+                    
             }
 
             // Bind viewModel to activity
@@ -344,7 +356,7 @@ public class ViewFactory {
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-//                    selectedFragment = CalamityDetailsFragment.newInstance();
+//                    selectedFragment = ShelterCopingDetailsFragment.newInstance();
                     break;
                 case GEN_INFO_POPULATION:
 //                    selectedFragment = DeathCauseDataFragment.newInstance();
@@ -528,7 +540,7 @@ public class ViewFactory {
 
                 // General Information
                 case GEN_INFO_CALAMITY:
-//                    viewModel = new CalamityDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
+//                    viewModel = new ShelterCopingDetailsViewModel((GenInfoRepositoryManager)repositoryManager);
                     break;
                 case GEN_INFO_POPULATION:
 //                    viewModel = new DeathCauseDataViewModel((GenInfoRepositoryManager)repositoryManager);

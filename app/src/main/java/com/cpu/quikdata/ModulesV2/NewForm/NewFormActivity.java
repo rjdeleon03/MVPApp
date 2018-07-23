@@ -30,6 +30,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
         SHELTER_INFO,
         SHELTER_INFO_DAMAGE,
+        SHELTER_INFO_COPING,
 
         FOOD_SECURITY,
         LIVELIHOODS,

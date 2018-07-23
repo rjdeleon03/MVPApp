@@ -38,7 +38,7 @@ public class DamageDataViewModel
     }
 
     /**
-     * Handles processing of received general information data
+     * Handles processing of received shelter information data
      * @param data
      */
     @Override

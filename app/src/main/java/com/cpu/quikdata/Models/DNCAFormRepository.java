@@ -16,6 +16,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.InfrastructureData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
+import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
@@ -268,6 +269,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getGeneralInformation(final IBaseDataManager<GeneralInformation> callback) {
         callback.onDataReceived(mForm.getGeneralInformation());
+    }
+
+    public void getShelterInformation(final IBaseDataManager<ShelterInformation> callback) {
+        callback.onDataReceived(mForm.getShelterInformation());
     }
 
     public void submitForm() {

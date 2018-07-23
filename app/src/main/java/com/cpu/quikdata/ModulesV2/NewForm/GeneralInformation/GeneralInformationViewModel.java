@@ -10,6 +10,11 @@ public class GeneralInformationViewModel extends TemplateMultiPageViewModel<INew
 
     private GeneralInformation mGeneralInformation;
 
+    /**
+     * Constructor
+     *
+     * @param dncaFormRepository
+     */
     public GeneralInformationViewModel(DNCAFormRepository dncaFormRepository)
     {
         super(dncaFormRepository);

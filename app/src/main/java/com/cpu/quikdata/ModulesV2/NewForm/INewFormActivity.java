@@ -7,4 +7,6 @@ public interface INewFormActivity extends IBaseInterface {
     void onFormDetailsButtonPressed();
 
     void onGenInfoButtonPressed();
+
+    void onShelterInfoButtonPressed();
 }

@@ -8,6 +8,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewFactory;
 
@@ -27,6 +29,8 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         GEN_INFO_INFRASTRUCTURE,
 
         SHELTER_INFO,
+        SHELTER_INFO_DAMAGE,
+
         FOOD_SECURITY,
         LIVELIHOODS,
         HEALTH,
@@ -68,5 +72,12 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         GeneralInformationFragment generalInformationFragment = (GeneralInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.GEN_INFO, FRAGMENT_CONTAINER);
         final GeneralInformationViewModel generalInformationViewModel = (GeneralInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.GEN_INFO, this, this);
         generalInformationFragment.setViewModel(generalInformationViewModel);
+    }
+
+    @Override
+    public void onShelterInfoButtonPressed() {
+        ShelterInformationFragment shelterInformationFragment = (ShelterInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.SHELTER_INFO, FRAGMENT_CONTAINER);
+        final ShelterInformationViewModel shelterInformationViewModel = (ShelterInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.SHELTER_INFO, this, this);
+        shelterInformationFragment.setViewModel(shelterInformationViewModel);
     }
 }

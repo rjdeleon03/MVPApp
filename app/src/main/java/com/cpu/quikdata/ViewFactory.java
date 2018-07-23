@@ -79,6 +79,7 @@ import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingD
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataViewModel;
+import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoRepositoryManager;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsViewModel;
@@ -117,6 +118,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
@@ -198,6 +201,9 @@ public class ViewFactory {
                     break;
                 case GEN_INFO_INFRASTRUCTURE:
                     fragment = InfrastructureDataFragment.newInstance();
+                    break;
+                case SHELTER_INFO:
+                    fragment = ShelterInformationFragment.newInstance();
                     break;
             }
 
@@ -288,6 +294,11 @@ public class ViewFactory {
                     baseViewModel = infrastructureDataViewModel;
                     break;
 
+                case SHELTER_INFO:
+                    ShelterInformationViewModel shelterInformationViewModel = new ShelterInformationViewModel(Injection.provideDncaRepository(context));
+                    shelterInformationViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = shelterInformationViewModel;
+                    break;
             }
 
             // Bind viewModel to activity

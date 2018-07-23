@@ -29,7 +29,15 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
     }
 
     /**
-     * Sets up the custom view for whichever fragment extends this class
+     * Gets new instance
+     * @return
+     */
+    public static GeneralInformationFragment newInstance() {
+        return new GeneralInformationFragment();
+    }
+
+    /**
+     * Sets up the custom view
      * @param view
      */
     @Override
@@ -103,13 +111,5 @@ public class GeneralInformationFragment extends TemplateMultiPageFragment<Genera
             infrastructureDataFragment.setViewModel(infrastructureDataViewModel);
             mAdapter.addFragment(infrastructureDataFragment);
         }
-    }
-
-    /**
-     * Gets new instance
-     * @return
-     */
-    public static GeneralInformationFragment newInstance() {
-        return new GeneralInformationFragment();
     }
 }

@@ -201,13 +201,28 @@ public abstract class GenericEnumDataRow {
         WATER_FILTER,
         OTHERS;
 
+        /*
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
         }
+        */
 
         public static List<NeedsType> asList() {
             List<NeedsType> list = new ArrayList<>();
+            list.add(KITCHEN_MATERIALS);
+            list.add(SLEEPING_KITS);
+            list.add(PLASTIC_SHEETS);
+            list.add(HYGIENE_KITS);
+            list.add(HOUSE_REPAIR_KITS);
+            list.add(CLOTHES);
+            list.add(WATER_FILTER);
+            list.add(OTHERS);
+            return list;
+        }
+
+        public static ObservableArrayList<NeedsType> asObservableList() {
+            ObservableArrayList<NeedsType> list = new ObservableArrayList<>();
             list.add(KITCHEN_MATERIALS);
             list.add(SLEEPING_KITS);
             list.add(PLASTIC_SHEETS);

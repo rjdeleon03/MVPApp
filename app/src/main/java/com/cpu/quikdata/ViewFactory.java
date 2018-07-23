@@ -81,8 +81,6 @@ import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataF
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoRepositoryManager;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsFragment;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterNeedsData.ShelterNeedsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashAssistanceData.WashAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel;
@@ -124,6 +122,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetail
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
@@ -214,6 +214,9 @@ public class ViewFactory {
                     break;
                 case SHELTER_INFO_COPING:
                     fragment = ShelterCopingDetailsFragment.newInstance();
+                    break;
+                case SHELTER_NEEDS:
+                    fragment = ShelterNeedsDataFragment.newInstance();
                     break;
             }
 
@@ -318,8 +321,14 @@ public class ViewFactory {
                     
                 case SHELTER_INFO_COPING:
                     ShelterCopingDetailsViewModel shelterCopingDetailsViewModel = new ShelterCopingDetailsViewModel(Injection.provideDncaRepository(context));
-                    shelterCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+//                    shelterCopingDetailsViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = shelterCopingDetailsViewModel;
+                    break;
+
+                case SHELTER_NEEDS:
+                    ShelterNeedsDataViewModel shelterNeedsDataViewModel = new ShelterNeedsDataViewModel(Injection.provideDncaRepository(context), context);
+                    shelterNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = shelterNeedsDataViewModel;
                     break;
                     
             }
@@ -382,7 +391,7 @@ public class ViewFactory {
                     selectedFragment = HouseDamageFragment.newInstance();
                     break;
                 case SHELTER_NEEDS:
-                    selectedFragment = ShelterNeedsFragment.newInstance();
+//                    selectedFragment = ShelterNeedsFragment.newInstance();
                     break;
                 case SHELTER_COPING:
                     selectedFragment = ShelterCopingDataFragment.newInstance();
@@ -566,7 +575,7 @@ public class ViewFactory {
                     viewModel = new HouseDamageViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_NEEDS:
-                    viewModel = new ShelterNeedsViewModel((ShelterInfoRepositoryManager)repositoryManager);
+//                    viewModel = new ShelterNeedsViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_COPING:
                     viewModel = new ShelterCopingDataViewModel((ShelterInfoRepositoryManager)repositoryManager);

@@ -19,6 +19,7 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.DamageData;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
+import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterNeedsData;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
@@ -265,6 +266,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     ShelterCopingDetails shelterCopingDetails = realm.createObject(ShelterCopingDetails.class, AppUtil.generateId());
                     shelterInformation.setShelterCopingDetails(shelterCopingDetails);
+                    
+                    ShelterNeedsData shelterNeedsData = realm.createObject(ShelterNeedsData.class, AppUtil.generateId());
+                    shelterInformation.setShelterNeedsData(shelterNeedsData);
 
                     form.setShelterInformation(shelterInformation);
                 }

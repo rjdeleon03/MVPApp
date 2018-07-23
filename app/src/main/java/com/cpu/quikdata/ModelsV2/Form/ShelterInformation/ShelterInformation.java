@@ -12,6 +12,7 @@ public class ShelterInformation extends RealmObject {
 
     private DamageData damageData;
     private ShelterCopingDetails shelterCopingDetails;
+    private ShelterNeedsData shelterNeedsData;
 
     public String getId() {
         return id;
@@ -35,5 +36,13 @@ public class ShelterInformation extends RealmObject {
 
     public void setShelterCopingDetails(ShelterCopingDetails shelterCopingDetails) {
         this.shelterCopingDetails = shelterCopingDetails;
+    }
+
+    public ShelterNeedsData getShelterNeedsData() {
+        return shelterNeedsData;
+    }
+
+    public void setShelterNeedsData(ShelterNeedsData shelterNeedsData) {
+        this.shelterNeedsData = shelterNeedsData;
     }
 }

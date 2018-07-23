@@ -15,7 +15,8 @@ public class AppConstants {
         GENDER_TUPLE,
         SINGLE_NUMBER,
         STRING,
-        BOOLEAN
+        BOOLEAN,
+        DATE
     }
 
     public enum NewDncaComponent {

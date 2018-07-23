@@ -36,9 +36,35 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         SHELTER_INFO_GAPS,
 
         FOOD_SECURITY,
+        FOOD_SECURITY_IMPACT,
+        FOOD_SECURITY_COPING,
+        FOOD_SECURITY_NEEDS,
+        FOOD_SECURITY_ASSISTANCE,
+        FOOD_SECURITY_GAPS,
+
         LIVELIHOODS,
+        LIVELIHOODS_BEFORE,
+        LIVELIHOODS_AFTER,
+        LIVELIHOODS_DAMAGE,
+        LIVELIHOODS_COPING,
+        LIVELIHOODS_NEEDS,
+        LIVELIHOODS_ASSISTANCE,
+        LIVELIHOODS_GAPS,
+
         HEALTH,
+        HEALTH_INJURIES,
+        HEALTH_SPECIAL_NEEDS,
+        HEALTH_PSYCHOSOCIAL,
+        HEALTH_COPING,
+        HEALTH_ASSISTANCE,
+        HEALTH_GAPS,
+
         WASH,
+        WASH_CONDITIONS,
+        WASH_COPING,
+        WASH_ASSISTANCE,
+        WASH_GAPS,
+
         EVACUATION,
         EVACUATION_ITEM,
         CASE_STORIES

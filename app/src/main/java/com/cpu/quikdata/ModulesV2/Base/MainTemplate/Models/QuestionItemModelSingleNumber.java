@@ -12,7 +12,7 @@ public class QuestionItemModelSingleNumber extends RealmObject implements IQuest
     private String question;
     private int value;
 
-    public QuestionItemModelSingleNumber() {};
+    public QuestionItemModelSingleNumber() {}
 
     public QuestionItemModelSingleNumber(String id, String question, int value) {
         this.id = id;
@@ -21,7 +21,6 @@ public class QuestionItemModelSingleNumber extends RealmObject implements IQuest
     }
 
     public QuestionItemModelSingleNumber(String question, int value) {
-        this.id = id;
         this.question = question;
         this.value = value;
     }

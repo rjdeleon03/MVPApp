@@ -12,7 +12,7 @@ public class QuestionItemModelBoolean extends RealmObject implements IQuestionIt
     private String question;
     private boolean value;
 
-    public QuestionItemModelBoolean() {};
+    public QuestionItemModelBoolean() {}
 
     public QuestionItemModelBoolean(String id, String question, boolean value) {
         this.id = id;
@@ -21,7 +21,6 @@ public class QuestionItemModelBoolean extends RealmObject implements IQuestionIt
     }
 
     public QuestionItemModelBoolean(String question, boolean value) {
-        this.id = id;
         this.question = question;
         this.value = value;
     }

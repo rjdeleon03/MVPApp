@@ -13,7 +13,7 @@ public class QuestionItemModelGenderTuple extends RealmObject implements IQuesti
     private int male;
     private int female;
 
-    public QuestionItemModelGenderTuple() {};
+    public QuestionItemModelGenderTuple() {}
 
     public QuestionItemModelGenderTuple(String id, String question, int male, int female) {
         this.id = id;

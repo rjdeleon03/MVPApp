@@ -16,7 +16,9 @@ public class AppConstants {
         SINGLE_NUMBER,
         STRING,
         BOOLEAN,
-        DATE
+        DATE,
+        BOOLEAN_STRING,
+        DOUBLE_STRING
     }
 
     public enum NewDncaComponent {

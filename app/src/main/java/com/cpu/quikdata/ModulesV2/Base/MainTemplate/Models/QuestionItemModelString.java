@@ -12,7 +12,7 @@ public class QuestionItemModelString extends RealmObject implements IQuestionIte
     private String question;
     private String value;
 
-    public QuestionItemModelString() {};
+    public QuestionItemModelString() {}
 
     public QuestionItemModelString(String id, String question, String value) {
         this.id = id;

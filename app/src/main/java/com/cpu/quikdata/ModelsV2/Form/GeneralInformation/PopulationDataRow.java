@@ -63,7 +63,6 @@ public class PopulationDataRow extends RealmObject implements IEnumDataRow<Gener
             genderTupleFields = new RealmList<>();
         }
         if (genderTupleFields.isEmpty()) {
-            genderTupleFields = new RealmList<>();
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "affected", 0, 0));
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "displaced", 0, 0));
         }

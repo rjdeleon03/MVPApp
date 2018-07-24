@@ -1,4 +1,39 @@
 package com.cpu.quikdata.ModelsV2.Form.HealthInformation;
 
-public class SpecialNeedsData {
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
+
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
+
+public class SpecialNeedsData extends RealmObject implements IEnumDataRowHolder<SpecialNeedsDataRow> {
+
+    @Required
+    @PrimaryKey
+    private String id;
+
+    private RealmList<SpecialNeedsDataRow> rows;
+
+    public SpecialNeedsData() {
+        if (rows == null) rows = new RealmList<>();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public RealmList<SpecialNeedsDataRow> getRows() {
+        return rows;
+    }
+
+    @Override
+    public void setRows(RealmList<SpecialNeedsDataRow> rows) {
+        this.rows = rows;
+    }
 }

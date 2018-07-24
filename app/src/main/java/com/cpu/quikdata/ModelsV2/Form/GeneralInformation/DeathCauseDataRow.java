@@ -62,7 +62,6 @@ public class DeathCauseDataRow extends RealmObject implements IEnumDataRow<Gener
             genderTupleFields = new RealmList<>();
         }
         if (genderTupleFields.isEmpty()) {
-            genderTupleFields = new RealmList<>();
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "measles", 0, 0));
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "diarrhea", 0, 0));
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "pneumonia", 0, 0));

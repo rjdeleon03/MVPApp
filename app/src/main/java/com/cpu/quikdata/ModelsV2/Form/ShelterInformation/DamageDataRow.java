@@ -61,7 +61,6 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
             numberFields = new RealmList<>();
         }
         if (numberFields.isEmpty()) {
-            numberFields = new RealmList<>();
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "ownedHouse", 0));
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "rentedHouse", 0));
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "sharedHouse", 0));

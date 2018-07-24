@@ -69,7 +69,6 @@ public class ShelterNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
             stringFields = new RealmList<>();
         }
         if (stringFields.isEmpty()) {
-            stringFields = new RealmList<>();
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "specificItems", ""));
         }
 
@@ -77,7 +76,6 @@ public class ShelterNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
             numberFields = new RealmList<>();
         }
         if (numberFields.isEmpty()) {
-            numberFields = new RealmList<>();
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "familyCount", 0));
         }
     }

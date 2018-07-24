@@ -316,13 +316,27 @@ public abstract class GenericEnumDataRow {
         INFANTS,
         OTHERS;
 
+        /**
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
-        }
+        }*/
 
         public static List<SpecialNeedsType> asList() {
             List<SpecialNeedsType> list = new ArrayList<>();
+            list.add(PREGNANT_WOMEN);
+            list.add(LACTATING_MOTHERS);
+            list.add(PHYSICALLY_CHALLENGED);
+            list.add(MENTALLY_CHALLENGED);
+            list.add(CHILDREN);
+            list.add(SENIOR_CITIZENS);
+            list.add(INFANTS);
+            list.add(OTHERS);
+            return list;
+        }
+
+        public static ObservableArrayList<SpecialNeedsType> asObservableList() {
+            ObservableArrayList<SpecialNeedsType> list = new ObservableArrayList<>();
             list.add(PREGNANT_WOMEN);
             list.add(LACTATING_MOTHERS);
             list.add(PHYSICALLY_CHALLENGED);

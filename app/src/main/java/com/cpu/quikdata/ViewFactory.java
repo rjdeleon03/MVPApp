@@ -122,6 +122,12 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.Popu
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.PopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsViewModel;
@@ -267,6 +273,15 @@ public class ViewFactory {
                     break;
                 case LIVELIHOODS_GAPS:
                     fragment = LivelihoodsGapsDetailsFragment.newInstance();
+                    break;
+                case HEALTH:
+                    fragment = HealthInformationFragment.newInstance();
+                    break;
+                case HEALTH_DISEASES:
+                    fragment = DiseasesDataFragment.newInstance();
+                    break;
+                case HEALTH_SPECIAL_NEEDS:
+                    fragment = SpecialNeedsDataFragment.newInstance();
                     break;
             }
 
@@ -439,6 +454,24 @@ public class ViewFactory {
                     LivelihoodsGapsDetailsViewModel livelihoodsGapsDetailsViewModel = new LivelihoodsGapsDetailsViewModel(Injection.provideDncaRepository(context));
 //                    livelihoodsGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = livelihoodsGapsDetailsViewModel;
+                    break;
+
+                case HEALTH:
+                    HealthInformationViewModel healthInformationViewModel = new HealthInformationViewModel(Injection.provideDncaRepository(context));
+                    healthInformationViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = healthInformationViewModel;
+                    break;
+                    
+                case HEALTH_DISEASES:
+                    DiseasesDataViewModel diseasesDataViewModel = new DiseasesDataViewModel(Injection.provideDncaRepository(context), context);
+                    diseasesDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = diseasesDataViewModel;
+                    break;
+
+                case HEALTH_SPECIAL_NEEDS:
+                    SpecialNeedsDataViewModel specialNeedsDataViewModel = new SpecialNeedsDataViewModel(Injection.provideDncaRepository(context), context);
+                    specialNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = specialNeedsDataViewModel;
                     break;
                     
             }

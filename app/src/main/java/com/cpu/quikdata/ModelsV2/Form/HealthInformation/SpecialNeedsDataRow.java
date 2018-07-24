@@ -3,7 +3,6 @@ package com.cpu.quikdata.ModelsV2.Form.HealthInformation;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
@@ -18,7 +17,7 @@ public class SpecialNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
     @PrimaryKey
     private String id;
 
-    private String ageGroup;
+    private String specialNeedsType;
 
     private RealmList<QuestionItemModelSingleNumber> numberFields;
     private RealmList<QuestionItemModelString> stringFields;
@@ -36,12 +35,12 @@ public class SpecialNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
         this.id = id;
     }
 
-    public String getAgeGroup() {
-        return ageGroup;
+    public String getSpecialNeedsType() {
+        return specialNeedsType;
     }
 
-    public void setAgeGroup(String ageGroup) {
-        this.ageGroup = ageGroup;
+    public void setSpecialNeedsType(String specialNeedsType) {
+        this.specialNeedsType = specialNeedsType;
     }
 
     public RealmList<QuestionItemModelSingleNumber> getNumberFields() {
@@ -62,7 +61,7 @@ public class SpecialNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
 
     @Override
     public GenericEnumDataRow.SpecialNeedsType getActualType() {
-        return null;
+        return GenericEnumDataRow.SpecialNeedsType.valueOf(specialNeedsType);
     }
 
     @Override

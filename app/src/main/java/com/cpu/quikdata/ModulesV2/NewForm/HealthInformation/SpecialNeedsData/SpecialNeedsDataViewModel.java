@@ -1,0 +1,105 @@
+package com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData;
+
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
+import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Form.HealthInformation.SpecialNeedsData;
+import com.cpu.quikdata.ModelsV2.Form.HealthInformation.SpecialNeedsDataRow;
+import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
+
+import java.util.List;
+
+import io.realm.Realm;
+
+public class SpecialNeedsDataViewModel
+        extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, HealthInformation, GenericEnumDataRow.SpecialNeedsType, SpecialNeedsDataRow, SpecialNeedsData> {
+
+    /**
+     * Constructor
+     *
+     * @param dncaFormRepository
+     */
+    public SpecialNeedsDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+        super(dncaFormRepository);
+        mTypeList = GenericEnumDataRow.SpecialNeedsType.asObservableList();
+        mFormRepository.getHealthInformation(this);
+        mSpinnerAdapter = new ArrayAdapter<>(
+                context,
+                android.R.layout.simple_spinner_dropdown_item,
+                mTypeList);
+    }
+
+    /**
+     * Handles processing of received health information data
+     * @param data
+     */
+    @Override
+    protected void processReceivedData(HealthInformation data) {
+        mRowHolder = data.getSpecialNeedsData();
+    }
+
+    /**
+     * Sets up the adapter
+     */
+    @Override
+    public void setupAdapter() {
+        mRowAdapter = new SpecialNeedsDataRowAdapter(mViewComponent.get(),this);
+    }
+
+    /**
+     * Deletes the specified row from the database with the given realm instance
+     * @param row
+     * @param realm
+     */
+    @Override
+    protected void deleteRowFromDb(SpecialNeedsDataRow row, Realm realm) {
+        SpecialNeedsDataRow rowToDelete = realm.where(SpecialNeedsDataRow.class).equalTo("id", row.getId()).findFirst();
+        try {
+            rowToDelete.getNumberFields().deleteAllFromRealm();
+            rowToDelete.getStringFields().deleteAllFromRealm();
+            rowToDelete.deleteFromRealm();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Gets a new row
+     * @param callback
+     */
+    @Override
+    public void getNewRow(IBaseDataManager<SpecialNeedsDataRow> callback) {
+        SpecialNeedsDataRow row = new SpecialNeedsDataRow();
+        row.setSpecialNeedsType(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        callback.onDataReceived(row);
+    }
+
+    /**
+     * Gets question based on the selected row
+     * @param questionList
+     * @param row
+     */
+    @Override
+    public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, SpecialNeedsDataRow row) {
+        if (questionList == null) return;
+
+        for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
+            questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
+        }
+        for(QuestionItemModelString model : row.getStringFields()) {
+            questionList.add(new TemplateQuestionItemViewModelString(model));
+        }
+    }
+}

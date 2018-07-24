@@ -10,6 +10,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
@@ -56,7 +58,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         LIVELIHOODS_GAPS,
 
         HEALTH,
-        HEALTH_INJURIES,
+        HEALTH_DISEASES,
         HEALTH_SPECIAL_NEEDS,
         HEALTH_PSYCHOSOCIAL,
         HEALTH_COPING,
@@ -131,7 +133,9 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onHealthInfoButtonPressed() {
-
+        HealthInformationFragment livelihoodsInformationFragment = (HealthInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.HEALTH, FRAGMENT_CONTAINER);
+        final HealthInformationViewModel livelihoodsInformationViewModel = (HealthInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.HEALTH, this, this);
+        livelihoodsInformationFragment.setViewModel(livelihoodsInformationViewModel);
     }
 
     @Override

@@ -96,10 +96,10 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
         }
         {
             // Setup population data fragment
-            PopulationDataFragment populationDataFragment =
-                    (PopulationDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
-            PopulationDataViewModel populationDataViewModel =
-                    (PopulationDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
+            SpecialNeedsDataFragment populationDataFragment =
+                    (SpecialNeedsDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
+            SpecialNeedsDataViewModel populationDataViewModel =
+                    (SpecialNeedsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
             populationDataViewModel.setViewComponent(populationDataFragment);
             populationDataFragment.setViewModel(populationDataViewModel);
             mAdapter.addFragment(populationDataFragment);

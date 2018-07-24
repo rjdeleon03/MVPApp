@@ -75,4 +75,40 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
             mViewComponent.get().onLivelihoodsInfoButtonPressed();
         }
     }
+
+    /**
+     * Handles navigation when health information button is pressed
+     */
+    public void navigateOnHealthInfoButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onHealthInfoButtonPressed();
+        }
+    }
+
+    /**
+     * Handles navigation when wash information button is pressed
+     */
+    public void navigateOnWashInfoButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onWashInfoButtonPressed();
+        }
+    }
+
+    /**
+     * Handles navigation when evacuation information button is pressed
+     */
+    public void navigateOnEvacuationInfoButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onEvacuationInfoButtonPressed();
+        }
+    }
+
+    /**
+     * Handles navigation when case stories button is pressed
+     */
+    public void navigateOnCaseStoriesButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onCaseStoriesButtonPressed();
+        }
+    }
 }

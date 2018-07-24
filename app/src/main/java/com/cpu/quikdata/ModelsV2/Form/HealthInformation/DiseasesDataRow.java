@@ -12,6 +12,8 @@ import io.realm.annotations.Required;
 
 public class DiseasesDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AgeGroup> {
 
+    //TODO: Add label only row
+
     @Required
     @PrimaryKey
     private String id;

@@ -373,6 +373,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         callback.onDataReceived(mForm.getLivelihoodsInformation());
     }
 
+    public void getHealthInformation(final IBaseDataManager<HealthInformation> callback) {
+        callback.onDataReceived(mForm.getHealthInformation());
+    }
+
     public void submitForm() {
         QuikDataApplication.retrofitClient.submitForm(mForm, new Callback<Form>() {
             @Override

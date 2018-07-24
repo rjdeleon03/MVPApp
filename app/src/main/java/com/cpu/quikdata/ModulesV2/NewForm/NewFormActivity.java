@@ -10,6 +10,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.R;
@@ -118,5 +120,32 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         FoodSecurityInformationFragment foodSecurityInformationFragment = (FoodSecurityInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.FOOD_SECURITY, FRAGMENT_CONTAINER);
         final FoodSecurityInformationViewModel foodSecurityInformationViewModel = (FoodSecurityInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.FOOD_SECURITY, this, this);
         foodSecurityInformationFragment.setViewModel(foodSecurityInformationViewModel);
+    }
+
+    @Override
+    public void onLivelihoodsInfoButtonPressed() {
+        LivelihoodsInformationFragment livelihoodsInformationFragment = (LivelihoodsInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.LIVELIHOODS, FRAGMENT_CONTAINER);
+        final LivelihoodsInformationViewModel livelihoodsInformationViewModel = (LivelihoodsInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.LIVELIHOODS, this, this);
+        livelihoodsInformationFragment.setViewModel(livelihoodsInformationViewModel);        
+    }
+
+    @Override
+    public void onHealthInfoButtonPressed() {
+
+    }
+
+    @Override
+    public void onWashInfoButtonPressed() {
+
+    }
+
+    @Override
+    public void onEvacuationInfoButtonPressed() {
+
+    }
+
+    @Override
+    public void onCaseStoriesButtonPressed() {
+
     }
 }

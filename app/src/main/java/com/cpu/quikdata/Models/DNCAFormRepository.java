@@ -21,6 +21,10 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.InfrastructureData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
+import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsCopingDetails;
+import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsGapsDetails;
+import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsInformation;
+import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsNeedsDetails;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.DamageData;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterGapsDetails;
@@ -298,6 +302,21 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     form.setFoodSecurityInformation(foodSecurityInformation);
                 }
+                
+                {
+                    LivelihoodsInformation livelihoodsInformation = realm.createObject(LivelihoodsInformation.class, AppUtil.generateId());
+                    LivelihoodsCopingDetails livelihoodsCopingDetails = realm.createObject(LivelihoodsCopingDetails.class, AppUtil.generateId());
+                    livelihoodsInformation.setLivelihoodsCopingDetails(livelihoodsCopingDetails);
+
+                    LivelihoodsNeedsDetails livelihoodsNeedsDetails = realm.createObject(LivelihoodsNeedsDetails.class, AppUtil.generateId());
+                    livelihoodsInformation.setLivelihoodsNeedsDetails(livelihoodsNeedsDetails);
+
+                    LivelihoodsGapsDetails livelihoodsGapsDetails = realm.createObject(LivelihoodsGapsDetails.class, AppUtil.generateId());
+                    livelihoodsInformation.setLivelihoodsGapsDetails(livelihoodsGapsDetails);
+                    
+                    form.setLivelihoodsInformation(livelihoodsInformation);
+                }
+                
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
             }
@@ -322,6 +341,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getFoodSecurityInformation(final IBaseDataManager<FoodSecurityInformation> callback) {
         callback.onDataReceived(mForm.getFoodSecurityInformation());
+    }
+
+    public void getLivelihoodsInformation(final IBaseDataManager<LivelihoodsInformation> callback) {
+        callback.onDataReceived(mForm.getLivelihoodsInformation());
     }
 
     public void submitForm() {

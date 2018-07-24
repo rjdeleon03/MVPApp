@@ -66,4 +66,13 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
             mViewComponent.get().onFoodSecurityInfoButtonPressed();
         }
     }
+
+    /**
+     * Handles navigation when livelihoods information button is pressed
+     */
+    public void navigateOnLivelihoodsInfoButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onLivelihoodsInfoButtonPressed();
+        }
+    }
 }

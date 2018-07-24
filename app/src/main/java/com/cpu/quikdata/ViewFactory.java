@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsCopingDetails;
 import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
@@ -122,6 +123,14 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData.Popu
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsGapsDetails.LivelihoodsGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsGapsDetails.LivelihoodsGapsDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsNeedsDetails.LivelihoodsNeedsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsNeedsDetails.LivelihoodsNeedsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
@@ -246,6 +255,18 @@ public class ViewFactory {
                     break;
                 case FOOD_SECURITY_GAPS:
                     fragment = FoodSecurityGapsDetailsFragment.newInstance();
+                    break;
+                case LIVELIHOODS:
+                    fragment = LivelihoodsInformationFragment.newInstance();
+                    break;
+                case LIVELIHOODS_COPING:
+                    fragment = LivelihoodsCopingDetailsFragment.newInstance();
+                    break;
+                case LIVELIHOODS_NEEDS:
+                    fragment = LivelihoodsNeedsDetailsFragment.newInstance();
+                    break;
+                case LIVELIHOODS_GAPS:
+                    fragment = LivelihoodsGapsDetailsFragment.newInstance();
                     break;
             }
 
@@ -394,6 +415,30 @@ public class ViewFactory {
                     FoodSecurityGapsDetailsViewModel foodSecurityGapsDetailsViewModel = new FoodSecurityGapsDetailsViewModel(Injection.provideDncaRepository(context));
 //                    foodSecurityGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityGapsDetailsViewModel;
+                    break;
+
+                case LIVELIHOODS:
+                    LivelihoodsInformationViewModel livelihoodsInformationViewModel = new LivelihoodsInformationViewModel(Injection.provideDncaRepository(context));
+                    livelihoodsInformationViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = livelihoodsInformationViewModel;
+                    break;
+
+                case LIVELIHOODS_COPING:
+                    LivelihoodsCopingDetailsViewModel livelihoodsCopingDetailsViewModel = new LivelihoodsCopingDetailsViewModel(Injection.provideDncaRepository(context));
+//                    livelihoodsCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = livelihoodsCopingDetailsViewModel;
+                    break;
+
+                case LIVELIHOODS_NEEDS:
+                    LivelihoodsNeedsDetailsViewModel livelihoodsNeedsDetailsViewModel = new LivelihoodsNeedsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    livelihoodsNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = livelihoodsNeedsDetailsViewModel;
+                    break;
+
+                case LIVELIHOODS_GAPS:
+                    LivelihoodsGapsDetailsViewModel livelihoodsGapsDetailsViewModel = new LivelihoodsGapsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    livelihoodsGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = livelihoodsGapsDetailsViewModel;
                     break;
                     
             }

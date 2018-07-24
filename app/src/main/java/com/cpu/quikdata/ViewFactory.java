@@ -126,6 +126,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.Disease
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
@@ -282,6 +284,9 @@ public class ViewFactory {
                     break;
                 case HEALTH_SPECIAL_NEEDS:
                     fragment = SpecialNeedsDataFragment.newInstance();
+                    break;
+                case HEALTH_PSYCHOSOCIAL:
+                    fragment = PsychosocialDataFragment.newInstance();
                     break;
             }
 
@@ -472,6 +477,12 @@ public class ViewFactory {
                     SpecialNeedsDataViewModel specialNeedsDataViewModel = new SpecialNeedsDataViewModel(Injection.provideDncaRepository(context), context);
                     specialNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = specialNeedsDataViewModel;
+                    break;
+
+                case HEALTH_PSYCHOSOCIAL:
+                    PsychosocialDataViewModel psychosocialDataViewModel = new PsychosocialDataViewModel(Injection.provideDncaRepository(context), context);
+                    psychosocialDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = psychosocialDataViewModel;
                     break;
                     
             }

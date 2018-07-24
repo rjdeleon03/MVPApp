@@ -6,6 +6,8 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
@@ -55,6 +57,17 @@ public class HealthInformationFragment extends TemplateMultiPageFragment<HealthI
             specialNeedsDataViewModel.setViewComponent(specialNeedsDataFragment);
             specialNeedsDataFragment.setViewModel(specialNeedsDataViewModel);
             mAdapter.addFragment(specialNeedsDataFragment);
+        }
+
+        {
+            // Setup psychosocial data fragment
+            PsychosocialDataFragment psychosocialDataFragment =
+                    (PsychosocialDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_PSYCHOSOCIAL);
+            PsychosocialDataViewModel psychosocialDataViewModel =
+                    (PsychosocialDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_PSYCHOSOCIAL, null, getContext());
+            psychosocialDataViewModel.setViewComponent(psychosocialDataFragment);
+            psychosocialDataFragment.setViewModel(psychosocialDataViewModel);
+            mAdapter.addFragment(psychosocialDataFragment);
         }
         /**
         {

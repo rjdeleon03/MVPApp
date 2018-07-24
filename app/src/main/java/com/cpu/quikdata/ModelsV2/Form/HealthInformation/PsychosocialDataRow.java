@@ -22,6 +22,10 @@ public class PsychosocialDataRow extends RealmObject implements IEnumDataRow<Gen
     private RealmList<QuestionItemModelGenderTuple> genderTupleFields;
     private RealmList<QuestionItemModelString> stringFields;
 
+    public PsychosocialDataRow() {
+        setupFields();
+    }
+
     public String getId() {
         return id;
     }

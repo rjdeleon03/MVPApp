@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
@@ -276,6 +277,12 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     form.setShelterInformation(shelterInformation);
                 }
+
+                {
+                    FoodSecurityInformation foodSecurityInformation = realm.createObject(FoodSecurityInformation.class, AppUtil.generateId());
+
+                    form.setFoodSecurityInformation(foodSecurityInformation);
+                }
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
             }
@@ -296,6 +303,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getShelterInformation(final IBaseDataManager<ShelterInformation> callback) {
         callback.onDataReceived(mForm.getShelterInformation());
+    }
+
+    public void getFoodSecurityInformation(final IBaseDataManager<FoodSecurityInformation> callback) {
+        callback.onDataReceived(mForm.getFoodSecurityInformation());
     }
 
     public void submitForm() {

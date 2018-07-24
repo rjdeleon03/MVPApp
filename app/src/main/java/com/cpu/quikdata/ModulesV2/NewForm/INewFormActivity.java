@@ -9,4 +9,6 @@ public interface INewFormActivity extends IBaseInterface {
     void onGenInfoButtonPressed();
 
     void onShelterInfoButtonPressed();
+
+    void onFoodSecurityInfoButtonPressed();
 }

@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
+import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 
@@ -19,6 +20,7 @@ public class Form extends RealmObject {
     private FormDetails formDetails;
     private GeneralInformation generalInformation;
     private ShelterInformation shelterInformation;
+    private FoodSecurityInformation foodSecurityInformation;
 
     public String getId() {
         return id;
@@ -58,5 +60,13 @@ public class Form extends RealmObject {
 
     public void setShelterInformation(ShelterInformation shelterInformation) {
         this.shelterInformation = shelterInformation;
+    }
+
+    public FoodSecurityInformation getFoodSecurityInformation() {
+        return foodSecurityInformation;
+    }
+
+    public void setFoodSecurityInformation(FoodSecurityInformation foodSecurityInformation) {
+        this.foodSecurityInformation = foodSecurityInformation;
     }
 }

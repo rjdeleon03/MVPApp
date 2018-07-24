@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.GeneralInformationFragment;
@@ -109,5 +111,12 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
         ShelterInformationFragment shelterInformationFragment = (ShelterInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.SHELTER_INFO, FRAGMENT_CONTAINER);
         final ShelterInformationViewModel shelterInformationViewModel = (ShelterInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.SHELTER_INFO, this, this);
         shelterInformationFragment.setViewModel(shelterInformationViewModel);
+    }
+
+    @Override
+    public void onFoodSecurityInfoButtonPressed() {
+        FoodSecurityInformationFragment foodSecurityInformationFragment = (FoodSecurityInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.FOOD_SECURITY, FRAGMENT_CONTAINER);
+        final FoodSecurityInformationViewModel foodSecurityInformationViewModel = (FoodSecurityInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.FOOD_SECURITY, this, this);
+        foodSecurityInformationFragment.setViewModel(foodSecurityInformationViewModel);
     }
 }

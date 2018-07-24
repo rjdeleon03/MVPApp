@@ -57,4 +57,13 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
             mViewComponent.get().onShelterInfoButtonPressed();
         }
     }
+
+    /**
+     * Handles navigation when food security information button is pressed
+     */
+    public void navigateOnFoodSecurityInfoButtonPressed() {
+        if (mViewComponent != null) {
+            mViewComponent.get().onFoodSecurityInfoButtonPressed();
+        }
+    }
 }

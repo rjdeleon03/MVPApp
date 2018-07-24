@@ -1,6 +1,7 @@
-package com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails;
+package com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
+import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.ImpactDetails;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanString;
@@ -12,16 +13,16 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelStri
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 
-public class ImpactDetailsViewModel extends TemplateQuestionViewModel<INewFormActivity, FoodSecurityInformation> {
+public class FoodSecurityCopingDetailsViewModel extends TemplateQuestionViewModel<INewFormActivity, FoodSecurityInformation> {
 
-    private ImpactDetails mImpactDetails;
+    private FoodSecurityCopingDetails mFoodSecurityCopingDetails;
 
     /**
      * Constructor
      *
      * @param dncaFormRepository
      */
-    public ImpactDetailsViewModel(DNCAFormRepository dncaFormRepository) {
+    public FoodSecurityCopingDetailsViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         mFormRepository.getFoodSecurityInformation(this);
     }
@@ -32,15 +33,9 @@ public class ImpactDetailsViewModel extends TemplateQuestionViewModel<INewFormAc
      */
     @Override
     public void onDataReceived(FoodSecurityInformation data) {
-        mImpactDetails = data.getImpactDetails();
+        mFoodSecurityCopingDetails = data.getFoodSecurityCopingDetails();
 
-        for(QuestionItemModelBooleanString model : mImpactDetails.getBooleanStringFields()) {
-            mQuestions.add(new TemplateQuestionItemViewModelBooleanString(model));
-        }
-        for(QuestionItemModelDoubleString model : mImpactDetails.getDoubleStringFields()) {
-            mQuestions.add(new TemplateQuestionItemViewModelDoubleString(model));
-        }
-        for(QuestionItemModelString model : mImpactDetails.getStringFields()) {
+        for(QuestionItemModelString model : mFoodSecurityCopingDetails.getStringFields()) {
             mQuestions.add(new TemplateQuestionItemViewModelString(model));
         }
     }

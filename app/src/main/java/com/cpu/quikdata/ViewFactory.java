@@ -93,8 +93,12 @@ import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityNeedsDetails.FoodSecurityNeedsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityNeedsDetails.FoodSecurityNeedsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
@@ -232,6 +236,12 @@ public class ViewFactory {
                 case FOOD_SECURITY_IMPACT:
                     fragment = ImpactDetailsFragment.newInstance();
                     break;
+                case FOOD_SECURITY_COPING:
+                    fragment = FoodSecurityCopingDetailsFragment.newInstance();
+                    break;
+                case FOOD_SECURITY_NEEDS:
+                    fragment = FoodSecurityNeedsDetailsFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -359,8 +369,20 @@ public class ViewFactory {
 
                 case FOOD_SECURITY_IMPACT:
                     ImpactDetailsViewModel impactDetailsViewModel = new ImpactDetailsViewModel(Injection.provideDncaRepository(context));
-                    impactDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+//                    impactDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = impactDetailsViewModel;
+                    break;
+
+                case FOOD_SECURITY_COPING:
+                    FoodSecurityCopingDetailsViewModel foodSecurityCopingDetailsViewModel = new FoodSecurityCopingDetailsViewModel(Injection.provideDncaRepository(context));
+//                    foodSecurityCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = foodSecurityCopingDetailsViewModel;
+                    break;
+
+                case FOOD_SECURITY_NEEDS:
+                    FoodSecurityNeedsDetailsViewModel foodSecurityNeedsDetailsViewModel = new FoodSecurityNeedsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    foodSecurityNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = foodSecurityNeedsDetailsViewModel;
                     break;
                     
             }

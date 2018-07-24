@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
+import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityNeedsDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.ImpactDetails;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
@@ -283,6 +285,12 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                     FoodSecurityInformation foodSecurityInformation = realm.createObject(FoodSecurityInformation.class, AppUtil.generateId());
                     ImpactDetails impactDetails = realm.createObject(ImpactDetails.class, AppUtil.generateId());
                     foodSecurityInformation.setImpactDetails(impactDetails);
+
+                    FoodSecurityCopingDetails foodSecurityCopingDetails = realm.createObject(FoodSecurityCopingDetails.class, AppUtil.generateId());
+                    foodSecurityInformation.setFoodSecurityCopingDetails(foodSecurityCopingDetails);
+
+                    FoodSecurityNeedsDetails foodSecurityNeedsDetails = realm.createObject(FoodSecurityNeedsDetails.class, AppUtil.generateId());
+                    foodSecurityInformation.setFoodSecurityNeedsDetails(foodSecurityNeedsDetails);
 
                     form.setFoodSecurityInformation(foodSecurityInformation);
                 }

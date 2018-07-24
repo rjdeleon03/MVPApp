@@ -11,6 +11,8 @@ public class FoodSecurityInformation extends RealmObject {
     private String id;
 
     private ImpactDetails impactDetails;
+    private FoodSecurityCopingDetails foodSecurityCopingDetails;
+    private FoodSecurityNeedsDetails foodSecurityNeedsDetails;
 
     public String getId() {
         return id;
@@ -26,5 +28,21 @@ public class FoodSecurityInformation extends RealmObject {
 
     public void setImpactDetails(ImpactDetails impactDetails) {
         this.impactDetails = impactDetails;
+    }
+
+    public FoodSecurityCopingDetails getFoodSecurityCopingDetails() {
+        return foodSecurityCopingDetails;
+    }
+
+    public void setFoodSecurityCopingDetails(FoodSecurityCopingDetails foodSecurityCopingDetails) {
+        this.foodSecurityCopingDetails = foodSecurityCopingDetails;
+    }
+
+    public FoodSecurityNeedsDetails getFoodSecurityNeedsDetails() {
+        return foodSecurityNeedsDetails;
+    }
+
+    public void setFoodSecurityNeedsDetails(FoodSecurityNeedsDetails foodSecurityNeedsDetails) {
+        this.foodSecurityNeedsDetails = foodSecurityNeedsDetails;
     }
 }

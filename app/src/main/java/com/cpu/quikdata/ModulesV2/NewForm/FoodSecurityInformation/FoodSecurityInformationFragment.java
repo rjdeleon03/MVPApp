@@ -6,6 +6,8 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityNeedsDetails.FoodSecurityNeedsDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityNeedsDetails.FoodSecurityNeedsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsFragment;
@@ -61,19 +63,27 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
         }
         {
             // Setup food security coping details fragment
-            FoodSecurityCopingDetailsFragment impactDetailsFragment =
+            FoodSecurityCopingDetailsFragment foodSecurityCopingDetailsFragment =
                     (FoodSecurityCopingDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_COPING);
-            impactDetailsFragment.setViewModel(
+            foodSecurityCopingDetailsFragment.setViewModel(
                     (FoodSecurityCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_COPING, null, getContext()));
-            mAdapter.addFragment(impactDetailsFragment);
+            mAdapter.addFragment(foodSecurityCopingDetailsFragment);
         }
         {
             // Setup food security needs details fragment
-            FoodSecurityNeedsDetailsFragment impactDetailsFragment =
+            FoodSecurityNeedsDetailsFragment foodSecurityNeedsDetailsFragment =
                     (FoodSecurityNeedsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_NEEDS);
-            impactDetailsFragment.setViewModel(
+            foodSecurityNeedsDetailsFragment.setViewModel(
                     (FoodSecurityNeedsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_NEEDS, null, getContext()));
-            mAdapter.addFragment(impactDetailsFragment);
+            mAdapter.addFragment(foodSecurityNeedsDetailsFragment);
+        }
+        {
+            // Setup food security gaps details fragment
+            FoodSecurityGapsDetailsFragment foodSecurityGapsDetailsFragment =
+                    (FoodSecurityGapsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_GAPS);
+            foodSecurityGapsDetailsFragment.setViewModel(
+                    (FoodSecurityGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_GAPS, null, getContext()));
+            mAdapter.addFragment(foodSecurityGapsDetailsFragment);
         }
         /**
         {

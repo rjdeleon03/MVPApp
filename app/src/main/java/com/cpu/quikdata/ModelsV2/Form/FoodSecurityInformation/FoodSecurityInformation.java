@@ -13,6 +13,7 @@ public class FoodSecurityInformation extends RealmObject {
     private ImpactDetails impactDetails;
     private FoodSecurityCopingDetails foodSecurityCopingDetails;
     private FoodSecurityNeedsDetails foodSecurityNeedsDetails;
+    private FoodSecurityGapsDetails foodSecurityGapsDetails;
 
     public String getId() {
         return id;
@@ -44,5 +45,13 @@ public class FoodSecurityInformation extends RealmObject {
 
     public void setFoodSecurityNeedsDetails(FoodSecurityNeedsDetails foodSecurityNeedsDetails) {
         this.foodSecurityNeedsDetails = foodSecurityNeedsDetails;
+    }
+
+    public FoodSecurityGapsDetails getFoodSecurityGapsDetails() {
+        return foodSecurityGapsDetails;
+    }
+
+    public void setFoodSecurityGapsDetails(FoodSecurityGapsDetails foodSecurityGapsDetails) {
+        this.foodSecurityGapsDetails = foodSecurityGapsDetails;
     }
 }

@@ -95,6 +95,8 @@ import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityNeedsDetails.FoodSecurityNeedsDetailsFragment;
@@ -242,6 +244,9 @@ public class ViewFactory {
                 case FOOD_SECURITY_NEEDS:
                     fragment = FoodSecurityNeedsDetailsFragment.newInstance();
                     break;
+                case FOOD_SECURITY_GAPS:
+                    fragment = FoodSecurityGapsDetailsFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -383,6 +388,12 @@ public class ViewFactory {
                     FoodSecurityNeedsDetailsViewModel foodSecurityNeedsDetailsViewModel = new FoodSecurityNeedsDetailsViewModel(Injection.provideDncaRepository(context));
 //                    foodSecurityNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityNeedsDetailsViewModel;
+                    break;
+
+                case FOOD_SECURITY_GAPS:
+                    FoodSecurityGapsDetailsViewModel foodSecurityGapsDetailsViewModel = new FoodSecurityGapsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    foodSecurityGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = foodSecurityGapsDetailsViewModel;
                     break;
                     
             }

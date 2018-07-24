@@ -95,6 +95,8 @@ import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
@@ -227,6 +229,9 @@ public class ViewFactory {
                 case FOOD_SECURITY:
                     fragment = FoodSecurityInformationFragment.newInstance();
                     break;
+                case FOOD_SECURITY_IMPACT:
+                    fragment = ImpactDetailsFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -350,6 +355,12 @@ public class ViewFactory {
                     FoodSecurityInformationViewModel foodSecurityInformationViewModel = new FoodSecurityInformationViewModel(Injection.provideDncaRepository(context));
                     foodSecurityInformationViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityInformationViewModel;
+                    break;
+
+                case FOOD_SECURITY_IMPACT:
+                    ImpactDetailsViewModel impactDetailsViewModel = new ImpactDetailsViewModel(Injection.provideDncaRepository(context));
+                    impactDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = impactDetailsViewModel;
                     break;
                     
             }

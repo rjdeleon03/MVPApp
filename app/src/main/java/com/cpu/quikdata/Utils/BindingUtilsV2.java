@@ -13,12 +13,16 @@ import android.widget.TableLayout;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDate;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
@@ -81,7 +85,6 @@ public class BindingUtilsV2 {
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
                 itemView = new TemplateQuestionItemViewHolderString(inflater, (TemplateQuestionItemViewModelString) questionModel).getView();
 
-            
             } else if (questionModel instanceof TemplateQuestionItemViewModelSingleNumber) {
                 itemView = new TemplateQuestionItemViewHolderSingleNumber(inflater, (TemplateQuestionItemViewModelSingleNumber) questionModel).getView();
 
@@ -90,6 +93,12 @@ public class BindingUtilsV2 {
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelDate) {
                 itemView = new TemplateQuestionItemViewHolderDate(inflater, (TemplateQuestionItemViewModelDate) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelBooleanString) {
+                itemView = new TemplateQuestionItemViewHolderBooleanString(inflater, (TemplateQuestionItemViewModelBooleanString) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelDoubleString) {
+                itemView = new TemplateQuestionItemViewHolderDoubleString(inflater, (TemplateQuestionItemViewModelDoubleString) questionModel).getView();
 
             }
 

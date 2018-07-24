@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.ImpactDetails.ImpactDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
@@ -45,13 +47,21 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
 
         FragmentManager fragmentManager = getChildFragmentManager();
 
+        {
+            // Setup impact details fragment
+            ImpactDetailsFragment impactDetailsFragment =
+                    (ImpactDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_IMPACT);
+            impactDetailsFragment.setViewModel(
+                    (ImpactDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_IMPACT, null, getContext()));
+            mAdapter.addFragment(impactDetailsFragment);
+        }
         /**
         {
             // Setup calamity details fragment
-            CalamityDetailsFragment calamityDetailsFragment =
-                    (CalamityDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
+            ImpactDetailsFragment calamityDetailsFragment =
+                    (ImpactDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
             calamityDetailsFragment.setViewModel(
-                    (CalamityDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
+                    (ImpactDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
             mAdapter.addFragment(calamityDetailsFragment);
         }
         {

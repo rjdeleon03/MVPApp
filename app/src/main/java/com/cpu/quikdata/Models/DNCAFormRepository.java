@@ -6,6 +6,7 @@ import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
+import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.ImpactDetails;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModelsV2.Form.FormDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
@@ -280,6 +281,8 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                 {
                     FoodSecurityInformation foodSecurityInformation = realm.createObject(FoodSecurityInformation.class, AppUtil.generateId());
+                    ImpactDetails impactDetails = realm.createObject(ImpactDetails.class, AppUtil.generateId());
+                    foodSecurityInformation.setImpactDetails(impactDetails);
 
                     form.setFoodSecurityInformation(foodSecurityInformation);
                 }

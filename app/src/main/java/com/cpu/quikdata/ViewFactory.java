@@ -124,6 +124,10 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.Vuln
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthGapsDetails.HealthGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthGapsDetails.HealthGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataFragment;
@@ -287,6 +291,12 @@ public class ViewFactory {
                     break;
                 case HEALTH_PSYCHOSOCIAL:
                     fragment = PsychosocialDataFragment.newInstance();
+                    break;
+                case HEALTH_COPING:
+                    fragment = HealthCopingDetailsFragment.newInstance();
+                    break;
+                case HEALTH_GAPS:
+                    fragment = HealthGapsDetailsFragment.newInstance();
                     break;
             }
 
@@ -483,6 +493,18 @@ public class ViewFactory {
                     PsychosocialDataViewModel psychosocialDataViewModel = new PsychosocialDataViewModel(Injection.provideDncaRepository(context), context);
                     psychosocialDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = psychosocialDataViewModel;
+                    break;
+
+                case HEALTH_COPING:
+                    HealthCopingDetailsViewModel healthCopingDetailsViewModel = new HealthCopingDetailsViewModel(Injection.provideDncaRepository(context));
+//                    healthCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = healthCopingDetailsViewModel;
+                    break;
+
+                case HEALTH_GAPS:
+                    HealthGapsDetailsViewModel healthGapsDetailsViewModel = new HealthGapsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    healthGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = healthGapsDetailsViewModel;
                     break;
                     
             }

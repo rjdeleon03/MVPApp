@@ -6,6 +6,10 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthGapsDetails.HealthGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthGapsDetails.HealthGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.PsychosocialDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
@@ -69,6 +73,25 @@ public class HealthInformationFragment extends TemplateMultiPageFragment<HealthI
             psychosocialDataFragment.setViewModel(psychosocialDataViewModel);
             mAdapter.addFragment(psychosocialDataFragment);
         }
+        
+        {
+            // Setup health coping details fragment
+            HealthCopingDetailsFragment healthCopingDetailsFragment =
+                    (HealthCopingDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_COPING);
+            healthCopingDetailsFragment.setViewModel(
+                    (HealthCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_COPING, null, getContext()));
+            mAdapter.addFragment(healthCopingDetailsFragment);
+        }
+
+        {
+            // Setup health gaps details fragment
+            HealthGapsDetailsFragment healthGapsDetailsFragment =
+                    (HealthGapsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_GAPS);
+            healthGapsDetailsFragment.setViewModel(
+                    (HealthGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_GAPS, null, getContext()));
+            mAdapter.addFragment(healthGapsDetailsFragment);
+        }
+        
         /**
         {
             // Setup calamity details fragment

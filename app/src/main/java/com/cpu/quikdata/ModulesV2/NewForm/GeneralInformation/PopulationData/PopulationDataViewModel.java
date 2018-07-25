@@ -29,7 +29,7 @@ public class PopulationDataViewModel
      *
      * @param dncaFormRepository
      */
-    public PopulationDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public PopulationDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);

@@ -31,7 +31,7 @@ public class InfrastructureDataViewModel
      *
      * @param dncaFormRepository
      */
-    public InfrastructureDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public InfrastructureDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.InfraType.asObservableList();
         mFormRepository.getGeneralInformation(this);

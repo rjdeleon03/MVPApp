@@ -29,7 +29,7 @@ public class SpecialNeedsDataViewModel
      *
      * @param dncaFormRepository
      */
-    public SpecialNeedsDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public SpecialNeedsDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.SpecialNeedsType.asObservableList();
         mFormRepository.getHealthInformation(this);

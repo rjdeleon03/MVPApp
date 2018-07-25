@@ -27,7 +27,7 @@ public class DeathCauseDataViewModel
      *
      * @param dncaFormRepository
      */
-    public DeathCauseDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public DeathCauseDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);

@@ -29,7 +29,7 @@ public class ShelterNeedsDataViewModel
      *
      * @param dncaFormRepository
      */
-    public ShelterNeedsDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public ShelterNeedsDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.NeedsType.asObservableList();
         mFormRepository.getShelterInformation(this);

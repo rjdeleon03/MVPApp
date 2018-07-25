@@ -31,7 +31,7 @@ public class VulnerableDataViewModel
      *
      * @param dncaFormRepository
      */
-    public VulnerableDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public VulnerableDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);

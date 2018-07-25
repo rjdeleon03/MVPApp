@@ -363,7 +363,7 @@ public class ViewFactory {
                     break;
 
                 case GEN_INFO_POPULATION:
-                    PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context), context);
+                    PopulationDataViewModel populationDataViewModel = new PopulationDataViewModel(Injection.provideDncaRepository(context));
                     populationDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = populationDataViewModel;
                     break;
@@ -375,25 +375,25 @@ public class ViewFactory {
                     break;
 
                 case GEN_INFO_VULNERABLE:
-                    VulnerableDataViewModel vulnerableDataViewModel = new VulnerableDataViewModel(Injection.provideDncaRepository(context), context);
+                    VulnerableDataViewModel vulnerableDataViewModel = new VulnerableDataViewModel(Injection.provideDncaRepository(context));
                     vulnerableDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = vulnerableDataViewModel;
                     break;
 
                 case GEN_INFO_CASUALTIES:
-                    CasualtiesDataViewModel casualtiesDataViewModel = new CasualtiesDataViewModel(Injection.provideDncaRepository(context), context);
+                    CasualtiesDataViewModel casualtiesDataViewModel = new CasualtiesDataViewModel(Injection.provideDncaRepository(context));
                     casualtiesDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = casualtiesDataViewModel;
                     break;
 
                 case GEN_INFO_DEATH_CAUSE:
-                    DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(Injection.provideDncaRepository(context), context);
+                    DeathCauseDataViewModel deathCauseDataViewModel = new DeathCauseDataViewModel(Injection.provideDncaRepository(context));
                     deathCauseDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = deathCauseDataViewModel;
                     break;
 
                 case GEN_INFO_INFRASTRUCTURE:
-                    InfrastructureDataViewModel infrastructureDataViewModel = new InfrastructureDataViewModel(Injection.provideDncaRepository(context), context);
+                    InfrastructureDataViewModel infrastructureDataViewModel = new InfrastructureDataViewModel(Injection.provideDncaRepository(context));
                     infrastructureDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = infrastructureDataViewModel;
                     break;
@@ -405,7 +405,7 @@ public class ViewFactory {
                     break;
 
                 case SHELTER_INFO_DAMAGE:
-                    DamageDataViewModel damageDataViewModel = new DamageDataViewModel(Injection.provideDncaRepository(context), context);
+                    DamageDataViewModel damageDataViewModel = new DamageDataViewModel(Injection.provideDncaRepository(context));
                     damageDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = damageDataViewModel;
                     break;
@@ -417,7 +417,7 @@ public class ViewFactory {
                     break;
 
                 case SHELTER_INFO_NEEDS:
-                    ShelterNeedsDataViewModel shelterNeedsDataViewModel = new ShelterNeedsDataViewModel(Injection.provideDncaRepository(context), context);
+                    ShelterNeedsDataViewModel shelterNeedsDataViewModel = new ShelterNeedsDataViewModel(Injection.provideDncaRepository(context));
                     shelterNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = shelterNeedsDataViewModel;
                     break;
@@ -489,19 +489,19 @@ public class ViewFactory {
                     break;
                     
                 case HEALTH_DISEASES:
-                    DiseasesDataViewModel diseasesDataViewModel = new DiseasesDataViewModel(Injection.provideDncaRepository(context), context);
+                    DiseasesDataViewModel diseasesDataViewModel = new DiseasesDataViewModel(Injection.provideDncaRepository(context));
                     diseasesDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = diseasesDataViewModel;
                     break;
 
                 case HEALTH_SPECIAL_NEEDS:
-                    SpecialNeedsDataViewModel specialNeedsDataViewModel = new SpecialNeedsDataViewModel(Injection.provideDncaRepository(context), context);
+                    SpecialNeedsDataViewModel specialNeedsDataViewModel = new SpecialNeedsDataViewModel(Injection.provideDncaRepository(context));
                     specialNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = specialNeedsDataViewModel;
                     break;
 
                 case HEALTH_PSYCHOSOCIAL:
-                    PsychosocialDataViewModel psychosocialDataViewModel = new PsychosocialDataViewModel(Injection.provideDncaRepository(context), context);
+                    PsychosocialDataViewModel psychosocialDataViewModel = new PsychosocialDataViewModel(Injection.provideDncaRepository(context));
                     psychosocialDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = psychosocialDataViewModel;
                     break;

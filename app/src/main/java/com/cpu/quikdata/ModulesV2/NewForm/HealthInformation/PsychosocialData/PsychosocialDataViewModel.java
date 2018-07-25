@@ -27,7 +27,7 @@ public class PsychosocialDataViewModel
      *
      * @param dncaFormRepository
      */
-    public PsychosocialDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public PsychosocialDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getHealthInformation(this);

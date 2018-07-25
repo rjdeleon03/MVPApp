@@ -27,7 +27,7 @@ public class DamageDataViewModel
      *
      * @param dncaFormRepository
      */
-    public DamageDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
+    public DamageDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
         typeList = GenericEnumDataRow.HouseType.asObservableList();
         mFormRepository.getShelterInformation(this);

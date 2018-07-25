@@ -363,7 +363,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
-                
+
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override

@@ -1,5 +1,7 @@
 package com.cpu.quikdata.ModelsV2.Form.WashInformation;
 
+import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -13,6 +15,7 @@ public class WashInformation extends RealmObject {
     private WashConditionsDetails washConditionsDetails;
     private WashCopingDetails washCopingDetails;
     private WashGapsDetails washGapsDetails;
+    private AssistanceData washAssistanceData;
 
     public String getId() {
         return id;

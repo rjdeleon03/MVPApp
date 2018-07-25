@@ -4,12 +4,10 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
-import com.cpu.quikdata.Models.Generics.GenericEnum;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
-import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
@@ -18,11 +16,9 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import io.realm.Realm;
-import io.realm.RealmList;
 
 import com.cpu.quikdata.BR;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PopulationDataViewModel
@@ -35,12 +31,8 @@ public class PopulationDataViewModel
      */
     public PopulationDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.AgeGroup.asObservableList();
+        typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -83,7 +75,7 @@ public class PopulationDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<PopulationDataRow> callback) {
         PopulationDataRow row = new PopulationDataRow();
-        row.setAgeGroup(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

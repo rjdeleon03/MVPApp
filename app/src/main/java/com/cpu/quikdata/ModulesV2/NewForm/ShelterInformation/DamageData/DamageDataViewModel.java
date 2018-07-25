@@ -29,12 +29,8 @@ public class DamageDataViewModel
      */
     public DamageDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.HouseType.asObservableList();
+        typeList = GenericEnumDataRow.HouseType.asObservableList();
         mFormRepository.getShelterInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -77,7 +73,7 @@ public class DamageDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<DamageDataRow> callback) {
         DamageDataRow row = new DamageDataRow();
-        row.setHouseType(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setHouseType(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

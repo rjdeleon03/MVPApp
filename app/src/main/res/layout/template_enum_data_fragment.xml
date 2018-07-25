@@ -76,9 +76,8 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
                     android:visibility="@{viewModel.shouldShowSpinner ? View.VISIBLE : View.GONE}"
-                    android:selectedItemPosition="@={viewModel.spinnerSelectedIndex}"
-                    app:adapter="@{viewModel.spinnerAdapter}"
-                    app:typeItems="@{viewModel.typeList}">
+                    android:entries="@{viewModel.typeList}"
+                    android:selectedItemPosition="@={viewModel.spinnerSelectedIndex}">
 
                 </android.support.v7.widget.AppCompatSpinner>
 

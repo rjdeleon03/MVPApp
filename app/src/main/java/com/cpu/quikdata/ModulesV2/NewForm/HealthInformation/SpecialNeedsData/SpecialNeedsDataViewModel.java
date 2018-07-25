@@ -11,10 +11,8 @@ import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
@@ -33,12 +31,8 @@ public class SpecialNeedsDataViewModel
      */
     public SpecialNeedsDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.SpecialNeedsType.asObservableList();
+        typeList = GenericEnumDataRow.SpecialNeedsType.asObservableList();
         mFormRepository.getHealthInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -82,7 +76,7 @@ public class SpecialNeedsDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<SpecialNeedsDataRow> callback) {
         SpecialNeedsDataRow row = new SpecialNeedsDataRow();
-        row.setSpecialNeedsType(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setSpecialNeedsType(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

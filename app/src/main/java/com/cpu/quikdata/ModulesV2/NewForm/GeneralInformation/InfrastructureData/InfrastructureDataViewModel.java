@@ -33,12 +33,8 @@ public class InfrastructureDataViewModel
      */
     public InfrastructureDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.InfraType.asObservableList();
+        typeList = GenericEnumDataRow.InfraType.asObservableList();
         mFormRepository.getGeneralInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -83,7 +79,7 @@ public class InfrastructureDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<InfrastructureDataRow> callback) {
         InfrastructureDataRow row = new InfrastructureDataRow();
-        row.setInfraType(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setInfraType(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

@@ -2,12 +2,12 @@ package com.cpu.quikdata.ModulesV2.Base.EnumData;
 
 import android.databinding.Bindable;
 import android.databinding.ObservableInt;
+import android.databinding.ObservableList;
 import android.widget.ArrayAdapter;
 
 import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnum;
-import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
@@ -18,15 +18,13 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmList;
-import io.realm.RealmModel;
 
 public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFragment, D, E extends GenericEnum, R extends IEnumDataRow<E>, RH extends IEnumDataRowHolder<R>>
         extends BaseViewModel<AC> implements IBaseDataManager<D>, ITemplateEnumDataManager<R> {
 
     public final ObservableInt spinnerSelectedIndex = new ObservableInt(0);
+    public ObservableList<E> typeList;
 
-    protected List<E> mTypeList;
-    protected ArrayAdapter<E> mSpinnerAdapter;
     protected TemplateEnumDataRowAdapter<R> mRowAdapter;
     protected RH mRowHolder;
 
@@ -59,14 +57,13 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
 
         // Remove items from type list if type is already in use
         for (R row : mRowHolder.getRows()) {
-            for (GenericEnum ageGroup : mTypeList) {
+            for (GenericEnum ageGroup : typeList) {
                 if (ageGroup.getOrdinal() == row.getActualType().getOrdinal()) {
-                    mTypeList.remove(ageGroup);
+                    typeList.remove(ageGroup);
                     break;
                 }
             }
         }
-        notifyPropertyChanged(BR.typeList);
         notifyPropertyChanged(BR.shouldShowSpinner);
     }
 
@@ -91,30 +88,12 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     }
 
     /**
-     * Retrieves the list of types
-     * @return
-     */
-    @Bindable
-    public List<E> getTypeList() {
-        return mTypeList;
-    }
-
-    /**
-     * Retrieves the spinner adapter
-     * @return
-     */
-    @Bindable
-    public ArrayAdapter<E> getSpinnerAdapter() {
-        return mSpinnerAdapter;
-    }
-
-    /**
      * Retrieves flag for showing spinner
      * @return
      */
     @Bindable
     public boolean getShouldShowSpinner() {
-        return mTypeList.size() > 0;
+        return typeList.size() > 0;
     }
 
     /**
@@ -220,18 +199,20 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
 
                 realm.insertOrUpdate(mRowHolder);
                 notifyPropertyChanged(BR.rowList);
-
-                // Delete age group from list
-                for(GenericEnum type : mTypeList) {
-                    if (type.getOrdinal() == row.getActualType().getOrdinal()) {
-                        mTypeList.remove(type);
-                        notifyPropertyChanged(BR.typeList);
-                        notifyPropertyChanged(BR.shouldShowSpinner);
-                        return;
-                    }
-                }
             }
         });
+
+        // Delete age group from list
+        for(GenericEnum type : typeList) {
+            if (type.getOrdinal() == row.getActualType().getOrdinal()) {
+                typeList.remove(type);
+                notifyPropertyChanged(BR.shouldShowSpinner);
+
+                // Reset spinner selected index to 0
+                spinnerSelectedIndex.set(0);
+                return;
+            }
+        }
     }
 
     /**
@@ -241,53 +222,56 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
     @Override
     public void deletedRowAtIndex(final int rowIndex) {
 
+        final R row = mRowHolder.getRows().get(rowIndex);
+        if (row == null) return;
+
+        E type = row.getActualType();
+
+        // If list is empty, add type right away
+        if (typeList.size() == 0) {
+            typeList.add(type);
+
+        } else {
+
+            // Else, select correct position
+            for (int i = 0; i < typeList.size(); i++) {
+
+                int currAgeGroupOrdinal = typeList.get(i).getOrdinal();
+                int tempAgeGroupOrdinal = type.getOrdinal();
+
+                if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
+                        (i == 0 || tempAgeGroupOrdinal > typeList.get(i - 1).getOrdinal())) {
+
+                    // If type must be inserted somewhere in the middle, find its correct position
+                    typeList.add(i, type);
+                    break;
+
+                } else if (typeList.size() == i + 1) {
+
+                    // If end of list has been reached, add type
+                    typeList.add(type);
+                    break;
+
+                }
+            }
+        }
+        notifyPropertyChanged(BR.shouldShowSpinner);
+
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                R row = mRowHolder.getRows().get(rowIndex);
-                if (row == null) return;
-
-                E type = row.getActualType();
-
-                // If list is empty, add new row right away
-                if (mTypeList.size() == 0) {
-                    mTypeList.add(type);
-
-                } else {
-
-                    // Else, select correct position
-                    for (int i = 0; i < mTypeList.size(); i++) {
-
-                        int currAgeGroupOrdinal = mTypeList.get(i).getOrdinal();
-                        int tempAgeGroupOrdinal = type.getOrdinal();
-
-                        if (currAgeGroupOrdinal > tempAgeGroupOrdinal &&
-                                (i == 0 || tempAgeGroupOrdinal > mTypeList.get(i - 1).getOrdinal())) {
-
-                            // If row must be inserted somewhere in the middle, find its correct position
-                            mTypeList.add(i, type);
-                            break;
-
-                        } else if (mTypeList.size() == i + 1) {
-
-                            // If end of list has been reached, add row
-                            mTypeList.add(type);
-                            break;
-
-                        }
-                    }
-                }
 
                 deleteRowFromDb(row, realm);
 
                 mRowHolder.getRows().remove(rowIndex);
                 realm.insertOrUpdate(mRowHolder);
                 notifyPropertyChanged(BR.rowList);
-                notifyPropertyChanged(BR.typeList);
-                notifyPropertyChanged(BR.shouldShowSpinner);
             }
         });
+
+        // Reset spinner selected index to 0
+        spinnerSelectedIndex.set(0);
     }
 
     /**

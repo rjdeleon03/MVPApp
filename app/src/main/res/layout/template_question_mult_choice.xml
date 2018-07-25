@@ -34,9 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:selectedItemPosition="@={viewModel.selected}"
-                app:adapter="@{viewModel.choiceAdapter}"
-                app:typeItems="@{viewModel.choices}" />
+                android:entries="@{viewModel.choices}"
+                android:selectedItemPosition="@={viewModel.selected}" />
 
         </LinearLayout>
 

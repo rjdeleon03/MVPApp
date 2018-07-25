@@ -29,12 +29,8 @@ public class PsychosocialDataViewModel
      */
     public PsychosocialDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.AgeGroup.asObservableList();
+        typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getHealthInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -78,7 +74,7 @@ public class PsychosocialDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<PsychosocialDataRow> callback) {
         PsychosocialDataRow row = new PsychosocialDataRow();
-        row.setAgeGroup(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

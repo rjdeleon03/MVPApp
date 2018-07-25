@@ -29,12 +29,8 @@ public class DeathCauseDataViewModel
      */
     public DeathCauseDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.AgeGroup.asObservableList();
+        typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -77,7 +73,7 @@ public class DeathCauseDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<DeathCauseDataRow> callback) {
         DeathCauseDataRow row = new DeathCauseDataRow();
-        row.setAgeGroup(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

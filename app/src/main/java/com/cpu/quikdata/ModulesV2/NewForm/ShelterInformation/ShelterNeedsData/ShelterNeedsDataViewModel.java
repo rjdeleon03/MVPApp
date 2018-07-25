@@ -31,12 +31,8 @@ public class ShelterNeedsDataViewModel
      */
     public ShelterNeedsDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.NeedsType.asObservableList();
+        typeList = GenericEnumDataRow.NeedsType.asObservableList();
         mFormRepository.getShelterInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -79,7 +75,7 @@ public class ShelterNeedsDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<ShelterNeedsDataRow> callback) {
         ShelterNeedsDataRow row = new ShelterNeedsDataRow();
-        row.setNeedsType(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setNeedsType(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

@@ -6,8 +6,6 @@ import android.widget.ArrayAdapter;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
-import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
-import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
@@ -35,12 +33,8 @@ public class VulnerableDataViewModel
      */
     public VulnerableDataViewModel(DNCAFormRepository dncaFormRepository, Context context) {
         super(dncaFormRepository);
-        mTypeList = GenericEnumDataRow.AgeGroup.asObservableList();
+        typeList = GenericEnumDataRow.AgeGroup.asObservableList();
         mFormRepository.getGeneralInformation(this);
-        mSpinnerAdapter = new ArrayAdapter<>(
-                context,
-                android.R.layout.simple_spinner_dropdown_item,
-                mTypeList);
     }
 
     /**
@@ -85,7 +79,7 @@ public class VulnerableDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<VulnerableDataRow> callback) {
         VulnerableDataRow row = new VulnerableDataRow();
-        row.setAgeGroup(mTypeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

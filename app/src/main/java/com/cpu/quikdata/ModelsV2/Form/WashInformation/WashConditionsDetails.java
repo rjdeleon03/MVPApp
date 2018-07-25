@@ -16,7 +16,7 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
     @PrimaryKey
     private String id;
 
-    private final RealmList<String> choices = new RealmList<>("level1", "level2", "level3");
+    private RealmList<String> choices = new RealmList<>("level1", "level2", "level3");
     private RealmList<QuestionItemModelMultChoice> multChoiceFields;
     private RealmList<QuestionItemModelString> stringFields;
 
@@ -38,6 +38,14 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     public void setStringFields(RealmList<QuestionItemModelString> stringFields) {
         this.stringFields = stringFields;
+    }
+
+    public RealmList<QuestionItemModelMultChoice> getMultChoiceFields() {
+        return multChoiceFields;
+    }
+
+    public void setMultChoiceFields(RealmList<QuestionItemModelMultChoice> multChoiceFields) {
+        this.multChoiceFields = multChoiceFields;
     }
 
     @Override

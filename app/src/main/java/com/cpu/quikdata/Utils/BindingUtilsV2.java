@@ -17,6 +17,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
@@ -24,6 +25,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBoolean;
@@ -99,6 +101,11 @@ public class BindingUtilsV2 {
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelDoubleString) {
                 itemView = new TemplateQuestionItemViewHolderDoubleString(inflater, (TemplateQuestionItemViewModelDoubleString) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelMultChoice) {
+                TemplateQuestionItemViewModelMultChoice multChoiceViewModel = (TemplateQuestionItemViewModelMultChoice) questionModel;
+                multChoiceViewModel.setContext(tableLayout.getContext());
+                itemView = new TemplateQuestionItemViewHolderMultChoice(inflater, multChoiceViewModel).getView();
 
             }
 

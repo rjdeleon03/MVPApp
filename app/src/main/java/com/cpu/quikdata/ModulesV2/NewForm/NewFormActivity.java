@@ -16,6 +16,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInfo
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewFactory;
 
@@ -140,7 +142,9 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onWashInfoButtonPressed() {
-
+        WashInformationFragment livelihoodsInformationFragment = (WashInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.WASH, FRAGMENT_CONTAINER);
+        final WashInformationViewModel livelihoodsInformationViewModel = (WashInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.WASH, this, this);
+        livelihoodsInformationFragment.setViewModel(livelihoodsInformationViewModel);
     }
 
     @Override

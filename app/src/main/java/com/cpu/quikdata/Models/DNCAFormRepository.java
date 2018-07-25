@@ -36,6 +36,8 @@ import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterNeedsData;
+import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashConditionsDetails;
+import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
@@ -342,6 +344,14 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     form.setHealthInformation(healthInformation);
                 }
+
+                {
+                    WashInformation healthInformation = realm.createObject(WashInformation.class, AppUtil.generateId());
+                    WashConditionsDetails washConditionsDetails = realm.createObject(WashConditionsDetails.class, AppUtil.generateId());
+                    healthInformation.setWashConditionsDetails(washConditionsDetails);
+
+                    form.setWashInformation(healthInformation);
+                }
                 
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
@@ -375,6 +385,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getHealthInformation(final IBaseDataManager<HealthInformation> callback) {
         callback.onDataReceived(mForm.getHealthInformation());
+    }
+
+    public void getWashInformation(final IBaseDataManager<WashInformation> callback) {
+        callback.onDataReceived(mForm.getWashInformation());
     }
 
     public void submitForm() {

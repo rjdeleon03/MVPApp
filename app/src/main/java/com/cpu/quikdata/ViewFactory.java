@@ -156,6 +156,10 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationF
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
 import com.cpu.quikdata.Utils.ActivityUtils;
 
@@ -298,6 +302,13 @@ public class ViewFactory {
                 case HEALTH_GAPS:
                     fragment = HealthGapsDetailsFragment.newInstance();
                     break;
+                case WASH:
+                    fragment = WashInformationFragment.newInstance();
+                    break;
+                case WASH_CONDITIONS:
+                    fragment = WashConditionsDetailsFragment.newInstance();
+                    break;
+                    
             }
 
             // Do not search for view fragment container if id == -1
@@ -505,6 +516,18 @@ public class ViewFactory {
                     HealthGapsDetailsViewModel healthGapsDetailsViewModel = new HealthGapsDetailsViewModel(Injection.provideDncaRepository(context));
 //                    healthGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = healthGapsDetailsViewModel;
+                    break;
+                    
+                case WASH:
+                    WashInformationViewModel washInformationViewModel = new WashInformationViewModel(Injection.provideDncaRepository(context));
+                    washInformationViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = washInformationViewModel;
+                    break;
+                    
+                case WASH_CONDITIONS:
+                    WashConditionsDetailsViewModel washConditionsDetailsViewModel = new WashConditionsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    washConditionsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = washConditionsDetailsViewModel;
                     break;
                     
             }

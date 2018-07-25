@@ -91,28 +91,6 @@ public class HealthInformationFragment extends TemplateMultiPageFragment<HealthI
                     (HealthGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_GAPS, null, getContext()));
             mAdapter.addFragment(healthGapsDetailsFragment);
         }
-        
-        /**
-        {
-            // Setup calamity details fragment
-            CalamityDetailsFragment calamityDetailsFragment =
-                    (CalamityDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
-            calamityDetailsFragment.setViewModel(
-                    (CalamityDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
-            mAdapter.addFragment(calamityDetailsFragment);
-        }
-
-        {
-            // Setup population data fragment
-            SpecialNeedsDataFragment populationDataFragment =
-                    (SpecialNeedsDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
-            SpecialNeedsDataViewModel populationDataViewModel =
-                    (SpecialNeedsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
-            populationDataViewModel.setViewComponent(populationDataFragment);
-            populationDataFragment.setViewModel(populationDataViewModel);
-            mAdapter.addFragment(populationDataFragment);
-        }
-        */
 
     }
 }

@@ -15,6 +15,10 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.Sh
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashCopingDetails.WashCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashCopingDetails.WashCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashGapsDetails.WashGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashGapsDetails.WashGapsDetailsViewModel;
 import com.cpu.quikdata.ViewFactory;
 
 public class WashInformationFragment extends TemplateMultiPageFragment<WashInformationViewModel> {
@@ -47,6 +51,24 @@ public class WashInformationFragment extends TemplateMultiPageFragment<WashInfor
             washConditionsDetailsFragment.setViewModel(
                     (WashConditionsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.WASH_CONDITIONS, null, getContext()));
             mAdapter.addFragment(washConditionsDetailsFragment);
+        }
+
+        {
+            // Setup wash coping details fragment
+            WashCopingDetailsFragment washCopingDetailsFragment =
+                    (WashCopingDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.WASH_COPING);
+            washCopingDetailsFragment.setViewModel(
+                    (WashCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.WASH_COPING, null, getContext()));
+            mAdapter.addFragment(washCopingDetailsFragment);
+        }
+
+        {
+            // Setup wash gaps details fragment
+            WashGapsDetailsFragment washGapsDetailsFragment =
+                    (WashGapsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.WASH_GAPS);
+            washGapsDetailsFragment.setViewModel(
+                    (WashGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.WASH_GAPS, null, getContext()));
+            mAdapter.addFragment(washGapsDetailsFragment);
         }
         
         /**

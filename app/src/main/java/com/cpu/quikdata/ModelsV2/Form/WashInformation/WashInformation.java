@@ -11,6 +11,8 @@ public class WashInformation extends RealmObject {
     private String id;
 
     private WashConditionsDetails washConditionsDetails;
+    private WashCopingDetails washCopingDetails;
+    private WashGapsDetails washGapsDetails;
 
     public String getId() {
         return id;
@@ -26,5 +28,21 @@ public class WashInformation extends RealmObject {
 
     public void setWashConditionsDetails(WashConditionsDetails washConditionsDetails) {
         this.washConditionsDetails = washConditionsDetails;
+    }
+
+    public WashCopingDetails getWashCopingDetails() {
+        return washCopingDetails;
+    }
+
+    public void setWashCopingDetails(WashCopingDetails washCopingDetails) {
+        this.washCopingDetails = washCopingDetails;
+    }
+
+    public WashGapsDetails getWashGapsDetails() {
+        return washGapsDetails;
+    }
+
+    public void setWashGapsDetails(WashGapsDetails washGapsDetails) {
+        this.washGapsDetails = washGapsDetails;
     }
 }

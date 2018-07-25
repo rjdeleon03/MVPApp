@@ -37,6 +37,8 @@ import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterNeedsData;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashConditionsDetails;
+import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashCopingDetails;
+import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
 import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
@@ -346,15 +348,22 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 }
 
                 {
-                    WashInformation healthInformation = realm.createObject(WashInformation.class, AppUtil.generateId());
+                    WashInformation washInformation = realm.createObject(WashInformation.class, AppUtil.generateId());
                     WashConditionsDetails washConditionsDetails = realm.createObject(WashConditionsDetails.class, AppUtil.generateId());
-                    healthInformation.setWashConditionsDetails(washConditionsDetails);
+                    washInformation.setWashConditionsDetails(washConditionsDetails);
 
-                    form.setWashInformation(healthInformation);
+                    WashCopingDetails washCopingDetails = realm.createObject(WashCopingDetails.class, AppUtil.generateId());
+                    washInformation.setWashCopingDetails(washCopingDetails);
+
+                    WashGapsDetails washGapsDetails = realm.createObject(WashGapsDetails.class, AppUtil.generateId());
+                    washInformation.setWashGapsDetails(washGapsDetails);
+
+                    form.setWashInformation(washInformation);
                 }
                 
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
+                
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override

@@ -158,6 +158,10 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.Sh
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashCopingDetails.WashCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashCopingDetails.WashCopingDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashGapsDetails.WashGapsDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashGapsDetails.WashGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.PrefilledDataActivity;
@@ -307,6 +311,12 @@ public class ViewFactory {
                     break;
                 case WASH_CONDITIONS:
                     fragment = WashConditionsDetailsFragment.newInstance();
+                    break;
+                case WASH_COPING:
+                    fragment = WashCopingDetailsFragment.newInstance();
+                    break;
+                case WASH_GAPS:
+                    fragment = WashGapsDetailsFragment.newInstance();
                     break;
                     
             }
@@ -528,6 +538,18 @@ public class ViewFactory {
                     WashConditionsDetailsViewModel washConditionsDetailsViewModel = new WashConditionsDetailsViewModel(Injection.provideDncaRepository(context));
 //                    washConditionsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = washConditionsDetailsViewModel;
+                    break;
+
+                case WASH_COPING:
+                    WashCopingDetailsViewModel washCopingDetailsViewModel = new WashCopingDetailsViewModel(Injection.provideDncaRepository(context));
+//                    washCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = washCopingDetailsViewModel;
+                    break;
+
+                case WASH_GAPS:
+                    WashGapsDetailsViewModel washGapsDetailsViewModel = new WashGapsDetailsViewModel(Injection.provideDncaRepository(context));
+//                    washGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = washGapsDetailsViewModel;
                     break;
                     
             }

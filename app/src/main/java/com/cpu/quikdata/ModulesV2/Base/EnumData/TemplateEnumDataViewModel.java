@@ -57,9 +57,9 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
 
         // Remove items from type list if type is already in use
         for (R row : mRowHolder.getRows()) {
-            for (GenericEnum ageGroup : typeList) {
-                if (ageGroup.getOrdinal() == row.getActualType().getOrdinal()) {
-                    typeList.remove(ageGroup);
+            for (GenericEnum type : typeList) {
+                if (type.getOrdinal() == row.getActualType().getOrdinal()) {
+                    typeList.remove(type);
                     break;
                 }
             }

@@ -1,12 +1,13 @@
 package com.cpu.quikdata.ModelsV2.Form.WashInformation;
 
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
+import com.cpu.quikdata.ModelsV2.Form.Common.IAssistanceDataContainer;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class WashInformation extends RealmObject {
+public class WashInformation extends RealmObject implements IAssistanceDataContainer {
 
     @Required
     @PrimaryKey
@@ -47,5 +48,15 @@ public class WashInformation extends RealmObject {
 
     public void setWashGapsDetails(WashGapsDetails washGapsDetails) {
         this.washGapsDetails = washGapsDetails;
+    }
+
+    @Override
+    public AssistanceData getAssistanceData() {
+        return washAssistanceData;
+    }
+
+    @Override
+    public void setAssistanceData(AssistanceData assistanceData) {
+        this.washAssistanceData = assistanceData;
     }
 }

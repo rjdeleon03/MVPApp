@@ -1,10 +1,13 @@
 package com.cpu.quikdata.ModelsV2.Form.ShelterInformation;
 
+import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
+import com.cpu.quikdata.ModelsV2.Form.Common.IAssistanceDataContainer;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class ShelterInformation extends RealmObject {
+public class ShelterInformation extends RealmObject implements IAssistanceDataContainer {
 
     @Required
     @PrimaryKey
@@ -14,6 +17,7 @@ public class ShelterInformation extends RealmObject {
     private ShelterCopingDetails shelterCopingDetails;
     private ShelterNeedsData shelterNeedsData;
     private ShelterGapsDetails shelterGapsDetails;
+    private AssistanceData shelterAssistanceData;
 
     public String getId() {
         return id;
@@ -53,5 +57,15 @@ public class ShelterInformation extends RealmObject {
 
     public void setShelterGapsDetails(ShelterGapsDetails shelterGapsDetails) {
         this.shelterGapsDetails = shelterGapsDetails;
+    }
+
+    @Override
+    public AssistanceData getAssistanceData() {
+        return shelterAssistanceData;
+    }
+
+    @Override
+    public void setAssistanceData(AssistanceData assistanceData) {
+        this.shelterAssistanceData = assistanceData;
     }
 }

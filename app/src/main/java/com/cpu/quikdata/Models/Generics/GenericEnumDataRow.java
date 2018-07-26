@@ -269,9 +269,17 @@ public abstract class GenericEnumDataRow {
         PRIMARY_SOURCE,
         SECONDARY_SOURCE;
 
+        /*
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
+        }
+        */
+        public static ObservableArrayList<IncomeSourceType> asObservableList() {
+            ObservableArrayList<IncomeSourceType> list = new ObservableArrayList<>();
+            list.add(PRIMARY_SOURCE);
+            list.add(SECONDARY_SOURCE);
+            return list;
         }
 
         public static List<IncomeSourceType> asList() {

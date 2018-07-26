@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.NewForm.Common;
+package com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;

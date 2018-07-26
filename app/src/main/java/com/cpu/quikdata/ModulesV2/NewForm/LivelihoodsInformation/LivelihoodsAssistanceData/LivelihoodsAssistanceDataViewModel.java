@@ -2,7 +2,7 @@ package com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAss
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsInformation;
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData.AssistanceDataViewModel;
 
 public class LivelihoodsAssistanceDataViewModel extends AssistanceDataViewModel<LivelihoodsInformation> {
 

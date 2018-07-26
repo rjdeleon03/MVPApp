@@ -1,6 +1,6 @@
 package com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData;
 
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData.AssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 
 public class FoodSecurityAssistanceDataFragment extends AssistanceDataFragment {

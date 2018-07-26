@@ -1,6 +1,6 @@
 package com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashAssistanceData;
 
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData.AssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 
 public class WashAssistanceDataFragment extends AssistanceDataFragment {

@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.NewForm.Common;
+package com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData;
 
 import android.databinding.Bindable;
 

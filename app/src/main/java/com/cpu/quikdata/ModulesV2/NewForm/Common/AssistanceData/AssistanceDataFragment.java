@@ -1,9 +1,8 @@
-package com.cpu.quikdata.ModulesV2.NewForm.Common;
+package com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData;
 
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 
 public abstract class AssistanceDataFragment extends TemplateEnumDataFragment<AssistanceDataViewModel> {
 

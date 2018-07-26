@@ -1,4 +1,4 @@
-package com.cpu.quikdata.ModulesV2.NewForm.Common;
+package com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData;
 
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;

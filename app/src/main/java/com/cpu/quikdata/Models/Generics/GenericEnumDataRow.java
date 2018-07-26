@@ -9,6 +9,20 @@ import java.util.List;
 
 public abstract class GenericEnumDataRow {
 
+    public enum AssistanceType implements GenericEnum {
+        ASSISTANCE;
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
+
     public enum AgeGroup implements GenericEnum {
         AGE_0_5,
         AGE_6_9,

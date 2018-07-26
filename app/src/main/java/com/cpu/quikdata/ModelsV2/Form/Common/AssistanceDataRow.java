@@ -12,12 +12,13 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class AssistanceDataRow extends RealmObject implements IEnumDataRow {
+public class AssistanceDataRow extends RealmObject implements IEnumDataRow<GenericEnumDataRow.AssistanceType> {
 
     @Required
     @PrimaryKey
     private String id;
 
+    private String type = GenericEnumDataRow.AssistanceType.ASSISTANCE.toString();
     private RealmList<QuestionItemModelString> stringFields;
     private RealmList<QuestionItemModelDate> dateFields;
     private RealmList<QuestionItemModelSingleNumber> numberFields;
@@ -33,6 +34,10 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow {
     @Override
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public RealmList<QuestionItemModelString> getStringFields() {
@@ -60,8 +65,8 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow {
     }
 
     @Override
-    public Object getActualType() {
-        return null;
+    public GenericEnumDataRow.AssistanceType getActualType() {
+        return GenericEnumDataRow.AssistanceType.ASSISTANCE;
     }
 
     @Override

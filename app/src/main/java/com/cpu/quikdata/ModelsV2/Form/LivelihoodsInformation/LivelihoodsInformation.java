@@ -13,6 +13,8 @@ public class LivelihoodsInformation extends RealmObject implements IAssistanceDa
     @PrimaryKey
     private String id;
 
+    private IncomeSourceData livelihoodsIncomeSourceDataBefore;
+    private IncomeSourceData livelihoodsIncomeSourceDataAfter;
     private LivelihoodsCopingDetails livelihoodsCopingDetails;
     private LivelihoodsNeedsDetails livelihoodsNeedsDetails;
     private LivelihoodsGapsDetails livelihoodsGapsDetails;
@@ -24,6 +26,22 @@ public class LivelihoodsInformation extends RealmObject implements IAssistanceDa
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public IncomeSourceData getLivelihoodsIncomeSourceDataBefore() {
+        return livelihoodsIncomeSourceDataBefore;
+    }
+
+    public void setLivelihoodsIncomeSourceDataBefore(IncomeSourceData livelihoodsIncomeSourceDataBefore) {
+        this.livelihoodsIncomeSourceDataBefore = livelihoodsIncomeSourceDataBefore;
+    }
+
+    public IncomeSourceData getLivelihoodsIncomeSourceDataAfter() {
+        return livelihoodsIncomeSourceDataAfter;
+    }
+
+    public void setLivelihoodsIncomeSourceDataAfter(IncomeSourceData livelihoodsIncomeSourceDataAfter) {
+        this.livelihoodsIncomeSourceDataAfter = livelihoodsIncomeSourceDataAfter;
     }
 
     public LivelihoodsCopingDetails getLivelihoodsCopingDetails() {

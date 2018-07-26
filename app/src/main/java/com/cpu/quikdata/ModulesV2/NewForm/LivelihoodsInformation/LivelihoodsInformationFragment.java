@@ -4,6 +4,10 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataBefore.IncomeSourceDataBeforeFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataBefore.IncomeSourceDataBeforeViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsFragment;
@@ -45,6 +49,28 @@ public class LivelihoodsInformationFragment extends TemplateMultiPageFragment<Li
     @Override
     protected void setupCustomView(View view) {
         FragmentManager fragmentManager = getChildFragmentManager();
+
+        {
+            // Setup livelihoods income source data before fragment
+            IncomeSourceDataBeforeFragment incomeSourceDataBeforeFragment =
+                    (IncomeSourceDataBeforeFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_BEFORE);
+            IncomeSourceDataBeforeViewModel incomeSourceDataBeforeViewModel =
+                    (IncomeSourceDataBeforeViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_BEFORE, null, getContext());
+            incomeSourceDataBeforeViewModel.setViewComponent(incomeSourceDataBeforeFragment);
+            incomeSourceDataBeforeFragment.setViewModel(incomeSourceDataBeforeViewModel);
+            mAdapter.addFragment(incomeSourceDataBeforeFragment);
+        }
+
+        {
+            // Setup livelihoods income source data after fragment
+            IncomeSourceDataAfterFragment incomeSourceDataAfterFragment =
+                    (IncomeSourceDataAfterFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_AFTER);
+            IncomeSourceDataAfterViewModel incomeSourceDataAfterViewModel =
+                    (IncomeSourceDataAfterViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_AFTER, null, getContext());
+            incomeSourceDataAfterViewModel.setViewComponent(incomeSourceDataAfterFragment);
+            incomeSourceDataAfterFragment.setViewModel(incomeSourceDataAfterViewModel);
+            mAdapter.addFragment(incomeSourceDataAfterFragment);
+        }
 
         {
             // Setup livelihoods coping details fragment

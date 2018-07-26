@@ -133,6 +133,10 @@ import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.Psy
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataBefore.IncomeSourceDataBeforeFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataBefore.IncomeSourceDataBeforeViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsFragment;
@@ -288,6 +292,12 @@ public class ViewFactory {
                     break;
                 case LIVELIHOODS:
                     fragment = LivelihoodsInformationFragment.newInstance();
+                    break;
+                case LIVELIHOODS_BEFORE:
+                    fragment = IncomeSourceDataBeforeFragment.newInstance();
+                    break;
+                case LIVELIHOODS_AFTER:
+                    fragment = IncomeSourceDataAfterFragment.newInstance();
                     break;
                 case LIVELIHOODS_COPING:
                     fragment = LivelihoodsCopingDetailsFragment.newInstance();
@@ -506,6 +516,18 @@ public class ViewFactory {
                     baseViewModel = livelihoodsInformationViewModel;
                     break;
 
+                case LIVELIHOODS_BEFORE:
+                    IncomeSourceDataBeforeViewModel incomeSourceDataBeforeViewModel = new IncomeSourceDataBeforeViewModel(Injection.provideDncaRepository(context));
+                    incomeSourceDataBeforeViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = incomeSourceDataBeforeViewModel;
+                    break;
+
+                case LIVELIHOODS_AFTER:
+                    IncomeSourceDataAfterViewModel incomeSourceDataAfterViewModel = new IncomeSourceDataAfterViewModel(Injection.provideDncaRepository(context));
+                    incomeSourceDataAfterViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = incomeSourceDataAfterViewModel;
+                    break;
+
                 case LIVELIHOODS_COPING:
                     LivelihoodsCopingDetailsViewModel livelihoodsCopingDetailsViewModel = new LivelihoodsCopingDetailsViewModel(Injection.provideDncaRepository(context));
 //                    livelihoodsCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
@@ -708,7 +730,7 @@ public class ViewFactory {
                     selectedFragment = LivelihoodsNeedsDataFragment.newInstance();
                     break;
                 case LIVELIHOODS_ASSISTANCE:
-//                    selectedFragment = LivelihoodsAssistanceDataFragment.newInstance();
+//                    selectedFragment = IncomeSourceDataAfterFragment.newInstance();
                     break;
                 case LIVELIHOODS_GAPS:
                     selectedFragment = LivelihoodsGapsDataFragment.newInstance();

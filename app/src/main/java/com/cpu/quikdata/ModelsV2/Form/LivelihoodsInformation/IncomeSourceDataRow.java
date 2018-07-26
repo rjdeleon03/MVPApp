@@ -5,6 +5,7 @@ import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -19,7 +20,12 @@ public class IncomeSourceDataRow extends RealmObject implements IEnumDataRow<Gen
 
     private String incomeSourceType;
 
+    private RealmList<QuestionItemModelString> stringFields;
     private RealmList<QuestionItemModelSingleNumber> numberFields;
+
+    public IncomeSourceDataRow() {
+        setupFields();
+    }
 
     public String getId() {
         return id;
@@ -38,6 +44,14 @@ public class IncomeSourceDataRow extends RealmObject implements IEnumDataRow<Gen
         this.incomeSourceType = incomeSourceType;
     }
 
+    public RealmList<QuestionItemModelString> getStringFields() {
+        return stringFields;
+    }
+
+    public void setStringFields(RealmList<QuestionItemModelString> stringFields) {
+        this.stringFields = stringFields;
+    }
+
     public RealmList<QuestionItemModelSingleNumber> getNumberFields() {
         return numberFields;
     }
@@ -54,6 +68,13 @@ public class IncomeSourceDataRow extends RealmObject implements IEnumDataRow<Gen
 
     @Override
     public void setupFields() {
+
+        if (stringFields == null) {
+            stringFields = new RealmList<>();
+        }
+        if (stringFields.isEmpty()) {
+            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "incomeSource", ""));
+        }
 
         if (numberFields == null) {
             numberFields = new RealmList<>();

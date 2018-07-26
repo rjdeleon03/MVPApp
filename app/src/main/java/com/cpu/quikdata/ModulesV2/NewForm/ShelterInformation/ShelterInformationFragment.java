@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
@@ -67,6 +69,17 @@ public class ShelterInformationFragment extends TemplateMultiPageFragment<Shelte
             shelterNeedsDataViewModel.setViewComponent(shelterNeedsDataFragment);
             shelterNeedsDataFragment.setViewModel(shelterNeedsDataViewModel);
             mAdapter.addFragment(shelterNeedsDataFragment);
+        }
+
+        {
+            // Setup assistance data fragment
+            AssistanceDataFragment assistanceDataFragment =
+                    (AssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_ASSISTANCE);
+            AssistanceDataViewModel assistanceDataViewModel =
+                    (AssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_ASSISTANCE, null, getContext());
+            assistanceDataViewModel.setViewComponent(assistanceDataFragment);
+            assistanceDataFragment.setViewModel(assistanceDataViewModel);
+            mAdapter.addFragment(assistanceDataFragment);
         }
 
         {

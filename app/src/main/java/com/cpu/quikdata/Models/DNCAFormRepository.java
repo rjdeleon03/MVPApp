@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
@@ -289,6 +290,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                     
                     ShelterNeedsData shelterNeedsData = realm.createObject(ShelterNeedsData.class, AppUtil.generateId());
                     shelterInformation.setShelterNeedsData(shelterNeedsData);
+
+                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+                    shelterInformation.setAssistanceData(assistanceData);
 
                     ShelterGapsDetails shelterGapsDetails = realm.createObject(ShelterGapsDetails.class, AppUtil.generateId());
                     shelterInformation.setShelterGapsDetails(shelterGapsDetails);

@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsCopingDetails;
-import com.cpu.quikdata.Modules.NewDnca.Base.AssistanceData.AssistanceDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopingData.EvacuationCopingDataFragment;
@@ -94,6 +93,8 @@ import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsFragment;
@@ -257,6 +258,9 @@ public class ViewFactory {
                     break;
                 case SHELTER_INFO_NEEDS:
                     fragment = ShelterNeedsDataFragment.newInstance();
+                    break;
+                case SHELTER_ASSISTANCE:
+                    fragment = AssistanceDataFragment.newInstance();
                     break;
                 case SHELTER_INFO_GAPS:
                     fragment = ShelterGapsDetailsFragment.newInstance();
@@ -431,6 +435,13 @@ public class ViewFactory {
                     shelterNeedsDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = shelterNeedsDataViewModel;
                     break;
+
+                case SHELTER_ASSISTANCE:
+                    AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(Injection.provideDncaRepository(context));
+                    assistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = assistanceDataViewModel;
+                    break;
+
 
                 case SHELTER_INFO_GAPS:
                     ShelterGapsDetailsViewModel shelterGapsDetailsViewModel = new ShelterGapsDetailsViewModel(Injection.provideDncaRepository(context));
@@ -802,7 +813,7 @@ public class ViewFactory {
                     viewModel = new ShelterCopingDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
+//                    viewModel = new AssistanceDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_GAPS:
                     viewModel = new ShelterGapsDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
@@ -819,7 +830,7 @@ public class ViewFactory {
                     viewModel = new FoodNeedsDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
+//                    viewModel = new AssistanceDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_GAPS:
                     viewModel = new FoodGapsDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
@@ -842,7 +853,7 @@ public class ViewFactory {
                     viewModel = new LivelihoodsNeedsDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
+//                    viewModel = new AssistanceDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_GAPS:
                     viewModel = new LivelihoodsGapsDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
@@ -862,7 +873,7 @@ public class ViewFactory {
                     viewModel = new HealthCopingDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel((HealthRepositoryManager)repositoryManager);
+//                    viewModel = new AssistanceDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_GAPS:
                     viewModel = new HealthGapsDataViewModel((HealthRepositoryManager)repositoryManager);
@@ -876,7 +887,7 @@ public class ViewFactory {
                     viewModel = new WashCopingDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_ASSISTANCE:
-                    viewModel = new AssistanceDataViewModel((WashRepositoryManager)repositoryManager);
+//                    viewModel = new AssistanceDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_GAPS:
                     viewModel = new WashGapsDataViewModel((WashRepositoryManager)repositoryManager);

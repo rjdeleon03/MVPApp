@@ -65,6 +65,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
             }
         }
         notifyPropertyChanged(BR.shouldShowSpinner);
+        notifyPropertyChanged(BR.shouldEnableAddButton);
     }
 
     /**
@@ -93,7 +94,17 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
      */
     @Bindable
     public boolean getShouldShowSpinner() {
-        return typeList.size() > 0;
+        if (typeList == null || typeList.size() == 0) return false;
+        return true;
+    }
+
+    /**
+     * Retrieves flag for enabling add button
+     * @return
+     */
+    @Bindable
+    public boolean getShouldEnableAddButton() {
+        return getShouldShowSpinner();
     }
 
     /**
@@ -174,7 +185,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
 
                         if (currAgeGroupOrdinal == tempAgeGroupOrdinal) {
 
-                            // If age group already exists, update its values
+                            // If row already exists, update its values
                             realm.insertOrUpdate(currRow);
                             break;
 
@@ -207,6 +218,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
             if (type.getOrdinal() == row.getActualType().getOrdinal()) {
                 typeList.remove(type);
                 notifyPropertyChanged(BR.shouldShowSpinner);
+                notifyPropertyChanged(BR.shouldEnableAddButton);
 
                 // Reset spinner selected index to 0
                 spinnerSelectedIndex.set(0);
@@ -256,6 +268,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
             }
         }
         notifyPropertyChanged(BR.shouldShowSpinner);
+        notifyPropertyChanged(BR.shouldEnableAddButton);
 
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransactionAsync(new Realm.Transaction() {

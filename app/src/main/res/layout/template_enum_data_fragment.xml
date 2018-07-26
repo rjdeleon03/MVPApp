@@ -94,7 +94,7 @@
                     android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
                     app:backgroundTint="@color/colorAccent"
                     app:elevation="0dp"
-                    app:enabled="@{viewModel.shouldShowSpinner}"/>
+                    app:enabled="@{viewModel.shouldEnableAddButton}"/>
 
                 <!--
                 <android.support.design.widget.FloatingActionButton

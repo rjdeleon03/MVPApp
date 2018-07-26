@@ -13,6 +13,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashAssistanceData.WashAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashAssistanceData.WashAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashCopingDetails.WashCopingDetailsFragment;
@@ -63,6 +65,17 @@ public class WashInformationFragment extends TemplateMultiPageFragment<WashInfor
         }
 
         {
+            // Setup wash assistance data fragment
+            WashAssistanceDataFragment washAssistanceDataFragment =
+                    (WashAssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.WASH_ASSISTANCE);
+            WashAssistanceDataViewModel washAssistanceDataViewModel =
+                    (WashAssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.WASH_ASSISTANCE, null, getContext());
+            washAssistanceDataViewModel.setViewComponent(washAssistanceDataFragment);
+            washAssistanceDataFragment.setViewModel(washAssistanceDataViewModel);
+            mAdapter.addFragment(washAssistanceDataFragment);
+        }
+
+        {
             // Setup wash gaps details fragment
             WashGapsDetailsFragment washGapsDetailsFragment =
                     (WashGapsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.WASH_GAPS);
@@ -70,27 +83,5 @@ public class WashInformationFragment extends TemplateMultiPageFragment<WashInfor
                     (WashGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.WASH_GAPS, null, getContext()));
             mAdapter.addFragment(washGapsDetailsFragment);
         }
-        
-        /**
-        {
-            // Setup damage data fragment
-            DamageDataFragment damageDataFragment =
-                    (DamageDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_DAMAGE);
-            DamageDataViewModel damageDataViewModel =
-                    (DamageDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_DAMAGE, null, getContext());
-            damageDataViewModel.setViewComponent(damageDataFragment);
-            damageDataFragment.setViewModel(damageDataViewModel);
-            mAdapter.addFragment(damageDataFragment);
-        }
-
-        {
-            // Setup shelter coping details fragment
-            ShelterCopingDetailsFragment shelterCopingDetailsFragment =
-                    (ShelterCopingDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_COPING);
-            shelterCopingDetailsFragment.setViewModel(
-                    (ShelterCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_INFO_COPING, null, getContext()));
-            mAdapter.addFragment(shelterCopingDetailsFragment);
-        }
-         */
     }
 }

@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsCopingDetails;
 import com.cpu.quikdata.Modules.NewDnca.Base.BaseSubFragment;
 import com.cpu.quikdata.Modules.NewDnca.Base.NewDncaBaseViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Evacuation.EvacuationItem.EvacuationCopingData.EvacuationCopingDataFragment;
@@ -48,7 +47,6 @@ import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.
 import com.cpu.quikdata.Modules.NewDnca.GeneralInformation.VulnerablePopulation.VulnerablePopulationViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.DiseasesInjuries.DiseasesInjuriesViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Health.HealthAssistanceData.HealthAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthCopingData.HealthCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.HealthGapsData.HealthGapsDataFragment;
@@ -58,7 +56,6 @@ import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialFragment
 import com.cpu.quikdata.Modules.NewDnca.Health.Psychosocial.PsychosocialViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsFragment;
 import com.cpu.quikdata.Modules.NewDnca.Health.SpecialNeeds.SpecialNeedsViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsCopingData.LivelihoodsCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsDamage.LivelihoodsDamageFragment;
@@ -74,13 +71,11 @@ import com.cpu.quikdata.Modules.NewDnca.Livelihoods.LivelihoodsRepositoryManager
 import com.cpu.quikdata.Modules.NewDnca.NewDncaActivity;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.HouseDamageData.HouseDamageViewModel;
-import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterAssistanceData.ShelterAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterCopingData.ShelterCopingDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterGapsData.ShelterGapsDataViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Shelter.ShelterInfoRepositoryManager;
-import com.cpu.quikdata.Modules.NewDnca.Wash.WashAssistanceData.WashAssistanceDataFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsFragment;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashConditions.WashConditionsViewModel;
 import com.cpu.quikdata.Modules.NewDnca.Wash.WashCopingData.WashCopingDataFragment;
@@ -93,8 +88,8 @@ import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsFragment;
@@ -125,6 +120,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.Vuln
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.VulnerableData.VulnerableDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthAssistanceData.HealthAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthAssistanceData.HealthAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthGapsDetails.HealthGapsDetailsFragment;
@@ -136,6 +133,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.Psy
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsGapsDetails.LivelihoodsGapsDetailsFragment;
@@ -149,6 +148,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.NewFormFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterAssistanceData.ShelterAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterAssistanceData.ShelterAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsFragment;
@@ -157,6 +158,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationF
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterNeedsData.ShelterNeedsDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashAssistanceData.WashAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashAssistanceData.WashAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashConditionsDetails.WashConditionsDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashCopingDetails.WashCopingDetailsFragment;
@@ -260,7 +263,7 @@ public class ViewFactory {
                     fragment = ShelterNeedsDataFragment.newInstance();
                     break;
                 case SHELTER_ASSISTANCE:
-                    fragment = AssistanceDataFragment.newInstance();
+                    fragment = ShelterAssistanceDataFragment.newInstance();
                     break;
                 case SHELTER_INFO_GAPS:
                     fragment = ShelterGapsDetailsFragment.newInstance();
@@ -277,6 +280,9 @@ public class ViewFactory {
                 case FOOD_SECURITY_NEEDS:
                     fragment = FoodSecurityNeedsDetailsFragment.newInstance();
                     break;
+                case FOOD_SECURITY_ASSISTANCE:
+                    fragment = FoodSecurityAssistanceDataFragment.newInstance();
+                    break;
                 case FOOD_SECURITY_GAPS:
                     fragment = FoodSecurityGapsDetailsFragment.newInstance();
                     break;
@@ -288,6 +294,9 @@ public class ViewFactory {
                     break;
                 case LIVELIHOODS_NEEDS:
                     fragment = LivelihoodsNeedsDetailsFragment.newInstance();
+                    break;
+                case LIVELIHOODS_ASSISTANCE:
+                    fragment = LivelihoodsAssistanceDataFragment.newInstance();
                     break;
                 case LIVELIHOODS_GAPS:
                     fragment = LivelihoodsGapsDetailsFragment.newInstance();
@@ -307,6 +316,9 @@ public class ViewFactory {
                 case HEALTH_COPING:
                     fragment = HealthCopingDetailsFragment.newInstance();
                     break;
+                case HEALTH_ASSISTANCE:
+                    fragment = HealthAssistanceDataFragment.newInstance();
+                    break;
                 case HEALTH_GAPS:
                     fragment = HealthGapsDetailsFragment.newInstance();
                     break;
@@ -318,6 +330,9 @@ public class ViewFactory {
                     break;
                 case WASH_COPING:
                     fragment = WashCopingDetailsFragment.newInstance();
+                    break;
+                case WASH_ASSISTANCE:
+                    fragment = WashAssistanceDataFragment.newInstance();
                     break;
                 case WASH_GAPS:
                     fragment = WashGapsDetailsFragment.newInstance();
@@ -437,9 +452,9 @@ public class ViewFactory {
                     break;
 
                 case SHELTER_ASSISTANCE:
-                    AssistanceDataViewModel assistanceDataViewModel = new AssistanceDataViewModel(Injection.provideDncaRepository(context));
-                    assistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
-                    baseViewModel = assistanceDataViewModel;
+                    ShelterAssistanceDataViewModel shelterAssistanceDataViewModel = new ShelterAssistanceDataViewModel(Injection.provideDncaRepository(context));
+                    shelterAssistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = shelterAssistanceDataViewModel;
                     break;
 
 
@@ -472,6 +487,12 @@ public class ViewFactory {
 //                    foodSecurityNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityNeedsDetailsViewModel;
                     break;
+                    
+                case FOOD_SECURITY_ASSISTANCE:
+                    FoodSecurityAssistanceDataViewModel foodSecurityAssistanceDataViewModel = new FoodSecurityAssistanceDataViewModel(Injection.provideDncaRepository(context));
+                    foodSecurityAssistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = foodSecurityAssistanceDataViewModel;
+                    break;
 
                 case FOOD_SECURITY_GAPS:
                     FoodSecurityGapsDetailsViewModel foodSecurityGapsDetailsViewModel = new FoodSecurityGapsDetailsViewModel(Injection.provideDncaRepository(context));
@@ -497,6 +518,12 @@ public class ViewFactory {
                     baseViewModel = livelihoodsNeedsDetailsViewModel;
                     break;
 
+                case LIVELIHOODS_ASSISTANCE:
+                    LivelihoodsAssistanceDataViewModel livelihoodsAssistanceDataViewModel = new LivelihoodsAssistanceDataViewModel(Injection.provideDncaRepository(context));
+                    livelihoodsAssistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = livelihoodsAssistanceDataViewModel;
+                    break;
+                    
                 case LIVELIHOODS_GAPS:
                     LivelihoodsGapsDetailsViewModel livelihoodsGapsDetailsViewModel = new LivelihoodsGapsDetailsViewModel(Injection.provideDncaRepository(context));
 //                    livelihoodsGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
@@ -532,6 +559,12 @@ public class ViewFactory {
 //                    healthCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = healthCopingDetailsViewModel;
                     break;
+                    
+                case HEALTH_ASSISTANCE:
+                    HealthAssistanceDataViewModel healthAssistanceDataViewModel = new HealthAssistanceDataViewModel(Injection.provideDncaRepository(context));
+                    healthAssistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = healthAssistanceDataViewModel;
+                    break;
 
                 case HEALTH_GAPS:
                     HealthGapsDetailsViewModel healthGapsDetailsViewModel = new HealthGapsDetailsViewModel(Injection.provideDncaRepository(context));
@@ -555,6 +588,12 @@ public class ViewFactory {
                     WashCopingDetailsViewModel washCopingDetailsViewModel = new WashCopingDetailsViewModel(Injection.provideDncaRepository(context));
 //                    washCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = washCopingDetailsViewModel;
+                    break;
+                    
+                case WASH_ASSISTANCE:
+                    WashAssistanceDataViewModel washAssistanceDataViewModel = new WashAssistanceDataViewModel(Injection.provideDncaRepository(context));
+                    washAssistanceDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = washAssistanceDataViewModel;
                     break;
 
                 case WASH_GAPS:
@@ -629,7 +668,7 @@ public class ViewFactory {
                     selectedFragment = ShelterCopingDataFragment.newInstance();
                     break;
                 case SHELTER_ASSISTANCE:
-                    selectedFragment = ShelterAssistanceDataFragment.newInstance();
+//                    selectedFragment = FoodSecurityAssistanceDataFragment.newInstance();
                     break;
                 case SHELTER_GAPS:
                     selectedFragment = ShelterGapsDataFragment.newInstance();
@@ -669,7 +708,7 @@ public class ViewFactory {
                     selectedFragment = LivelihoodsNeedsDataFragment.newInstance();
                     break;
                 case LIVELIHOODS_ASSISTANCE:
-                    selectedFragment = LivelihoodsAssistanceDataFragment.newInstance();
+//                    selectedFragment = LivelihoodsAssistanceDataFragment.newInstance();
                     break;
                 case LIVELIHOODS_GAPS:
                     selectedFragment = LivelihoodsGapsDataFragment.newInstance();
@@ -689,7 +728,7 @@ public class ViewFactory {
                     selectedFragment = HealthCopingDataFragment.newInstance();
                     break;
                 case HEALTH_ASSISTANCE:
-                    selectedFragment = HealthAssistanceDataFragment.newInstance();
+//                    selectedFragment = HealthAssistanceDataFragment.newInstance();
                     break;
                 case HEALTH_GAPS:
                     selectedFragment = HealthGapsDataFragment.newInstance();
@@ -703,7 +742,7 @@ public class ViewFactory {
                     selectedFragment = WashCopingDataFragment.newInstance();
                     break;
                 case WASH_ASSISTANCE:
-                    selectedFragment = WashAssistanceDataFragment.newInstance();
+//                    selectedFragment = WashAssistanceDataFragment.newInstance();
                     break;
                 case WASH_GAPS:
                     selectedFragment = WashGapsDataFragment.newInstance();
@@ -813,7 +852,7 @@ public class ViewFactory {
                     viewModel = new ShelterCopingDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_ASSISTANCE:
-//                    viewModel = new AssistanceDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
+//                    viewModel = new FoodSecurityAssistanceDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
                     break;
                 case SHELTER_GAPS:
                     viewModel = new ShelterGapsDataViewModel((ShelterInfoRepositoryManager)repositoryManager);
@@ -830,7 +869,7 @@ public class ViewFactory {
                     viewModel = new FoodNeedsDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_ASSISTANCE:
-//                    viewModel = new AssistanceDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
+//                    viewModel = new FoodSecurityAssistanceDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
                     break;
                 case FOOD_GAPS:
                     viewModel = new FoodGapsDataViewModel((FoodSecurityRepositoryManager)repositoryManager);
@@ -853,7 +892,7 @@ public class ViewFactory {
                     viewModel = new LivelihoodsNeedsDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_ASSISTANCE:
-//                    viewModel = new AssistanceDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
+//                    viewModel = new FoodSecurityAssistanceDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
                     break;
                 case LIVELIHOODS_GAPS:
                     viewModel = new LivelihoodsGapsDataViewModel((LivelihoodsRepositoryManager)repositoryManager);
@@ -873,7 +912,7 @@ public class ViewFactory {
                     viewModel = new HealthCopingDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_ASSISTANCE:
-//                    viewModel = new AssistanceDataViewModel((HealthRepositoryManager)repositoryManager);
+//                    viewModel = new FoodSecurityAssistanceDataViewModel((HealthRepositoryManager)repositoryManager);
                     break;
                 case HEALTH_GAPS:
                     viewModel = new HealthGapsDataViewModel((HealthRepositoryManager)repositoryManager);
@@ -887,7 +926,7 @@ public class ViewFactory {
                     viewModel = new WashCopingDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_ASSISTANCE:
-//                    viewModel = new AssistanceDataViewModel((WashRepositoryManager)repositoryManager);
+//                    viewModel = new FoodSecurityAssistanceDataViewModel((WashRepositoryManager)repositoryManager);
                     break;
                 case WASH_GAPS:
                     viewModel = new WashGapsDataViewModel((WashRepositoryManager)repositoryManager);

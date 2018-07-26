@@ -7,7 +7,7 @@ import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceDataRow;
-import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
+import com.cpu.quikdata.ModelsV2.Form.Common.IAssistanceDataContainer;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
@@ -24,8 +24,8 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmList;
 
-public class AssistanceDataViewModel
-        extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, ShelterInformation, GenericEnumDataRow.AssistanceType, AssistanceDataRow, AssistanceData> {
+public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer>
+        extends TemplateEnumDataViewModel<ITemplateEnumDataFragment, D, GenericEnumDataRow.AssistanceType, AssistanceDataRow, AssistanceData> {
 
     /**
      * Constructor
@@ -34,7 +34,6 @@ public class AssistanceDataViewModel
      */
     public AssistanceDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mFormRepository.getShelterInformation(this);
     }
 
     /**
@@ -42,7 +41,7 @@ public class AssistanceDataViewModel
      * @param data
      */
     @Override
-    public void onDataReceived(ShelterInformation data) {
+    public void onDataReceived(D data) {
         processReceivedData(data);
     }
 
@@ -51,7 +50,7 @@ public class AssistanceDataViewModel
      * @param data
      */
     @Override
-    protected void processReceivedData(ShelterInformation data) {
+    protected void processReceivedData(D data) {
         mRowHolder = data.getAssistanceData();
     }
 
@@ -125,7 +124,9 @@ public class AssistanceDataViewModel
     protected void deleteRowFromDb(AssistanceDataRow row, Realm realm) {
         AssistanceDataRow rowToDelete = realm.where(AssistanceDataRow.class).equalTo("id", row.getId()).findFirst();
         try {
-//            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
+            rowToDelete.getStringFields().deleteAllFromRealm();
+            rowToDelete.getDateFields().deleteAllFromRealm();
+            rowToDelete.getNumberFields().deleteAllFromRealm();
             rowToDelete.deleteFromRealm();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -139,7 +140,6 @@ public class AssistanceDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<AssistanceDataRow> callback) {
         AssistanceDataRow row = new AssistanceDataRow();
-//        row.setAssistanceType(typeList.get(spinnerSelectedIndex.get()).toString());
         callback.onDataReceived(row);
     }
 

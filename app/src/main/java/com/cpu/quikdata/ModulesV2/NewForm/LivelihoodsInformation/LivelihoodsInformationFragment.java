@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsAssistanceData.LivelihoodsAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsCopingDetails.LivelihoodsCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.LivelihoodsGapsDetails.LivelihoodsGapsDetailsFragment;
@@ -60,6 +62,17 @@ public class LivelihoodsInformationFragment extends TemplateMultiPageFragment<Li
             livelihoodsNeedsDetailsFragment.setViewModel(
                     (LivelihoodsNeedsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_NEEDS, null, getContext()));
             mAdapter.addFragment(livelihoodsNeedsDetailsFragment);
+        }
+
+        {
+            // Setup livelihoods assistance data fragment
+            LivelihoodsAssistanceDataFragment livelihoodsAssistanceDataFragment =
+                    (LivelihoodsAssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_ASSISTANCE);
+            LivelihoodsAssistanceDataViewModel livelihoodsAssistanceDataViewModel =
+                    (LivelihoodsAssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_ASSISTANCE, null, getContext());
+            livelihoodsAssistanceDataViewModel.setViewComponent(livelihoodsAssistanceDataFragment);
+            livelihoodsAssistanceDataFragment.setViewModel(livelihoodsAssistanceDataViewModel);
+            mAdapter.addFragment(livelihoodsAssistanceDataFragment);
         }
 
         {

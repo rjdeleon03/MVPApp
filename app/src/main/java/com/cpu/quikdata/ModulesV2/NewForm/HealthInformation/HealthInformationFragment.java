@@ -6,6 +6,8 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.DiseasesData.DiseasesDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthAssistanceData.HealthAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthAssistanceData.HealthAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthCopingDetails.HealthCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.HealthGapsDetails.HealthGapsDetailsFragment;
@@ -81,6 +83,17 @@ public class HealthInformationFragment extends TemplateMultiPageFragment<HealthI
             healthCopingDetailsFragment.setViewModel(
                     (HealthCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_COPING, null, getContext()));
             mAdapter.addFragment(healthCopingDetailsFragment);
+        }
+
+        {
+            // Setup health assistance data fragment
+            HealthAssistanceDataFragment healthAssistanceDataFragment =
+                    (HealthAssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_ASSISTANCE);
+            HealthAssistanceDataViewModel healthAssistanceDataViewModel =
+                    (HealthAssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.HEALTH_ASSISTANCE, null, getContext());
+            healthAssistanceDataViewModel.setViewComponent(healthAssistanceDataFragment);
+            healthAssistanceDataFragment.setViewModel(healthAssistanceDataViewModel);
+            mAdapter.addFragment(healthAssistanceDataFragment);
         }
 
         {

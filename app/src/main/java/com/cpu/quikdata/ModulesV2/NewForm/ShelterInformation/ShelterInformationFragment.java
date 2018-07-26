@@ -4,11 +4,11 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.DamageData.DamageDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterAssistanceData.ShelterAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterAssistanceData.ShelterAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterCopingDetails.ShelterCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.ShelterInformation.ShelterGapsDetails.ShelterGapsDetailsFragment;
@@ -72,14 +72,14 @@ public class ShelterInformationFragment extends TemplateMultiPageFragment<Shelte
         }
 
         {
-            // Setup assistance data fragment
-            AssistanceDataFragment assistanceDataFragment =
-                    (AssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_ASSISTANCE);
-            AssistanceDataViewModel assistanceDataViewModel =
-                    (AssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_ASSISTANCE, null, getContext());
-            assistanceDataViewModel.setViewComponent(assistanceDataFragment);
-            assistanceDataFragment.setViewModel(assistanceDataViewModel);
-            mAdapter.addFragment(assistanceDataFragment);
+            // Setup shelter assistance data fragment
+            ShelterAssistanceDataFragment shelterAssistanceDataFragment =
+                    (ShelterAssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_ASSISTANCE);
+            ShelterAssistanceDataViewModel shelterAssistanceDataViewModel =
+                    (ShelterAssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.SHELTER_ASSISTANCE, null, getContext());
+            shelterAssistanceDataViewModel.setViewComponent(shelterAssistanceDataFragment);
+            shelterAssistanceDataFragment.setViewModel(shelterAssistanceDataViewModel);
+            mAdapter.addFragment(shelterAssistanceDataFragment);
         }
 
         {

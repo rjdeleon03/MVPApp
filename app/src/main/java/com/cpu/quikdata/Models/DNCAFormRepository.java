@@ -311,6 +311,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                     FoodSecurityNeedsDetails foodSecurityNeedsDetails = realm.createObject(FoodSecurityNeedsDetails.class, AppUtil.generateId());
                     foodSecurityInformation.setFoodSecurityNeedsDetails(foodSecurityNeedsDetails);
 
+                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+                    foodSecurityInformation.setAssistanceData(assistanceData);
+
                     FoodSecurityGapsDetails foodSecurityGapsDetails = realm.createObject(FoodSecurityGapsDetails.class, AppUtil.generateId());
                     foodSecurityInformation.setFoodSecurityGapsDetails(foodSecurityGapsDetails);
 
@@ -324,6 +327,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     LivelihoodsNeedsDetails livelihoodsNeedsDetails = realm.createObject(LivelihoodsNeedsDetails.class, AppUtil.generateId());
                     livelihoodsInformation.setLivelihoodsNeedsDetails(livelihoodsNeedsDetails);
+
+                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+                    livelihoodsInformation.setAssistanceData(assistanceData);
 
                     LivelihoodsGapsDetails livelihoodsGapsDetails = realm.createObject(LivelihoodsGapsDetails.class, AppUtil.generateId());
                     livelihoodsInformation.setLivelihoodsGapsDetails(livelihoodsGapsDetails);
@@ -345,6 +351,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                     HealthCopingDetails healthCopingDetails = realm.createObject(HealthCopingDetails.class, AppUtil.generateId());
                     healthInformation.setHealthCopingDetails(healthCopingDetails);
 
+                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+                    healthInformation.setAssistanceData(assistanceData);
+
                     HealthGapsDetails healthGapsDetails = realm.createObject(HealthGapsDetails.class, AppUtil.generateId());
                     healthInformation.setHealthGapsDetails(healthGapsDetails);
 
@@ -358,6 +367,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     WashCopingDetails washCopingDetails = realm.createObject(WashCopingDetails.class, AppUtil.generateId());
                     washInformation.setWashCopingDetails(washCopingDetails);
+
+                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+                    washInformation.setAssistanceData(assistanceData);
 
                     WashGapsDetails washGapsDetails = realm.createObject(WashGapsDetails.class, AppUtil.generateId());
                     washInformation.setWashGapsDetails(washGapsDetails);

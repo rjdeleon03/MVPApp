@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityGapsDetails.FoodSecurityGapsDetailsFragment;
@@ -61,6 +63,7 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
                     (ImpactDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_IMPACT, null, getContext()));
             mAdapter.addFragment(impactDetailsFragment);
         }
+        
         {
             // Setup food security coping details fragment
             FoodSecurityCopingDetailsFragment foodSecurityCopingDetailsFragment =
@@ -69,6 +72,7 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
                     (FoodSecurityCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_COPING, null, getContext()));
             mAdapter.addFragment(foodSecurityCopingDetailsFragment);
         }
+        
         {
             // Setup food security needs details fragment
             FoodSecurityNeedsDetailsFragment foodSecurityNeedsDetailsFragment =
@@ -77,6 +81,18 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
                     (FoodSecurityNeedsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_NEEDS, null, getContext()));
             mAdapter.addFragment(foodSecurityNeedsDetailsFragment);
         }
+
+        {
+            // Setup food security assistance data fragment
+            FoodSecurityAssistanceDataFragment foodSecurityAssistanceDataFragment =
+                    (FoodSecurityAssistanceDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_ASSISTANCE);
+            FoodSecurityAssistanceDataViewModel foodSecurityAssistanceDataViewModel =
+                    (FoodSecurityAssistanceDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_ASSISTANCE, null, getContext());
+            foodSecurityAssistanceDataViewModel.setViewComponent(foodSecurityAssistanceDataFragment);
+            foodSecurityAssistanceDataFragment.setViewModel(foodSecurityAssistanceDataViewModel);
+            mAdapter.addFragment(foodSecurityAssistanceDataFragment);
+        }
+        
         {
             // Setup food security gaps details fragment
             FoodSecurityGapsDetailsFragment foodSecurityGapsDetailsFragment =
@@ -85,25 +101,5 @@ public class FoodSecurityInformationFragment extends TemplateMultiPageFragment<F
                     (FoodSecurityGapsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.FOOD_SECURITY_GAPS, null, getContext()));
             mAdapter.addFragment(foodSecurityGapsDetailsFragment);
         }
-        /**
-        {
-            // Setup calamity details fragment
-            FoodSecurityNeedsDetailsFragment calamityDetailsFragment =
-                    (FoodSecurityNeedsDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
-            calamityDetailsFragment.setViewModel(
-                    (FoodSecurityNeedsDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
-            mAdapter.addFragment(calamityDetailsFragment);
-        }
-        {
-            // Setup population data fragment
-            SpecialNeedsDataFragment populationDataFragment =
-                    (SpecialNeedsDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
-            SpecialNeedsDataViewModel populationDataViewModel =
-                    (SpecialNeedsDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
-            populationDataViewModel.setViewComponent(populationDataFragment);
-            populationDataFragment.setViewModel(populationDataViewModel);
-            mAdapter.addFragment(populationDataFragment);
-        }
-        */
     }
 }

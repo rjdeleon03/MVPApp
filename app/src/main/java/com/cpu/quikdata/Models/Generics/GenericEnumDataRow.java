@@ -12,6 +12,12 @@ public abstract class GenericEnumDataRow {
     public enum AssistanceType implements GenericEnum {
         ASSISTANCE;
 
+        public static ObservableArrayList<AssistanceType> asObservableList() {
+            ObservableArrayList<AssistanceType> list = new ObservableArrayList<>();
+            list.add(ASSISTANCE);
+            return list;
+        }
+
         @Override
         public Object getValue() {
             return this;

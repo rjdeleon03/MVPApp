@@ -15,24 +15,32 @@
         android:layout_height="wrap_content"
         android:descendantFocusability="afterDescendants">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@{viewModel.question}"
-            android:maxWidth="100dp"
-            android:textColor="@android:color/black" />
-
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_span="5"
-            android:descendantFocusability="afterDescendants"
-            android:padding="16dp"
-            android:stretchColumns="2,4"
-            app:questionItems="@{viewModel.questions}">
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@{viewModel.question}"
+                android:maxWidth="100dp"
+                android:textColor="@android:color/black" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:descendantFocusability="afterDescendants"
+                android:stretchColumns="2,4"
+                app:questionItems="@{viewModel.booleanList}">
 
         </TableLayout>
+
+        </LinearLayout>
 
     </TableRow>
 

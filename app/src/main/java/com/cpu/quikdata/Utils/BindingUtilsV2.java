@@ -13,6 +13,7 @@ import android.widget.TableLayout;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDoubleString;
@@ -21,6 +22,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDoubleString;
@@ -93,7 +95,10 @@ public class BindingUtilsV2 {
             } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
                 itemView = new TemplateQuestionItemViewHolderBoolean(inflater, (TemplateQuestionItemViewModelBoolean) questionModel).getView();
 
-            } else if (questionModel instanceof TemplateQuestionItemViewModelDate) {
+            } else if (questionModel instanceof TemplateQuestionItemViewModelBooleanGroup) {
+                itemView = new TemplateQuestionItemViewHolderBooleanGroup(inflater, (TemplateQuestionItemViewModelBooleanGroup) questionModel).getView();
+
+            }  else if (questionModel instanceof TemplateQuestionItemViewModelDate) {
                 itemView = new TemplateQuestionItemViewHolderDate(inflater, (TemplateQuestionItemViewModelDate) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelBooleanString) {

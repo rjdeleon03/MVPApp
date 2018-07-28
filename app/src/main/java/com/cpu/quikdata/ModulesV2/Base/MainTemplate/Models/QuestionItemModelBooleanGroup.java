@@ -21,6 +21,11 @@ public class QuestionItemModelBooleanGroup extends RealmObject implements IQuest
         this.booleanFields = booleanFields;
     }
 
+    public QuestionItemModelBooleanGroup(String id, String question) {
+        this.id = id;
+        this.question = question;
+    }
+
     public QuestionItemModelBooleanGroup(String question, RealmList<QuestionItemModelBoolean> booleanFields) {
         this.question = question;
         this.booleanFields = booleanFields;

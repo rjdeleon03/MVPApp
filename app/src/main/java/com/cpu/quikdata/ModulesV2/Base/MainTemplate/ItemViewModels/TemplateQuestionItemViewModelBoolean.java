@@ -8,11 +8,21 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBool
 public class TemplateQuestionItemViewModelBoolean extends TemplateQuestionItemViewModel<QuestionItemModelBoolean> {
 
     public final ObservableBoolean value = new ObservableBoolean(false);
+    private boolean mUseAltLayout;
 
-    public TemplateQuestionItemViewModelBoolean(QuestionItemModelBoolean model) {
+    public TemplateQuestionItemViewModelBoolean(QuestionItemModelBoolean model, boolean useAltLayout) {
         super(model);
         question.set(mModel.getQuestion());
         value.set(mModel.getValue());
+        mUseAltLayout = useAltLayout;
+    }
+
+    public TemplateQuestionItemViewModelBoolean(QuestionItemModelBoolean model) {
+        this(model, false);
+    }
+
+    public boolean getUseAltLayout() {
+        return mUseAltLayout;
     }
 
     @Override

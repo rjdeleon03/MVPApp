@@ -22,7 +22,7 @@ public class TemplateQuestionItemViewModelBooleanGroup extends TemplateQuestionI
         super(model);
         question.set(mModel.getQuestion());
         for(QuestionItemModelBoolean booleanModel : model.getBooleanFields()) {
-            mBooleanList.add(new TemplateQuestionItemViewModelBoolean(booleanModel));
+            mBooleanList.add(new TemplateQuestionItemViewModelBoolean(booleanModel, true));
         }
         notifyPropertyChanged(BR.booleanList);
     }

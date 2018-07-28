@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
@@ -20,7 +21,7 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
 
     private String livelihoodsType;
 
-    private RealmList<QuestionItemModelBoolean> booleanFields;
+    private QuestionItemModelBooleanGroup booleanGroup;
     private RealmList<QuestionItemModelString> stringFields;
     private RealmList<QuestionItemModelSingleNumber> numberFields;
 
@@ -46,12 +47,12 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
         setupBasedOnType();
     }
 
-    public RealmList<QuestionItemModelBoolean> getBooleanFields() {
-        return booleanFields;
+    public QuestionItemModelBooleanGroup getBooleanGroup() {
+        return booleanGroup;
     }
 
-    public void setBooleanFields(RealmList<QuestionItemModelBoolean> booleanFields) {
-        this.booleanFields = booleanFields;
+    public void setBooleanGroup(QuestionItemModelBooleanGroup booleanGroup) {
+        this.booleanGroup = booleanGroup;
     }
 
     public RealmList<QuestionItemModelString> getStringFields() {
@@ -97,10 +98,15 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
 
     private void setupBasedOnType() {
 
-        if (booleanFields == null) {
-            booleanFields = new RealmList<>();
+        if (booleanGroup == null) {
+            booleanGroup = new QuestionItemModelBooleanGroup(AppUtil.generateId(), "livelihoodTypes");
         }
-        if (booleanFields.isEmpty()) {
+        RealmList<QuestionItemModelBoolean> booleanFields = null;
+        if (booleanGroup.getBooleanFields() == null) {
+            booleanFields = new RealmList<>();
+            booleanGroup.setBooleanFields(booleanFields);
+        }
+        if (booleanFields != null && booleanFields.isEmpty()) {
 
             switch (getActualType()) {
                 case FARMING:

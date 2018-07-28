@@ -3,6 +3,7 @@ package com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation;
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
@@ -19,6 +20,7 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
 
     private String livelihoodsType;
 
+    private RealmList<QuestionItemModelBoolean> booleanFields;
     private RealmList<QuestionItemModelString> stringFields;
     private RealmList<QuestionItemModelSingleNumber> numberFields;
 
@@ -41,6 +43,15 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
 
     public void setLivelihoodsType(String livelihoodsType) {
         this.livelihoodsType = livelihoodsType;
+        setupBasedOnType();
+    }
+
+    public RealmList<QuestionItemModelBoolean> getBooleanFields() {
+        return booleanFields;
+    }
+
+    public void setBooleanFields(RealmList<QuestionItemModelBoolean> booleanFields) {
+        this.booleanFields = booleanFields;
     }
 
     public RealmList<QuestionItemModelString> getStringFields() {
@@ -67,6 +78,8 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
     @Override
     public void setupFields() {
 
+        if (livelihoodsType != null) setupBasedOnType();
+
         if (numberFields == null) {
             numberFields = new RealmList<>();
         }
@@ -79,6 +92,51 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
         }
         if (stringFields.isEmpty()) {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "remarks", ""));
+        }
+    }
+
+    private void setupBasedOnType() {
+
+        if (booleanFields == null) {
+            booleanFields = new RealmList<>();
+        }
+        if (booleanFields.isEmpty()) {
+
+            switch (getActualType()) {
+                case FARMING:
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "rice", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "corn", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "vegetable", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "fruits", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "livestock", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "others", false));
+                    break;
+
+                case FISHING:
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "boat", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "fishingEquipment", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "aquacultures", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "others", false));
+                    break;
+
+                case TRANSPORTATION:
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "jeepney", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "tricycle", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "van", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "others", false));
+                    break;
+
+                case ENTREPRENEURSHIP:
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "vendor", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "sariSariStore", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "others", false));
+                    break;
+
+                case WORKERS:
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "employees", false));
+                    booleanFields.add(new QuestionItemModelBoolean(AppUtil.generateId(), "laborers", false));
+                    break;
+            }
         }
     }
 }

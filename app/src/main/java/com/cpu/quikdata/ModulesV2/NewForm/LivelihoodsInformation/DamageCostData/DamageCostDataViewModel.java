@@ -8,9 +8,11 @@ import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsInformat
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
@@ -60,6 +62,7 @@ public class DamageCostDataViewModel
     protected void deleteRowFromDb(DamageCostDataRow row, Realm realm) {
         DamageCostDataRow rowToDelete = realm.where(DamageCostDataRow.class).equalTo("id", row.getId()).findFirst();
         try {
+            rowToDelete.getBooleanFields().deleteAllFromRealm();
             rowToDelete.getNumberFields().deleteAllFromRealm();
             rowToDelete.getStringFields().deleteAllFromRealm();
             rowToDelete.deleteFromRealm();
@@ -88,6 +91,9 @@ public class DamageCostDataViewModel
     public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, DamageCostDataRow row) {
         if (questionList == null) return;
 
+        for(QuestionItemModelBoolean model : row.getBooleanFields()) {
+            questionList.add(new TemplateQuestionItemViewModelBoolean(model));
+        }
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }

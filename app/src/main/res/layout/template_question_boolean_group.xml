@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanGroup" />
+    </data>
+
+    <TableRow
+        android:layout_marginBottom="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="afterDescendants">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@{viewModel.question}"
+            android:maxWidth="100dp"
+            android:textColor="@android:color/black" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="5"
+            android:descendantFocusability="afterDescendants"
+            android:padding="16dp"
+            android:stretchColumns="2,4"
+            app:questionItems="@{viewModel.questions}">
+
+        </TableLayout>
+
+    </TableRow>
+
+</layout>

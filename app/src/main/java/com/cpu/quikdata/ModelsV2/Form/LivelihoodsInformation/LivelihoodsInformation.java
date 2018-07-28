@@ -15,6 +15,7 @@ public class LivelihoodsInformation extends RealmObject implements IAssistanceDa
 
     private IncomeSourceData livelihoodsIncomeSourceDataBefore;
     private IncomeSourceData livelihoodsIncomeSourceDataAfter;
+    private DamageCostData livelihoodsDamageCostData;
     private LivelihoodsCopingDetails livelihoodsCopingDetails;
     private LivelihoodsNeedsDetails livelihoodsNeedsDetails;
     private LivelihoodsGapsDetails livelihoodsGapsDetails;
@@ -42,6 +43,14 @@ public class LivelihoodsInformation extends RealmObject implements IAssistanceDa
 
     public void setLivelihoodsIncomeSourceDataAfter(IncomeSourceData livelihoodsIncomeSourceDataAfter) {
         this.livelihoodsIncomeSourceDataAfter = livelihoodsIncomeSourceDataAfter;
+    }
+
+    public DamageCostData getLivelihoodsDamageCostData() {
+        return livelihoodsDamageCostData;
+    }
+
+    public void setLivelihoodsDamageCostData(DamageCostData livelihoodsDamageCostData) {
+        this.livelihoodsDamageCostData = livelihoodsDamageCostData;
     }
 
     public LivelihoodsCopingDetails getLivelihoodsCopingDetails() {

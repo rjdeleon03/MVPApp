@@ -308,13 +308,25 @@ public abstract class GenericEnumDataRow {
         ENTREPRENEURSHIP,
         WORKERS;
 
+        /*
         @Override
         public String toString() {
             return WordUtils.capitalizeFully(super.toString().replaceAll("_", " "));
         }
+        */
 
         public static List<LivelihoodsType> asList() {
             List<LivelihoodsType> list = new ArrayList<>();
+            list.add(FARMING);
+            list.add(FISHING);
+            list.add(TRANSPORTATION);
+            list.add(ENTREPRENEURSHIP);
+            list.add(WORKERS);
+            return list;
+        }
+
+        public static ObservableArrayList<LivelihoodsType> asObservableList() {
+            ObservableArrayList<LivelihoodsType> list = new ObservableArrayList<>();
             list.add(FARMING);
             list.add(FISHING);
             list.add(TRANSPORTATION);

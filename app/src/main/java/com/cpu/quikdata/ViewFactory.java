@@ -133,6 +133,8 @@ import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.PsychosocialData.Psy
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.HealthInformation.SpecialNeedsData.SpecialNeedsDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.DamageCostData.DamageCostDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.DamageCostData.DamageCostDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataBefore.IncomeSourceDataBeforeFragment;
@@ -298,6 +300,9 @@ public class ViewFactory {
                     break;
                 case LIVELIHOODS_AFTER:
                     fragment = IncomeSourceDataAfterFragment.newInstance();
+                    break;
+                case LIVELIHOODS_DAMAGE:
+                    fragment = DamageCostDataFragment.newInstance();
                     break;
                 case LIVELIHOODS_COPING:
                     fragment = LivelihoodsCopingDetailsFragment.newInstance();
@@ -526,6 +531,12 @@ public class ViewFactory {
                     IncomeSourceDataAfterViewModel incomeSourceDataAfterViewModel = new IncomeSourceDataAfterViewModel(Injection.provideDncaRepository(context));
                     incomeSourceDataAfterViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = incomeSourceDataAfterViewModel;
+                    break;
+
+                case LIVELIHOODS_DAMAGE:
+                    DamageCostDataViewModel damageCostDataViewModel = new DamageCostDataViewModel(Injection.provideDncaRepository(context));
+                    damageCostDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = damageCostDataViewModel;
                     break;
 
                 case LIVELIHOODS_COPING:

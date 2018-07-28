@@ -28,6 +28,7 @@ import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.PsychosocialData;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.SpecialNeedsData;
+import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.DamageCostData;
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.IncomeSourceData;
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsGapsDetails;
@@ -328,6 +329,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     IncomeSourceData incomeSourceDataAfter = realm.createObject(IncomeSourceData.class, AppUtil.generateId());
                     livelihoodsInformation.setLivelihoodsIncomeSourceDataAfter(incomeSourceDataAfter);
+
+                    DamageCostData damageCostData = realm.createObject(DamageCostData.class, AppUtil.generateId());
+                    livelihoodsInformation.setLivelihoodsDamageCostData(damageCostData);
 
                     LivelihoodsCopingDetails livelihoodsCopingDetails = realm.createObject(LivelihoodsCopingDetails.class, AppUtil.generateId());
                     livelihoodsInformation.setLivelihoodsCopingDetails(livelihoodsCopingDetails);

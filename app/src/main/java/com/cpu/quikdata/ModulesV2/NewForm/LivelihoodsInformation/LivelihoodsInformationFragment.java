@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.DamageCostData.DamageCostDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.DamageCostData.DamageCostDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataAfter.IncomeSourceDataAfterViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.LivelihoodsInformation.IncomeSourceDataBefore.IncomeSourceDataBeforeFragment;
@@ -70,6 +72,17 @@ public class LivelihoodsInformationFragment extends TemplateMultiPageFragment<Li
             incomeSourceDataAfterViewModel.setViewComponent(incomeSourceDataAfterFragment);
             incomeSourceDataAfterFragment.setViewModel(incomeSourceDataAfterViewModel);
             mAdapter.addFragment(incomeSourceDataAfterFragment);
+        }
+
+        {
+            // Setup livelihoods damage cost data fragment
+            DamageCostDataFragment damageCostDataFragment =
+                    (DamageCostDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_DAMAGE);
+            DamageCostDataViewModel damageCostDataViewModel =
+                    (DamageCostDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.LIVELIHOODS_DAMAGE, null, getContext());
+            damageCostDataViewModel.setViewComponent(damageCostDataFragment);
+            damageCostDataFragment.setViewModel(damageCostDataViewModel);
+            mAdapter.addFragment(damageCostDataFragment);
         }
 
         {

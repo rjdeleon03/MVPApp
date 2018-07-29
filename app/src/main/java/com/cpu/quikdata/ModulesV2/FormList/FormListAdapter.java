@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModulesV2.Base.ListData.ListAdapter;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewHolder;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel;
 import com.cpu.quikdata.R;
@@ -14,31 +15,37 @@ import com.cpu.quikdata.R;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
-public class FormListAdapter extends RealmRecyclerViewAdapter<Form, FormListItemViewHolder>{
+public class FormListAdapter extends ListAdapter<Form, FormListItemViewHolder> {
 
-    private IFormListDataManager mFormListDataManager;
-
+    /**
+     * Constructor
+     *
+     * @param data
+     * @param autoUpdate
+     * @param formListDataManager
+     */
     public FormListAdapter(@Nullable OrderedRealmCollection<Form> data, boolean autoUpdate,
                            IFormListDataManager formListDataManager) {
-        super(data, autoUpdate);
-        mFormListDataManager = formListDataManager;
+        super(data, autoUpdate, formListDataManager);
     }
 
-    @NonNull
+    /**
+     * Creates the view holder
+     * @param itemView
+     * @return
+     */
     @Override
-    public FormListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.form_list_item, parent, false);
+    protected FormListItemViewHolder createViewHolder(View itemView) {
         return new FormListItemViewHolder(itemView);
     }
 
+    /**
+     * Binds the view model to the view holder
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull FormListItemViewHolder holder, int position) {
-        holder.setViewModel(new FormListItemViewModel(mFormListDataManager.getForms().get(position)));
-    }
-
-    @Override
-    public int getItemCount() {
-        return mFormListDataManager.getItemsCount();
+        holder.setViewModel(new FormListItemViewModel(mListDataManager.getForms().get(position)));
     }
 }

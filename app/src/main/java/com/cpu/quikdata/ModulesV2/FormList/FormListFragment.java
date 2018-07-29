@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.ModelsV2.Form.DncaForm;
+import com.cpu.quikdata.ModulesV2.Base.ListData.ListDataFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.FormListFragmentBinding;
 
@@ -19,10 +20,7 @@ import io.realm.RealmResults;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormListFragment extends Fragment {
-
-    private FormListViewModel mViewModel;
-
+public class FormListFragment extends ListDataFragment<FormListViewModel> {
 
     public FormListFragment() {
         // Required empty public constructor
@@ -34,14 +32,6 @@ public class FormListFragment extends Fragment {
      */
     public static FormListFragment newInstance() {
         return new FormListFragment();
-    }
-
-    /**
-     * Sets the viewModel
-     * @param formListViewModel
-     */
-    public void setViewModel(FormListViewModel formListViewModel) {
-        mViewModel = formListViewModel;
     }
 
 

@@ -4,11 +4,11 @@ import com.cpu.quikdata.ModelsV2.Form.Form;
 
 import io.realm.RealmResults;
 
-public interface IFormListDataManager {
+public interface IFormListDataManager<LI> {
 
-    void onFormListDataRetrieved(RealmResults<Form> forms);
+    void onFormListDataRetrieved(RealmResults<LI> forms);
 
-    RealmResults<Form> getForms();
+    RealmResults<LI> getForms();
 
     FormListAdapter getAdapter();
 

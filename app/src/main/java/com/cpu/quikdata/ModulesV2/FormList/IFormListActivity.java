@@ -1,6 +1,8 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
-public interface IFormListActivity {
+import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
+
+public interface IFormListActivity extends IBaseInterface {
 
     void onAddButtonPressed();
 

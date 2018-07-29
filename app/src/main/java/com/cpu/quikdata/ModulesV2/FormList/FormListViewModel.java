@@ -6,82 +6,35 @@ import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModulesV2.Base.ListData.ListDataViewModel;
 
 import java.lang.ref.WeakReference;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class FormListViewModel extends BaseObservable implements IFormListDataManager {
-
-    @Nullable
-    private WeakReference<IFormListActivity> mFormListActivity;
-
-    private RealmResults<Form> mForms = null;
-    private DNCAFormRepository mDncaFormRepository;
-    private FormListAdapter mAdapter;
-
+public class FormListViewModel extends ListDataViewModel<IFormListActivity, Form> {
 
     /**
      * Constructor
      */
     public FormListViewModel(DNCAFormRepository dncaFormRepository) {
-        mDncaFormRepository = dncaFormRepository;
-        mDncaFormRepository.getAllForms(this);
+        super(dncaFormRepository);
+        mFormRepository.getAllForms(this);
     }
 
-    /**
-     * Sets the form list activity interface
-     * @param formListActivity
-     */
-    public void setFormListActivity(IFormListActivity formListActivity) {
-        mFormListActivity = new WeakReference<>(formListActivity);
-    }
-
-    /**
-     * Handles reception of forms
-     * @param forms
-     */
     @Override
-    public void onFormListDataRetrieved(RealmResults<Form> forms) {
-        mForms = forms;
-        mAdapter = new FormListAdapter(mForms, true, this);
-    }
-
-    /**
-     * Gets all forms
-     * @return
-     */
-    @Bindable
-    @Override
-    public RealmResults<Form> getForms() {
-        return mForms;
-    }
-
-    /**
-     * Gets adapter
-     * @return
-     */
-    @Override
-    public FormListAdapter getAdapter() {
-        return mAdapter;
-    }
-
-    /**
-     * Gets the number of items
-     * @return
-     */
-    @Override
-    public int getItemsCount() {
-        return mForms.size();
+    protected void setupAdapter() {
+        mAdapter = new FormListAdapter(mItems, true, this);
     }
 
     /**
      * Handles navigation when add button is pressed
      */
+    @Override
     public void navigateOnAddButtonPressed() {
-        if (mFormListActivity.get() != null) {
-            mFormListActivity.get().onAddButtonPressed();
+        if (mActivity.get() != null) {
+            mActivity.get().onAddButtonPressed();
         }
     }
 
@@ -89,8 +42,8 @@ public class FormListViewModel extends BaseObservable implements IFormListDataMa
      * Handles navigation when settings button is pressed
      */
     public void navigateOnSettingsButtonPressed() {
-        if (mFormListActivity.get() != null) {
-            mFormListActivity.get().onSettingsButtonPressed();
+        if (mActivity.get() != null) {
+            mActivity.get().onSettingsButtonPressed();
         }
     }
 }

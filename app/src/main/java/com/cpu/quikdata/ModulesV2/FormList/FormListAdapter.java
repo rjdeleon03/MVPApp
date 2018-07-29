@@ -17,13 +17,10 @@ public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewH
     /**
      * Constructor
      *
-     * @param data
-     * @param autoUpdate
      * @param formListDataManager
      */
-    public FormListAdapter(@Nullable OrderedRealmCollection<Form> data, boolean autoUpdate,
-                           IFormListDataManager formListDataManager) {
-        super(data, autoUpdate, formListDataManager);
+    public FormListAdapter(IFormListDataManager formListDataManager) {
+        super(formListDataManager);
         mViewId = R.layout.form_list_item;
     }
 

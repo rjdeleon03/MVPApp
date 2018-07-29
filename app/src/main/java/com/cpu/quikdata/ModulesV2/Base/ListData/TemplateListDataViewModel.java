@@ -19,7 +19,7 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
     @Nullable
     protected WeakReference<A> mActivity;
     protected OrderedRealmCollection<LI> mItems = null;
-    protected FormListAdapter mAdapter;
+    protected TemplateListAdapter mAdapter;
 
     /**
      * Constructor
@@ -76,8 +76,9 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
      * Gets adapter
      * @return
      */
+    @Bindable
     @Override
-    public FormListAdapter getAdapter() {
+    public TemplateListAdapter getAdapter() {
         return mAdapter;
     }
 
@@ -85,4 +86,13 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
      * Handles navigation when add button is pressed
      */
     public abstract void navigateOnAddButtonPressed();
+
+    /**
+     * Refreshes the recycler view data
+     */
+    public void refreshData() {
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+    }
 }

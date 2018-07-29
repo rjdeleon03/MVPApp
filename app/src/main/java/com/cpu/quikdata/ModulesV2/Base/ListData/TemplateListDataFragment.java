@@ -33,4 +33,13 @@ public class TemplateListDataFragment<VM extends TemplateListDataViewModel> exte
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
     }
+
+    /**
+     * Handles onResume event
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.refreshData();
+    }
 }

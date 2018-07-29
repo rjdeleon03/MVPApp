@@ -19,7 +19,7 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     protected void setupAdapter() {
-        mAdapter = new FormListAdapter(mItems, true, this);
+        mAdapter = new FormListAdapter(this);
     }
 
     /**

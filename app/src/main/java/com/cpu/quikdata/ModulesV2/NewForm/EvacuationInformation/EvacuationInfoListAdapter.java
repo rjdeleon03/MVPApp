@@ -21,14 +21,11 @@ public class EvacuationInfoListAdapter extends TemplateListAdapter<EvacuationInf
     /**
      * Constructor
      *
-     * @param data
-     * @param autoUpdate
      * @param formListDataManager
      */
-    public EvacuationInfoListAdapter(@Nullable OrderedRealmCollection<EvacuationInformation> data, boolean autoUpdate,
-                                     IFormListDataManager formListDataManager) {
-        super(data, autoUpdate, formListDataManager);
-        mViewId = R.layout.form_list_item;
+    public EvacuationInfoListAdapter(IFormListDataManager formListDataManager) {
+        super(formListDataManager);
+        mViewId = R.layout.evacuation_info_list_item;
     }
 
     /**

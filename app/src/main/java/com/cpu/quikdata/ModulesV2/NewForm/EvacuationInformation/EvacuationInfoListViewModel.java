@@ -1,12 +1,17 @@
 package com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInformation;
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListDataViewModel;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 
+import io.realm.Realm;
+
 public class EvacuationInfoListViewModel extends TemplateListDataViewModel<INewFormActivity, EvacuationInformation> {
+
+
 
     /**
      * Constructor
@@ -15,6 +20,7 @@ public class EvacuationInfoListViewModel extends TemplateListDataViewModel<INewF
      */
     public EvacuationInfoListViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
+        dncaFormRepository.getEvacuationInformation(this);
     }
 
     /**
@@ -22,7 +28,7 @@ public class EvacuationInfoListViewModel extends TemplateListDataViewModel<INewF
      */
     @Override
     protected void setupAdapter() {
-
+        mAdapter = new EvacuationInfoListAdapter(this);
     }
 
     /**
@@ -30,6 +36,13 @@ public class EvacuationInfoListViewModel extends TemplateListDataViewModel<INewF
      */
     @Override
     public void navigateOnAddButtonPressed() {
-
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                mItems.add(realm.createObject(EvacuationInformation.class, AppUtil.generateId()));
+                refreshData();
+            }
+        });
     }
 }

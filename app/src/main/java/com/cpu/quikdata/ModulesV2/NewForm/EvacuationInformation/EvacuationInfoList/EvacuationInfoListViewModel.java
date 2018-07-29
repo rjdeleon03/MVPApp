@@ -27,7 +27,6 @@ public class EvacuationInfoListViewModel
      */
     public EvacuationInfoListViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        typeList = GenericEnumDataRow.EvacuationType.asObservableList();
         mFormRepository.getEvacuationInfoList(this);
     }
 

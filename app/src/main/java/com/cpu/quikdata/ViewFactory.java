@@ -88,6 +88,8 @@ import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
@@ -353,7 +355,7 @@ public class ViewFactory {
                     fragment = WashGapsDetailsFragment.newInstance();
                     break;
                 case EVACUATION:
-//                    fragment = EvacuationInfoListFragment.newInstance();
+                    fragment = EvacuationInfoListFragment.newInstance();
                     break;
                     
             }
@@ -639,9 +641,9 @@ public class ViewFactory {
                     break;
                     
                 case EVACUATION:
-//                    EvacuationInfoListViewModel evacuationInfoListViewModel = new EvacuationInfoListViewModel(Injection.provideDncaRepository(context));
+                    EvacuationInfoListViewModel evacuationInfoListViewModel = new EvacuationInfoListViewModel(Injection.provideDncaRepository(context));
 //                    evacuationInfoListViewModel.setViewComponent((INewFormActivity) baseInterface);
-//                    baseViewModel = evacuationInfoListViewModel;
+                    baseViewModel = evacuationInfoListViewModel;
                     break;
                     
             }

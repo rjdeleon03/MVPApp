@@ -15,6 +15,10 @@ public class EvacuationInfoList extends RealmObject implements IEnumDataRowHolde
 
     private RealmList<EvacuationItem> rows;
 
+    public EvacuationInfoList() {
+        if (rows == null) rows = new RealmList<>();
+    }
+
     public String getId() {
         return id;
     }

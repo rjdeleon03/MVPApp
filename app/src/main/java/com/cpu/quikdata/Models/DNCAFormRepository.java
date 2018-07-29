@@ -389,6 +389,9 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 }
 
                 {
+                    EvacuationInfoList evacuationInfoList = realm.createObject(EvacuationInfoList.class, AppUtil.generateId());
+
+                    form.setEvacuationInfoList(evacuationInfoList);
                 }
                 
                 mForm = realm.copyFromRealm(form);

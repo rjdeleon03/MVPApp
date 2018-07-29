@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoListFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
@@ -75,6 +77,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
         EVACUATION,
         EVACUATION_ITEM,
+        
         CASE_STORIES
     }
 
@@ -135,21 +138,23 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onHealthInfoButtonPressed() {
-        HealthInformationFragment livelihoodsInformationFragment = (HealthInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.HEALTH, FRAGMENT_CONTAINER);
-        final HealthInformationViewModel livelihoodsInformationViewModel = (HealthInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.HEALTH, this, this);
-        livelihoodsInformationFragment.setViewModel(livelihoodsInformationViewModel);
+        HealthInformationFragment healthInformationFragment = (HealthInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.HEALTH, FRAGMENT_CONTAINER);
+        final HealthInformationViewModel healthInformationViewModel = (HealthInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.HEALTH, this, this);
+        healthInformationFragment.setViewModel(healthInformationViewModel);
     }
 
     @Override
     public void onWashInfoButtonPressed() {
-        WashInformationFragment livelihoodsInformationFragment = (WashInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.WASH, FRAGMENT_CONTAINER);
-        final WashInformationViewModel livelihoodsInformationViewModel = (WashInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.WASH, this, this);
-        livelihoodsInformationFragment.setViewModel(livelihoodsInformationViewModel);
+        WashInformationFragment washInformationFragment = (WashInformationFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.WASH, FRAGMENT_CONTAINER);
+        final WashInformationViewModel washInformationViewModel = (WashInformationViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.WASH, this, this);
+        washInformationFragment.setViewModel(washInformationViewModel);
     }
 
     @Override
     public void onEvacuationInfoButtonPressed() {
-
+        EvacuationInfoListFragment evacuationInfoListFragment = (EvacuationInfoListFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.EVACUATION, FRAGMENT_CONTAINER);
+        final EvacuationInfoListViewModel evacuationInfoListViewModel = (EvacuationInfoListViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.EVACUATION, this, this);
+        evacuationInfoListFragment.setViewModel(evacuationInfoListViewModel);
     }
 
     @Override

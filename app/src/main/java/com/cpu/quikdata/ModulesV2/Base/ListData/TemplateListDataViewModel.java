@@ -15,7 +15,7 @@ import java.lang.ref.WeakReference;
 
 import io.realm.RealmResults;
 
-public abstract class ListDataViewModel<A extends IBaseInterface, LI> extends BaseViewModel<A>  implements IFormListDataManager<LI> {
+public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> extends BaseViewModel<A>  implements IFormListDataManager<LI> {
 
     @Nullable
     protected WeakReference<A> mActivity;
@@ -27,7 +27,7 @@ public abstract class ListDataViewModel<A extends IBaseInterface, LI> extends Ba
      *
      * @param dncaFormRepository
      */
-    public ListDataViewModel(DNCAFormRepository dncaFormRepository) {
+    public TemplateListDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
     }
 

@@ -2,20 +2,16 @@ package com.cpu.quikdata.ModulesV2.FormList;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.cpu.quikdata.ModelsV2.Form.Form;
-import com.cpu.quikdata.ModulesV2.Base.ListData.ListAdapter;
+import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListAdapter;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewHolder;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel;
-import com.cpu.quikdata.R;
 
 import io.realm.OrderedRealmCollection;
-import io.realm.RealmRecyclerViewAdapter;
 
-public class FormListAdapter extends ListAdapter<Form, FormListItemViewHolder> {
+public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewHolder> {
 
     /**
      * Constructor

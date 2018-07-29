@@ -1,19 +1,10 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.support.annotation.Nullable;
-
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
-import com.cpu.quikdata.ModulesV2.Base.ListData.ListDataViewModel;
+import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListDataViewModel;
 
-import java.lang.ref.WeakReference;
-
-import io.realm.Realm;
-import io.realm.RealmResults;
-
-public class FormListViewModel extends ListDataViewModel<IFormListActivity, Form> {
+public class FormListViewModel extends TemplateListDataViewModel<IFormListActivity, Form> {
 
     /**
      * Constructor

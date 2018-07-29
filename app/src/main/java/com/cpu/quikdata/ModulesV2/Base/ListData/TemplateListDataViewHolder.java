@@ -3,14 +3,14 @@ package com.cpu.quikdata.ModulesV2.Base.ListData;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public abstract class ListDataViewHolder<VM> extends RecyclerView.ViewHolder {
+public abstract class TemplateListDataViewHolder<VM> extends RecyclerView.ViewHolder {
 
     /**
      * Constructor
      *
      * @param itemView
      */
-    public ListDataViewHolder(View itemView) {
+    public TemplateListDataViewHolder(View itemView) {
         super(itemView);
         bind(itemView);
     }

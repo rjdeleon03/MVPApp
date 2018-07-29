@@ -14,7 +14,7 @@ import io.realm.OrderedRealmCollection;
 import io.realm.RealmObject;
 import io.realm.RealmRecyclerViewAdapter;
 
-public abstract class ListAdapter<LI extends RealmObject, VH extends RecyclerView.ViewHolder> extends RealmRecyclerViewAdapter<LI, VH> {
+public abstract class ListAdapter<LI extends RealmObject, VH extends ListDataViewHolder> extends RealmRecyclerViewAdapter<LI, VH> {
 
     protected IFormListDataManager<LI> mListDataManager;
 

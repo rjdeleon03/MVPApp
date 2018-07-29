@@ -8,6 +8,7 @@ import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListAdapter;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewHolder;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel;
+import com.cpu.quikdata.R;
 
 import io.realm.OrderedRealmCollection;
 
@@ -23,6 +24,7 @@ public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewH
     public FormListAdapter(@Nullable OrderedRealmCollection<Form> data, boolean autoUpdate,
                            IFormListDataManager formListDataManager) {
         super(data, autoUpdate, formListDataManager);
+        mViewId = R.layout.form_list_item;
     }
 
     /**

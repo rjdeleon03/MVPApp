@@ -31,6 +31,13 @@ public class FormListFragment extends TemplateListDataFragment<FormListViewModel
     }
 
 
+    /**
+     * Creates the view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

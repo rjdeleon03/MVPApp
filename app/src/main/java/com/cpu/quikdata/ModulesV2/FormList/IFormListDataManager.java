@@ -1,16 +1,16 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
-import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListAdapter;
 
-import io.realm.RealmResults;
+import io.realm.OrderedRealmCollection;
 
 public interface IFormListDataManager<LI> {
 
-    void onFormListDataRetrieved(RealmResults<LI> forms);
+    void onListDataRetrieved(OrderedRealmCollection<LI> forms);
 
-    RealmResults<LI> getForms();
+    OrderedRealmCollection<LI> getForms();
 
-    FormListAdapter getAdapter();
+    TemplateListAdapter getAdapter();
 
     int getItemsCount();
 }

@@ -6,24 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Injection;
-import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineFamilies;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHouses;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselineHousesRow;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulation;
-import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
-import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.ViewModelHolder;
 import com.novoda.merlin.Merlin;
 import com.novoda.merlin.registerable.connection.Connectable;
-
-import io.realm.Realm;
-import io.realm.RealmList;
 
 public class FormListActivity extends AppCompatActivity implements IFormListActivity {
 
@@ -106,7 +95,7 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
 
             // Create viewModel if it does not exist yet
             FormListViewModel formListViewModel = new FormListViewModel(Injection.provideDncaRepository(this));
-            formListViewModel.setFormListActivity(this);
+            formListViewModel.setActivity(this);
 
             // Bind viewModel to activity
             ActivityUtils.addFragmentToActivity(

@@ -4,22 +4,21 @@ import android.databinding.Bindable;
 import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
-import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
-import com.cpu.quikdata.ModulesV2.FormList.IFormListActivity;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
 
 import java.lang.ref.WeakReference;
 
+import io.realm.OrderedRealmCollection;
 import io.realm.RealmResults;
 
 public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> extends BaseViewModel<A>  implements IFormListDataManager<LI> {
 
     @Nullable
     protected WeakReference<A> mActivity;
-    protected RealmResults<LI> mItems = null;
+    protected OrderedRealmCollection<LI> mItems = null;
     protected FormListAdapter mAdapter;
 
     /**
@@ -32,10 +31,10 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
     }
 
     /**
-     * Sets the form list activity interface
+     * Sets the activity interface
      * @param activity
      */
-    public void setFormListActivity(A activity) {
+    public void setActivity(A activity) {
         mActivity = new WeakReference<>(activity);
     }
 
@@ -44,7 +43,7 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
      * @param items
      */
     @Override
-    public void onFormListDataRetrieved(RealmResults<LI> items) {
+    public void onListDataRetrieved(OrderedRealmCollection<LI> items) {
         mItems = items;
         setupAdapter();
     }
@@ -60,7 +59,7 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
      */
     @Bindable
     @Override
-    public RealmResults<LI> getForms() {
+    public OrderedRealmCollection<LI> getForms() {
         return mItems;
     }
 
@@ -85,5 +84,5 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
     /**
      * Handles navigation when add button is pressed
      */
-    protected abstract void navigateOnAddButtonPressed();
+    public abstract void navigateOnAddButtonPressed();
 }

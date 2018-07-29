@@ -29,26 +29,4 @@ public class FormListFragment extends TemplateListDataFragment<FormListViewModel
     public static FormListFragment newInstance() {
         return new FormListFragment();
     }
-
-
-    /**
-     * Creates the view
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.form_list_fragment, container, false);
-        FormListFragmentBinding binding = FormListFragmentBinding.bind(view);
-        binding.setViewModel(mViewModel);
-
-        // Setup recyclerView
-        RecyclerView rv = view.findViewById(R.id.form_list_view);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        return view;
-    }
 }

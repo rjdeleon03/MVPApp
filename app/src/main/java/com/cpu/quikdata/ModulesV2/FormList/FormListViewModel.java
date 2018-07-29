@@ -14,6 +14,9 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
         mFormRepository.getAllForms(this);
     }
 
+    /**
+     * Sets up the adapter
+     */
     @Override
     protected void setupAdapter() {
         mAdapter = new FormListAdapter(mItems, true, this);

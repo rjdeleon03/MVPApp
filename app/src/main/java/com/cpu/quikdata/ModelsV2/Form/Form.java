@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInformation;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
@@ -7,6 +8,7 @@ import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsInformat
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -27,6 +29,7 @@ public class Form extends RealmObject {
     private LivelihoodsInformation livelihoodsInformation;
     private HealthInformation healthInformation;
     private WashInformation washInformation;
+    private RealmList<EvacuationInformation> evacuationInformationItems = new RealmList<>();
 
     public String getId() {
         return id;
@@ -98,5 +101,17 @@ public class Form extends RealmObject {
 
     public void setWashInformation(WashInformation washInformation) {
         this.washInformation = washInformation;
+    }
+
+    public RealmList<EvacuationInformation> getEvacuationInformationItems() {
+        return evacuationInformationItems;
+    }
+
+    public void setEvacuationInformationItems(RealmList<EvacuationInformation> evacuationInformationItems) {
+        this.evacuationInformationItems = evacuationInformationItems;
+    }
+
+    public void addEvacuationInformationItem(EvacuationInformation evacuationInformation) {
+        this.evacuationInformationItems.add(evacuationInformation);
     }
 }

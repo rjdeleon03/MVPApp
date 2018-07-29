@@ -20,7 +20,7 @@ public abstract class TemplateListAdapter<LI extends RealmObject, VH extends Tem
 
     /**
      * Constructor
-     * 
+     *
      * @param data
      * @param autoUpdate
      * @param listDataManager

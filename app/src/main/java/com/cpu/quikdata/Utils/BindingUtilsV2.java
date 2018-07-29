@@ -194,6 +194,8 @@ public class BindingUtilsV2 {
 
     @BindingAdapter({"app:adapter"})
     public static void bind(RecyclerView recyclerView, FormListAdapter adapter) {
+        if (adapter == null) return;
+
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

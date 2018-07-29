@@ -4,8 +4,10 @@ import android.support.annotation.NonNull;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInformation;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
@@ -20,7 +22,6 @@ import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.FamilyDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.InfrastructureData;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationData;
-import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.VulnerableData;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.DiseasesData;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthCopingDetails;
@@ -186,7 +187,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     /** NEW METHODS ================================================= */
     public void getAllForms(final IFormListDataManager callback) {
         mRealm.beginTransaction();
-        callback.onFormListDataRetrieved(mRealm.where(Form.class).findAll());
+        callback.onListDataRetrieved(mRealm.where(Form.class).findAll());
         mRealm.commitTransaction();
     }
 
@@ -387,6 +388,11 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     form.setWashInformation(washInformation);
                 }
+
+                {
+                    EvacuationInformation evacuationInformation = realm.createObject(EvacuationInformation.class, AppUtil.generateId());
+                    form.addEvacuationInformationItem(evacuationInformation);
+                }
                 
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
@@ -425,6 +431,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getWashInformation(final IBaseDataManager<WashInformation> callback) {
         callback.onDataReceived(mForm.getWashInformation());
+    }
+
+    public void getEvacuationInformation(final IFormListDataManager<EvacuationInformation> callback) {
+        callback.onListDataRetrieved(mForm.getEvacuationInformationItems());
     }
 
     public void submitForm() {

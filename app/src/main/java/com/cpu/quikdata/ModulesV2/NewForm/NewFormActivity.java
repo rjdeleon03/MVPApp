@@ -77,6 +77,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
         EVACUATION,
         EVACUATION_ITEM,
+        EVACUATION_ITEM_CENTER,
         
         CASE_STORIES
     }

@@ -47,5 +47,9 @@ public class TemplateQuestionItemViewModelBooleanGroup extends TemplateQuestionI
     }
 
     @Override
-    public void updateModel() {}
+    public void updateModel() {
+        for(TemplateQuestionItemViewModel booleanVM : mBooleanList) {
+            booleanVM.updateModel();
+        }
+    }
 }

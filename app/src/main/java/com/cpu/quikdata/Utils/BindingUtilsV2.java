@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
@@ -31,6 +32,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderString;
@@ -68,6 +70,25 @@ public class BindingUtilsV2 {
     public static void bindRows(RecyclerView recyclerView, TemplateEnumDataRowAdapter adapter, List rowItems) {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @BindingAdapter({"android:text"})
+    public static void bindBooleansToText(TextView textView, List<TemplateQuestionItemViewModel> booleanItems) {
+        StringBuilder text = new StringBuilder();
+
+        int trueCt = 0;
+        for(int i = 0; i < booleanItems.size(); i++) {
+            TemplateQuestionItemViewModelBoolean booleanItem = (TemplateQuestionItemViewModelBoolean) booleanItems.get(i);
+
+            if (booleanItem.value.get()) {
+                if (trueCt > 0) {
+                    text.append(", ");
+                }
+                text.append(booleanItem.question.get());
+                trueCt++;
+            }
+        }
+        textView.setText(text.toString());
     }
 
     /**
@@ -139,6 +160,9 @@ public class BindingUtilsV2 {
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelBoolean) {
                 itemView = new TemplateReadonlyItemViewHolderBoolean(inflater, (TemplateQuestionItemViewModelBoolean) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelBooleanGroup) {
+                itemView = new TemplateReadonlyItemViewHolderBooleanGroup(inflater, (TemplateQuestionItemViewModelBooleanGroup) questionModel).getView();
 
             }
 

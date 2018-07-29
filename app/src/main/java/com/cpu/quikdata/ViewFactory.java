@@ -90,6 +90,8 @@ import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
@@ -357,7 +359,9 @@ public class ViewFactory {
                 case EVACUATION:
                     fragment = EvacuationInfoListFragment.newInstance();
                     break;
-                    
+                case EVACUATION_ITEM:
+                    fragment = EvacuationItemFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -644,6 +648,12 @@ public class ViewFactory {
                     EvacuationInfoListViewModel evacuationInfoListViewModel = new EvacuationInfoListViewModel(Injection.provideDncaRepository(context));
 //                    evacuationInfoListViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = evacuationInfoListViewModel;
+                    break;
+
+                case EVACUATION_ITEM:
+                    EvacuationItemViewModel evacuationItemViewModel = new EvacuationItemViewModel(Injection.provideDncaRepository(context));
+//                    evacuationItemViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = evacuationItemViewModel;
                     break;
                     
             }

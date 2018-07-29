@@ -13,6 +13,8 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
     @PrimaryKey
     private String id;
 
+    private EvacuationCenterDetails evacuationCenterDetails;
+
     public EvacuationItem() {
         setupFields();
     }
@@ -25,6 +27,14 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
         this.id = id;
     }
 
+    public EvacuationCenterDetails getEvacuationCenterDetails() {
+        return evacuationCenterDetails;
+    }
+
+    public void setEvacuationCenterDetails(EvacuationCenterDetails evacuationCenterDetails) {
+        this.evacuationCenterDetails = evacuationCenterDetails;
+    }
+
     @Override
     public GenericEnumDataRow.EvacuationType getActualType() {
         return GenericEnumDataRow.EvacuationType.EVACUATION_TYPE;
@@ -34,4 +44,5 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
     public void setupFields() {
 
     }
+
 }

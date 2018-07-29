@@ -2,9 +2,11 @@ package com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoL
 
 import android.databinding.Bindable;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationCenterDetails;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationItem;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
@@ -130,10 +132,18 @@ public class EvacuationInfoListViewModel
      * @param callback
      */
     @Override
-    public void getNewRow(IBaseDataManager<EvacuationItem> callback) {
-        EvacuationItem row = new EvacuationItem();
-//        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
-        callback.onDataReceived(row);
+    public void getNewRow(final IBaseDataManager<EvacuationItem> callback) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                EvacuationItem row = realm.createObject(EvacuationItem.class, AppUtil.generateId());
+
+                EvacuationCenterDetails evacuationCenterDetails = realm.createObject(EvacuationCenterDetails.class, AppUtil.generateId());
+                row.setEvacuationCenterDetails(evacuationCenterDetails);
+                callback.onDataReceived(realm.copyFromRealm(row));
+            }
+        });
     }
 
     /**

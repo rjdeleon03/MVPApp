@@ -1,6 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
-import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInformation;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
@@ -29,7 +29,7 @@ public class Form extends RealmObject {
     private LivelihoodsInformation livelihoodsInformation;
     private HealthInformation healthInformation;
     private WashInformation washInformation;
-    private RealmList<EvacuationInformation> evacuationInformationItems = new RealmList<>();
+    private EvacuationInfoList evacuationInfoList;
 
     public String getId() {
         return id;
@@ -103,15 +103,11 @@ public class Form extends RealmObject {
         this.washInformation = washInformation;
     }
 
-    public RealmList<EvacuationInformation> getEvacuationInformationItems() {
-        return evacuationInformationItems;
+    public EvacuationInfoList getEvacuationInfoList() {
+        return evacuationInfoList;
     }
 
-    public void setEvacuationInformationItems(RealmList<EvacuationInformation> evacuationInformationItems) {
-        this.evacuationInformationItems = evacuationInformationItems;
-    }
-
-    public void addEvacuationInformationItem(EvacuationInformation evacuationInformation) {
-        this.evacuationInformationItems.add(evacuationInformation);
+    public void setEvacuationInfoList(EvacuationInfoList evacuationInfoList) {
+        this.evacuationInfoList = evacuationInfoList;
     }
 }

@@ -4,10 +4,9 @@ import android.support.annotation.NonNull;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
-import com.cpu.quikdata.Models.Evacuation.EvacuationInfo;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
-import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInformation;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
@@ -390,8 +389,6 @@ public class DNCAFormRepository implements DNCAFormDataSource {
                 }
 
                 {
-                    EvacuationInformation evacuationInformation = realm.createObject(EvacuationInformation.class, AppUtil.generateId());
-                    form.addEvacuationInformationItem(evacuationInformation);
                 }
                 
                 mForm = realm.copyFromRealm(form);
@@ -433,8 +430,8 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         callback.onDataReceived(mForm.getWashInformation());
     }
 
-    public void getEvacuationInformation(final IFormListDataManager<EvacuationInformation> callback) {
-        callback.onListDataRetrieved(mForm.getEvacuationInformationItems());
+    public void getEvacuationInfoList(final IBaseDataManager<EvacuationInfoList> callback) {
+        callback.onDataReceived(mForm.getEvacuationInfoList());
     }
 
     public void submitForm() {

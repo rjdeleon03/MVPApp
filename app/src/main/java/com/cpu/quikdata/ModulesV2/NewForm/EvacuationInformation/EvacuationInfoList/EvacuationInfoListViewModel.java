@@ -7,8 +7,10 @@ import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationCenterDetails;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationFacilitiesDetails;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationItem;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationPopulationData;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
@@ -141,6 +143,13 @@ public class EvacuationInfoListViewModel
 
                 EvacuationCenterDetails evacuationCenterDetails = realm.createObject(EvacuationCenterDetails.class, AppUtil.generateId());
                 row.setEvacuationCenterDetails(evacuationCenterDetails);
+
+                EvacuationFacilitiesDetails evacuationFacilitiesDetails = realm.createObject(EvacuationFacilitiesDetails.class, AppUtil.generateId());
+                row.setEvacuationFacilitiesDetails(evacuationFacilitiesDetails);
+
+                EvacuationPopulationData evacuationPopulationData = realm.createObject(EvacuationPopulationData.class, AppUtil.generateId());
+                row.setEvacuationPopulationData(evacuationPopulationData);
+
                 callback.onDataReceived(realm.copyFromRealm(row));
             }
         });

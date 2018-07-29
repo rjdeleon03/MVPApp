@@ -92,8 +92,12 @@ import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoLi
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
@@ -366,6 +370,12 @@ public class ViewFactory {
                     break;
                 case EVACUATION_ITEM_CENTER:
                     fragment = EvacuationCenterDetailsFragment.newInstance();
+                    break;
+                case EVACUATION_ITEM_FACILITIES:
+                    fragment = EvacuationFacilitiesDetailsFragment.newInstance();
+                    break;
+                case EVACUATION_ITEM_POPULATION:
+                    fragment = EvacuationPopulationDataFragment.newInstance();
                     break;
             }
 
@@ -666,7 +676,18 @@ public class ViewFactory {
 //                    evacuationCenterDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = evacuationCenterDetailsViewModel;
                     break;
-                    
+
+                case EVACUATION_ITEM_FACILITIES:
+                    EvacuationFacilitiesDetailsViewModel evacuationFacilitiesDetailsViewModel = new EvacuationFacilitiesDetailsViewModel(Injection.provideDncaRepository(context));
+//                    evacuationFacilitiesDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = evacuationFacilitiesDetailsViewModel;
+                    break;
+
+                case EVACUATION_ITEM_POPULATION:
+                    EvacuationPopulationDataViewModel evacuationPopulationDataViewModel = new EvacuationPopulationDataViewModel(Injection.provideDncaRepository(context));
+                    evacuationPopulationDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    baseViewModel = evacuationPopulationDataViewModel;
+                    break;
             }
 
             // Bind viewModel to activity

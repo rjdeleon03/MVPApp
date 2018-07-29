@@ -6,6 +6,10 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
@@ -57,21 +61,44 @@ public class EvacuationItemFragment extends TemplateMultiPageFragment<Evacuation
             evacuationCenterDetailsFragment.setViewModel(evacuationCenterDetailsViewModel);
             mAdapter.addFragment(evacuationCenterDetailsFragment);
         }
+
+        {
+            // Setup evacuation facilities details fragment
+            EvacuationFacilitiesDetailsFragment evacuationFacilitiesDetailsFragment =
+                    (EvacuationFacilitiesDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_FACILITIES);
+            EvacuationFacilitiesDetailsViewModel evacuationFacilitiesDetailsViewModel =
+                    (EvacuationFacilitiesDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_FACILITIES, null, getContext());
+            evacuationFacilitiesDetailsViewModel.setDataManager(mViewModel);
+            evacuationFacilitiesDetailsFragment.setViewModel(evacuationFacilitiesDetailsViewModel);
+            mAdapter.addFragment(evacuationFacilitiesDetailsFragment);
+        }
+
+        {
+            // Setup evacuation population data fragment
+            EvacuationPopulationDataFragment evacuationPopulationDataFragment =
+                    (EvacuationPopulationDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_POPULATION);
+            EvacuationPopulationDataViewModel evacuationPopulationDataViewModel =
+                    (EvacuationPopulationDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_POPULATION, null, getContext());
+            evacuationPopulationDataViewModel.setDataManager(mViewModel);
+            evacuationPopulationDataViewModel.setViewComponent(evacuationPopulationDataFragment);
+            evacuationPopulationDataFragment.setViewModel(evacuationPopulationDataViewModel);
+            mAdapter.addFragment(evacuationPopulationDataFragment);
+        }
         /**
         {
             // Setup calamity details fragment
-            EvacuationCenterDetailsFragment calamityDetailsFragment =
-                    (EvacuationCenterDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
+            EvacuationFacilitiesDetailsFragment calamityDetailsFragment =
+                    (EvacuationFacilitiesDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
             calamityDetailsFragment.setViewModel(
-                    (EvacuationCenterDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
+                    (EvacuationFacilitiesDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
             mAdapter.addFragment(calamityDetailsFragment);
         }
         {
             // Setup population data fragment
-            PopulationDataFragment populationDataFragment =
-                    (PopulationDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
-            PopulationDataViewModel populationDataViewModel =
-                    (PopulationDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
+            EvacuationPopulationDataFragment populationDataFragment =
+                    (EvacuationPopulationDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
+            EvacuationPopulationDataViewModel populationDataViewModel =
+                    (EvacuationPopulationDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
             populationDataViewModel.setViewComponent(populationDataFragment);
             populationDataFragment.setViewModel(populationDataViewModel);
             mAdapter.addFragment(populationDataFragment);

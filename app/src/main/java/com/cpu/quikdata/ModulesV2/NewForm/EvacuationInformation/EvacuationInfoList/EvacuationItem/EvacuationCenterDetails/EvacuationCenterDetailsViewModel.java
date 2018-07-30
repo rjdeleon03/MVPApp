@@ -5,8 +5,12 @@ import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationCenterDeta
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationItem;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
@@ -38,8 +42,20 @@ public class EvacuationCenterDetailsViewModel extends EvacuationItemTemplateQues
         for(QuestionItemModelString model : mEvacuationCenterDetails.getStringFields()) {
             mQuestions.add(new TemplateQuestionItemViewModelString(model));
         }
+
+        int i = 2;
         for(QuestionItemModelMultChoice model : mEvacuationCenterDetails.getMultChoiceFields()) {
-            mQuestions.add(new TemplateQuestionItemViewModelMultChoice(model));
+            mQuestions.add(i, new TemplateQuestionItemViewModelMultChoice(model));
+            i++;
+        }
+
+        for(QuestionItemModelBoolean model : mEvacuationCenterDetails.getBooleanFields()) {
+            mQuestions.add(i, new TemplateQuestionItemViewModelBoolean(model));
+            i++;
+        }
+
+        for(QuestionItemModelDate model : mEvacuationCenterDetails.getDateFields()) {
+            mQuestions.add(i+1, new TemplateQuestionItemViewModelDate(model));
         }
     }
 }

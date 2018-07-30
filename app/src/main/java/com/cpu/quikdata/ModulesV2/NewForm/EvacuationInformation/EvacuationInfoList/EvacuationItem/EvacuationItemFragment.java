@@ -6,10 +6,16 @@ import android.view.View;
 import com.cpu.quikdata.ModulesV2.Base.MultiPage.TemplateMultiPageFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCopingDetails.EvacuationCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCopingDetails.EvacuationCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationProtectionDetails.EvacuationProtectionDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationProtectionDetails.EvacuationProtectionDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationWashDetails.EvacuationWashDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationWashDetails.EvacuationWashDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CalamityDetails.CalamityDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.CasualtiesData.CasualtiesDataFragment;
@@ -83,6 +89,39 @@ public class EvacuationItemFragment extends TemplateMultiPageFragment<Evacuation
             evacuationPopulationDataViewModel.setViewComponent(evacuationPopulationDataFragment);
             evacuationPopulationDataFragment.setViewModel(evacuationPopulationDataViewModel);
             mAdapter.addFragment(evacuationPopulationDataFragment);
+        }
+
+        {
+            // Setup evacuation wash details fragment
+            EvacuationWashDetailsFragment evacuationWashDetailsFragment =
+                    (EvacuationWashDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_WASH);
+            EvacuationWashDetailsViewModel evacuationWashDetailsViewModel =
+                    (EvacuationWashDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_WASH, null, getContext());
+            evacuationWashDetailsViewModel.setDataManager(mViewModel);
+            evacuationWashDetailsFragment.setViewModel(evacuationWashDetailsViewModel);
+            mAdapter.addFragment(evacuationWashDetailsFragment);
+        }
+
+        {
+            // Setup evacuation protection details fragment
+            EvacuationProtectionDetailsFragment evacuationProtectionDetailsFragment =
+                    (EvacuationProtectionDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_PROTECTION);
+            EvacuationProtectionDetailsViewModel evacuationProtectionDetailsViewModel =
+                    (EvacuationProtectionDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_PROTECTION, null, getContext());
+            evacuationProtectionDetailsViewModel.setDataManager(mViewModel);
+            evacuationProtectionDetailsFragment.setViewModel(evacuationProtectionDetailsViewModel);
+            mAdapter.addFragment(evacuationProtectionDetailsFragment);
+        }
+
+        {
+            // Setup evacuation coping details fragment
+            EvacuationCopingDetailsFragment evacuationCopingDetailsFragment =
+                    (EvacuationCopingDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_COPING);
+            EvacuationCopingDetailsViewModel evacuationCopingDetailsViewModel =
+                    (EvacuationCopingDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM_COPING, null, getContext());
+            evacuationCopingDetailsViewModel.setDataManager(mViewModel);
+            evacuationCopingDetailsFragment.setViewModel(evacuationCopingDetailsViewModel);
+            mAdapter.addFragment(evacuationCopingDetailsFragment);
         }
         /**
         {

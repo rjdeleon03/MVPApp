@@ -7,10 +7,13 @@ import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationCenterDetails;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationFacilitiesDetails;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationItem;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationPopulationData;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationProtectionDetails;
+import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationWashDetails;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
@@ -66,7 +69,7 @@ public class EvacuationInfoListViewModel
      */
     @Bindable
     public boolean getShouldEnableAddButton() {
-        return true;
+        return mRowHolder.getRows().size() <= 10;
     }
 
     /**
@@ -149,6 +152,15 @@ public class EvacuationInfoListViewModel
 
                 EvacuationPopulationData evacuationPopulationData = realm.createObject(EvacuationPopulationData.class, AppUtil.generateId());
                 row.setEvacuationPopulationData(evacuationPopulationData);
+
+                EvacuationWashDetails evacuationWashDetails = realm.createObject(EvacuationWashDetails.class, AppUtil.generateId());
+                row.setEvacuationWashDetails(evacuationWashDetails);
+
+                EvacuationProtectionDetails evacuationProtectionDetails = realm.createObject(EvacuationProtectionDetails.class, AppUtil.generateId());
+                row.setEvacuationProtectionDetails(evacuationProtectionDetails);
+
+                EvacuationCopingDetails evacuationCopingDetails = realm.createObject(EvacuationCopingDetails.class, AppUtil.generateId());
+                row.setEvacuationCopingDetails(evacuationCopingDetails);
 
                 callback.onDataReceived(realm.copyFromRealm(row));
             }

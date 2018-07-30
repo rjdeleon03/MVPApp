@@ -92,12 +92,18 @@ import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoLi
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCopingDetails.EvacuationCopingDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCopingDetails.EvacuationCopingDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationFacilitiesDetails.EvacuationFacilitiesDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationPopulationData.EvacuationPopulationDataViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationProtectionDetails.EvacuationProtectionDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationProtectionDetails.EvacuationProtectionDetailsViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationWashDetails.EvacuationWashDetailsFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationWashDetails.EvacuationWashDetailsViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityAssistanceData.FoodSecurityAssistanceDataViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityCopingDetails.FoodSecurityCopingDetailsFragment;
@@ -376,6 +382,15 @@ public class ViewFactory {
                     break;
                 case EVACUATION_ITEM_POPULATION:
                     fragment = EvacuationPopulationDataFragment.newInstance();
+                    break;
+                case EVACUATION_ITEM_WASH:
+                    fragment = EvacuationWashDetailsFragment.newInstance();
+                    break;
+                case EVACUATION_ITEM_PROTECTION:
+                    fragment = EvacuationProtectionDetailsFragment.newInstance();
+                    break;
+                case EVACUATION_ITEM_COPING:
+                    fragment = EvacuationCopingDetailsFragment.newInstance();
                     break;
             }
 
@@ -687,6 +702,24 @@ public class ViewFactory {
                     EvacuationPopulationDataViewModel evacuationPopulationDataViewModel = new EvacuationPopulationDataViewModel(Injection.provideDncaRepository(context));
                     evacuationPopulationDataViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
                     baseViewModel = evacuationPopulationDataViewModel;
+                    break;
+                    
+                case EVACUATION_ITEM_WASH:
+                    EvacuationWashDetailsViewModel evacuationWashDetailsViewModel = new EvacuationWashDetailsViewModel(Injection.provideDncaRepository(context));
+//                    evacuationWashDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = evacuationWashDetailsViewModel;
+                    break;
+
+                case EVACUATION_ITEM_PROTECTION:
+                    EvacuationProtectionDetailsViewModel evacuationProtectionDetailsViewModel = new EvacuationProtectionDetailsViewModel(Injection.provideDncaRepository(context));
+//                    evacuationProtectionDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = evacuationProtectionDetailsViewModel;
+                    break;
+
+                case EVACUATION_ITEM_COPING:
+                    EvacuationCopingDetailsViewModel evacuationCopingDetailsViewModel = new EvacuationCopingDetailsViewModel(Injection.provideDncaRepository(context));
+//                    evacuationCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = evacuationCopingDetailsViewModel;
                     break;
             }
 

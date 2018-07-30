@@ -67,6 +67,11 @@ public class EvacuationInfoListFragment extends BaseFragment<EvacuationInfoListV
      */
     @Override
     public void onCardSelected(int index) {
+        FragmentManager parentFragmentManager = getActivity().getSupportFragmentManager();
+        EvacuationItemFragment evacuationItemFragment = (EvacuationItemFragment) ViewFactory.findOrCreateFragment(parentFragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM, mContainerId);
+        final EvacuationItemViewModel evacuationItemViewModel = (EvacuationItemViewModel) ViewFactory.findOrCreateViewModel(parentFragmentManager, NewFormActivity.NewFormComponent.EVACUATION_ITEM, this, getContext());
+        evacuationItemViewModel.setDataManager(mViewModel, index);
+        evacuationItemFragment.setViewModel(evacuationItemViewModel);
     }
 
     /**

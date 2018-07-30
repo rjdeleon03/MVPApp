@@ -164,8 +164,9 @@ public class EvacuationInfoListViewModel
                 EvacuationCopingDetails evacuationCopingDetails = realm.createObject(EvacuationCopingDetails.class, AppUtil.generateId());
                 row.setEvacuationCopingDetails(evacuationCopingDetails);
 
-                saveRow(row);
-                callback.onDataReceived(realm.copyFromRealm(row));
+                EvacuationItem rowCopy = realm.copyFromRealm(row);
+                saveRow(rowCopy);
+                callback.onDataReceived(rowCopy);
             }
         });
     }

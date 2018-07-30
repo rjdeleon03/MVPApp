@@ -29,6 +29,16 @@ public class EvacuationItemViewModel extends TemplateMultiPageViewModel<INewForm
      * @param dataManager
      */
     public void setDataManager(ITemplateEnumDataManager<EvacuationItem> dataManager) {
+        setDataManager(dataManager, -1);
+    }
+
+    /**
+     * Sets the data manager and row index
+     * @param dataManager
+     * @param rowIndex
+     */
+    public void setDataManager(ITemplateEnumDataManager<EvacuationItem> dataManager, int rowIndex) {
+        mRowIndex = rowIndex;
         mDataManager = dataManager;
         if (mRowIndex == -1) {
             mDataManager.getNewRow(this);

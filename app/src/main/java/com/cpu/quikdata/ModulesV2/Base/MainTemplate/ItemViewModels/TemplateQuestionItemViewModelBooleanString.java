@@ -34,5 +34,6 @@ public class TemplateQuestionItemViewModelBooleanString extends TemplateQuestion
     @Override
     public void updateModel() {
         mModel.setValue(value.get());
+        mModel.setRemarks(remarks.get());
     }
 }

@@ -123,25 +123,10 @@ public class EvacuationItemFragment extends TemplateMultiPageFragment<Evacuation
             evacuationCopingDetailsFragment.setViewModel(evacuationCopingDetailsViewModel);
             mAdapter.addFragment(evacuationCopingDetailsFragment);
         }
-        /**
-        {
-            // Setup calamity details fragment
-            EvacuationFacilitiesDetailsFragment calamityDetailsFragment =
-                    (EvacuationFacilitiesDetailsFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY);
-            calamityDetailsFragment.setViewModel(
-                    (EvacuationFacilitiesDetailsViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY, null, getContext()));
-            mAdapter.addFragment(calamityDetailsFragment);
-        }
-        {
-            // Setup population data fragment
-            EvacuationPopulationDataFragment populationDataFragment =
-                    (EvacuationPopulationDataFragment) ViewFactory.findOrCreateFragment(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION);
-            EvacuationPopulationDataViewModel populationDataViewModel =
-                    (EvacuationPopulationDataViewModel) ViewFactory.findOrCreateViewModel(fragmentManager, NewFormActivity.NewFormComponent.GEN_INFO_POPULATION, null, getContext());
-            populationDataViewModel.setViewComponent(populationDataFragment);
-            populationDataFragment.setViewModel(populationDataViewModel);
-            mAdapter.addFragment(populationDataFragment);
-        }
-        */
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

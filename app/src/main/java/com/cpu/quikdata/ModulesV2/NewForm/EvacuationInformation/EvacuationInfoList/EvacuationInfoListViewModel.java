@@ -17,6 +17,7 @@ import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationWashDetail
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
@@ -181,5 +182,9 @@ public class EvacuationInfoListViewModel
 //        for(QuestionItemModelGenderTuple model : row.getGenderTupleFields()) {
 //            questionList.add(new TemplateQuestionItemViewModelGenderTuple(model));
 //        }
+
+        for (int i = 0; i < 2; i++) {
+            questionList.add(new TemplateQuestionItemViewModelString(row.getEvacuationCenterDetails().getStringFields().get(i)));
+        }
     }
 }

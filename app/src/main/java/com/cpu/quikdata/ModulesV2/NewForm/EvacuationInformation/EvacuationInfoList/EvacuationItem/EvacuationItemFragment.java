@@ -128,5 +128,6 @@ public class EvacuationItemFragment extends TemplateMultiPageFragment<Evacuation
     @Override
     public void onPause() {
         super.onPause();
+        mViewModel.onViewPaused();
     }
 }

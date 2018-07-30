@@ -54,4 +54,11 @@ public class EvacuationItemViewModel extends TemplateMultiPageViewModel<INewForm
     public void getRow(IBaseDataManager<EvacuationItem> callback) {
         callback.onDataReceived(mEvacuationItem);
     }
+
+    /**
+     * Automatically saves updated data when view is paused
+     */
+    public void onViewPaused() {
+        mDataManager.saveRow(mEvacuationItem);
+    }
 }

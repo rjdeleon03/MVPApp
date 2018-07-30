@@ -22,7 +22,6 @@ public class EvacuationItemViewModel extends TemplateMultiPageViewModel<INewForm
     public EvacuationItemViewModel(DNCAFormRepository dncaFormRepository)
     {
         super(dncaFormRepository);
-//        mFormRepository.getGeneralInformation(this);
     }
 
     /**

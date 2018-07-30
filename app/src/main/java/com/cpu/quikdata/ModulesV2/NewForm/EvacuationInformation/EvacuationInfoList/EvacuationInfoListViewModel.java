@@ -69,7 +69,7 @@ public class EvacuationInfoListViewModel
      */
     @Bindable
     public boolean getShouldEnableAddButton() {
-        return mRowHolder.getRows().size() <= 10;
+        return mRowHolder.getRows().size() < 5;
     }
 
     /**
@@ -92,6 +92,7 @@ public class EvacuationInfoListViewModel
         });
 
         notifyPropertyChanged(BR.rowList);
+        notifyPropertyChanged(BR.shouldEnableAddButton);
     }
 
     /**
@@ -162,6 +163,7 @@ public class EvacuationInfoListViewModel
                 EvacuationCopingDetails evacuationCopingDetails = realm.createObject(EvacuationCopingDetails.class, AppUtil.generateId());
                 row.setEvacuationCopingDetails(evacuationCopingDetails);
 
+                saveRow(row);
                 callback.onDataReceived(realm.copyFromRealm(row));
             }
         });

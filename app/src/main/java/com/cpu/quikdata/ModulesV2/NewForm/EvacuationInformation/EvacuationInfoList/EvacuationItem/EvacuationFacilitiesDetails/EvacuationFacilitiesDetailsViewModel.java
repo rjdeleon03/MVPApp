@@ -5,14 +5,12 @@ import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationFacilities
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationItem;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemTemplateQuestionViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.IEvacuationItemDataManager;
-import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 
-public class EvacuationFacilitiesDetailsViewModel extends TemplateQuestionViewModel<INewFormActivity, EvacuationItem> {
+public class EvacuationFacilitiesDetailsViewModel extends EvacuationItemTemplateQuestionViewModel {
 
     private EvacuationFacilitiesDetails mEvacuationFacilitiesDetails;
-    private IEvacuationItemDataManager mDataManager;
 
     /**
      * Constructor
@@ -21,15 +19,6 @@ public class EvacuationFacilitiesDetailsViewModel extends TemplateQuestionViewMo
      */
     public EvacuationFacilitiesDetailsViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-    }
-
-    /**
-     * Sets the data manager
-     * @param dataManager
-     */
-    public void setDataManager(IEvacuationItemDataManager dataManager) {
-        mDataManager = dataManager;
-        mDataManager.getRow(this);
     }
 
     /**

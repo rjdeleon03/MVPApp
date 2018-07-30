@@ -16,6 +16,9 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
     private EvacuationCenterDetails evacuationCenterDetails;
     private EvacuationFacilitiesDetails evacuationFacilitiesDetails;
     private EvacuationPopulationData evacuationPopulationData;
+    private EvacuationWashDetails evacuationWashDetails;
+    private EvacuationProtectionDetails evacuationProtectionDetails;
+    private EvacuationCopingDetails evacuationCopingDetails;
 
     public EvacuationItem() {
         setupFields();
@@ -51,6 +54,30 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
 
     public void setEvacuationPopulationData(EvacuationPopulationData evacuationPopulationData) {
         this.evacuationPopulationData = evacuationPopulationData;
+    }
+
+    public EvacuationWashDetails getEvacuationWashDetails() {
+        return evacuationWashDetails;
+    }
+
+    public void setEvacuationWashDetails(EvacuationWashDetails evacuationWashDetails) {
+        this.evacuationWashDetails = evacuationWashDetails;
+    }
+
+    public EvacuationProtectionDetails getEvacuationProtectionDetails() {
+        return evacuationProtectionDetails;
+    }
+
+    public void setEvacuationProtectionDetails(EvacuationProtectionDetails evacuationProtectionDetails) {
+        this.evacuationProtectionDetails = evacuationProtectionDetails;
+    }
+
+    public EvacuationCopingDetails getEvacuationCopingDetails() {
+        return evacuationCopingDetails;
+    }
+
+    public void setEvacuationCopingDetails(EvacuationCopingDetails evacuationCopingDetails) {
+        this.evacuationCopingDetails = evacuationCopingDetails;
     }
 
     @Override

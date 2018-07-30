@@ -63,7 +63,6 @@ public class EvacuationCenterDetails extends RealmObject implements IFieldHolder
             multChoiceFields.add(new QuestionItemModelMultChoice(AppUtil.generateId(), "haveMoved", displacedChoices, 0));
         }
 
-
         if (stringFields == null) {
             stringFields = new RealmList<>();
         }

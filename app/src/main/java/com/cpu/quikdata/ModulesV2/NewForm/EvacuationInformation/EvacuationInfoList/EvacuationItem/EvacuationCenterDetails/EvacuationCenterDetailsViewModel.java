@@ -10,13 +10,13 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemTemplateQuestionViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.IEvacuationItemDataManager;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 
-public class EvacuationCenterDetailsViewModel extends TemplateQuestionViewModel<INewFormActivity, EvacuationItem> {
+public class EvacuationCenterDetailsViewModel extends EvacuationItemTemplateQuestionViewModel {
 
     private EvacuationCenterDetails mEvacuationCenterDetails;
-    private IEvacuationItemDataManager mDataManager;
 
     /**
      * Constructor
@@ -25,15 +25,6 @@ public class EvacuationCenterDetailsViewModel extends TemplateQuestionViewModel<
      */
     public EvacuationCenterDetailsViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-    }
-
-    /**
-     * Sets the data manager
-     * @param dataManager
-     */
-    public void setDataManager(IEvacuationItemDataManager dataManager) {
-        mDataManager = dataManager;
-        mDataManager.getRow(this);
     }
 
     /**

@@ -9,6 +9,11 @@ public class TextUtils {
 
     static {
         textMap = new HashMap<>();
+
+        // Common
+        textMap.put("remarks", "Remarks");
+
+        // Form details
         textMap.put("orgName", "Organization Name");
         textMap.put("sitio", "Sitio/Purok/Zone");
         textMap.put("barangay", "Barangay");
@@ -111,11 +116,28 @@ public class TextUtils {
         textMap.put("familyCount", "Specific Items Needed");
 
         // Food security coping details
+        textMap.put("copingStrategies", "What are the coping strategies employed?");
 
         // Food security gaps details
+        textMap.put("assistanceAppropriate", "Is the assistance provided appropriate to the needs of the families?");
+        textMap.put("assistanceEnough", "Is the assistance provided enough?");
+        textMap.put("assistanceAccess", "Do women and men have equal access to the assistance?");
+        textMap.put("assistanceNeedsConsidered", "Were the specific food needs of men, women, boys, girls, PWD, children, breastfeeding and lactating women considered in the assistance?");
 
         // Food security needs details
+        textMap.put("assistanceToBeProvided", "What assistance can be provided to fill the food gap?");
+        textMap.put("familiesInNeed", "Number of families in need of food supply or lack the capacity to buy or secure food for their own consumption");
 
         // Food security impact details
+        textMap.put("foodAvailabilityProblem", "Problem of availability of food?");
+        textMap.put("foodAccessLack", "Lack of access to food? (Cash shortage)");
+        textMap.put("foodAccessConstraints", "Constraints in accessing food and markets?");
+        textMap.put("otherSources", "Are there other sources of food and how long will this last?");
+        textMap.put("eatingTimes", "How many times a day were households eating?");
+        textMap.put("meetFoodNeeds", "Are they able to meet their food needs?");
+        textMap.put("foodProductionChanged", "How has food production changed? (Are they still able to fish or farm?)");
+        textMap.put("nextFoodRation", "When is the next food ration needed and for how long?");
+        textMap.put("beforeEmergency", "Affected");
+        textMap.put("afterEmergency", "Affected");
     }
 }

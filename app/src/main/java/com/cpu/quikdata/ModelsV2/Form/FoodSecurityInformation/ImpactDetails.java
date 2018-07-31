@@ -67,7 +67,7 @@ public class ImpactDetails extends RealmObject implements IFieldHolder {
         if (booleanStringFields.isEmpty()) {
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAvailabilityProblem", true, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessLack", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessContraints", true, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessConstraints", true, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "otherSources", true, "remarks", ""));
         }
 

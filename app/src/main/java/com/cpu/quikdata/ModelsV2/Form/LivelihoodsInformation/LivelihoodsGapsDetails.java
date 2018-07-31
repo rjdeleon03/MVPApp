@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -17,6 +18,7 @@ public class LivelihoodsGapsDetails extends RealmObject implements IFieldHolder 
     @PrimaryKey
     private String id;
 
+    private RealmList<QuestionItemModelTextOnly> textOnlyFields;
     private RealmList<QuestionItemModelBooleanString> booleanStringFields;
 
     public LivelihoodsGapsDetails() {
@@ -32,6 +34,14 @@ public class LivelihoodsGapsDetails extends RealmObject implements IFieldHolder 
         this.id = id;
     }
 
+    public RealmList<QuestionItemModelTextOnly> getTextOnlyFields() {
+        return textOnlyFields;
+    }
+
+    public void setTextOnlyFields(RealmList<QuestionItemModelTextOnly> textOnlyFields) {
+        this.textOnlyFields = textOnlyFields;
+    }
+
     public RealmList<QuestionItemModelBooleanString> getBooleanStringFields() {
         return booleanStringFields;
     }
@@ -42,6 +52,13 @@ public class LivelihoodsGapsDetails extends RealmObject implements IFieldHolder 
 
     @Override
     public void setupFields() {
+
+        if (textOnlyFields == null) {
+            textOnlyFields = new RealmList<>();
+        }
+        if (textOnlyFields.isEmpty()) {
+            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "menWomenHaveAccess"));
+        }
         if (booleanStringFields == null) {
             booleanStringFields = new RealmList<>();
         }
@@ -55,6 +72,7 @@ public class LivelihoodsGapsDetails extends RealmObject implements IFieldHolder 
 
     @Override
     public void deleteData() {
+        textOnlyFields.deleteAllFromRealm();
         booleanStringFields.deleteAllFromRealm();
         deleteFromRealm();
     }

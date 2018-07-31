@@ -35,5 +35,8 @@ public class LivelihoodsGapsDetailsViewModel extends TemplateQuestionViewModel<I
         for(QuestionItemModelBooleanString model : mLivelihoodsGapsDetails.getBooleanStringFields()) {
             mQuestions.add(new TemplateQuestionItemViewModelBooleanString(model));
         }
+        for(QuestionItemModelBooleanString model : mLivelihoodsGapsDetails.getBooleanStringFields()) {
+            mQuestions.add(new TemplateQuestionItemViewModelBooleanString(model));
+        }
     }
 }

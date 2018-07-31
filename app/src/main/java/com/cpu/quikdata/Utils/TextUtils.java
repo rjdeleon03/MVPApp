@@ -12,6 +12,7 @@ public class TextUtils {
 
         // Common
         textMap.put("remarks", "Remarks");
+        textMap.put("others", "Others");
 
         // Form details
         textMap.put("orgName", "Organization Name");
@@ -54,7 +55,6 @@ public class TextUtils {
         textMap.put("heartAttack", "Heart Attack");
         textMap.put("electrocution", "Electrocution");
         textMap.put("collapsedBuilding", "Collapsed Building");
-        textMap.put("others", "Others");
 
         // Family details
         textMap.put("affectedFamilies", "Affected Families");
@@ -139,5 +139,74 @@ public class TextUtils {
         textMap.put("nextFoodRation", "When is the next food ration needed and for how long?");
         textMap.put("beforeEmergency", "Affected");
         textMap.put("afterEmergency", "Affected");
+
+        // Livelihoods damage cost data
+        textMap.put("estimatedDamageCost", "Estimated Cost of Damage (PHP)");
+        textMap.put("livelihoodTypes", "Kinds of Livelihoods (Check All Applicable)");
+
+        textMap.put("rice", "Rice");
+        textMap.put("corn", "Corn");
+        textMap.put("vegetable", "Vegetable");
+        textMap.put("fruits", "Fruits");
+        textMap.put("livestock", "Livestock");
+
+        textMap.put("boat", "Boat");
+        textMap.put("fishingEquipment", "Fishing Equipment");
+        textMap.put("aquacultures", "Aquacultures");
+
+        textMap.put("jeepney", "Jeepney");
+        textMap.put("tricycle", "Tricycle");
+        textMap.put("van", "Van");
+
+        textMap.put("vendor", "Vendor");
+        textMap.put("sariSariStore", "Sari-sari Store");
+
+        textMap.put("employees", "Employees");
+        textMap.put("laborers", "Laborers");
+
+        // Livelihoods imcome source data
+        textMap.put("incomeSource", "Source of Income");
+        textMap.put("dependentHouseholds", "Number of Households Dependent on this Livelihood");
+        textMap.put("dependentMale", "Number of Male");
+        textMap.put("dependentFemale", "Number of Female");
+        textMap.put("dependentBoys", "Number of Boys");
+        textMap.put("dependentGirls", "Number of Girls");
+        textMap.put("averageIncome", "Estimated Average Monthly or Daily Income per Household");
+
+        // Livelihoods coping details
+        textMap.put("responseLivelihoodProblems", "How are people responding to livelihoods problems? What coping strategies do they employ?");
+        textMap.put("haveNewIncomeOpportunities", "Are there new income opportunities?");
+        textMap.put("haveLivelihoodSkills", "Are there any livelihood skills available in the community (carpentry, masonry, and others)?");
+
+        // Livelihoods gaps details
+        textMap.put("menWomenHaveAccess", "Do women and men have equal access to:");
+        textMap.put("localMarket", "Local Market");
+        textMap.put("cashFoodForWork", "Cash and Food-for-Work Opportunities");
+        textMap.put("credit", "Credit");
+        textMap.put("livelihoodMaterials", "Livelihood Materials and Services");
+
+        // Livelihoods needs details
+        textMap.put("assistanceFillIncomeGap", "What assistance can be provided to fill the income gap?");
+        textMap.put("assistanceReturnToNormal", "What resources are needed to return to normal?");
+        textMap.put("livelihoodAssistanceFamilies", "How many families are in need of livelihood assistance?");
+
+        // Health diseases data
+        textMap.put("hospitalization", "Hospitalization");
+        textMap.put("medicines", "Medicines");
+
+        // Health gaps details
+        textMap.put("nearestHospital", "Where/what is the nearest hospital in the area (public/private)?");
+        textMap.put("servicesAvailable", "What services are available within the community?");
+        textMap.put("servicesAccessibleSufficient", "Are these accessible to and sufficient for the target population?");
+        textMap.put("servicesReproductiveHealth", "Are there specific services for reproductive health?");
+
+        // Health psychosocial data
+        textMap.put("numberOfCases", "Number of Cases");
+        textMap.put("mentalStressManifestations", "Manifestations of Mental stress/Trauma (Blank Stare, Nightmares, Sleep Disorder, Violent Tendencies, etc.)");
+        textMap.put("psychosocialNeeds", "Needs (Counselling, Referrals, etc.)");
+
+        // Health special needs data
+        textMap.put("number", "Number");
+        textMap.put("healthMedicalNeeds", "Specific Health/Medical Needs");
     }
 }

@@ -12,7 +12,9 @@ import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
@@ -70,6 +72,9 @@ public class PsychosocialDataViewModel
     public void generateQuestions(List<TemplateQuestionItemViewModel> questionList, PsychosocialDataRow row) {
         if (questionList == null) return;
 
+        for(QuestionItemModelString model : row.getStringFields()) {
+            questionList.add(new TemplateQuestionItemViewModelString(model));
+        }
         for(QuestionItemModelGenderTuple model : row.getGenderTupleFields()) {
             questionList.add(new TemplateQuestionItemViewModelGenderTuple(model));
         }

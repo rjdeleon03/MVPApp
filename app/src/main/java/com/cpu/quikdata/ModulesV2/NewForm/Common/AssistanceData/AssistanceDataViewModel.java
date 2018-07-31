@@ -100,20 +100,7 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
      */
     @Override
     public void deletedRowAtIndex(final int rowIndex) {
-        final AssistanceDataRow row = mRowHolder.getRows().get(rowIndex);
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-
-                row.deleteData();
-
-                mRowHolder.getRows().remove(rowIndex);
-                realm.insertOrUpdate(mRowHolder);
-                notifyPropertyChanged(BR.rowList);
-            }
-        });
+        deleteRow(rowIndex, mRowHolder.getRows().get(rowIndex));
     }
 
     /**

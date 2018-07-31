@@ -94,14 +94,7 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
         evacuationWashDetails.deleteData();
         evacuationProtectionDetails.deleteData();
         evacuationCopingDetails.deleteData();
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                deleteFromRealm();
-            }
-        });
+        deleteFromRealm();
     }
 
     @Override

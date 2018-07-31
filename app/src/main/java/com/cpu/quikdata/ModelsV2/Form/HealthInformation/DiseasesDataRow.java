@@ -79,13 +79,7 @@ public class DiseasesDataRow extends RealmObject implements IEnumDataRow<Generic
 
     @Override
     public void deleteData() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                genderTupleFields.deleteAllFromRealm();
-                deleteFromRealm();
-            }
-        });
+        genderTupleFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

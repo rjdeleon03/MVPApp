@@ -40,13 +40,7 @@ public class ShelterNeedsData extends RealmObject implements IEnumDataRowHolder<
 
     @Override
     public void deleteData() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
-                deleteFromRealm();
-            }
-        });
+        if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

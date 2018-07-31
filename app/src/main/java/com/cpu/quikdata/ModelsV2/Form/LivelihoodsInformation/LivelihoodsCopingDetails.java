@@ -53,13 +53,7 @@ public class LivelihoodsCopingDetails extends RealmObject implements IFieldHolde
 
     @Override
     public void deleteData() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                stringFields.deleteAllFromRealm();
-                deleteFromRealm();
-            }
-        });
+        stringFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

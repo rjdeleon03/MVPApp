@@ -103,20 +103,7 @@ public class EvacuationInfoListViewModel
      */
     @Override
     public void deletedRowAtIndex(final int rowIndex) {
-        final EvacuationItem row = mRowHolder.getRows().get(rowIndex);
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-
-                row.deleteData();
-
-                mRowHolder.getRows().remove(rowIndex);
-                realm.insertOrUpdate(mRowHolder);
-                notifyPropertyChanged(BR.rowList);
-            }
-        });
+        deleteRow(rowIndex, mRowHolder.getRows().get(rowIndex));
     }
 
     /**

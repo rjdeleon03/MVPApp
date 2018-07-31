@@ -102,15 +102,9 @@ public class InfrastructureDataRow extends RealmObject implements IEnumDataRow<G
 
     @Override
     public void deleteData() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                numberFields.deleteAllFromRealm();
-                boolFields.deleteAllFromRealm();
-                stringFields.deleteAllFromRealm();
-                deleteFromRealm();
-            }
-        });
+        numberFields.deleteAllFromRealm();
+        boolFields.deleteAllFromRealm();
+        stringFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

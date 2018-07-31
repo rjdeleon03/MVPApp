@@ -149,16 +149,10 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
 
     @Override
     public void deleteData() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                booleanGroup.getBooleanFields().deleteAllFromRealm();
-                booleanGroup.deleteFromRealm();
-                stringFields.deleteAllFromRealm();
-                numberFields.deleteAllFromRealm();
-                deleteFromRealm();
-            }
-        });
+        booleanGroup.getBooleanFields().deleteAllFromRealm();
+        booleanGroup.deleteFromRealm();
+        stringFields.deleteAllFromRealm();
+        numberFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

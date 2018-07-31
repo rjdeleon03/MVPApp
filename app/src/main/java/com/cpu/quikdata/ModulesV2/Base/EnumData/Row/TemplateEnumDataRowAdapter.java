@@ -44,11 +44,6 @@ public abstract class TemplateEnumDataRowAdapter<D> extends RecyclerView.Adapter
         return mEnumDataManager.getRowsCount();
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
     /**
      * Creates and retrieves the viewModel for the row
      * @return

@@ -29,6 +29,26 @@ public abstract class GenericEnumDataRow {
         }
     }
 
+    public enum EvacuationType implements GenericEnum {
+        EVACUATION_TYPE;
+
+        public static ObservableArrayList<EvacuationType> asObservableList() {
+            ObservableArrayList<EvacuationType> list = new ObservableArrayList<>();
+            list.add(EVACUATION_TYPE);
+            return list;
+        }
+
+        @Override
+        public Object getValue() {
+            return this;
+        }
+
+        @Override
+        public int getOrdinal() {
+            return this.ordinal();
+        }
+    }
+
     public enum AgeGroup implements GenericEnum {
         AGE_0_5,
         AGE_6_9,

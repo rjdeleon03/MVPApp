@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.cpu.quikdata.Injection;
-import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoListFragment;
-import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoListViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FormDetails.FormDetailsFragment;
@@ -77,6 +77,12 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
         EVACUATION,
         EVACUATION_ITEM,
+        EVACUATION_ITEM_CENTER,
+        EVACUATION_ITEM_POPULATION,
+        EVACUATION_ITEM_WASH,
+        EVACUATION_ITEM_FACILITIES,
+        EVACUATION_ITEM_PROTECTION,
+        EVACUATION_ITEM_COPING,
         
         CASE_STORIES
     }
@@ -154,6 +160,7 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
     public void onEvacuationInfoButtonPressed() {
         EvacuationInfoListFragment evacuationInfoListFragment = (EvacuationInfoListFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.EVACUATION, FRAGMENT_CONTAINER);
         final EvacuationInfoListViewModel evacuationInfoListViewModel = (EvacuationInfoListViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.EVACUATION, this, this);
+        evacuationInfoListViewModel.setViewComponent(evacuationInfoListFragment);
         evacuationInfoListFragment.setViewModel(evacuationInfoListViewModel);
     }
 

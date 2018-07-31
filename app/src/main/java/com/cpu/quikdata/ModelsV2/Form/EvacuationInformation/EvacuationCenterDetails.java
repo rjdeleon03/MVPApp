@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBool
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.Utils.TextUtils;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -24,10 +25,24 @@ public class EvacuationCenterDetails extends RealmObject implements IFieldHolder
     private RealmList<QuestionItemModelBoolean> booleanFields;
     private RealmList<QuestionItemModelDate> dateFields;
 
-    private RealmList<String> displacedChoices = new RealmList<>("displaced", "nonDisplaced");
+    private RealmList<String> displacedChoices = new RealmList<>(
+            TextUtils.textMap.get("evacuationDisplaced"),
+            TextUtils.textMap.get("evacuationNonDisplaced"));
+
     private RealmList<String> shelterChoices =
-            new RealmList<>("plannedEvacuationCenter", "livingWithHost", "apartmentRent", "damagedHouse", "informalCamp", "makeshiftHouse", "squatting", "others");
-    private RealmList<String> plannedEvacuationChoices = new RealmList<>("evacuationCenterBldg", "multipurposeHall", "church", "school", "gym");
+            new RealmList<>(
+                    TextUtils.textMap.get("evacuationCenterBldg"),
+                    TextUtils.textMap.get("multipurposeHall"),
+                    TextUtils.textMap.get("church"),
+                    TextUtils.textMap.get("school"),
+                    TextUtils.textMap.get("gym"),
+                    TextUtils.textMap.get("livingWithHost"),
+                    TextUtils.textMap.get("apartmentRent"),
+                    TextUtils.textMap.get("damagedHouse"),
+                    TextUtils.textMap.get("informalCamp"),
+                    TextUtils.textMap.get("makeshiftHouse"),
+                    TextUtils.textMap.get("squatting"),
+                    TextUtils.textMap.get("others"));
 
     public EvacuationCenterDetails() {
         setupFields();
@@ -47,10 +62,6 @@ public class EvacuationCenterDetails extends RealmObject implements IFieldHolder
 
     public RealmList<String> getShelterChoices() {
         return shelterChoices;
-    }
-
-    public RealmList<String> getPlannedEvacuationChoices() {
-        return plannedEvacuationChoices;
     }
 
     public RealmList<QuestionItemModelString> getStringFields() {
@@ -105,7 +116,6 @@ public class EvacuationCenterDetails extends RealmObject implements IFieldHolder
         if (multChoiceFields.isEmpty()) {
             multChoiceFields.add(new QuestionItemModelMultChoice(AppUtil.generateId(), "haveMoved", displacedChoices, 0));
             multChoiceFields.add(new QuestionItemModelMultChoice(AppUtil.generateId(), "shelterType", shelterChoices, 0));
-            multChoiceFields.add(new QuestionItemModelMultChoice(AppUtil.generateId(), "plannedEvacuationType", plannedEvacuationChoices, 0));
         }
 
         if (booleanFields == null) {

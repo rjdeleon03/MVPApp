@@ -2,12 +2,14 @@ package com.cpu.quikdata.Utils;
 
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -135,9 +137,7 @@ public class BindingUtilsV2 {
                 itemView = new TemplateQuestionItemViewHolderDoubleString(inflater, (TemplateQuestionItemViewModelDoubleString) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelMultChoice) {
-                TemplateQuestionItemViewModelMultChoice multChoiceViewModel = (TemplateQuestionItemViewModelMultChoice) questionModel;
-                multChoiceViewModel.setContext(tableLayout.getContext());
-                itemView = new TemplateQuestionItemViewHolderMultChoice(inflater, multChoiceViewModel).getView();
+                itemView = new TemplateQuestionItemViewHolderMultChoice(inflater, (TemplateQuestionItemViewModelMultChoice) questionModel).getView();
 
             }
 
@@ -192,6 +192,14 @@ public class BindingUtilsV2 {
     @BindingAdapter({"app:enabled"})
     public static void bind(FloatingActionButton button, boolean isEnabled) {
         button.setEnabled(isEnabled);
+    }
+
+    @BindingAdapter({"android:entries"})
+    public static void bind(AppCompatSpinner spinner, ObservableList<String> choices) {
+        if (spinner.getAdapter() == null) {
+            ArrayAdapter adapter = new ArrayAdapter(spinner.getContext(), R.layout.template_question_mult_choice_item, choices);
+            spinner.setAdapter(adapter);
+        }
     }
 
     @BindingAdapter({"app:adapter", "app:data"})

@@ -46,7 +46,7 @@ public class EvacuationProtectionDetails extends RealmObject implements IFieldHo
             booleanStringFields = new RealmList<>();
         }
         if (booleanStringFields.isEmpty()) {
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "unacommpaniedChildren", false, "unaccompaniedChildrenCount", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "unaccompaniedChildren", false, "unaccompaniedChildrenCount", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "toiletBathLocks", false, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "segregatedToilets", false, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "properLighting", false, "remarks", ""));
@@ -57,7 +57,7 @@ public class EvacuationProtectionDetails extends RealmObject implements IFieldHo
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "disabledSafeSpace", false, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "religiousSpace", false, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "gbvReferral", false, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "gbvProtectionServices", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "gbvProtectionService", false, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "gbvProtectionFocalPoint", false, "remarks", ""));
         }
     }

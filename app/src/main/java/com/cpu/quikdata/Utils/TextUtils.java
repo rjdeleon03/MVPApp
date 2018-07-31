@@ -249,5 +249,72 @@ public class TextUtils {
         textMap.put("attitudeTowardsSexes", "What is the attitude towards women, men, LGBT, PWD, boys, and girls?");
         textMap.put("hasSupportMechanisms", "Are there existing support mechanisms?");
         textMap.put("doWomenMakeDecisions", "Do women participate in decision making?");
+
+        // Evacuation center details
+        textMap.put("evacuationCenterName", "Name of Evacuation Center or Temporary Shelter");
+        textMap.put("location", "Location");
+        textMap.put("distanceFromCommunity", "Distance from the Community (in km.)");
+        textMap.put("shelterSize", "Size of Evacuation Center (in sq. mtr.)");
+        textMap.put("evacuationFamiliesCount", "Number of Households and Families Staying");
+        textMap.put("haveMoved", "Have they moved?");
+        textMap.put("shelterType", "What is the type of the evacuation center/shelter?");
+        textMap.put("plannedEvacuationType", "If planned evacuation center, what type?");
+        textMap.put("isLguDesignated", "LGU-designated?");
+        textMap.put("evacuationDate", "Date of Evacuation");
+
+        textMap.put("evacuationDisplaced", "Displaced");
+        textMap.put("evacuationNonDisplaced", "Non-Displaced");
+
+        textMap.put("plannedEvacuationCenter", "Planned Evacuation Center");
+        textMap.put("livingWithHost", "Living with Host/Extended Family");
+        textMap.put("apartmentRent", "Renting an Apartment");
+        textMap.put("damagedHouse", "Living in Damaged House");
+        textMap.put("informalCamp", "Informal Self-Settled Camp");
+        textMap.put("makeshiftHouse", "Makeshift House");
+        textMap.put("squatting", "Squatting");
+
+        textMap.put("evacuationCenterBldg", "Evacuation Center Building");
+        textMap.put("multipurposeHall", "Multi-Purpose Hall");
+        textMap.put("church", "Church");
+        textMap.put("school", "School");
+        textMap.put("gym", "Gym");
+
+        // Evacuation coping details
+        textMap.put("evacuationCoping", "What are the coping mechanisms or actions of the affected population?");
+
+        // Evacuation facilities details
+        textMap.put("toilets", "Toilet/s");
+        textMap.put("numberOfToilets", "Number of Toilets");
+        textMap.put("wideEntranceExit", "Wide Entrance/Exit");
+        textMap.put("electricity", "Electricity");
+        textMap.put("waterSupply", "Water Supply");
+        textMap.put("properVentilation", "Proper Ventilation");
+
+        // Evacuation population data
+        textMap.put("male", "Male");
+        textMap.put("female", "Female");
+        textMap.put("sick", "Sick");
+
+        // Evacuation protection details
+        textMap.put("unaccompaniedChildren", "Unaccompanied Children");
+        textMap.put("unaccompaniedChildrenCount", "Number of Unaccompanied Children");
+        textMap.put("toiletBathLocks", "Locks for Toilet/Bath");
+        textMap.put("segregatedToilets", "Segregated Toilet/Bath for Men and Women");
+        textMap.put("properLighting", "Proper Lighting Condition");
+        textMap.put("securityOfficers", "Security Officer/s");
+        textMap.put("sleepingPartitions", "Partitions for Sleeping");
+        textMap.put("childFriendlySpace", "Child-Friendly Space");
+        textMap.put("pregnantSafeSpace", "Safe Space for Pregnant & Lactating Mothers");
+        textMap.put("disabledSafeSpace", "Safe Space for Persons with Disability");
+        textMap.put("religiousSpace", "Space for Religious Practices");
+
+        // Evacuation wash details
+        textMap.put("cleanSpaceFood", "Clean Space for Food Preparation");
+        textMap.put("cleanWaterSource", "Clean Source of Water");
+        textMap.put("cleanToilet", "Clean Toilet & Baths");
+        textMap.put("properGarbageDisposal", "Proper Garbage Disposal");
+        textMap.put("spaceHealthWorkers", "Space for Clinic / Health Workers");
+        textMap.put("spaceSick", "Space for the Sick");
+        textMap.put("evacuationHandWashingFacilities", "Hand Washing Facilities");
     }
 }

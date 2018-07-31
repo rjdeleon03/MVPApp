@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@{viewModel.question}"
-            android:maxWidth="100dp"
+            android:maxWidth="120dp"
             android:textColor="@android:color/black" />
 
         <RadioButton

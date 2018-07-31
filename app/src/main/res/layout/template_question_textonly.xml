@@ -28,7 +28,9 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"
                 android:text="@={viewModel.question}"
-                android:textColor="@android:color/black" />
+                android:textSize="14sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

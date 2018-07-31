@@ -26,8 +26,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@{viewModel.question}"
-                android:maxWidth="100dp"
-                android:textColor="@android:color/black" />
+                android:textSize="14sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold" />
 
             <TableLayout
                 android:layout_width="match_parent"

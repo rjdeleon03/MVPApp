@@ -25,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.question}"
+                android:textSize="14sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:textStyle="bold"/>
 
@@ -61,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@{viewModel.remarksQuestion}"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                     android:textStyle="bold" />
 
@@ -70,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:text="@={viewModel.remarks}"
-                    android:textSize="14dp"
+                    android:textSize="12sp"
                     android:inputType="textMultiLine" />
 
             </LinearLayout>

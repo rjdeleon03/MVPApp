@@ -19,9 +19,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@{viewModel.question}"
             android:maxWidth="120dp"
-            android:textColor="@android:color/black" />
+            android:text="@{viewModel.question}"
+            android:textSize="14sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textStyle="bold" />
 
         <RadioButton
             android:layout_column="2"

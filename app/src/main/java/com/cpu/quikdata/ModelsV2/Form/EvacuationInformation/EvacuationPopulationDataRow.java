@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -70,5 +71,17 @@ public class EvacuationPopulationDataRow extends RealmObject implements IEnumDat
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "disabled", 0));
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "sick", 0));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                numberFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

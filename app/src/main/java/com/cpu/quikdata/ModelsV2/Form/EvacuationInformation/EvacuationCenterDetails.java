@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -120,5 +121,20 @@ public class EvacuationCenterDetails extends RealmObject implements IFieldHolder
         if (dateFields.isEmpty()) {
             dateFields.add(new QuestionItemModelDate(AppUtil.generateId(), "evacuationDate"));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                stringFields.deleteAllFromRealm();
+                multChoiceFields.deleteAllFromRealm();
+                booleanFields.deleteAllFromRealm();
+                dateFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

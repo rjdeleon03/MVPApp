@@ -8,4 +8,6 @@ public interface IEnumDataRowHolder<R> extends RealmModel {
     RealmList<R> getRows();
 
     void setRows(RealmList<R> rows);
+
+    void deleteData();
 }

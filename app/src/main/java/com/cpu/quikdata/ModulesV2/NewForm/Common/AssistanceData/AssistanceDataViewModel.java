@@ -107,28 +107,13 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
             @Override
             public void execute(Realm realm) {
 
-                deleteRowFromDb(row, realm);
+                row.deleteData();
 
                 mRowHolder.getRows().remove(rowIndex);
                 realm.insertOrUpdate(mRowHolder);
                 notifyPropertyChanged(BR.rowList);
             }
         });
-    }
-
-    /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(AssistanceDataRow row, Realm realm) {
-        AssistanceDataRow rowToDelete = realm.where(AssistanceDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.deleteData();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     /**

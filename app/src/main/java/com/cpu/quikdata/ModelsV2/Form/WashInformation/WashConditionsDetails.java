@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBool
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -100,5 +101,19 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "areToiletsSegregated", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "areToiletsAccessible", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                stringFields.deleteAllFromRealm();
+                multChoiceFields.deleteAllFromRealm();
+                booleanStringFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

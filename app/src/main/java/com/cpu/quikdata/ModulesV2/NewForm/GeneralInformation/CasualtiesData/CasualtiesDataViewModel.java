@@ -51,21 +51,6 @@ public class CasualtiesDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(CasualtiesDataRow row, Realm realm) {
-        CasualtiesDataRow rowToDelete = realm.where(CasualtiesDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */

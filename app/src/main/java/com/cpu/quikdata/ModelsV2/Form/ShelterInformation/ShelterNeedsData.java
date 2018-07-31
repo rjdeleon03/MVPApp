@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModelsV2.Form.ShelterInformation;
 
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -35,5 +36,17 @@ public class ShelterNeedsData extends RealmObject implements IEnumDataRowHolder<
     @Override
     public void setRows(RealmList<ShelterNeedsDataRow> rows) {
         this.rows = rows;
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

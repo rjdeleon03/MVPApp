@@ -56,26 +56,6 @@ public class DamageCostDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(DamageCostDataRow row, Realm realm) {
-        DamageCostDataRow rowToDelete = realm.where(DamageCostDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            QuestionItemModelBooleanGroup booleanGroup = rowToDelete.getBooleanGroup();
-            booleanGroup.getBooleanFields().deleteAllFromRealm();
-            booleanGroup.deleteFromRealm();
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */

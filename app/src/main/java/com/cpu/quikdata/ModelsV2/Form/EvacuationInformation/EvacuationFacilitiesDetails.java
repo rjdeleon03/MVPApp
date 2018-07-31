@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -52,5 +53,17 @@ public class EvacuationFacilitiesDetails extends RealmObject implements IFieldHo
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "properVentilation", false, "remarks", ""));
         }
 
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                booleanStringFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

@@ -51,23 +51,6 @@ public class PsychosocialDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(PsychosocialDataRow row, Realm realm) {
-        PsychosocialDataRow rowToDelete = realm.where(PsychosocialDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */

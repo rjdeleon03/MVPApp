@@ -55,24 +55,6 @@ public class InfrastructureDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(InfrastructureDataRow row, Realm realm) {
-        InfrastructureDataRow rowToDelete = realm.where(InfrastructureDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.getBoolFields().deleteAllFromRealm();
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */

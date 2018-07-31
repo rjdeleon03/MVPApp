@@ -5,6 +5,7 @@ import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -74,5 +75,17 @@ public class DiseasesDataRow extends RealmObject implements IEnumDataRow<Generic
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "medicines", 0, 0));
             genderTupleFields.add(new QuestionItemModelGenderTuple(AppUtil.generateId(), "others", 0, 0));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                genderTupleFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

@@ -275,7 +275,7 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
             @Override
             public void execute(Realm realm) {
 
-                deleteRowFromDb(row, realm);
+                row.deleteData();
 
                 mRowHolder.getRows().remove(rowIndex);
                 realm.insertOrUpdate(mRowHolder);
@@ -286,11 +286,4 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
         // Reset spinner selected index to 0
         spinnerSelectedIndex.set(0);
     }
-
-    /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    protected abstract void deleteRowFromDb(R row, Realm realm);
 }

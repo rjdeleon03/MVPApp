@@ -101,30 +101,13 @@ public abstract class IncomeSourceDataViewModel
             @Override
             public void execute(Realm realm) {
 
-                deleteRowFromDb(row, realm);
+                row.deleteData();
 
                 mRowHolder.getRows().remove(rowIndex);
                 realm.insertOrUpdate(mRowHolder);
                 notifyPropertyChanged(BR.rowList);
             }
         });
-    }
-
-    /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(IncomeSourceDataRow row, Realm realm) {
-        IncomeSourceDataRow rowToDelete = realm.where(IncomeSourceDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     /**

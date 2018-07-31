@@ -3,6 +3,7 @@ package com.cpu.quikdata.ModelsV2.Form.EvacuationInformation;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -87,7 +88,20 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
 
     @Override
     public void deleteData() {
+        evacuationCenterDetails.deleteData();
+        evacuationFacilitiesDetails.deleteData();
+        evacuationPopulationData.deleteData();
+        evacuationWashDetails.deleteData();
+        evacuationProtectionDetails.deleteData();
+        evacuationCopingDetails.deleteData();
 
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                deleteFromRealm();
+            }
+        });
     }
 
     @Override

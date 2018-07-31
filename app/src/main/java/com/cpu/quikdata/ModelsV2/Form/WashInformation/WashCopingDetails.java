@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -46,5 +47,17 @@ public class WashCopingDetails extends RealmObject implements IFieldHolder {
         if (stringFields.isEmpty()) {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "copingStrategies", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                stringFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

@@ -53,22 +53,6 @@ public class PopulationDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(PopulationDataRow row, Realm realm) {
-        PopulationDataRow rowToDelete = realm.where(PopulationDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */

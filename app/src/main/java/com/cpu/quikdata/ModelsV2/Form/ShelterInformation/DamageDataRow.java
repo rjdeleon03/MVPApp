@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -19,6 +20,7 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
     private String houseType;
 
     private RealmList<QuestionItemModelSingleNumber> numberFields;
+    private RealmList<QuestionItemModelTextOnly> textOnlyFields;
 
     public DamageDataRow() {
         setupFields();
@@ -49,6 +51,14 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
         this.numberFields = numberFields;
     }
 
+    public RealmList<QuestionItemModelTextOnly> getTextOnlyFields() {
+        return textOnlyFields;
+    }
+
+    public void setTextOnlyFields(RealmList<QuestionItemModelTextOnly> textOnlyFields) {
+        this.textOnlyFields = textOnlyFields;
+    }
+
     @Override
     public GenericEnumDataRow.HouseType getActualType() {
         return GenericEnumDataRow.HouseType.valueOf(houseType);
@@ -56,6 +66,15 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
 
     @Override
     public void setupFields() {
+
+        if (textOnlyFields == null) {
+            textOnlyFields = new RealmList<>();
+        }
+        if (textOnlyFields.isEmpty()) {
+            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "houseOwnership"));
+            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "landOwnership"));
+            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "otherInformation"));
+        }
 
         if (numberFields == null) {
             numberFields = new RealmList<>();

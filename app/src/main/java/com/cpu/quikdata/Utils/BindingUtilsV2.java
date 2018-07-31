@@ -22,6 +22,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanString;
@@ -31,6 +32,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderDate;
@@ -105,7 +107,10 @@ public class BindingUtilsV2 {
 
             View itemView = null;
 
-            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
+            if (questionModel instanceof TemplateQuestionItemViewModelTextOnly) {
+                itemView = new TemplateQuestionItemViewHolderTextOnly(inflater, (TemplateQuestionItemViewModelTextOnly) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
                 itemView = new TemplateQuestionItemViewHolderGenderTuple(inflater, (TemplateQuestionItemViewModelGenderTuple) questionModel).getView();
                 
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
@@ -150,7 +155,10 @@ public class BindingUtilsV2 {
 
             View itemView = null;
 
-            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
+            if (questionModel instanceof TemplateQuestionItemViewModelTextOnly) {
+                itemView = new TemplateQuestionItemViewHolderTextOnly(inflater, (TemplateQuestionItemViewModelTextOnly) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
                 itemView = new TemplateReadonlyItemViewHolderGenderTuple(inflater, (TemplateQuestionItemViewModelGenderTuple) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {

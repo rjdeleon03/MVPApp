@@ -12,7 +12,9 @@ import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
@@ -60,6 +62,7 @@ public class DamageDataViewModel
         DamageDataRow rowToDelete = realm.where(DamageDataRow.class).equalTo("id", row.getId()).findFirst();
         try {
             rowToDelete.getNumberFields().deleteAllFromRealm();
+            rowToDelete.getTextOnlyFields().deleteAllFromRealm();
             rowToDelete.deleteFromRealm();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -89,5 +92,8 @@ public class DamageDataViewModel
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }
+        questionList.add(6, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(2)));
+        questionList.add(3, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(1)));
+        questionList.add(0, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(0)));
     }
 }

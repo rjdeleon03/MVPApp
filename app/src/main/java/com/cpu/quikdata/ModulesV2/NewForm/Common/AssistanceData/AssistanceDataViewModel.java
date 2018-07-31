@@ -14,6 +14,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
@@ -127,6 +128,7 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
             rowToDelete.getStringFields().deleteAllFromRealm();
             rowToDelete.getDateFields().deleteAllFromRealm();
             rowToDelete.getNumberFields().deleteAllFromRealm();
+            rowToDelete.getStringFields().deleteAllFromRealm();
             rowToDelete.deleteFromRealm();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -161,5 +163,6 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }
+        questionList.add(4, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(0)));
     }
 }

@@ -8,6 +8,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -103,5 +104,19 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
         if (stringFields.isEmpty()) {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "vulnerableRemarks", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                numberFields.deleteAllFromRealm();
+                genderTupleFields.deleteAllFromRealm();
+                stringFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

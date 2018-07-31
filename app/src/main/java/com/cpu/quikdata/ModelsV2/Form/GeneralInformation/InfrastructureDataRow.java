@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBool
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -97,5 +98,19 @@ public class InfrastructureDataRow extends RealmObject implements IEnumDataRow<G
         if (stringFields.isEmpty()) {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "infraRemarks", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                numberFields.deleteAllFromRealm();
+                boolFields.deleteAllFromRealm();
+                stringFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

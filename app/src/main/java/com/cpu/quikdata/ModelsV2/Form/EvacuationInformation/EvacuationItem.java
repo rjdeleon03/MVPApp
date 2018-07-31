@@ -86,6 +86,11 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
     }
 
     @Override
+    public void deleteData() {
+
+    }
+
+    @Override
     public void setupFields() {}
 
 }

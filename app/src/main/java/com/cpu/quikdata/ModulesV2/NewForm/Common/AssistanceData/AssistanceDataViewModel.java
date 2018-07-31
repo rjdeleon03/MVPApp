@@ -125,11 +125,7 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
     protected void deleteRowFromDb(AssistanceDataRow row, Realm realm) {
         AssistanceDataRow rowToDelete = realm.where(AssistanceDataRow.class).equalTo("id", row.getId()).findFirst();
         try {
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.getDateFields().deleteAllFromRealm();
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
+            rowToDelete.deleteData();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

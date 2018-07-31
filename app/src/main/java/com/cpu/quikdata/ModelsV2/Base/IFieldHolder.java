@@ -5,4 +5,6 @@ public interface IFieldHolder {
     void setId(String id);
 
     void setupFields();
+
+    void deleteData();
 }

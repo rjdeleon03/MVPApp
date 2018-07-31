@@ -8,6 +8,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSing
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -113,5 +114,20 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow<Gener
         if (textOnlyFields.isEmpty()) {
             textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "beneficiaries"));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                stringFields.deleteAllFromRealm();
+                dateFields.deleteAllFromRealm();
+                numberFields.deleteAllFromRealm();
+                textOnlyFields.deleteAllFromRealm();
+                deleteFromRealm();
+            }
+        });
     }
 }

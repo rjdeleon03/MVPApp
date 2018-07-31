@@ -54,8 +54,8 @@ public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataF
      * @return
      */
     @Bindable
-    public E getType() {
-        return mType;
+    public String getType() {
+        return mType.toString();
     }
 
     /**

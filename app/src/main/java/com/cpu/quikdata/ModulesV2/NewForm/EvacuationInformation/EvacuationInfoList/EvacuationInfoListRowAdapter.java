@@ -1,7 +1,6 @@
 package com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList;
 
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationItem;
-import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataManager;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;

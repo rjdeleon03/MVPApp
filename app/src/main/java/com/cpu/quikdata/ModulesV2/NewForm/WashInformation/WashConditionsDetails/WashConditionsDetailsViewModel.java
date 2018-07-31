@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
@@ -43,5 +44,7 @@ public class WashConditionsDetailsViewModel extends TemplateQuestionViewModel<IN
         for(QuestionItemModelString model : mWashConditionsDetails.getStringFields()) {
             mQuestions.add(new TemplateQuestionItemViewModelString(model));
         }
+        mQuestions.add(3, new TemplateQuestionItemViewModelTextOnly(mWashConditionsDetails.getTextOnlyFields().get(1)));
+        mQuestions.add(0, new TemplateQuestionItemViewModelTextOnly(mWashConditionsDetails.getTextOnlyFields().get(0)));
     }
 }

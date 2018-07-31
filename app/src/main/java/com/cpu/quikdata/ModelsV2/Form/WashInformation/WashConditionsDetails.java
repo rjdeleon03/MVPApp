@@ -5,6 +5,8 @@ import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
+import com.cpu.quikdata.Utils.TextUtils;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -18,7 +20,11 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
     @PrimaryKey
     private String id;
 
-    private RealmList<String> choices = new RealmList<>("level1", "level2", "level3");
+    private RealmList<String> choices = new RealmList<>(
+            TextUtils.textMap.get("level1"),
+            TextUtils.textMap.get("level2"),
+            TextUtils.textMap.get("level3"));
+    private RealmList<QuestionItemModelTextOnly> textOnlyFields;
     private RealmList<QuestionItemModelMultChoice> multChoiceFields;
     private RealmList<QuestionItemModelBooleanString> booleanStringFields;
     private RealmList<QuestionItemModelString> stringFields;
@@ -33,6 +39,14 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public RealmList<QuestionItemModelTextOnly> getTextOnlyFields() {
+        return textOnlyFields;
+    }
+
+    public void setTextOnlyFields(RealmList<QuestionItemModelTextOnly> textOnlyFields) {
+        this.textOnlyFields = textOnlyFields;
     }
 
     public RealmList<QuestionItemModelMultChoice> getMultChoiceFields() {
@@ -61,6 +75,15 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
+
+        if (textOnlyFields == null) {
+            textOnlyFields = new RealmList<>();
+        }
+        if (textOnlyFields.isEmpty()) {
+            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "currentWaterSource"));
+            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "waterPoints"));
+        }
+
         if (multChoiceFields == null) {
             multChoiceFields = new RealmList<>();
         }

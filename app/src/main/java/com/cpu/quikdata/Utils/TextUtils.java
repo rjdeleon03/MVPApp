@@ -208,5 +208,46 @@ public class TextUtils {
         // Health special needs data
         textMap.put("number", "Number");
         textMap.put("healthMedicalNeeds", "Specific Health/Medical Needs");
+
+        // Wash conditions details
+        textMap.put("level1", "Level 1");
+        textMap.put("level2", "Level 2");
+        textMap.put("level3", "Level 3");
+        textMap.put("currentWaterSource", "Current Water Source and Level of Water System");
+        textMap.put("waterPoints", "\nNumber of Water Points and Conditions");
+
+        textMap.put("drinkingFoodPrep", " Drinking and Food Preparation");
+        textMap.put("bathingWashing", "Bathing, Washing, and Domestic Use");
+        textMap.put("isWaterPotable", "Is the water potable?");
+        textMap.put("whereToGetCleanWater", "If not, where do they get clean drinking water? (Specify distance from the residential units)");
+        textMap.put("timeFetchingWater", "How much time do they spend in fetching water?");
+        textMap.put("ownsWaterSource", "Who owns the water source?");
+        textMap.put("payWaterContainer", "Do they have to pay for the water? How much per container?");
+        textMap.put("payWaterTranspo", "Do they have to pay fare or transportation cost?");
+        textMap.put("timesNoWater", "Are there particular times there is no water available?");
+        textMap.put("handWashingFacilities", "Are there hand washing facilities?");
+        textMap.put("wasteDisposalFacility", "Is there a proper garbage disposal facility?");
+        textMap.put("isWasteSegregated", "Is waste segregation observed?");
+        textMap.put("menstruationManagement", "How do women manage issues related to menstruation? Do they use napkins?");
+        textMap.put("napkinsDisposal", "How are napkins disposed?");
+        textMap.put("diapersDisposal", "How are baby diapers disposed?");
+        textMap.put("defecationPractices", "What are the current defecation practices?");
+        textMap.put("toiletFacilities", "What are the toilet facilities available? How many?");
+        textMap.put("toiletConditions", "What are the conditions of the latrines after the disaster?");
+        textMap.put("defecationPracticeThreat", "Is the current defecation practice a threat to water supplies or living areas?");
+        textMap.put("existingFacilitiesMaintained", "Are the existing facilities properly maintained?");
+        textMap.put("securityProtectionIssues", "Are there security and protection issues?");
+        textMap.put("areToiletsSegregated", "Are the toilets segregated between male and female?");
+        textMap.put("areToiletsAccessible", "Are the toilets accessible for all (seniors, disabled, children, pregnant, etc.)?");
+
+        // Wash gaps details
+        textMap.put("isAssistanceEnough", "Are the assistance provided enough?");
+        textMap.put("isAssistanceRelevant", "Are the assistance provided relevant to the needs of the affected?");
+        textMap.put("isWaterSourceAccessible", "Is the water source accessible?");
+        textMap.put("werePeopleConsultedRelief", "Were the people consulted prior to the relief distribution");
+        textMap.put("hasOrientationWasteMgmt", "Is there an orientation on waste management?");
+        textMap.put("attitudeTowardsSexes", "What is the attitude towards women, men, LGBT, PWD, boys, and girls?");
+        textMap.put("hasSupportMechanisms", "Are there existing support mechanisms?");
+        textMap.put("doWomenMakeDecisions", "Do women participate in decision making?");
     }
 }

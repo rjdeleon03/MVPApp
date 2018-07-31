@@ -97,6 +97,5 @@ public class InfrastructureDataRow extends RealmObject implements IEnumDataRow<G
         if (stringFields.isEmpty()) {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "infraRemarks", ""));
         }
-
     }
 }

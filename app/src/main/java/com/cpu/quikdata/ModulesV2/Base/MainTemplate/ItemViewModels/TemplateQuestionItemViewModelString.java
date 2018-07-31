@@ -4,6 +4,7 @@ import android.databinding.ObservableField;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.Utils.TextUtils;
 
 public class TemplateQuestionItemViewModelString extends TemplateQuestionItemViewModel<QuestionItemModelString> {
 
@@ -11,8 +12,7 @@ public class TemplateQuestionItemViewModelString extends TemplateQuestionItemVie
 
     public TemplateQuestionItemViewModelString(QuestionItemModelString model) {
         super(model);
-//        question.set(TextUtils.textMap.get(mModel.getQuestion()));
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.textMap.get(mModel.getQuestion()));
         value.set(mModel.getValue());
     }
 

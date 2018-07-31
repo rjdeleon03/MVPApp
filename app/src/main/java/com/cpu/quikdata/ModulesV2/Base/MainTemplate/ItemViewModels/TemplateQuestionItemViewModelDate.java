@@ -4,6 +4,7 @@ import android.databinding.ObservableInt;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
+import com.cpu.quikdata.Utils.TextUtils;
 
 public class TemplateQuestionItemViewModelDate extends TemplateQuestionItemViewModel<QuestionItemModelDate> {
 
@@ -13,7 +14,7 @@ public class TemplateQuestionItemViewModelDate extends TemplateQuestionItemViewM
 
     public TemplateQuestionItemViewModelDate(QuestionItemModelDate model) {
         super(model);
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.textMap.get(mModel.getQuestion()));
         year.set(mModel.getYear());
         month.set(mModel.getMonth());
         dayOfMonth.set(mModel.getDayOfMonth());

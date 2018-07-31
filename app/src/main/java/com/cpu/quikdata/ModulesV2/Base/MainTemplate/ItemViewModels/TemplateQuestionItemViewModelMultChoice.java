@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
+import com.cpu.quikdata.Utils.TextUtils;
 
 import io.realm.RealmList;
 
@@ -21,8 +22,7 @@ public class TemplateQuestionItemViewModelMultChoice extends TemplateQuestionIte
 
     public TemplateQuestionItemViewModelMultChoice(QuestionItemModelMultChoice model) {
         super(model);
-//        question.set(TextUtils.textMap.get(mModel.getQuestion()));
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.textMap.get(mModel.getQuestion()));
         selected.set(mModel.getSelected());
         choices.addAll(mModel.getChoices());
     }

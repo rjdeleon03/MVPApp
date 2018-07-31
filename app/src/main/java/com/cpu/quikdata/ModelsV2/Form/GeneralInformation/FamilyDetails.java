@@ -39,11 +39,14 @@ public class FamilyDetails extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
-        if (numberFields != null && !numberFields.isEmpty()) return;
-        numberFields = new RealmList<>();
-        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "affectedFamilies", 0));
-        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "affectedHouseholds", 0));
-        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "displacedFamilies", 0));
-        numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "displacedHouseholds", 0));
+        if (numberFields == null) {
+            numberFields = new RealmList<>();
+        }
+        if (numberFields.isEmpty()) {
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "affectedFamilies", 0));
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "affectedHouseholds", 0));
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "displacedFamilies", 0));
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "displacedHouseholds", 0));
+        }
     }
 }

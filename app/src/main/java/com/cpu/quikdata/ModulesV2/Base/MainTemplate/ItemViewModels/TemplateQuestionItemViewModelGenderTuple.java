@@ -4,6 +4,7 @@ import android.databinding.ObservableInt;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
+import com.cpu.quikdata.Utils.TextUtils;
 
 public class TemplateQuestionItemViewModelGenderTuple extends TemplateQuestionItemViewModel<QuestionItemModelGenderTuple> {
 
@@ -12,7 +13,7 @@ public class TemplateQuestionItemViewModelGenderTuple extends TemplateQuestionIt
 
     public TemplateQuestionItemViewModelGenderTuple(QuestionItemModelGenderTuple model) {
         super(model);
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.textMap.get(mModel.getQuestion()));
         male.set(mModel.getMale());
         female.set(mModel.getFemale());
     }

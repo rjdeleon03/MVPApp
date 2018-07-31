@@ -95,5 +95,27 @@ public class TextUtils {
         textMap.put("copingWhen", "How will they get their homes back to reasonable standard of living?");
         textMap.put("returnHomeWhen", "When can they return home?");
         textMap.put("ifCannotReturnHome", "What will they do if they cannot return home?");
+
+        // Shelter gaps details
+        textMap.put("separateCubicles", "Are there any separate cubicles and/or partitions for male and female with the assistance provided?");
+        textMap.put("culturallyAppropriate", "Is the given assistance appropriate to their cultural practices?");
+        textMap.put("shelterSizeAppropriate", "Is the construction of shelter appropriate for its location and size of the family as beneficiaries?");
+        textMap.put("basicAccess", "Does it have access to basic services and economic activities?");
+        textMap.put("hasAbleBodiedMembers", "Are there any able-bodied in the family/community who can participate in resource mobilization, construction of the shelter?");
+        textMap.put("gbvReferral", "Is there a referral pathway for incidents of Gender Based Violence (GBV)? ");
+        textMap.put("gbvProtectionService", "Are there GBV protection services available?");
+        textMap.put("gbvProtectionFocalPoint", "Is there GBV protection focal point?");
+
+        // Shelter needs data
+        textMap.put("specificItems", "Number of Families in Need");
+        textMap.put("familyCount", "Specific Items Needed");
+
+        // Food security coping details
+
+        // Food security gaps details
+
+        // Food security needs details
+
+        // Food security impact details
     }
 }

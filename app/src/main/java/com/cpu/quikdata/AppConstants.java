@@ -3,7 +3,7 @@ package com.cpu.quikdata;
 public class AppConstants {
 
     public static final String URL = "http://10.0.2.2:3000";
-    public static final String ROUTE_DNCA = "/dnca";
+    public static final String ROUTE_DNCA = "/api/dnca";
     public static final String ROUTE_IMAGES = "/api/images";
 
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";

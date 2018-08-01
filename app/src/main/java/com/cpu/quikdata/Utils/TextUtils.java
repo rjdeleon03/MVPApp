@@ -112,8 +112,8 @@ public class TextUtils {
         textMap.put("gbvProtectionFocalPoint", "Is there GBV protection focal point?");
 
         // Shelter needs data
-        textMap.put("specificItems", "Number of Families in Need");
-        textMap.put("familyCount", "Specific Items Needed");
+        textMap.put("specificItems", "Specific Items Needed");
+        textMap.put("familyCount", "Number of Families in Need");
 
         // Food security coping details
         textMap.put("copingStrategies", "What are the coping strategies employed?");

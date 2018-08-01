@@ -10,6 +10,10 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
 
+import com.cpu.quikdata.BR;
+
+import io.realm.Realm;
+
 public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilledDataActivity, PrefilledData> {
 
     private PrefilledData mPrefilledData;
@@ -31,17 +35,30 @@ public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilled
         mPrefilledData = data;
 
         // Baseline Population
-        for (BaselinePopulationRow row : mPrefilledData.getBaselinePopulation().getRows()) {
-            mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple(row.getAgeGroup().toString(), row.getMale(), row.getFemale())));
+        for (BaselinePopulationRow row : mPrefilledData.getPopulation()) {
+            mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(row.getCount()));
         }
 
         // Families and Households
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Families", mPrefilledData.getBaselineFamilies().getFamilies())));
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Households", mPrefilledData.getBaselineFamilies().getHouseholds())));
+        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(mPrefilledData.getFamilyCount()));
+        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(mPrefilledData.getHouseholdsCount()));
 
         // Baseline Houses
-        for (BaselineHousesRow house : mPrefilledData.getBaselineHouses().getHouses()) {
-            mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber(house.getHouseType(), house.getNumber())));
+        for (BaselineHousesRow house : mPrefilledData.getHouses()) {
+            mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(house.getCount()));
         }
+        notifyPropertyChanged(BR.questions);
+    }
+
+    @Override
+    public void onViewPaused() {
+        super.onViewPaused();
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.insertOrUpdate(mPrefilledData);
+            }
+        });
     }
 }

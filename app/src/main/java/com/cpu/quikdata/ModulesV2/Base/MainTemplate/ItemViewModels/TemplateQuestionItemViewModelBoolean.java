@@ -13,7 +13,7 @@ public class TemplateQuestionItemViewModelBoolean extends TemplateQuestionItemVi
 
     public TemplateQuestionItemViewModelBoolean(QuestionItemModelBoolean model, boolean useAltLayout) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         value.set(mModel.getValue());
         mUseAltLayout = useAltLayout;
     }

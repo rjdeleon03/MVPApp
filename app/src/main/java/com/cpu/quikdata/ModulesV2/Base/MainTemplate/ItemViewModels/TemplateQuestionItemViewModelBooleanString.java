@@ -16,9 +16,9 @@ public class TemplateQuestionItemViewModelBooleanString extends TemplateQuestion
 
     public TemplateQuestionItemViewModelBooleanString(QuestionItemModelBooleanString model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         value.set(mModel.getValue());
-        remarksQuestion.set(TextUtils.textMap.get(mModel.getRemarksQuestion()));
+        remarksQuestion.set(TextUtils.getTextFromMapping(mModel.getRemarksQuestion()));
         remarks.set(mModel.getRemarks());
     }
 

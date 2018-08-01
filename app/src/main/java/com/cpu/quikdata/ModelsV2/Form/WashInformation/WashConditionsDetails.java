@@ -21,9 +21,9 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
     private String id;
 
     private RealmList<String> choices = new RealmList<>(
-            TextUtils.textMap.get("level1"),
-            TextUtils.textMap.get("level2"),
-            TextUtils.textMap.get("level3"));
+            TextUtils.getTextFromMapping("level1"),
+            TextUtils.getTextFromMapping("level2"),
+            TextUtils.getTextFromMapping("level3"));
     private RealmList<QuestionItemModelTextOnly> textOnlyFields;
     private RealmList<QuestionItemModelMultChoice> multChoiceFields;
     private RealmList<QuestionItemModelBooleanString> booleanStringFields;

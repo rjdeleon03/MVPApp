@@ -93,6 +93,7 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
 
                 BaselineHousesRow row = realm.createObject(BaselineHousesRow.class, AppUtil.generateId());
                 row.setHouseType(houseType.toString());
+                row.setupFields();
                 houses.add(row);
             }
         }
@@ -102,8 +103,7 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
 
                 BaselinePopulationRow row = realm.createObject(BaselinePopulationRow.class, AppUtil.generateId());
                 row.setAgeGroup(ageGroup.toString());
-                row.setMale(13);
-                row.setFemale(25);
+                row.setupFields();
                 population.add(row);
             }
         }

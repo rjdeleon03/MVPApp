@@ -21,7 +21,7 @@ public class TemplateQuestionItemViewModelBooleanGroup extends TemplateQuestionI
 
     public TemplateQuestionItemViewModelBooleanGroup(QuestionItemModelBooleanGroup model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         for(QuestionItemModelBoolean booleanModel : model.getBooleanFields()) {
             mBooleanList.add(new TemplateQuestionItemViewModelBoolean(booleanModel, true));
         }

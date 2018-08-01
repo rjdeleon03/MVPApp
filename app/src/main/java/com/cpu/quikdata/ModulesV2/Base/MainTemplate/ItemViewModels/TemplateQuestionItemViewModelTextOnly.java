@@ -15,7 +15,7 @@ public class TemplateQuestionItemViewModelTextOnly extends TemplateQuestionItemV
 
     public TemplateQuestionItemViewModelTextOnly(QuestionItemModelTextOnly model, boolean useAltLayout) {
         super(model);
-        question.set((TextUtils.textMap.get(mModel.getQuestion())).toUpperCase());
+        question.set((TextUtils.getTextFromMapping(mModel.getQuestion())).toUpperCase());
         mUseAltLayout = useAltLayout;
     }
 

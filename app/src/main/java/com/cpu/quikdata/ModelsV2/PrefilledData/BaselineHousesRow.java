@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -18,10 +19,6 @@ public class BaselineHousesRow extends RealmObject implements IFieldHolder {
     private QuestionItemModelSingleNumber count;
 
     private int number;
-
-    public BaselineHousesRow() {
-        setupFields();
-    }
 
     public String getId() {
         return id;
@@ -57,8 +54,11 @@ public class BaselineHousesRow extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
+        Realm realm = getRealm();
         if (count == null) {
-            count = new QuestionItemModelSingleNumber(AppUtil.generateId(), "houseCount", 0);
+            count = realm.createObject(QuestionItemModelSingleNumber.class, AppUtil.generateId());
+            count.setQuestion(houseType);
+            count.setValue(0);
         }
     }
 

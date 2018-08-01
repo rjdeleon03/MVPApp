@@ -14,7 +14,7 @@ public class TemplateQuestionItemViewModelDate extends TemplateQuestionItemViewM
 
     public TemplateQuestionItemViewModelDate(QuestionItemModelDate model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         year.set(mModel.getYear());
         month.set(mModel.getMonth());
         dayOfMonth.set(mModel.getDayOfMonth());

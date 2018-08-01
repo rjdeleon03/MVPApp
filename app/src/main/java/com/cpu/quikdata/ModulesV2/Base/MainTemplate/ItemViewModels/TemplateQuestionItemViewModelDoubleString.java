@@ -16,10 +16,10 @@ public class TemplateQuestionItemViewModelDoubleString extends TemplateQuestionI
 
     public TemplateQuestionItemViewModelDoubleString(QuestionItemModelDoubleString model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
-        subQuestion1.set(TextUtils.textMap.get(mModel.getSubQuestion1()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
+        subQuestion1.set(TextUtils.getTextFromMapping(mModel.getSubQuestion1()));
         value1.set(mModel.getValue1());
-        subQuestion2.set(TextUtils.textMap.get(mModel.getSubQuestion2()));
+        subQuestion2.set(TextUtils.getTextFromMapping(mModel.getSubQuestion2()));
         value2.set(mModel.getValue2());
     }
 

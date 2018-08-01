@@ -13,7 +13,7 @@ public class TemplateQuestionItemViewModelGenderTuple extends TemplateQuestionIt
 
     public TemplateQuestionItemViewModelGenderTuple(QuestionItemModelGenderTuple model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         male.set(mModel.getMale());
         female.set(mModel.getFemale());
     }

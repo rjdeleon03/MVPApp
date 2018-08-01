@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -20,10 +21,6 @@ public class BaselinePopulationRow extends RealmObject implements IFieldHolder {
     private int male = 0;
 
     private int female = 0;
-
-    public BaselinePopulationRow() {
-        setupFields();
-    }
 
     public String getId() {
         return id;
@@ -67,8 +64,12 @@ public class BaselinePopulationRow extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
+        Realm realm = getRealm();
         if (count == null) {
-            count = new QuestionItemModelGenderTuple(AppUtil.generateId(), "genderTupleCount", 0, 0);
+            count = realm.createObject(QuestionItemModelGenderTuple.class, AppUtil.generateId());
+            count.setQuestion(ageGroup);
+            count.setMale(0);
+            count.setFemale(0);
         }
     }
 

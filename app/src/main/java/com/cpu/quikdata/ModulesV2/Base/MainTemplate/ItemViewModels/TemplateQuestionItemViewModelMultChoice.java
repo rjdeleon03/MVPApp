@@ -18,7 +18,7 @@ public class TemplateQuestionItemViewModelMultChoice extends TemplateQuestionIte
 
     public TemplateQuestionItemViewModelMultChoice(QuestionItemModelMultChoice model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         selected.set(mModel.getSelected());
         choices.addAll(mModel.getChoices());
     }

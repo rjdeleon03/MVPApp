@@ -26,23 +26,23 @@ public class EvacuationCenterDetails extends RealmObject implements IFieldHolder
     private RealmList<QuestionItemModelDate> dateFields;
 
     private RealmList<String> displacedChoices = new RealmList<>(
-            TextUtils.textMap.get("evacuationDisplaced"),
-            TextUtils.textMap.get("evacuationNonDisplaced"));
+            TextUtils.getTextFromMapping("evacuationDisplaced"),
+            TextUtils.getTextFromMapping("evacuationNonDisplaced"));
 
     private RealmList<String> shelterChoices =
             new RealmList<>(
-                    TextUtils.textMap.get("evacuationCenterBldg"),
-                    TextUtils.textMap.get("multipurposeHall"),
-                    TextUtils.textMap.get("church"),
-                    TextUtils.textMap.get("school"),
-                    TextUtils.textMap.get("gym"),
-                    TextUtils.textMap.get("livingWithHost"),
-                    TextUtils.textMap.get("apartmentRent"),
-                    TextUtils.textMap.get("damagedHouse"),
-                    TextUtils.textMap.get("informalCamp"),
-                    TextUtils.textMap.get("makeshiftHouse"),
-                    TextUtils.textMap.get("squatting"),
-                    TextUtils.textMap.get("others"));
+                    TextUtils.getTextFromMapping("evacuationCenterBldg"),
+                    TextUtils.getTextFromMapping("multipurposeHall"),
+                    TextUtils.getTextFromMapping("church"),
+                    TextUtils.getTextFromMapping("school"),
+                    TextUtils.getTextFromMapping("gym"),
+                    TextUtils.getTextFromMapping("livingWithHost"),
+                    TextUtils.getTextFromMapping("apartmentRent"),
+                    TextUtils.getTextFromMapping("damagedHouse"),
+                    TextUtils.getTextFromMapping("informalCamp"),
+                    TextUtils.getTextFromMapping("makeshiftHouse"),
+                    TextUtils.getTextFromMapping("squatting"),
+                    TextUtils.getTextFromMapping("others"));
 
     public EvacuationCenterDetails() {
         setupFields();

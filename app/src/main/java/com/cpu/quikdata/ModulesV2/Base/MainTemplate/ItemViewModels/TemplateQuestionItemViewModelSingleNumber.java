@@ -12,7 +12,7 @@ public class TemplateQuestionItemViewModelSingleNumber extends TemplateQuestionI
 
     public TemplateQuestionItemViewModelSingleNumber(QuestionItemModelSingleNumber model) {
         super(model);
-        question.set(TextUtils.textMap.get(mModel.getQuestion()));
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         value.set(mModel.getValue());
     }
 

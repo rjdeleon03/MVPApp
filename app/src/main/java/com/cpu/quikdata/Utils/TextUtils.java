@@ -317,4 +317,17 @@ public class TextUtils {
         textMap.put("spaceSick", "Space for the Sick");
         textMap.put("evacuationHandWashingFacilities", "Hand Washing Facilities");
     }
+
+    /**
+     * Gets the text from the mapping
+     * @param key
+     * @return
+     */
+    public static String getTextFromMapping(String key) {
+        String result = textMap.get(key);
+        if (result == null) {
+            return key;
+        }
+        return result;
+    }
 }

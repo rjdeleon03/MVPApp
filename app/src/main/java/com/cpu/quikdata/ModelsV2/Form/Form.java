@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsInformation;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
+import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -22,6 +23,7 @@ public class Form extends RealmObject {
     @Required
     private String data;
 
+    private PrefilledData prefilledData;
     private FormDetails formDetails;
     private GeneralInformation generalInformation;
     private ShelterInformation shelterInformation;
@@ -45,6 +47,14 @@ public class Form extends RealmObject {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public PrefilledData getPrefilledData() {
+        return prefilledData;
+    }
+
+    public void setPrefilledData(PrefilledData prefilledData) {
+        this.prefilledData = prefilledData;
     }
 
     public FormDetails getFormDetails() {

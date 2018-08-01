@@ -17,8 +17,10 @@ public class FormDetails extends RealmObject implements IFieldHolder {
     @PrimaryKey
     private String id;
 
-    private RealmList<QuestionItemModelDate> dateFields;
-    private RealmList<QuestionItemModelString> stringFields;
+    private QuestionItemModelDate assessmentDate;
+    private QuestionItemModelString interviewer;
+    private QuestionItemModelString interviewerNo;
+    private QuestionItemModelString infoSources;
 
     public String getId() {
         return id;
@@ -32,45 +34,60 @@ public class FormDetails extends RealmObject implements IFieldHolder {
         setupFields();
     }
 
-    public RealmList<QuestionItemModelString> getStringFields() {
-        return stringFields;
+    public QuestionItemModelDate getAssessmentDate() {
+        return assessmentDate;
     }
 
-    public void setStringFields(RealmList<QuestionItemModelString> stringFields) {
-        this.stringFields = stringFields;
+    public void setAssessmentDate(QuestionItemModelDate assessmentDate) {
+        this.assessmentDate = assessmentDate;
     }
 
-    public RealmList<QuestionItemModelDate> getDateFields() {
-        return dateFields;
+    public QuestionItemModelString getInterviewer() {
+        return interviewer;
     }
 
-    public void setDateFields(RealmList<QuestionItemModelDate> dateFields) {
-        this.dateFields = dateFields;
+    public void setInterviewer(QuestionItemModelString interviewer) {
+        this.interviewer = interviewer;
+    }
+
+    public QuestionItemModelString getInterviewerNo() {
+        return interviewerNo;
+    }
+
+    public void setInterviewerNo(QuestionItemModelString interviewerNo) {
+        this.interviewerNo = interviewerNo;
+    }
+
+    public QuestionItemModelString getInfoSources() {
+        return infoSources;
+    }
+
+    public void setInfoSources(QuestionItemModelString infoSources) {
+        this.infoSources = infoSources;
     }
 
     @Override
     public void setupFields() {
-        if (dateFields == null) {
-            dateFields = new RealmList<>();
+        if (assessmentDate == null) {
+            assessmentDate = new QuestionItemModelDate(AppUtil.generateId(), "assessmentDate");
         }
-        if (dateFields.isEmpty()) {
-            dateFields.add(new QuestionItemModelDate(AppUtil.generateId(), "assessmentDate"));
+        if (interviewer == null) {
+            interviewer = new QuestionItemModelString(AppUtil.generateId(), "interviewer", "");
         }
-
-        if (stringFields == null) {
-            stringFields = new RealmList<>();
+        if (interviewerNo == null) {
+            interviewerNo = new QuestionItemModelString(AppUtil.generateId(), "interviewerNo", "");
         }
-        if (stringFields.isEmpty()) {
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "interviewer", ""));
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "interviewerNo", ""));
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "infoSources", ""));
+        if (infoSources == null) {
+            infoSources = new QuestionItemModelString(AppUtil.generateId(), "infoSources", "");
         }
     }
 
     @Override
     public void deleteData() {
-        stringFields.deleteAllFromRealm();
-        dateFields.deleteAllFromRealm();
+        assessmentDate.deleteFromRealm();
+        interviewer.deleteFromRealm();
+        interviewerNo.deleteFromRealm();
+        infoSources.deleteFromRealm();
         deleteFromRealm();
     }
 }

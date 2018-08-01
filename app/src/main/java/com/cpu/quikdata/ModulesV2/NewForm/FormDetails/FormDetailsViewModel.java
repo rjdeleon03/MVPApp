@@ -30,9 +30,9 @@ public class FormDetailsViewModel extends TemplateQuestionViewModel<INewFormData
     public void onDataReceived(FormDetails data) {
         mFormDetails = data;
 
-        mQuestions.add(new TemplateQuestionItemViewModelDate(data.getDateFields().get(0)));
-        for(QuestionItemModelString model : data.getStringFields()) {
-            mQuestions.add(new TemplateQuestionItemViewModelString(model));
-        }
+        mQuestions.add(new TemplateQuestionItemViewModelDate(data.getAssessmentDate()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(data.getInterviewer()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(data.getInterviewerNo()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(data.getInfoSources()));
     }
 }

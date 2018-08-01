@@ -185,22 +185,24 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getPrefilledData(final IBaseDataManager<PrefilledData> callback) {
 
-        mRealm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
+        if(callback != null) {
+            callback.onDataReceived(performGetPrefilledData());
+        }
+    }
 
-                PrefilledData prefilledData = realm.where(PrefilledData.class).findFirst();
-                if (prefilledData == null)
-                {
-                    prefilledData = realm.createObject(PrefilledData.class);
-                    prefilledData.initializeRealmData(realm);
-                }
+    private PrefilledData performGetPrefilledData() {
+        PrefilledData prefilledDataCopy;
 
-                if(callback != null) {
-                    callback.onDataReceived(realm.copyFromRealm(prefilledData));
-                }
-            }
-        });
+        mRealm.beginTransaction();
+        PrefilledData prefilledData = mRealm.where(PrefilledData.class).findFirst();
+        if (prefilledData == null)
+        {
+            prefilledData = mRealm.createObject(PrefilledData.class);
+            prefilledData.initializeRealmData(mRealm);
+        }
+        prefilledDataCopy = mRealm.copyFromRealm(prefilledData);
+        mRealm.commitTransaction();
+        return prefilledDataCopy;
     }
 
     public void getForm(final IBaseDataManager<Form> callback) {
@@ -394,6 +396,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     public void submitForm() {
+        mForm.setPrefilledData(performGetPrefilledData());
         QuikDataApplication.retrofitClient.submitForm(mForm, new Callback<Form>() {
             @Override
             public void onResponse(Call<Form> call, Response<Form> response) {

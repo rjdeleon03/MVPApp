@@ -62,11 +62,11 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
     @Override
     public void setupFields() {
         if (familyCount == null) {
-            familyCount = new QuestionItemModelSingleNumber(AppUtil.generateId(), "familyCount", 0);
+            familyCount = new QuestionItemModelSingleNumber(AppUtil.generateId(), "totalFamilyCount", 0);
         }
 
         if (householdsCount == null) {
-            householdsCount = new QuestionItemModelSingleNumber(AppUtil.generateId(),"householdsCount", 0);
+            householdsCount = new QuestionItemModelSingleNumber(AppUtil.generateId(),"totalHouseholdCount", 0);
         }
 
         if (houses == null) {

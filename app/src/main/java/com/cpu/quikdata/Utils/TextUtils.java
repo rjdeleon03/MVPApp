@@ -10,6 +10,14 @@ public class TextUtils {
     static {
         textMap = new HashMap<>();
 
+        // Prefilled data
+        textMap.put("locationInfo", "Location Information");
+        textMap.put("totalPopulation", "\nTotal Population");
+        textMap.put("totalFamilies", "\nTotal Families and Households");
+        textMap.put("totalHouses", "\nTotal Number of Houses");
+        textMap.put("totalFamilyCount", "Families");
+        textMap.put("totalHouseholdCount", "Households");
+
         // Common
         textMap.put("remarks", "Remarks");
         textMap.put("others", "Others");

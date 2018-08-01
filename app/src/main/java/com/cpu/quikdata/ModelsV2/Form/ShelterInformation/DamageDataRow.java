@@ -62,7 +62,7 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
 
     @Override
     public GenericEnumDataRow.HouseType getActualType() {
-        return GenericEnumDataRow.HouseType.valueOf(houseType);
+        return GenericEnumDataRow.HouseType.getValueOf(houseType);
     }
 
     @Override

@@ -35,28 +35,28 @@ public abstract class BaseEnumViewModel extends NewDncaBaseViewModel {
         }
 
         shouldShowSpinner.set(true);
-        if (enumClass == GenericEnumDataRow.AgeGroup.class) {
-            ageGroupList.addAll(GenericEnumDataRow.AgeGroup.asList());
-
-        } else if (enumClass == GenericEnumDataRow.InfraType.class) {
-            ageGroupList.addAll(GenericEnumDataRow.InfraType.asList());
-
-        } else if (enumClass == GenericEnumDataRow.HouseType.class) {
-            ageGroupList.addAll(GenericEnumDataRow.HouseType.asList());
-
-        } else if (enumClass == GenericEnumDataRow.NeedsType.class) {
-            ageGroupList.addAll(GenericEnumDataRow.NeedsType.asList());
-
-        } else if (enumClass == GenericEnumDataRow.IncomeSourceType.class) {
-            ageGroupList.addAll(GenericEnumDataRow.IncomeSourceType.asList());
-
-        } else if (enumClass == GenericEnumDataRow.LivelihoodsType.class) {
-            ageGroupList.addAll(GenericEnumDataRow.LivelihoodsType.asList());
-
-        } else if (enumClass == GenericEnumDataRow.SpecialNeedsType.class) {
-            ageGroupList.addAll(GenericEnumDataRow.SpecialNeedsType.asList());
-
-        }
+//        if (enumClass == GenericEnumDataRow.AgeGroup.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.AgeGroup.asList());
+//
+//        } else if (enumClass == GenericEnumDataRow.InfraType.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.InfraType.asList());
+//
+//        } else if (enumClass == GenericEnumDataRow.HouseType.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.HouseType.asList());
+//
+//        } else if (enumClass == GenericEnumDataRow.NeedsType.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.NeedsType.asList());
+//
+//        } else if (enumClass == GenericEnumDataRow.IncomeSourceType.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.IncomeSourceType.asList());
+//
+//        } else if (enumClass == GenericEnumDataRow.LivelihoodsType.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.LivelihoodsType.asList());
+//
+//        } else if (enumClass == GenericEnumDataRow.SpecialNeedsType.class) {
+//            ageGroupList.addAll(GenericEnumDataRow.SpecialNeedsType.asList());
+//
+//        }
     }
 
     /**

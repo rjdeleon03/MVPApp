@@ -62,7 +62,7 @@ public class SpecialNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
 
     @Override
     public GenericEnumDataRow.SpecialNeedsType getActualType() {
-        return GenericEnumDataRow.SpecialNeedsType.valueOf(specialNeedsType);
+        return GenericEnumDataRow.SpecialNeedsType.getValueOf(specialNeedsType);
     }
 
     @Override

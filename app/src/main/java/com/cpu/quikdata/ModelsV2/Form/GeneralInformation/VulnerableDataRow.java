@@ -73,7 +73,7 @@ public class VulnerableDataRow extends RealmObject implements IEnumDataRow<Gener
 
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
-        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
+        return GenericEnumDataRow.AgeGroup.getValueOf(ageGroup);
     }
 
     @Override

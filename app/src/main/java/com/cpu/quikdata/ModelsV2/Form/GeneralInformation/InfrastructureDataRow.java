@@ -72,7 +72,7 @@ public class InfrastructureDataRow extends RealmObject implements IEnumDataRow<G
 
     @Override
     public GenericEnumDataRow.InfraType getActualType() {
-        return GenericEnumDataRow.InfraType.valueOf(infraType);
+        return GenericEnumDataRow.InfraType.getValueOf(infraType);
     }
 
     @Override

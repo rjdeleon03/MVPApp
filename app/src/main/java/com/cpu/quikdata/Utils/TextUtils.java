@@ -126,7 +126,7 @@ public class TextUtils {
 
         // Food security needs details
         textMap.put("assistanceToBeProvided", "What assistance can be provided to fill the food gap?");
-        textMap.put("familiesInNeed", "Number of families in need of food supply or lack the capacity to buy or secure food for their own consumption");
+        textMap.put("familiesInNeed", "How many families are in need of food supply?");
 
         // Food security impact details
         textMap.put("foodAvailabilityProblem", "Problem of availability of food?");
@@ -137,8 +137,8 @@ public class TextUtils {
         textMap.put("meetFoodNeeds", "Are they able to meet their food needs?");
         textMap.put("foodProductionChanged", "How has food production changed? (Are they still able to fish or farm?)");
         textMap.put("nextFoodRation", "When is the next food ration needed and for how long?");
-        textMap.put("beforeEmergency", "Affected");
-        textMap.put("afterEmergency", "Affected");
+        textMap.put("beforeEmergency", "Before the Emergency");
+        textMap.put("afterEmergency", "After the Emergency");
 
         // Livelihoods damage cost data
         textMap.put("estimatedDamageCost", "Estimated Cost of Damage (PHP)");

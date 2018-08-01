@@ -17,20 +17,21 @@ public class TextUtils {
         textMap.put("totalHouses", "\nTotal Number of Houses");
         textMap.put("totalFamilyCount", "Families");
         textMap.put("totalHouseholdCount", "Households");
+        textMap.put("orgName", "Organization Name");
+        textMap.put("sitio", "Sitio/Purok/Zone");
+        textMap.put("barangay", "Barangay");
+        textMap.put("city", "City/Municipality");
+        textMap.put("province", "Province");
 
         // Common
         textMap.put("remarks", "Remarks");
         textMap.put("others", "Others");
 
         // Form details
-        textMap.put("orgName", "Organization Name");
-        textMap.put("sitio", "Sitio/Purok/Zone");
-        textMap.put("barangay", "Barangay");
-        textMap.put("city", "City/Municipality");
-        textMap.put("province", "Province");
         textMap.put("interviewer", "Interviewer");
         textMap.put("interviewerNo", "Interviewer's Contact Number");
         textMap.put("infoSources", "Sources of Information");
+        textMap.put("assessmentDate", "Assessment Date");
 
         // Assistance data
         textMap.put("assistanceDonor", "Donor");

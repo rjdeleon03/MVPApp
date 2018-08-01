@@ -61,11 +61,6 @@ public class FormDetails extends RealmObject implements IFieldHolder {
             stringFields = new RealmList<>();
         }
         if (stringFields.isEmpty()) {
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "orgName", ""));
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "sitio", ""));
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "barangay", ""));
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "city", ""));
-            stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "province", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "interviewer", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "interviewerNo", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "infoSources", ""));

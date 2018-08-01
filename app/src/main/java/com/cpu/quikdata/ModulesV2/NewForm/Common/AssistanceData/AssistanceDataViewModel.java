@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData;
 
 import android.databinding.Bindable;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
@@ -18,6 +19,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
@@ -131,6 +133,6 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }
-        questionList.add(4, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(0)));
+        questionList.add(4, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("beneficiaries")));
     }
 }

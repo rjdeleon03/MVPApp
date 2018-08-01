@@ -24,7 +24,6 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow<Gener
     private RealmList<QuestionItemModelString> stringFields;
     private RealmList<QuestionItemModelDate> dateFields;
     private RealmList<QuestionItemModelSingleNumber> numberFields;
-    private RealmList<QuestionItemModelTextOnly> textOnlyFields;
 
     public AssistanceDataRow() {
         setupFields();
@@ -67,14 +66,6 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow<Gener
         this.numberFields = numberFields;
     }
 
-    public RealmList<QuestionItemModelTextOnly> getTextOnlyFields() {
-        return textOnlyFields;
-    }
-
-    public void setTextOnlyFields(RealmList<QuestionItemModelTextOnly> textOnlyFields) {
-        this.textOnlyFields = textOnlyFields;
-    }
-
     @Override
     public GenericEnumDataRow.AssistanceType getActualType() {
         return GenericEnumDataRow.AssistanceType.ASSISTANCE;
@@ -107,13 +98,6 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow<Gener
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "boys", 0));
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "girls", 0));
         }
-
-        if (textOnlyFields == null) {
-            textOnlyFields = new RealmList<>();
-        }
-        if (textOnlyFields.isEmpty()) {
-            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "beneficiaries"));
-        }
     }
 
     @Override
@@ -121,7 +105,6 @@ public class AssistanceDataRow extends RealmObject implements IEnumDataRow<Gener
         stringFields.deleteAllFromRealm();
         dateFields.deleteAllFromRealm();
         numberFields.deleteAllFromRealm();
-        textOnlyFields.deleteAllFromRealm();
         deleteFromRealm();
     }
 }

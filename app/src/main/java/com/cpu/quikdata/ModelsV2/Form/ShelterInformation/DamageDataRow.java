@@ -21,7 +21,6 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
     private String houseType;
 
     private RealmList<QuestionItemModelSingleNumber> numberFields;
-    private RealmList<QuestionItemModelTextOnly> textOnlyFields;
 
     public DamageDataRow() {
         setupFields();
@@ -52,14 +51,6 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
         this.numberFields = numberFields;
     }
 
-    public RealmList<QuestionItemModelTextOnly> getTextOnlyFields() {
-        return textOnlyFields;
-    }
-
-    public void setTextOnlyFields(RealmList<QuestionItemModelTextOnly> textOnlyFields) {
-        this.textOnlyFields = textOnlyFields;
-    }
-
     @Override
     public GenericEnumDataRow.HouseType getActualType() {
         return GenericEnumDataRow.HouseType.getValueOf(houseType);
@@ -67,15 +58,6 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
 
     @Override
     public void setupFields() {
-
-        if (textOnlyFields == null) {
-            textOnlyFields = new RealmList<>();
-        }
-        if (textOnlyFields.isEmpty()) {
-            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "houseOwnership"));
-            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "landOwnership"));
-            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "otherInformation"));
-        }
 
         if (numberFields == null) {
             numberFields = new RealmList<>();
@@ -96,7 +78,6 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
     @Override
     public void deleteData() {
         numberFields.deleteAllFromRealm();
-        textOnlyFields.deleteAllFromRealm();
         deleteFromRealm();
     }
 }

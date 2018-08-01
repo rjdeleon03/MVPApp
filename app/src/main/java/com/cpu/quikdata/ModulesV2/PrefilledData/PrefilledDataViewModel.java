@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
@@ -36,6 +37,11 @@ public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilled
 
         // Location Information
         mQuestions.add(new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("locationInfo")));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getOrgName()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getSitio()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getBarangay()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getCity()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getProvince()));
 
         // Baseline Population
         mQuestions.add(new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("totalPopulation")));

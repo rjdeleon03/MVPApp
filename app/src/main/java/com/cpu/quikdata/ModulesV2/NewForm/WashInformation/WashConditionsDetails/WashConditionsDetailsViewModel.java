@@ -10,6 +10,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 
@@ -44,7 +45,7 @@ public class WashConditionsDetailsViewModel extends TemplateQuestionViewModel<IN
         for(QuestionItemModelString model : mWashConditionsDetails.getStringFields()) {
             mQuestions.add(new TemplateQuestionItemViewModelString(model));
         }
-        mQuestions.add(3, new TemplateQuestionItemViewModelTextOnly(mWashConditionsDetails.getTextOnlyFields().get(1)));
-        mQuestions.add(0, new TemplateQuestionItemViewModelTextOnly(mWashConditionsDetails.getTextOnlyFields().get(0)));
+        mQuestions.add(3, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("waterPoints")));
+        mQuestions.add(0, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("currentWaterSource")));
     }
 }

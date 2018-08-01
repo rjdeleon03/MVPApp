@@ -24,7 +24,6 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
             TextUtils.getTextFromMapping("level1"),
             TextUtils.getTextFromMapping("level2"),
             TextUtils.getTextFromMapping("level3"));
-    private RealmList<QuestionItemModelTextOnly> textOnlyFields;
     private RealmList<QuestionItemModelMultChoice> multChoiceFields;
     private RealmList<QuestionItemModelBooleanString> booleanStringFields;
     private RealmList<QuestionItemModelString> stringFields;
@@ -39,14 +38,6 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public RealmList<QuestionItemModelTextOnly> getTextOnlyFields() {
-        return textOnlyFields;
-    }
-
-    public void setTextOnlyFields(RealmList<QuestionItemModelTextOnly> textOnlyFields) {
-        this.textOnlyFields = textOnlyFields;
     }
 
     public RealmList<QuestionItemModelMultChoice> getMultChoiceFields() {
@@ -75,14 +66,6 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
-
-        if (textOnlyFields == null) {
-            textOnlyFields = new RealmList<>();
-        }
-        if (textOnlyFields.isEmpty()) {
-            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "currentWaterSource"));
-            textOnlyFields.add(new QuestionItemModelTextOnly(AppUtil.generateId(), "waterPoints"));
-        }
 
         if (multChoiceFields == null) {
             multChoiceFields = new RealmList<>();

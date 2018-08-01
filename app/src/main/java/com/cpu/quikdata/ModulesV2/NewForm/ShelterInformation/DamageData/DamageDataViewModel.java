@@ -75,8 +75,8 @@ public class DamageDataViewModel
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }
-        questionList.add(6, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(2)));
-        questionList.add(3, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(1)));
-        questionList.add(0, new TemplateQuestionItemViewModelTextOnly(row.getTextOnlyFields().get(0)));
+        questionList.add(6, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("otherInformation")));
+        questionList.add(3, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("landOwnership")));
+        questionList.add(0, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("houseOwnership")));
     }
 }

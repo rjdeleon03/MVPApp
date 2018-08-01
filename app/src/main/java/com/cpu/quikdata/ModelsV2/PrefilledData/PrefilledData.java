@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -12,7 +13,12 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
 public class PrefilledData extends RealmObject implements IFieldHolder {
-
+    
+    private QuestionItemModelString orgName;
+    private QuestionItemModelString sitio;
+    private QuestionItemModelString barangay;
+    private QuestionItemModelString city;
+    private QuestionItemModelString province;
     private QuestionItemModelSingleNumber familyCount;
     private QuestionItemModelSingleNumber householdsCount;
     private RealmList<BaselineHousesRow> houses;
@@ -20,6 +26,46 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
 
     public PrefilledData() {
         setupFields();
+    }
+
+    public QuestionItemModelString getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(QuestionItemModelString orgName) {
+        this.orgName = orgName;
+    }
+
+    public QuestionItemModelString getSitio() {
+        return sitio;
+    }
+
+    public void setSitio(QuestionItemModelString sitio) {
+        this.sitio = sitio;
+    }
+
+    public QuestionItemModelString getBarangay() {
+        return barangay;
+    }
+
+    public void setBarangay(QuestionItemModelString barangay) {
+        this.barangay = barangay;
+    }
+
+    public QuestionItemModelString getCity() {
+        return city;
+    }
+
+    public void setCity(QuestionItemModelString city) {
+        this.city = city;
+    }
+
+    public QuestionItemModelString getProvince() {
+        return province;
+    }
+
+    public void setProvince(QuestionItemModelString province) {
+        this.province = province;
     }
 
     public QuestionItemModelSingleNumber getFamilyCount() {
@@ -61,6 +107,23 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
 
     @Override
     public void setupFields() {
+        
+        if (orgName == null) {
+            orgName = new QuestionItemModelString(AppUtil.generateId(), "orgName", "");
+        }
+        if (sitio == null) {
+            sitio = new QuestionItemModelString(AppUtil.generateId(), "sitio", "");
+        }
+        if (city == null) {
+            city = new QuestionItemModelString(AppUtil.generateId(), "city", "");
+        }
+        if (barangay == null) {
+            barangay = new QuestionItemModelString(AppUtil.generateId(), "barangay", "");
+        }
+        if (province == null) {
+            province = new QuestionItemModelString(AppUtil.generateId(), "province", "");
+        }
+        
         if (familyCount == null) {
             familyCount = new QuestionItemModelSingleNumber(AppUtil.generateId(), "totalFamilyCount", 0);
         }

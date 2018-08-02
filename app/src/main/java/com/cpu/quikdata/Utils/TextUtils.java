@@ -224,7 +224,8 @@ public class TextUtils {
         textMap.put("level2", "Level 2");
         textMap.put("level3", "Level 3");
         textMap.put("currentWaterSource", "Current Water Source and Level of Water System");
-        textMap.put("waterPoints", "\nNumber of Water Points and Conditions");
+        textMap.put("waterPoints", "Number of Water Points and Conditions");
+        textMap.put("otherWashConditionInfo", "\nOther WASH Conditions Information");
 
         textMap.put("drinkingFoodPrep", " Drinking and Food Preparation");
         textMap.put("bathingWashing", "Bathing, Washing, and Domestic Use");

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoiceRemarks;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
@@ -38,8 +40,18 @@ public class RetrofitClient {
                 .addSerializationExclusionStrategy(new ExclusionStrategy() {
                     @Override
                     public boolean shouldSkipField(FieldAttributes f) {
-                        Log.i("RETROFIT", f.getName() + "--- " + f.getName().toLowerCase().contains("id"));
-                        return f.getName().toLowerCase().equals("id");
+
+                        if (f.getName().toLowerCase().equals("id")) {
+                            return true;
+                        }
+                        if (f.getName().toLowerCase().contains("choices")) {
+                            if (f.getDeclaringClass().equals(QuestionItemModelMultChoice.class) ||
+                                    f.getDeclaringClass().equals(QuestionItemModelMultChoiceRemarks.class)) {
+                                return false;
+                            }
+                            return true;
+                        }
+                        return false;
                     }
 
                     @Override

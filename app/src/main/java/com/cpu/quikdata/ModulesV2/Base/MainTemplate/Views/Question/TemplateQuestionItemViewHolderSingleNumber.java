@@ -9,6 +9,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.TemplateItemViewHolder;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
+import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberVertBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 
 public class TemplateQuestionItemViewHolderSingleNumber extends TemplateItemViewHolder<TemplateQuestionItemViewModelSingleNumber> {
@@ -25,6 +26,11 @@ public class TemplateQuestionItemViewHolderSingleNumber extends TemplateItemView
 
     @Override
     protected View setupView(LayoutInflater inflater) {
+        if (mViewModel.getUseAltLayout()) {
+            TemplateQuestionSingleNumberVertBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_single_number_vert, null, false);
+            binding.setViewModel(mViewModel);
+            return binding.getRoot();
+        }
         TemplateQuestionSingleNumberBinding binding = DataBindingUtil.inflate(inflater, R.layout.template_question_single_number, null, false);
         binding.setViewModel(mViewModel);
         return binding.getRoot();

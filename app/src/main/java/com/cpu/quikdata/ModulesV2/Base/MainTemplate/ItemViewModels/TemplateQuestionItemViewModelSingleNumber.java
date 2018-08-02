@@ -9,11 +9,21 @@ import com.cpu.quikdata.Utils.TextUtils;
 public class TemplateQuestionItemViewModelSingleNumber extends TemplateQuestionItemViewModel<QuestionItemModelSingleNumber> {
 
     public final ObservableInt value = new ObservableInt(0);
+    private boolean mUseAltLayout;
 
-    public TemplateQuestionItemViewModelSingleNumber(QuestionItemModelSingleNumber model) {
+    public TemplateQuestionItemViewModelSingleNumber(QuestionItemModelSingleNumber model, boolean useAltLayout) {
         super(model);
         question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         value.set(mModel.getValue());
+        mUseAltLayout = useAltLayout;
+    }
+
+    public TemplateQuestionItemViewModelSingleNumber(QuestionItemModelSingleNumber model) {
+        this(model, false);
+    }
+
+    public boolean getUseAltLayout() {
+        return mUseAltLayout;
     }
 
     @Override

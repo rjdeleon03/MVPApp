@@ -4,6 +4,8 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoiceRemarks;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.Utils.TextUtils;
@@ -24,8 +26,9 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
             TextUtils.getTextFromMapping("level1"),
             TextUtils.getTextFromMapping("level2"),
             TextUtils.getTextFromMapping("level3"));
-    private RealmList<QuestionItemModelMultChoice> multChoiceFields;
+    private RealmList<QuestionItemModelMultChoiceRemarks> multChoiceRemarksFields;
     private RealmList<QuestionItemModelBooleanString> booleanStringFields;
+    private RealmList<QuestionItemModelSingleNumber> numberFields;
     private RealmList<QuestionItemModelString> stringFields;
 
     public WashConditionsDetails() {
@@ -40,12 +43,12 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
         this.id = id;
     }
 
-    public RealmList<QuestionItemModelMultChoice> getMultChoiceFields() {
-        return multChoiceFields;
+    public RealmList<QuestionItemModelMultChoiceRemarks> getMultChoiceRemarksFields() {
+        return multChoiceRemarksFields;
     }
 
-    public void setMultChoiceFields(RealmList<QuestionItemModelMultChoice> multChoiceFields) {
-        this.multChoiceFields = multChoiceFields;
+    public void setMultChoiceRemarksFields(RealmList<QuestionItemModelMultChoiceRemarks> multChoiceRemarksFields) {
+        this.multChoiceRemarksFields = multChoiceRemarksFields;
     }
 
     public RealmList<QuestionItemModelBooleanString> getBooleanStringFields() {
@@ -54,6 +57,14 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     public void setBooleanStringFields(RealmList<QuestionItemModelBooleanString> booleanStringFields) {
         this.booleanStringFields = booleanStringFields;
+    }
+
+    public RealmList<QuestionItemModelSingleNumber> getNumberFields() {
+        return numberFields;
+    }
+
+    public void setNumberFields(RealmList<QuestionItemModelSingleNumber> numberFields) {
+        this.numberFields = numberFields;
     }
 
     public RealmList<QuestionItemModelString> getStringFields() {
@@ -67,12 +78,12 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
     @Override
     public void setupFields() {
 
-        if (multChoiceFields == null) {
-            multChoiceFields = new RealmList<>();
+        if (multChoiceRemarksFields == null) {
+            multChoiceRemarksFields = new RealmList<>();
         }
-        if (multChoiceFields.isEmpty()) {
-            multChoiceFields.add(new QuestionItemModelMultChoice(AppUtil.generateId(), "drinkingFoodPrep", choices, 0));
-            multChoiceFields.add(new QuestionItemModelMultChoice(AppUtil.generateId(), "bathingWashing", choices, 0));
+        if (multChoiceRemarksFields.isEmpty()) {
+            multChoiceRemarksFields.add(new QuestionItemModelMultChoiceRemarks(AppUtil.generateId(), "drinkingFoodPrep", choices, 0, "remarks", ""));
+            multChoiceRemarksFields.add(new QuestionItemModelMultChoiceRemarks(AppUtil.generateId(), "bathingWashing", choices, 0, "remarks", ""));
         }
 
         if (booleanStringFields == null) {
@@ -81,6 +92,13 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
         if (booleanStringFields.isEmpty()) {
             booleanStringFields.add(new QuestionItemModelBooleanString(
                     AppUtil.generateId(), "isWaterPotable", true, "whereToGetCleanWater", ""));
+        }
+
+        if (numberFields == null) {
+            numberFields = new RealmList<>();
+        }
+        if (numberFields.isEmpty()) {
+            numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "waterPoints", 0));
         }
 
         if (stringFields == null) {
@@ -111,8 +129,9 @@ public class WashConditionsDetails extends RealmObject implements IFieldHolder {
 
     @Override
     public void deleteData() {
+        numberFields.deleteAllFromRealm();
         stringFields.deleteAllFromRealm();
-        multChoiceFields.deleteAllFromRealm();
+        multChoiceRemarksFields.deleteAllFromRealm();
         booleanStringFields.deleteAllFromRealm();
         deleteFromRealm();
     }

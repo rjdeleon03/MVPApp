@@ -48,10 +48,10 @@ public class LivelihoodsGapsDetails extends RealmObject implements IFieldHolder 
             booleanStringFields = new RealmList<>();
         }
         if (booleanStringFields.isEmpty()) {
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "localMarket", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "cashFoodForWork", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "credit", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "livelihoodMaterials", true, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "localMarket", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "cashFoodForWork", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "credit", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "livelihoodMaterials", false, "remarks", ""));
         }
     }
 

@@ -201,6 +201,7 @@ public class TextUtils {
 
         // Health diseases data
         textMap.put("hospitalization", "Hospitalization");
+        textMap.put("checkup", "Check-up");
         textMap.put("medicines", "Medicines");
 
         // Health gaps details

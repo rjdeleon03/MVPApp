@@ -14,7 +14,7 @@ import java.io.FileReader;
 
 import io.realm.Realm;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseActivity {
 
     protected Toolbar mToolbar;
     protected static final int TOOLBAR_ID = R.id.custom_nav_toolbar_list;
@@ -45,6 +45,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         mRealm.close();
         super.onDestroy();
+    }
+
+    /**
+     * Gets the realm instance of the activity
+     * @return
+     */
+    @Override
+    public Realm getRealmInstance() {
+        return mRealm;
     }
 
     /**

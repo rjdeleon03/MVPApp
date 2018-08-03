@@ -6,6 +6,7 @@ public class AppConstants {
     public static final String ROUTE_DNCA = "/api/dnca";
     public static final String ROUTE_IMAGES = "/api/images";
 
+    public static final String REALM_ID_FIELD = "id";
     public static final String FORM_ITEM_ID = "FORM_ITEM_ID";
 
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";

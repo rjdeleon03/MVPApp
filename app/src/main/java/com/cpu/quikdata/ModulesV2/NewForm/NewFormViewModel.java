@@ -19,7 +19,21 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
      */
     public NewFormViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mFormRepository.getForm(this);
+    }
+
+    /**
+     * Gets the data
+     * If ID is null, a new form is obtained
+     * @param id
+     */
+    public void getData(String id) {
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            if (id == null) {
+                mFormRepository.getForm(mViewComponent.get().getRealmInstance(), this);
+            } else {
+                mFormRepository.getForm(mViewComponent.get().getRealmInstance(), this, id);
+            }
+        }
     }
 
     /**
@@ -29,6 +43,15 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
     @Override
     public void onDataReceived(Form data) {
         mForm = data;
+    }
+
+    /**
+     * Saves the form
+     */
+    public void saveForm() {
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mFormRepository.saveForm(mViewComponent.get().getRealmInstance(), mForm);
+        }
     }
 
     /**

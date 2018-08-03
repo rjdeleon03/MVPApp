@@ -127,13 +127,4 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     public void onItemEditButtonPressed(String id) {
         ViewFactory.startNewFormActivity(this, id);
     }
-
-    /**
-     * Gets the realm instance of the activity
-     * @return
-     */
-    @Override
-    public Realm getRealmInstance() {
-        return mRealm;
-    }
 }

@@ -112,13 +112,15 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
         final NewFormViewModel newFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
         newFormFragment.setViewModel(newFormViewModel);
+
+        newFormViewModel.getData(itemId);
     }
 
     @Override
     public void onBackPressed() {
-        if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            Injection.provideDncaRepository(this).submitForm();
-        }
+//        if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
+//            Injection.provideDncaRepository(this).submitForm();
+//        }
         super.onBackPressed();
     }
 

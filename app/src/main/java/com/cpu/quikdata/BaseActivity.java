@@ -1,5 +1,7 @@
 package com.cpu.quikdata;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,8 @@ import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 
 import java.io.FileReader;
 
+import io.realm.Realm;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar mToolbar;
@@ -17,6 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private String mToolbarTitle;
     private int mToolbarTitleId = -1;
     private int mFragmentContainerId;
+    protected Realm mRealm;
 
     public BaseActivity(String toolbarTitle, int fragmentContainerId) {
         mToolbarTitle = toolbarTitle;
@@ -26,6 +31,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     public BaseActivity(int toolbarTitleId, int fragmentContainerId) {
         mToolbarTitleId = toolbarTitleId;
         mFragmentContainerId = fragmentContainerId;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Setup realm
+        mRealm = Realm.getDefaultInstance();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mRealm.close();
+        super.onDestroy();
     }
 
     /**

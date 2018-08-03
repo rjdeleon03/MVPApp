@@ -25,7 +25,6 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     private static int FRAGMENT_CONTAINER = R.id.fragment_container;
 
     private Merlin mMerlin;
-    private Realm mRealm;
 
     public FormListActivity() {
         super("", FRAGMENT_CONTAINER);
@@ -35,9 +34,6 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_list_activity);
-
-        // Setup realm
-        mRealm = Realm.getDefaultInstance();
 
         // Setup network change listener (Merlin)
         mMerlin = new Merlin.Builder().withConnectableCallbacks().build(this);
@@ -55,12 +51,6 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         FormListFragment formListFragment = findOrCreateViewFragment();
         final FormListViewModel formListViewModel = findOrCreateViewModel();
         formListFragment.setViewModel(formListViewModel);
-    }
-
-    @Override
-    protected void onDestroy() {
-        mRealm.close();
-        super.onDestroy();
     }
 
     @Override

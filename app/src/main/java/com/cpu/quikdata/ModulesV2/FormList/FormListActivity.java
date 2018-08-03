@@ -3,9 +3,12 @@ package com.cpu.quikdata.ModulesV2.FormList;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
@@ -14,7 +17,7 @@ import com.cpu.quikdata.ViewModelHolder;
 import com.novoda.merlin.Merlin;
 import com.novoda.merlin.registerable.connection.Connectable;
 
-public class FormListActivity extends AppCompatActivity implements IFormListActivity {
+public class FormListActivity extends BaseActivity implements IFormListActivity {
 
     public static final String FORM_LIST_VIEWMODEL_TAG = "FORM_LIST_VIEWMODEL_TAG";
 
@@ -25,17 +28,12 @@ public class FormListActivity extends AppCompatActivity implements IFormListActi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_list_activity);
 
+        // Setup the toolbar
+        setupToolbar(false);
+
         FormListFragment formListFragment = findOrCreateViewFragment();
         final FormListViewModel formListViewModel = findOrCreateViewModel();
         formListFragment.setViewModel(formListViewModel);
-
-        ImageButton settingsButton = findViewById(R.id.toolbar_settings);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                formListViewModel.navigateOnSettingsButtonPressed();
-            }
-        });
 
         // Setup network change listener (Merlin)
         mMerlin = new Merlin.Builder().withConnectableCallbacks().build(this);

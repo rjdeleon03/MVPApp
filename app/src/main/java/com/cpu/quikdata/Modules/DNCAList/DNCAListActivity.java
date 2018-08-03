@@ -37,7 +37,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
         dncaListFragment.setViewModel(mViewModel);
         mViewModel.onActivityCreated(this);
 
-        setupBackButton();
+//        setupBackButton();
     }
 
     /**
@@ -102,7 +102,6 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
 
     /**
      * Sets up back button
-     */
     public void setupBackButton() {
         mBackButton = findViewById(R.id.dnca_list_back_button);
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +111,7 @@ public class DNCAListActivity extends AppCompatActivity implements DNCAListNavig
             }
         });
     }
+     */
 
     /**
      * Navigates to new activity to show DNCA form

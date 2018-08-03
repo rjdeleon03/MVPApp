@@ -2,7 +2,11 @@ package com.cpu.quikdata.ModulesV2.NewForm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
@@ -23,7 +27,7 @@ import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationViewMod
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewFactory;
 
-public class NewFormActivity extends AppCompatActivity implements INewFormActivity {
+public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     public enum NewFormComponent {
         MENU,
@@ -88,11 +92,16 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
     }
 
     private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
+    private static final String TOOLBAR_TITLE = "New DNCA Form";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
+
+        // Setup the toolbar
+        mToolbarTitle = TOOLBAR_TITLE;
+        setupToolbar(true);
 
         NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
         final NewFormViewModel newFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);

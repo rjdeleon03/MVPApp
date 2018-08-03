@@ -94,13 +94,16 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
     private static final String TOOLBAR_TITLE = "New DNCA Form";
 
+    public NewFormActivity() {
+        super(TOOLBAR_TITLE, FRAGMENT_CONTAINER);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
 
         // Setup the toolbar
-        mToolbarTitle = TOOLBAR_TITLE;
         setupToolbar(true);
 
         NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);

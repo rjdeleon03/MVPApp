@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData;
 
+import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,11 @@ public class PrefilledDataActivity extends BaseActivity implements IPrefilledDat
 
     public static final String TEMPLATE_QUESTION_VIEWMODEL_TAG = "TEMPLATE_QUESTION_VIEWMODEL_TAG";
     private static final String TOOLBAR_TITLE = "Settings";
+    private static int FRAGMENT_CONTAINER = R.id.fragment_container;
+
+    public PrefilledDataActivity() {
+        super(TOOLBAR_TITLE, FRAGMENT_CONTAINER);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +32,6 @@ public class PrefilledDataActivity extends BaseActivity implements IPrefilledDat
         setContentView(R.layout.prefilled_data_activity);
 
         // Setup the toolbar
-        mToolbarTitle = TOOLBAR_TITLE;
         setupToolbar(true);
 
         TemplateQuestionFragment templateQuestionFragment = findOrCreateViewFragment();
@@ -52,12 +57,12 @@ public class PrefilledDataActivity extends BaseActivity implements IPrefilledDat
     @NonNull
     private PrefilledDataFragment findOrCreateViewFragment() {
 
-        PrefilledDataFragment formListFragment = (PrefilledDataFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        PrefilledDataFragment formListFragment = (PrefilledDataFragment) getSupportFragmentManager().findFragmentById(FRAGMENT_CONTAINER);
 
         if (formListFragment == null) {
             formListFragment = PrefilledDataFragment.newInstance();
 
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, R.id.fragment_container, false);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, FRAGMENT_CONTAINER, false);
         }
 
         return formListFragment;

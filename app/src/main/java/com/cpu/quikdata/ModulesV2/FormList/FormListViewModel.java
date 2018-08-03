@@ -31,13 +31,4 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
             mActivity.get().onAddButtonPressed();
         }
     }
-
-    /**
-     * Handles navigation when settings button is pressed
-     */
-    public void navigateOnSettingsButtonPressed() {
-        if (mActivity.get() != null) {
-            mActivity.get().onSettingsButtonPressed();
-        }
-    }
 }

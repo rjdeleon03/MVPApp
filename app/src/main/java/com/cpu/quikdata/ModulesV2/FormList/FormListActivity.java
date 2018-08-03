@@ -20,8 +20,13 @@ import com.novoda.merlin.registerable.connection.Connectable;
 public class FormListActivity extends BaseActivity implements IFormListActivity {
 
     public static final String FORM_LIST_VIEWMODEL_TAG = "FORM_LIST_VIEWMODEL_TAG";
+    private static int FRAGMENT_CONTAINER = R.id.fragment_container;
 
     private Merlin mMerlin;
+
+    public FormListActivity() {
+        super("", FRAGMENT_CONTAINER);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +70,12 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @NonNull
     private FormListFragment findOrCreateViewFragment() {
 
-        FormListFragment formListFragment = (FormListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        FormListFragment formListFragment = (FormListFragment) getSupportFragmentManager().findFragmentById(FRAGMENT_CONTAINER);
 
         if (formListFragment == null) {
             formListFragment = FormListFragment.newInstance();
 
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, R.id.fragment_container, false);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, FRAGMENT_CONTAINER, false);
         }
 
         return formListFragment;
@@ -111,13 +116,5 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @Override
     public void onAddButtonPressed() {
         ViewFactory.startNewFormActivity(this);
-    }
-
-    /**
-     * Handles settings button pressed event
-     */
-    @Override
-    public void onSettingsButtonPressed() {
-        ViewFactory.startPrefilledActivity(this);
     }
 }

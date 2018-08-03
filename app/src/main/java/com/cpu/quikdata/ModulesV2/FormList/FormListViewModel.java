@@ -41,12 +41,31 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
 
     /**
      * Handles navigation when item's edit button is pressed
-     * @param itemIndex
+     * @param itemId
      */
     @Override
-    public void navigateOnItemEditButtonPressed(int itemIndex) {
+    public void navigateOnItemEditButtonPressed(String itemId) {
         if (mViewComponent.get() != null) {
-            mViewComponent.get().onItemEditButtonPressed(mItems.get(itemIndex).getId());
+            mViewComponent.get().onItemEditButtonPressed(itemId);
         }
     }
+
+    /**
+     * Handles navigation when items delete button is pressed
+     * @param itemId
+     */
+    @Override
+    public void navigateOnItemDeleteButtonPressed(String itemId) {
+//        if (mViewComponent.get() != null) {
+//            mViewComponent.get().onItemDeleteButtonPressed(mItems.get(itemIndex).getId());
+//        }
+        for(Form formItem : mItems) {
+            if (formItem.getId().equals(itemId)) {
+                mFormRepository.deleteForm(mViewComponent.get().getRealmInstance(), formItem);
+                break;
+            }
+        }
+    }
+
+
 }

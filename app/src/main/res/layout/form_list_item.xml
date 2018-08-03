@@ -66,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:minHeight="10dip"
+                    android:onClick="@{() -> viewModel.navigateOnDeleteButtonPressed()}"
                     android:text="Delete" />
 
             </LinearLayout>

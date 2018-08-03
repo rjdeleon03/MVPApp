@@ -104,7 +104,12 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
 
-        String itemId = getIntent().getExtras().getString(AppConstants.FORM_ITEM_ID);
+        // Get item ID from bundle extra
+        String itemId = null;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            itemId = extras.getString(AppConstants.FORM_ITEM_ID);
+        }
 
         // Setup the toolbar
         setupToolbar(true);
@@ -114,14 +119,6 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         newFormFragment.setViewModel(newFormViewModel);
 
         newFormViewModel.getData(itemId);
-    }
-
-    @Override
-    public void onBackPressed() {
-//        if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
-//            Injection.provideDncaRepository(this).submitForm();
-//        }
-        super.onBackPressed();
     }
 
     @Override

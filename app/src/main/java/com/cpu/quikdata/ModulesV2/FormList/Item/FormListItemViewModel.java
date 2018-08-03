@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 public class FormListItemViewModel {
 
     private IFormListDataManager<Form> mDataManager;
-    private int mItemIndex = -1;
+    private String mFormId = "";
 
     public final ObservableField<String> sitio = new ObservableField<>("");
 
@@ -20,7 +20,7 @@ public class FormListItemViewModel {
      * @param form
      */
     public FormListItemViewModel(Form form, int itemIndex) {
-        mItemIndex = itemIndex;
+        mFormId = form.getId();
         QuestionItemModelDate date = form.getFormDetails().getAssessmentDate();
         if (date != null) {
             int month = date.getMonth()+1;
@@ -41,7 +41,16 @@ public class FormListItemViewModel {
      */
     public void navigateOnEditButtonPressed() {
         if(mDataManager != null) {
-            mDataManager.navigateOnItemEditButtonPressed(mItemIndex);
+            mDataManager.navigateOnItemEditButtonPressed(mFormId);
+        }
+    }
+
+    /**
+     * Handles navigation when delete button is pressed
+     */
+    public void navigateOnDeleteButtonPressed() {
+        if(mDataManager != null) {
+            mDataManager.navigateOnItemDeleteButtonPressed(mFormId);
         }
     }
 }

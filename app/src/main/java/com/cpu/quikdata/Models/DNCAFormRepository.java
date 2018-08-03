@@ -411,6 +411,12 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         realm.commitTransaction();
     }
 
+    public void deleteForm(Realm realm, Form form) {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(form).deleteFromRealm();
+        realm.commitTransaction();
+    }
+
     public void submitForm() {
         mForm.setPrefilledData(performGetPrefilledData());
         QuikDataApplication.retrofitClient.submitForm(mForm, new Callback<Form>() {

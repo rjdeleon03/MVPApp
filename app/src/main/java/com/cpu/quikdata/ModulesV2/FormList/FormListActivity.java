@@ -127,4 +127,12 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     public void onItemEditButtonPressed(String id) {
         ViewFactory.startNewFormActivity(this, id);
     }
+
+    /**
+     * Handles item delete button pressed event
+     */
+    @Override
+    public void onItemDeleteButtonPressed(String id) {
+        // TODO: Add confirmation dialog
+    }
 }

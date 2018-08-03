@@ -9,7 +9,7 @@ public class InfrastructureDataFragment extends TemplateEnumDataFragment<Infrast
 
     public InfrastructureDataFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.GEN_INFO_POPULATION.toString();
+        mTag = NewFormActivity.NewFormComponent.GEN_INFO_INFRASTRUCTURE.toString();
     }
 
     /**

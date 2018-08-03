@@ -86,18 +86,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         setToolbarTitleFromFragment(fragment);
     }
 
-    /**
-     * Handles fragment resumption event
-     */
-    @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         setToolbarTitleFromFragment(getSupportFragmentManager().findFragmentById(mFragmentContainerId));
+        setToolbarSubtitle(null);
     }
 
     /**
@@ -114,6 +107,12 @@ public abstract class BaseActivity extends AppCompatActivity {
                     mToolbar.setTitle(fragmentTitle);
                 }
             }
+        }
+    }
+
+    public void setToolbarSubtitle(String subtitle) {
+        if (mToolbar != null) {
+            mToolbar.setSubtitle(subtitle);
         }
     }
 }

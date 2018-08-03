@@ -17,12 +17,15 @@ import com.cpu.quikdata.ViewModelHolder;
 import com.novoda.merlin.Merlin;
 import com.novoda.merlin.registerable.connection.Connectable;
 
+import io.realm.Realm;
+
 public class FormListActivity extends BaseActivity implements IFormListActivity {
 
     public static final String FORM_LIST_VIEWMODEL_TAG = "FORM_LIST_VIEWMODEL_TAG";
     private static int FRAGMENT_CONTAINER = R.id.fragment_container;
 
     private Merlin mMerlin;
+    private Realm mRealm;
 
     public FormListActivity() {
         super("", FRAGMENT_CONTAINER);
@@ -33,12 +36,8 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_list_activity);
 
-        // Setup the toolbar
-        setupToolbar(false);
-
-        FormListFragment formListFragment = findOrCreateViewFragment();
-        final FormListViewModel formListViewModel = findOrCreateViewModel();
-        formListFragment.setViewModel(formListViewModel);
+        // Setup realm
+        mRealm = Realm.getDefaultInstance();
 
         // Setup network change listener (Merlin)
         mMerlin = new Merlin.Builder().withConnectableCallbacks().build(this);
@@ -49,6 +48,19 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
                 // Do something you haz internet!
             }
         });
+
+        // Setup the toolbar
+        setupToolbar(false);
+
+        FormListFragment formListFragment = findOrCreateViewFragment();
+        final FormListViewModel formListViewModel = findOrCreateViewModel();
+        formListFragment.setViewModel(formListViewModel);
+    }
+
+    @Override
+    protected void onDestroy() {
+        mRealm.close();
+        super.onDestroy();
     }
 
     @Override
@@ -98,7 +110,7 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
 
             // Create viewModel if it does not exist yet
             FormListViewModel formListViewModel = new FormListViewModel(Injection.provideDncaRepository(this));
-            formListViewModel.setActivity(this);
+            formListViewModel.setViewComponent(this);
 
             // Bind viewModel to activity
             ActivityUtils.addFragmentToActivity(
@@ -116,5 +128,14 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @Override
     public void onAddButtonPressed() {
         ViewFactory.startNewFormActivity(this);
+    }
+
+    /**
+     * Gets the realm instance of the activity
+     * @return
+     */
+    @Override
+    public Realm getRealmInstance() {
+        return mRealm;
     }
 }

@@ -11,7 +11,14 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     public FormListViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mFormRepository.getAllForms(this);
+    }
+
+    @Override
+    public void setViewComponent(IFormListActivity viewComponent) {
+        super.setViewComponent(viewComponent);
+        if (mViewComponent.get() != null) {
+            mFormRepository.getAllForms(mViewComponent.get().getRealmInstance(), this);
+        }
     }
 
     /**
@@ -27,8 +34,8 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     public void navigateOnAddButtonPressed() {
-        if (mActivity.get() != null) {
-            mActivity.get().onAddButtonPressed();
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onAddButtonPressed();
         }
     }
 }

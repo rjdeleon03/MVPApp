@@ -177,10 +177,11 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     /** NEW METHODS ================================================= */
-    public void getAllForms(final IFormListDataManager callback) {
-        mRealm.beginTransaction();
-        callback.onListDataRetrieved(mRealm.where(Form.class).findAll());
-        mRealm.commitTransaction();
+    public void getAllForms(Realm realm, final IFormListDataManager callback) {
+        realm.beginTransaction();
+        callback.onListDataRetrieved(realm.where(Form.class).findAll());
+        realm.commitTransaction();
+
     }
 
     public void getPrefilledData(final IBaseDataManager<PrefilledData> callback) {

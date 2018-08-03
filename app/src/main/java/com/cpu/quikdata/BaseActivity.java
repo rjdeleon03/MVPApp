@@ -8,6 +8,8 @@ import android.view.MenuItem;
 
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 
+import java.io.FileReader;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar mToolbar;
@@ -78,20 +80,30 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+        setToolbarTitleFromFragment(fragment);
+    }
+
     /**
      * Handles fragment resumption event
      */
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        setToolbarTitleFromFragment();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        setToolbarTitleFromFragment(getSupportFragmentManager().findFragmentById(mFragmentContainerId));
     }
 
     /**
      * Sets the toolbar title based on the topmost fragment
      */
-    private void setToolbarTitleFromFragment() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(mFragmentContainerId);
+    public void setToolbarTitleFromFragment(Fragment fragment) {
         if (fragment instanceof BaseFragment) {
             // TODO: Use correct string as fragment title (probably mapping)
             if (mToolbar != null) {

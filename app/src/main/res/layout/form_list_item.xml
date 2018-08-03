@@ -19,12 +19,12 @@
         <ImageView
             android:id="@+id/dnca_item_img"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -47,6 +47,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:minHeight="10dip"
+                    android:onClick="@{() -> viewModel.navigateOnEditButtonPressed()}"
+                    android:text="Edit" />
+
+                <Button
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:minHeight="10dip"
+                    android:text="Delete" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <ImageButton

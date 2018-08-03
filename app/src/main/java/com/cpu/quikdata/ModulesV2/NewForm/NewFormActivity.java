@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
@@ -102,6 +103,8 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
+
+        String itemId = getIntent().getExtras().getString(AppConstants.FORM_ITEM_ID);
 
         // Setup the toolbar
         setupToolbar(true);

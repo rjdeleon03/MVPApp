@@ -220,9 +220,16 @@ public class ViewFactory {
         context.startActivity(intent);
     }
 
-    public static void startNewFormActivity(Context context) {
+    public static void startNewFormActivity(Context context, String itemId) {
         Intent intent = new Intent(context, NewFormActivity.class);
+        if (itemId != null) {
+            intent.putExtra(AppConstants.FORM_ITEM_ID, itemId);
+        }
         context.startActivity(intent);
+    }
+
+    public static void startNewFormActivity(Context context) {
+        startNewFormActivity(context, null);
     }
 
     @NonNull

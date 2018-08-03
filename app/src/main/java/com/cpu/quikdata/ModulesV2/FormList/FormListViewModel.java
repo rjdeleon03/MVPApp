@@ -38,4 +38,15 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
             mViewComponent.get().onAddButtonPressed();
         }
     }
+
+    /**
+     * Handles navigation when item's edit button is pressed
+     * @param itemIndex
+     */
+    @Override
+    public void navigateOnItemEditButtonPressed(int itemIndex) {
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onItemEditButtonPressed(mItems.get(itemIndex).getId());
+        }
+    }
 }

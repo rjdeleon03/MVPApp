@@ -8,5 +8,7 @@ public interface IFormListActivity extends IBaseInterface {
 
     void onAddButtonPressed();
 
+    void onItemEditButtonPressed(String id);
+
     Realm getRealmInstance();
 }

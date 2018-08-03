@@ -6,6 +6,8 @@ public class AppConstants {
     public static final String ROUTE_DNCA = "/api/dnca";
     public static final String ROUTE_IMAGES = "/api/images";
 
+    public static final String FORM_ITEM_ID = "FORM_ITEM_ID";
+
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";
 
     public static final int MAX_IMAGE_COUNT = 5;

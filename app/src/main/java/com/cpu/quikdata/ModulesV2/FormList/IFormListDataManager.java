@@ -13,4 +13,6 @@ public interface IFormListDataManager<LI> {
     TemplateListAdapter getAdapter();
 
     int getItemsCount();
+
+    void navigateOnItemEditButtonPressed(int itemIndex);
 }

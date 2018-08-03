@@ -7,11 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.BaseParentFragment;
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.FormListFragmentBinding;
 
-public class TemplateListDataFragment<VM extends TemplateListDataViewModel> extends BaseFragment<VM> {
+public class TemplateListDataFragment<VM extends TemplateListDataViewModel> extends BaseParentFragment<VM> {
 
     /**
      * Creates the view
@@ -30,7 +31,7 @@ public class TemplateListDataFragment<VM extends TemplateListDataViewModel> exte
 
         // Setup recyclerView
         RecyclerView rv = view.findViewById(R.id.form_list_view);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rv.setLayoutManager(new LinearLayoutManager(mActivity));
         return view;
     }
 }

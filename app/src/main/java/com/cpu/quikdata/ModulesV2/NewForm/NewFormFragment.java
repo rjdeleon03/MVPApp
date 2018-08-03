@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cpu.quikdata.BaseParentFragment;
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.databinding.NewFormFragmentBinding;
 import com.cpu.quikdata.R;
@@ -14,7 +15,7 @@ import com.cpu.quikdata.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewFormFragment extends BaseFragment<NewFormViewModel> {
+public class NewFormFragment extends BaseParentFragment<NewFormViewModel> {
 
     public NewFormFragment() {
         // Required empty public constructor

@@ -108,12 +108,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        refreshToolbarTitleFromTopmostFragment();
+    }
+
+    /**
+     * Refreshes the toolbar title with the title of the topmost fragment
+     */
+    public void refreshToolbarTitleFromTopmostFragment() {
         setToolbarTitleFromFragment(getSupportFragmentManager().findFragmentById(mFragmentContainerId));
         setToolbarSubtitle(null);
     }
 
     /**
-     * Sets the toolbar title based on the topmost fragment
+     * Sets the toolbar's title with the title of the passed fragment
+     * @param fragment
      */
     public void setToolbarTitleFromFragment(Fragment fragment) {
         if (fragment instanceof BaseFragment) {
@@ -129,6 +137,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets the toolbar's subtitle
+     * @param subtitle
+     */
     public void setToolbarSubtitle(String subtitle) {
         if (mToolbar != null) {
             mToolbar.setSubtitle(subtitle);

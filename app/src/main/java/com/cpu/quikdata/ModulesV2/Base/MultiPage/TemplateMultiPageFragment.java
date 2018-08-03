@@ -57,7 +57,6 @@ public abstract class TemplateMultiPageFragment<VM extends TemplateMultiPageView
      * @param view
      */
     protected void setupViewPager(View view) {
-        final BaseActivity activity = (BaseActivity) getActivity();
 
         // Initialize viewPager
         mPager = view.findViewById(R.id.nd_multi_page_pager);
@@ -69,10 +68,8 @@ public abstract class TemplateMultiPageFragment<VM extends TemplateMultiPageView
 
             @Override
             public void onPageSelected(int position) {
-                if (activity != null) {
-                    activity.setToolbarSubtitle(mAdapter.getItem(position).getType());
-                }
 
+                updateToolbarSubtitle(position);
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
 
@@ -90,8 +87,21 @@ public abstract class TemplateMultiPageFragment<VM extends TemplateMultiPageView
         });
 
         // Set first fragment's title as title
+        updateToolbarSubtitle(0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Set first fragment's title as title
+        updateToolbarSubtitle(mPager.getCurrentItem());
+    }
+
+    private void updateToolbarSubtitle(int position) {
+        BaseActivity activity = (BaseActivity) getActivity();
         if (activity != null) {
-            activity.setToolbarSubtitle(mAdapter.getItem(0).getType());
+            activity.setToolbarSubtitle(mAdapter.getItem(position).getType());
         }
     }
 

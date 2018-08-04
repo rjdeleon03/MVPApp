@@ -37,6 +37,15 @@ public class FormListItemViewModel {
     }
 
     /**
+     * Handles navigation when submit button is pressed
+     */
+    public void navigateOnSubmitButtonPressed() {
+        if(mDataManager != null) {
+            mDataManager.navigateOnItemSubmitButtonPressed(mFormId);
+        }
+    }
+
+    /**
      * Handles navigation when edit button is pressed
      */
     public void navigateOnEditButtonPressed() {

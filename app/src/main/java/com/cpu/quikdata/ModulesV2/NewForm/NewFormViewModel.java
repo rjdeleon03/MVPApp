@@ -48,9 +48,18 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
     /**
      * Saves the form
      */
-    public void saveForm() {
+    private void saveForm() {
         if (mViewComponent != null && mViewComponent.get() != null) {
-            mFormRepository.saveForm(mViewComponent.get().getRealmInstance(), mForm);
+            mFormRepository.saveForm(mViewComponent.get().getRealmInstance());
+        }
+    }
+
+    /**
+     * Discards the form
+     */
+    private void discardForm() {
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mFormRepository.discardForm(mViewComponent.get().getRealmInstance());
         }
     }
 
@@ -132,6 +141,27 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
     public void navigateOnCaseStoriesButtonPressed() {
         if (mViewComponent != null) {
             mViewComponent.get().onCaseStoriesButtonPressed();
+        }
+    }
+
+    /**
+     * Handles navigation when save button is pressed
+     */
+    public void navigateOnSaveButtonPressed() {
+        saveForm();
+        if (mViewComponent != null) {
+            mViewComponent.get().onSaveButtonPressed();
+        }
+    }
+
+    /**
+     * Handles navigation when back button is pressed
+     * Means that form will be discarded
+     */
+    public void onBackPressedWithoutSave() {
+        discardForm();
+        if (mViewComponent != null) {
+            mViewComponent.get().onSaveButtonPressed();
         }
     }
 }

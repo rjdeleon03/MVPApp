@@ -38,10 +38,4 @@ public class NewFormFragment extends BaseFragment<NewFormViewModel> {
         binding.setViewModel(mViewModel);
         return view;
     }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mViewModel.saveForm();
-    }
 }

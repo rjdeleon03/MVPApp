@@ -21,4 +21,6 @@ public interface INewFormActivity extends IBaseActivity {
     void onEvacuationInfoButtonPressed();
 
     void onCaseStoriesButtonPressed();
+
+    void onSaveButtonPressed();
 }

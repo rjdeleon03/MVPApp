@@ -94,6 +94,8 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
     private static final String TOOLBAR_TITLE = "New DNCA Form";
+    private NewFormViewModel mNewFormViewModel;
+    private boolean mIsEditMode = false;
 
     public NewFormActivity() {
         super(TOOLBAR_TITLE, FRAGMENT_CONTAINER);
@@ -108,6 +110,7 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         String itemId = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            mIsEditMode = true;
             itemId = extras.getString(AppConstants.FORM_ITEM_ID);
         }
 
@@ -115,10 +118,24 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         setupToolbar(true);
 
         NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
-        final NewFormViewModel newFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
-        newFormFragment.setViewModel(newFormViewModel);
+        mNewFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
+        newFormFragment.setViewModel(mNewFormViewModel);
 
-        newFormViewModel.getData(itemId);
+        mNewFormViewModel.getData(itemId);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (!mIsEditMode) {
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    if (mNewFormViewModel != null) {
+                        mNewFormViewModel.onBackPressedWithoutSave();
+                    }
+                    return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -181,5 +198,10 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     @Override
     public void onCaseStoriesButtonPressed() {
 
+    }
+
+    @Override
+    public void onSaveButtonPressed() {
+        onBackPressed();
     }
 }

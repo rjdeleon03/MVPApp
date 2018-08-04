@@ -185,25 +185,24 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     }
 
-    public void getPrefilledData(final IBaseDataManager<PrefilledData> callback) {
-
+    public void getPrefilledData(Realm realm, final IBaseDataManager<PrefilledData> callback) {
+        realm.beginTransaction();
         if(callback != null) {
-            callback.onDataReceived(performGetPrefilledData());
+            callback.onDataReceived(performGetPrefilledData(realm));
         }
+        realm.commitTransaction();
     }
 
-    private PrefilledData performGetPrefilledData() {
+    private PrefilledData performGetPrefilledData(Realm realm) {
         PrefilledData prefilledDataCopy;
 
-        mRealm.beginTransaction();
-        PrefilledData prefilledData = mRealm.where(PrefilledData.class).findFirst();
+        PrefilledData prefilledData = realm.where(PrefilledData.class).findFirst();
         if (prefilledData == null)
         {
-            prefilledData = mRealm.createObject(PrefilledData.class);
-            prefilledData.initializeRealmData(mRealm);
+            prefilledData = realm.createObject(PrefilledData.class);
+            prefilledData.initializeRealmData(realm);
         }
-        prefilledDataCopy = mRealm.copyFromRealm(prefilledData);
-        mRealm.commitTransaction();
+        prefilledDataCopy = realm.copyFromRealm(prefilledData);
         return prefilledDataCopy;
     }
 
@@ -405,10 +404,16 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         callback.onDataReceived(mForm.getEvacuationInfoList());
     }
 
-    public void saveForm(Realm realm, Form form) {
+    public void saveForm(Realm realm) {
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(form);
+        realm.copyToRealmOrUpdate(mForm);
         realm.commitTransaction();
+        mForm = null;
+    }
+
+    public void discardForm(Realm realm) {
+        deleteForm(realm, mForm);
+        mForm = null;
     }
 
     public void deleteForm(Realm realm, Form form) {
@@ -417,9 +422,11 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         realm.commitTransaction();
     }
 
-    public void submitForm() {
-        mForm.setPrefilledData(performGetPrefilledData());
-        QuikDataApplication.retrofitClient.submitForm(mForm, new Callback<Form>() {
+    public void submitForm(Realm realm, Form form) {
+        realm.beginTransaction();
+        Form actualForm = realm.copyToRealmOrUpdate(form);
+        actualForm.setPrefilledData(realm.where(PrefilledData.class).findFirst());
+        QuikDataApplication.retrofitClient.submitForm(form, new Callback<Form>() {
             @Override
             public void onResponse(Call<Form> call, Response<Form> response) {
 
@@ -430,15 +437,6 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
             }
         });
-    }
-
-    public void insertToDb(RealmObject object) {
-        mRealm.beginTransaction();
-        mRealm.insert(object);
-        mRealm.commitTransaction();
-    }
-
-    public Realm getRealm() {
-        return mRealm;
+        realm.commitTransaction();
     }
 }

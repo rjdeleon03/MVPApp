@@ -120,6 +120,15 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         ViewFactory.startNewFormActivity(this);
     }
 
+
+    /**
+     * Handles item edit button pressed event
+     */
+    @Override
+    public void onItemSubmitButtonPressed(String id) {
+        // TODO: Show information in user that it is being submitted
+    }
+
     /**
      * Handles item edit button pressed event
      */

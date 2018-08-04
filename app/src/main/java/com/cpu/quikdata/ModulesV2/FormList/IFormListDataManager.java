@@ -14,6 +14,8 @@ public interface IFormListDataManager<LI> {
 
     int getItemsCount();
 
+    void navigateOnItemSubmitButtonPressed(String itemId);
+
     void navigateOnItemEditButtonPressed(String itemId);
 
     void navigateOnItemDeleteButtonPressed(String itemId);

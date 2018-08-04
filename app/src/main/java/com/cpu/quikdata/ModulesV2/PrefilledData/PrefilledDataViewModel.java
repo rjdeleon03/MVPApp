@@ -24,7 +24,15 @@ public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilled
      */
     public PrefilledDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mFormRepository.getPrefilledData(this);
+    }
+
+    @Override
+    public void setViewComponent(IPrefilledDataActivity viewComponent) {
+        super.setViewComponent(viewComponent);
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mFormRepository.getPrefilledData(mViewComponent.get().getRealmInstance(), this);
+        }
+
     }
 
     /**

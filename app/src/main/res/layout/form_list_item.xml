@@ -54,7 +54,15 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="75dp"
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:minHeight="10dip"
+                    android:onClick="@{() -> viewModel.navigateOnSubmitButtonPressed()}"
+                    android:text="Submit" />
+
+                <Button
+                    android:layout_width="78dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:minHeight="10dip"
@@ -62,7 +70,7 @@
                     android:text="Edit" />
 
                 <Button
-                    android:layout_width="75dp"
+                    android:layout_width="78dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:minHeight="10dip"

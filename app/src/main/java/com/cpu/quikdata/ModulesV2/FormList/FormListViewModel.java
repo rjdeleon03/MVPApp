@@ -40,6 +40,23 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
     }
 
     /**
+     * Handles navigation when item's submit button is pressed
+     * @param itemId
+     */
+    @Override
+    public void navigateOnItemSubmitButtonPressed(String itemId) {
+        for(Form formItem : mItems) {
+            if (formItem.getId().equals(itemId)) {
+                mFormRepository.submitForm(mViewComponent.get().getRealmInstance(), formItem);
+                break;
+            }
+        }
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onItemSubmitButtonPressed(itemId);
+        }
+    }
+
+    /**
      * Handles navigation when item's edit button is pressed
      * @param itemId
      */

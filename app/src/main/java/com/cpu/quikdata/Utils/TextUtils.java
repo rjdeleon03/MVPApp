@@ -5,10 +5,23 @@ import java.util.Map;
 
 public class TextUtils {
 
+    public static final Map<String, String> titleMap;
     public static final Map<String, String> textMap;
 
     static {
+        titleMap = new HashMap<>();
         textMap = new HashMap<>();
+
+        titleMap.put("MENU", "DNCA Form");
+        titleMap.put("FORM_DETAILS", "Form Details");
+        titleMap.put("GEN_INFO", "General Information");
+        titleMap.put("GEN_INFO_CALAMITY", "Calamity and Area Details");
+        titleMap.put("GEN_INFO_POPULATION", "Population");
+        titleMap.put("GEN_INFO_FAMILY", "Families and Households");
+        titleMap.put("GEN_INFO_VULNERABLE", "Vulnerable Population");
+        titleMap.put("GEN_INFO_CASUALTIES", "Casualties");
+        titleMap.put("GEN_INFO_DEATH_CAUSE", "Causes of Death");
+        titleMap.put("GEN_INFO_INFRASTRUCTURE", "Damage to Infrastructure");
 
         // Prefilled data
         textMap.put("locationInfo", "Location Information");
@@ -336,6 +349,19 @@ public class TextUtils {
      */
     public static String getTextFromMapping(String key) {
         String result = textMap.get(key);
+        if (result == null) {
+            return key;
+        }
+        return result;
+    }
+
+    /**
+     * Gets the title from the mapping
+     * @param key
+     * @return
+     */
+    public static String getTitleFromMapping(String key) {
+        String result = titleMap.get(key);
         if (result == null) {
             return key;
         }

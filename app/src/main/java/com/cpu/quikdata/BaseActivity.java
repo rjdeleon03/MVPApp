@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
+import com.cpu.quikdata.Utils.TextUtils;
 
 import java.io.FileReader;
 
@@ -19,17 +20,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
     protected Toolbar mToolbar;
     protected static final int TOOLBAR_ID = R.id.custom_nav_toolbar_list;
     private String mToolbarTitle;
-    private int mToolbarTitleId = -1;
     private int mFragmentContainerId;
     protected Realm mRealm;
 
     public BaseActivity(String toolbarTitle, int fragmentContainerId) {
         mToolbarTitle = toolbarTitle;
-        mFragmentContainerId = fragmentContainerId;
-    }
-
-    public BaseActivity(int toolbarTitleId, int fragmentContainerId) {
-        mToolbarTitleId = toolbarTitleId;
         mFragmentContainerId = fragmentContainerId;
     }
 
@@ -108,12 +103,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Refreshes the toolbar title when a fragment is attached
+     * @param fragment
+     */
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
         setToolbarTitleFromFragment(fragment);
     }
 
+    /**
+     * Refreshes the toolbar title and subtitle when back button is pressed
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -132,15 +134,19 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
                 if (fragmentTitle == null || fragmentTitle.isEmpty()) {
                     mToolbar.setTitle(R.string.app_name);
                 } else {
-                    mToolbar.setTitle(fragmentTitle);
+                    mToolbar.setTitle(TextUtils.getTitleFromMapping(fragmentTitle));
                 }
             }
         }
     }
 
+    /**
+     * Sets the subtitle of the toolbar
+     * @param subtitle
+     */
     public void setToolbarSubtitle(String subtitle) {
         if (mToolbar != null) {
-            mToolbar.setSubtitle(subtitle);
+            mToolbar.setSubtitle(TextUtils.getTitleFromMapping(subtitle));
         }
     }
 }

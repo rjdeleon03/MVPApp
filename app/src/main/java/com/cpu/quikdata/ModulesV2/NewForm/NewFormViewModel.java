@@ -156,12 +156,8 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
 
     /**
      * Handles navigation when back button is pressed
-     * Means that form will be discarded
      */
-    public void onBackPressedWithoutSave() {
-        discardForm();
-        if (mViewComponent != null) {
-            mViewComponent.get().onSaveButtonPressed();
-        }
+    public void navigateOnBackButtonPressed() {
+        saveForm();
     }
 }

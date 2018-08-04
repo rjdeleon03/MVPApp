@@ -3,6 +3,7 @@ package com.cpu.quikdata.ModulesV2.Base.ListData;
 import android.databinding.Bindable;
 import android.support.annotation.Nullable;
 
+import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
@@ -79,6 +80,20 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
     @Override
     public FormListAdapter getAdapter() {
         return mAdapter;
+    }
+
+    /**
+     * Retrieves flag to determine if add button should be enabled
+     * @return
+     */
+    @Bindable
+    public abstract boolean getAddButtonEnabled();
+
+    /**
+     * Perform logic when view is resumed
+     */
+    public void onViewResumed() {
+        notifyPropertyChanged(BR.addButtonEnabled);
     }
 
     /**

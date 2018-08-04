@@ -1,6 +1,8 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.R;
@@ -26,6 +29,8 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     private static int FRAGMENT_CONTAINER = R.id.fragment_container;
 
     private Merlin mMerlin;
+    private FormListFragment mFormListFragment;
+    private FormListViewModel mFormListViewModel;
 
     public FormListActivity() {
         super("", FRAGMENT_CONTAINER);
@@ -49,9 +54,9 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         // Setup the toolbar
         setupToolbar(false);
 
-        FormListFragment formListFragment = findOrCreateViewFragment();
-        final FormListViewModel formListViewModel = findOrCreateViewModel();
-        formListFragment.setViewModel(formListViewModel);
+        mFormListFragment = findOrCreateViewFragment();
+        mFormListViewModel = findOrCreateViewModel();
+        mFormListFragment.setViewModel(mFormListViewModel);
     }
 
     @Override
@@ -137,10 +142,10 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @Override
     public void onItemSubmitFinished(boolean success) {
         if (success) {
-            Toast.makeText(this, "Form successfully submitted!", Toast.LENGTH_LONG).show();
+            displayToastMessage("Form successfully submitted!", Toast.LENGTH_LONG);
             return;
         }
-        Toast.makeText(this, "Failed to submit form.\nPlease check your Internet connection.", Toast.LENGTH_LONG).show();
+        displayToastMessage("Failed to submit form. Please check your Internet connection.", Toast.LENGTH_LONG);
     }
 
     /**
@@ -155,7 +160,35 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
      * Handles item delete button pressed event
      */
     @Override
-    public void onItemDeleteButtonPressed(String id) {
-        // TODO: Add confirmation dialog
+    public void onItemDeleteButtonPressed(final String id) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        mFormListViewModel.deletedItemWithId(id);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this form?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+    }
+
+    /**
+     * Displays a toast message
+     * @param text
+     * @param toastLength
+     */
+    @Override
+    public void displayToastMessage(String text, int toastLength) {
+        Toast.makeText(this, text, toastLength).show();
     }
 }

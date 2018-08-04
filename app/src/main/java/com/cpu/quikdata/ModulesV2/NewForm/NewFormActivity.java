@@ -125,17 +125,11 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (!mIsEditMode) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    if (mNewFormViewModel != null) {
-                        mNewFormViewModel.onBackPressedWithoutSave();
-                    }
-                    return true;
-            }
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            mNewFormViewModel.navigateOnBackButtonPressed();
         }
-        return super.onOptionsItemSelected(item);
+        super.onBackPressed();
     }
 
     @Override
@@ -202,6 +196,6 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     @Override
     public void onSaveButtonPressed() {
-        onBackPressed();
+        super.onBackPressed();
     }
 }

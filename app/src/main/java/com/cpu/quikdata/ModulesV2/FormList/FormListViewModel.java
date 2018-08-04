@@ -1,9 +1,14 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
+import android.databinding.Bindable;
+import android.widget.Toast;
+
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListDataViewModel;
 import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
+
+import com.cpu.quikdata.BR;
 
 public class FormListViewModel extends TemplateListDataViewModel<IFormListActivity, Form> {
 
@@ -31,12 +36,27 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
     }
 
     /**
+     * Retrieves flag to determine if add button should be enabled
+     * @return
+     */
+    @Bindable
+    @Override
+    public boolean getAddButtonEnabled() {
+        return mItems.size() < 10;
+    }
+
+    /**
      * Handles navigation when add button is pressed
      */
     @Override
     public void navigateOnAddButtonPressed() {
         if (mViewComponent.get() != null) {
-            mViewComponent.get().onAddButtonPressed();
+
+            if (getAddButtonEnabled()) {
+                mViewComponent.get().onAddButtonPressed();
+            } else {
+                mViewComponent.get().displayToastMessage("A maximum of 10 forms can be saved at a time. Delete a saved form in order to add a new form.", Toast.LENGTH_LONG);
+            }
         }
     }
 
@@ -64,7 +84,7 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     public void navigateOnItemSubmitFinished(boolean success) {
-        if (mViewComponent.get() != null) {
+        if (mViewComponent != null && mViewComponent.get() != null) {
             mViewComponent.get().onItemSubmitFinished(success);
         }
     }
@@ -75,7 +95,7 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     public void navigateOnItemEditButtonPressed(String itemId) {
-        if (mViewComponent.get() != null) {
+        if (mViewComponent != null && mViewComponent.get() != null) {
             mViewComponent.get().onItemEditButtonPressed(itemId);
         }
     }
@@ -86,16 +106,23 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     public void navigateOnItemDeleteButtonPressed(String itemId) {
-//        if (mViewComponent.get() != null) {
-//            mViewComponent.get().onItemDeleteButtonPressed(mItems.get(itemIndex).getId());
-//        }
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mViewComponent.get().onItemDeleteButtonPressed(itemId);
+        }
+    }
+
+    /**
+     * Deletes the item with the specified ID
+     * @param itemId
+     */
+    public void deletedItemWithId(String itemId) {
         for(Form formItem : mItems) {
             if (formItem.getId().equals(itemId)) {
                 mFormRepository.deleteForm(mViewComponent.get().getRealmInstance(), formItem);
                 break;
             }
         }
+        notifyPropertyChanged(BR.addButtonEnabled);
     }
-
 
 }

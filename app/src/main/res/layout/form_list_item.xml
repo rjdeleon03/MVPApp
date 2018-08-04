@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel" />
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:indeterminate="@{viewModel.isSyncing}"
-            android:indeterminateTint="@color/blueGreen"
+            android:visibility="@{viewModel.isSyncing ? View.VISIBLE : View.GONE}"
             android:scaleY="100"/>
 
 

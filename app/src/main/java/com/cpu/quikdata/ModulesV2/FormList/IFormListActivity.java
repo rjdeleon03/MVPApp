@@ -16,5 +16,7 @@ public interface IFormListActivity extends IBaseInterface {
 
     void onItemDeleteButtonPressed(String id);
 
+    void displayToastMessage(String text, int toastLength);
+
     Realm getRealmInstance();
 }

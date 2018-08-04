@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.Dialog.TemplateEnumDataDialogViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
+import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationItemViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.NewFormActivity;
@@ -19,7 +21,7 @@ import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewFactory;
 import com.cpu.quikdata.databinding.TemplateEnumDataFragmentBinding;
 
-public class EvacuationInfoListFragment extends BaseFragment<EvacuationInfoListViewModel> implements ITemplateEnumDataFragment {
+public class EvacuationInfoListFragment extends TemplateEnumDataFragment<EvacuationInfoListViewModel> {
 
     private int mContainerId;
     private Context mContext;
@@ -83,12 +85,8 @@ public class EvacuationInfoListFragment extends BaseFragment<EvacuationInfoListV
         evacuationItemFragment.setViewModel(evacuationItemViewModel);
     }
 
-    /**
-     * Navigate on delete button pressed event
-     */
     @Override
-    public void onDeleteCardButtonPressed() {
-        // TODO: Add confirmation dialog
-
+    protected TemplateEnumDataDialogViewModel setupDialogViewModel(int index) {
+        return null;
     }
 }

@@ -69,6 +69,9 @@ public abstract class TemplateEnumDataRowViewModel<AC extends ITemplateEnumDataF
      * Handles navigation when delete card button is pressed
      */
     public void navigateOnDeleteCardButtonPressed() {
-        mDataManager.deletedRowAtIndex(mRowIndex);
+//        mDataManager.deletedRowAtIndex(mRowIndex);
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mViewComponent.get().onDeleteCardButtonPressed(mRowIndex);
+        }
     }
 }

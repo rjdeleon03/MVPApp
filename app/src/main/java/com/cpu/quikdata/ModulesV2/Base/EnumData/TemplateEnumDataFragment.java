@@ -1,8 +1,10 @@
 package com.cpu.quikdata.ModulesV2.Base.EnumData;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -63,11 +65,31 @@ public abstract class TemplateEnumDataFragment<VM extends TemplateEnumDataViewMo
 
     /**
      * Navigate on delete button pressed event
+     * @param index
      */
     @Override
-    public void onDeleteCardButtonPressed() {
-        // TODO: Add confirmation dialog
+    public void onDeleteCardButtonPressed(final int index) {
+        if (getActivity() != null) {
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            //Yes button clicked
+                            mViewModel.deletedRowAtIndex(index);
+                            break;
 
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            //No button clicked
+                            break;
+                    }
+                }
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Are you sure you want to delete this item?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+        }
     }
 
     /**

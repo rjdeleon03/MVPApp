@@ -43,7 +43,9 @@ import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
+import com.cpu.quikdata.ModelsV2.ServerForm.ServerForm;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
+import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 import com.cpu.quikdata.QuikDataApplication;
 import com.cpu.quikdata.Tasks.GetAllDncaTask;
@@ -180,20 +182,19 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     /** NEW METHODS ================================================= */
     public void getAllForms(Realm realm, final IFormListDataManager callback) {
         realm.beginTransaction();
-        callback.onListDataRetrieved(realm.where(Form.class).findAll());
+        callback.onListDataRetrieved(realm.where(Form.class).equalTo("temp", false).findAll());
         realm.commitTransaction();
 
     }
 
     public void getPrefilledData(Realm realm, final IBaseDataManager<PrefilledData> callback) {
-        realm.beginTransaction();
         if(callback != null) {
             callback.onDataReceived(performGetPrefilledData(realm));
         }
-        realm.commitTransaction();
     }
 
     private PrefilledData performGetPrefilledData(Realm realm) {
+        realm.beginTransaction();
         PrefilledData prefilledDataCopy;
 
         PrefilledData prefilledData = realm.where(PrefilledData.class).findFirst();
@@ -203,6 +204,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
             prefilledData.initializeRealmData(realm);
         }
         prefilledDataCopy = realm.copyFromRealm(prefilledData);
+        realm.commitTransaction();
         return prefilledDataCopy;
     }
 
@@ -220,9 +222,12 @@ public class DNCAFormRepository implements DNCAFormDataSource {
             @Override
             public void execute(Realm realm) {
                 Form form = realm.createObject(Form.class, AppUtil.generateId());
-                FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
-                form.setFormDetails(formDetails);
+                form.setTemp(true);
 
+                {
+                    FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
+                    form.setFormDetails(formDetails);
+                }
                 {
                     GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
                     CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
@@ -406,6 +411,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void saveForm(Realm realm) {
         realm.beginTransaction();
+        mForm.setTemp(false);
         realm.copyToRealmOrUpdate(mForm);
         realm.commitTransaction();
         mForm = null;
@@ -422,18 +428,18 @@ public class DNCAFormRepository implements DNCAFormDataSource {
         realm.commitTransaction();
     }
 
-    public void submitForm(Realm realm, Form form) {
+    public void submitForm(Realm realm, Form form, final IFormListItemViewModel callback) {
         Form formCopy = realm.copyFromRealm(form);
         formCopy.setPrefilledData(performGetPrefilledData(realm));
-        QuikDataApplication.retrofitClient.submitForm(formCopy, new Callback<Form>() {
+        QuikDataApplication.retrofitClient.submitForm(formCopy, new Callback<String>() {
             @Override
-            public void onResponse(Call<Form> call, Response<Form> response) {
-
+            public void onResponse(Call<String> call, Response<String> response) {
+                callback.onItemSubmitFinished(true);
             }
 
             @Override
-            public void onFailure(Call<Form> call, Throwable t) {
-
+            public void onFailure(Call<String> call, Throwable t) {
+                callback.onItemSubmitFinished(false);
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModulesV2.FormList.Item;
 
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
 import com.cpu.quikdata.ModelsV2.Form.Form;
@@ -8,18 +9,19 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
 import com.google.gson.Gson;
 
-public class FormListItemViewModel {
+public class FormListItemViewModel implements IFormListItemViewModel {
 
     private IFormListDataManager<Form> mDataManager;
     private String mFormId = "";
 
     public final ObservableField<String> sitio = new ObservableField<>("");
+    public final ObservableBoolean isSyncing = new ObservableBoolean(false);
 
     /**
      * Constructor
      * @param form
      */
-    public FormListItemViewModel(Form form, int itemIndex) {
+    public FormListItemViewModel(Form form) {
         mFormId = form.getId();
         QuestionItemModelDate date = form.getFormDetails().getAssessmentDate();
         if (date != null) {
@@ -40,8 +42,9 @@ public class FormListItemViewModel {
      * Handles navigation when submit button is pressed
      */
     public void navigateOnSubmitButtonPressed() {
+        isSyncing.set(true);
         if(mDataManager != null) {
-            mDataManager.navigateOnItemSubmitButtonPressed(mFormId);
+            mDataManager.navigateOnItemSubmitButtonPressed(mFormId, this);
         }
     }
 
@@ -60,6 +63,22 @@ public class FormListItemViewModel {
     public void navigateOnDeleteButtonPressed() {
         if(mDataManager != null) {
             mDataManager.navigateOnItemDeleteButtonPressed(mFormId);
+        }
+    }
+
+    /**
+     * Callback function for when submission is finished
+     * @param success
+     */
+    @Override
+    public void onItemSubmitFinished(boolean success) {
+        if(mDataManager != null) {
+            mDataManager.navigateOnItemSubmitFinished(success);
+        }
+        if(success) {
+            navigateOnDeleteButtonPressed();
+        } else {
+            isSyncing.set(false);
         }
     }
 }

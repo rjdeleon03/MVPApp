@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModelsV2.Form.Form;
+import com.cpu.quikdata.ModelsV2.ServerForm.ServerForm;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoice;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelMultChoiceRemarks;
 import com.google.gson.ExclusionStrategy;
@@ -87,8 +88,8 @@ public class RetrofitClient {
      * @param form
      * @param callback
      */
-    public void submitForm(Form form, Callback<Form> callback) {
-        Call<Form> formCall = mService.submitForm(form);
+    public void submitForm(Form form, Callback<String> callback) {
+        Call<String> formCall = mService.submitForm(form);
         formCall.enqueue(callback);
     }
 }

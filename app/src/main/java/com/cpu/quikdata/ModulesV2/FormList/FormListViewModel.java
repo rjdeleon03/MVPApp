@@ -3,6 +3,7 @@ package com.cpu.quikdata.ModulesV2.FormList;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListDataViewModel;
+import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 
 public class FormListViewModel extends TemplateListDataViewModel<IFormListActivity, Form> {
 
@@ -42,17 +43,29 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
     /**
      * Handles navigation when item's submit button is pressed
      * @param itemId
+     * @param callback
      */
     @Override
-    public void navigateOnItemSubmitButtonPressed(String itemId) {
+    public void navigateOnItemSubmitButtonPressed(String itemId, IFormListItemViewModel callback) {
         for(Form formItem : mItems) {
             if (formItem.getId().equals(itemId)) {
-                mFormRepository.submitForm(mViewComponent.get().getRealmInstance(), formItem);
+                mFormRepository.submitForm(mViewComponent.get().getRealmInstance(), formItem, callback);
                 break;
             }
         }
         if (mViewComponent.get() != null) {
             mViewComponent.get().onItemSubmitButtonPressed(itemId);
+        }
+    }
+
+    /**
+     * Handles navigation when item's submission is finished
+     * @param success
+     */
+    @Override
+    public void navigateOnItemSubmitFinished(boolean success) {
+        if (mViewComponent.get() != null) {
+            mViewComponent.get().onItemSubmitFinished(success);
         }
     }
 

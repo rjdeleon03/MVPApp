@@ -10,6 +10,8 @@ public interface IFormListActivity extends IBaseInterface {
 
     void onItemSubmitButtonPressed(String id);
 
+    void onItemSubmitFinished(boolean success);
+
     void onItemEditButtonPressed(String id);
 
     void onItemDeleteButtonPressed(String id);

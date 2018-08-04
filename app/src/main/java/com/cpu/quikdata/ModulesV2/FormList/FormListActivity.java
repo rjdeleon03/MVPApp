@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
@@ -127,6 +128,19 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @Override
     public void onItemSubmitButtonPressed(String id) {
         // TODO: Show information in user that it is being submitted
+    }
+
+    /**
+     * Handles form submission completion event
+     * @param success
+     */
+    @Override
+    public void onItemSubmitFinished(boolean success) {
+        if (success) {
+            Toast.makeText(this, "Form successfully submitted!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Toast.makeText(this, "Failed to submit form.\nPlease check your Internet connection.", Toast.LENGTH_LONG).show();
     }
 
     /**

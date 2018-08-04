@@ -44,7 +44,7 @@ public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewH
      */
     @Override
     public void onBindViewHolder(@NonNull FormListItemViewHolder holder, int position) {
-        FormListItemViewModel itemViewModel = new FormListItemViewModel(mListDataManager.getForms().get(position), position);
+        FormListItemViewModel itemViewModel = new FormListItemViewModel(mListDataManager.getForms().get(position));
         itemViewModel.setDataManager(mListDataManager);
         holder.setViewModel(itemViewModel);
     }

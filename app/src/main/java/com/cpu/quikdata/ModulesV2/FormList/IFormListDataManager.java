@@ -1,6 +1,7 @@
 package com.cpu.quikdata.ModulesV2.FormList;
 
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListAdapter;
+import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 
 import io.realm.OrderedRealmCollection;
 
@@ -14,7 +15,9 @@ public interface IFormListDataManager<LI> {
 
     int getItemsCount();
 
-    void navigateOnItemSubmitButtonPressed(String itemId);
+    void navigateOnItemSubmitButtonPressed(String itemId, IFormListItemViewModel callback);
+
+    void navigateOnItemSubmitFinished(boolean success);
 
     void navigateOnItemEditButtonPressed(String itemId);
 

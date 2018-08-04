@@ -7,7 +7,7 @@ public class LivelihoodsGapsDetailsFragment extends TemplateQuestionFragment {
 
     public LivelihoodsGapsDetailsFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.LIVELIHOODS_NEEDS.toString();
+        mTag = NewFormActivity.NewFormComponent.LIVELIHOODS_GAPS.toString();
     }
 
     /**

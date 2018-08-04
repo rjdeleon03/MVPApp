@@ -12,8 +12,10 @@ public class TextUtils {
         titleMap = new HashMap<>();
         textMap = new HashMap<>();
 
+        // TITLE MAPPING
         titleMap.put("MENU", "DNCA Form");
         titleMap.put("FORM_DETAILS", "Form Details");
+        
         titleMap.put("GEN_INFO", "General Information");
         titleMap.put("GEN_INFO_CALAMITY", "Calamity and Area Details");
         titleMap.put("GEN_INFO_POPULATION", "Population");
@@ -23,6 +25,55 @@ public class TextUtils {
         titleMap.put("GEN_INFO_DEATH_CAUSE", "Causes of Death");
         titleMap.put("GEN_INFO_INFRASTRUCTURE", "Damage to Infrastructure");
 
+        titleMap.put("SHELTER_INFO", "Shelter and Non-Food Items");
+        titleMap.put("SHELTER_INFO_DAMAGE", "Damage to Houses");
+        titleMap.put("SHELTER_INFO_COPING", "Coping");
+        titleMap.put("SHELTER_INFO_NEEDS", "Needs");
+        titleMap.put("SHELTER_INFO_ASSISTANCE", "Assistance");
+        titleMap.put("SHELTER_INFO_GAPS", "Gaps");
+
+        titleMap.put("FOOD_SECURITY", "Food Security");
+        titleMap.put("FOOD_SECURITY_IMPACT", "Impact");
+        titleMap.put("FOOD_SECURITY_COPING", "Coping");
+        titleMap.put("FOOD_SECURITY_NEEDS", "Needs");
+        titleMap.put("FOOD_SECURITY_ASSISTANCE", "Assistance");
+        titleMap.put("FOOD_SECURITY_GAPS", "Gaps");
+
+        titleMap.put("LIVELIHOODS", "Livelihoods");
+        titleMap.put("LIVELIHOODS_BEFORE", "Income Sources Before Emergency");
+        titleMap.put("LIVELIHOODS_AFTER", "Income Sources After Emergency");
+        titleMap.put("LIVELIHOODS_DAMAGE", "Estimated Damage Cost");
+        titleMap.put("LIVELIHOODS_COPING", "Coping");
+        titleMap.put("LIVELIHOODS_NEEDS", "Needs");
+        titleMap.put("LIVELIHOODS_ASSISTANCE", "Assistance");
+        titleMap.put("LIVELIHOODS_GAPS", "Gaps");
+
+        titleMap.put("HEALTH", "Health");
+        titleMap.put("HEALTH_DISEASES", "Diseases & Critical Injuries");
+        titleMap.put("HEALTH_SPECIAL_NEEDS", "People with Special Needs");
+        titleMap.put("HEALTH_PSYCHOSOCIAL", "Psychosocial");
+        titleMap.put("HEALTH_COPING", "Needs");
+        titleMap.put("HEALTH_ASSISTANCE", "Assistance");
+        titleMap.put("HEALTH_GAPS", "Gaps");
+
+        titleMap.put("WASH", "Water, Sanitation, and Hygiene");
+        titleMap.put("WASH_CONDITIONS", "Conditions");
+        titleMap.put("WASH_COPING", "Coping");
+        titleMap.put("WASH_ASSISTANCE", "Assistance");
+        titleMap.put("WASH_GAPS", "Gaps");
+
+        titleMap.put("EVACUATION", "Evacuation Centers");
+        titleMap.put("EVACUATION_ITEM", "Evacuation Center/Shelter");
+        titleMap.put("EVACUATION_ITEM_CENTER", "Shelter Details");
+        titleMap.put("EVACUATION_ITEM_POPULATION", "Number of Evacuees");
+        titleMap.put("EVACUATION_ITEM_FACILITIES", "Facilities");
+        titleMap.put("EVACUATION_ITEM_WASH", "Water, Sanitation & Hygiene");
+        titleMap.put("EVACUATION_ITEM_PROTECTION", "Protection & Security");
+        titleMap.put("EVACUATION_ITEM_COPING", "Coping Capacity");
+
+        titleMap.put("CASE_STORIES", "Case Stories");
+
+        // GENERAL TEXT MAPPING
         // Prefilled data
         textMap.put("locationInfo", "Location Information");
         textMap.put("totalPopulation", "\nTotal Population");

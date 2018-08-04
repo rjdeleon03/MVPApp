@@ -13,9 +13,9 @@ import io.realm.OrderedRealmCollection;
 import io.realm.RealmObject;
 import io.realm.RealmRecyclerViewAdapter;
 
-public abstract class TemplateListAdapter<LI extends RealmObject, VH extends TemplateListDataViewHolder> extends RealmRecyclerViewAdapter<LI, VH> {
+public abstract class TemplateListAdapter<LI extends RealmObject, VH extends TemplateListDataViewHolder, LS> extends RealmRecyclerViewAdapter<LI, VH> {
 
-    protected IFormListDataManager<LI> mListDataManager;
+    protected IFormListDataManager<LI, LS> mListDataManager;
     protected int mViewId = R.layout.form_list_item;
 
     /**

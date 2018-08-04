@@ -94,6 +94,8 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
     private static final String TOOLBAR_TITLE = "New DNCA Form";
+
+    private NewFormFragment mNewFormFragment;
     private NewFormViewModel mNewFormViewModel;
     private boolean mIsEditMode = false;
 
@@ -117,25 +119,21 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         // Setup the toolbar
         setupToolbar(true);
 
-        NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
+        mNewFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
         mNewFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
-        newFormFragment.setViewModel(mNewFormViewModel);
+        mNewFormFragment.setViewModel(mNewFormViewModel);
 
         mNewFormViewModel.getData(itemId);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (!mIsEditMode) {
-            switch (item.getItemId()) {
-                case android.R.id.home:
-                    if (mNewFormViewModel != null) {
-                        mNewFormViewModel.onBackPressedWithoutSave();
-                    }
-                    return true;
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0 && !mIsEditMode) {
+            if (mNewFormViewModel != null) {
+                mNewFormViewModel.onBackPressedWithoutSave();
             }
         }
-        return super.onOptionsItemSelected(item);
+        super.onBackPressed();
     }
 
     @Override
@@ -202,6 +200,6 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     @Override
     public void onSaveButtonPressed() {
-        onBackPressed();
+        super.onBackPressed();
     }
 }

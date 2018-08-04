@@ -8,11 +8,12 @@ import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListAdapter;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewHolder;
 import com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel;
+import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 import com.cpu.quikdata.R;
 
 import io.realm.OrderedRealmCollection;
 
-public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewHolder> {
+public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewHolder, IFormListItemViewModel> {
 
     /**
      * Constructor
@@ -46,6 +47,7 @@ public class FormListAdapter extends TemplateListAdapter<Form, FormListItemViewH
     public void onBindViewHolder(@NonNull FormListItemViewHolder holder, int position) {
         FormListItemViewModel itemViewModel = new FormListItemViewModel(mListDataManager.getForms().get(position), position);
         itemViewModel.setDataManager(mListDataManager);
+        mListDataManager.addListener(itemViewModel);
         holder.setViewModel(itemViewModel);
     }
 }

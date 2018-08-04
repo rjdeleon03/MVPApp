@@ -36,6 +36,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_add"
+            app:enabled="@{viewModel.controlsEnabled}"
             android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
             app:backgroundTint="@color/colorAccent" />
 

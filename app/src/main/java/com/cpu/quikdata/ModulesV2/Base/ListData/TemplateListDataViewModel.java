@@ -1,6 +1,7 @@
 package com.cpu.quikdata.ModulesV2.Base.ListData;
 
 import android.databinding.Bindable;
+import android.databinding.ObservableBoolean;
 import android.support.annotation.Nullable;
 
 import com.cpu.quikdata.Models.DNCAFormRepository;
@@ -10,16 +11,20 @@ import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmResults;
 
-public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> extends BaseViewModel<A>  implements IFormListDataManager<LI> {
+public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI, LS> extends BaseViewModel<A>  implements IFormListDataManager<LI, LS> {
 
     @Nullable
     protected WeakReference<A> mActivity;
     protected OrderedRealmCollection<LI> mItems = null;
     protected FormListAdapter mAdapter;
+    protected List<LS> mListeners = new ArrayList<>();
+    public ObservableBoolean controlsEnabled = new ObservableBoolean(true);
 
     /**
      * Constructor
@@ -85,4 +90,13 @@ public abstract class TemplateListDataViewModel<A extends IBaseInterface, LI> ex
      * Handles navigation when add button is pressed
      */
     public abstract void navigateOnAddButtonPressed();
+
+    /**
+     * Adds a listener to the list
+     * @param listener
+     */
+    @Override
+    public void addListener(LS listener) {
+        mListeners.add(listener);
+    }
 }

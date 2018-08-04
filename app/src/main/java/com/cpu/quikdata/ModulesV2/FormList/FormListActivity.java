@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.R;
@@ -25,6 +27,8 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     private static int FRAGMENT_CONTAINER = R.id.fragment_container;
 
     private Merlin mMerlin;
+    private FormListFragment mFormListFragment;
+    private FormListViewModel mFormListViewModel;
 
     public FormListActivity() {
         super("", FRAGMENT_CONTAINER);
@@ -48,9 +52,9 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         // Setup the toolbar
         setupToolbar(false);
 
-        FormListFragment formListFragment = findOrCreateViewFragment();
-        final FormListViewModel formListViewModel = findOrCreateViewModel();
-        formListFragment.setViewModel(formListViewModel);
+        mFormListFragment = findOrCreateViewFragment();
+        mFormListViewModel = findOrCreateViewModel();
+        mFormListFragment.setViewModel(mFormListViewModel);
     }
 
     @Override
@@ -127,6 +131,7 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @Override
     public void onItemSubmitButtonPressed(String id) {
         // TODO: Show information in user that it is being submitted
+        onSubmitStart();
     }
 
     /**
@@ -143,5 +148,19 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
     @Override
     public void onItemDeleteButtonPressed(String id) {
         // TODO: Add confirmation dialog
+    }
+
+    @Override
+    public void onSubmitStart() {
+        if (mFormListFragment.getView() != null) {
+            mFormListFragment.getView().setEnabled(false);
+        }
+    }
+
+    @Override
+    public void onSubmitEnd() {
+        if (mFormListFragment.getView() != null) {
+            mFormListFragment.getView().setEnabled(true);
+        }
     }
 }

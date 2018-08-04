@@ -4,7 +4,7 @@ import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListAdapter;
 
 import io.realm.OrderedRealmCollection;
 
-public interface IFormListDataManager<LI> {
+public interface IFormListDataManager<LI, LS> {
 
     void onListDataRetrieved(OrderedRealmCollection<LI> forms);
 
@@ -19,4 +19,6 @@ public interface IFormListDataManager<LI> {
     void navigateOnItemEditButtonPressed(String itemId);
 
     void navigateOnItemDeleteButtonPressed(String itemId);
+
+    void addListener(LS listener);
 }

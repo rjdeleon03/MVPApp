@@ -160,8 +160,5 @@ public class NewFormViewModel extends BaseViewModel<INewFormActivity> implements
      */
     public void onBackPressedWithoutSave() {
         discardForm();
-        if (mViewComponent != null) {
-            mViewComponent.get().onSaveButtonPressed();
-        }
     }
 }

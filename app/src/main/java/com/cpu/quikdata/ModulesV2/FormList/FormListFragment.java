@@ -21,4 +21,13 @@ public class FormListFragment extends TemplateListDataFragment<FormListViewModel
     public static FormListFragment newInstance() {
         return new FormListFragment();
     }
+
+    /**
+     * Do any logic in viewModel when fragment is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.onViewResumed();
+    }
 }

@@ -3,8 +3,9 @@ package com.cpu.quikdata.ModulesV2.FormList;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.Form;
 import com.cpu.quikdata.ModulesV2.Base.ListData.TemplateListDataViewModel;
+import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 
-public class FormListViewModel extends TemplateListDataViewModel<IFormListActivity, Form> {
+public class FormListViewModel extends TemplateListDataViewModel<IFormListActivity, Form, IFormListItemViewModel> {
 
     /**
      * Constructor
@@ -26,7 +27,7 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     protected void setupAdapter() {
-        mAdapter = new FormListAdapter(mItems, true, this);
+        mAdapter = new FormListAdapter(mItems, false, this);
     }
 
     /**
@@ -45,6 +46,10 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
      */
     @Override
     public void navigateOnItemSubmitButtonPressed(String itemId) {
+        controlsEnabled.set(false);
+        for(IFormListItemViewModel listener : mListeners) {
+            listener.onControlsStateChanged(false);
+        }
         for(Form formItem : mItems) {
             if (formItem.getId().equals(itemId)) {
                 mFormRepository.submitForm(mViewComponent.get().getRealmInstance(), formItem);
@@ -84,5 +89,11 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
         }
     }
 
-
+    /**
+     * Perform necessary logic when view is resumed
+     */
+    public void onViewResumed() {
+        mListeners.clear();
+        mAdapter.notifyDataSetChanged();
+    }
 }

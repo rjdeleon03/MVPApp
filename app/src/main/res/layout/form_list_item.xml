@@ -11,29 +11,39 @@
             type="com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_margin="8dp"
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/dnca_item_img"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:srcCompat="@mipmap/ic_launcher" />-->
+
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/dnca_item_img"
-            android:layout_width="wrap_content"
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:layout_gravity="center"
+            android:indeterminate="false"
+            android:indeterminateTint="@color/blueGreen"
+            android:scaleY="100"/>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dnca_item_dl_button"
-            app:layout_constraintStart_toEndOf="@+id/dnca_item_img"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/dnca_item_head"
@@ -58,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:minHeight="10dip"
+                    android:enabled="@{viewModel.controlsEnabled}"
                     android:onClick="@{() -> viewModel.navigateOnSubmitButtonPressed()}"
                     android:text="Submit" />
 
@@ -66,6 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:minHeight="10dip"
+                    android:enabled="@{viewModel.controlsEnabled}"
                     android:onClick="@{() -> viewModel.navigateOnEditButtonPressed()}"
                     android:text="Edit" />
 
@@ -74,24 +86,27 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:minHeight="10dip"
+                    android:enabled="@{viewModel.controlsEnabled}"
                     android:onClick="@{() -> viewModel.navigateOnDeleteButtonPressed()}"
                     android:text="Delete" />
 
             </LinearLayout>
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/dnca_item_dl_button"
-            android:layout_width="38dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_download" />
+    </android.support.design.widget.CoordinatorLayout>
 
-    </android.support.constraint.ConstraintLayout>
+        <!--<ImageButton-->
+            <!--android:id="@+id/dnca_item_dl_button"-->
+            <!--android:layout_width="38dp"-->
+            <!--android:layout_height="36dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:srcCompat="@drawable/ic_download" />-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
 </layout>

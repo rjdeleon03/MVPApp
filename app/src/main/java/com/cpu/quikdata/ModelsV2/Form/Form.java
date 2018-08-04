@@ -23,6 +23,8 @@ public class Form extends RealmObject {
     @Required
     private String data;
 
+    private boolean isTemp;
+
     private PrefilledData prefilledData;
     private FormDetails formDetails;
     private GeneralInformation generalInformation;
@@ -47,6 +49,14 @@ public class Form extends RealmObject {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public boolean isTemp() {
+        return isTemp;
+    }
+
+    public void setTemp(boolean temp) {
+        isTemp = temp;
     }
 
     public PrefilledData getPrefilledData() {

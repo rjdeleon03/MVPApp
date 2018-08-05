@@ -1,7 +1,9 @@
 package com.cpu.quikdata.ModulesV2.NewForm.CaseStories;
 
 import android.databinding.Bindable;
+import android.widget.Toast;
 
+import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.CaseStories.CaseStories;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
@@ -47,7 +49,11 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
      */
     public void navigateOnAddImageButtonPressed() {
         if (mViewComponent != null && mViewComponent.get() != null) {
-            mViewComponent.get().onCaseStoriesAddImageButtonPressed(this);
+            if (mImagePaths.size() >= AppConstants.MAX_IMAGE_COUNT) {
+                mViewComponent.get().displayToastMessage("A maximum of 6 images may be added.", Toast.LENGTH_LONG);
+            } else {
+                mViewComponent.get().onCaseStoriesAddImageButtonPressed(this, AppConstants.MAX_IMAGE_COUNT - mImagePaths.size());
+            }
         }
     }
 

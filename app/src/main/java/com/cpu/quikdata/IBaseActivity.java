@@ -7,4 +7,6 @@ import io.realm.Realm;
 public interface IBaseActivity extends IBaseInterface {
 
     Realm getRealmInstance();
+
+    void displayToastMessage(String text, int toastLength);
 }

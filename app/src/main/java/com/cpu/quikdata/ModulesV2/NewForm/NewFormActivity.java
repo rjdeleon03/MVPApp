@@ -206,10 +206,10 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     }
 
     @Override
-    public void onCaseStoriesAddImageButtonPressed(ICameraSourceViewModel cameraSourceViewModel) {
+    public void onCaseStoriesAddImageButtonPressed(ICameraSourceViewModel cameraSourceViewModel, int maxAllowedImageCount) {
         ImagePicker.create(this)
                 .multi()
-                .limit(5)
+                .limit(maxAllowedImageCount)
                 .includeVideo(false)
                 .toolbarFolderTitle("Select Folder")
                 .toolbarImageTitle("Select Image")

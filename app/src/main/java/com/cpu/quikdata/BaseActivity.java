@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
 import com.cpu.quikdata.Utils.TextUtils;
@@ -148,5 +149,15 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseAct
         if (mToolbar != null) {
             mToolbar.setSubtitle(TextUtils.getTitleFromMapping(subtitle));
         }
+    }
+
+    /**
+     * Displays a toast message
+     * @param text
+     * @param toastLength
+     */
+    @Override
+    public void displayToastMessage(String text, int toastLength) {
+        Toast.makeText(this, text, toastLength).show();
     }
 }

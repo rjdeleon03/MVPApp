@@ -181,14 +181,4 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         builder.setMessage("Are you sure you want to delete this form?").setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }
-
-    /**
-     * Displays a toast message
-     * @param text
-     * @param toastLength
-     */
-    @Override
-    public void displayToastMessage(String text, int toastLength) {
-        Toast.makeText(this, text, toastLength).show();
-    }
 }

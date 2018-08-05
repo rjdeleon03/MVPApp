@@ -11,7 +11,7 @@ public class AppConstants {
 
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";
 
-    public static final int MAX_IMAGE_COUNT = 5;
+    public static final int MAX_IMAGE_COUNT = 6;
     public static final int REQUEST_IMAGE_CAPTURE = 100;
 
     public enum QuestionItemType {

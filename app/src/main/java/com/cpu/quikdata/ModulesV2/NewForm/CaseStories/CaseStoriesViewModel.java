@@ -1,10 +1,15 @@
 package com.cpu.quikdata.ModulesV2.NewForm.CaseStories;
 
+import android.databinding.Bindable;
+
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.ModelsV2.Form.CaseStories.CaseStories;
 import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ImageItem.ImageItemAdapter;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
+
+import com.cpu.quikdata.BR;
 
 import java.util.List;
 
@@ -14,6 +19,7 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
 
     private CaseStories mCaseStories;
     private RealmList<String> mImagePaths;
+    private ImageItemAdapter mImageAdapter;
 
     /**
      * Constructor
@@ -22,6 +28,7 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
      */
     public CaseStoriesViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
+        mImageAdapter = new ImageItemAdapter(this);
         mFormRepository.getCaseStories(this);
     }
 
@@ -45,11 +52,49 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
     }
 
     /**
+     * Retrieves the image item adapter
+     * @return
+     */
+    @Bindable
+    public ImageItemAdapter getImageItemAdapter() {
+        return mImageAdapter;
+    }
+
+    /**
+     * Retrieves the image paths
+     * @return
+     */
+    @Bindable
+    public RealmList<String> getImagePaths() {
+        return mImagePaths;
+    }
+
+    /**
      * Handle loading of images
      * @param imagePaths
      */
     @Override
     public void onImagesLoaded(List<String> imagePaths) {
         mImagePaths.addAll(imagePaths);
+        notifyPropertyChanged(BR.imagePaths);
+    }
+
+    /**
+     * Retrieves image path at specified index
+     * @param callback
+     * @param index
+     */
+    @Override
+    public void getImagePathAtIndex(IBaseDataManager<String> callback, int index) {
+        callback.onDataReceived(mImagePaths.get(index));
+    }
+
+    /**
+     * Gets the number of image paths
+     * @return
+     */
+    @Override
+    public int getImageItemsCount() {
+        return mImagePaths.size();
     }
 }

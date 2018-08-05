@@ -9,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.SpinnerAdapter;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
@@ -44,6 +46,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReado
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderString;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ImageItem.ImageItemAdapter;
 import com.cpu.quikdata.databinding.TemplateQuestionBooleanBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
@@ -53,6 +56,8 @@ import com.cpu.quikdata.databinding.TemplateReadonlySingleNumberBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyStringBinding;
 
 import java.util.List;
+
+import io.realm.RealmList;
 
 public class BindingUtilsV2 {
 
@@ -187,6 +192,28 @@ public class BindingUtilsV2 {
                 tableLayout.addView(itemView);
             }
         }
+    }
+
+    /**
+     * Binds image path to image view
+     * @param imageView
+     * @param imagePath
+     */
+    @BindingAdapter({"app:imagePath"})
+    public static void bind(ImageView imageView, String imagePath) {
+        Glide.with(imageView).load(imagePath).into(imageView);
+    }
+
+    /**
+     * Bind image paths to recycler view
+     * @param recyclerView
+     * @param imageItemAdapter
+     * @param imagePaths
+     */
+    @BindingAdapter({"app:imageItemAdapter", "app:imageItems"})
+    public static void bindImagesToRecyclerView(RecyclerView recyclerView, ImageItemAdapter imageItemAdapter, List<String> imagePaths) {
+        recyclerView.setAdapter(imageItemAdapter);
+        imageItemAdapter.notifyDataSetChanged();
     }
 
     /**

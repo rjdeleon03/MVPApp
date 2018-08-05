@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ModulesV2.NewForm.CaseStories.CaseStoriesFragment">
 
     <data>
@@ -25,6 +26,15 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.navigateOnAddImageButtonPressed()}"
             android:text="Get image"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/template_case_stories_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageItemAdapter="@{viewModel.imageItemAdapter}"
+            app:imageItems="@{viewModel.imagePaths}">
+
+        </android.support.v7.widget.RecyclerView>
 
 
     </LinearLayout>

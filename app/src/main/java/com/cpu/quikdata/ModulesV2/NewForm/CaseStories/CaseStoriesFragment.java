@@ -4,6 +4,9 @@ package com.cpu.quikdata.ModulesV2.NewForm.CaseStories;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,7 @@ import com.cpu.quikdata.databinding.TemplateCaseStoriesFragmentBinding;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CaseStoriesFragment extends BaseFragment<CaseStoriesViewModel> {
+public class CaseStoriesFragment extends BaseFragment<CaseStoriesViewModel> implements ICaseStoriesFragment {
 
 
     public CaseStoriesFragment() {
@@ -42,7 +45,19 @@ public class CaseStoriesFragment extends BaseFragment<CaseStoriesViewModel> {
         TemplateCaseStoriesFragmentBinding binding = TemplateCaseStoriesFragmentBinding.bind(view);
         binding.setViewModel(mViewModel);
 
+        // Setup recycler view
+        RecyclerView recyclerView = view.findViewById(R.id.template_case_stories_recycler);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+
         return binding.getRoot();
     }
 
+    /**
+     * Handles item delete button pressed event
+     * @param index
+     */
+    @Override
+    public void onItemDeleteButtonPressed(int index) {
+        // TODO: Call viewModel to handle deletion
+    }
 }

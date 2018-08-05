@@ -182,9 +182,19 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     /** NEW METHODS ================================================= */
     public void getAllForms(Realm realm, final IFormListDataManager callback) {
         realm.beginTransaction();
-        callback.onListDataRetrieved(realm.where(Form.class).equalTo("temp", false).findAll());
+        callback.onListDataRetrieved(realm.where(Form.class).findAll());
         realm.commitTransaction();
 
+    }
+    public void initializePrefilledData(Realm realm) {
+        realm.beginTransaction();
+        PrefilledData prefilledData = realm.where(PrefilledData.class).findFirst();
+        if (prefilledData == null)
+        {
+            prefilledData = realm.createObject(PrefilledData.class);
+            prefilledData.initializeRealmData(realm);
+        }
+        realm.commitTransaction();
     }
 
     public void getPrefilledData(Realm realm, final IBaseDataManager<PrefilledData> callback) {
@@ -222,7 +232,6 @@ public class DNCAFormRepository implements DNCAFormDataSource {
             @Override
             public void execute(Realm realm) {
                 Form form = realm.createObject(Form.class, AppUtil.generateId());
-                form.setTemp(true);
 
                 {
                     FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
@@ -411,7 +420,6 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void saveForm(Realm realm) {
         realm.beginTransaction();
-        mForm.setTemp(false);
         realm.copyToRealmOrUpdate(mForm);
         realm.commitTransaction();
         mForm = null;
@@ -424,7 +432,8 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void deleteForm(Realm realm, Form form) {
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(form).deleteFromRealm();
+        Form actualForm = realm.where(Form.class).equalTo("id", form.getId()).findFirst();
+        actualForm.deleteData();
         realm.commitTransaction();
     }
 

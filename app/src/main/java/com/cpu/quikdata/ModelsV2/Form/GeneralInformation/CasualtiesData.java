@@ -40,7 +40,11 @@ public class CasualtiesData extends RealmObject implements IEnumDataRowHolder<Ca
 
     @Override
     public void deleteData() {
-        if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
+        if (rows != null && !rows.isEmpty()) {
+            for(int i = 0; i < rows.size(); i++) {
+                if (rows.get(i) != null) rows.get(i).deleteData();
+            }
+        }
         deleteFromRealm();
     }
 }

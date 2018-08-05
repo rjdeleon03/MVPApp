@@ -86,4 +86,15 @@ public class LivelihoodsInformation extends RealmObject implements IAssistanceDa
     public void setAssistanceData(AssistanceData assistanceData) {
         this.livelihoodsAssistanceData = assistanceData;
     }
+
+    public void deleteData() {
+        livelihoodsIncomeSourceDataBefore.deleteData();
+        livelihoodsIncomeSourceDataAfter.deleteData();
+        livelihoodsDamageCostData.deleteData();
+        livelihoodsCopingDetails.deleteData();
+        livelihoodsNeedsDetails.deleteData();
+        livelihoodsGapsDetails.deleteData();
+        livelihoodsAssistanceData.deleteData();
+        deleteFromRealm();
+    }
 }

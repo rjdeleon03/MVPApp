@@ -40,7 +40,11 @@ public class EvacuationInfoList extends RealmObject implements IEnumDataRowHolde
 
     @Override
     public void deleteData() {
-        if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
+        if (rows != null && !rows.isEmpty()) {
+            for(EvacuationItem row : rows) {
+                row.deleteData();
+            }
+        }
         deleteFromRealm();
     }
 }

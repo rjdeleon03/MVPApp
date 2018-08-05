@@ -81,4 +81,15 @@ public class GeneralInformation extends RealmObject {
     public void setInfrastructureData(InfrastructureData infrastructureData) {
         this.infrastructureData = infrastructureData;
     }
+
+    public void deleteData() {
+        calamityDetails.deleteData();
+        populationData.deleteData();
+        familyDetails.deleteData();
+        vulnerableData.deleteData();
+        casualtiesData.deleteData();
+        deathCauseData.deleteData();
+        infrastructureData.deleteData();
+        deleteFromRealm();
+    }
 }

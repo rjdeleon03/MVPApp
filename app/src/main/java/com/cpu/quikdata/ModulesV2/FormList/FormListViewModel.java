@@ -10,6 +10,8 @@ import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 
 import com.cpu.quikdata.BR;
 
+import io.realm.Realm;
+
 public class FormListViewModel extends TemplateListDataViewModel<IFormListActivity, Form> {
 
     /**
@@ -22,8 +24,14 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
     @Override
     public void setViewComponent(IFormListActivity viewComponent) {
         super.setViewComponent(viewComponent);
-        if (mViewComponent.get() != null) {
-            mFormRepository.getAllForms(mViewComponent.get().getRealmInstance(), this);
+        if (mViewComponent != null && mViewComponent.get() != null) {
+
+            // Initialize prefilled data
+            Realm realm = mViewComponent.get().getRealmInstance();
+            mFormRepository.initializePrefilledData(realm);
+
+            // Retrieve all forms
+            mFormRepository.getAllForms(realm, this);
         }
     }
 

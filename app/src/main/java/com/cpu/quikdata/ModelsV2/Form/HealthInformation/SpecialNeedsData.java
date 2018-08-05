@@ -1,6 +1,7 @@
 package com.cpu.quikdata.ModelsV2.Form.HealthInformation;
 
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.PopulationDataRow;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -40,7 +41,11 @@ public class SpecialNeedsData extends RealmObject implements IEnumDataRowHolder<
 
     @Override
     public void deleteData() {
-        if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
+        if (rows != null && !rows.isEmpty()) {
+            for(int i = 0; i < rows.size(); i++) {
+                if (rows.get(i) != null) rows.get(i).deleteData();
+            }
+        }
         deleteFromRealm();
     }
 }

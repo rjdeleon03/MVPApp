@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.NewForm;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -235,11 +236,6 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public void onSaveButtonPressed() {
-        super.onBackPressed();
-    }
-
     /**
      * Handles item delete button pressed event
      */
@@ -264,5 +260,23 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to delete this image?").setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
+    }
+
+    /**
+     * Handles item pressed/opened event
+     * @param path
+     */
+    @Override
+    public void onItemOpened(String path) {
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.parse("file://" + path), "image/*");
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSaveButtonPressed() {
+        super.onBackPressed();
     }
 }

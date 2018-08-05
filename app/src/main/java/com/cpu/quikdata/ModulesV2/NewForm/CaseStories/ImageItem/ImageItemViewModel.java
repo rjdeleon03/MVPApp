@@ -59,9 +59,19 @@ public class ImageItemViewModel extends BaseViewModel<INewFormActivity> implemen
     /**
      * Handles navigation when delete button is pressed
      */
-    public void navigateOnDeleteButtonPressed() {
+    public boolean navigateOnDeleteButtonPressed() {
         if (mViewComponent != null && mViewComponent.get() != null) {
             mViewComponent.get().onItemDeleteButtonPressed(mItemIndex);
+        }
+        return true;
+    }
+
+    /**
+     * Handles navigation when item is pressed
+     */
+    public void navigateOnItemPressed() {
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mViewComponent.get().onItemOpened(mImagePath);
         }
     }
 }

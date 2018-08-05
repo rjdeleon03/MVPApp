@@ -1,6 +1,7 @@
 package com.cpu.quikdata.ModulesV2.NewForm;
 
 import com.cpu.quikdata.IBaseActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ICameraSourceViewModel;
 
 public interface INewFormActivity extends IBaseActivity {
 
@@ -21,6 +22,8 @@ public interface INewFormActivity extends IBaseActivity {
     void onEvacuationInfoButtonPressed();
 
     void onCaseStoriesButtonPressed();
+
+    void onCaseStoriesAddImageButtonPressed(ICameraSourceViewModel cameraSourceViewModel);
 
     void onSaveButtonPressed();
 }

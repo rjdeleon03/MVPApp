@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModulesV2.NewForm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ICameraSourceViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
@@ -29,6 +31,11 @@ import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationFragmen
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewFactory;
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.model.Image;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
@@ -97,7 +104,7 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
     private static final String TOOLBAR_TITLE = "New DNCA Form";
     private NewFormViewModel mNewFormViewModel;
-    private boolean mIsEditMode = false;
+    private ICameraSourceViewModel mCameraSourceViewModel;
 
     public NewFormActivity() {
         super(TOOLBAR_TITLE, FRAGMENT_CONTAINER);
@@ -112,7 +119,6 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         String itemId = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            mIsEditMode = true;
             itemId = extras.getString(AppConstants.FORM_ITEM_ID);
         }
 
@@ -196,7 +202,35 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
         CaseStoriesFragment caseStoriesFragment = (CaseStoriesFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.CASE_STORIES, FRAGMENT_CONTAINER);
         final CaseStoriesViewModel caseStoriesViewModel = (CaseStoriesViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.CASE_STORIES, this, this);
         caseStoriesFragment.setViewModel(caseStoriesViewModel);
+        mCameraSourceViewModel = caseStoriesViewModel;
+    }
 
+    @Override
+    public void onCaseStoriesAddImageButtonPressed(ICameraSourceViewModel cameraSourceViewModel) {
+        ImagePicker.create(this)
+                .multi()
+                .limit(5)
+                .includeVideo(false)
+                .toolbarFolderTitle("Select Folder")
+                .toolbarImageTitle("Select Image")
+                .start();
+        mCameraSourceViewModel = cameraSourceViewModel;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            if (mCameraSourceViewModel != null) {
+
+                List<String> imagePaths = new ArrayList<>();
+                List<Image> images = ImagePicker.getImages(data);
+                for (Image image : images) {
+                    imagePaths.add(image.getPath());
+                }
+                mCameraSourceViewModel.onImagesLoaded(imagePaths);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

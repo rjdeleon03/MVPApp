@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.ModelsV2.Form.CaseStories.CaseStories;
 import com.cpu.quikdata.ModelsV2.Form.Common.AssistanceData;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityCopingDetails;
@@ -374,6 +375,12 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
                     form.setEvacuationInfoList(evacuationInfoList);
                 }
+
+                {
+                    CaseStories caseStories = realm.createObject(CaseStories.class, AppUtil.generateId());
+
+                    form.setCaseStories(caseStories);
+                }
                 
                 mForm = realm.copyFromRealm(form);
                 callback.onDataReceived(mForm);
@@ -416,6 +423,10 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void getEvacuationInfoList(final IBaseDataManager<EvacuationInfoList> callback) {
         callback.onDataReceived(mForm.getEvacuationInfoList());
+    }
+
+    public void getCaseStories(final IBaseDataManager<CaseStories> callback) {
+        callback.onDataReceived(mForm.getCaseStories());
     }
 
     public void saveForm(Realm realm) {

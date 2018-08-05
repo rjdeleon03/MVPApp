@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
+import com.cpu.quikdata.ModelsV2.Form.CaseStories.CaseStories;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
@@ -32,6 +33,7 @@ public class Form extends RealmObject {
     private HealthInformation healthInformation;
     private WashInformation washInformation;
     private EvacuationInfoList evacuationInfoList;
+    private CaseStories caseStories;
 
     public String getId() {
         return id;
@@ -121,6 +123,14 @@ public class Form extends RealmObject {
         this.evacuationInfoList = evacuationInfoList;
     }
 
+    public CaseStories getCaseStories() {
+        return caseStories;
+    }
+
+    public void setCaseStories(CaseStories caseStories) {
+        this.caseStories = caseStories;
+    }
+
     public void deleteData() {
         formDetails.deleteData();
         generalInformation.deleteData();
@@ -130,6 +140,7 @@ public class Form extends RealmObject {
         healthInformation.deleteData();
         washInformation.deleteData();
         evacuationInfoList.deleteData();
+        caseStories.deleteData();
         deleteFromRealm();
     }
 }

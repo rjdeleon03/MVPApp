@@ -29,6 +29,21 @@ public class CaseStories extends RealmObject implements IFieldHolder {
         this.id = id;
     }
 
+    public RealmList<String> getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(RealmList<String> imagePaths) {
+        this.imagePaths = imagePaths;
+    }
+
+    public String getStoriesText() {
+        return storiesText;
+    }
+
+    public void setStoriesText(String storiesText) {
+        this.storiesText = storiesText;
+    }
 
     @Override
     public void setupFields() {

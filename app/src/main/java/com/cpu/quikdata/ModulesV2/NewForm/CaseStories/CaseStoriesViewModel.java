@@ -1,6 +1,7 @@
 package com.cpu.quikdata.ModulesV2.NewForm.CaseStories;
 
 import android.databinding.Bindable;
+import android.databinding.ObservableField;
 import android.widget.Toast;
 
 import com.cpu.quikdata.AppConstants;
@@ -23,6 +24,8 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
     private RealmList<String> mImagePaths;
     private ImageItemAdapter mImageAdapter;
 
+    public final ObservableField<String> mStoriesText = new ObservableField<>("");
+
     /**
      * Constructor
      *
@@ -30,8 +33,13 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
      */
     public CaseStoriesViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mImageAdapter = new ImageItemAdapter(this);
         mFormRepository.getCaseStories(this);
+    }
+
+    @Override
+    public void setViewComponent(INewFormActivity viewComponent) {
+        super.setViewComponent(viewComponent);
+        mImageAdapter = new ImageItemAdapter(mViewComponent.get(), this);
     }
 
     /**
@@ -42,6 +50,7 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
     public void onDataReceived(CaseStories data) {
         mCaseStories = data;
         mImagePaths = mCaseStories.getImagePaths();
+        mStoriesText.set(mCaseStories.getStoriesText());
     }
 
     /**
@@ -102,5 +111,22 @@ public class CaseStoriesViewModel extends BaseViewModel<INewFormActivity> implem
     @Override
     public int getImageItemsCount() {
         return mImagePaths.size();
+    }
+
+    /**
+     * Deletes the image at the specified index
+     * @param index
+     */
+    @Override
+    public void deleteImagePathAtIndex(int index) {
+        mImagePaths.remove(index);
+        notifyPropertyChanged(BR.imagePaths);
+    }
+
+    /**
+     * Save data when view is paused
+     */
+    public void onViewPaused() {
+        mCaseStories.setStoriesText(mStoriesText.get());
     }
 }

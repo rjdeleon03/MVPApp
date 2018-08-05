@@ -11,4 +11,6 @@ public interface ICameraSourceViewModel {
     void getImagePathAtIndex(IBaseDataManager<String> callback, int index);
 
     int getImageItemsCount();
+
+    void deleteImagePathAtIndex(int index);
 }

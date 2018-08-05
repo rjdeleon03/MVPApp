@@ -1,6 +1,8 @@
 package com.cpu.quikdata.ModulesV2.NewForm;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -236,5 +238,31 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
     @Override
     public void onSaveButtonPressed() {
         super.onBackPressed();
+    }
+
+    /**
+     * Handles item delete button pressed event
+     */
+    @Override
+    public void onItemDeleteButtonPressed(final int index) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        mCameraSourceViewModel.deleteImagePathAtIndex(index);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this image?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
     }
 }

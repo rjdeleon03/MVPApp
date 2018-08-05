@@ -26,4 +26,6 @@ public interface INewFormActivity extends IBaseActivity {
     void onCaseStoriesAddImageButtonPressed(ICameraSourceViewModel cameraSourceViewModel, int maxAllowedImageCount);
 
     void onSaveButtonPressed();
+
+    void onItemDeleteButtonPressed(int index);
 }

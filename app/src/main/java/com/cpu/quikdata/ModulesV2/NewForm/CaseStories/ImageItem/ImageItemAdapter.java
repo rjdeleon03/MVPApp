@@ -8,14 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ICameraSourceViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ICaseStoriesFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.R;
 
 public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemViewHolder> {
 
+    private INewFormActivity mViewComponent;
     private ICameraSourceViewModel mDataManager;
 
-    public ImageItemAdapter(ICameraSourceViewModel dataManager) {
+    public ImageItemAdapter(INewFormActivity viewComponent, ICameraSourceViewModel dataManager) {
+        mViewComponent = viewComponent;
         mDataManager = dataManager;
+        setHasStableIds(true);
     }
 
     @NonNull
@@ -32,6 +37,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemViewHolder> 
     public void onBindViewHolder(@NonNull ImageItemViewHolder holder, int position) {
         ImageItemViewModel itemViewModel = new ImageItemViewModel(null, position);
         itemViewModel.setDataManager(mDataManager);
+        itemViewModel.setViewComponent(mViewComponent);
         holder.setViewModel(itemViewModel);
     }
 

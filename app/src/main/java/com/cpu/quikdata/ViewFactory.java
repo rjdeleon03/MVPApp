@@ -88,6 +88,8 @@ import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsFragment;
@@ -398,6 +400,9 @@ public class ViewFactory {
                     break;
                 case EVACUATION_ITEM_COPING:
                     fragment = EvacuationCopingDetailsFragment.newInstance();
+                    break;
+                case CASE_STORIES:
+                    fragment = CaseStoriesFragment.newInstance();
                     break;
             }
 
@@ -727,6 +732,12 @@ public class ViewFactory {
                     EvacuationCopingDetailsViewModel evacuationCopingDetailsViewModel = new EvacuationCopingDetailsViewModel(Injection.provideDncaRepository(context));
 //                    evacuationCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = evacuationCopingDetailsViewModel;
+                    break;
+
+                case CASE_STORIES:
+                    CaseStoriesViewModel caseStoriesViewModel = new CaseStoriesViewModel(Injection.provideDncaRepository(context));
+                    caseStoriesViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = caseStoriesViewModel;
                     break;
             }
 

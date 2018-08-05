@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
@@ -191,6 +193,9 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     @Override
     public void onCaseStoriesButtonPressed() {
+        CaseStoriesFragment caseStoriesFragment = (CaseStoriesFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.CASE_STORIES, FRAGMENT_CONTAINER);
+        final CaseStoriesViewModel caseStoriesViewModel = (CaseStoriesViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.CASE_STORIES, this, this);
+        caseStoriesFragment.setViewModel(caseStoriesViewModel);
 
     }
 

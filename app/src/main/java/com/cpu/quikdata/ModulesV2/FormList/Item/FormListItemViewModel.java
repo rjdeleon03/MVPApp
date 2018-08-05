@@ -62,7 +62,7 @@ public class FormListItemViewModel implements IFormListItemViewModel {
      */
     public void navigateOnDeleteButtonPressed() {
         if(mDataManager != null) {
-            mDataManager.navigateOnItemDeleteButtonPressed(mFormId);
+            mDataManager.navigateOnItemDeleteButtonPressed(mFormId, true);
         }
     }
 
@@ -73,12 +73,13 @@ public class FormListItemViewModel implements IFormListItemViewModel {
     @Override
     public void onItemSubmitFinished(boolean success) {
         if(mDataManager != null) {
-            mDataManager.navigateOnItemSubmitFinished(success);
-        }
-        if(success) {
-            navigateOnDeleteButtonPressed();
-        } else {
-            isSyncing.set(false);
+            mDataManager.navigateOnItemSubmitFinished(success)
+            ;
+            if(success) {
+                mDataManager.navigateOnItemDeleteButtonPressed(mFormId, false);
+            } else {
+                isSyncing.set(false);
+            }
         }
     }
 }

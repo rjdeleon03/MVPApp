@@ -59,6 +59,7 @@ import java.util.UUID;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -449,16 +450,40 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     public void submitForm(Realm realm, Form form, final IFormListItemViewModel callback) {
-        Form formCopy = realm.copyFromRealm(form);
+        final Form formCopy = realm.copyFromRealm(form);
         formCopy.setPrefilledData(performGetPrefilledData(realm));
-        QuikDataApplication.retrofitClient.submitForm(formCopy, new Callback<String>() {
+
+        QuikDataApplication.retrofitClient.submitForm(formCopy, new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String formId = response.body().string();
+                    uploadImages(formId, formCopy.getCaseStories().getImagePaths(), callback);
+
+                } catch(Exception ex) {
+                    ex.printStackTrace();
+                    callback.onItemSubmitFinished(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onItemSubmitFinished(false);
+            }
+        });
+    }
+
+    private void uploadImages(String formId, List<String> imagePaths, final IFormListItemViewModel callback) {
+
+        QuikDataApplication.retrofitClient.uploadImages(formId, imagePaths, new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 callback.onItemSubmitFinished(true);
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 callback.onItemSubmitFinished(false);
             }
         });

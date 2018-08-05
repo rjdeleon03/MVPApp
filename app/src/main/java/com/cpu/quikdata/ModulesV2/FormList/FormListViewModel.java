@@ -111,11 +111,16 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
     /**
      * Handles navigation when items delete button is pressed
      * @param itemId
+     * @param confirmDeletion
      */
     @Override
-    public void navigateOnItemDeleteButtonPressed(String itemId) {
-        if (mViewComponent != null && mViewComponent.get() != null) {
-            mViewComponent.get().onItemDeleteButtonPressed(itemId);
+    public void navigateOnItemDeleteButtonPressed(String itemId, boolean confirmDeletion) {
+        if (confirmDeletion) {
+            if (mViewComponent != null && mViewComponent.get() != null) {
+                mViewComponent.get().onItemDeleteButtonPressed(itemId);
+            }
+        } else {
+            deletedItemWithId(itemId);
         }
     }
 

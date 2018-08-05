@@ -21,5 +21,5 @@ public interface IFormListDataManager<LI> {
 
     void navigateOnItemEditButtonPressed(String itemId);
 
-    void navigateOnItemDeleteButtonPressed(String itemId);
+    void navigateOnItemDeleteButtonPressed(String itemId, boolean confirmDeletion);
 }

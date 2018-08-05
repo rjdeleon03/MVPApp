@@ -68,4 +68,13 @@ public class FoodSecurityInformation extends RealmObject implements IAssistanceD
     public void setAssistanceData(AssistanceData assistanceData) {
         this.foodAssistanceData = assistanceData;
     }
+
+    public void deleteData() {
+        impactDetails.deleteData();
+        foodSecurityCopingDetails.deleteData();
+        foodSecurityNeedsDetails.deleteData();
+        foodSecurityGapsDetails.deleteData();
+        foodAssistanceData.deleteData();
+        deleteFromRealm();
+    }
 }

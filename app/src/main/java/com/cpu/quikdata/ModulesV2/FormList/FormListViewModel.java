@@ -31,6 +31,7 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
             mFormRepository.initializePrefilledData(realm);
 
             // Retrieve all forms
+            // TODO: Load forms async to avoid slow startup
             mFormRepository.getAllForms(realm, this);
         }
     }

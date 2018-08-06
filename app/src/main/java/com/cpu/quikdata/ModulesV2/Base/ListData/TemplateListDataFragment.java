@@ -30,7 +30,10 @@ public class TemplateListDataFragment<VM extends TemplateListDataViewModel> exte
 
         // Setup recyclerView
         RecyclerView rv = view.findViewById(R.id.form_list_view);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        rv.setLayoutManager(layoutManager);
         return view;
     }
 }

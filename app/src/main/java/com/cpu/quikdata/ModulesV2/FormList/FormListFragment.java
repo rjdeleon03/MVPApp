@@ -12,6 +12,7 @@ public class FormListFragment extends TemplateListDataFragment<FormListViewModel
 
     public FormListFragment() {
         // Required empty public constructor
+//        mTag = "DRAFT_FORMS_LIST";
     }
 
     /**

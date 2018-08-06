@@ -214,6 +214,7 @@ public class NewFormActivity extends BaseActivity implements INewFormActivity {
                 .multi()
                 .limit(maxAllowedImageCount)
                 .includeVideo(false)
+                .theme(R.style.AppTheme)
                 .toolbarFolderTitle("Select Folder")
                 .toolbarImageTitle("Select Image")
                 .start();

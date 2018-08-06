@@ -36,12 +36,75 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.design.widget.CoordinatorLayout
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:scaleType="centerCrop"
-                    android:background="@color/translucentGray"
-                    app:imagePath="@{viewModel.imagePath}"/>
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="centerCrop"
+                        android:background="@color/translucentGray"
+                        app:imagePath="@{viewModel.imagePath}"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@color/translucentBlack">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|start"
+                            android:padding="5dp"
+                            android:tint="@color/btn_ic_color"
+                            android:minHeight="10dip"
+                            android:src="@drawable/ic_send"
+                            android:enabled="@{!viewModel.isSyncing}"
+                            android:onClick="@{() -> viewModel.navigateOnSubmitButtonPressed()}"
+                            app:backgroundTint="@android:color/transparent" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight = "1" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|end"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:tint="@color/btn_ic_color"
+                                android:minHeight="10dip"
+                                android:src="@drawable/ic_edit"
+                                android:enabled="@{!viewModel.isSyncing}"
+                                android:onClick="@{() -> viewModel.navigateOnEditButtonPressed()}"
+                                android:text="Edit"
+                                app:backgroundTint="@android:color/transparent" />
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:tint="@color/btn_ic_color"
+                                android:minHeight="10dip"
+                                android:src="@drawable/ic_close_card"
+                                android:enabled="@{!viewModel.isSyncing}"
+                                android:onClick="@{() -> viewModel.navigateOnDeleteButtonPressed()}"
+                                android:text="Delete"
+                                app:backgroundTint="@android:color/transparent" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.design.widget.CoordinatorLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,53 +116,19 @@
                         android:id="@+id/dnca_item_head"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.sitio}"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                        android:text="@{`Assessment Date: ` + viewModel.sitio}"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/dnca_item_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:text="Description"/>
 
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <Button
-                android:layout_width="78dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|start"
-                android:layout_margin="2dp"
-                android:minHeight="10dip"
-                android:enabled="@{!viewModel.isSyncing}"
-                android:onClick="@{() -> viewModel.navigateOnSubmitButtonPressed()}"
-                android:text="Submit" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|end"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="0dp"
-                    android:minHeight="10dip"
-                    android:enabled="@{!viewModel.isSyncing}"
-                    android:onClick="@{() -> viewModel.navigateOnEditButtonPressed()}"
-                    android:text="Edit" />
-
-                <Button
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="0dp"
-                    android:minHeight="10dip"
-                    android:enabled="@{!viewModel.isSyncing}"
-                    android:onClick="@{() -> viewModel.navigateOnDeleteButtonPressed()}"
-                    android:text="Delete" />
 
             </LinearLayout>
 

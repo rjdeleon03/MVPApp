@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
@@ -55,6 +56,7 @@ import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.TemplateReadonlySingleNumberBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyStringBinding;
 
+import java.io.File;
 import java.util.List;
 
 import io.realm.RealmList;
@@ -201,7 +203,12 @@ public class BindingUtilsV2 {
      */
     @BindingAdapter({"app:imagePath"})
     public static void bind(ImageView imageView, String imagePath) {
-        Glide.with(imageView).load(imagePath).into(imageView);
+        if (imagePath != null && !imagePath.isEmpty() && (new File(imagePath)).exists()) {
+            Glide.with(imageView).load(imagePath).into(imageView);
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.GONE);
+        }
     }
 
     /**

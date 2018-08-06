@@ -230,168 +230,160 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     }
 
     public void getForm(Realm realm, final IBaseDataManager<Form> callback) {
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                Form form = realm.createObject(Form.class, AppUtil.generateId());
+        realm.beginTransaction();
+        Form form = realm.createObject(Form.class, AppUtil.generateId());
 
-                {
-                    FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
-                    form.setFormDetails(formDetails);
-                }
-                {
-                    GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
-                    CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
-                    generalInformation.setCalamityDetails(calamityDetails);
+        {
+            FormDetails formDetails = realm.createObject(FormDetails.class, AppUtil.generateId());
+            form.setFormDetails(formDetails);
+        }
+        {
+            GeneralInformation generalInformation = realm.createObject(GeneralInformation.class, AppUtil.generateId());
+            CalamityDetails calamityDetails = realm.createObject(CalamityDetails.class, AppUtil.generateId());
+            generalInformation.setCalamityDetails(calamityDetails);
 
-                    PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());
-                    generalInformation.setPopulationData(populationData);
+            PopulationData populationData = realm.createObject(PopulationData.class, AppUtil.generateId());
+            generalInformation.setPopulationData(populationData);
 
-                    FamilyDetails familyDetails = realm.createObject(FamilyDetails.class, AppUtil.generateId());
-                    generalInformation.setFamilyDetails(familyDetails);
+            FamilyDetails familyDetails = realm.createObject(FamilyDetails.class, AppUtil.generateId());
+            generalInformation.setFamilyDetails(familyDetails);
 
-                    VulnerableData vulnerableData = realm.createObject(VulnerableData.class, AppUtil.generateId());
-                    generalInformation.setVulnerableData(vulnerableData);
+            VulnerableData vulnerableData = realm.createObject(VulnerableData.class, AppUtil.generateId());
+            generalInformation.setVulnerableData(vulnerableData);
 
-                    CasualtiesData casualtiesData = realm.createObject(CasualtiesData.class, AppUtil.generateId());
-                    generalInformation.setCasualtiesData(casualtiesData);
+            CasualtiesData casualtiesData = realm.createObject(CasualtiesData.class, AppUtil.generateId());
+            generalInformation.setCasualtiesData(casualtiesData);
 
-                    DeathCauseData deathCauseData = realm.createObject(DeathCauseData.class, AppUtil.generateId());
-                    generalInformation.setDeathCauseData(deathCauseData);
+            DeathCauseData deathCauseData = realm.createObject(DeathCauseData.class, AppUtil.generateId());
+            generalInformation.setDeathCauseData(deathCauseData);
 
-                    InfrastructureData infrastructureData = realm.createObject(InfrastructureData.class, AppUtil.generateId());
-                    generalInformation.setInfrastructureData(infrastructureData);
+            InfrastructureData infrastructureData = realm.createObject(InfrastructureData.class, AppUtil.generateId());
+            generalInformation.setInfrastructureData(infrastructureData);
 
-                    form.setGeneralInformation(generalInformation);
-                }
+            form.setGeneralInformation(generalInformation);
+        }
 
-                {
-                    ShelterInformation shelterInformation = realm.createObject(ShelterInformation.class, AppUtil.generateId());
-                    DamageData damageData = realm.createObject(DamageData.class, AppUtil.generateId());
-                    shelterInformation.setDamageData(damageData);
+        {
+            ShelterInformation shelterInformation = realm.createObject(ShelterInformation.class, AppUtil.generateId());
+            DamageData damageData = realm.createObject(DamageData.class, AppUtil.generateId());
+            shelterInformation.setDamageData(damageData);
 
-                    ShelterCopingDetails shelterCopingDetails = realm.createObject(ShelterCopingDetails.class, AppUtil.generateId());
-                    shelterInformation.setShelterCopingDetails(shelterCopingDetails);
-                    
-                    ShelterNeedsData shelterNeedsData = realm.createObject(ShelterNeedsData.class, AppUtil.generateId());
-                    shelterInformation.setShelterNeedsData(shelterNeedsData);
+            ShelterCopingDetails shelterCopingDetails = realm.createObject(ShelterCopingDetails.class, AppUtil.generateId());
+            shelterInformation.setShelterCopingDetails(shelterCopingDetails);
 
-                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
-                    shelterInformation.setAssistanceData(assistanceData);
+            ShelterNeedsData shelterNeedsData = realm.createObject(ShelterNeedsData.class, AppUtil.generateId());
+            shelterInformation.setShelterNeedsData(shelterNeedsData);
 
-                    ShelterGapsDetails shelterGapsDetails = realm.createObject(ShelterGapsDetails.class, AppUtil.generateId());
-                    shelterInformation.setShelterGapsDetails(shelterGapsDetails);
+            AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+            shelterInformation.setAssistanceData(assistanceData);
 
-                    form.setShelterInformation(shelterInformation);
-                }
+            ShelterGapsDetails shelterGapsDetails = realm.createObject(ShelterGapsDetails.class, AppUtil.generateId());
+            shelterInformation.setShelterGapsDetails(shelterGapsDetails);
 
-                {
-                    FoodSecurityInformation foodSecurityInformation = realm.createObject(FoodSecurityInformation.class, AppUtil.generateId());
-                    ImpactDetails impactDetails = realm.createObject(ImpactDetails.class, AppUtil.generateId());
-                    foodSecurityInformation.setImpactDetails(impactDetails);
+            form.setShelterInformation(shelterInformation);
+        }
 
-                    FoodSecurityCopingDetails foodSecurityCopingDetails = realm.createObject(FoodSecurityCopingDetails.class, AppUtil.generateId());
-                    foodSecurityInformation.setFoodSecurityCopingDetails(foodSecurityCopingDetails);
+        {
+            FoodSecurityInformation foodSecurityInformation = realm.createObject(FoodSecurityInformation.class, AppUtil.generateId());
+            ImpactDetails impactDetails = realm.createObject(ImpactDetails.class, AppUtil.generateId());
+            foodSecurityInformation.setImpactDetails(impactDetails);
 
-                    FoodSecurityNeedsDetails foodSecurityNeedsDetails = realm.createObject(FoodSecurityNeedsDetails.class, AppUtil.generateId());
-                    foodSecurityInformation.setFoodSecurityNeedsDetails(foodSecurityNeedsDetails);
+            FoodSecurityCopingDetails foodSecurityCopingDetails = realm.createObject(FoodSecurityCopingDetails.class, AppUtil.generateId());
+            foodSecurityInformation.setFoodSecurityCopingDetails(foodSecurityCopingDetails);
 
-                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
-                    foodSecurityInformation.setAssistanceData(assistanceData);
+            FoodSecurityNeedsDetails foodSecurityNeedsDetails = realm.createObject(FoodSecurityNeedsDetails.class, AppUtil.generateId());
+            foodSecurityInformation.setFoodSecurityNeedsDetails(foodSecurityNeedsDetails);
 
-                    FoodSecurityGapsDetails foodSecurityGapsDetails = realm.createObject(FoodSecurityGapsDetails.class, AppUtil.generateId());
-                    foodSecurityInformation.setFoodSecurityGapsDetails(foodSecurityGapsDetails);
+            AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+            foodSecurityInformation.setAssistanceData(assistanceData);
 
-                    form.setFoodSecurityInformation(foodSecurityInformation);
-                }
-                
-                {
-                    LivelihoodsInformation livelihoodsInformation = realm.createObject(LivelihoodsInformation.class, AppUtil.generateId());
-                    IncomeSourceData incomeSourceDataBefore = realm.createObject(IncomeSourceData.class, AppUtil.generateId());
-                    livelihoodsInformation.setLivelihoodsIncomeSourceDataBefore(incomeSourceDataBefore);
+            FoodSecurityGapsDetails foodSecurityGapsDetails = realm.createObject(FoodSecurityGapsDetails.class, AppUtil.generateId());
+            foodSecurityInformation.setFoodSecurityGapsDetails(foodSecurityGapsDetails);
 
-                    IncomeSourceData incomeSourceDataAfter = realm.createObject(IncomeSourceData.class, AppUtil.generateId());
-                    livelihoodsInformation.setLivelihoodsIncomeSourceDataAfter(incomeSourceDataAfter);
+            form.setFoodSecurityInformation(foodSecurityInformation);
+        }
 
-                    DamageCostData damageCostData = realm.createObject(DamageCostData.class, AppUtil.generateId());
-                    livelihoodsInformation.setLivelihoodsDamageCostData(damageCostData);
+        {
+            LivelihoodsInformation livelihoodsInformation = realm.createObject(LivelihoodsInformation.class, AppUtil.generateId());
+            IncomeSourceData incomeSourceDataBefore = realm.createObject(IncomeSourceData.class, AppUtil.generateId());
+            livelihoodsInformation.setLivelihoodsIncomeSourceDataBefore(incomeSourceDataBefore);
 
-                    LivelihoodsCopingDetails livelihoodsCopingDetails = realm.createObject(LivelihoodsCopingDetails.class, AppUtil.generateId());
-                    livelihoodsInformation.setLivelihoodsCopingDetails(livelihoodsCopingDetails);
+            IncomeSourceData incomeSourceDataAfter = realm.createObject(IncomeSourceData.class, AppUtil.generateId());
+            livelihoodsInformation.setLivelihoodsIncomeSourceDataAfter(incomeSourceDataAfter);
 
-                    LivelihoodsNeedsDetails livelihoodsNeedsDetails = realm.createObject(LivelihoodsNeedsDetails.class, AppUtil.generateId());
-                    livelihoodsInformation.setLivelihoodsNeedsDetails(livelihoodsNeedsDetails);
+            DamageCostData damageCostData = realm.createObject(DamageCostData.class, AppUtil.generateId());
+            livelihoodsInformation.setLivelihoodsDamageCostData(damageCostData);
 
-                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
-                    livelihoodsInformation.setAssistanceData(assistanceData);
+            LivelihoodsCopingDetails livelihoodsCopingDetails = realm.createObject(LivelihoodsCopingDetails.class, AppUtil.generateId());
+            livelihoodsInformation.setLivelihoodsCopingDetails(livelihoodsCopingDetails);
 
-                    LivelihoodsGapsDetails livelihoodsGapsDetails = realm.createObject(LivelihoodsGapsDetails.class, AppUtil.generateId());
-                    livelihoodsInformation.setLivelihoodsGapsDetails(livelihoodsGapsDetails);
-                    
-                    form.setLivelihoodsInformation(livelihoodsInformation);
-                }
+            LivelihoodsNeedsDetails livelihoodsNeedsDetails = realm.createObject(LivelihoodsNeedsDetails.class, AppUtil.generateId());
+            livelihoodsInformation.setLivelihoodsNeedsDetails(livelihoodsNeedsDetails);
 
-                {
-                    HealthInformation healthInformation = realm.createObject(HealthInformation.class, AppUtil.generateId());
-                    DiseasesData diseasesData = realm.createObject(DiseasesData.class, AppUtil.generateId());
-                    healthInformation.setDiseasesData(diseasesData);
-                    
-                    SpecialNeedsData specialNeedsData = realm.createObject(SpecialNeedsData.class, AppUtil.generateId());
-                    healthInformation.setSpecialNeedsData(specialNeedsData);
-                    
-                    PsychosocialData psychosocialData = realm.createObject(PsychosocialData.class, AppUtil.generateId());
-                    healthInformation.setPsychosocialData(psychosocialData);
-                    
-                    HealthCopingDetails healthCopingDetails = realm.createObject(HealthCopingDetails.class, AppUtil.generateId());
-                    healthInformation.setHealthCopingDetails(healthCopingDetails);
+            AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+            livelihoodsInformation.setAssistanceData(assistanceData);
 
-                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
-                    healthInformation.setAssistanceData(assistanceData);
+            LivelihoodsGapsDetails livelihoodsGapsDetails = realm.createObject(LivelihoodsGapsDetails.class, AppUtil.generateId());
+            livelihoodsInformation.setLivelihoodsGapsDetails(livelihoodsGapsDetails);
 
-                    HealthGapsDetails healthGapsDetails = realm.createObject(HealthGapsDetails.class, AppUtil.generateId());
-                    healthInformation.setHealthGapsDetails(healthGapsDetails);
+            form.setLivelihoodsInformation(livelihoodsInformation);
+        }
 
-                    form.setHealthInformation(healthInformation);
-                }
+        {
+            HealthInformation healthInformation = realm.createObject(HealthInformation.class, AppUtil.generateId());
+            DiseasesData diseasesData = realm.createObject(DiseasesData.class, AppUtil.generateId());
+            healthInformation.setDiseasesData(diseasesData);
 
-                {
-                    WashInformation washInformation = realm.createObject(WashInformation.class, AppUtil.generateId());
-                    WashConditionsDetails washConditionsDetails = realm.createObject(WashConditionsDetails.class, AppUtil.generateId());
-                    washInformation.setWashConditionsDetails(washConditionsDetails);
+            SpecialNeedsData specialNeedsData = realm.createObject(SpecialNeedsData.class, AppUtil.generateId());
+            healthInformation.setSpecialNeedsData(specialNeedsData);
 
-                    WashCopingDetails washCopingDetails = realm.createObject(WashCopingDetails.class, AppUtil.generateId());
-                    washInformation.setWashCopingDetails(washCopingDetails);
+            PsychosocialData psychosocialData = realm.createObject(PsychosocialData.class, AppUtil.generateId());
+            healthInformation.setPsychosocialData(psychosocialData);
 
-                    AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
-                    washInformation.setAssistanceData(assistanceData);
+            HealthCopingDetails healthCopingDetails = realm.createObject(HealthCopingDetails.class, AppUtil.generateId());
+            healthInformation.setHealthCopingDetails(healthCopingDetails);
 
-                    WashGapsDetails washGapsDetails = realm.createObject(WashGapsDetails.class, AppUtil.generateId());
-                    washInformation.setWashGapsDetails(washGapsDetails);
+            AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+            healthInformation.setAssistanceData(assistanceData);
 
-                    form.setWashInformation(washInformation);
-                }
+            HealthGapsDetails healthGapsDetails = realm.createObject(HealthGapsDetails.class, AppUtil.generateId());
+            healthInformation.setHealthGapsDetails(healthGapsDetails);
 
-                {
-                    EvacuationInfoList evacuationInfoList = realm.createObject(EvacuationInfoList.class, AppUtil.generateId());
+            form.setHealthInformation(healthInformation);
+        }
 
-                    form.setEvacuationInfoList(evacuationInfoList);
-                }
+        {
+            WashInformation washInformation = realm.createObject(WashInformation.class, AppUtil.generateId());
+            WashConditionsDetails washConditionsDetails = realm.createObject(WashConditionsDetails.class, AppUtil.generateId());
+            washInformation.setWashConditionsDetails(washConditionsDetails);
 
-                {
-                    CaseStories caseStories = realm.createObject(CaseStories.class, AppUtil.generateId());
+            WashCopingDetails washCopingDetails = realm.createObject(WashCopingDetails.class, AppUtil.generateId());
+            washInformation.setWashCopingDetails(washCopingDetails);
 
-                    form.setCaseStories(caseStories);
-                }
-                
-                mForm = realm.copyFromRealm(form);
-                callback.onDataReceived(mForm);
+            AssistanceData assistanceData = realm.createObject(AssistanceData.class, AppUtil.generateId());
+            washInformation.setAssistanceData(assistanceData);
 
-            }
-        }, new Realm.Transaction.OnSuccess() {
-            @Override
-            public void onSuccess() {
-            }
-        });
+            WashGapsDetails washGapsDetails = realm.createObject(WashGapsDetails.class, AppUtil.generateId());
+            washInformation.setWashGapsDetails(washGapsDetails);
+
+            form.setWashInformation(washInformation);
+        }
+
+        {
+            EvacuationInfoList evacuationInfoList = realm.createObject(EvacuationInfoList.class, AppUtil.generateId());
+
+            form.setEvacuationInfoList(evacuationInfoList);
+        }
+
+        {
+            CaseStories caseStories = realm.createObject(CaseStories.class, AppUtil.generateId());
+
+            form.setCaseStories(caseStories);
+        }
+
+        realm.commitTransaction();
+        mForm = realm.copyFromRealm(form);
+        callback.onDataReceived(mForm);
     }
 
     public void getFormDetails(final IBaseDataManager<FormDetails> callback) {
@@ -432,7 +424,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
 
     public void saveForm(Realm realm) {
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(mForm);
+        realm.insertOrUpdate(mForm);
         realm.commitTransaction();
         mForm = null;
     }

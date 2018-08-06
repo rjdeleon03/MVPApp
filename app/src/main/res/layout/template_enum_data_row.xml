@@ -34,9 +34,7 @@
                 android:paddingRight="16dp"
                 android:paddingEnd="16dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:layout_width="0dp"

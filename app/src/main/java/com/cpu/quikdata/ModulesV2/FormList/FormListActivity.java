@@ -57,6 +57,8 @@ public class FormListActivity extends BaseActivity implements IFormListActivity 
         mFormListFragment = findOrCreateViewFragment();
         mFormListViewModel = findOrCreateViewModel();
         mFormListFragment.setViewModel(mFormListViewModel);
+
+        mFormListViewModel.onActivityCreated();
     }
 
     @Override

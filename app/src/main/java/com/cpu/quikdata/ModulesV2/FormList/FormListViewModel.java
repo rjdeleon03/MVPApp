@@ -24,6 +24,12 @@ public class FormListViewModel extends TemplateListDataViewModel<IFormListActivi
     @Override
     public void setViewComponent(IFormListActivity viewComponent) {
         super.setViewComponent(viewComponent);
+    }
+
+    /**
+     * Prepares necessary data when parent activity has been created
+     */
+    public void onActivityCreated() {
         if (mViewComponent != null && mViewComponent.get() != null) {
 
             // Initialize prefilled data

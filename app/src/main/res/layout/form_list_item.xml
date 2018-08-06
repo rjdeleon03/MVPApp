@@ -11,60 +11,77 @@
             type="com.cpu.quikdata.ModulesV2.FormList.Item.FormListItemViewModel" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
 
-        <ProgressBar
-            android:id="@+id/ProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:indeterminate="@{viewModel.isSyncing}"
-            android:visibility="@{viewModel.isSyncing ? View.VISIBLE : View.GONE}"
-            android:scaleY="100"/>
+            android:layout_height="wrap_content">
 
+            <ProgressBar
+                android:id="@+id/ProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/blueGreen"
+                android:indeterminate="@{viewModel.isSyncing}"
+                android:visibility="@{viewModel.isSyncing ? View.VISIBLE : View.GONE}"
+                android:scaleY="100"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dnca_item_dl_button"
-            app:layout_constraintStart_toEndOf="@+id/dnca_item_img"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/dnca_item_head"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.sitio}"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/dnca_item_desc"
-                android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/translucentGray"
+                    app:imagePath="@{viewModel.imagePath}"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dnca_item_head"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.sitio}"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+                    <TextView
+                        android:id="@+id/dnca_item_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="78dp"
                 android:layout_height="wrap_content"
-                android:text="Description"/>
+                android:layout_gravity="top|start"
+                android:layout_margin="2dp"
+                android:minHeight="10dip"
+                android:enabled="@{!viewModel.isSyncing}"
+                android:onClick="@{() -> viewModel.navigateOnSubmitButtonPressed()}"
+                android:text="Submit" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="2dp"
                 android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="78dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="0dp"
-                    android:minHeight="10dip"
-                    android:enabled="@{!viewModel.isSyncing}"
-                    android:onClick="@{() -> viewModel.navigateOnSubmitButtonPressed()}"
-                    android:text="Submit" />
 
                 <Button
                     android:layout_width="78dp"
@@ -85,7 +102,8 @@
                     android:text="Delete" />
 
             </LinearLayout>
-        </LinearLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+        </android.support.design.widget.CoordinatorLayout>
+
+    </android.support.v7.widget.CardView>
 </layout>

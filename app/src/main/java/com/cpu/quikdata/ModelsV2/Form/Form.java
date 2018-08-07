@@ -148,6 +148,7 @@ public class Form extends RealmObject {
         generalInformation.getPopulationData().addTotalRow();
         generalInformation.getVulnerableData().addTotalRow();
         generalInformation.getCasualtiesData().addTotalRow();
+        shelterInformation.getDamageData().addTotalRow();
         evacuationInfoList.addTotalRow();
 
         if (prefilledData != null) {

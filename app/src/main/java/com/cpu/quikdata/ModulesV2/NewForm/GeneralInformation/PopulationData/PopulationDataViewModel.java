@@ -1,8 +1,5 @@
 package com.cpu.quikdata.ModulesV2.NewForm.GeneralInformation.PopulationData;
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
-
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
@@ -14,10 +11,6 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
-
-import io.realm.Realm;
-
-import com.cpu.quikdata.BR;
 
 import java.util.List;
 
@@ -59,7 +52,7 @@ public class PopulationDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<PopulationDataRow> callback) {
         PopulationDataRow row = new PopulationDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

@@ -143,4 +143,15 @@ public class Form extends RealmObject {
         caseStories.deleteData();
         deleteFromRealm();
     }
+
+    public void initTotalizableData() {
+        generalInformation.getPopulationData().addTotalRow();
+        generalInformation.getVulnerableData().addTotalRow();
+        generalInformation.getCasualtiesData().addTotalRow();
+        evacuationInfoList.addTotalRow();
+
+        if (prefilledData != null) {
+            prefilledData.addTotalRow();
+        }
+    }
 }

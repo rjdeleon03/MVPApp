@@ -64,7 +64,7 @@ public class IncomeSourceDataRow extends RealmObject implements IEnumDataRow<Gen
 
     @Override
     public GenericEnumDataRow.IncomeSourceType getActualType() {
-        return GenericEnumDataRow.IncomeSourceType.getValueOf(incomeSourceType);
+        return GenericEnumDataRow.IncomeSourceType.valueOf(incomeSourceType);
     }
 
     @Override

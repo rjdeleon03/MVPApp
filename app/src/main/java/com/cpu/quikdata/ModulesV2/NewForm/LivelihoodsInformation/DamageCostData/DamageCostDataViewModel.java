@@ -62,7 +62,7 @@ public class DamageCostDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<DamageCostDataRow> callback) {
         DamageCostDataRow row = new DamageCostDataRow();
-        row.setLivelihoodsType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setLivelihoodsType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

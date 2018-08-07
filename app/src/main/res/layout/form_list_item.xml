@@ -116,7 +116,7 @@
                         android:id="@+id/dnca_item_head"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{`Assessment Date: ` + viewModel.sitio}"
+                        android:text="@{`Assessment Date: ` + viewModel.assessmentDate}"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@color/black"/>
 
@@ -126,7 +126,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:ellipsize="end"
-                        android:text="Description"/>
+                        android:text="@{viewModel.calamityDescription}"/>
 
                 </LinearLayout>
 

@@ -61,7 +61,7 @@ public class InfrastructureDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<InfrastructureDataRow> callback) {
         InfrastructureDataRow row = new InfrastructureDataRow();
-        row.setInfraType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setInfraType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

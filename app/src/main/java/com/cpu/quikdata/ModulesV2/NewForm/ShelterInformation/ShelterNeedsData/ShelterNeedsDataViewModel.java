@@ -59,7 +59,7 @@ public class ShelterNeedsDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<ShelterNeedsDataRow> callback) {
         ShelterNeedsDataRow row = new ShelterNeedsDataRow();
-        row.setNeedsType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setNeedsType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

@@ -62,7 +62,7 @@ public class PsychosocialDataRow extends RealmObject implements IEnumDataRow<Gen
 
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
-        return GenericEnumDataRow.AgeGroup.getValueOf(ageGroup);
+        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
     }
 
     @Override

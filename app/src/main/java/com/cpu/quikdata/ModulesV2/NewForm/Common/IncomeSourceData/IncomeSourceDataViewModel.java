@@ -117,7 +117,7 @@ public abstract class IncomeSourceDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<IncomeSourceDataRow> callback) {
         IncomeSourceDataRow row = new IncomeSourceDataRow();
-        row.setIncomeSourceType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setIncomeSourceType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

@@ -110,6 +110,10 @@ public abstract class GenericEnumDataRow {
             return mapping.get(this);
         }
 
+        public String toNormalString() {
+            return super.toString();
+        }
+
         @Override
         public Object getValue() {
             return this;
@@ -179,6 +183,10 @@ public abstract class GenericEnumDataRow {
             return mapping.get(this);
         }
 
+        public String toNormalString() {
+            return super.toString();
+        }
+
         @Override
         public Object getValue() {
             return this;
@@ -234,6 +242,10 @@ public abstract class GenericEnumDataRow {
             return mapping.get(this);
         }
 
+        public String toNormalString() {
+            return super.toString();
+        }
+
         @Override
         public Object getValue() {
             return this;
@@ -284,6 +296,10 @@ public abstract class GenericEnumDataRow {
             return mapping.get(this);
         }
 
+        public String toNormalString() {
+            return super.toString();
+        }
+
         @Override
         public Object getValue() {
             return this;
@@ -327,6 +343,10 @@ public abstract class GenericEnumDataRow {
             return mapping.get(this);
         }
 
+        public String toNormalString() {
+            return super.toString();
+        }
+
         @Override
         public Object getValue() {
             return this;
@@ -368,6 +388,10 @@ public abstract class GenericEnumDataRow {
         @Override
         public String toString() {
             return mapping.get(this);
+        }
+
+        public String toNormalString() {
+            return super.toString();
         }
 
         @Override
@@ -420,6 +444,10 @@ public abstract class GenericEnumDataRow {
         @Override
         public String toString() {
             return mapping.get(this);
+        }
+
+        public String toNormalString() {
+            return super.toString();
         }
 
         @Override

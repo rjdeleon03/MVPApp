@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Base;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 

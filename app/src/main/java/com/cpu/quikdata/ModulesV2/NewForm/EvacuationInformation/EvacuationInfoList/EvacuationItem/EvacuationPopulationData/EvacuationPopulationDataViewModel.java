@@ -65,7 +65,7 @@ public class EvacuationPopulationDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<EvacuationPopulationDataRow> callback) {
         EvacuationPopulationDataRow row = new EvacuationPopulationDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

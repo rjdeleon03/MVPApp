@@ -57,7 +57,7 @@ public class DiseasesDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<DiseasesDataRow> callback) {
         DiseasesDataRow row = new DiseasesDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

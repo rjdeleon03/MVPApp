@@ -59,7 +59,7 @@ public class SpecialNeedsDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<SpecialNeedsDataRow> callback) {
         SpecialNeedsDataRow row = new SpecialNeedsDataRow();
-        row.setSpecialNeedsType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setSpecialNeedsType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

@@ -59,7 +59,7 @@ public class DamageDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<DamageDataRow> callback) {
         DamageDataRow row = new DamageDataRow();
-        row.setHouseType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setHouseType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

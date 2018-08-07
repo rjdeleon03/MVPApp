@@ -74,7 +74,7 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
 
     @Override
     public GenericEnumDataRow.LivelihoodsType getActualType() {
-        return GenericEnumDataRow.LivelihoodsType.getValueOf(livelihoodsType);
+        return GenericEnumDataRow.LivelihoodsType.valueOf(livelihoodsType);
     }
 
     @Override

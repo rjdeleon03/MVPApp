@@ -61,7 +61,7 @@ public class VulnerableDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<VulnerableDataRow> callback) {
         VulnerableDataRow row = new VulnerableDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

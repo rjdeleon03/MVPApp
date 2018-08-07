@@ -2,13 +2,14 @@ package com.cpu.quikdata.ModelsV2.Form.EvacuationInformation;
 
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowTotalizableHolder;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericEnumDataRow.EvacuationType> {
+public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericEnumDataRow.EvacuationType>, IEnumDataRowTotalizableHolder {
 
     @Required
     @PrimaryKey
@@ -100,4 +101,8 @@ public class EvacuationItem extends RealmObject implements IEnumDataRow<GenericE
     @Override
     public void setupFields() {}
 
+    @Override
+    public void addTotalRow() {
+        evacuationPopulationData.addTotalRow();
+    }
 }

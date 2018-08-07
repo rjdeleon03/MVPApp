@@ -2,7 +2,9 @@ package com.cpu.quikdata.ModelsV2.PrefilledData;
 
 import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowTotalizableHolder;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
@@ -12,7 +14,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class PrefilledData extends RealmObject implements IFieldHolder {
+public class PrefilledData extends RealmObject implements IFieldHolder, IEnumDataRowTotalizableHolder {
     
     private QuestionItemModelString orgName;
     private QuestionItemModelString sitio;
@@ -155,7 +157,7 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
                 if (houseType == GenericEnumDataRow.HouseType.ALL) continue;
 
                 BaselineHousesRow row = realm.createObject(BaselineHousesRow.class, AppUtil.generateId());
-                row.setHouseType(houseType.toString());
+                row.setHouseType(houseType.toNormalString());
                 row.setupFields();
                 houses.add(row);
             }
@@ -165,10 +167,43 @@ public class PrefilledData extends RealmObject implements IFieldHolder {
                 if (ageGroup == GenericEnumDataRow.AgeGroup.ALL) continue;
 
                 BaselinePopulationRow row = realm.createObject(BaselinePopulationRow.class, AppUtil.generateId());
-                row.setAgeGroup(ageGroup.toString());
+                row.setAgeGroup(ageGroup.toNormalString());
                 row.setupFields();
                 population.add(row);
             }
+        }
+    }
+
+    @Override
+    public void addTotalRow() {
+
+        if(population.size() > 0) {
+            BaselinePopulationRow totalRow = new BaselinePopulationRow();
+            totalRow.setAgeGroup(GenericEnumDataRow.AgeGroup.ALL.toNormalString());
+            totalRow.setCount(new QuestionItemModelGenderTuple(totalRow.getAgeGroup(), 0, 0));
+
+            for (BaselinePopulationRow row : population) {
+
+                QuestionItemModelGenderTuple destModel = totalRow.getCount();
+                QuestionItemModelGenderTuple srcModel = row.getCount();
+
+                destModel.setMale(destModel.getMale() + srcModel.getMale());
+                destModel.setFemale(destModel.getFemale() + srcModel.getFemale());
+            }
+            population.add(totalRow);
+        }
+
+        if(houses.size() > 0) {
+            BaselineHousesRow totalRow = new BaselineHousesRow();
+            totalRow.setHouseType(GenericEnumDataRow.HouseType.ALL.toNormalString());
+            totalRow.setCount(new QuestionItemModelSingleNumber(totalRow.getHouseType(), 0));
+            for (BaselineHousesRow row : houses) {
+
+                QuestionItemModelSingleNumber destModel = totalRow.getCount();
+                QuestionItemModelSingleNumber srcModel = row.getCount();
+                destModel.setValue(destModel.getValue() + srcModel.getValue());
+            }
+            houses.add(totalRow);
         }
     }
 }

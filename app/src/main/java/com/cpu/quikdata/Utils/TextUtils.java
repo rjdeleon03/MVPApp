@@ -29,7 +29,7 @@ public class TextUtils {
         titleMap.put("SHELTER_INFO_DAMAGE", "Damage to Houses");
         titleMap.put("SHELTER_INFO_COPING", "Coping");
         titleMap.put("SHELTER_INFO_NEEDS", "Needs");
-        titleMap.put("SHELTER_INFO_ASSISTANCE", "Assistance");
+        titleMap.put("SHELTER_ASSISTANCE", "Assistance");
         titleMap.put("SHELTER_INFO_GAPS", "Gaps");
 
         titleMap.put("FOOD_SECURITY", "Food Security");
@@ -86,6 +86,16 @@ public class TextUtils {
         textMap.put("barangay", "Barangay");
         textMap.put("city", "City/Municipality");
         textMap.put("province", "Province");
+
+        textMap.put("AGE_0_5", "Ages 0 to 5");
+        textMap.put("AGE_6_9", "Ages 6 to 9");
+        textMap.put("AGE_10_12", "Ages 10 to 12");
+        textMap.put("AGE_13_17", "Ages 13 to 17");
+        textMap.put("AGE_18_59", "Ages 18 to 59");
+        textMap.put("AGE_60_PLUS", "Ages 60+");
+        textMap.put("CONCRETE", "Concrete");
+        textMap.put("SEMI_CONCRETE", "Semi-Concrete");
+        textMap.put("LIGHT_MATERIALS", "Light Materials");
 
         // Common
         textMap.put("remarks", "Remarks");

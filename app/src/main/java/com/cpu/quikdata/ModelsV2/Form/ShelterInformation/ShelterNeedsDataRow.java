@@ -61,7 +61,7 @@ public class ShelterNeedsDataRow extends RealmObject implements IEnumDataRow<Gen
 
     @Override
     public GenericEnumDataRow.NeedsType getActualType() {
-        return GenericEnumDataRow.NeedsType.getValueOf(needsType);
+        return GenericEnumDataRow.NeedsType.valueOf(needsType);
     }
 
     @Override

@@ -54,7 +54,7 @@ public class DiseasesDataRow extends RealmObject implements IEnumDataRow<Generic
 
     @Override
     public GenericEnumDataRow.AgeGroup getActualType() {
-        return GenericEnumDataRow.AgeGroup.getValueOf(ageGroup);
+        return GenericEnumDataRow.AgeGroup.valueOf(ageGroup);
     }
 
     @Override

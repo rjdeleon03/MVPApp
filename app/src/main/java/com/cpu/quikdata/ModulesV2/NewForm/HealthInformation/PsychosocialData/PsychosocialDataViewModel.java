@@ -59,7 +59,7 @@ public class PsychosocialDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<PsychosocialDataRow> callback) {
         PsychosocialDataRow row = new PsychosocialDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

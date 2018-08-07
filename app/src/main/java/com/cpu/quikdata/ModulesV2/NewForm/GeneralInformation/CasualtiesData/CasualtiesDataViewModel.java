@@ -57,7 +57,7 @@ public class CasualtiesDataViewModel
     @Override
     public void getNewRow(IBaseDataManager<CasualtiesDataRow> callback) {
         CasualtiesDataRow row = new CasualtiesDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

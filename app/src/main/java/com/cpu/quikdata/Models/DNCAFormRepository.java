@@ -44,7 +44,6 @@ import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashCopingDetails;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashGapsDetails;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
-import com.cpu.quikdata.ModelsV2.ServerForm.ServerForm;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
 import com.cpu.quikdata.ModulesV2.FormList.Item.IFormListItemViewModel;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
@@ -57,8 +56,6 @@ import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
-import io.realm.RealmObject;
-import io.realm.RealmResults;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -444,6 +441,7 @@ public class DNCAFormRepository implements DNCAFormDataSource {
     public void submitForm(Realm realm, Form form, final IFormListItemViewModel callback) {
         final Form formCopy = realm.copyFromRealm(form);
         formCopy.setPrefilledData(performGetPrefilledData(realm));
+        formCopy.initTotalizableData();
 
         QuikDataApplication.retrofitClient.submitForm(formCopy, new Callback<ResponseBody>() {
             @Override

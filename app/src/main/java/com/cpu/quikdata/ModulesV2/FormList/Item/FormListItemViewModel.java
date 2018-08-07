@@ -5,17 +5,18 @@ import android.databinding.ObservableField;
 
 import com.cpu.quikdata.ModelsV2.Form.CaseStories.CaseStories;
 import com.cpu.quikdata.ModelsV2.Form.Form;
-import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.CalamityDetails;
+import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.FormList.IFormListDataManager;
-import com.google.gson.Gson;
 
 public class FormListItemViewModel implements IFormListItemViewModel {
 
     private IFormListDataManager<Form> mDataManager;
     private String mFormId;
 
-    public final ObservableField<String> sitio = new ObservableField<>("");
+    public final ObservableField<String> assessmentDate = new ObservableField<>("");
+    public final ObservableField<String> calamityDescription = new ObservableField<>("");
     public final ObservableField<String> imagePath = new ObservableField<>("");
     public final ObservableBoolean isSyncing = new ObservableBoolean(false);
 
@@ -28,7 +29,12 @@ public class FormListItemViewModel implements IFormListItemViewModel {
         QuestionItemModelDate date = form.getFormDetails().getAssessmentDate();
         if (date != null) {
             int month = date.getMonth()+1;
-            sitio.set(date.getYear() + "/" + month + "/" + date.getDayOfMonth());
+            assessmentDate.set(date.getYear() + "/" + month + "/" + date.getDayOfMonth());
+        }
+
+        if (form.getGeneralInformation().getCalamityDetails() != null) {
+            CalamityDetails calamityDetails = form.getGeneralInformation().getCalamityDetails();
+            calamityDescription.set(calamityDetails.getStringFields().get(0).getValue());
         }
 
         if (form.getCaseStories() != null) {

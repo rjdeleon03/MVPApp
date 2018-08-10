@@ -2,7 +2,7 @@ package com.cpu.quikdata;
 
 public class AppConstants {
 
-    public static final String URL = "http://192.168.43.42:3000";
+    public static final String URL = "http://quikdata.herokuapp.com";
     public static final String ROUTE_DNCA = "/api/dnca";
     public static final String ROUTE_IMAGES = "/api/images";
 

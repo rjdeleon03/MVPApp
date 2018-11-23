@@ -38,5 +38,4 @@ public class NewFormFragment extends BaseFragment<NewFormViewModel> {
         binding.setViewModel(mViewModel);
         return view;
     }
-
 }

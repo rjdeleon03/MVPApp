@@ -53,30 +53,13 @@ public class SpecialNeedsDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(SpecialNeedsDataRow row, Realm realm) {
-        SpecialNeedsDataRow rowToDelete = realm.where(SpecialNeedsDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */
     @Override
     public void getNewRow(IBaseDataManager<SpecialNeedsDataRow> callback) {
         SpecialNeedsDataRow row = new SpecialNeedsDataRow();
-        row.setSpecialNeedsType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setSpecialNeedsType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

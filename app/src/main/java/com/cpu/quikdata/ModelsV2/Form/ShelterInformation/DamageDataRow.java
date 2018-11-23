@@ -4,7 +4,9 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -71,5 +73,11 @@ public class DamageDataRow extends RealmObject implements IEnumDataRow<GenericEn
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "partialDamageHouses", 0));
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "fullDamageHouses", 0));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        numberFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

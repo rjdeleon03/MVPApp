@@ -1,5 +1,6 @@
 package com.cpu.quikdata.ModelsV2.Form;
 
+import com.cpu.quikdata.ModelsV2.Form.CaseStories.CaseStories;
 import com.cpu.quikdata.ModelsV2.Form.EvacuationInformation.EvacuationInfoList;
 import com.cpu.quikdata.ModelsV2.Form.FoodSecurityInformation.FoodSecurityInformation;
 import com.cpu.quikdata.ModelsV2.Form.GeneralInformation.GeneralInformation;
@@ -7,6 +8,7 @@ import com.cpu.quikdata.ModelsV2.Form.HealthInformation.HealthInformation;
 import com.cpu.quikdata.ModelsV2.Form.LivelihoodsInformation.LivelihoodsInformation;
 import com.cpu.quikdata.ModelsV2.Form.ShelterInformation.ShelterInformation;
 import com.cpu.quikdata.ModelsV2.Form.WashInformation.WashInformation;
+import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -22,6 +24,7 @@ public class Form extends RealmObject {
     @Required
     private String data;
 
+    private PrefilledData prefilledData;
     private FormDetails formDetails;
     private GeneralInformation generalInformation;
     private ShelterInformation shelterInformation;
@@ -30,6 +33,7 @@ public class Form extends RealmObject {
     private HealthInformation healthInformation;
     private WashInformation washInformation;
     private EvacuationInfoList evacuationInfoList;
+    private CaseStories caseStories;
 
     public String getId() {
         return id;
@@ -45,6 +49,14 @@ public class Form extends RealmObject {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public PrefilledData getPrefilledData() {
+        return prefilledData;
+    }
+
+    public void setPrefilledData(PrefilledData prefilledData) {
+        this.prefilledData = prefilledData;
     }
 
     public FormDetails getFormDetails() {
@@ -109,5 +121,38 @@ public class Form extends RealmObject {
 
     public void setEvacuationInfoList(EvacuationInfoList evacuationInfoList) {
         this.evacuationInfoList = evacuationInfoList;
+    }
+
+    public CaseStories getCaseStories() {
+        return caseStories;
+    }
+
+    public void setCaseStories(CaseStories caseStories) {
+        this.caseStories = caseStories;
+    }
+
+    public void deleteData() {
+        formDetails.deleteData();
+        generalInformation.deleteData();
+        shelterInformation.deleteData();
+        foodSecurityInformation.deleteData();
+        livelihoodsInformation.deleteData();
+        healthInformation.deleteData();
+        washInformation.deleteData();
+        evacuationInfoList.deleteData();
+        caseStories.deleteData();
+        deleteFromRealm();
+    }
+
+    public void initTotalizableData() {
+        generalInformation.getPopulationData().addTotalRow();
+        generalInformation.getVulnerableData().addTotalRow();
+        generalInformation.getCasualtiesData().addTotalRow();
+        shelterInformation.getDamageData().addTotalRow();
+        evacuationInfoList.addTotalRow();
+
+        if (prefilledData != null) {
+            prefilledData.addTotalRow();
+        }
     }
 }

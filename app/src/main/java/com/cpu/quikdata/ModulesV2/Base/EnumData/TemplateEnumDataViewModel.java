@@ -232,9 +232,9 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
      * @param rowIndex
      */
     @Override
-    public void deletedRowAtIndex(final int rowIndex) {
+    public void deletedRowAtIndex(int rowIndex) {
 
-        final R row = mRowHolder.getRows().get(rowIndex);
+        R row = mRowHolder.getRows().get(rowIndex);
         if (row == null) return;
 
         E type = row.getActualType();
@@ -269,28 +269,31 @@ public abstract class TemplateEnumDataViewModel<AC extends ITemplateEnumDataFrag
         }
         notifyPropertyChanged(BR.shouldShowSpinner);
         notifyPropertyChanged(BR.shouldEnableAddButton);
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-
-                deleteRowFromDb(row, realm);
-
-                mRowHolder.getRows().remove(rowIndex);
-                realm.insertOrUpdate(mRowHolder);
-                notifyPropertyChanged(BR.rowList);
-            }
-        });
+        deleteRow(rowIndex, row);
 
         // Reset spinner selected index to 0
         spinnerSelectedIndex.set(0);
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
+     * Deletes the row from the database and the list
+     * @param rowIndex
      * @param row
-     * @param realm
      */
-    protected abstract void deleteRowFromDb(R row, Realm realm);
+    protected void deleteRow(final int rowIndex, final R row) {
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                R managedRow = realm.copyToRealmOrUpdate(row);
+                managedRow.deleteData();
+
+                mRowHolder.getRows().remove(rowIndex);
+                realm.insertOrUpdate(mRowHolder);
+                notifyPropertyChanged(BR.rowList);
+            }
+        });
+    }
 }

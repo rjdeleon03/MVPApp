@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/custom_toolbar_new_form"></include>
+        <include layout="@layout/custom_toolbar_list"></include>
 
 
         <LinearLayout

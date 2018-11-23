@@ -8,5 +8,5 @@ public interface ITemplateEnumDataFragment extends IBaseInterface {
 
     void onCardSelected(int index);
 
-    void onDeleteCardButtonPressed();
+    void onDeleteCardButtonPressed(int index);
 }

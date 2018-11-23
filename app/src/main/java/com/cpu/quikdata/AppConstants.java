@@ -2,13 +2,16 @@ package com.cpu.quikdata;
 
 public class AppConstants {
 
-    public static final String URL = "http://10.0.2.2:3000";
-    public static final String ROUTE_DNCA = "/dnca";
+    public static final String URL = "http://quikdata.herokuapp.com";
+    public static final String ROUTE_DNCA = "/api/dnca";
     public static final String ROUTE_IMAGES = "/api/images";
+
+    public static final String REALM_ID_FIELD = "id";
+    public static final String FORM_ITEM_ID = "FORM_ITEM_ID";
 
     public static final String VIEWMODEL_TAG = "_VIEWMODEL";
 
-    public static final int MAX_IMAGE_COUNT = 5;
+    public static final int MAX_IMAGE_COUNT = 6;
     public static final int REQUEST_IMAGE_CAPTURE = 100;
 
     public enum QuestionItemType {

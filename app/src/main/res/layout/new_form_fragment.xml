@@ -19,259 +19,287 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <android.support.v7.widget.GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="72dp">
+                android:padding="8dp"
+                app:columnCount="2"
+                app:alignmentMode="alignMargins"
+                app:columnOrderPreserved="false">
 
-                <GridLayout
-                    android:columnCount="2"
-                    android:rowCount="3"
-                    android:alignmentMode="alignMargins"
-                    android:columnOrderPreserved="false"
-                    android:layout_weight="8"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:padding="8dp">
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnFormDetailsButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnFormDetailsButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Form Details"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Form Details"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnGenInfoButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnGenInfoButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="General Information"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="General Information"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
+                
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnShelterInfoButtonPressed()}">
 
-                    </android.support.v7.widget.CardView>
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnShelterInfoButtonPressed()}">
-
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Shelter and\nNon-Food Items"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Shelter and\nNon-Food Items"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnFoodSecurityInfoButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnFoodSecurityInfoButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Food Security"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Food Security"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnLivelihoodsInfoButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnLivelihoodsInfoButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Livelihoods"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Livelihoods"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnHealthInfoButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnHealthInfoButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Health"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Health"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnWashInfoButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnWashInfoButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Water, Sanitation, and Hygiene"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Water, Sanitation, and Hygiene"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnEvacuationInfoButtonPressed()}">
 
-                    <android.support.v7.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        android:onClick="@{() -> viewModel.navigateOnEvacuationInfoButtonPressed()}">
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_margin="16dp"
-                            android:orientation="vertical"
+                        <TextView
+                            android:text="Evacuation Sites"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:text="Evacuation Sites"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                        </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-                    </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="@{() -> viewModel.navigateOnCaseStoriesButtonPressed()}">
 
-                </GridLayout>
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="16dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-            </LinearLayout>
+                        <TextView
+                            android:text="Case Stories"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </android.support.v7.widget.GridLayout>
 
         </ScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_check"
+            android:onClick="@{() -> viewModel.navigateOnSaveButtonPressed()}"
+            app:backgroundTint="@android:color/holo_green_light"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

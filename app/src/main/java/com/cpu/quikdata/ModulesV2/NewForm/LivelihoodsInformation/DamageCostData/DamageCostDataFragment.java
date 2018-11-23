@@ -9,7 +9,7 @@ public class DamageCostDataFragment extends TemplateEnumDataFragment<DamageCostD
 
     public DamageCostDataFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.HEALTH_DISEASES.toString();
+        mTag = NewFormActivity.NewFormComponent.LIVELIHOODS_DAMAGE.toString();
     }
 
     /**

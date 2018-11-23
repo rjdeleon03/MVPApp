@@ -59,4 +59,12 @@ public class WashInformation extends RealmObject implements IAssistanceDataConta
     public void setAssistanceData(AssistanceData assistanceData) {
         this.washAssistanceData = assistanceData;
     }
+
+    public void deleteData() {
+        washConditionsDetails.deleteData();
+        washCopingDetails.deleteData();
+        washGapsDetails.deleteData();
+        washAssistanceData.deleteData();
+        deleteFromRealm();
+    }
 }

@@ -1,9 +1,23 @@
 package com.cpu.quikdata.ModulesV2.NewForm;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.cpu.quikdata.AppConstants;
+import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ICameraSourceViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.FoodSecurityInformation.FoodSecurityInformationFragment;
@@ -22,8 +36,14 @@ import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationFragmen
 import com.cpu.quikdata.ModulesV2.NewForm.WashInformation.WashInformationViewModel;
 import com.cpu.quikdata.R;
 import com.cpu.quikdata.ViewFactory;
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.model.Image;
 
-public class NewFormActivity extends AppCompatActivity implements INewFormActivity {
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class NewFormActivity extends BaseActivity implements INewFormActivity {
 
     public enum NewFormComponent {
         MENU,
@@ -88,21 +108,40 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
     }
 
     private static int FRAGMENT_CONTAINER = R.id.new_form_fragment_container;
+    private static final String TOOLBAR_TITLE = "New DNCA Form";
+    private NewFormViewModel mNewFormViewModel;
+    private ICameraSourceViewModel mCameraSourceViewModel;
+
+    public NewFormActivity() {
+        super(TOOLBAR_TITLE, FRAGMENT_CONTAINER);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_form_activity);
 
+        // Get item ID from bundle extra
+        String itemId = null;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            itemId = extras.getString(AppConstants.FORM_ITEM_ID);
+        }
+
+        // Setup the toolbar
+        setupToolbar(true);
+
         NewFormFragment newFormFragment = (NewFormFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.MENU, FRAGMENT_CONTAINER);
-        final NewFormViewModel newFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
-        newFormFragment.setViewModel(newFormViewModel);
+        mNewFormViewModel = (NewFormViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.MENU, this, this);
+        newFormFragment.setViewModel(mNewFormViewModel);
+
+        mNewFormViewModel.getData(itemId);
     }
 
     @Override
     public void onBackPressed() {
-        if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            Injection.provideDncaRepository(this).submitForm();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            mNewFormViewModel.navigateOnBackButtonPressed();
         }
         super.onBackPressed();
     }
@@ -166,6 +205,84 @@ public class NewFormActivity extends AppCompatActivity implements INewFormActivi
 
     @Override
     public void onCaseStoriesButtonPressed() {
+        CaseStoriesFragment caseStoriesFragment = (CaseStoriesFragment) ViewFactory.findOrCreateFragment(getSupportFragmentManager(), NewFormComponent.CASE_STORIES, FRAGMENT_CONTAINER);
+        final CaseStoriesViewModel caseStoriesViewModel = (CaseStoriesViewModel) ViewFactory.findOrCreateViewModel(getSupportFragmentManager(), NewFormComponent.CASE_STORIES, this, this);
+        caseStoriesFragment.setViewModel(caseStoriesViewModel);
+        mCameraSourceViewModel = caseStoriesViewModel;
+    }
 
+    @Override
+    public void onCaseStoriesAddImageButtonPressed(ICameraSourceViewModel cameraSourceViewModel, int maxAllowedImageCount) {
+        ImagePicker.create(this)
+                .multi()
+                .limit(maxAllowedImageCount)
+                .includeVideo(false)
+                .theme(R.style.AppTheme)
+                .toolbarFolderTitle("Select Folder")
+                .toolbarImageTitle("Select Image")
+                .start();
+        mCameraSourceViewModel = cameraSourceViewModel;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            if (mCameraSourceViewModel != null) {
+
+                List<String> imagePaths = new ArrayList<>();
+                List<Image> images = ImagePicker.getImages(data);
+                for (Image image : images) {
+                    imagePaths.add(image.getPath());
+                }
+                mCameraSourceViewModel.onImagesLoaded(imagePaths);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /**
+     * Handles item delete button pressed event
+     */
+    @Override
+    public void onItemDeleteButtonPressed(final int index) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        mCameraSourceViewModel.deleteImagePathAtIndex(index);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this image?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+    }
+
+    /**
+     * Handles item pressed/opened event
+     * @param path
+     */
+    @Override
+    public void onItemOpened(String path) {
+
+        File file = new File(path);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri uri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
+        intent.setDataAndType(uri, "image/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSaveButtonPressed() {
+        super.onBackPressed();
     }
 }

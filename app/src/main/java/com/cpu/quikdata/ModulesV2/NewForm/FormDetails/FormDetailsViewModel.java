@@ -7,9 +7,10 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
+import com.cpu.quikdata.ModulesV2.NewForm.INewFormActivity;
 import com.cpu.quikdata.ModulesV2.NewForm.INewFormDataManager;
 
-public class FormDetailsViewModel extends TemplateQuestionViewModel<INewFormDataManager, FormDetails>{
+public class FormDetailsViewModel extends TemplateQuestionViewModel<INewFormActivity, FormDetails>{
 
     private FormDetails mFormDetails;
 
@@ -30,14 +31,9 @@ public class FormDetailsViewModel extends TemplateQuestionViewModel<INewFormData
     public void onDataReceived(FormDetails data) {
         mFormDetails = data;
 
-        int i = 0;
-        for(QuestionItemModelString model : data.getStringFields()) {
-            if (i == 1) {
-                mQuestions.add(new TemplateQuestionItemViewModelDate(data.getDateFields().get(0)));
-            }
-
-            mQuestions.add(new TemplateQuestionItemViewModelString(model));
-            i++;
-        }
+        mQuestions.add(new TemplateQuestionItemViewModelDate(data.getAssessmentDate()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(data.getInterviewer()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(data.getInterviewerNo()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(data.getInfoSources()));
     }
 }

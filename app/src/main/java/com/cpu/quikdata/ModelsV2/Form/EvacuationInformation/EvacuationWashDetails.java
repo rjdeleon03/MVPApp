@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -47,10 +48,17 @@ public class EvacuationWashDetails extends RealmObject implements IFieldHolder {
         if (booleanStringFields.isEmpty()) {
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "cleanSpaceFood", false, "remarks", ""));
             booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "cleanWaterSource", false, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "segregatedToilets", false, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "properLighting", false, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "securityOfficers", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "cleanToilet", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "properGarbageDisposal", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "spaceHealthWorkers", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "spaceSick", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "evacuationHandWashingFacilities", false, "remarks", ""));
         }
+    }
 
+    @Override
+    public void deleteData() {
+        booleanStringFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

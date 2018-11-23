@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModulesV2.NewForm.Common.AssistanceData;
 
 import android.databinding.Bindable;
 
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.BR;
 import com.cpu.quikdata.Models.DNCAFormRepository;
 import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
@@ -14,9 +15,11 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDate;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
@@ -99,38 +102,7 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
      */
     @Override
     public void deletedRowAtIndex(final int rowIndex) {
-        final AssistanceDataRow row = mRowHolder.getRows().get(rowIndex);
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-
-                deleteRowFromDb(row, realm);
-
-                mRowHolder.getRows().remove(rowIndex);
-                realm.insertOrUpdate(mRowHolder);
-                notifyPropertyChanged(BR.rowList);
-            }
-        });
-    }
-
-    /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(AssistanceDataRow row, Realm realm) {
-        AssistanceDataRow rowToDelete = realm.where(AssistanceDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.getDateFields().deleteAllFromRealm();
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        deleteRow(rowIndex, mRowHolder.getRows().get(rowIndex));
     }
 
     /**
@@ -161,5 +133,6 @@ public abstract class AssistanceDataViewModel<D extends IAssistanceDataContainer
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }
+        questionList.add(4, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("beneficiaries")));
     }
 }

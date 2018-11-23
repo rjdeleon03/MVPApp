@@ -12,7 +12,9 @@ import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.TemplateEnumDataViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.PrefilledData.IBaseDataManager;
 
 import java.util.List;
@@ -51,29 +53,13 @@ public class DamageDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(DamageDataRow row, Realm realm) {
-        DamageDataRow rowToDelete = realm.where(DamageDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */
     @Override
     public void getNewRow(IBaseDataManager<DamageDataRow> callback) {
         DamageDataRow row = new DamageDataRow();
-        row.setHouseType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setHouseType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 
@@ -89,5 +75,8 @@ public class DamageDataViewModel
         for(QuestionItemModelSingleNumber model : row.getNumberFields()) {
             questionList.add(new TemplateQuestionItemViewModelSingleNumber(model));
         }
+        questionList.add(6, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("otherInformation")));
+        questionList.add(3, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("landOwnership")));
+        questionList.add(0, new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("houseOwnership")));
     }
 }

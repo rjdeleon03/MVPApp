@@ -1,18 +1,22 @@
 package com.cpu.quikdata.ModelsV2.PrefilledData;
 
-import com.cpu.quikdata.Models.Generics.GenericEnumDataRow;
+import com.cpu.quikdata.AppUtil;
+import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class BaselinePopulationRow extends RealmObject {
+public class BaselinePopulationRow extends RealmObject implements IFieldHolder {
 
     @Required
     @PrimaryKey
     private String id;
 
     private String ageGroup;
+    private QuestionItemModelGenderTuple count;
 
     private int male = 0;
 
@@ -34,6 +38,14 @@ public class BaselinePopulationRow extends RealmObject {
         this.ageGroup = ageGroup;
     }
 
+    public QuestionItemModelGenderTuple getCount() {
+        return count;
+    }
+
+    public void setCount(QuestionItemModelGenderTuple count) {
+        this.count = count;
+    }
+
     public int getMale() {
         return male;
     }
@@ -48,5 +60,21 @@ public class BaselinePopulationRow extends RealmObject {
 
     public void setFemale(int female) {
         this.female = female;
+    }
+
+    @Override
+    public void setupFields() {
+        Realm realm = getRealm();
+        if (count == null) {
+            count = realm.createObject(QuestionItemModelGenderTuple.class, AppUtil.generateId());
+            count.setQuestion(ageGroup);
+            count.setMale(0);
+            count.setFemale(0);
+        }
+    }
+
+    @Override
+    public void deleteData() {
+        // This will not be deleted
     }
 }

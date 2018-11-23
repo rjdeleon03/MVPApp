@@ -101,7 +101,7 @@ public abstract class IncomeSourceDataViewModel
             @Override
             public void execute(Realm realm) {
 
-                deleteRowFromDb(row, realm);
+                row.deleteData();
 
                 mRowHolder.getRows().remove(rowIndex);
                 realm.insertOrUpdate(mRowHolder);
@@ -111,30 +111,13 @@ public abstract class IncomeSourceDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(IncomeSourceDataRow row, Realm realm) {
-        IncomeSourceDataRow rowToDelete = realm.where(IncomeSourceDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getStringFields().deleteAllFromRealm();
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */
     @Override
     public void getNewRow(IBaseDataManager<IncomeSourceDataRow> callback) {
         IncomeSourceDataRow row = new IncomeSourceDataRow();
-        row.setIncomeSourceType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setIncomeSourceType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

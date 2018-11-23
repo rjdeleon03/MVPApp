@@ -9,7 +9,7 @@ public class SpecialNeedsDataFragment extends TemplateEnumDataFragment<SpecialNe
 
     public SpecialNeedsDataFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.HEALTH_DISEASES.toString();
+        mTag = NewFormActivity.NewFormComponent.HEALTH_SPECIAL_NEEDS.toString();
     }
 
     /**

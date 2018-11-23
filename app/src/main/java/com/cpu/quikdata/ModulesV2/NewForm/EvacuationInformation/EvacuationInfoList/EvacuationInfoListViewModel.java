@@ -103,36 +103,7 @@ public class EvacuationInfoListViewModel
      */
     @Override
     public void deletedRowAtIndex(final int rowIndex) {
-        final EvacuationItem row = mRowHolder.getRows().get(rowIndex);
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-
-                deleteRowFromDb(row, realm);
-
-                mRowHolder.getRows().remove(rowIndex);
-                realm.insertOrUpdate(mRowHolder);
-                notifyPropertyChanged(BR.rowList);
-            }
-        });
-    }
-
-    /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(EvacuationItem row, Realm realm) {
-        EvacuationItem rowToDelete = realm.where(EvacuationItem.class).equalTo("id", row.getId()).findFirst();
-        try {
-//            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        deleteRow(rowIndex, mRowHolder.getRows().get(rowIndex));
     }
 
     /**

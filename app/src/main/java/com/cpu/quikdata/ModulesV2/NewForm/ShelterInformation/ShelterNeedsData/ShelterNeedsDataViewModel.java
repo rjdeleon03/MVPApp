@@ -53,29 +53,13 @@ public class ShelterNeedsDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(ShelterNeedsDataRow row, Realm realm) {
-        ShelterNeedsDataRow rowToDelete = realm.where(ShelterNeedsDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */
     @Override
     public void getNewRow(IBaseDataManager<ShelterNeedsDataRow> callback) {
         ShelterNeedsDataRow row = new ShelterNeedsDataRow();
-        row.setNeedsType(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setNeedsType(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

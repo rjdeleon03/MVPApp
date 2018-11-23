@@ -10,7 +10,7 @@
     </data>
 
     <TableRow
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:descendantFocusability="afterDescendants">
@@ -27,15 +27,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@={viewModel.question}"
-                android:maxWidth="100dp"
-                android:textColor="@android:color/black" />
+                android:textSize="14sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textStyle="bold" />
 
             <android.support.v7.widget.AppCompatSpinner
-                android:layout_width="wrap_content"
+                android:id="@+id/template_mult_choice_spinner"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
                 android:entries="@{viewModel.choices}"
-                android:selectedItemPosition="@={viewModel.selected}" />
+                android:selectedItemPosition="@={viewModel.selected}"/>
 
         </LinearLayout>
 

@@ -92,8 +92,9 @@
                     android:layout_margin="4dp"
                     android:src="@drawable/ic_add"
                     android:onClick="@{() -> viewModel.navigateOnAddButtonPressed()}"
-                    app:backgroundTint="@color/colorAccent"
                     app:elevation="0dp"
+                    app:tint="@color/btn_ic_color"
+                    app:backgroundTint="@color/btn_accent_color"
                     app:enabled="@{viewModel.shouldEnableAddButton}"/>
 
                 <!--

@@ -68,4 +68,13 @@ public class ShelterInformation extends RealmObject implements IAssistanceDataCo
     public void setAssistanceData(AssistanceData assistanceData) {
         this.shelterAssistanceData = assistanceData;
     }
+
+    public void deleteData() {
+        damageData.deleteData();
+        shelterCopingDetails.deleteData();
+        shelterNeedsData.deleteData();
+        shelterGapsDetails.deleteData();
+        shelterAssistanceData.deleteData();
+        deleteFromRealm();
+    }
 }

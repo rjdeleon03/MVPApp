@@ -43,7 +43,7 @@ public class EvacuationCenterDetailsViewModel extends EvacuationItemTemplateQues
             mQuestions.add(new TemplateQuestionItemViewModelString(model));
         }
 
-        int i = 2;
+        int i = 3;
         for(QuestionItemModelMultChoice model : mEvacuationCenterDetails.getMultChoiceFields()) {
             mQuestions.add(i, new TemplateQuestionItemViewModelMultChoice(model));
             i++;

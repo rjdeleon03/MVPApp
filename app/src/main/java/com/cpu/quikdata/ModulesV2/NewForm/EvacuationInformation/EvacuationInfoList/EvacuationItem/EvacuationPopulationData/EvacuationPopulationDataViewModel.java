@@ -59,29 +59,13 @@ public class EvacuationPopulationDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(EvacuationPopulationDataRow row, Realm realm) {
-        EvacuationPopulationDataRow rowToDelete = realm.where(EvacuationPopulationDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getNumberFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */
     @Override
     public void getNewRow(IBaseDataManager<EvacuationPopulationDataRow> callback) {
         EvacuationPopulationDataRow row = new EvacuationPopulationDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

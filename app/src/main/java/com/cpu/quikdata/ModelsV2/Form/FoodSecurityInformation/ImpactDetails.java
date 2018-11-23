@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBool
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -64,10 +65,10 @@ public class ImpactDetails extends RealmObject implements IFieldHolder {
             booleanStringFields = new RealmList<>();
         }
         if (booleanStringFields.isEmpty()) {
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAvailabilityProblem", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessLack", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessContraints", true, "remarks", ""));
-            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "otherSources", true, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAvailabilityProblem", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessLack", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "foodAccessConstraints", false, "remarks", ""));
+            booleanStringFields.add(new QuestionItemModelBooleanString(AppUtil.generateId(), "otherSources", false, "remarks", ""));
         }
 
         if (doubleStringFields == null) {
@@ -85,5 +86,13 @@ public class ImpactDetails extends RealmObject implements IFieldHolder {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "foodProductionChanged", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "nextFoodRation", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        booleanStringFields.deleteAllFromRealm();
+        stringFields.deleteAllFromRealm();
+        doubleStringFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

@@ -4,6 +4,7 @@ import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModelsV2.Base.IFieldHolder;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -53,5 +54,11 @@ public class ShelterGapsDetails extends RealmObject implements IFieldHolder {
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "gbvProtectionService", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "gbvProtectionFocalPoint", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        stringFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

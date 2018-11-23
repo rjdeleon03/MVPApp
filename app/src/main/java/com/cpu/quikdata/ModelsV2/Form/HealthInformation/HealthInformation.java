@@ -77,4 +77,14 @@ public class HealthInformation extends RealmObject implements IAssistanceDataCon
     public void setAssistanceData(AssistanceData assistanceData) {
         this.healthAssistanceData = assistanceData;
     }
+
+    public void deleteData() {
+        diseasesData.deleteData();
+        specialNeedsData.deleteData();
+        psychosocialData.deleteData();
+        healthCopingDetails.deleteData();
+        healthGapsDetails.deleteData();
+        healthAssistanceData.deleteData();
+        deleteFromRealm();
+    }
 }

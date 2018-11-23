@@ -6,6 +6,7 @@ public class PrefilledDataFragment extends TemplateQuestionFragment {
 
     public PrefilledDataFragment() {
         // Required empty public constructor
+        mTag = "Settings";
     }
 
     /**

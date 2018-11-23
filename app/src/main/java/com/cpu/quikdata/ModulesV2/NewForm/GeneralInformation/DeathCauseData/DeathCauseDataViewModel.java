@@ -51,29 +51,13 @@ public class DeathCauseDataViewModel
     }
 
     /**
-     * Deletes the specified row from the database with the given realm instance
-     * @param row
-     * @param realm
-     */
-    @Override
-    protected void deleteRowFromDb(DeathCauseDataRow row, Realm realm) {
-        DeathCauseDataRow rowToDelete = realm.where(DeathCauseDataRow.class).equalTo("id", row.getId()).findFirst();
-        try {
-            rowToDelete.getGenderTupleFields().deleteAllFromRealm();
-            rowToDelete.deleteFromRealm();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * Gets a new row
      * @param callback
      */
     @Override
     public void getNewRow(IBaseDataManager<DeathCauseDataRow> callback) {
         DeathCauseDataRow row = new DeathCauseDataRow();
-        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toString());
+        row.setAgeGroup(typeList.get(spinnerSelectedIndex.get()).toNormalString());
         callback.onDataReceived(row);
     }
 

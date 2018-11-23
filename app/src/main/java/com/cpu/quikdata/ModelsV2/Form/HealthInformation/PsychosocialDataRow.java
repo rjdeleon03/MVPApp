@@ -6,6 +6,7 @@ import com.cpu.quikdata.ModelsV2.Base.IEnumDataRow;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -81,5 +82,12 @@ public class PsychosocialDataRow extends RealmObject implements IEnumDataRow<Gen
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "mentalStressManifestations", ""));
             stringFields.add(new QuestionItemModelString(AppUtil.generateId(), "psychosocialNeeds", ""));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        genderTupleFields.deleteAllFromRealm();
+        stringFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

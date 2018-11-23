@@ -9,7 +9,7 @@ public class VulnerableDataFragment extends TemplateEnumDataFragment<VulnerableD
 
     public VulnerableDataFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.GEN_INFO_POPULATION.toString();
+        mTag = NewFormActivity.NewFormComponent.GEN_INFO_VULNERABLE.toString();
     }
 
     /**

@@ -6,6 +6,7 @@ import android.databinding.ObservableField;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanString;
+import com.cpu.quikdata.Utils.TextUtils;
 
 public class TemplateQuestionItemViewModelBooleanString extends TemplateQuestionItemViewModel<QuestionItemModelBooleanString> {
 
@@ -15,9 +16,9 @@ public class TemplateQuestionItemViewModelBooleanString extends TemplateQuestion
 
     public TemplateQuestionItemViewModelBooleanString(QuestionItemModelBooleanString model) {
         super(model);
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         value.set(mModel.getValue());
-        remarksQuestion.set(mModel.getRemarksQuestion());
+        remarksQuestion.set(TextUtils.getTextFromMapping(mModel.getRemarksQuestion()));
         remarks.set(mModel.getRemarks());
     }
 

@@ -4,6 +4,7 @@ import android.databinding.ObservableBoolean;
 
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
+import com.cpu.quikdata.Utils.TextUtils;
 
 public class TemplateQuestionItemViewModelBoolean extends TemplateQuestionItemViewModel<QuestionItemModelBoolean> {
 
@@ -12,7 +13,7 @@ public class TemplateQuestionItemViewModelBoolean extends TemplateQuestionItemVi
 
     public TemplateQuestionItemViewModelBoolean(QuestionItemModelBoolean model, boolean useAltLayout) {
         super(model);
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         value.set(mModel.getValue());
         mUseAltLayout = useAltLayout;
     }

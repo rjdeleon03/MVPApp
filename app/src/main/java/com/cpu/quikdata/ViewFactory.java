@@ -88,6 +88,8 @@ import com.cpu.quikdata.ModulesV2.Base.BaseViewModel;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.ITemplateEnumDataFragment;
 import com.cpu.quikdata.ModulesV2.Base.IBaseInterface;
 import com.cpu.quikdata.ModulesV2.FormList.FormListActivity;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesFragment;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.CaseStoriesViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListFragment;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationInfoListViewModel;
 import com.cpu.quikdata.ModulesV2.NewForm.EvacuationInformation.EvacuationInfoList.EvacuationItem.EvacuationCenterDetails.EvacuationCenterDetailsFragment;
@@ -220,9 +222,16 @@ public class ViewFactory {
         context.startActivity(intent);
     }
 
-    public static void startNewFormActivity(Context context) {
+    public static void startNewFormActivity(Context context, String itemId) {
         Intent intent = new Intent(context, NewFormActivity.class);
+        if (itemId != null) {
+            intent.putExtra(AppConstants.FORM_ITEM_ID, itemId);
+        }
         context.startActivity(intent);
+    }
+
+    public static void startNewFormActivity(Context context) {
+        startNewFormActivity(context, null);
     }
 
     @NonNull
@@ -392,6 +401,9 @@ public class ViewFactory {
                 case EVACUATION_ITEM_COPING:
                     fragment = EvacuationCopingDetailsFragment.newInstance();
                     break;
+                case CASE_STORIES:
+                    fragment = CaseStoriesFragment.newInstance();
+                    break;
             }
 
             // Do not search for view fragment container if id == -1
@@ -429,7 +441,7 @@ public class ViewFactory {
 
                 case FORM_DETAILS:
                     FormDetailsViewModel formDetailsViewModel = new FormDetailsViewModel(Injection.provideDncaRepository(context));
-//                    formDetailsViewModel.setViewComponent(this);
+                    formDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = formDetailsViewModel;
                     break;
 
@@ -495,7 +507,7 @@ public class ViewFactory {
                     
                 case SHELTER_INFO_COPING:
                     ShelterCopingDetailsViewModel shelterCopingDetailsViewModel = new ShelterCopingDetailsViewModel(Injection.provideDncaRepository(context));
-//                    shelterCopingDetailsViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    shelterCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = shelterCopingDetailsViewModel;
                     break;
 
@@ -514,7 +526,7 @@ public class ViewFactory {
 
                 case SHELTER_INFO_GAPS:
                     ShelterGapsDetailsViewModel shelterGapsDetailsViewModel = new ShelterGapsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    shelterGapsDetailsViewModel.setViewComponent((ITemplateEnumDataFragment) baseInterface);
+                    shelterGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = shelterGapsDetailsViewModel;
                     break;
 
@@ -526,19 +538,19 @@ public class ViewFactory {
 
                 case FOOD_SECURITY_IMPACT:
                     ImpactDetailsViewModel impactDetailsViewModel = new ImpactDetailsViewModel(Injection.provideDncaRepository(context));
-//                    impactDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    impactDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = impactDetailsViewModel;
                     break;
 
                 case FOOD_SECURITY_COPING:
                     FoodSecurityCopingDetailsViewModel foodSecurityCopingDetailsViewModel = new FoodSecurityCopingDetailsViewModel(Injection.provideDncaRepository(context));
-//                    foodSecurityCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    foodSecurityCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityCopingDetailsViewModel;
                     break;
 
                 case FOOD_SECURITY_NEEDS:
                     FoodSecurityNeedsDetailsViewModel foodSecurityNeedsDetailsViewModel = new FoodSecurityNeedsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    foodSecurityNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    foodSecurityNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityNeedsDetailsViewModel;
                     break;
                     
@@ -550,7 +562,7 @@ public class ViewFactory {
 
                 case FOOD_SECURITY_GAPS:
                     FoodSecurityGapsDetailsViewModel foodSecurityGapsDetailsViewModel = new FoodSecurityGapsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    foodSecurityGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    foodSecurityGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = foodSecurityGapsDetailsViewModel;
                     break;
 
@@ -580,13 +592,13 @@ public class ViewFactory {
 
                 case LIVELIHOODS_COPING:
                     LivelihoodsCopingDetailsViewModel livelihoodsCopingDetailsViewModel = new LivelihoodsCopingDetailsViewModel(Injection.provideDncaRepository(context));
-//                    livelihoodsCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    livelihoodsCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = livelihoodsCopingDetailsViewModel;
                     break;
 
                 case LIVELIHOODS_NEEDS:
                     LivelihoodsNeedsDetailsViewModel livelihoodsNeedsDetailsViewModel = new LivelihoodsNeedsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    livelihoodsNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    livelihoodsNeedsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = livelihoodsNeedsDetailsViewModel;
                     break;
 
@@ -598,7 +610,7 @@ public class ViewFactory {
                     
                 case LIVELIHOODS_GAPS:
                     LivelihoodsGapsDetailsViewModel livelihoodsGapsDetailsViewModel = new LivelihoodsGapsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    livelihoodsGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    livelihoodsGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = livelihoodsGapsDetailsViewModel;
                     break;
 
@@ -628,7 +640,7 @@ public class ViewFactory {
 
                 case HEALTH_COPING:
                     HealthCopingDetailsViewModel healthCopingDetailsViewModel = new HealthCopingDetailsViewModel(Injection.provideDncaRepository(context));
-//                    healthCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    healthCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = healthCopingDetailsViewModel;
                     break;
                     
@@ -640,7 +652,7 @@ public class ViewFactory {
 
                 case HEALTH_GAPS:
                     HealthGapsDetailsViewModel healthGapsDetailsViewModel = new HealthGapsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    healthGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    healthGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = healthGapsDetailsViewModel;
                     break;
                     
@@ -652,13 +664,13 @@ public class ViewFactory {
                     
                 case WASH_CONDITIONS:
                     WashConditionsDetailsViewModel washConditionsDetailsViewModel = new WashConditionsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    washConditionsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    washConditionsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = washConditionsDetailsViewModel;
                     break;
 
                 case WASH_COPING:
                     WashCopingDetailsViewModel washCopingDetailsViewModel = new WashCopingDetailsViewModel(Injection.provideDncaRepository(context));
-//                    washCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    washCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = washCopingDetailsViewModel;
                     break;
                     
@@ -670,7 +682,7 @@ public class ViewFactory {
 
                 case WASH_GAPS:
                     WashGapsDetailsViewModel washGapsDetailsViewModel = new WashGapsDetailsViewModel(Injection.provideDncaRepository(context));
-//                    washGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    washGapsDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = washGapsDetailsViewModel;
                     break;
                     
@@ -720,6 +732,12 @@ public class ViewFactory {
                     EvacuationCopingDetailsViewModel evacuationCopingDetailsViewModel = new EvacuationCopingDetailsViewModel(Injection.provideDncaRepository(context));
 //                    evacuationCopingDetailsViewModel.setViewComponent((INewFormActivity) baseInterface);
                     baseViewModel = evacuationCopingDetailsViewModel;
+                    break;
+
+                case CASE_STORIES:
+                    CaseStoriesViewModel caseStoriesViewModel = new CaseStoriesViewModel(Injection.provideDncaRepository(context));
+                    caseStoriesViewModel.setViewComponent((INewFormActivity) baseInterface);
+                    baseViewModel = caseStoriesViewModel;
                     break;
             }
 

@@ -7,7 +7,7 @@ public class ImpactDetailsFragment extends TemplateQuestionFragment {
 
     public ImpactDetailsFragment() {
         // Required empty public constructor
-        mTag = NewFormActivity.NewFormComponent.GEN_INFO_CALAMITY.toString();
+        mTag = NewFormActivity.NewFormComponent.FOOD_SECURITY_IMPACT.toString();
     }
 
     /**

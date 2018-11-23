@@ -34,9 +34,7 @@
                 android:paddingRight="16dp"
                 android:paddingEnd="16dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:layout_width="0dp"
@@ -44,25 +42,22 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:textColor="@android:color/white"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@{viewModel.type}"/>
 
                 <ImageButton
-                    android:layout_width="25dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
                     android:layout_marginLeft="4dp"
-                    android:paddingEnd="8dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingStart="8dp"
                     android:background="@android:color/transparent"
                     android:onClick="@{() -> viewModel.navigateOnCardSelected()}"
                     android:src="@drawable/ic_edit"/>
 
                 <ImageButton
-                    android:layout_width="25dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"

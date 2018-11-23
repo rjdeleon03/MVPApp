@@ -6,9 +6,14 @@ import com.cpu.quikdata.ModelsV2.PrefilledData.BaselinePopulationRow;
 import com.cpu.quikdata.ModelsV2.PrefilledData.PrefilledData;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGenderTuple;
-import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
+
+import com.cpu.quikdata.BR;
+
+import io.realm.Realm;
 
 public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilledDataActivity, PrefilledData> {
 
@@ -19,7 +24,15 @@ public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilled
      */
     public PrefilledDataViewModel(DNCAFormRepository dncaFormRepository) {
         super(dncaFormRepository);
-        mFormRepository.getPrefilledData(this);
+    }
+
+    @Override
+    public void setViewComponent(IPrefilledDataActivity viewComponent) {
+        super.setViewComponent(viewComponent);
+        if (mViewComponent != null && mViewComponent.get() != null) {
+            mFormRepository.getPrefilledData(mViewComponent.get().getRealmInstance(), this);
+        }
+
     }
 
     /**
@@ -30,18 +43,42 @@ public class PrefilledDataViewModel extends TemplateQuestionViewModel<IPrefilled
     public void onDataReceived(PrefilledData data) {
         mPrefilledData = data;
 
+        // Location Information
+        mQuestions.add(new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("locationInfo")));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getOrgName()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getSitio()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getBarangay()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getCity()));
+        mQuestions.add(new TemplateQuestionItemViewModelString(mPrefilledData.getProvince()));
+
         // Baseline Population
-        for (BaselinePopulationRow row : mPrefilledData.getBaselinePopulation().getRows()) {
-            mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(new QuestionItemModelGenderTuple(row.getAgeGroup().toString(), row.getMale(), row.getFemale())));
+        mQuestions.add(new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("totalPopulation")));
+        for (BaselinePopulationRow row : mPrefilledData.getPopulation()) {
+            mQuestions.add(new TemplateQuestionItemViewModelGenderTuple(row.getCount()));
         }
 
         // Families and Households
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Families", mPrefilledData.getBaselineFamilies().getFamilies())));
-        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber("Households", mPrefilledData.getBaselineFamilies().getHouseholds())));
+        mQuestions.add(new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("totalFamilies")));
+        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(mPrefilledData.getFamilyCount()));
+        mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(mPrefilledData.getHouseholdsCount()));
 
         // Baseline Houses
-        for (BaselineHousesRow house : mPrefilledData.getBaselineHouses().getHouses()) {
-            mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(new QuestionItemModelSingleNumber(house.getHouseType(), house.getNumber())));
+        mQuestions.add(new TemplateQuestionItemViewModelTextOnly(new QuestionItemModelTextOnly("totalHouses")));
+        for (BaselineHousesRow house : mPrefilledData.getHouses()) {
+            mQuestions.add(new TemplateQuestionItemViewModelSingleNumber(house.getCount()));
         }
+        notifyPropertyChanged(BR.questions);
+    }
+
+    @Override
+    public void onViewPaused() {
+        super.onViewPaused();
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.insertOrUpdate(mPrefilledData);
+            }
+        });
     }
 }

@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
+import com.cpu.quikdata.Utils.TextUtils;
 
 public class TemplateQuestionItemViewModelDoubleString extends TemplateQuestionItemViewModel<QuestionItemModelDoubleString> {
 
@@ -15,10 +16,10 @@ public class TemplateQuestionItemViewModelDoubleString extends TemplateQuestionI
 
     public TemplateQuestionItemViewModelDoubleString(QuestionItemModelDoubleString model) {
         super(model);
-        question.set(mModel.getQuestion());
-        subQuestion1.set(mModel.getSubQuestion1());
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
+        subQuestion1.set(TextUtils.getTextFromMapping(mModel.getSubQuestion1()));
         value1.set(mModel.getValue1());
-        subQuestion2.set(mModel.getSubQuestion2());
+        subQuestion2.set(TextUtils.getTextFromMapping(mModel.getSubQuestion2()));
         value2.set(mModel.getValue2());
     }
 

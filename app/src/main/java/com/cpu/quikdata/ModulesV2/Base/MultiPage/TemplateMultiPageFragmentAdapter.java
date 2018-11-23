@@ -4,12 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.cpu.quikdata.ModulesV2.Base.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TemplateMultiPageFragmentAdapter extends FragmentStatePagerAdapter {
 
-    private List<Fragment> mFragmentList;
+    private List<BaseFragment> mFragmentList;
 
     public TemplateMultiPageFragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -17,7 +19,7 @@ public class TemplateMultiPageFragmentAdapter extends FragmentStatePagerAdapter 
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public BaseFragment getItem(int position) {
         return mFragmentList.get(position);
     }
 
@@ -26,7 +28,7 @@ public class TemplateMultiPageFragmentAdapter extends FragmentStatePagerAdapter 
         return mFragmentList.size();
     }
 
-    public void addFragment(Fragment fragment) {
+    public void addFragment(BaseFragment fragment) {
         mFragmentList.add(fragment);
     }
 }

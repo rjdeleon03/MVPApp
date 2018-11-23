@@ -2,15 +2,20 @@ package com.cpu.quikdata.Utils;
 
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableList;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.SpinnerAdapter;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.cpu.quikdata.AppUtil;
 import com.cpu.quikdata.ModulesV2.Base.EnumData.Row.TemplateEnumDataRowAdapter;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModel;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelBoolean;
@@ -20,8 +25,10 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelMultChoice;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelMultChoiceRemarks;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.ItemViewModels.TemplateQuestionItemViewModelTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderBooleanString;
@@ -29,8 +36,10 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuest
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderDoubleString;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderGenderTuple;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderMultChoice;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderMultChoiceRemarks;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderString;
+import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Question.TemplateQuestionItemViewHolderTextOnly;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderBooleanGroup;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderDate;
@@ -38,6 +47,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReado
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Views.Readonly.TemplateReadonlyItemViewHolderString;
 import com.cpu.quikdata.ModulesV2.FormList.FormListAdapter;
+import com.cpu.quikdata.ModulesV2.NewForm.CaseStories.ImageItem.ImageItemAdapter;
 import com.cpu.quikdata.databinding.TemplateQuestionBooleanBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionStringBinding;
 import com.cpu.quikdata.databinding.TemplateQuestionSingleNumberBinding;
@@ -46,7 +56,10 @@ import com.cpu.quikdata.R;
 import com.cpu.quikdata.databinding.TemplateReadonlySingleNumberBinding;
 import com.cpu.quikdata.databinding.TemplateReadonlyStringBinding;
 
+import java.io.File;
 import java.util.List;
+
+import io.realm.RealmList;
 
 public class BindingUtilsV2 {
 
@@ -105,7 +118,10 @@ public class BindingUtilsV2 {
 
             View itemView = null;
 
-            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
+            if (questionModel instanceof TemplateQuestionItemViewModelTextOnly) {
+                itemView = new TemplateQuestionItemViewHolderTextOnly(inflater, (TemplateQuestionItemViewModelTextOnly) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
                 itemView = new TemplateQuestionItemViewHolderGenderTuple(inflater, (TemplateQuestionItemViewModelGenderTuple) questionModel).getView();
                 
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
@@ -130,9 +146,10 @@ public class BindingUtilsV2 {
                 itemView = new TemplateQuestionItemViewHolderDoubleString(inflater, (TemplateQuestionItemViewModelDoubleString) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelMultChoice) {
-                TemplateQuestionItemViewModelMultChoice multChoiceViewModel = (TemplateQuestionItemViewModelMultChoice) questionModel;
-                multChoiceViewModel.setContext(tableLayout.getContext());
-                itemView = new TemplateQuestionItemViewHolderMultChoice(inflater, multChoiceViewModel).getView();
+                itemView = new TemplateQuestionItemViewHolderMultChoice(inflater, (TemplateQuestionItemViewModelMultChoice) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelMultChoiceRemarks) {
+                itemView = new TemplateQuestionItemViewHolderMultChoiceRemarks(inflater, (TemplateQuestionItemViewModelMultChoiceRemarks) questionModel).getView();
 
             }
 
@@ -150,7 +167,10 @@ public class BindingUtilsV2 {
 
             View itemView = null;
 
-            if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
+            if (questionModel instanceof TemplateQuestionItemViewModelTextOnly) {
+                itemView = new TemplateQuestionItemViewHolderTextOnly(inflater, (TemplateQuestionItemViewModelTextOnly) questionModel).getView();
+
+            } else if (questionModel instanceof TemplateQuestionItemViewModelGenderTuple) {
                 itemView = new TemplateReadonlyItemViewHolderGenderTuple(inflater, (TemplateQuestionItemViewModelGenderTuple) questionModel).getView();
 
             } else if (questionModel instanceof TemplateQuestionItemViewModelString) {
@@ -177,6 +197,33 @@ public class BindingUtilsV2 {
     }
 
     /**
+     * Binds image path to image view
+     * @param imageView
+     * @param imagePath
+     */
+    @BindingAdapter({"app:imagePath"})
+    public static void bind(ImageView imageView, String imagePath) {
+        if (imagePath != null && !imagePath.isEmpty() && (new File(imagePath)).exists()) {
+            Glide.with(imageView).load(imagePath).into(imageView);
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Bind image paths to recycler view
+     * @param recyclerView
+     * @param imageItemAdapter
+     * @param imagePaths
+     */
+    @BindingAdapter({"app:imageItemAdapter", "app:imageItems"})
+    public static void bindImagesToRecyclerView(RecyclerView recyclerView, ImageItemAdapter imageItemAdapter, List<String> imagePaths) {
+        recyclerView.setAdapter(imageItemAdapter);
+        imageItemAdapter.notifyDataSetChanged();
+    }
+
+    /**
      * Bind boolean to enabled property of button
      * @param button
      * @param isEnabled
@@ -184,6 +231,14 @@ public class BindingUtilsV2 {
     @BindingAdapter({"app:enabled"})
     public static void bind(FloatingActionButton button, boolean isEnabled) {
         button.setEnabled(isEnabled);
+    }
+
+    @BindingAdapter({"android:entries"})
+    public static void bind(AppCompatSpinner spinner, ObservableList<String> choices) {
+        if (spinner.getAdapter() == null) {
+            ArrayAdapter adapter = new ArrayAdapter(spinner.getContext(), R.layout.template_question_mult_choice_item, choices);
+            spinner.setAdapter(adapter);
+        }
     }
 
     @BindingAdapter({"app:adapter", "app:data"})

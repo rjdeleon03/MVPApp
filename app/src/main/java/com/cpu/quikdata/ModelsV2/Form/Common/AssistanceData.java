@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModelsV2.Form.Common;
 
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -31,5 +32,11 @@ public class AssistanceData extends RealmObject implements IEnumDataRowHolder<As
     @Override
     public void setRows(RealmList<AssistanceDataRow> rows) {
         this.rows = rows;
+    }
+
+    @Override
+    public void deleteData() {
+        if (rows != null && !rows.isEmpty()) rows.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

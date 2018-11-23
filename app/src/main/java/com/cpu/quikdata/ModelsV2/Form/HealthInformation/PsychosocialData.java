@@ -2,6 +2,7 @@ package com.cpu.quikdata.ModelsV2.Form.HealthInformation;
 
 import com.cpu.quikdata.ModelsV2.Base.IEnumDataRowHolder;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -35,5 +36,15 @@ public class PsychosocialData extends RealmObject implements IEnumDataRowHolder<
     @Override
     public void setRows(RealmList<PsychosocialDataRow> rows) {
         this.rows = rows;
+    }
+
+    @Override
+    public void deleteData() {
+        if (rows != null && !rows.isEmpty()) {
+            for(int i = 0; i < rows.size(); i++) {
+                if (rows.get(i) != null) rows.get(i).deleteData();
+            }
+        }
+        deleteFromRealm();
     }
 }

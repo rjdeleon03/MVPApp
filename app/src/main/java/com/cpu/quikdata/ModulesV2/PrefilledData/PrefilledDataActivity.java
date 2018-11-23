@@ -1,11 +1,14 @@
 package com.cpu.quikdata.ModulesV2.PrefilledData;
 
+import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.cpu.quikdata.BaseActivity;
 import com.cpu.quikdata.Injection;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionFragment;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.TemplateQuestionViewModel;
@@ -13,15 +16,23 @@ import com.cpu.quikdata.R;
 import com.cpu.quikdata.Utils.ActivityUtils;
 import com.cpu.quikdata.ViewModelHolder;
 
-public class PrefilledDataActivity extends AppCompatActivity implements IPrefilledDataActivity {
+public class PrefilledDataActivity extends BaseActivity implements IPrefilledDataActivity {
 
     public static final String TEMPLATE_QUESTION_VIEWMODEL_TAG = "TEMPLATE_QUESTION_VIEWMODEL_TAG";
+    private static final String TOOLBAR_TITLE = "Settings";
+    private static int FRAGMENT_CONTAINER = R.id.fragment_container;
+
+    public PrefilledDataActivity() {
+        super(TOOLBAR_TITLE, FRAGMENT_CONTAINER);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prefilled_data_activity);
-        setupBackButton();
+
+        // Setup the toolbar
+        setupToolbar(true);
 
         TemplateQuestionFragment templateQuestionFragment = findOrCreateViewFragment();
         TemplateQuestionViewModel templateQuestionViewModel = findOrCreateViewModel();
@@ -30,16 +41,13 @@ public class PrefilledDataActivity extends AppCompatActivity implements IPrefill
     }
 
     /**
-     * Sets up back button
+     * Inflates the menu
+     * @param menu
+     * @return
      */
-    public void setupBackButton() {
-        ImageButton backButton = findViewById(R.id.dnca_list_back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 
     /**
@@ -49,12 +57,12 @@ public class PrefilledDataActivity extends AppCompatActivity implements IPrefill
     @NonNull
     private PrefilledDataFragment findOrCreateViewFragment() {
 
-        PrefilledDataFragment formListFragment = (PrefilledDataFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        PrefilledDataFragment formListFragment = (PrefilledDataFragment) getSupportFragmentManager().findFragmentById(FRAGMENT_CONTAINER);
 
         if (formListFragment == null) {
             formListFragment = PrefilledDataFragment.newInstance();
 
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, R.id.fragment_container, false);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), formListFragment, FRAGMENT_CONTAINER, false);
         }
 
         return formListFragment;

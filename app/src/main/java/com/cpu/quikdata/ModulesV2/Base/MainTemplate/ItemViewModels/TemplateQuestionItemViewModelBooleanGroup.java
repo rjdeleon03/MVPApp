@@ -7,6 +7,7 @@ import com.cpu.quikdata.AppConstants;
 import com.cpu.quikdata.BR;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBoolean;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBooleanGroup;
+import com.cpu.quikdata.Utils.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class TemplateQuestionItemViewModelBooleanGroup extends TemplateQuestionI
 
     public TemplateQuestionItemViewModelBooleanGroup(QuestionItemModelBooleanGroup model) {
         super(model);
-        question.set(mModel.getQuestion());
+        question.set(TextUtils.getTextFromMapping(mModel.getQuestion()));
         for(QuestionItemModelBoolean booleanModel : model.getBooleanFields()) {
             mBooleanList.add(new TemplateQuestionItemViewModelBoolean(booleanModel, true));
         }

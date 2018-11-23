@@ -7,6 +7,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelGend
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -87,5 +88,12 @@ public class IncomeSourceDataRow extends RealmObject implements IEnumDataRow<Gen
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "dependentGirls", 0));
             numberFields.add(new QuestionItemModelSingleNumber(AppUtil.generateId(), "averageIncome", 0));
         }
+    }
+
+    @Override
+    public void deleteData() {
+        stringFields.deleteAllFromRealm();
+        numberFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }

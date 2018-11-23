@@ -8,6 +8,7 @@ import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelBool
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelSingleNumber;
 import com.cpu.quikdata.ModulesV2.Base.MainTemplate.Models.QuestionItemModelString;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -144,5 +145,14 @@ public class DamageCostDataRow extends RealmObject implements IEnumDataRow<Gener
                     break;
             }
         }
+    }
+
+    @Override
+    public void deleteData() {
+        booleanGroup.getBooleanFields().deleteAllFromRealm();
+        booleanGroup.deleteFromRealm();
+        stringFields.deleteAllFromRealm();
+        numberFields.deleteAllFromRealm();
+        deleteFromRealm();
     }
 }
